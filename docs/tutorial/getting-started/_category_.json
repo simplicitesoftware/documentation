@@ -1,0 +1,9 @@
+{
+  "label": "1. Getting started",
+  "position": 1,
+  "description":"First steps in building an application",
+  "link": {
+    "type": "generated-index",
+    "description": "First steps in building an order management application"
+  }
+}
