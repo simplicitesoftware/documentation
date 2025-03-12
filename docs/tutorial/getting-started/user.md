@@ -16,14 +16,14 @@ To create a test user, follow the steps below :
 
 1. Click **Create a user** in Users and rights and fill in the User information like so :
     - Login : **usertest**  
-    ![](process.png)
+    ![](img/user/process.png)
 3. Click **Next**
 4. Choose a [previously](/lesson/tutorial/getting-started/module) created Group :
     - **TRN_SUPER_ADMIN** *if exists, this should be selected by default*  
-    ![](group.png)
+    ![](img/user/group.png)
 5. Click **Next**
 6. Create a Responsibility, click **Next**  
-    ![](resp.png)
+    ![](img/user/resp.png)
     > For more information about Domains, see the [Responsibility](/lesson/docs/platform/usersrights/responsibilities) section. 
 7. Choose a new group :
     - For now, select **no**
@@ -31,7 +31,7 @@ To create a test user, follow the steps below :
 
 <div class="success">
     <p>The <b>usertest</b> User is created and opened</p>
-    ![](success-user.png)
+    ![](img/user/success-user.png)
 </div>
 
 
@@ -39,17 +39,17 @@ To create a test user, follow the steps below :
 
 To connect to the application with **usertest**, follow the steps below :
 
-1. Click ![](activate.png)
-2. Click ![](reset-password.png)
+1. Click ![](img/user/activate.png)
+2. Click ![](img/user/reset-password.png)
     - Click **Yes**
     - Copy the password displayed in the popup
     - Click **Ok**
 3. Empty the platform's cache :
     - Via the header menu :
         - Click on the menu in the top-right corner, click **Clear cache**  
-        ![](shortcut.png)
+        ![](img/user/shortcut.png)
         - Click **Clear all sessions and all server caches**  
-        ![](clear-cache.png)
+        ![](img/user/clear-cache.png)
     - Via the keyboard shortcut : [ <kbd>Alt</kbd>+<kbd>C</kbd>+<kbd>C</kbd> ]
     > For more information about the cache, see the [Platform cache](/lesson/docs/core/objects/platform-cache) section. 
 
@@ -68,7 +68,7 @@ You should now be connected with **usertest**
         <li>A Menu entry is visible</li>
         <li>The list of Suppliers is displayed when the menu is clicked</li>
     </ul>
-    ![](success-logon.png)
+    ![](img/user/success-logon.png)
 :::
 
 ## Adding designer to TRN_SUPERADMIN
@@ -78,19 +78,19 @@ Before moving on, and to make testing / configuration easier, we will add the `d
 To do so, follow the steps below : 
 
 1. Click on **Designer** in the top right corner of the App, and open the **Designer** user   
-    ![](open-designer.png)
+    ![](img/user/open-designer.png)
     > You can also access the user's form via the **Users and rights > Users > Show all** menu
 2. In the **Responsibilities** list linked to the User, click **Associate Groups**  
-    ![](designer-associate.png)
+    ![](img/user/designer-associate.png)
 3. Select **TRN_SUPERADMIN** and click **Apply the selection**  
-    ![](designer-group.png)
+    ![](img/user/designer-group.png)
 4. On the **Create Responsibility** pop-up, click **Save & Close**
 5. Empty the platform's cache :
     - Via the header menu :
         - Click on the menu in the top-right corner, click **Clear cache**  
-        ![](shortcut.png)
+        ![](img/user/shortcut.png)
         - Click **Clear all sessions and all server caches**  
-        ![](clear-cache.png)
+        ![](img/user/clear-cache.png)
     - Via the keyboard shortcut : [ <kbd>Alt</kbd>+<kbd>C</kbd>+<kbd>C</kbd> ]
 6. Log back in using `designer` (*or the user used to design the application*)
 
@@ -100,7 +100,7 @@ To do so, follow the steps below :
         <li>"My App" Menu is visible</li>
         <li>The list of Suppliers is displayed when the menu is clicked</li>
     </ul>
-    ![](designer-success.png)
+    ![](img/user/designer-success.png)
 :::
 
 ***
@@ -125,7 +125,7 @@ Troubleshooting
                 - In the **Main menu** tab, there should be **TrnSupplier** 
                     > If not, create it    
 
-            ![](trbl-domain.png)
+            ![](img/user/trbl-domain.png)
   
     - **TrnSupplier** has a CRUD Function, and is granted to **TRN_SUPERADMIN**
         - In **Business objects > Business objects**
@@ -134,14 +134,14 @@ Troubleshooting
                 - There should be a **Read, create, update and delete** Function (TRN_SUP_CRUD)
                     > If not, create it  
 
-                ![](trbl-object.png) 
+                ![](img/user/trbl-object.png) 
 
                 - Open the **TRN_SUP_CRUD** Function :
                     - In the **Grant** panel linked to the Function :
                         - There should be the **TRN_SUPERADMIN** Group
                             > If not, create it
 
-                ![](trbl-function.png) 
+                ![](img/user/trbl-function.png) 
 
     - **usertest** has the **TRN_SUPERADMIN** Responsibility :
         - In **Users and rights > Users > Show all**
@@ -150,4 +150,4 @@ Troubleshooting
                 - There should be **TRN_SUPERADMIN**
                     > If not, create it
                 
-            ![](trbl-user.png) 
+            ![](img/user/trbl-user.png) 

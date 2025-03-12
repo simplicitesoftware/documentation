@@ -15,27 +15,27 @@ In Simplicité, fields are configurable attributes of business objects (mandator
 To create a field, follow the steps below :
 
 1. Click **Edit form** on the Business object's form (this will open the **template editor**)  
-    ![alt text](edit-form.png)
+    ![](img/attribute/edit-form.png)
 	> The template editor is also available via the Modeler, for more information see the [Accessing the template editor via the Modeler](/lesson/docs/platform/businessobjects/business-objects#creation-assistant-via-the-modeler)
 2. Select the first **Template**    
-    ![alt text](template.png)
+    ![](img/attribute/template.png)
 3. Hover over the empty **Field Area** and click on the `+`
     > For more information about Field Areas, see [Field Area](/lesson/docs/platform/userinterface/templating/fields-areas)
-    ![alt text](field-area.png)
+    ![](img/attribute/field-area.png)
 4. Click **Field**  
-    ![alt text](add-field.png)
+    ![](img/attribute/add-field.png)
 5. Click **+ Create field**, and select **Short text**  
-    ![alt text](short-text.png)
+    ![](img/attribute/short-text.png)
 6. Fill in the Field fields like so :
     - Label : **Code**
     - Logical name : **trnSupCode** *should be auto-completed* 
     - Physical name : **trn_sup_code** *should be auto-completed*
     - Functional key : **Toggled**
     - Required : **Toggled**  
-    ![alt text](create-field.png)
+    ![](img/attribute/create-field.png)
 7. Click **Save**
 
 ::::tip[Success]
 <p>The <b>trnSupName</b> Field has been added to the <b>TrnSupplier</b> Business object and the template has a <b>Name</b> input visible on it</p>
-![alt text](attribute_success.png)
+![](img/attribute/success.png)
 ::::

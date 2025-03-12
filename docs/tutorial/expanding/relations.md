@@ -17,13 +17,13 @@ To create a link between the **Supplier** Business object and the **Product** Bu
 1. In the **Business objects > Business objects** menu
 2. Open **TrnProduct**
 3. Click **Edit form** on the Business object's form (this will open the **template editor**)  
-    ![](images/edit-form.png)
+    ![](img/relations/edit-form.png)
 4. Hover over the **Field Area** and click on the `+`  
-    ![](images/field-area.png)
+    ![](img/relations/field-area.png)
     > For more information about Field Areas, see [Field Area](/lesson/docs/platform/userinterface/templating/fields-areas)  
 5. Click **Business Object**
 6. In the search box, enter **TrnSupplier**  
-    ![](images/search-supplier.png)
+    ![](img/relations/search-supplier.png)
 7. Check **Functional key ?** and **Required ?** 
     > For more information about Functional keys, see [Functional key](/lesson/docs/platform/businessobjects/fields#functional-key)
 8. Click **Save**
@@ -41,7 +41,7 @@ To create a link between the **Product** Business object and the **Order** Busin
 5. Click **Business Object**
 6. In the search box, enter **TrnProduct**
 7. Check **Functional key ?** and **Required ?**  
-     ![](images/foreign-key.png)
+     ![](img/relations/foreign-key.png)
 
 8. Click **Save**
 
@@ -52,7 +52,7 @@ This will add the **TrnProduct** joined fields to the template, allowing the Ord
 To create a link between the **Client** and **Order** business objects, follow the same steps as for linking **Product** to **Order**, with one key difference:
 
 6. In the search box, enter **TrnClient** instead of TrnProduct.  
-     ![](images/foreign-key-cli.png)
+     ![](img/relations/foreign-key-cli.png)
 
 This will add the **TrnClient** joined fields to the template, allowing the Order object to reference client information.
 
@@ -68,7 +68,7 @@ Clear the platform's cache and log in using *usertest*
         <li>The Suppliers, Clients, Products, Orders are visible</li>
         <li>For each object, the Create button is displayed</li>
     </ul>
-    ![](images/success-crud.png)
+    ![](img/relations/success-crud.png)
 ::::
 
 ### Create a Supplier
@@ -78,18 +78,18 @@ Clear the platform's cache and log in using *usertest*
 3. Fill in the Supplier information like so :
     - Code : **BIM**
     - Name : **Bim Computers Ltd.**  
-    ![](images/create-supplier.png)
+    ![](img/relations/create-supplier.png)
 4. Click **Save**
 
 ### Create a Product
 
 1. On the **BIM** Supplier's form, click **Create** on the linked Products list  
-    ![](images/create-product-panel.png)
+    ![](img/relations/create-product-panel.png)
 2. Fill in the Product information like so : 
     - Reference : **REF001**
     - Price : **100**
     - Stock : **100**   
-    ![](images/create-product.png)
+    ![](img/relations/create-product.png)
 3. Click **Save**
 
 ### Create a Client
@@ -99,7 +99,7 @@ Clear the platform's cache and log in using *usertest*
 3. Fill in the Client information like so :
     - First Name : **Robert**
     - Last Name : **Zebuilder**  
-    ![](images/create-client.png)
+    ![](img/relations/create-client.png)
 4. Click **Save**
 
 ### Create an Order
@@ -111,11 +111,11 @@ Clear the platform's cache and log in using *usertest*
     - Quantity : **10**
     - Client First Name :
         - Click the *Loupe* icon  
-            ![](images/select-ref.png)
+            ![](img/relations/select-ref.png)
         - Select a Client  
-             ![](images/select-client.png)
+             ![](img/relations/select-client.png)
     - Product Reference :
         - Click the *magnifying glass* icon  
         - Select a Product
 4. Click **Save**  
-![](images/create-order.png)
+![](img/relations/create-order.png)

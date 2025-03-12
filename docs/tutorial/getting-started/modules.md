@@ -24,26 +24,26 @@ To create a module, follow the steps below :
     - Name : **Training**
     - Type : **Application**
     - Prefix : **trn**  
-    ![alt text](module.png)
+    ![](img/module/module.png)
 3. Click **Next**
 4. Fill in the Group fields like so :
     - Name : **TRN_SUPERADMIN** *(if you entered a prefix in the previous step, the platform will suggest a group name that respects the conventions)*  
-        ![alt text](group.png)
+        ![](img/module/group.png)
     > For more information about Groups, see the [Groups](/lesson/docs/platform/usersrights/groups) section. 
 
 5. Click **Next**
 6. Fill in the Domain (in Simplicité, a Domain is a menu) fields like so :
     - Name : **TrnDomain**  
-        ![alt text](domain.png)
+        ![](img/module/domain.png)
     > For more information about Domains, see the [Domain](/lesson/docs/platform/businessobjects/domains) section. 
 7. Click **Next**
 8. Fill in the Translations (Menu display label) for your Domain :
     - English : **My App**  
-        ![alt text](translate.png)
+        ![](img/module/translate.png)
 9. Click **Next**
 10. Grant the Group to the Domain :
     - Check the box  
-        ![alt text](grant.png)
+        ![](img/module/grant.png)
 11. Click **Next**
 12. Fill in the View field like so :
     - Icon : click the magnifying glass and pick an icon
@@ -52,5 +52,5 @@ To create a module, follow the steps below :
 
 :::tip[Success]
 The **Training** Module is created and opened.
-![alt text](success.png)
+![](img/module/success.png)
 :::
