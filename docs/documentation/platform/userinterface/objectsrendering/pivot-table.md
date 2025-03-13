@@ -18,7 +18,7 @@ If there is no "value" axis, then the platform performs an enumeration.
 
 Crosstabs offer many options to users:
 - display or not the presented axes
-- swapping of axes (rows <-> columns)
+- swapping of axes (rows :arrow: columns)
 - filtering of the data used (note that the crosstab uses the filters already active on the object if a search has been performed)
 - creation of graphs
 - CSV, Excel, JSON exports (the latter can also be obtained by webservice)

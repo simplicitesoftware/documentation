@@ -33,6 +33,9 @@ def reorganize_files(source_root, target_root):
     
     json_mappings = {"category.json": "_category_.json"}
     
+    # Update image extensions to include SVG
+    image_extensions = {".png", ".jpg", ".jpeg", ".gif", ".svg"}
+    
     # Recursively process files
     for root, dirs, files in os.walk(source_root, topdown=True):
         relative_path = os.path.relpath(root, source_root)
@@ -65,7 +68,7 @@ def reorganize_files(source_root, target_root):
             if file == "lesson.json":
                 continue  # Skip lesson.json files
             
-            if ext in {".png", ".jpg", ".jpeg", ".gif"}:
+            if ext.lower() in image_extensions:
                 # Get the lesson name from the current directory
                 lesson_name = re.sub(r"LSN_\d+_", "", os.path.basename(root))
                 # Create img directory at the same level as the lesson file
@@ -131,7 +134,12 @@ def update_md_image_references(src_md, dest_md, lesson_name, position=None, titl
     
     # Replace image references
     img_pattern = r'<img\s+src=["\']([^"\']+)["\'].*?>'
-    updated_content = re.sub(img_pattern, lambda m: f"![](img/{lesson_name}/{m.group(1)})", content)
+    # Use /img/lesson_name/filename format
+    updated_content = re.sub(img_pattern, lambda m: f"![](img/{lesson_name}/{os.path.basename(m.group(1))})", content)
+    # Also update existing markdown-style image references that don't already have the correct path
+    updated_content = re.sub(r'!\[\]\((?!/img/)[^)]+\)', 
+                           lambda m: f"![](img/{lesson_name}/{os.path.basename(m.group(0).split('(')[1][:-1])})", 
+                           updated_content)
     
     # Add YAML header if it exists
     if yaml_header:

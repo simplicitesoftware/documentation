@@ -38,7 +38,7 @@ You have differents choices :
      Choose one and place it.   
    ![](img/dashboard/dashboard5.png)
    - Filter : allows to add a search bar (new view item) with optional time period and fields.
-      - The item triggers a new event with user's filters { fromDate, toDate, fields... }.  
+      - The item triggers a new event with user's filters (fromDate, toDate, fields...).  
       - The filters are applied to lists, charts, and pivot tables (having a date/period or matching filtered fields).  
         You can add filters on object attributes to this period filter bar by clicking on Add Filter.       
     ![](img/dashboard/dashboard8.png)  

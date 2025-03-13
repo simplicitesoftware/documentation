@@ -67,7 +67,8 @@ const config = {
             position: 'left',
             label: 'Tutorial',
           }, 
-          {to: '/docs/category/simplicité-configuration-objects', label: 'Documentation', position: 'left'}
+          {to: '/docs/category/simplicité-configuration-objects', label: 'Documentation', position: 'left'},
+          {to: '/docs/category/release-notes', label: 'Versions', position: 'left'}
         ],
       },
       prism: {

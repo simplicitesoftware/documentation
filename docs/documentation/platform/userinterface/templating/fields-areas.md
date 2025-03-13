@@ -19,7 +19,7 @@ Fields areas are used to group fields, both in forms and in lists. They help org
 
 ### Create a Fields Area via the template editor
 - Select the object where you want to add field area and go to its configuration.  
-- Click on the **Edit form** button of your business object. If the object doesn't yet have a template, you'll be asked to choose one. The template editor will open on a 1st attribute zone named <Objectname>-1  
+- Click on the **Edit form** button of your business object. If the object doesn't yet have a template, you'll be asked to choose one. The template editor will open on a 1st attribute zone named `<Objectname>-1`  
 If the object already has a template, click on the + in the zone of your choice and select **Fields Area**.  
 - Define the properties    
   ![](img/fields-areas/fieldsarea1.png)  
