@@ -18,7 +18,7 @@ Changes
 ```javascript
 new Simplicite.Calendar(form, target, name, timepicker).display();
 ```
-![jquery.datetimepicker](datetimepicker.png)
+![jquery.datetimepicker](img/releasenote-patchlevel-04/datetimepicker.png)
 
 Fixes
 -----

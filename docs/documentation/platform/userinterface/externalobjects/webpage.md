@@ -139,3 +139,7 @@ public Object display(Parameters params) {
 **Other Lessons**
 - [Resources](/lesson/docs/platform/userinterface/resources)
 - [Static Web Sites](/lesson/docs/platform/userinterface/externalobjects/staticsite)
+
+**JS Dev**
+- [Javascript Development](/lesson/docs/front/javascript-dev).
+- [Ajax Library](/lesson/docs/front/lib-ajax).

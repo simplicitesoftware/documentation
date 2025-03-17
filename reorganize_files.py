@@ -58,15 +58,19 @@ def reorganize_files(source_root, target_root):
         position, title = get_lesson_info(root)
 
         for file in files:
+            # Skip _FRA.md files
+            if file.endswith("_FRA.md"):
+                continue
+                
             src_path = os.path.join(root, file)
             _, ext = os.path.splitext(file)
             
             if file in json_mappings:
                 transform_category_json(root, os.path.join(target_dir, json_mappings[file]))
-                continue  # Skip further processing for category.json
+                continue
             
             if file == "lesson.json":
-                continue  # Skip lesson.json files
+                continue
             
             if ext.lower() in image_extensions:
                 # Get the lesson name from the current directory
@@ -109,12 +113,15 @@ def transform_category_json(root, target_path):
     
     category_data = {
         "label": title,
-        "position": position
+        "position": position,
+        "link": {
+            "type": "generated-index"
+        }
     }
     
     os.makedirs(os.path.dirname(target_path), exist_ok=True)
     with open(target_path, "w", encoding="utf-8") as f:
-        json.dump(category_data, f, ensure_ascii=False, indent=4)
+        json.dump(category_data, f, ensure_ascii=False, indent=2)
     print(f"📄 Transformed category.json: {target_path}")
 
 def update_md_image_references(src_md, dest_md, lesson_name, position=None, title=None):
@@ -132,14 +139,24 @@ def update_md_image_references(src_md, dest_md, lesson_name, position=None, titl
             yaml_header += f"title: {title}\n"
         yaml_header += "---\n\n"
     
-    # Replace image references
+    # Replace image references for <img> tags, but skip https links
     img_pattern = r'<img\s+src=["\']([^"\']+)["\'].*?>'
-    # Use /img/lesson_name/filename format
-    updated_content = re.sub(img_pattern, lambda m: f"![](img/{lesson_name}/{os.path.basename(m.group(1))})", content)
-    # Also update existing markdown-style image references that don't already have the correct path
-    updated_content = re.sub(r'!\[\]\((?!/img/)[^)]+\)', 
-                           lambda m: f"![](img/{lesson_name}/{os.path.basename(m.group(0).split('(')[1][:-1])})", 
-                           updated_content)
+    def img_replacement(match):
+        src = match.group(1)
+        if src.startswith('http'):
+            return f'![]({src})'
+        return f"![](img/{lesson_name}/{os.path.basename(src)})"
+    updated_content = re.sub(img_pattern, img_replacement, content)
+    
+    # Update markdown-style image references, but skip https links
+    def md_img_replacement(match):
+        alt_text = match.group(1)
+        img_path = match.group(0).split('(')[1][:-1]
+        if img_path.startswith('http'):
+            return f'![{alt_text}]({img_path})'
+        return f"![{alt_text}](img/{lesson_name}/{os.path.basename(img_path)})"
+    
+    updated_content = re.sub(r'!\[(.*?)\]\((?!/img/)[^)]+\)', md_img_replacement, updated_content)
     
     # Add YAML header if it exists
     if yaml_header:

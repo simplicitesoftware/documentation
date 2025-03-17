@@ -1,4 +1,7 @@
 {
-    "label": "V2.7",
-    "position": 40
+  "label": "V2.7",
+  "position": 40,
+  "link": {
+    "type": "generated-index"
+  }
 }

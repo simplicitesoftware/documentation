@@ -1,3 +1,8 @@
+---
+sidebar_position: 20
+title: Responsibilities
+---
+
 # Responsibilities
 
 ## Introduction 

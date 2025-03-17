@@ -1,0 +1,7 @@
+{
+  "label": "Documentation",
+  "position": 50,
+  "link": {
+    "type": "generated-index"
+  }
+}

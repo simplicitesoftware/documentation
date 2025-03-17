@@ -1,7 +1,8 @@
 ---
 sidebar_position: 3
 title: 1.3. Creating a Field
---- 
+---
+
 # Building the "Order Management" Training App : Creating a Field
 
 > Prerequisite : [A business object (TrnSupplier) must be created before starting this tutorial](/lesson/tutorial/getting-started/object)
@@ -21,7 +22,9 @@ To create a field, follow the steps below :
     ![](img/attribute/template.png)
 3. Hover over the empty **Field Area** and click on the `+`
     > For more information about Field Areas, see [Field Area](/lesson/docs/platform/userinterface/templating/fields-areas)
+
     ![](img/attribute/field-area.png)
+    
 4. Click **Field**  
     ![](img/attribute/add-field.png)
 5. Click **+ Create field**, and select **Short text**  
@@ -32,10 +35,12 @@ To create a field, follow the steps below :
     - Physical name : **trn_sup_code** *should be auto-completed*
     - Functional key : **Toggled**
     - Required : **Toggled**  
-    ![](img/attribute/create-field.png)
+        ![](img/attribute/create-field.png)
 7. Click **Save**
 
-::::tip[Success]
-<p>The <b>trnSupName</b> Field has been added to the <b>TrnSupplier</b> Business object and the template has a <b>Name</b> input visible on it</p>
-![](img/attribute/success.png)
-::::
+<div class="success">
+    <p>The <b>trnSupName</b> Field has been added to the <b>TrnSupplier</b> Business object and the template has a <b>Name</b> input visible on it</p>
+    ![](img/attribute/success.png)
+</div>
+
+[Next step : Create a User](/lesson/tutorial/getting-started/user)

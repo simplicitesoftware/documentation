@@ -1,5 +1,7 @@
 {
-    "label": "2. Expanding your App",
-    "position": 3,
-    "description": "Expanding the functionalities"
+  "label": "2. Expanding Your App",
+  "position": 20,
+  "link": {
+    "type": "generated-index"
+  }
 }

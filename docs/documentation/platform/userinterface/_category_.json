@@ -1,4 +1,7 @@
 {
-    "label": "User interface",
-    "position": 50
+  "label": "User interface",
+  "position": 50,
+  "link": {
+    "type": "generated-index"
+  }
 }

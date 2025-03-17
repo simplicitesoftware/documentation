@@ -85,7 +85,7 @@ Leaner CSS (Less), is a dynamic preprocessor style sheet language that extends t
 ### Key Features
 
 *Variables:* Store reusable values for colors, fonts or dimensions:
-<details style="padding-bottom:24px;">
+<details>
 <summary>Code Snippet</summary>
 
 ```less
@@ -97,7 +97,7 @@ body {
 </details>
 
 *Nesting:* Write styles in a structured & hierarchical way. Allowing to specify depending on contexts when it's needed. Below are shown two ways to use nesting, and shows a use case where items with same class have different styles depending on their parent:
-<details style="padding-bottom:24px;">
+<details>
 <summary>Code Snippet</summary>
 
 ```less
@@ -117,7 +117,7 @@ body {
 > **Warning:** the nesting `.parent > .child` and `.parent .child` have different meanings: **">"** targets only the *direct .child*, otherwise *all .child* are targeted.
 
 *Interactions Nesting:* Same way as nesting works for children elements or contexts, yo ucan use it to dynamically handle different type of interactions for your elements:
-<details style="padding-bottom:24px;">
+<details>
 <summary>Code Snippet</summary>
 
 ```less
@@ -140,7 +140,7 @@ body {
 </details>
 
 *Mixins:* Define reusable style blocks for consistency:
-<details style="padding-bottom:24px;">
+<details>
 <summary>Code Snippet</summary>
 
 ```less
@@ -154,7 +154,7 @@ div {
 </details>
 
 *Functions:* Perform calculations and color operations directly in your styles:
-<details style="padding-bottom:24px;">
+<details>
 <summary>Code Snippet</summary>
 
 ```less
@@ -166,3 +166,7 @@ body {
 </details>
 
 > **Note:** Most of the described features are also available in regular CSS.
+
+## Read More
+
+- [Styles](/lesson/docs/front/styles) using *addon.less*.

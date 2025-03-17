@@ -1,7 +1,8 @@
 ---
 sidebar_position: 4
-title: "1.4. Creating a User"
---- 
+title: 1.4. Creating a User
+---
+
 # Building the "Order Management" Training App : Creating a User
 
 > Prerequisite : [A Business object with a field must be created before starting this tutorial](/lesson/tutorial/getting-started/object)
@@ -62,14 +63,14 @@ To connect to the application with **usertest**, follow the steps below :
 
 You should now be connected with **usertest**
 
-:::tip[Success]
+<div class="success">
     <b>Expected result :</b>
     <ul>
         <li>A Menu entry is visible</li>
         <li>The list of Suppliers is displayed when the menu is clicked</li>
     </ul>
     ![](img/user/success-logon.png)
-:::
+</div>
 
 ## Adding designer to TRN_SUPERADMIN
 
@@ -94,14 +95,16 @@ To do so, follow the steps below :
     - Via the keyboard shortcut : [ <kbd>Alt</kbd>+<kbd>C</kbd>+<kbd>C</kbd> ]
 6. Log back in using `designer` (*or the user used to design the application*)
 
-:::tip[Success]
- <b>Expected result :</b>
+<div class="success">
+    <b>Expected result :</b>
     <ul>
         <li>"My App" Menu is visible</li>
         <li>The list of Suppliers is displayed when the menu is clicked</li>
     </ul>
     ![](img/user/designer-success.png)
-:::
+</div>
+
+[Next step : Add objects](/lesson/tutorial/expanding/addobjects)
 
 ***
 

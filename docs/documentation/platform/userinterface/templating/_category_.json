@@ -1,4 +1,7 @@
 {
-    "label": "Templating",
-    "position": 50
+  "label": "Templating",
+  "position": 50,
+  "link": {
+    "type": "generated-index"
+  }
 }

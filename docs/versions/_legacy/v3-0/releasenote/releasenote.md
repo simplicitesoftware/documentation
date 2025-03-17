@@ -157,7 +157,7 @@ Note the `getGrant()` and `params.getLocation()` usage.
 
 Here is the resulting page in the above example :
 
-![External object example](extobjectexample.jpg)
+![External object example](img/releasenote/extobjectexample.jpg)
 
 It is of course possible to generate other thing than HTML, `setMimeType(HTTPTool.MIME_TYPE_*)` have to be called in such a case
 
@@ -383,9 +383,9 @@ NB: As it is now possible to set system parameters at user level, the `DISPOSITI
 A specific disposition (e.g.: `mydisp`) requires a traditional JSP for main page to be bundled in the webapp archive in `web/jsp/` : `<disposition name>_main.jsp` (e.g. `mydisp_main.jsp`).
 But this traditional approach is not recommended as the disposition main page can be scripted at the corresponding Disposition object level :
 
-![Disposition script edit button](dispscript1.jpg)
+![Disposition script edit button](img/releasenote/dispscript1.jpg)
 
-![Disposition script](dispscript2.jpg)
+![Disposition script](img/releasenote/dispscript2.jpg)
 
 <div id='scope'/>
 

@@ -555,3 +555,7 @@ Simplicite.UI.ExternalObjects.DemoWelcomeCard = class extends Simplicite.UI.Exte
 - [Code Examples](/lesson/docs/core/externalobject-code-examples)
 - [JSDoc](https://platform.simplicite.io/6.2/jsdoc/)
 - [Javadoc](https://platform.simplicite.io/6.2/javadoc/)
+
+**JS Dev**
+- [Javascript Development](/lesson/docs/front/javascript-dev).
+- [Ajax Library](/lesson/docs/front/lib-ajax).

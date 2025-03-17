@@ -1,8 +1,10 @@
 ---
 sidebar_position: 2
 title: 1.2. Creating a Business object
---- 
+---
+
 # Building the "Order Management" Training App : Creating a Business object
+
 > Prerequisite : [A module, domain and group must be created before starting this tutorial](/lesson/tutorial/getting-started/module)
 
 ## What is a Business object ?
@@ -15,6 +17,7 @@ To create a Business object, follow the steps below :
 
 1. Click **Creation assistant** in Business objects > Business objects    
 	![](img/object/assistant.png)
+
 	> This assistant is also available via the Modeler, for more information see the [How to create an object using the modeler](/lesson/docs/platform/businessobjects/business-objects#creation-assistant-via-the-modeler)
 2. Fill in the Object information like so :
 	- Code : **TrnSupplier**
@@ -36,7 +39,9 @@ To create a Business object, follow the steps below :
 	![](img/object/domain.png)
 9. Click **Next**
 
-:::tip[Success]
-<p>The <b>TrnSupplier</b> Object is created and opened.</p>
+<div class="success">
+	<p>The <b>TrnSupplier</b> Object is created and opened.</p>
 	![](img/object/success.png)
-:::
+</div>
+
+[Next step : Create a Field](/lesson/tutorial/getting-started/attribute)

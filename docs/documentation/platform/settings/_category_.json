@@ -1,4 +1,7 @@
 {
-    "label": "Settings",
-    "position": 20
+  "label": "Settings",
+  "position": 20,
+  "link": {
+    "type": "generated-index"
+  }
 }

@@ -61,7 +61,7 @@ standard `X-HTTP-Method-Override` HTTP header (in addition to legacy `_method` H
 
 The old jQueryMobile-based mobile web UI has been refactored as a Bootstrap&reg; responsive UI.
 
-![Mobile UI snapshot](mobile.png)
+![Mobile UI snapshot](img/releasenote-maintenance-19/mobile.png)
 
 It is still a very light subset of the desktop web UI dedicated to be used in mobility situations where only basic features are required.
 

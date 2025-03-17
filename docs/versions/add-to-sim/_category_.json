@@ -1,4 +1,7 @@
 {
-    "label": "Add to SIM",
-    "position": 99
+  "label": "Add to SIM",
+  "position": 99,
+  "link": {
+    "type": "generated-index"
+  }
 }

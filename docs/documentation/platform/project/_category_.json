@@ -1,4 +1,7 @@
 {
-    "label": "Project",
-    "position": 10
+  "label": "Project",
+  "position": 10,
+  "link": {
+    "type": "generated-index"
+  }
 }

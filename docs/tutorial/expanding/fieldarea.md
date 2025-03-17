@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: "2.3. Structuring forms"
+title: 2.3. Structuring forms
 ---
 
 # Building the "Order Management" Training App : Structuring Forms - Field Areas
@@ -22,6 +22,7 @@ To create a Field Area on the **Order** Business object, follow the steps below 
 4. Hover over the template and click on the `+`  
     ![](img/fieldarea/field-area.png)
 5. Click **Fields Area**
+
 A **Field Area** is added to the object's template
 
 
@@ -30,7 +31,7 @@ A **Field Area** is added to the object's template
 To add a label and icon to the **Field Area**, follow the steps below :
 
 1. Hover over the previously created Field Area, click the *Edit* icon    
-    ![](img/fieldarea/edit-field-area.png" alt="edit-field-area" width="50%"/>
+    ![](img/fieldarea/edit-field-area.png)
 2. Fill in the Field Area information like so :
     - Label : **Product**
     - Icon code : **products** (*you can also use the icon picker to select an icon*)  

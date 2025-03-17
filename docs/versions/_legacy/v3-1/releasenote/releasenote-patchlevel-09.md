@@ -115,7 +115,7 @@ _Note: this feature has been back ported to the 3.0 maintenance branch._
 
 The old jQueryMobile-based mobile web UI has been refactored as a Bootstrap&reg; responsive UI.
 
-![Mobile UI snapshot](mobile.png)
+![Mobile UI snapshot](img/releasenote-patchlevel-09/mobile.png)
 
 It is still a very light subset of the desktop web UI dedicated to be used in mobility situations where only basic features are required.
 

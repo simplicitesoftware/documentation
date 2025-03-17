@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: "2.4. Creating actions"
+title: 2.4. Creating actions
 ---
 
 # Building the "Order Management" Training App : Adding actions

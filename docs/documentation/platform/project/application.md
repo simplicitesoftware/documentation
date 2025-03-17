@@ -1,3 +1,8 @@
+---
+sidebar_position: 10
+title: Application
+---
+
 # Application
 
 ## Introduction

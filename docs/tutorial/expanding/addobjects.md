@@ -1,8 +1,8 @@
 ---
 sidebar_position: 1
-title: "2.1. Adding objects"
-description: "First step to building the app"
+title: 2.1. Adding objects
 ---
+
 
 # Building the "Order Management" Training App : Adding objects
 

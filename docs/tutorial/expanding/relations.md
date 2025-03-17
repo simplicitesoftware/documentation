@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: "2.2. Creating links"
+title: 2.2. Creating links
 ---
 
 # Building the "Order Management" Training App : Creating links
@@ -62,14 +62,14 @@ This will add the **TrnClient** joined fields to the template, allowing the Orde
 Clear the platform's cache and log in using *usertest*
     > For a detailed step-by-step see : [Testing the User](/lesson/tutorial/getting-started/user#activating-and-testing-the-user)
 
-::::tip[Success]
+<div class="success">
     <b>Expected result :</b>
     <ul>
         <li>The Suppliers, Clients, Products, Orders are visible</li>
         <li>For each object, the Create button is displayed</li>
     </ul>
     ![](img/relations/success-crud.png)
-::::
+</div>
 
 ### Create a Supplier
 

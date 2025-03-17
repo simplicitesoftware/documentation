@@ -26,7 +26,7 @@ Changes
 - jCaptcha has been totally removed from the platform
 - Sample in French:
 
-![visualCaptcha](captcha.png)
+![visualCaptcha](img/releasenote-patchlevel-03/captcha.png)
 
 Fixes
 -----

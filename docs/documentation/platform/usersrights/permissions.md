@@ -1,3 +1,8 @@
+---
+sidebar_position: 80
+title: Permissions
+---
+
 # Permissions
 
 ## Introduction
@@ -66,7 +71,7 @@ Adding a Permission can be done via the `Permissions` panel in any of the object
 4. Select the target object  
 5. Select the property to override  
 6. Set the overridden value  
-![alt text](img/permissions/permissions.png)
+![](img/permissions/permissions.png)
 
 <div class="warning">
 It is required to clear the platform's cache to apply changes made to Permissions
