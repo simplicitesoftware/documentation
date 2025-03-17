@@ -73,12 +73,14 @@ def reorganize_files(source_root, target_root):
                 continue
             
             if ext.lower() in image_extensions:
+                # Sanitize the filename before copying
+                sanitized_filename = sanitize_filename(file)
                 # Get the lesson name from the current directory
                 lesson_name = re.sub(r"LSN_\d+_", "", os.path.basename(root))
                 # Create img directory at the same level as the lesson file
                 img_target_dir = os.path.join(target_dir, "img", lesson_name)
                 os.makedirs(img_target_dir, exist_ok=True)
-                shutil.copy2(src_path, os.path.join(img_target_dir, file))
+                shutil.copy2(src_path, os.path.join(img_target_dir, sanitized_filename))
             elif ext == ".md":
                 lesson_name = re.sub(r"LSN_\d+_", "", os.path.splitext(file)[0])
                 dest_md = os.path.join(target_dir, f"{lesson_name}.md")
@@ -124,6 +126,15 @@ def transform_category_json(root, target_path):
         json.dump(category_data, f, ensure_ascii=False, indent=2)
     print(f"📄 Transformed category.json: {target_path}")
 
+def sanitize_filename(filename):
+    """Sanitize filename to remove problematic characters."""
+    # Remove non-ASCII characters and replace spaces with underscores
+    sanitized = re.sub(r'[^\x00-\x7F]+', '', filename)
+    sanitized = re.sub(r'\s+', '_', sanitized)
+    # Remove any other problematic characters
+    sanitized = re.sub(r'[^a-zA-Z0-9._-]', '', sanitized)
+    return sanitized
+
 def update_md_image_references(src_md, dest_md, lesson_name, position=None, title=None):
     """Replaces <img> tags with Markdown image syntax in .md files and adds YAML header."""
     with open(src_md, "r", encoding="utf-8") as f:
@@ -145,7 +156,7 @@ def update_md_image_references(src_md, dest_md, lesson_name, position=None, titl
         src = match.group(1)
         if src.startswith('http'):
             return f'![]({src})'
-        return f"![](img/{lesson_name}/{os.path.basename(src)})"
+        return f"![](img/{lesson_name}/{sanitize_filename(os.path.basename(src))})"
     updated_content = re.sub(img_pattern, img_replacement, content)
     
     # Update markdown-style image references, but skip https links
@@ -154,7 +165,7 @@ def update_md_image_references(src_md, dest_md, lesson_name, position=None, titl
         img_path = match.group(0).split('(')[1][:-1]
         if img_path.startswith('http'):
             return f'![{alt_text}]({img_path})'
-        return f"![{alt_text}](img/{lesson_name}/{os.path.basename(img_path)})"
+        return f"![{alt_text}](img/{lesson_name}/{sanitize_filename(os.path.basename(img_path))})"
     
     updated_content = re.sub(r'!\[(.*?)\]\((?!/img/)[^)]+\)', md_img_replacement, updated_content)
     

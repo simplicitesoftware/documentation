@@ -248,7 +248,7 @@ products.forEach(prd => {
   const item = document.createElement('li');
     const imageSrc = `data:${prd.demoPrdPicture.mime};base64,${prd.demoPrdPicture.content}`;
     item.innerHTML = `
-        ![](img/javascript-dev/${imageSrc})
+        ![](img/javascript-dev/imageSrc)
         <h3>${prd.demoPrdName}</h3>
         <p>${prd.demoPrdDescription}</p>
     `;
@@ -331,7 +331,7 @@ fetch('/products')
             const item = document.createElement('li');
             const imageSrc = `data:${prd.demoPrdPicture.mime};base64,${prd.demoPrdPicture.content}`;
             item.innerHTML = `
-                ![](img/javascript-dev/${imageSrc})
+                ![](img/javascript-dev/imageSrc)
                 <h3>${prd.demoPrdName} by ${prd.demoPrdSupId__demoSupName}</h3>
                 <p>${prd.demoPrdDescription}</p>
             `;

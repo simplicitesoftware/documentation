@@ -6,7 +6,7 @@ title: Security guidelines
 Security guidelines
 ===================
 
-This document give some guidelines on how to improve security of your applications based on the Simplicit&eacute;&reg; platform.
+This document give some guidelines on how to improve security of your applications based on the Simplicité&reg; platform.
 
 > **Note**: Some recommandations are not necessarily applicable/relevant in every particular cases, you must adapt them to your context.
 
@@ -21,10 +21,10 @@ To ensure security it is thus **mandatory** to keep your deployed instances up-t
 
 ### Introduction
 
-The Simplicit&eacute;&reg; platform is designed to be secure, nothing is available without being explicitly granted.
+The Simplicité&reg; platform is designed to be secure, nothing is available without being explicitly granted.
 However a particular attention must be put on the following aspects.
 
-There are 4 endpoints available on Simplicit&eacute;&reg; platform:
+There are 4 endpoints available on Simplicité&reg; platform:
 
 - the UI endpoint
 - the API endpoint
@@ -275,18 +275,18 @@ You can also simply delete these external objects, but don't do it if you want t
 
 ### Introduction
 
-Simplicit&eacute;&reg; platform run on a server infrastructure. You **must** secure it properly by:
+Simplicité&reg; platform run on a server infrastructure. You **must** secure it properly by:
 
-- configuring firewalls accordingly to your configuration (the rules may be different whether you deploy Simplicit&eacute;&reg; behind a reverse proxy server or directly)
+- configuring firewalls accordingly to your configuration (the rules may be different whether you deploy Simplicité&reg; behind a reverse proxy server or directly)
 - restricting access to the command line (VPN, SSH keys, ...) and system accouts
 - protecting database credentials
 Etc.
 
-Simplicit&eacute;&reg; has no particular requirement at this level, all usual good practices in securing server infrastructure applies.
+Simplicité&reg; has no particular requirement at this level, all usual good practices in securing server infrastructure applies.
 
 ### Use SSL
 
-Your application endpoints **should** always be exposed as HTTPS (SSL). This can be achieved directy in the Java application server that runs Simplicit&eacute;&reg;
+Your application endpoints **should** always be exposed as HTTPS (SSL). This can be achieved directy in the Java application server that runs Simplicité&reg;
 or at the reverse proxy level (if you have configured one).
 
 ### SSH Access
@@ -297,9 +297,9 @@ The server infrastucture command line access **should** always use SSH (ideally 
 
 - Your server infrastructure **must** be kept up-to-date by applying **all** system updates on the fly. Many security vulnerabilities are at OS-level.
 - The JVM, database server, JDBC driver and Java application server **must** be kept up-to-date.
-- The Simplicit&eacute;&reg; updates **must** be applied as soon as they are made available 
+- The Simplicité&reg; updates **must** be applied as soon as they are made available 
 
-> **Note**: the warranty is void on a non up-to-date platform, keeping your Simplicit&eacute;&reg; platform up-to-date is not just **recommended** it is **mandatory**.
+> **Note**: the warranty is void on a non up-to-date platform, keeping your Simplicité&reg; platform up-to-date is not just **recommended** it is **mandatory**.
 
 <h2 id="docker">Securing Docker-based deployments</h2>
 
@@ -314,9 +314,9 @@ You **must** update the deployed containers using the latest Docker images on a 
 
 And of course, you **must** also apply the system upgrades on your host machine on similar a regular basis.
 
-<h2 id="sim">Securing the Simplicit&eacute;&reg; Instance Manager (SIM)</h2>
+<h2 id="sim">Securing the Simplicité&reg; Instance Manager (SIM)</h2>
 
-These are specific guidelines for the Simplicit&eacute; Instances Manager (SIM). See [this document](https:/lesson/docs/misc/manager) for details on the SIM.
+These are specific guidelines for the Simplicité Instances Manager (SIM). See [this document](https:/lesson/docs/misc/manager) for details on the SIM.
 
 #### SIM credentials
 

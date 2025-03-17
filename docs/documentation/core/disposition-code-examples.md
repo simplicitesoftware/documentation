@@ -30,7 +30,7 @@ import com.simplicite.webapp.web.BootstrapWebPage;
 @Override
 public String display(Parameters params) {
 	Grant g = getGrant();
-	BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), g.getParameter("WINDOW_TITLE", "Simplicit&eacute;&reg;"));
+	BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), g.getParameter("WINDOW_TITLE", "Simplicité&reg;"));
 	wp.appendAjax();
 	wp.appendJSInclude(HTMLPage.getResourceJSURL(g, "SCRIPT")); // Include a client side JavaScript
 	wp.appendCSSInclude(HTMLPage.getResourceCSSURL(g, "STYLES")); // Include a custom stylesheet
@@ -48,7 +48,7 @@ public String display(Parameters params) {
 	
 	wp.appendHTML("<div id=\"main\"></div>");
 	
-	wp.appendHTML("<div id=\"footer\">&copy; Simplicit&eacute; Software</div>");
+	wp.appendHTML("<div id=\"footer\">&copy; Simplicité Software</div>");
 	
 	return wp.toString();
 }
@@ -62,7 +62,7 @@ public String display(Parameters params) {
 MyDisp.display = function(params) {
 	var g = this.getGrant();
 	
-	var wp = new BootstrapWebPage(params.getRoot(), g.getParameter("WINDOW_TITLE", "Simplicit&eacute;&reg;"), true);
+	var wp = new BootstrapWebPage(params.getRoot(), g.getParameter("WINDOW_TITLE", "Simplicité&reg;"), true);
 	wp.appendAjax();
 	wp.appendJSInclude(HTMLPage.getResourceJSURL(g, "SCRIPT")); // Include a client side JavaScript
 	wp.appendCSSInclude(HTMLPage.getResourceCSSURL(g, "STYLES")); // Include a custom stylesheet
@@ -80,7 +80,7 @@ MyDisp.display = function(params) {
 	
 	wp.appendHTML("<div id=\"main\"></div>");
 	
-	wp.appendHTML("<div id=\"footer\">&copy; Simplicit&eacute; Software</div>");
+	wp.appendHTML("<div id=\"footer\">&copy; Simplicité Software</div>");
 	
 	return wp.toString();
 };
@@ -100,7 +100,7 @@ import com.simplicite.webapp.web.BootstrapWebPage;
 public String display(Parameters params) {
 	Grant g = getGrant();
 
-	BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), g.getParameter("WINDOW_TITLE", "Simplicit&eacute;&reg;"));
+	BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), g.getParameter("WINDOW_TITLE", "Simplicité&reg;"));
 	
 	wp.appendJSInclude(HTMLPage.getResourceJSURL(g, "SCRIPT"));
 	wp.appendCSSInclude(HTMLPage.getResourceCSSURL(g, "STYLES"));
@@ -120,7 +120,7 @@ public String display(Parameters params) {
 MyDisp.displayLogon = function(params) {
 	var g = this.getGrant();
 	
-	var wp = new BootstrapWebPage(params.getRoot(), g.getParameter("WINDOW_TITLE", "Simplicit&eacute;&reg;"), true);
+	var wp = new BootstrapWebPage(params.getRoot(), g.getParameter("WINDOW_TITLE", "Simplicité&reg;"), true);
 	
 	wp.appendJSInclude(HTMLPage.getResourceJSURL(g, "SCRIPT"));
 	wp.appendCSSInclude(HTMLPage.getResourceCSSURL(g, "STYLES"));

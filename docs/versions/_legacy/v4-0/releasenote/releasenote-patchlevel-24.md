@@ -57,7 +57,7 @@ Both versions V3 and V4 are included in the platform:
 
 - Removed old legacy JSPs pages. Make sure to refactor **all** hard-coded URL involving these old JSP pages in your code and/or your configuration.
   (note that you should avoid any hard-coded URLs anyway).
-- Refactored throws clauses. For code quality reasons the too generic `throws Exception` clauses of some Simplicit&eacute; public APIs have been
+- Refactored throws clauses. For code quality reasons the too generic `throws Exception` clauses of some Simplicité public APIs have been
   replaced by throws clauses using sub classes of `Exception` (e.g.`PlatformException` or `IOException`).
   In some particular cases Java compiler may complain about unconsistent throws clauses on your overriden methods.
 
@@ -66,7 +66,7 @@ Both versions V3 and V4 are included in the platform:
 - Modular packaging, the templates are now available as "light" (without Docx4j, Tika, Google APIs clients, JCoulds, ...)
 - Upgraded thrid party libs (including on major components: Rhino, HSQLDB, Apache POI, Docx4J, ...)
 - Added authentication provider visibility on provider choice page (using `"visible": <true|false>` in `AUTH_PROVIDERS` entries)
-- Improved Maven repository to add Simplicit&eacute; Java doc dependency to commited Java modules
+- Improved Maven repository to add Simplicité Java doc dependency to commited Java modules
 - Linked lists inheritance
 - New sessions history in operation menu
 	- to persist per user the dates/duration of sessions and the user's rights

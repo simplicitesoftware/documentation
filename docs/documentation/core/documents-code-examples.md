@@ -229,7 +229,7 @@ for (var i = 0; i < rows.size(); i++) {
 </details>
 
 
-In the above example `doc` is a Simplicit&eacute;&reg; document.
+In the above example `doc` is a Simplicité&reg; document.
 
 For instance you can get it:
 

@@ -3,10 +3,10 @@ sidebar_position: 40
 title: Heroku
 ---
 
-Simplicit&eacute; on Heroku&reg;
+Simplicité on Heroku&reg;
 ================================
 
-Simplicit&eacute;&reg; instances can easily be deployed on the Heroku&reg; PaaS.
+Simplicité&reg; instances can easily be deployed on the Heroku&reg; PaaS.
 
 Please refer to [this GitHub repository](https://github.com/simplicitesoftware/heroku-template) for details.
 

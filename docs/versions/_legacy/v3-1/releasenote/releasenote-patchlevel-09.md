@@ -262,7 +262,7 @@ _Note: this feature has been back ported to the 3.0 maintenance branch._
 
 It is now possible to easily configure business objects pointing on remote datasources:
 
-- Simplicit&eacute;&reg; (refactored to use the new API endpoint)
+- Simplicité&reg; (refactored to use the new API endpoint)
 - OpenDataSoft&reg; open data datasets (refactored to align the configuration principles of other remote datasources)
 - SalesForce&reg; business objects.
 

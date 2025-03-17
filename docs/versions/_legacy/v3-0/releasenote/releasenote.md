@@ -391,7 +391,7 @@ But this traditional approach is not recommended as the disposition main page ca
 
 ### Scope / Multi-apps ###
 
-It is now very simple to create many end-user "applications" in only one instance of Simplicit&eacute;.
+It is now very simple to create many end-user "applications" in only one instance of Simplicité.
 
 Groups can now be assigned to Views (home pages)
 
@@ -403,7 +403,7 @@ Groups can now be assigned to Views (home pages)
 	- If the user have other groups, they are temporarily deactivated.
 	- A new `GrantHooks.changeScope(view)` has been added when the user change its current home page.
 
-View may also define a `Scope` and a `Order`. So when the user have several views with the same Scope, Simplicit&eacute; will choose the first granted one.
+View may also define a `Scope` and a `Order`. So when the user have several views with the same Scope, Simplicité will choose the first granted one.
 
 This behavior allow direct access from portal:
 
@@ -488,8 +488,8 @@ A new field type has been added to managed a record reference.
 A pool worker has been implemented to limit the number of threads in memory.
 By default the pool size is 10, see the system parameter `ASYNC_POOL_SIZE`.
 
-- `Simplicit&eacute;CronThread-<appname>` : cron job singleton per application
-- `Simplicit&eacute;PoolWorker-<index>-<appname>` : a job queue where index < `ASYNC_POOL_SIZE`
+- `SimplicitéCronThread-<appname>` : cron job singleton per application
+- `SimplicitéPoolWorker-<index>-<appname>` : a job queue where index < `ASYNC_POOL_SIZE`
 
 ![](img/releasenote/threads.jpg)
 
@@ -519,7 +519,7 @@ End users can send feed-back to a back-end, to activate this feature:
 - the ALM modules must be installed
 - the system parameter `USE_FEEDBACK` must be set to yes
 - the Java plugin must be installed on the client browser to make a screen-shot
-- and the end-user must authorized the Simplicit&eacute;-Feedback applet to run.
+- and the end-user must authorized the Simplicité-Feedback applet to run.
 
 A feedback contains:
 
@@ -833,14 +833,14 @@ Some new third party JavaScript libs have been included by default:
 
 ### Included Ajax JavaScript lib ###
 
-Simplicit&eacute;&reg; Ajax libs are included by default in `<application>/scripts/ajax`.
+Simplicité&reg; Ajax libs are included by default in `<application>/scripts/ajax`.
 
 These libs are fully Ajax libs that are supposed to be used for Ajax based UI components 
 uch as specific pages (e.g. as external objects) or fully specific front UIs. This libs corresponds
-to `Simplicit&eacute;Ajax` name space.
+to `SimplicitéAjax` name space.
 
 Internal json.js synchronous Ajax lib is still available for usage within generic web UI pages
-(it is included by default in most standard pages). It correspond to the `Simplicit&eacute;` name space.
+(it is included by default in most standard pages). It correspond to the `Simplicité` name space.
 
 <div id='gmap'/>
 
@@ -896,7 +896,7 @@ It is now possible to change with code those parameters to bring tab area to top
 
 ### Table synchronisation with object definition ###
 
-When the designer save one internal object, Simplicit&eacute; checks all the fields and alters the related columns.
+When the designer save one internal object, Simplicité checks all the fields and alters the related columns.
 
 <div id='constraint'/>
 
@@ -1017,7 +1017,7 @@ View mode can be changed by script: `ObjectDB.setViewMode(ObjectDB.VIEW_MODE_*)`
 ### CSV import ###
 
 It is now possible to use translated columns and enum values directly.
-- Simplicit&eacute; will now search the fields input names and labels in the user language.
+- Simplicité will now search the fields input names and labels in the user language.
 - Enum translated values must be unique
 
 <div id='default'/>

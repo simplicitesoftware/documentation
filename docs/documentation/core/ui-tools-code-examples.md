@@ -6,7 +6,7 @@ title: UI tools code examples
 JavaScript UI tools code examples
 =================================
 
-The Simplicit&eacute;&reg; UI tools methods are in the `Simplicite.UI` namespace and rely on jQuery&reg;.
+The Simplicité&reg; UI tools methods are in the `Simplicite.UI` namespace and rely on jQuery&reg;.
 
 > **Note**: `jQuery` is aliased as `$` as of **version 4.0** (in previous versions the alias was `$j`)
 

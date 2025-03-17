@@ -153,7 +153,7 @@ Version 4.0 patchlevel 23 release note
 - Added authentication provider visibility on provider choice page (using `"visible": <true|false>` in `AUTH_PROVIDERS` entries)
 - Passed actual grant to `validatePassword`grant hook (when possible)
 - `initRefSelect` is now called on the `pillbox` rendering
-- Added Simplicit&eacute; Java doc dependency to module's Maven repository
+- Added Simplicité Java doc dependency to module's Maven repository
 - Fixed linked list inheritance
 - Fixed error 500 when rejecting externally authenticated user (OAuth2/SAML/...) if sync is not set
 - Fixed some XSS vulnerabilities on responsive UI

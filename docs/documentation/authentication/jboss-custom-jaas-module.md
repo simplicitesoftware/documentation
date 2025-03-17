@@ -6,11 +6,11 @@ title: JBoss custom JAAS module
 JBoss specific JAAS module
 ==========================
 
-A Simplicit&eacute;&reg; application is a JEE application which relies on standard application server authentication methods (JAAS).
+A Simplicité&reg; application is a JEE application which relies on standard application server authentication methods (JAAS).
 
 The following example applies to version 4.0 and 4.2 of JBoss application server.
 
-By default Simplicit&eacute;&reg; authenticates its users against its own database using the login and password
+By default Simplicité&reg; authenticates its users against its own database using the login and password
 stored in the m_user table (and accessible at the logical level using the `User` and `UserPwd` business objects). 
 
 For the JBoss application server the default JAAS module descriptor is packaged as a Service ARchive (SAR)

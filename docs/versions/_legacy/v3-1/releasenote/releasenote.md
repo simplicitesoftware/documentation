@@ -113,7 +113,7 @@ myField_completed = function(value) {
 
 ```javascript
 onload_functions.push(function() { 
-	Simplicit&eacute;.FieldCompletion.fcomp.minLength = 1;
+	Simplicité.FieldCompletion.fcomp.minLength = 1;
 });
 ```
 

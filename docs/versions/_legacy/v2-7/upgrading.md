@@ -134,5 +134,5 @@ stuff in your project you should review and adapt its default behavior to meet y
 As for any upgrade, the upgrade procedure itself must be run without any active user session.
 
 In the particular case of the JBoss application server it is recommended to stop the server, cleanup its work and tmp folders
-(this can be achieved using the clearservercache ANT task) and restart it (a cleanup of the Simplicit&eacute;&reg; cache folder may also a good idea,
+(this can be achieved using the clearservercache ANT task) and restart it (a cleanup of the Simplicité&reg; cache folder may also a good idea,
 this can be achieved using the clearcachedir ANT task).

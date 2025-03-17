@@ -363,7 +363,7 @@ productBO.search(function() {
 
 		let imageSrc = `data:${prd.demoPrdPicture.mime};base64,${prd.demoPrdPicture.content}`;
 
-		let productImageHtml = `![](img/web-page/${imageSrc})`;
+		let productImageHtml = `![](img/web-page/imageSrc)`;
 	}
 }, {});
 ```
@@ -653,7 +653,7 @@ const MyExternalObject = (function($) {
 	                        	<span class="product-card-upper-reference">${prd.demoPrdType} - ${prd.demoPrdReference}</span>
 	                            <span class="product-card-upper-supplier">By ${prd.demoPrdSupId__demoSupName}</span>
 	                        </div>
-	                        ![](img/web-page/${imageSrc})
+	                        ![](img/web-page/imageSrc)
 	                    </div>
 	                    <div class="product-card-lower">
 	                        <div class="product-card-lower-infos">
@@ -702,7 +702,7 @@ const MyExternalObject = (function($) {
 	                let supDiv = `
 	                <div class="myexternalobject-supplier-row">
 	                	<div class="supplier-row-left">
-	                		![](img/web-page/${logoSrc})
+	                		![](img/web-page/logoSrc)
 		                    <div class="supplier-row-infos">
 		                    	<h2>${sup.demoSupName}</h2>
 		                    	<span class="supplier-row-contact">${sup.demoSupPhone}</span>

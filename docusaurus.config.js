@@ -14,11 +14,10 @@ const config = {
   favicon: 'img/favicon.svg',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://simplicitesoftware.github.io/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/docusaurus/',
-
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'simplicitesoftware', // Usually your GitHub org/user name.
@@ -57,8 +56,8 @@ const config = {
       navbar: {
         logo: {
           alt: 'Simplicité logo',
-          src: 'img/Simplicité_Logo_Black.svg',
-          srcDark: 'img/Simplicité_Logo_White.svg',
+          src: 'img/Simplicite_Logo_Black.svg',
+          srcDark: 'img/Simplicite_Logo_White.svg',
         },
         items: [
           {

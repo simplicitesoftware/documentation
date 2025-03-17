@@ -346,7 +346,7 @@ return { render: render };
 
 ### Ajax APIs
 
-Most external pages are using the Ajax APIs to interact with Simplicit&eacute;&reg; services instead of doing full page request/responses to the server.
+Most external pages are using the Ajax APIs to interact with Simplicité&reg; services instead of doing full page request/responses to the server.
 
 As indicated above, the Ajax APIs JavaScripts are included by default in the **standard** decorated pages. In other cases they must be explicitly included:
 

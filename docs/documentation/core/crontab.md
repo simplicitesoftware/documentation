@@ -9,7 +9,7 @@ Crontab
 Introduction
 ------------
 
-The Simplicit&eacute;&reg; crontab (internal task scheduler) allow you to schedule executions of **objects' actions** of method type.
+The Simplicité&reg; crontab (internal task scheduler) allow you to schedule executions of **objects' actions** of method type.
 
 > **Note**: You can choose which user will be processing the action, so you need to make sure this user is fully granted the involved business objects and actions
 

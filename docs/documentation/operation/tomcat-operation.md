@@ -291,7 +291,7 @@ The Tomcat server **must** be updated regularly, depending on the way it has bee
 
 <h2 id="platformupdates">Platform updates</h2>
 
-> **Note**: this chapter is not applicable when using our Docker images. When using such images the Simplicit&eacute;&reg; platform is always up-to-date in the latest images.
+> **Note**: this chapter is not applicable when using our Docker images. When using such images the Simplicité&reg; platform is always up-to-date in the latest images.
 
 The Simplicité&reg; platform **must** be updated regularly, at least on its maintenance branch (see [versions](/lesson/docs/versions)),
 depending on the way it has been installed the processus may vary.
