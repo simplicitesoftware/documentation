@@ -1,6 +1,7 @@
 ---
 sidebar_position: 19
 title: Treeviews
+sidebar_class_name: hidden 
 ---
 
 Treeviews

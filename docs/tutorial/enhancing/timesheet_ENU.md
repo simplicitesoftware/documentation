@@ -1,6 +1,7 @@
 ---
 sidebar_position: 21
 title: Timesheet
+sidebar_class_name: hidden 
 ---
 
 Timesheet

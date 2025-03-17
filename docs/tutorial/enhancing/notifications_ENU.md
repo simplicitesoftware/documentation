@@ -1,6 +1,7 @@
 ---
 sidebar_position: 23
 title: Notifications
+sidebar_class_name: hidden 
 ---
 
 Notifications

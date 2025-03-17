@@ -1,6 +1,7 @@
 ---
 sidebar_position: 25
 title: Business process
+sidebar_class_name: hidden 
 ---
 
 Business processes - workflow

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 22
 title: Model template
+sidebar_class_name: hidden 
 ---
 
 Template Model  

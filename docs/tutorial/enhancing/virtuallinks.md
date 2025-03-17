@@ -1,6 +1,7 @@
 ---
 sidebar_position: 60
 title: 3.1. Creating virtual links
+sidebar_class_name: hidden 
 ---
 
 # Building the "Order Management" Training App : Creating virtual links

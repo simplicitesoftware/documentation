@@ -1,6 +1,7 @@
 ---
 sidebar_position: 14
 title: Inheritance
+sidebar_class_name: hidden 
 ---
 
 Inheritance
