@@ -19,3 +19,7 @@
   --ifm-color-primary-lightest: #ffd89d;
   --ifm-background-color: #171717;
 }
+
+.hidden {
+  display: none !important
+}

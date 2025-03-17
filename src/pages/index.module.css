@@ -21,3 +21,28 @@
   align-items: center;
   justify-content: center;
 }
+
+.homepage {
+  line-height: 1.6;
+  margin: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.gridColImg {
+  text-align: center;
+}
+
+.gridColImg svg {
+  max-width: 20rem;
+  max-height: 20rem;
+}
+
+.homepage p,
+.homepage ul {
+  margin-bottom: 0.5rem;
+}

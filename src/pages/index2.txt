@@ -1,0 +1,88 @@
+import React from 'react';
+import styled from 'styled-components';
+
+const HomePageContainer = styled.div`
+  line-height: 1.6;
+  margin: 2rem;
+`;
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+`;
+
+const GridCol = styled.div``;
+
+const GridColImg = styled.div`
+  text-align: center;
+  
+  svg {
+    max-width: 20rem;
+    max-height: 20rem;
+  }
+`;
+
+const Content = styled.div`
+  p, ul {
+    margin-bottom: 0.5rem;
+  }
+`;
+
+export default function Homepage() {
+  return (
+    <HomePageContainer id="homepage">
+      <Grid>
+        <GridCol>
+          <h2 id="what-youll-find-here">What you'll find here</h2>
+          <Content>
+            <p>Simplicité is a low-code platform and this is its documentation. This site targets developers using the platform and aspires to be your single entrypoint to the Simplicité experience. If you just want to take a glimpse at the technology, please refer to the video demo of the platform <a href="https://simplicite.fr/demo-video-plateforme/">available on our commercial website</a>.</p>
+            <p>There are two main parts:</p>
+            <ul>
+              <li>the tutorial,</li>
+              <li>the technical documentation.</li>
+            </ul>
+            <p>Some other references include the following:</p>
+            <ul>
+              <li><a href="https://community.simplicite.io">The forum</a>, where users get advice from the team and other users</li>
+              <li><a href="https://github.com/simplicitesoftware/">Github</a>, where our team publishes working examples (those are generally published in the appstore)</li>
+            </ul>
+          </Content>
+        </GridCol>
+        
+        <GridColImg>
+          {/* Import and use your SVGs as React components or move them to separate components */}
+          {/* First SVG */}
+          <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="711.1879" height="669.68268" viewBox="0 0 711.1879 669.68268">
+            {/* ... SVG content ... */}
+          </svg>
+        </GridColImg>
+
+        <GridCol>
+          <h2 id="how-to-use-the-tutorial">How to use the tutorial</h2>
+          <Content>
+            <p>For the tutorial part, you'll need to <a href="https://simplicitesoftware.com/contact/">contact us</a> to get a one-month trial instance so you can do the exercises.</p>
+            <p>Tutorials should be done linearly and read like such:</p>
+            <ol>
+              <li><strong>read the lesson (first part of the text):</strong> take your time and make sure you get a solid understanding of the concepts and in-depth explanations before doing the exercise.</li>
+              <li><strong>watch the images:</strong> illustrate the text and might contain important pieces of information</li>
+              <li><strong>read the exercise (last part of the text):</strong> just read it to understand what you're about to do</li>
+              <li><strong>watch the solution's video:</strong>
+                <ul>
+                  <li>the videos are intentionally mute</li>
+                  <li>Safari doesn't support <code>.webm</code> video format</li>
+                  <li>Chromium has a bug that doesn't allow navigating through the video</li>
+                  <li>use Firefox for best experience</li>
+                </ul>
+              </li>
+              <li><strong>do the exercise yourself</strong></li>
+            </ol>
+            <p><em>Tip: in Simplicité, there are many, many ways to navigate to a given screen. The tutorial's objective is to give you a "map" to never get lost and easily find where to configure things. This map is called <strong>meta-model</strong> in Simplicité's jargon, pay special attention to the graphs representing the meta-model, they should be the spinal cord of your Simplicité's knowledge.</em></p>
+          </Content>
+        </GridCol>
+
+        {/* Continue with remaining sections... */}
+      </Grid>
+    </HomePageContainer>
+  );
+}
