@@ -1,6 +1,7 @@
 ---
 sidebar_position: 70
 title: Shared code
+sidebar_class_name: hidden 
 ---
 
 Shared code
