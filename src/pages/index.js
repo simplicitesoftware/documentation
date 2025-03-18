@@ -1,17 +1,17 @@
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import Link from '@docusaurus/Link';
+import Link from "@docusaurus/Link";
 import Heading from "@theme/Heading";
 import styles from "./index.module.css";
 
 // Import SVGs from your svg directory
-import TutorialIcon from '@site/static/img/tutorial.svg';
-import DocsIcon from '@site/static/img/docs.svg';
-import ReleasesIcon from '@site/static/img/releases.svg';
-import ForumIcon from '@site/static/img/forum.svg';
-import GithubIcon from '@site/static/img/github.svg';
-import TrialIcon from '@site/static/img/trial.svg';
+import TutorialIcon from "@site/static/img/tutorial.svg";
+import DocsIcon from "@site/static/img/docs.svg";
+import ReleasesIcon from "@site/static/img/releases.svg";
+import ForumIcon from "@site/static/img/forum.svg";
+import GithubIcon from "@site/static/img/github.svg";
+import TrialIcon from "@site/static/img/trial.svg";
 
 // Replace the Icons object with your imported SVGs
 const Icons = {
@@ -20,7 +20,12 @@ const Icons = {
   releases: <ReleasesIcon className={styles.icon} />,
   forum: <ForumIcon className={styles.icon} />,
   github: <GithubIcon className={styles.icon} />,
-  trial: <TrialIcon className={styles.icon} />
+  trial: <TrialIcon className={styles.icon} />,
+};
+
+const meta = {
+  name: "algolia-site-verification",
+  content: "B839DFBA0B802335",
 };
 
 function HomepageHeader() {
@@ -70,15 +75,16 @@ export default function Home() {
       title={`Welcome to ${siteConfig.title}`}
       description="Documentation for Simplicité Platform"
     >
-      
+      <DocumentMeta {...meta} />
       <main className={styles.mainContent}>
         <div className="container">
           {/* Introduction */}
           <section className={styles.intro}>
             <h2>Welcome to Simplicité Documentation</h2>
             <p>
-              Simplicité is a low-code platform that empowers developers to build enterprise applications.
-              Get started with our comprehensive documentation, tutorials, and resources.
+              Simplicité is a low-code platform that empowers developers to
+              build enterprise applications. Get started with our comprehensive
+              documentation, tutorials, and resources.
             </p>
           </section>
 
@@ -133,11 +139,16 @@ export default function Home() {
           <section className={styles.training}>
             <h2>Professional Training</h2>
             <p>
-              Enhance your Simplicité expertise with our professional training programs 
-              and certification paths. From beginner to advanced levels, we offer 
-              guided training sessions and certification programs.
+              Enhance your Simplicité expertise with our professional training
+              programs and certification paths. From beginner to advanced
+              levels, we offer guided training sessions and certification
+              programs.
             </p>
-            <Link to="https://www.simplicite.fr/contact" target="_blank" className={styles.trainingLink}>
+            <Link
+              to="https://www.simplicite.fr/contact"
+              target="_blank"
+              className={styles.trainingLink}
+            >
               Learn more about training →
             </Link>
           </section>
