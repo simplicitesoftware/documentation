@@ -92,7 +92,7 @@ hop'
 
 By default PostgreSQL does not provide case-insensitive search match when using standard `LIKE` comparator.
 
-Active maintenance releases of Simplicité now use by default the non standard `ILIKE` comporator.
+Active maintenance releases of Simplicit&eacute; now use by default the non standard `ILIKE` comporator.
 
 See [this document](https://www.postgresql.org/docs/9.6/static/functions-matching.html) for details.
 
@@ -133,7 +133,7 @@ Oracle
 
 ### Limitations
 
-- Varchars are limited to 4000, over 4000 Simplicité generates CLOBs columns (that are, thus, not indexable)
+- Varchars are limited to 4000, over 4000 Simplicit&eacute; generates CLOBs columns (that are, thus, not indexable)
 - Tables, aliases and columns names are limited to 30 caracters
 
 Oracle XE (express) 18c server installation

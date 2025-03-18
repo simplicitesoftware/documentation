@@ -1,7 +1,7 @@
 ---
+sidebar_class_name: hidden
 sidebar_position: 2
 title: Module import
-sidebar_class_name: hidden 
 ---
 
 Module export and import

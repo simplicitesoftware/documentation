@@ -74,9 +74,21 @@ const config = {
             label: "Tutorial",
           },
           {
-            to: "/docs/category/simplicité-configuration-objects",
-            label: "Documentation",
-            position: "left",
+            type: 'dropdown',
+            label: 'Documentation',
+            position: 'left',
+            items: [
+              {
+                sidebarId:"platformSidebar",
+                type: "docSidebar",
+                label: "Platform documentation",
+              },
+              {
+                sidebarId:"documentationSidebar",
+                type: "docSidebar",
+                label: "Technical documentation",
+              },
+            ],
           },
           {
             to: "/docs/category/release-notes",
@@ -88,6 +100,7 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+        additionalLanguages: ['java'],
       },
       algolia: {
         // The application ID provided by Algolia

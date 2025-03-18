@@ -68,7 +68,7 @@ public byte[] printExcel(PrintTemplate pt) {
 2. Open a Supplier
 3. Create Products for the Supplier if it has none
 
-<div class="success">
-	<p>An Excel spreadsheet is downloaded when the Publication button is clicked</p>
+:::tip[Success]
+  <p>An Excel spreadsheet is downloaded when the Publication button is clicked</p>
 	![](img/publication/success.png)
-</div>
+:::

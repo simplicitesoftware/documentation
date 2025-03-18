@@ -3,7 +3,7 @@ sidebar_position: 20
 title: Kubernetes
 ---
 
-Simplicité on Kubernetes
+Simplicit&eacute; on Kubernetes
 ===============================
 
 > **Warning**: This document is a work in progress DRAFT
@@ -33,7 +33,7 @@ Verify the cluster:
 
 <h2 id="privateimages">Allow use of private images</h2>
 
-The Simplicité&reg; images needs appropriate credentials on DockerHub.
+The Simplicit&eacute;&reg; images needs appropriate credentials on DockerHub.
 
 First sign in to DockerHub with your DockerHub account:
 ```
@@ -47,7 +47,7 @@ Alternatively you can create the secret directly (without signin in to DockerHub
 ```
 	kubectl create secret docker-registry regcred --docker-server=https://index.docker.io/v1/ --docker-username=<your username> --docker-password=<your password> --docker-email=<your email address>
 ```
-<h2 id="sandbox">Basic Simplicité&reg; sandbox example using Kompose&reg;</h2>
+<h2 id="sandbox">Basic Simplicit&eacute;&reg; sandbox example using Kompose&reg;</h2>
 
 For this basic example we will be using the [Kompose tool](https:installation.md) tool.
 
@@ -110,7 +110,7 @@ In the above case you can now point your browser to `http://6fvb57vqjk.lb.c4.gra
 
 <h2 id="example">Comprehensive example</h2>
 
-In this example we will be using custom manifests for deploying a PostgreSQL database and a Simplicité&reg; instance.
+In this example we will be using custom manifests for deploying a PostgreSQL database and a Simplicit&eacute;&reg; instance.
 
 ### Database
 
@@ -219,14 +219,14 @@ NAME       TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
 postgres   NodePort   10.3.179.187   <none>        5432:31392/TCP   9m6s
 ```
 
-### Simplicité&reg; instance
+### Simplicit&eacute;&reg; instance
 
 The following `simplicite.yml` manifest contains:
 
 - A persistent volume for the Git repositories
 - A claim for the above persistent volume
-- A deployment for a Simplicité&reg; instance container
-- A loadbalanced service for the Simplicité&reg; instance
+- A deployment for a Simplicit&eacute;&reg; instance container
+- A loadbalanced service for the Simplicit&eacute;&reg; instance
 
 ```yaml
 ---
@@ -342,9 +342,9 @@ simplicite   LoadBalancer   10.3.77.200   6d9lguc0l0.lb.c4.gra.k8s.ovh.net   80:
 
 In the above case you can now point your browser to `http://6d9lguc0l0.lb.c4.gra.k8s.ovh.net`
 
-> **Note**: in the above example there is only one replica for the Simplicité deployment, you can set it to more that one but note that
+> **Note**: in the above example there is only one replica for the Simplicit&eacute; deployment, you can set it to more that one but note that
 > the load balancing is done based on client IP address. If you need a better load balancing strategy (e.g. a session cookie-based sticky session load balancing)
-> you need to configure an appropriate ingress (the configuration of such ingress is not specific to Simplicité, thus not described here)
+> you need to configure an appropriate ingress (the configuration of such ingress is not specific to Simplicit&eacute;, thus not described here)
 
 Kubernetes dashboard
 --------------------

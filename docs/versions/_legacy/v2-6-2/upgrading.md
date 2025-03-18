@@ -217,7 +217,7 @@ web/images/image/header_mobile.jpg to web/images/image/<disposition>/header_mobi
 ```
 And you can now add a web/images/image/<disposition>/disposition_mobile.css
 
-### Simplicité&reg; XML schemas
+### Simplicit&eacute;&reg; XML schemas
 
 You should consider adding references to the standard Simplcit&eacute;&reg; XSD schema to all your specific XML files
 
@@ -242,5 +242,5 @@ As for any upgrade, the upgrade procedure itself must be run without any active 
 
 In the particular case of the JBoss application server it is recommended to stop the server,
 cleanup its work and tmp folders (this can be acheived using the clearservercache ANT task) and
-restart it (a cleanup of the Simplicité&reg; cache dir may also a good idea, this can be acheived using the
+restart it (a cleanup of the Simplicit&eacute;&reg; cache dir may also a good idea, this can be acheived using the
 clearcachedir ANT task).

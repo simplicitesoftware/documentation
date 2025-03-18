@@ -9,7 +9,7 @@ Ajax API
 Introduction
 ------------
 
-The JavaScript files to include to use the Simplicité&reg Ajax API are:
+The JavaScript files to include to use the Simplicit&eacute;&reg Ajax API are:
 
 - `scripts/ajax/appsession.js` (required) for application level services
 - `scripts/ajax/grant.js` (required) for grant data manipulation (as of version 4.0)
@@ -31,7 +31,7 @@ To get them working you need to include `jquery.js`.
 
 ### Application parameters
 
-The initial step is to instantiate a new `Simplicite.Ajax` pointing to your Simplicité&reg; application
+The initial step is to instantiate a new `Simplicite.Ajax` pointing to your Simplicit&eacute;&reg; application
 using appropriate parameters:
 
 ```javascript
@@ -42,18 +42,18 @@ Where `<root>` can be either:
 
 - a simple application root (e.g. `myapp`) in that case the base URL is considered to be the same as the
 current application base URL (this is typically what to do in case of custom page managed within
-a Simplicité&reg application, for instance as a configured external object)
+a Simplicit&eacute;&reg application, for instance as a configured external object)
 - an absolute application URL (e.g. `http://myserver:8080/myapp` or `http://myserver:8080/appws`)
 
 And where `<gateway>` is:
 
-- `ui` for usage in an authenticated custom page of the generic Simplicité&reg; web UI
+- `ui` for usage in an authenticated custom page of the generic Simplicit&eacute;&reg; web UI
 (no need to indicate user and password in that case as the current authenticated session is used)
-- `uipublic` for usage in a custom public page of the generic Simplicité&reg; web UI
+- `uipublic` for usage in a custom public page of the generic Simplicit&eacute;&reg; web UI
 (no need to indicate user and password in that case as the public session is used)
 - `api` (as of version 3.0 MAINTENANCE 20) for usage in an external custom page using the endpoints of the
-generic Simplicité&reg; API (in that case a user and password **must** be provided)
-- `ws` for usage in an external custom page using the endpoints of the generic Simplicité&reg;
+generic Simplicit&eacute;&reg; API (in that case a user and password **must** be provided)
+- `ws` for usage in an external custom page using the endpoints of the generic Simplicit&eacute;&reg;
 webservices gateway (in that case a user and password **must** be provided, and if the `<root>` parameter is a simple
 application root, a trailing `"ws"`is appended to it to build the base URL)
 
@@ -696,7 +696,7 @@ obj.crosstab(function(table) {
 
 <h3 id="business-object-tips">Thread safe considerations</h3>
 
-Due to the way Simplicité&reg; handles its business object instances,
+Due to the way Simplicit&eacute;&reg; handles its business object instances,
 calling several APIs in paralel on the same business object instance is not thread safe.
 
 For instance, if you need to iterate on API calls, dont do it inside a `for` or a `while` loop

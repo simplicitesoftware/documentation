@@ -4,10 +4,10 @@ import re
 import json
 
 def get_lesson_info(root):
-    """Read lesson.json and extract title and position information."""
+    """Read lesson.json and extract title, position, and published information."""
     lesson_json_path = os.path.join(root, "lesson.json")
     if not os.path.exists(lesson_json_path):
-        return None, None
+        return None, None, None
     
     with open(lesson_json_path, 'r', encoding='utf-8') as f:
         lesson_data = json.load(f)
@@ -20,7 +20,10 @@ def get_lesson_info(root):
     # Get title from lesson.json - check both ENU and ANY keys
     title = lesson_data.get('ENU', {}).get('title') or lesson_data.get('ANY', {}).get('title', '')
     
-    return position, title
+    # Get published status
+    published = lesson_data.get('published', True)  # Default to True if not specified
+    
+    return position, title, published
 
 def reorganize_files(source_root, target_root):
     """Reorganizes files from the source directory to the target directory, preserving CTG hierarchy without prefixes."""
@@ -31,6 +34,9 @@ def reorganize_files(source_root, target_root):
     
     os.makedirs(target_root, exist_ok=True)
     
+    # Define directories to skip
+    skip_directories = {'CTG_99_tests', 'CTG_01_pages'}
+    
     json_mappings = {"category.json": "_category_.json"}
     
     # Update image extensions to include SVG
@@ -38,6 +44,12 @@ def reorganize_files(source_root, target_root):
     
     # Recursively process files
     for root, dirs, files in os.walk(source_root, topdown=True):
+        # Skip specified directories
+        current_dir = os.path.basename(root)
+        if current_dir in skip_directories:
+            dirs.clear()  # This prevents os.walk from recursing into subdirectories
+            continue
+        
         relative_path = os.path.relpath(root, source_root)
         path_parts = relative_path.split(os.sep)
         
@@ -55,7 +67,7 @@ def reorganize_files(source_root, target_root):
         os.makedirs(target_dir, exist_ok=True)
 
         # Get lesson information if available
-        position, title = get_lesson_info(root)
+        position, title, published = get_lesson_info(root)
 
         for file in files:
             # Skip _FRA.md files
@@ -82,9 +94,11 @@ def reorganize_files(source_root, target_root):
                 os.makedirs(img_target_dir, exist_ok=True)
                 shutil.copy2(src_path, os.path.join(img_target_dir, sanitized_filename))
             elif ext == ".md":
+                # Remove both LSN_XX_ prefix and _ENU suffix
                 lesson_name = re.sub(r"LSN_\d+_", "", os.path.splitext(file)[0])
+                lesson_name = re.sub(r"_ENU$", "", lesson_name)
                 dest_md = os.path.join(target_dir, f"{lesson_name}.md")
-                update_md_image_references(src_path, dest_md, lesson_name, position, title)
+                update_md_image_references(src_path, dest_md, lesson_name, position, title, published)
             else:
                 continue  # Ignore other file types
     
@@ -135,20 +149,29 @@ def sanitize_filename(filename):
     sanitized = re.sub(r'[^a-zA-Z0-9._-]', '', sanitized)
     return sanitized
 
-def update_md_image_references(src_md, dest_md, lesson_name, position=None, title=None):
+def update_md_image_references(src_md, dest_md, lesson_name, position=None, title=None, published=None):
     """Replaces <img> tags with Markdown image syntax in .md files and adds YAML header."""
     with open(src_md, "r", encoding="utf-8") as f:
         content = f.read()
     
-    # Create YAML header if we have position or title
+    # Create YAML header if we have position, title, or published status
     yaml_header = ""
-    if position is not None or title is not None:
+    if position is not None or title is not None or (published is not None and not published):
         yaml_header = "---\n"
+        if not published:
+            yaml_header += "sidebar_class_name: hidden\n"
         if position is not None:
             yaml_header += f"sidebar_position: {position}\n"
         if title:
             yaml_header += f"title: {title}\n"
         yaml_header += "---\n\n"
+    
+    # Replace success div blocks with tip blocks
+    success_pattern = r'<div class="success">\s*(.*?)\s*</div>'
+    def success_replacement(match):
+        content = match.group(1).strip()
+        return f":::tip[Success]\n  {content}\n:::"
+    updated_content = re.sub(success_pattern, success_replacement, content, flags=re.DOTALL)
     
     # Replace image references for <img> tags, but skip https links
     img_pattern = r'<img\s+src=["\']([^"\']+)["\'].*?>'
@@ -157,7 +180,7 @@ def update_md_image_references(src_md, dest_md, lesson_name, position=None, titl
         if src.startswith('http'):
             return f'![]({src})'
         return f"![](img/{lesson_name}/{sanitize_filename(os.path.basename(src))})"
-    updated_content = re.sub(img_pattern, img_replacement, content)
+    updated_content = re.sub(img_pattern, img_replacement, updated_content)
     
     # Update markdown-style image references, but skip https links
     def md_img_replacement(match):
@@ -179,6 +202,6 @@ def update_md_image_references(src_md, dest_md, lesson_name, position=None, titl
     print(f"📝 Updated: {dest_md}")
 
 if __name__ == "__main__":
-    source = input("Enter the full path of the source directory: ").strip()
-    target = input("Enter the full path of the target directory: ").strip()
+    source = "/Users/alistairwheeler/Documents/Projets/docs/content"
+    target = "/Users/alistairwheeler/simplicite-documentation/docs"
     reorganize_files(source, target)

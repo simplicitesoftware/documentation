@@ -1,7 +1,7 @@
 ---
+sidebar_class_name: hidden
 sidebar_position: 15
 title: Mapping
-sidebar_class_name: hidden 
 ---
 
 Mapping

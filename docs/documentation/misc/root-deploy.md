@@ -6,7 +6,7 @@ title: Root deploy
 Deploy as root application
 ==========================
 
-A Simplicité instance can be deployed as the root application on an application server.
+A Simplicit&eacute; instance can be deployed as the root application on an application server.
 
 > **Note**: This is the default with the cloud instance templates.
 

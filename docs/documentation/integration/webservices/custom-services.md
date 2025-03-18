@@ -116,7 +116,7 @@ The result is then:
 <h2 id="mappedbusinessobjects">Mapped business object services helper class</h2>
 
 As of version 4.0.P23 a high-level helper class `com.simplicite.webapp.services.RESTMappedObjectsExternalObject`
-is provided to simply expose Simplicité business object CRUD in a simplified and customized way.
+is provided to simply expose Simplicit&eacute; business object CRUD in a simplified and customized way.
 
 Example:
 

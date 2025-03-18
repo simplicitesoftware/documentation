@@ -19,7 +19,9 @@ The functional tests can be done manually as in the previous chapter and this wi
 - by testing the UI with tools like Selenium
 - by testing the API
 
-<div class="success">It is recommended to perform manual tests in a private browser window to avoid crossover between the test user session and the designer session.</div>
+:::tip[Success]
+  It is recommended to perform manual tests in a private browser window to avoid crossover between the test user session and the designer session.
+:::
 
 Application logs
 ---------------------------

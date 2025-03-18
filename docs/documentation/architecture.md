@@ -26,7 +26,7 @@ Architecture Overview
 For more details on generic integration components (webservices, I/O interface, etc.) please refer to the documents referenced in the _Integration services_ section of [the documentation index](/lesson/docs/integration/in-out).
 Some of these generic webservices are wrapped into generic libraries/APIs in various technologies, please refer to the documents referenced in the _APIs_ section of the document index.
 
-Beyond these generic integration components, Simplicité being a Java platform, any kind of integration that is possible in Java is possible with Simplicité.
+Beyond these generic integration components, Simplicit&eacute; being a Java platform, any kind of integration that is possible in Java is possible with Simplicité.
 Some examples are available in [this document](/lesson/docs/core/third-party-apis-examples) but many other third part public or private services integration can be implemented. 
 
 Compliance
@@ -60,6 +60,6 @@ In this mode the publication layers (UI and API) have access to an EJB wrapped S
 Clustering
 ----------
 
-Simplicité instances can be clustered to provide several nodes using the same database, the right approach for load balancing being a **sticky session** load balancing.
+Simplicit&eacute; instances can be clustered to provide several nodes using the same database, the right approach for load balancing being a **sticky session** load balancing.
 
 ![Clustering](img/architecture/architecture-clustering.png)

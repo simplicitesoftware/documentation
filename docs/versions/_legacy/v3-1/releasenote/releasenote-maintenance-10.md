@@ -29,7 +29,7 @@ Fixes
 - Added `{MD5}` at the beginning of hashed passwords when using base 64 encoding (system parameter `HASH_PASSWORD` = `BASE64`)
   NB: when migrating from a previous version using base 64 encoding you should alter manually the encoded passwords directly
   in the database by `update m_user set usr_password = '{MD5}' || usr_password where usr_password is not null`
-- Fixed credentials management on remote Simplicité objects
+- Fixed credentials management on remote Simplicit&eacute; objects
 - Fixed clear user token action
 - Fixed internal Cron to execute only one daemon per application and JVM
 - Synchronize XML import per UI session

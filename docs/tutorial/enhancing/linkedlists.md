@@ -1,4 +1,5 @@
 ---
+sidebar_class_name: hidden
 sidebar_position: 13
 title: 3.1. Creating virtual links
 ---

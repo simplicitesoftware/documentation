@@ -3,11 +3,11 @@ sidebar_position: 10
 title: Simplicité
 ---
 
-Simplicité&reg; remote business objects
+Simplicit&eacute;&reg; remote business objects
 ==============================================
 
 It describes how to configure and use 
-- remote Simplicité&reg; business objects,
+- remote Simplicit&eacute;&reg; business objects,
 - datalinks between several applications.
 
 Remote object configuration
@@ -18,9 +18,9 @@ Remote object configuration
 - It allows to update the remote records with CRUD rights
 - Do not use a remote object to make inner join with a local database: data access is not based on SQL but API/REST.
 
-To configure a remote Simplicité&reg; business object the _Table_ field value must be `service-simplicite`.
+To configure a remote Simplicit&eacute;&reg; business object the _Table_ field value must be `service-simplicite`.
 
-The configuration of the remote Simplicité&reg; business object is then set in the _Filter_ field as JSON:
+The configuration of the remote Simplicit&eacute;&reg; business object is then set in the _Filter_ field as JSON:
 
 ```json
 {

@@ -48,9 +48,9 @@ To create a module, follow the steps below :
     > For more information about Views, see the [View](/lesson/docs/platform/userinterface/views/home-page) section.
 13. Click **Next**
 
-<div class="success">
-    <p>The <b>Training</b> Module is created and opened.</p>
+:::tip[Success]
+  <p>The <b>Training</b> Module is created and opened.</p>
     ![](img/module/success.png)
-</div>
+:::
 
 [Next step : Create a Business object](/lesson/tutorial/getting-started/object)

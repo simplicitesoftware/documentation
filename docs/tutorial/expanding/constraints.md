@@ -49,9 +49,9 @@ To do so, follow the steps below :
 Clear the platform's cache and log in using *usertest*
 > For a detailed step-by-step, see : [Testing the User](/lesson/tutorial/getting-started/user#activating-and-testing-the-user)
 
-<div class="success">
-    <p>For a new Order, the <b>Quantity</b> field is updatable</p>
+:::tip[Success]
+  <p>For a new Order, the <b>Quantity</b> field is updatable</p>
     ![](img/constraints/success-updatable.png)
     <p>For a Validated Order, the <b>Quantity</b> field is read-only</p>
     ![](img/constraints/success-readonly.png)
-</div>
+:::

@@ -1,7 +1,7 @@
 ---
+sidebar_class_name: hidden
 sidebar_position: 17
 title: Agenda
-sidebar_class_name: hidden 
 ---
 
 Agenda

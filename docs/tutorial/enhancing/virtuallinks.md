@@ -1,7 +1,6 @@
 ---
 sidebar_position: 60
 title: 3.1. Creating virtual links
-sidebar_class_name: hidden 
 ---
 
 # Building the "Order Management" Training App : Creating virtual links
@@ -75,7 +74,7 @@ t.row_id IN (
 	> For a detailed step-by-step, see : [Testing the User](/lesson/tutorial/getting-started/user#activating-and-testing-the-user)
 2. Open a Supplier
 
-<div class="success">
-    <p>The "Supplier's customers" panel is visible and contains the list of clients that have ordered a Product from the Supplier</p>
+:::tip[Success]
+  <p>The "Supplier's customers" panel is visible and contains the list of clients that have ordered a Product from the Supplier</p>
     ![](img/virtuallinks/success.png)
-</div>
+:::

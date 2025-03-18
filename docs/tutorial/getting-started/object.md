@@ -39,9 +39,9 @@ To create a Business object, follow the steps below :
 	![](img/object/domain.png)
 9. Click **Next**
 
-<div class="success">
-	<p>The <b>TrnSupplier</b> Object is created and opened.</p>
+:::tip[Success]
+  <p>The <b>TrnSupplier</b> Object is created and opened.</p>
 	![](img/object/success.png)
-</div>
+:::
 
 [Next step : Create a Field](/lesson/tutorial/getting-started/attribute)

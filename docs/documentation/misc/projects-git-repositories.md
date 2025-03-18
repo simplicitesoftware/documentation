@@ -3,12 +3,12 @@ sidebar_position: 320
 title: Projects git repositories
 ---
 
-Simplicité platform Git Repositories
+Simplicit&eacute; platform Git Repositories
 ===========================================
 
 This document describe how to use **platform** Git repositories.
 
-> **Note**: starting with version 3.2 the configuration modules can be exposed as Git repositories (managed by the Simplicité instance itself).
+> **Note**: starting with version 3.2 the configuration modules can be exposed as Git repositories (managed by the Simplicit&eacute; instance itself).
 > This document **does not** deal of this feature. Please refer to [this document](/lesson/docs/integration/git-repositories) instead.
 
 Prerequisites
@@ -25,7 +25,7 @@ git config --global http.sslVerify false
 Platform repositories
 ---------------------
 
-The Simplicité platform is provided in the `platform` domain in two packaging:
+The Simplicit&eacute; platform is provided in the `platform` domain in two packaging:
 
 - **Instance template** packages (versions 3.0 an above)
 - Legacy **setup** packages (for versions 2.x and 3.x only)

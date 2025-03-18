@@ -1,7 +1,7 @@
 ---
+sidebar_class_name: hidden
 sidebar_position: 18
 title: Place map
-sidebar_class_name: hidden 
 ---
 
 Place map

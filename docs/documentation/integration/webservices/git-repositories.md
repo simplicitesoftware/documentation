@@ -86,7 +86,7 @@ if you want to avoid configuring username/password credentials in your module's 
 
 <h2 id="advanced">Advanced</h2>
 
-The Git repositories created/cloned by Simplicité:
+The Git repositories created/cloned by Simplicit&eacute;:
 
 - Are **non bare** repositories, the local worktree is needed by the export/import processes
 - Have the following configuration set by default in `.git/config` file to allow read-write access over HTTP(S):
@@ -97,7 +97,7 @@ The Git repositories created/cloned by Simplicité:
         receivepack = true
 ```
 
-If you manually create/clone repositories used by Simplicité (which is not supposed to be done except for very specific needs)
+If you manually create/clone repositories used by Simplicit&eacute; (which is not supposed to be done except for very specific needs)
 make sure to create/clone **non bare** repositories and make sure to have these two options activated (which is not the case by default).
 
 <h3 id="branch">Branch</h3>

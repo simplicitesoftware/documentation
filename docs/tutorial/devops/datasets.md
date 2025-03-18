@@ -75,6 +75,6 @@ Repeat the steps above to delete existing Products, Suppliers and Clients
     ![](img/datasets/apply.png)
 2. Click **Yes**
 
-<div class="success">
-    <p>The data is successfully imported</p>
-</div>
+:::tip[Success]
+  <p>The data is successfully imported</p>
+:::

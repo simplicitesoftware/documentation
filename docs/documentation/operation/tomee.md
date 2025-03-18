@@ -6,12 +6,12 @@ title: Tomee
 TomEE&reg; deployment
 =====================
 
-Simplicité&reg; 3.1 (and above) instances can be deployed on the <a href="http://tomee.apache.org" target="_blank">TomEE&reg; JEE webprofile application server</a>.
+Simplicit&eacute;&reg; 3.1 (and above) instances can be deployed on the <a href="http://tomee.apache.org" target="_blank">TomEE&reg; JEE webprofile application server</a>.
 
 Webapp deployment
 ----------------
 
-The TomEE&reg; application server is based on Tomcat&reg; web container, it is possible to straightforward deploy Simplicité&reg; as a Tomcat webapp package.
+The TomEE&reg; application server is based on Tomcat&reg; web container, it is possible to straightforward deploy Simplicit&eacute;&reg; as a Tomcat webapp package.
 
 Just make sure the `<TomEE root>/webapps/<webapp, e.g. "ROOT">/WEB-INF/classes/application.properties` matches the same Tomcat&reg; version as the one used by TomEE&reg;.
 

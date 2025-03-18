@@ -30,10 +30,10 @@ To create a test user, follow the steps below :
     - For now, select **no**
 8. Click **Next**
 
-<div class="success">
-    <p>The <b>usertest</b> User is created and opened</p>
+:::tip[Success]
+  <p>The <b>usertest</b> User is created and opened</p>
     ![](img/user/success-user.png)
-</div>
+:::
 
 
 ## Activating and testing the User
@@ -63,14 +63,14 @@ To connect to the application with **usertest**, follow the steps below :
 
 You should now be connected with **usertest**
 
-<div class="success">
-    <b>Expected result :</b>
+:::tip[Success]
+  <b>Expected result :</b>
     <ul>
         <li>A Menu entry is visible</li>
         <li>The list of Suppliers is displayed when the menu is clicked</li>
     </ul>
     ![](img/user/success-logon.png)
-</div>
+:::
 
 ## Adding designer to TRN_SUPERADMIN
 
@@ -95,14 +95,14 @@ To do so, follow the steps below :
     - Via the keyboard shortcut : [ <kbd>Alt</kbd>+<kbd>C</kbd>+<kbd>C</kbd> ]
 6. Log back in using `designer` (*or the user used to design the application*)
 
-<div class="success">
-    <b>Expected result :</b>
+:::tip[Success]
+  <b>Expected result :</b>
     <ul>
         <li>"My App" Menu is visible</li>
         <li>The list of Suppliers is displayed when the menu is clicked</li>
     </ul>
     ![](img/user/designer-success.png)
-</div>
+:::
 
 [Next step : Add objects](/lesson/tutorial/expanding/addobjects)
 

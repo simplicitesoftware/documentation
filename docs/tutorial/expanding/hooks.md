@@ -25,6 +25,7 @@ To add this business rule, override the `postValidate` hook by following the ste
 	![](img/hooks/edit-code.png)	
 3. Override the `postValidate` method with the following implementation :
 	> The `postValidate` hook is called after the platform's `validate()` and is used to to add validation rules. For more information, see [Hooks](/lesson/docs/core/objects/businessobject-code-hooks#prepostvalidatehooks)
+	
 ```java 
 @Override
 public List<String> postValidate() {
@@ -127,8 +128,8 @@ public String postUpdate() {
 Clear the platform's cache and log in using *usertest*
 > For a detailed step-by-step, see : [Testing the User](/lesson/tutorial/getting-started/user#activating-and-testing-the-user)
 
-<div class="success">
-	<ul>
+:::tip[Success]
+  <ul>
 		<li>	
 			<p>When creating an Order with a negative quantity, an error occurs</p>
 			![](img/hooks/success-invalid.png)
@@ -144,4 +145,4 @@ Clear the platform's cache and log in using *usertest*
 			<p>When an Order is Validated the quantity is deducted from the Product's stock</p>
 		</li>
 	</ul>
-</div>
+:::

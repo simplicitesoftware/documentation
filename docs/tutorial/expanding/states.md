@@ -76,9 +76,9 @@ To create a State model for the the Order Business object, follow the steps belo
 
 9. Click **Next**
 
-<div class="success">
-    A state model has been added to the TrnOrder Business object.
-</div>
+:::tip[Success]
+  A state model has been added to the TrnOrder Business object.
+:::
 
 ## Test the State model with the usertest User
 
@@ -87,14 +87,14 @@ To test the State model, follow the steps below :
 1. Clear the platform's cache and log in using *usertest*
     > For a detailed step-by-step, see : [Testing the User](/lesson/tutorial/getting-started/user#activating-and-testing-the-user)
 
-<div class="success">
-    <b>Expected result :</b>
+:::tip[Success]
+  <b>Expected result :</b>
     <ul>
         <li>In the Order menu</li>
         <li>The list of States are visible</li>
     </ul>
     ![](img/states/success-logon.png)
-</div>
+:::
 
 2. Open or create an Order 
     For a detailed step-by-step, see : [Adding data](/lesson/tutorial/expanding/relations#create-an-order)
@@ -103,12 +103,12 @@ To test the State model, follow the steps below :
 4. Click **Yes**
 
 
-<div class="success">
-    <b>Expected result :</b>
+:::tip[Success]
+  <b>Expected result :</b>
     <ul>
         <li>The state field is updated with : "Validated"</li>
         <li>The buttons "Cancel" and "Ship" are available</li>
     </ul>
     ![](img/states/success-state.png)
-</div>
+:::
 

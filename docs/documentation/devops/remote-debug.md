@@ -19,7 +19,7 @@ When using our standard images you can (re)start your container with JPDA enable
 
 See [this document](/lesson/docs/operation/docker) for details.
 
-### Simplicité&reg; Instances Manager (SIM) <span id="sim"></span>
+### Simplicit&eacute;&reg; Instances Manager (SIM) <span id="sim"></span>
 
 When using a SIM server, to restart an instance in debug mode you have to stop Tomcat `sim tomcat-stop` and restart it in JPDA mode `sim tomcat-debug`.
 

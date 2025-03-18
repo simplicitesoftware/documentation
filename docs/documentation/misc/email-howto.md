@@ -6,7 +6,7 @@ title: Email howto
 E-mail howto
 ============
 
-This document shows how to configure application server's e-mail service that is used by Simplicité&reg; to send e-mails.
+This document shows how to configure application server's e-mail service that is used by Simplicit&eacute;&reg; to send e-mails.
 
 Tomcat context-level configuration
 ---------------------------------

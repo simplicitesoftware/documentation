@@ -66,7 +66,7 @@ To create a home page for the TRN_SUPERADMIN Group, follow the steps below :
 1. Clear the platform's cache and log in using *usertest*
     > For a detailed step-by-step, see : [Testing the User](/lesson/tutorial/getting-started/user#activating-and-testing-the-user)
 
-<div class="success">
-    <p>The Home page displays the "Pending orders" view and the "Orders per state" pivot table</p>
+:::tip[Success]
+  <p>The Home page displays the "Pending orders" view and the "Orders per state" pivot table</p>
     ![](img/views/success.png)
-</div>
+:::

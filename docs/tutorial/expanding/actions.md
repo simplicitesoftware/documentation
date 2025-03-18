@@ -36,9 +36,9 @@ To create an Action for the Product Business object, follow the steps below :
     ![](img/actions/select-group.png)
 9. Click **Save & Close**
 
-<div class="success">
-    The <b>Increase stock</b> Action is now granted to the <b>TRN_SUPERADMIN</b> Group.
-</div>
+:::tip[Success]
+  The <b>Increase stock</b> Action is now granted to the <b>TRN_SUPERADMIN</b> Group.
+:::
 
 
 ## Test the Action with the usertest User
@@ -49,9 +49,9 @@ To create an Action for the Product Business object, follow the steps below :
 
 2. Open an existing Product
 
-<div class="success">
-    <p>The "Increase stock" button is visible</p>
+:::tip[Success]
+  <p>The "Increase stock" button is visible</p>
     ![](img/actions/success-btn.png)
     <p>An alert is displayed when clicked</p>
     ![](img/actions/success-action.png)
-</div>
+:::

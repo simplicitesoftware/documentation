@@ -1,7 +1,7 @@
 ---
+sidebar_class_name: hidden
 sidebar_position: 240
 title: External object
-sidebar_class_name: hidden 
 ---
 
 # External object

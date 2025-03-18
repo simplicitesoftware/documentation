@@ -56,8 +56,8 @@ To test the Calculated field, follow the steps below :
 3. Change the value in the **Quantity** field
 4. Click **Save**
 
-<div class="success">
-    <b>Expected result :</b>
+:::tip[Success]
+  <b>Expected result :</b>
     <p>The "Total" field is automatically updated</p>
     ![](img/calculated-fields/success.png)
-</div>
+:::

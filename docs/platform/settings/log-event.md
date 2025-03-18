@@ -9,7 +9,7 @@ Logging
 Introduction
 ------------
 
-In Simplicité&reg;, the logging mechanisms are based on configurable **log events** (cf. the `LogEvent` business object).
+In Simplicit&eacute;&reg;, the logging mechanisms are based on configurable **log events** (cf. the `LogEvent` business object).
 
 Each log event:
 

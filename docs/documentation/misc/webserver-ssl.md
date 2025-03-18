@@ -113,9 +113,9 @@ For the above examples, the typical `curl` call would be something like:
 
 	curl --cacert CA.crt --cert user.crt --key user.key https://www.mydomain.com/secure/	
 
-### Using client certificate authentication on Simplicité side
+### Using client certificate authentication on Simplicit&eacute; side
 
-See [this document](/lesson/docs/authentication/tomcat-customauth) for details on how to use client certificate on Simplicité side;
+See [this document](/lesson/docs/authentication/tomcat-customauth) for details on how to use client certificate on Simplicit&eacute; side;
 
 <h2 id="letsencrypt">Using LetsEncrypt&reg; service</h2>
 

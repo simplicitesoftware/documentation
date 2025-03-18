@@ -38,9 +38,9 @@ To create a field, follow the steps below :
         ![](img/attribute/create-field.png)
 7. Click **Save**
 
-<div class="success">
-    <p>The <b>trnSupName</b> Field has been added to the <b>TrnSupplier</b> Business object and the template has a <b>Name</b> input visible on it</p>
+:::tip[Success]
+  <p>The <b>trnSupName</b> Field has been added to the <b>TrnSupplier</b> Business object and the template has a <b>Name</b> input visible on it</p>
     ![](img/attribute/success.png)
-</div>
+:::
 
 [Next step : Create a User](/lesson/tutorial/getting-started/user)
