@@ -23,11 +23,6 @@ const Icons = {
   trial: <TrialIcon className={styles.icon} />,
 };
 
-const meta = {
-  name: "algolia-site-verification",
-  content: "B839DFBA0B802335",
-};
-
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
@@ -75,7 +70,7 @@ export default function Home() {
       title={`Welcome to ${siteConfig.title}`}
       description="Documentation for Simplicité Platform"
     >
-      <DocumentMeta {...meta} />
+      <meta name="algolia-site-verification"  content="B839DFBA0B802335" />
       <main className={styles.mainContent}>
         <div className="container">
           {/* Introduction */}
