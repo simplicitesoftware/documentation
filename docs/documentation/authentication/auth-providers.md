@@ -84,8 +84,8 @@ As of version 5 it is configured through the `image` setting.
 
 The other settings depends on the provider's type, please refer to the following document for details:
 
-- [OAuth2]/docs/authentication/oauth2 
-- [SAML]/docs/authentication/saml
+- [OAuth2](/docs/documentation/authentication/oauth2) 
+- [SAML](/docs/documentation/authentication/saml)
 
 ## Troubleshooting
 

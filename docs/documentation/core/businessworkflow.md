@@ -13,7 +13,7 @@ This document describes the business process configuration to create a business 
 Note that simple business process can only rely on configuration.
 
 You **need** to implement one or several hooks if you want to apply out some dynamic business logic that goes beyond what can be configured.
-See this [document] (/lesson/docs/core/businessobject-code-hooks)
+See this [document] (/docs/documentation/core/businessobject-code-hooks)
 
 
 ### How to create a Business process "Screen worflow" ?

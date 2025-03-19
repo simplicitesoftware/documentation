@@ -184,42 +184,52 @@ def update_md_image_references(src_md, dest_md, lesson_name, position=None, titl
     print(f"\n🔍 Processing file: {src_md}")
     
     # Handle all /lesson/ links with different transformations
+    # Modified pattern to ensure we catch the entire link
     link_pattern = r'\[([^\]]+)\]\(/lesson/([^\)]+)\)'
     
     def replace_link(match):
         link_text = match.group(1)
-        link_path = match.group(2)
+        link_path = match.group(2).strip()  # Add strip() to remove any whitespace
         original_url = f'/lesson/{link_path}'
         
         print(f"\n  Found link: [{link_text}]({original_url})")
         
         # First check for URL rewrites
-        for rule in url_rewrites:
-            if rule['sourceUrl'] == original_url:
-                print(f"  ✅ Rewrite match: {rule['destinationUrl']}")
-                return f'[{link_text}]{rule["destinationUrl"]}'
+        if url_rewrites:
+            for rule in url_rewrites:
+                if rule['sourceUrl'].rstrip('/') == original_url.rstrip('/'):
+                    print(f"  ✅ Rewrite match: {rule['destinationUrl']}")
+                    return f'[{link_text}]({rule["destinationUrl"]})'
         
         # No rewrite found, apply standard transformations
         if link_path.startswith('tutorial/'):
             new_url = f'/docs/{link_path}'
-            print(f"  ✅ Tutorial path: {new_url}")
-            return f'[{link_text}]{new_url}'
-        elif link_path.startswith('docs/'):
-            new_url = f'/docs/{link_path[5:]}'  # Remove 'docs/' from path
-            print(f"  ✅ Docs path: {new_url}")
-            return f'[{link_text}]{new_url}'
-        elif "CTG_50_docs" in src_md:
-            new_url = f'/docs/documentation/{link_path}'
-            print(f"  ✅ Documentation path: {new_url}")
-            return f'[{link_text}]{new_url}'
-        else:
+        elif link_path.startswith('platform/'):
             new_url = f'/docs/{link_path}'
-            print(f"  ✅ Default path: {new_url}")
-            return f'[{link_text}]{new_url}'
+        elif link_path.startswith('docs/'):
+            # Remove 'docs/' prefix and add to documentation section
+            new_url = f'/docs/documentation/{link_path[5:]}'
+        elif link_path.startswith('documentation/'):
+            # Already has documentation prefix
+            new_url = f'/docs/{link_path}'
+        else:
+            # Default case: add to documentation section
+            new_url = f'/docs/documentation/{link_path}'
+        
+        print(f"  ✅ Input: {original_url}")
+        print(f"  ✅ Output: {new_url}")
+        return f'[{link_text}]({new_url})'
     
-    # Apply the link transformations
-    updated_content = re.sub(link_pattern, replace_link, content)
-    
+    # Apply the link transformations with debugging
+    print("\nProcessing links...")
+    updated_content = content
+    for match in re.finditer(link_pattern, content):
+        original = match.group(0)
+        replacement = replace_link(match)
+        print(f"\nReplacing: {original}")
+        print(f"With: {replacement}")
+        updated_content = updated_content.replace(original, replacement)
+
     # Create YAML header if we have position, title, or published status
     yaml_header = ""
     if position is not None or title is not None or (published is not None and not published):

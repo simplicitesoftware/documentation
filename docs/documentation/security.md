@@ -58,7 +58,7 @@ by a reverse proxy-level filtering)
 
 At least you **should** disable the API tester page by setting the private system parameter `USE_API_TESTER` to `no`.
 
-For more information on default API authentication mechanisms, see [this document]/lesson/docs/integration/webservices/services-auth.
+For more information on default API authentication mechanisms, see [this document](/docs/documentation/integration/webservices/services-auth).
 
 <h3 id="ioendpoint">I/O endpoint</h3>
 
@@ -75,7 +75,7 @@ If you only use it from a limited set of origins you **should** filter the acces
 
 At least you **should** disable the I/O tester page by setting the private system parameter `USE_IO_TESTER` to `no`.
 
-For more information defaut on I/O authentication mechanisms, see [this document]/lesson/docs/integration/webservices/io-commandline.
+For more information defaut on I/O authentication mechanisms, see [this document](/docs/documentation/integration/webservices/io-commandline).
 
 > **Note 1**: for backward compatibility reasons (and for particular cases) the I/O and Git endpoints **also** use the legacy authentication
 > method bases on private system parameters names `EAI *` or, as of version 5, the `io.password` JVM argument or the `IO_PASSWORD` environment variable
@@ -194,12 +194,12 @@ they **should** be inhibited by removing grants on them if you don't use them.
 
 <h3 id="dataencryption">Data encryption</h3>
 
-Use built-in (see the Data Encryption part in [code examples]/docs/core/advanced-code-examples) or third party data encryption especially when the database access is not limited to the application.
+Use built-in (see the Data Encryption part in [code examples](/docs/documentation/core/advanced-code-examples)) or third party data encryption especially when the database access is not limited to the application.
 
 <h3 id="internalauth">Internal authentication</h3>
 
 If you use the internal authentication you **should** consider securing it by adding a second authentication factor (2FA) and/or by implementing custom rules (e.g.: disabling a login
-after a certain amount of erroneous password entry or enforcing appropriate password validation rules). See [this document]/docs/authentication/internal-auth for details.
+after a certain amount of erroneous password entry or enforcing appropriate password validation rules). See [this document](/docs/documentation/authentication/internal-auth) for details.
 
 You **should** also use the appropriate internal password hashing algorithm by setting the `HASH_PASSWORD` system parameter (note that changing this algorithm will require that all your users
 change their password).
@@ -208,7 +208,7 @@ You **should** also enable the "salting" of the above hashed internal password u
 change their password). As of version 6.2 you can also add a "pepper" string to this "salting" by configuring an environement variable `HASH_PASSWORD_PEPPER` or a JVM propery `hash.password.pepper`
 (note that adding or changing this pepper string will also require that all your users change their password).
 
-You **may** also consider implementing an anti-brute policy by using appropriate `PlatformHooks`. See [this document]/docs/authentication/internal-auth#antibruteforce for a comprehensive example.
+You **may** also consider implementing an anti-brute policy by using appropriate `PlatformHooks`. See [this document](/docs/documentation/authentication/internal-auth#antibruteforce) for a comprehensive example.
 
 You **should** also make sure the "god mode" (the ability to log in as any user) is disabled or restricted to the relevant users (e.g. support team).
 The principle is to set the private system parameter `GOD_MODE` to `no` and override it by user only for the relevant users.
@@ -316,7 +316,7 @@ And of course, you **must** also apply the system upgrades on your host machine 
 
 <h2 id="sim">Securing the Simplicité Instance Manager (SIM)</h2>
 
-These are specific guidelines for the Simplicit&eacute; Instances Manager (SIM). See [this document](https:/lesson/docs/misc/manager) for details on the SIM.
+These are specific guidelines for the Simplicit&eacute; Instances Manager (SIM). See [this document](https:/docs/documentation/misc/manager) for details on the SIM.
 
 #### SIM credentials
 

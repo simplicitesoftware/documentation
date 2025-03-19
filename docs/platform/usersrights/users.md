@@ -18,7 +18,7 @@ A user can be:
 
 1. Authentication & Access
     - By default, users log in using a **username and password**
-    - Authentication can be enhanced with [multi-factor authentication]/docs/authentication/internal-auth or [third-party authentication providers]/docs/authentication/oauth2
+    - Authentication can be enhanced with [multi-factor authentication](/docs/documentation/authentication/internal-auth) or [third-party authentication providers](/docs/documentation/authentication/oauth2)
     - Access to business objects and functionalities is governed by responsibilities
 2. User Status 
     - Enabled: The user can log in and access the platform
@@ -39,16 +39,16 @@ A user can be:
 | Home page | User's home page (overridden by the active scope) |
 | Menu visible | Display / Hide menu for the user |
 | Default opened domain | Default menu opened after connecting |
-| Authentication | See [internal authentication]/docs/authentication/internal-auth |
+| Authentication | See [internal authentication](/docs/documentation/authentication/internal-auth) |
 
 ## Configuration objects linked to a User
 
-- [Dashboards]/docs/platform/userinterface/views/dashboard : List of Dashboards created by the user
-- [Responsibilities]/docs/platform/usersrights/responsibilities : List of a user's Responsibilities
+- [Dashboards](/docs/platform/userinterface/views/dashboard) : List of Dashboards created by the user
+- [Responsibilities](/docs/platform/usersrights/responsibilities) : List of a user's Responsibilities
 
 ## Learn more
 
-- [Internal authentication]/docs/authentication/internal-auth
-- [Authentication providers]/docs/authentication/auth-providers
-- [OAuth2]/docs/authentication/oauth2
+- [Internal authentication](/docs/documentation/authentication/internal-auth)
+- [Authentication providers](/docs/documentation/authentication/auth-providers)
+- [OAuth2](/docs/documentation/authentication/oauth2)
 - [Custom user object](https://community.simplicite.io/t/custom-user-object)

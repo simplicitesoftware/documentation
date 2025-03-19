@@ -5,11 +5,11 @@ title: 1.3. Creating a Field
 
 # Building the "Order Management" Training App : Creating a Field
 
-> Prerequisite : [A business object (TrnSupplier) must be created before starting this tutorial]/docs/tutorial/getting-started/object
+> Prerequisite : [A business object (TrnSupplier) must be created before starting this tutorial](/docs/tutorial/getting-started/object)
 
 ## What is a Field ?
 
-In Simplicité, fields are configurable attributes of business objects (mandatory, type, etc.). They have a logical name (used in code) and a physical name (for database columns). When linked to an object, it creates a database column and allows parameter overrides... [Learn more]/docs/platform/businessobjects/fields
+In Simplicité, fields are configurable attributes of business objects (mandatory, type, etc.). They have a logical name (used in code) and a physical name (for database columns). When linked to an object, it creates a database column and allows parameter overrides... [Learn more](/docs/platform/businessobjects/fields)
 
 ## Creating a Field
 
@@ -17,11 +17,11 @@ To create a field, follow the steps below :
 
 1. Click **Edit form** on the Business object's form (this will open the **template editor**)  
     ![](img/attribute/edit-form.png)
-	> The template editor is also available via the Modeler, for more information see the [Accessing the template editor via the Modeler]/docs/platform/businessobjects/business-objects#creation-assistant-via-the-modeler
+	> The template editor is also available via the Modeler, for more information see the [Accessing the template editor via the Modeler](/docs/platform/businessobjects/business-objects#creation-assistant-via-the-modeler)
 2. Select the first **Template**    
     ![](img/attribute/template.png)
 3. Hover over the empty **Field Area** and click on the `+`
-    > For more information about Field Areas, see [Field Area]/docs/platform/userinterface/templating/fields-areas
+    > For more information about Field Areas, see [Field Area](/docs/platform/userinterface/templating/fields-areas)
 
     ![](img/attribute/field-area.png)
     

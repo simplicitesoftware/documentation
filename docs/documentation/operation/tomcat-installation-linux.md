@@ -6,14 +6,14 @@ title: Tomcat installation on Linux
 Tomcat installation on Linux server
 ===================================
 
-> **Warning**: before choosing this "traditional" installation procedure you should consider other approches such as using [Docker containers]/docs/operation/docker. 
+> **Warning**: before choosing this "traditional" installation procedure you should consider other approches such as using [Docker containers](/docs/documentation/operation/docker). 
 
 This document corresponds to a manual step-by-step installation on an out of the box **Linux CentOS 7**.
 
 However the procedure should be rather similar with other modern Linux distributions of the RedHat family (RedHat ES, Fedora, ...).
 It should also be easily transposable to Debian flavored Linux distribution.
 
-If you are looking for installation guideline for a Windows server installation, please refer to [this document]/docs/operation/tomcat-installation-windows.
+If you are looking for installation guideline for a Windows server installation, please refer to [this document](/docs/documentation/operation/tomcat-installation-windows).
 
 <h2 id="prerequisites">Prerequisites</h2>
 

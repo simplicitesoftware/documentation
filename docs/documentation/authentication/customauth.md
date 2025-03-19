@@ -49,7 +49,7 @@ comma-separated list of IP addresses stored in the `AUTH_ORIGIN` system paramete
 Client certificate authentication
 ---------------------------------
 
-When using an Apache or NGINX webserver as reverse proxy you can configure it to enforce client certificate authentication (see [this document]/docs/misc/webserver-ssl for details).
+When using an Apache or NGINX webserver as reverse proxy you can configure it to enforce client certificate authentication (see [this document](/docs/documentation/misc/webserver-ssl) for details).
 
 They typically can be configured to propagate the verified client certificate's DN as the `X-SSL-Client-S-DN` HTTP header.
 Then the authentication on Simplicit&eacute; side is easy as it is just a matter of parsing this DN, e.g. extracting the `CN` field as login:

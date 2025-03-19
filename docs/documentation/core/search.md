@@ -50,7 +50,7 @@ It has three main presentations:
 - **pinned to columns**
 - **docked**
 
-The detached and pinned modes have a richer UI with components to help the user build advanced queries based on the [Simplicité Search Syntax]/docs/ui/search-syntax.
+The detached and pinned modes have a richer UI with components to help the user build advanced queries based on the [Simplicité Search Syntax](/docs/documentation/ui/search-syntax).
 
 Basically, each filter is translated to a SQL `WHERE` clause, allowing filtering on the table.
 

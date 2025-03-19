@@ -10,7 +10,7 @@ Simplicit√© instances can easily be deployed on the Docker engine.
 
 This document gives you extended information on how to use/configure such Docker-based deployments, including in advanced cases.
 
-A simplified **[tutorial]/docs/operation/docker-tutorial** is also available for a **step by step** procedure in the usual case.
+A simplified **[tutorial](/docs/documentation/operation/docker-tutorial)** is also available for a **step by step** procedure in the usual case.
 
 Prerequisites <span id="prerequistes"></span>
 ---------------------------------------------
@@ -774,7 +774,7 @@ sudo docker-compose up [-d]
 > ```
 >
 > In the above example the server certificate's keystore file as located as `/etc/ssl/myapp.jks` on the host machine and
-> its password is `mypassword`. See [this document]/docs/misc/java-ssl to learn how to build such a keystore file.
+> its password is `mypassword`. See [this document](/docs/documentation/misc/java-ssl) to learn how to build such a keystore file.
 
 ### MySQL/MariaDB <span id="dockercompose-mysql"></span>
 
@@ -916,7 +916,7 @@ is **always** the right thing to do before **any** container upgrade (Simplicit√
 Run on a Kubernetes cluster <span id="kubernetes"></span>
 ---------------------------------------------------------
 
-See [this document]/docs/operation/kubernetes.
+See [this document](/docs/documentation/operation/kubernetes).
 
 Troubleshooting <span id="troubleshooting"></span>
 --------------------------------------------------

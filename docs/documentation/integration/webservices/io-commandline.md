@@ -13,7 +13,7 @@ As of **version 3.0**, usual administrative tasks can be done using the `curl` c
 > In versions 4.0+ a technical session is used to avoid taking care of the session cookie.
 
 As of **version 3.1**, the I/O endpoint supports either I/O authentication (using the I/O password stored in a `EAI <login>:<password>` system parameter, in this case `<credentials>` is `-u <login>[:<I/O password>]`)
-or the API endpoint authentication mechanisms described in [this document]/lesson/docs/integration/webservices/services-auth (in this case `<credentials>` are API endpoint authentication headers).
+or the API endpoint authentication mechanisms described in [this document](/docs/documentation/integration/webservices/services-auth) (in this case `<credentials>` are API endpoint authentication headers).
 
 As of **version 4.0.P22**, the I/O endpoint does not any longer support API authentication, to use such API authentication you now need to use the I/O service deployed on the API endpoint.
 
@@ -33,7 +33,7 @@ If you get "Object ... not granted" messages, make sure the considered object is
 Standard formats <span id="formats"></span>
 -------------------------------------------
 
-The standard formats used by the standard I/O imports/exports are described in [this document]/lesson/docs/integration/webservices/standard-formats
+The standard formats used by the standard I/O imports/exports are described in [this document](/docs/documentation/integration/webservices/standard-formats)
 
 I/O URL <span id="url"></span>
 ------------------------------

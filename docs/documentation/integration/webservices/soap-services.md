@@ -12,7 +12,7 @@ This document describes how the generic SOAP services are working.
 
 These generic SOAP services should only be used on the **API endpoint**.
 
-The authentication mechanisms available on this API endpoint are described in [this document]/lesson/docs/integration/webservices/services-auth
+The authentication mechanisms available on this API endpoint are described in [this document](/docs/documentation/integration/webservices/services-auth)
 the credentials that needs to be passed to the calls are noted `<credentials>`.
 
 > **Warning**: never use the **public UI endpoint** instead of the API endpoint: the public UI endpoint
@@ -35,7 +35,7 @@ As of version 3.0 MAINTENANCE 20, the API endpoint is also available in the main
 ```
 http[s]://<host[:<port>]>/myapp/api/soap
 ```
-if you are using this API endpoint please refer to [this document]/lesson/docs/integration/webservices/services-auth for details on the authentication mechanisms.
+if you are using this API endpoint please refer to [this document](/docs/documentation/integration/webservices/services-auth) for details on the authentication mechanisms.
 
 It will be noted `<base URL>` in the rest of the document.
 

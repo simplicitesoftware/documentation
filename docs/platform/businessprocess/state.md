@@ -27,7 +27,7 @@ Before defining states, ensure the following conditions are met
 
 1. Define the State Field  
    - Select the Business Object whose going to follow a state model  
-   - Create an enumerated field to store the State ([see Creating a Field]/docs/tutorial/getting-started/attribute)  
+   - Create an enumerated field to store the State ([see Creating a Field](/docs/tutorial/getting-started/attribute))  
    - Add possible values representing different states (e.g.: Draft, Approved, Rejected)   
    - Mark the field as Required  
 2. State creation wizard  

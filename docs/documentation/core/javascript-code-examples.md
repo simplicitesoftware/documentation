@@ -11,12 +11,12 @@ This document describes the core **client-side JavaScript** API to be used withi
 It applies to either:
 
 - the additional client-side behavior you may want to add to the generic pages as object search pages, object list, object forms, ...
-- your custom pages that uses the standard UI page framework (please refer to [this document]/docs/core/externalobject-code-examples for details on how to develop such custom pages).
+- your custom pages that uses the standard UI page framework (please refer to [this document](/docs/documentation/core/externalobject-code-examples) for details on how to develop such custom pages).
 
 Note that you can use in either case the other JavaScript APIs such as:
 
-- The [Ajax API]/docs/apis/ajax-api using the `Simplicite.Application` singleton which is available in all standard pages.
-- The [JavaScript UI tools]/docs/core/ui-tools-code-examples
+- The [Ajax API](/docs/documentation/integration/librairies/ajax-api) using the `Simplicite.Application` singleton which is available in all standard pages.
+- The [JavaScript UI tools](/docs/documentation/core/ui-tools-code-examples)
 
 Page events
 -----------

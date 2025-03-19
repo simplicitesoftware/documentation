@@ -81,12 +81,12 @@ const config = {
               {
                 sidebarId:"platformSidebar",
                 type: "docSidebar",
-                label: "Platform documentation",
+                label: "Platform",
               },
               {
                 sidebarId:"documentationSidebar",
                 type: "docSidebar",
-                label: "Technical documentation",
+                label: "Other",
               },
             ],
           },

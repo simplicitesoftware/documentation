@@ -46,9 +46,9 @@ flowchart TD
 Check:
 
 - [JavaDoc](https://platform.simplicite.io/current/javadoc/com/simplicite/util/PlatformHooks.html)
-- [this document about custom authentication]/lesson/docs/authentication/customauth, 
-- [this document about OAuth2 authentication]/lesson/docs/authentication/oauth2
-- [this document about SAML authentication]/lesson/docs/authentication/saml for details.
+- [this document about custom authentication](/docs/documentation/authentication/customauth), 
+- [this document about OAuth2 authentication](/docs/documentation/authentication/oauth2)
+- [this document about SAML authentication](/docs/documentation/authentication/saml) for details.
 
 <h2 id="startpagehook">Custom start page hook</h2>
 
@@ -60,7 +60,7 @@ Note that similar start page customization can also be achieved at a higher leve
 
 As of version 5.0, the `customAuthPage` platform hooks allows to implement a custom authentication/page.
 
-For more details  [refer to this documentation]/docs/authentication/custom-page
+For more details  [refer to this documentation](/docs/documentation/authentication/custom-page)
 
 <h2 id="startpagehook">Custom health check hook</h2>
 

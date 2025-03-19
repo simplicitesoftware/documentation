@@ -54,7 +54,7 @@ volumes:
 ```
 
 This document only applies if you export your Simplicité modules as **Git** repositories.
-See [this document]/lesson/docs/integration/webservices/git-repositories for details.
+See [this document](/docs/documentation/integration/webservices/git-repositories) for details.
 
 In the rest of the document `<sonar options>` corresponds to the options you use with your Sonarqube&reg; installation and/or your repositories.
 For instance it can be the server's custom URL and its credential: `-Dsonar.host.url=http://localhost:9191 [-Dsonar.login=<login or toke > [-Dsonar.password=<password>]]`.

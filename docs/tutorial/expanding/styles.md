@@ -5,11 +5,11 @@ title: 2.9. Adding icons and a theme
 
 # Building the "Order Management" Training App : Adding icons and a theme
 
-> Prerequisite : [The Order has a state model]/docs/tutorial/expanding/states and a [home page]/docs/tutorial/expanding/views exists
+> Prerequisite : [The Order has a state model](/docs/tutorial/expanding/states) and a [home page](/docs/tutorial/expanding/views) exists
 
 ## What is a Theme ?
 
-A theme defines the logo and the main colors of the interface...[Learn more]/docs/platform/userinterface/themes
+A theme defines the logo and the main colors of the interface...[Learn more](/docs/platform/userinterface/themes)
 
 ## Creating a Theme
 
@@ -85,7 +85,7 @@ Repeat these step 3 -> 5 for :
 ## Test the Theme with the usertest User
 
 1. Clear the platform's cache and log in using *usertest*
-    > For a detailed step-by-step, see : [Testing the User]/docs/tutorial/getting-started/user#activating-and-testing-the-user
+    > For a detailed step-by-step, see : [Testing the User](/docs/tutorial/getting-started/user#activating-and-testing-the-user)
 
 :::tip[Success]
   <p>The new Theme and header logo are applied to the App</p>

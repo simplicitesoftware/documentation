@@ -12,7 +12,7 @@ This document describes how raw data services are working.
 
 These generic raw data services should only be used on the **API endpoint**.
 
-The authentication mechanisms available on this API endpoint are described in [this document]/lesson/docs/integration/webservices/services-auth
+The authentication mechanisms available on this API endpoint are described in [this document](/docs/documentation/integration/webservices/services-auth)
 the credentials that needs to be passed to the calls are noted `<credentials>`.
 
 > **Warning**: never use the **public UI endpoint** instead of the API endpoint: the public UI endpoint
@@ -36,7 +36,7 @@ As of version 3.0 MAINTENANCE 20, the API endpoint is also available in the main
 http[s]://<host[:<port>]>/myapp/api/raw
 ```
 
-if you are using this API endpoint please refer to [this document]/lesson/docs/integration/webservices/services-auth for details on the authentication mechanisms.
+if you are using this API endpoint please refer to [this document](/docs/documentation/integration/webservices/services-auth) for details on the authentication mechanisms.
 
 It will be noted `<base URL>` in the rest of the document.
 
@@ -74,7 +74,7 @@ To get data from the `LANG` list of values the call is:
 Typical usage of raw data services is to configure traditional external datasources in Microsoft Excel&reg;.
 
 > **Note**: In recent Excel versions (Office 2016+) a much better approach is to use the **PowerQuery** tool (which is now provided by default with Excel) and the REST services.
-> See dedicated section in [this document]/docs/misc/excel for details.
+> See dedicated section in [this document](/docs/documentation/misc/excel) for details.
 
 <h3 id="googlespreadsheets">Usage in Google Spreadsheets&reg;</h3>
 

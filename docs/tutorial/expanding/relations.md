@@ -5,11 +5,11 @@ title: 2.2. Creating links
 
 # Building the "Order Management" Training App : Creating links
 
-> Prerequisite : [The Supplier, Product, Client and Order objects must be complete before starting this tutorial]/docs/tutorial/expanding/addobjects
+> Prerequisite : [The Supplier, Product, Client and Order objects must be complete before starting this tutorial](/docs/tutorial/expanding/addobjects)
 
 ## What is a Link ?
 
-A Link in Simplicité represents a relationship between Business objects. It is defined physically by a foreign key in the database and configured using an Object field... [Learn more]/docs/platform/businessobjects/links
+A Link in Simplicité represents a relationship between Business objects. It is defined physically by a foreign key in the database and configured using an Object field... [Learn more](/docs/platform/businessobjects/links)
 
 ## Creating a Link between Supplier and Product
 
@@ -20,16 +20,16 @@ To create a link between the **Supplier** Business object and the **Product** Bu
     ![](img/relations/edit-form.png)
 4. Hover over the **Field Area** and click on the `+`  
     ![](img/relations/field-area.png)
-    > For more information about Field Areas, see [Field Area]/docs/platform/userinterface/templating/fields-areas  
+    > For more information about Field Areas, see [Field Area](/docs/platform/userinterface/templating/fields-areas)  
 5. Click **Business Object**
 6. In the search box, enter **TrnSupplier**  
     ![](img/relations/search-supplier.png)
 7. Check **Functional key ?** and **Required ?** 
-    > For more information about Functional keys, see [Functional key]/docs/platform/businessobjects/fields#functional-key
+    > For more information about Functional keys, see [Functional key](/docs/platform/businessobjects/fields#functional-key)
 8. Click **Save**
 
 The **Supplier Code** Joined field is added to the template.
-    > For more information about Joined field, see [Joined field]/docs/platform/businessobjects/fields#joined-fields
+    > For more information about Joined field, see [Joined field](/docs/platform/businessobjects/fields#joined-fields)
 
 ## Creating a Link between Product and Order
 
@@ -60,7 +60,7 @@ This will add the **TrnClient** joined fields to the template, allowing the Orde
 
 ### Log in using usertest
 Clear the platform's cache and log in using *usertest*
-    > For a detailed step-by-step see : [Testing the User]/docs/tutorial/getting-started/user#activating-and-testing-the-user
+    > For a detailed step-by-step see : [Testing the User](/docs/tutorial/getting-started/user#activating-and-testing-the-user)
 
 :::tip[Success]
   <b>Expected result :</b>

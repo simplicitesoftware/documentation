@@ -82,12 +82,12 @@ In order to properly manipulate and customize your Simplicité applications, it 
 This part of the documentation follows the following organization and flow:
 
 0) This introduction document.
-1) Presentation of the [Theme Editor]/docs/front/theme tool, allowing you to customize the themes and styles of you applications, all within Simplicité's solution.
-2) Overview of the [complementary tool]/docs/front/styles for theming, allowing you to add even more precise customizations to your applications.
-3) Guide through the [javascript development]/docs/front/javascript-dev in Simplicité, both outside with the *NPM Library* and inside with the *External Objects*.
-4) Breakdown of the [Ajax Library]/docs/front/lib-ajax that is useful for javascript development as it presents the core functions and methods to navigate and manipulate Simplicité's concepts and objects.
-5) An understanding of how to create [Custom UI Components]/docs/front/ui-components, breaking down the processes and techniques to do so using Simplicité's  *External Objects* and some *Web Development*.
-6) An extension of *UI Components* to now make those objects outside of Simplicité, creating [external webpages]/docs/front/web-page that communicates with Simplicité's backend and allow for even more customized fronts.
+1) Presentation of the [Theme Editor](/docs/documentation/front/theme) tool, allowing you to customize the themes and styles of you applications, all within Simplicité's solution.
+2) Overview of the [complementary tool](/docs/documentation/front/styles) for theming, allowing you to add even more precise customizations to your applications.
+3) Guide through the [javascript development](/docs/documentation/front/javascript-dev) in Simplicité, both outside with the *NPM Library* and inside with the *External Objects*.
+4) Breakdown of the [Ajax Library](/docs/documentation/front/lib-ajax) that is useful for javascript development as it presents the core functions and methods to navigate and manipulate Simplicité's concepts and objects.
+5) An understanding of how to create [Custom UI Components](/docs/documentation/front/ui-components), breaking down the processes and techniques to do so using Simplicité's  *External Objects* and some *Web Development*.
+6) An extension of *UI Components* to now make those objects outside of Simplicité, creating [external webpages](/docs/documentation/front/web-page) that communicates with Simplicité's backend and allow for even more customized fronts.
 
 Still it is roughly organized in 2 parts, presenting first the basic and very accessible customizations, then delving into more tech aspects of customizations and adressing to web and frontend developpers. All documents are overall independent from each others if your need is only one specific concept, but it is also possible to read them in the right order and get a progressive understanding of how to customize and adapt your Simplicité applications.
 
@@ -95,18 +95,18 @@ Still it is roughly organized in 2 parts, presenting first the basic and very ac
 
 Don't hesitate to also check on other lessons that are relevant for the presented concepts and features,: 
 
-* [*External Objects (Tutorial)*]/docs/tutorial/development/external-object  
-* [*Responsive UI (Documentation)*]/docs/ui/responsive  
-* [*Custom UI disposition (Documentation)*]/docs/core/disposition-code-examples  
-* [*Core Javascript (Documentation)*]/docs/core/javascript-code-examples  
-* [*Interface tool `$ui` (Documentation)*]/docs/core/ui-tools-code-examples  
-* [*Custom Services through External Objects (Documentation)*]/docs/integration/webservices/custom-services  
-* [*Ajax API (Documentation)*]/docs/integration/librairies/ajax-api  
-* [*External Objects (Tutorial)*]/docs/tutorial/development/external-object  
-* [*Responsive UI (Documentation)*]/docs/ui/responsive  
-* [*Custom UI disposition (Documentation)*]/docs/core/disposition-code-examples  
-* [*Core Javascript (Documentation)*]/docs/core/javascript-code-examples  
-* [*Interface tool `$ui` (Documentation)*]/docs/core/ui-tools-code-examples  
-* [*Custom Services through External Objects (Documentation)*]/docs/integration/webservices/custom-services  
-* [*Ajax API (Documentation)*]/docs/integration/librairies/ajax-api  
+* [*External Objects (Tutorial)*](/docs/tutorial/development/external-object)  
+* [*Responsive UI (Documentation)*](/docs/documentation/ui/responsive)  
+* [*Custom UI disposition (Documentation)*](/docs/documentation/core/disposition-code-examples)  
+* [*Core Javascript (Documentation)*](/docs/documentation/core/javascript-code-examples)  
+* [*Interface tool `$ui` (Documentation)*](/docs/documentation/core/ui-tools-code-examples)  
+* [*Custom Services through External Objects (Documentation)*](/docs/documentation/integration/webservices/custom-services)  
+* [*Ajax API (Documentation)*](/docs/documentation/integration/librairies/ajax-api)  
+* [*External Objects (Tutorial)*](/docs/tutorial/development/external-object)  
+* [*Responsive UI (Documentation)*](/docs/documentation/ui/responsive)  
+* [*Custom UI disposition (Documentation)*](/docs/documentation/core/disposition-code-examples)  
+* [*Core Javascript (Documentation)*](/docs/documentation/core/javascript-code-examples)  
+* [*Interface tool `$ui` (Documentation)*](/docs/documentation/core/ui-tools-code-examples)  
+* [*Custom Services through External Objects (Documentation)*](/docs/documentation/integration/webservices/custom-services)  
+* [*Ajax API (Documentation)*](/docs/documentation/integration/librairies/ajax-api)  
 * [*Simplicité NPM Javascript API Doc*](https://simplicitesoftware.github.io/javascript-api/)

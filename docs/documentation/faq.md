@@ -11,7 +11,7 @@ General/installation/operation
 
 > Is it possible to use the _foo_ database, the _bar_ application server, the _baz_ JVM version, ...?
 
-Please refer to the [compatibily tables]/docs/compatibility.
+Please refer to the [compatibily tables](/docs/documentation/compatibility).
 
 For details on some specific installation/operation requirements, please refer to the miscellaneous documentation.
 
@@ -20,7 +20,7 @@ Versions
 
 > What is the current maintenance status of version `x.y`?
 
-Please check [this document]/lesson/versions and the latest release notes of considered version.
+Please check [this document](/lesson/versions) and the latest release notes of considered version.
 
 Usage
 -----
@@ -36,7 +36,7 @@ Design
 
 > Where to starts with to build my first business application?
 
-A good start is the [Getting started]/docs/tutorial/getting-started,
+A good start is the [Getting started](/docs/tutorial/getting-started),
 
 ### Business objects
 
@@ -76,7 +76,7 @@ You can browse the [core documentations](./01-core/) for code examples (general,
 
 > Are there some limitations or usual traps on the server side scripts that I should be aware of?
 
-**Yes!** Please refer to [this documentation]/docs/core/basic-code-examples#javascript-engine-traps for details on things to avoid (to avoid headhaches).
+**Yes!** Please refer to [this documentation](/docs/documentation/core/basic-code-examples#javascript-engine-traps) for details on things to avoid (to avoid headhaches).
 
 ### Integration/APIs
 
@@ -93,4 +93,4 @@ Configuration
 
 > How can I configure the logging of the application?
 
-Please refer to [this document]/docs/misc/logging
+Please refer to [this document](/docs/documentation/misc/logging)

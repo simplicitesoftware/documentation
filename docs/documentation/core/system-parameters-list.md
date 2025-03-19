@@ -405,7 +405,7 @@ Documents directory, either:
 - `BLOB` to store documents in the database (in this case a local document directory needs to be configured in the `DOC_LOCAL_DIR` for fallback strategy)
 
 
-[See database how-to to manage DB documents]/docs/misc/databases-howto
+[See database how-to to manage DB documents](/docs/documentation/misc/databases-howto)
 
 ### `DOC_LOCAL_DIR`
 

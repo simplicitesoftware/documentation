@@ -18,7 +18,7 @@ A Responsibility in Simplicité represents the link between Users and Groups, de
 | Effective date | Start date of user's group membership |
 | End date | Start date of user's group membership (not required) |
 | Enabled | Determines whether a user's group membership is active. When Enabled is false, the user loses the rights of this group |  
-| Module name | Define the [module]/docs/platform/project/module to which it belongs.   |  
+| Module name | Define the [module](/docs/platform/project/module) to which it belongs.   |  
 
 ## Features 
 
