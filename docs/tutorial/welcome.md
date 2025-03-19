@@ -1,51 +1,76 @@
 ---
 sidebar_position: 0
-title: Welcome
+title: Introduction
 ---
 
-# Welcome
+# Welcome to the Simplicité Tutorial
 
-Start by filtering on level 1 (bookmark button at the top right). This version is designed for (future) Simplicité designers. 
-We recommend following level 2 after a few months of practice on the platform or if you have specific configuration needs, in order to expand your knowledge and skills to an intermediate level.
+## Getting Started
 
-## Level 1 Tutorial: Introduction to the Simplicité Platform
+Before beginning the tutorials, you'll need:
+- A Simplicité trial instance (contact us to get a one-month trial)
+- An up to date browser
 
-During this level 1 tutorial, you will discover the fundamentals of the Simplicité platform. We will design an order management application.
+## Tutorial Structure
 
-After completing this course, you will be able to take the **Fundamentals** certification exam.
+### Foundation: Building an Order Management Application
+Learn the fundamentals by creating a complete business application:
 
-### Key Steps to Design the Order management Application
+1. **Creating Your First Module**
+   - Understanding module structure
+   - Setting up basic configurations
+   - Creating user groups and domains
 
-#### 1. Familiarization with the Simplicité interface
-- Discover the configuration and development environment.
-- Learn to navigate through the different menus and tools.
+2. **Building Business Objects**
+   - Designing data models
+   - Establishing relationships
+   - Configuring fields and properties
 
-#### 2. Creating the data model
-- Define the necessary objects (e.g., Customers, Products, Orders).
-- Establish relationships between the objects.  
-![](img/welcome/data-model_ENU.png)
+3. **User Management**
+   - Creating and configuring users
+   - Setting up permissions
+   - Managing access controls
 
-#### 3. Designing the user interface
-- Create input forms for business objects.
-- Design home pages.
+### Expanding Your Application
+Once you've built the basic structure, learn how to enhance your application with advanced features:
 
-#### 4. Implementing business logic
-- Implement business rules.
-- Add automatic calculation of the order total.
+1. **Links, Field Areas and Layout**
+   - Implementing data relationships
+   - Organizing forms with field areas
+   - Improving user interface structure
 
-#### 5. Managing state diagrams
-- Configure the order validation flow.
-- Set up automatic notifications.
+2. **Advanced UI Components**
+   - Building hierarchical data views
+   - Customizing form layouts
+   - Enhancing user experience
 
-#### 6. Testing and debugging
-- Verify the proper functioning of all features.
-- Fix any issues.
+3, **Implementing business rules**
+    - Understanding constraints
+    - First steps into Java coding
+    - Custom data exports
 
-#### 7. Deploying the application
-- Prepare the application for production.
-- Learn how to deploy an application on the platform.
+## How to Use This Tutorial
+
+Follow these steps for each lesson:
+
+1. **Read the Lesson Content**
+   - Take your time with the concepts
+   - Ensure you understand the explanations thoroughly
+
+2. **Study the Images**
+   - Screenshots contain important information
+   - Use them as visual guides for navigation
+
+3. **Complete the Exercise**
+   - Apply what you've learned
+   - Follow the steps carefully
+   - Test your implementation
+
+
+## Navigation Note
+
+While Simplicité offers multiple ways to reach any screen, these tutorials provide a structured path through the platform. The meta-model approach ensures you'll always know where to find configuration options, even as you become more experienced with the platform.
 
 ---
 
-By following these steps, you will acquire the fundamental skills necessary to create a simple order management application on Simplicité. This will also prepare you for the **Fundamentals** certification.
-
+Ready to begin? Start with [Creating a Module](/docs/tutorial/getting-started/module) to build your first Simplicité application.
