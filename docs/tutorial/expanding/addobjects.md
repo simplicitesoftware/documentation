@@ -11,7 +11,7 @@ title: 2.1. Adding objects
 ## Create the Product Business object
 
 ### Product definition
-Follow the steps in [Getting started : Create object](/lesson/tutorial/getting-started/object) to create the Product Business object with the following properties :
+Follow the steps in [Getting started : Create object]/docs/tutorial/getting-started/object to create the Product Business object with the following properties :
 - Code : **TrnProduct**
 - Table : **trn_product**
 - Module : **Training**
@@ -20,7 +20,7 @@ Follow the steps in [Getting started : Create object](/lesson/tutorial/getting-s
 ![](img/addobjects/product-form.png)
 
 ### Product fields 
-Follow the steps in [Getting started : Create field](/lesson/tutorial/getting-started/attribute) to add the following fields to the Product Business object : 
+Follow the steps in [Getting started : Create field]/docs/tutorial/getting-started/attribute to add the following fields to the Product Business object : 
 
 | Label | Type | Logical name | Physical name | Functional Key | Required |
 | ----- | ---- | ------------ | ------------- | -------------- | -------- |
@@ -39,7 +39,7 @@ Follow the steps in [Getting started : Create field](/lesson/tutorial/getting-st
 ## Create the Client Business object
 
 ### Client definition
-Follow the steps in [Getting started : Create object](/lesson/tutorial/getting-started/object) to create the Client Business object with the following properties :
+Follow the steps in [Getting started : Create object]/docs/tutorial/getting-started/object to create the Client Business object with the following properties :
 - Code : **TrnClient**
 - Table : **trn_client**
 - Module : **Training**
@@ -48,7 +48,7 @@ Follow the steps in [Getting started : Create object](/lesson/tutorial/getting-s
 ![](img/addobjects/client-form.png)
 
 ### Client fields 
-Follow the steps in [Getting started : Create field](/lesson/tutorial/getting-started/attribute) to add the following fields to the Client Business object : 
+Follow the steps in [Getting started : Create field]/docs/tutorial/getting-started/attribute to add the following fields to the Client Business object : 
 
 | Label | Type | Logical name | Physical name | Functional Key | Required |
 | ----- | ---- | ------------ | ------------- | -------------- | -------- |
@@ -63,7 +63,7 @@ Follow the steps in [Getting started : Create field](/lesson/tutorial/getting-st
 ## Create the Order Business object
 
 ### Order definition
-Follow the steps in [Getting started : Create object](/lesson/tutorial/getting-started/object) to create the Order Business object with the following properties :
+Follow the steps in [Getting started : Create object]/docs/tutorial/getting-started/object to create the Order Business object with the following properties :
 - Code : **TrnOrder**
 - Table : **trn_order**
 - Module : **Training**
@@ -72,11 +72,11 @@ Follow the steps in [Getting started : Create object](/lesson/tutorial/getting-s
 ![](img/addobjects/order-form.png)
 
 ### Order fields 
-Follow the steps in [Getting started : Create field](/lesson/tutorial/getting-started/attribute) to add the following fields to the Order Business object : 
+Follow the steps in [Getting started : Create field]/docs/tutorial/getting-started/attribute to add the following fields to the Order Business object : 
 
 | Label | Type | Logical name | Physical name | Functional Key | Required |
 | ----- | ---- | ------------ | ------------- | -------------- | -------- |
-| **Number** | Integer | trnOrdNumer | trn_ord_number | yes | yes |
+| **Number** | Integer | trnOrdNumber | trn_ord_number | yes | yes |
 | **Quantity** | Short text | trnOrdQuantity | trn_ord_quantity | no | yes |
 | **Date** | Date | trnOrdDate | trn_ord_date | no | no |
 
@@ -85,7 +85,7 @@ Follow the steps in [Getting started : Create field](/lesson/tutorial/getting-st
 ## Complete the Supplier Business object
 
 ### Supplier fields
-Follow the steps in [Getting started : Create field](/lesson/tutorial/getting-started/attribute) to add the following fields to the Supplier Business object : 
+Follow the steps in [Getting started : Create field]/docs/tutorial/getting-started/attribute to add the following fields to the Supplier Business object : 
 
 | Label | Type | Logical name | Physical name | Functional Key | Required |
 | ----- | ---- | ------------ | ------------- | -------------- | -------- |
@@ -95,5 +95,3 @@ Follow the steps in [Getting started : Create field](/lesson/tutorial/getting-st
 | **Website** | URL | trnSupWebsite | trn_sup_website | no | no |
 
 ![](img/addobjects/supplier-fields.png)
-
-[Next step : Creating links between the Business objects](/lesson/tutorial/expanding/relations)

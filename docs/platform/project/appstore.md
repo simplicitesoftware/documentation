@@ -13,7 +13,7 @@ As a reminder, that minimal information is:
 - the name of the module
 - a source to install from (usually a URL for the zipped module or the URL to the GIT repository)
 
-The JSON also includes some extra information usefull to the designers who will visit the AppStore :
+The JSON also includes some extra information useful to the designers who will visit the AppStore :
 - an image
 - a title
 - a description
@@ -77,7 +77,7 @@ Stores are configured through the `STORE_SOURCE` setting, which default to Simpl
 ]
 ```
 
-The idea behind that is that it makes it possible to easily share modules to an organisation's pool of designer (for example, an authentication module that will be shared by all of the organisation's apps).
+The idea behind that is that it makes it possible to easily share modules to an organization's pool of designer (for example, an authentication module that will be shared by all of the organization's apps).
 
 It also makes it possible to clone Simplicité's modules and stores to make them available on a network disconnected from the public internet.
 

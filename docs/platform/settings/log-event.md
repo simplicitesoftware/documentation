@@ -9,7 +9,7 @@ Logging
 Introduction
 ------------
 
-In Simplicit&eacute;&reg;, the logging mechanisms are based on configurable **log events** (cf. the `LogEvent` business object).
+In Simplicité, the logging mechanisms are based on configurable **log events** (cf. the `LogEvent` business object).
 
 Each log event:
 
@@ -55,14 +55,14 @@ As of version 3.0, all technical logs are also pushed on a websocket push event 
 (on application servers that provides websocket implementation like Tomcat 8+) available when connected on the generic web UI.
 
 It pushes log events to the browser's console when the system parameter `USE_WEBSOCKET_LOGS` is set to `yes` (which is, by
-default, globally set to `no` and may be overriden on a per-user basis).
+default, globally set to `no` and may be overridden on a per-user basis).
 
 The log events can be filtered based on their log level, the threshold level can be configured in the operation dashboard.
 
 Business logging
 ----------------
 
-The logs associated to a log event marked as recorded in the database are available as buisness data using the `AppLog` business object.
+The logs associated to a log event marked as recorded in the database are available as business data using the `AppLog` business object.
 
 Such log events correspond to something worth auditing from a business point of view (login/logout, business events, ...). The associated log records
 are to be considered as business data more than pure logging. Typical business usage is for audit trails.

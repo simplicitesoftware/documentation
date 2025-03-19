@@ -5,11 +5,11 @@ title: 2.12. Coding business rules
 
 # Building the "Order Management" Training App : Coding business rules - Hooks
 
-> Prerequisite : [The Order object has a state model](/lesson/tutorial/expanding/states) and [Product object has an Action](/lesson/tutorial/expanding/actions)
+> Prerequisite : [The Order object has a state model]/docs/tutorial/expanding/states and [Product object has an Action]/docs/tutorial/expanding/actions
 
 ## What is a Hook ?
 
-In Simplicité, Hooks allow you to extend the default behavior of business objects by overriding key lifecycle methods in Java or JavaScript, enabling advanced custom logic and processing... [Learn more](/lesson/docs/core/objects/businessobject-code-hooks)
+In Simplicité, Hooks allow you to extend the default behavior of business objects by overriding key lifecycle methods in Java or JavaScript, enabling advanced custom logic and processing... [Learn more]/docs/core/objects/businessobject-code-hooks
 
 ## Adding business rules to the Order Business object 
 
@@ -24,8 +24,7 @@ To add this business rule, override the `postValidate` hook by following the ste
 2. Click **Edit code**, select **Java** and click **Confirm**  
 	![](img/hooks/edit-code.png)	
 3. Override the `postValidate` method with the following implementation :
-	> The `postValidate` hook is called after the platform's `validate()` and is used to to add validation rules. For more information, see [Hooks](/lesson/docs/core/objects/businessobject-code-hooks#prepostvalidatehooks)
-	
+	> The `postValidate` hook is called after the platform's `validate()` and is used to to add validation rules. For more information, see [Hooks]/docs/core/objects/businessobject-code-hooks#prepostvalidatehooks
 ```java 
 @Override
 public List<String> postValidate() {
@@ -44,7 +43,7 @@ public List<String> postValidate() {
 To add this business rule, update the `postValidate` hook by following the steps below :
 
 1. Add the Product's **Stock** field to the Order object
-	> For a detailed guide, see : [Adding a joined field](/lesson/tutorial/expanding/calculated-fields#add-the-product-price-field-to-the-order-business-object)
+	> For a detailed guide, see : [Adding a joined field]/docs/tutorial/expanding/calculated-fields#add-the-product-price-field-to-the-order-business-object
 2. Click **Edit code** on the **TrnOrder** object's form
 3. Update the `postValidate()` implementation :
 ```java
@@ -57,7 +56,7 @@ public List<String> postValidate() {
 	}
 	// Check : quantity > stock
 	if (getField("trnOrdQuantity").getInt(0) > getField("trnPrdStock").getInt(0)) {
-		msgs.add(Message.formatError("Insufficent stock", null, "trnOrdQuantity"));
+		msgs.add(Message.formatError("Insufficient stock", null, "trnOrdQuantity"));
 	}
 	return msgs;
 }
@@ -126,7 +125,7 @@ public String postUpdate() {
 ## Test the Business rules with the usertest User
 
 Clear the platform's cache and log in using *usertest*
-> For a detailed step-by-step, see : [Testing the User](/lesson/tutorial/getting-started/user#activating-and-testing-the-user)
+> For a detailed step-by-step, see : [Testing the User]/docs/tutorial/getting-started/user#activating-and-testing-the-user
 
 :::tip[Success]
   <ul>

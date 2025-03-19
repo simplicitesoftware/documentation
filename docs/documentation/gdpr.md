@@ -14,7 +14,7 @@ The only out of the box business object which has some potentially private data 
 but out of the box the platform is only configured with anonymous technical users.
 
 The platform is designed to process the data you configure in it which may include some private data. It is your sole responsibility to comply
-with GDPR regarding this potential private data you have decided to manage with Simplicit&eacute;&reg;. The following guidelines are dedicated to help
+with GDPR regarding this potential private data you have decided to manage with Simplicité. The following guidelines are dedicated to help
 you in this task.
 
 > **Note**: all data configured in the platform is physically stored in the database(s) you have configured for it.

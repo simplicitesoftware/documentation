@@ -6,12 +6,12 @@ title: AWS ElasticBeansTalk
 Simplicit&eacute; on AWS elastic Beanstalk&reg;
 ===============================================
 
-Simplicit&eacute;&reg; instances can easily be deployed on the AWS Elastic Beanstalk&reg; platform.
+Simplicité instances can easily be deployed on the AWS Elastic Beanstalk&reg; platform.
 
-This document consider you are using a standard **Simplicit&eacute;&reg; cloud instance template** cloned from Git.
+This document consider you are using a standard **Simplicité cloud instance template** cloned from Git.
 
 > **Warning**: this document may be **outdated** and incomplete.
-> Docker-based deployments (see [this document](/lesson/docs/operation/docker)) are to be preferred over deployement on a proprietary PaaS.
+> Docker-based deployments (see [this document]/docs/operation/docker) are to be preferred over deployement on a proprietary PaaS.
 > Our support capabilities on this PaaS is very limited so before choosing this option make sure you have required up-to-date expertise.
 
 

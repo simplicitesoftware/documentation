@@ -53,7 +53,7 @@ The view layer provides the rendering with several functions:
 
 **Styles**: the engine loads also the user's theme:
 
-* `default`: Simplicit&eacute;&reg; default theme (grey, blue and green)
+* `default`: Simplicité default theme (grey, blue and green)
 * `dark`: black & white theme
 * `light`: neutral white & grey theme to customize
 

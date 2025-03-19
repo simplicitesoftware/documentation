@@ -16,11 +16,11 @@ Notifications allow to alert users when an event occurs and are configured in :
 They :
 - are linked to a business object, 
 - are triggered by an action (create, update, delete) 
-- can optionally have an execution condition in the form of an [expression](/lesson/docs/core/expressions).
+- can optionally have an execution condition in the form of an [expression]/docs/core/expressions.
 - can be sent :
     - through multiple broadcast channels 
     - to multiple recipients
-- its content is defined by language and can be overriden for a particular channel and/or recipient. 
+- its content is defined by language and can be overridden for a particular channel and/or recipient. 
 
 Recipients can be concerned by all of the notification's channels or be set up individually for a more precise configuration per recipient. 
 

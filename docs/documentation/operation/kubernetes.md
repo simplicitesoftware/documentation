@@ -33,7 +33,7 @@ Verify the cluster:
 
 <h2 id="privateimages">Allow use of private images</h2>
 
-The Simplicit&eacute;&reg; images needs appropriate credentials on DockerHub.
+The Simplicité images needs appropriate credentials on DockerHub.
 
 First sign in to DockerHub with your DockerHub account:
 ```
@@ -47,7 +47,7 @@ Alternatively you can create the secret directly (without signin in to DockerHub
 ```
 	kubectl create secret docker-registry regcred --docker-server=https://index.docker.io/v1/ --docker-username=<your username> --docker-password=<your password> --docker-email=<your email address>
 ```
-<h2 id="sandbox">Basic Simplicit&eacute;&reg; sandbox example using Kompose&reg;</h2>
+<h2 id="sandbox">Basic Simplicité sandbox example using Kompose&reg;</h2>
 
 For this basic example we will be using the [Kompose tool](https:installation.md) tool.
 
@@ -110,7 +110,7 @@ In the above case you can now point your browser to `http://6fvb57vqjk.lb.c4.gra
 
 <h2 id="example">Comprehensive example</h2>
 
-In this example we will be using custom manifests for deploying a PostgreSQL database and a Simplicit&eacute;&reg; instance.
+In this example we will be using custom manifests for deploying a PostgreSQL database and a Simplicité instance.
 
 ### Database
 
@@ -219,14 +219,14 @@ NAME       TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
 postgres   NodePort   10.3.179.187   <none>        5432:31392/TCP   9m6s
 ```
 
-### Simplicit&eacute;&reg; instance
+### Simplicité instance
 
 The following `simplicite.yml` manifest contains:
 
 - A persistent volume for the Git repositories
 - A claim for the above persistent volume
-- A deployment for a Simplicit&eacute;&reg; instance container
-- A loadbalanced service for the Simplicit&eacute;&reg; instance
+- A deployment for a Simplicité instance container
+- A loadbalanced service for the Simplicité instance
 
 ```yaml
 ---

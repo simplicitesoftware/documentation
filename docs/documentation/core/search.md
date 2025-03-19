@@ -50,7 +50,7 @@ It has three main presentations:
 - **pinned to columns**
 - **docked**
 
-The detached and pinned modes have a richer UI with components to help the user build advanced queries based on the [Simplicité Search Syntax](/lesson/docs/ui/search-syntax).
+The detached and pinned modes have a richer UI with components to help the user build advanced queries based on the [Simplicité Search Syntax]/docs/ui/search-syntax.
 
 Basically, each filter is translated to a SQL `WHERE` clause, allowing filtering on the table.
 
@@ -72,7 +72,7 @@ The Form search facilitated finding a particular attribute in a big form, highli
 
 ## Customizing results
 
-To customize results and modify the object search behaviour object by object, you can use the dedicated object hooks, `preSearch` and `postSearch`.
+To customize results and modify the object search behavior object by object, you can use the dedicated object hooks, `preSearch` and `postSearch`.
 
 ## Searching in...
 

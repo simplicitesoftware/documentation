@@ -6,7 +6,7 @@ title: Email howto
 E-mail howto
 ============
 
-This document shows how to configure application server's e-mail service that is used by Simplicit&eacute;&reg; to send e-mails.
+This document shows how to configure application server's e-mail service that is used by Simplicité to send e-mails.
 
 Tomcat context-level configuration
 ---------------------------------
@@ -117,4 +117,4 @@ When this parameter is not set (or set to `default`), the `mail.from` is used.
 Use an external service like Mailchimp, MailJet or Sendwithus
 -------------------------------------------------------------
 
-See [Third party apis](/lesson/docs/core/third-party-apis-examples) page.
+See [Third party apis]/docs/core/third-party-apis-examples page.

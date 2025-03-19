@@ -10,7 +10,7 @@ Shared codes (V5 menu **Configuration/Shared code**,V6 menu **Business objects/S
 
 They have various uses, including  
 * To create new Java classes and therefore create specific tools.  
-* Completing the behaviour of certain base classes (classes inheriting from ObjectDB), in particular the PlatformHooks authentication class.  
+* Completing the behavior of certain base classes (classes inheriting from ObjectDB), in particular the PlatformHooks authentication class.  
 * Set up unit tests  
 * Create specific SQL codes for data recovery, for example.  
 

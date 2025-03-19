@@ -5,11 +5,11 @@ title: 2.3. Structuring forms
 
 # Building the "Order Management" Training App : Structuring Forms - Field Areas
 
-> Prerequisite : [The Supplier, Product, Client and Order objects are linked together](/lesson/tutorial/expanding/relations)
+> Prerequisite : [The Supplier, Product, Client and Order objects are linked together]/docs/tutorial/expanding/relations
 
 ## What is a Field Area ?
 
-A Field Area groups related fields in forms and lists for better organization... [Learn more](/lesson/docs/platform/userinterface/templating/fields-areas)
+A Field Area groups related fields in forms and lists for better organization... [Learn more]/docs/platform/userinterface/templating/fields-areas
 
 ## Customizing the Order Business object form
 

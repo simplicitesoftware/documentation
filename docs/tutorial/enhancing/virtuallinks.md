@@ -5,20 +5,20 @@ title: 3.1. Creating virtual links
 
 # Building the "Order Management" Training App : Creating virtual links
 
-> Prerequisite : [The Supplier, Product, Client and Order objects are linked together](/lesson/tutorial/expanding/relations)
+> Prerequisite : [The Supplier, Product, Client and Order objects are linked together]/docs/tutorial/expanding/relations
 
 ## What is a Virtual link ?
 
-In Simplicité, a virtual link allows you to access data between business objects without adding a physical column or foreign key. The data is retrieved via an SQL query configured on the virtual link, enabling flexible relationships without altering the database structure... [Learn more](/lesson/docs/platform/businessobjects/links#virtual-link)
+In Simplicité, a virtual link allows you to access data between business objects without adding a physical column or foreign key. The data is retrieved via an SQL query configured on the virtual link, enabling flexible relationships without altering the database structure... [Learn more]/docs/platform/businessobjects/links#virtual-link
 
 ## Accessing the list of a Supplier's Clients
 
 To create a virtual link between the **TrnSupplier** and **TrnClient** objects, follow the steps below :
 
-### Create and add a non persitent Field to TrnClient 
+### Create and add a non persistent Field to TrnClient  
 
 1. Open TrnClient's template editor
-    > For a detailed step-by-step, see [Getting started : Create field](/lesson/tutorial/getting-started/attribute)
+    > For a detailed step-by-step, see [Getting started : Create field]/docs/tutorial/getting-started/attribute
 2. Add a new **Internal ID** field   
     ![](img/virtuallinks/field-create.png)
 3. Fill in the Field's information like so :
@@ -39,7 +39,7 @@ To create a virtual link between the **TrnSupplier** and **TrnClient** objects, 
 9. Fill in the **Deletion** mandatory field : **Do not use**
 10. Click **Save & Close**
 
-### Add an SQL filter to the Virutal link
+### Add an SQL filter to the Virtual link
 
 1. In the **Business objects > Links** menu, open the previously created link  
     ![](img/virtuallinks/link-list.png)
@@ -71,7 +71,7 @@ t.row_id IN (
 ## Test the Virtual link with the usertest User
 
 1. Clear the platform's cache and log in using *usertest*
-	> For a detailed step-by-step, see : [Testing the User](/lesson/tutorial/getting-started/user#activating-and-testing-the-user)
+	> For a detailed step-by-step, see : [Testing the User]/docs/tutorial/getting-started/user#activating-and-testing-the-user
 2. Open a Supplier
 
 :::tip[Success]

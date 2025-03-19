@@ -228,4 +228,4 @@ As of version 5.3 it is possible to enable GPG signature of commits.
 
 This uses the `GIT_GPG_SIGNATURE_KEYID` system parameter which denotes the GPG key ID to use for signature.
 
-> **Note**: THis system parameter can be overriden on a per-user base.
+> **Note**: THis system parameter can be overridden on a per-user base.

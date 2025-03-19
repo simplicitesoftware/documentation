@@ -53,7 +53,7 @@ Alternatively, use the menu search bar to find the Permissions configuration obj
 3. Set the Module
 4. Select the target object
 5. Select the property to override
-6. Set the overriden value
+6. Set the overridden value
 
 <div class="warning">
 It is required to clear the platform's cache to apply changes made to Permissions

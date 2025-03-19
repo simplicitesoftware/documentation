@@ -15,11 +15,11 @@ Create a pivot table that summarizes the number of orders by product, supplier (
 
 # Building the "Order Management" Training App : Creating a Pivot table
 
-> Prerequisite : [The Order object has a state model](/lesson/tutorial/expanding/states)
+> Prerequisite : [The Order object has a state model]/docs/tutorial/expanding/states
 
 ## What is a Pivot table ?
 
-Pivot tables provide a powerful way to analyze data by cross-referencing fields within a business object. Users can configure tables by selecting which fields appear as rows, columns, and values, with various customization options like filtering, axis swapping, and export capabilities... [Learn more](/lesson/docs/platform/userinterface/objectsrendering/pivot-table)
+Pivot tables provide a powerful way to analyze data by cross-referencing fields within a business object. Users can configure tables by selecting which fields appear as rows, columns, and values, with various customization options like filtering, axis swapping, and export capabilities... [Learn more]/docs/platform/userinterface/objectsrendering/pivot-table
 
 ## Adding a Pivot table to the Order Business object
 
@@ -89,7 +89,7 @@ The Pivot table should be configured like so :
 ## Test the Pivot table with the usertest User
 
 1. Clear the platform's cache and log in using *usertest*
-    > For a detailed step-by-step, see : [Testing the User](/lesson/tutorial/getting-started/user#activating-and-testing-the-user)
+    > For a detailed step-by-step, see : [Testing the User]/docs/tutorial/getting-started/user#activating-and-testing-the-user
 
 2. Open the list of Orders and click **Orders per state**  
     ![](img/pivot-table/pt-access.png)

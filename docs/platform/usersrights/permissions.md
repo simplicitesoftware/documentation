@@ -35,7 +35,7 @@ A **Permission** is a Configuration Object in the metamodel that allows controll
 | **Target Object** | The target object for which the permission is set |
 | **Visible** | Visible Property being overridden (e.g., visibility) |
 | **Updatable** | Updatable overridden property |
-| **Property** | Property overriden |
+| **Property** | Property overridden |
 | **Primary Group** | Group to which the permission applies |
 | **Group permissions** | Others Groups to which the permission applies |
 | **Module** | The module to which the Permission belongs |
@@ -79,8 +79,8 @@ It is required to clear the platform's cache to apply changes made to Permission
 
 ## Learn more
 
-- [Functions](/lesson/docs/platform/usersrights/function)
-- [Grant](/lesson/docs/platform/usersrights/grant)
-- [Business object](/lesson/docs/platform/businessobjects/business-objects/business-objects)
+- [Functions]/docs/platform/usersrights/function
+- [Grant]/docs/platform/usersrights/grant
+- [Business object]/docs/platform/businessobjects/business-objects/business-objects
   
 

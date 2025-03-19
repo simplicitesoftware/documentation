@@ -6,7 +6,7 @@ title: Node.js API
 Node.js and browser JavaScript API
 ==================================
 
-The Simplicit&eacute;&reg; [Node.js&reg;](http://nodejs.org) &amp; browser **JavaScript API** is an open source contribution
+The Simplicité [Node.js&reg;](http://nodejs.org) &amp; browser **JavaScript API** is an open source contribution
 available on [GitHub](https://github.com/simplicitesoftware/javascript-api) (see its [documentation](https://simplicitesoftware.github.io/javascript-api))
 
 - A simple **server side** web demo contribution using this API

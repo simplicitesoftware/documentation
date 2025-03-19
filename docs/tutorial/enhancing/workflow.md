@@ -11,14 +11,14 @@ A process (sequence of screens) is a wizard designed to assist the user during a
 The process can be defined in the **Business Process/Business Process** menu.  
 The process is configured by :  
     Type: input sequence or human task  
-    Class: any Java class that modifies the default behaviour  
+    Class: any Java class that modifies the default behavior  
     Module: application module  
 
 A process is made up of activities.  
 When the process is created, 2 activities are generated: Begin and End.  
 If these two activities did not exist or have been deleted, they must be created manually.  
 Activities can be configured in the modeller by creating a specific diagram using the ModelProcess model.  
-Activities have data which can be used to customise workflow behaviour.  
+Activities have data which can be used to customise workflow behavior.  
 ## Process permission
 A process must be associated with the group in the "Process permission" tab in order to be instancied.
 In the process permission, the "Cancel permission" option adds an "Cancel process" button to all the activities in the process.   
@@ -52,10 +52,10 @@ It allows to configure a long process wizard like for task tracking. The process
 # Complex workflow
 
 ## Scripting
-The default behaviour of the process can be replaced via hooks in the Java script of the business process.
+The default behavior of the process can be replaced via hooks in the Java script of the business process.
 
 ## Conditional link / Routing
-You can add a condition on the activity transition to configure conditional behaviour.  
+You can add a condition on the activity transition to configure conditional behavior.  
 Use `[DEFAULT]` to configure the default link.  
 
 ### Exercise

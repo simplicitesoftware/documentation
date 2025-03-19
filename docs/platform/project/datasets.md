@@ -22,7 +22,7 @@ An export per object is available on the lists as a designer (menu plus > export
 
 To create a dataset, follow the steps below: 
 
-1. Add the order of export of eaxh objects of your module.  
+1. Add the order of export of each objects of your module.  
 In case your application depends on different modules make sure that the global export order is consistent, as datasets relate to one module only.   
 ![](img/datasets/dataset1.png)   
 2. Once all the export orders have been completed, you can generate your dataset.   

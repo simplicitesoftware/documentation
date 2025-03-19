@@ -25,6 +25,24 @@ def get_lesson_info(root):
     
     return position, title, published
 
+def load_url_rewrites(source_root):
+    """Load URL rewriting rules from url_rewriting.json"""
+    rewrite_path = os.path.join(source_root, "url_rewriting.json")
+    print(f"\n📖 Loading URL rewrites from: {rewrite_path}")
+    
+    if not os.path.exists(rewrite_path):
+        print("⚠️ No url_rewriting.json found")
+        return []
+    
+    with open(rewrite_path, 'r', encoding='utf-8') as f:
+        rewrites = json.load(f)
+        print(f"✅ Loaded {len(rewrites)} URL rewrites")
+        print("\nFirst few rewrites:")
+        for i, rule in enumerate(rewrites[:3]):
+            print(f"  {i+1}. {rule['sourceUrl']} -> {rule['destinationUrl']}")
+    
+    return rewrites
+
 def reorganize_files(source_root, target_root):
     """Reorganizes files from the source directory to the target directory, preserving CTG hierarchy without prefixes."""
     
@@ -32,10 +50,13 @@ def reorganize_files(source_root, target_root):
         print(f"❌ Error: Source directory '{source_root}' does not exist.")
         return
     
+    # Load URL rewriting rules
+    url_rewrites = load_url_rewrites(source_root)
+    
     os.makedirs(target_root, exist_ok=True)
     
     # Define directories to skip
-    skip_directories = {'CTG_99_tests', 'CTG_01_pages'}
+    skip_directories = {'CTG_99_tests', 'CTG_01_pages', 'CTG_100_legacy'}
     
     json_mappings = {"category.json": "_category_.json"}
     
@@ -57,7 +78,13 @@ def reorganize_files(source_root, target_root):
         ctg_path = []
         for part in path_parts:
             if part.startswith("CTG_"):
-                ctg_path.append(part[7:])  # Remove "CTG_XX_" prefix
+                # Special case for CTG_50_docs
+                if part.startswith("CTG_50_docs"):
+                    ctg_path.append("documentation")
+                else:
+                    # Use regex to remove CTG_X_ or CTG_XX_ prefix
+                    clean_name = re.sub(r'^CTG_\d+_', '', part)
+                    ctg_path.append(clean_name)
         
         if ctg_path:
             target_dir = os.path.join(target_root, *ctg_path)
@@ -98,7 +125,7 @@ def reorganize_files(source_root, target_root):
                 lesson_name = re.sub(r"LSN_\d+_", "", os.path.splitext(file)[0])
                 lesson_name = re.sub(r"_ENU$", "", lesson_name)
                 dest_md = os.path.join(target_dir, f"{lesson_name}.md")
-                update_md_image_references(src_path, dest_md, lesson_name, position, title, published)
+                update_md_image_references(src_path, dest_md, lesson_name, position, title, published, url_rewrites)
             else:
                 continue  # Ignore other file types
     
@@ -149,10 +176,49 @@ def sanitize_filename(filename):
     sanitized = re.sub(r'[^a-zA-Z0-9._-]', '', sanitized)
     return sanitized
 
-def update_md_image_references(src_md, dest_md, lesson_name, position=None, title=None, published=None):
+def update_md_image_references(src_md, dest_md, lesson_name, position=None, title=None, published=None, url_rewrites=None):
     """Replaces <img> tags with Markdown image syntax in .md files and adds YAML header."""
     with open(src_md, "r", encoding="utf-8") as f:
         content = f.read()
+    
+    print(f"\n🔍 Processing file: {src_md}")
+    
+    # Handle all /lesson/ links with different transformations
+    link_pattern = r'\[([^\]]+)\]\(/lesson/([^\)]+)\)'
+    
+    def replace_link(match):
+        link_text = match.group(1)
+        link_path = match.group(2)
+        original_url = f'/lesson/{link_path}'
+        
+        print(f"\n  Found link: [{link_text}]({original_url})")
+        
+        # First check for URL rewrites
+        for rule in url_rewrites:
+            if rule['sourceUrl'] == original_url:
+                print(f"  ✅ Rewrite match: {rule['destinationUrl']}")
+                return f'[{link_text}]{rule["destinationUrl"]}'
+        
+        # No rewrite found, apply standard transformations
+        if link_path.startswith('tutorial/'):
+            new_url = f'/docs/{link_path}'
+            print(f"  ✅ Tutorial path: {new_url}")
+            return f'[{link_text}]{new_url}'
+        elif link_path.startswith('docs/'):
+            new_url = f'/docs/{link_path[5:]}'  # Remove 'docs/' from path
+            print(f"  ✅ Docs path: {new_url}")
+            return f'[{link_text}]{new_url}'
+        elif "CTG_50_docs" in src_md:
+            new_url = f'/docs/documentation/{link_path}'
+            print(f"  ✅ Documentation path: {new_url}")
+            return f'[{link_text}]{new_url}'
+        else:
+            new_url = f'/docs/{link_path}'
+            print(f"  ✅ Default path: {new_url}")
+            return f'[{link_text}]{new_url}'
+    
+    # Apply the link transformations
+    updated_content = re.sub(link_pattern, replace_link, content)
     
     # Create YAML header if we have position, title, or published status
     yaml_header = ""
@@ -171,7 +237,7 @@ def update_md_image_references(src_md, dest_md, lesson_name, position=None, titl
     def success_replacement(match):
         content = match.group(1).strip()
         return f":::tip[Success]\n  {content}\n:::"
-    updated_content = re.sub(success_pattern, success_replacement, content, flags=re.DOTALL)
+    updated_content = re.sub(success_pattern, success_replacement, updated_content, flags=re.DOTALL)
     
     # Replace image references for <img> tags, but skip https links
     img_pattern = r'<img\s+src=["\']([^"\']+)["\'].*?>'

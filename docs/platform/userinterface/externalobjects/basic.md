@@ -1,4 +1,5 @@
 ---
+sidebar_class_name: hidden
 sidebar_position: 10
 title: Basic
 ---
@@ -7,16 +8,16 @@ title: Basic
 
 ## What is an External Objects ?
 
-It is an object that allows for customized interactions and behaviours within Simplicité. They are objects that you will implement to serve specific needs.
+It is an object that allows for customized interactions and behaviors within Simplicité. They are objects that you will implement to serve specific needs.
 
 In such objects you will be able to interact with Simplicité by using the [Ajax Library](https://platform.simplicite.io/6.2/jsdoc/index.html) to properly interact with the native part of your solution.
 
 There are several types of *External Objects*, that all serve a certain use-case of type of need:  
 - Basic
-- [UI page or component](/lesson/docs/platform/userinterface/externalobjects/uicomponent)
-- [Web-page](/lesson/docs/platform/userinterface/externalobjects/webpage)
+- [UI page or component]/docs/platform/userinterface/externalobjects/uicomponent
+- [Web-page]/docs/platform/userinterface/externalobjects/webpage
 - JQuery web page
-- [Static web site](/lesson/docs/platform/userinterface/externalobjects/staticsite)
+- [Static web site]/docs/platform/userinterface/externalobjects/staticsite
 - REST web service
 - Mapped REST web service
 - GraphQL web service
@@ -26,20 +27,20 @@ There are several types of *External Objects*, that all serve a certain use-case
 
 The most used are:
 - **Basic:** to create all type of elements, but mostly to handle external objects that should be accessible both in **public** & **private** zones (outside or inside of Simplicité's interfaces).
-- **UI page or component:** to create *widgets* that can be embedded in any [Dashboard](/lesson/docs/platform/userinterface/views/dashboard) or any **View**.
+- **UI page or component:** to create *widgets* that can be embedded in any [Dashboard]/docs/platform/userinterface/views/dashboard or any **View**.
 - **Web-page:** to create components rendered exclusively in the *public* zone as standalone pages still interacting dynamically with a Simplicité's instance.
 - **Static web site:** to create standalone webpages that are not interacting with any Simplicité's instance.
 
 ### Structure
 
-All **External Objects** are organized as web elements, thus are composed of 3 [resources](/lesson/docs/platform/userinterface/resources):
+All **External Objects** are organized as web elements, thus are composed of 3 [resources]/docs/platform/userinterface/resources:
 - **HTML** is the resource containing the *html* code of your object that defines its core structure and organization.
 - **STYLES** is the resource containing the stylesheet (*css* or *less*) associated with your object's HTML.
-- **CLASS** is the resource with the javascript file inside of which you will code the behaviours and interactions for your External Object. 
+- **CLASS** is the resource with the javascript file inside of which you will code the behaviors and interactions for your External Object. 
 
 And in addition, all external objects works with a **Java Class** that ensures both their proper setup, and the rendering of the web resources.
 
-The **Basic** nature refers direcly to the mother class `com.simplicite.util.ExternalObject` while each one of the other mentionned *Nature* above refers to a specific class in the `com.simplicite.webapp` package:
+The **Basic** nature refers directly to the mother class `com.simplicite.util.ExternalObject` while each one of the other mentioned *Nature* above refers to a specific class in the `com.simplicite.webapp` package:
 | Nature | Java Class |
 | ------ | ----------- |
 | UI page or component | *web.ResponsiveExternalObject* |
@@ -55,16 +56,16 @@ The **Basic** nature refers direcly to the mother class `com.simplicite.util.Ext
 ## How to create
 
 1. Go to the *User Interface > External objects > Show all* menu
-2. Click **Create** in the panel's headbar.
+2. Click **Create** in the panel's header.
 3. Properly fill the *Create External object* form:
     - **Code** for your external object's name.
     - **Nature** shall be **Basic**.
     - **Module Name** for the module containing your external object.
-    - **UI Widget** to **Yes** if your object can be added to a [dashboard](/lesson/docs/platform/userinterface/views/dashboard) and **No** otherwise.
+    - **UI Widget** to **Yes** if your object can be added to a [dashboard]/docs/platform/userinterface/views/dashboard and **No** otherwise.
     > Example values:  
     > ![](img/basic/basic_extobj_fields.png)
 4. Click **Save**.
-5. Click **Create Resources** to create the web-resources (hmlt|css|js) for your object.  
+5. Click **Create Resources** to create the web-resources (html|css|js) for your object.  
 ![](img/basic/basic_resources.png)
 
 6. (optional) Click **Edit Code** to generate the custom java class for your object.
@@ -116,7 +117,7 @@ The **Basic** nature refers direcly to the mother class `com.simplicite.util.Ext
 | ----- | ----------- |
 | Code | External Object's unique identifier |
 | Nature | Type of the External Object, here **UI page or component** |
-| Source Code | Java code for customized server-side behaviours |
+| Source Code | Java code for customized server-side behaviors |
 | Class | Extended class for the Java code, here `com.simplicite.webapp.web.ResponsiveExternalObject` |
 | Icon | External Object's logo |
 | UI Widget | Indicates if this element shall be considered as a *Widget* or not. |
@@ -124,9 +125,9 @@ The **Basic** nature refers direcly to the mother class `com.simplicite.util.Ext
 ## Read More
 
 **Tips & Advices**
-- [Javascript Development](/lesson/docs/front/javascript-dev).
-- [Ajax Library](/lesson/docs/front/lib-ajax).
+- [Javascript Development]/docs/front/javascript-dev.
+- [Ajax Library]/docs/front/lib-ajax.
 
 **Details & Specificities**
-- [Web Pages](/lesson/docs/front/web-page) with "Basic" Nature.
-- [Code examples](/lesson/docs/front/ui-component) for *"UI component"* (walkthrough).
+- [Web Pages]/docs/front/web-page with "Basic" Nature.
+- [Code examples]/docs/front/ui-component for *"UI component"* (walkthrough).

@@ -24,13 +24,13 @@ The configuration of the remote SalesForce&reg; business object is then set in t
 }
 ```
 
-Nothing else needs to be configured, except rights, as the remote SalesForce&reg; object configuration is dynamically processed to build the local Simplicit&eacute;&reg;  business object.
+Nothing else needs to be configured, except rights, as the remote SalesForce&reg; object configuration is dynamically processed to build the local Simplicité  business object.
 
 However, the optional `<additional configuration items>` allow some advanced configuration to be added:
 
-- `mappings: [<array of { <Simplicit&eacute;&reg; field name>: <SalesForce field name>}>]` allows to define explicit mappings between
-explicitly or implicitly configured Simplicit&eacute;&reg; fields, by default the list is `[{"row_id", "Id"},{"created_by", "CreatedById"},{"created_dt", "CreatedDate"},{"updated_by", "LastModifiedById"},{"updated_dt", "LastModifiedDate"}]`
-- `ignored: [<array of SalesForce field names>]` allows to define a list of fields that are not taken into account on Simplicit&eacute;&reg; side,
+- `mappings: [<array of { <Simplicité field name>: <SalesForce field name>}>]` allows to define explicit mappings between
+explicitly or implicitly configured Simplicité fields, by default the list is `[{"row_id", "Id"},{"created_by", "CreatedById"},{"created_dt", "CreatedDate"},{"updated_by", "LastModifiedById"},{"updated_dt", "LastModifiedDate"}]`
+- `ignored: [<array of SalesForce field names>]` allows to define a list of fields that are not taken into account on Simplicité side,
 by default the list is: `["IsDeleted", "OwnerId", "SystemModstamp", "MasterRecordId"]`.
 
 <h2 id="credentials">Credentials</h2>

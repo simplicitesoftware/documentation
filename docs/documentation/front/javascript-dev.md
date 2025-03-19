@@ -388,11 +388,11 @@ By focusing on these key contexts, JavaScript development within Simplicité com
 
 ## External Objects (within Simplicité)
 
-The main utility for javascript development within Simplicité is the implementation of custom behaviors for your **External Objects** that you want to embed within Simplicité (so of type `com.simplicite.webapp.web.widgets.ResponsiveExternalObject`), this is shown in the [UI Component](/lesson/docs/front/ui-component) lesson.
+The main utility for javascript development within Simplicité is the implementation of custom behaviors for your **External Objects** that you want to embed within Simplicité (so of type `com.simplicite.webapp.web.widgets.ResponsiveExternalObject`), this is shown in the [UI Component]/docs/front/ui-component lesson.
 
 The javascript development will happen within the *SCRIPT* resource of your *External Object*, and will allow you to do two things:
 
-1) **Customized Behaviours:** first, you are gonna be able to apply custom behaviors and interactions for your custom object
+1) **Customized behaviors:** first, you are gonna be able to apply custom behaviors and interactions for your custom object
 2) **Communicate with Simplicité:** then, you will be able to make your widget even more interactive by allowing it to discuss in various ways 
 
 In this case, you can declare all your javascript code within the *SCRIPT* resource, make sure that you respect common rules and methodologies, so define your methods thoughfully, don't make redundant code, don't hesitate to document your code and make reusable functions in case you need it.
@@ -461,7 +461,7 @@ products.search(function(){
 
 ## External Objects (external pages)
 
-Another slightly different case of javascript development within Simplicité can be the implementation of **External Object** being used as *external pages* (so of type `com.simplicite.webapp.web.WebPageExternalObject`), furtherly explored in the [External Pages](/lesson/docs/front/external-pages) lesson.
+Another slightly different case of javascript development within Simplicité can be the implementation of **External Object** being used as *external pages* (so of type `com.simplicite.webapp.web.WebPageExternalObject`), furtherly explored in the [External Pages]/docs/front/external-pages lesson.
 
 > This part of the lesson vows only to present an overview of javascript development setup for such usage of External Objects.
 

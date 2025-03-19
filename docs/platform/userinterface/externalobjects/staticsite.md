@@ -7,7 +7,7 @@ title: Static Web Site
 
 ## What is a Static Web Site ?
 
-Simplicité's [External Objects](/lesson/docs/platform/userinterface/externalobjects/basic) allow you to create **Static Web Site** objects; standalone web pages used to display elements without being logged nor interacting with any feature from Simplicité's backend. 
+Simplicité's [External Objects]/docs/platform/userinterface/externalobjects/basic allow you to create **Static Web Site** objects; standalone web pages used to display elements without being logged nor interacting with any feature from Simplicité's backend. 
 
 In other terms it is a static site that you create using either the native web stack (html, css, js) or specific web-frameworks (Vue, Angular, ...).
 
@@ -28,7 +28,7 @@ The creation process is similar to the one for any *External Object*:
   
 ![](img/staticsite/staticsite_createresources.png)
 
-4. From the updated object's form, click **Create Resources** to create the web [Resources](/lesson/docs/platform/userinterface/resources).
+4. From the updated object's form, click **Create Resources** to create the web [Resources]/docs/platform/userinterface/resources.
     - Ensure **CLASS** **HTML** and **STYLES** well appear in the *Resources* tab.
     > Created Resources:  
     > ![](img/staticsite/staticsite_resources.png)
@@ -37,7 +37,7 @@ The creation process is similar to the one for any *External Object*:
 
 As a *Static Web Page* isn't interacting with Simplicité's API or backend, you only have the 3 resources to worry about. For the development specific to Simplicité refer to the [JSdoc](https://platform.simplicite.io/6.2/jsdoc/global.html).
 
-> Specific use case and code examples can be found in the following lessons: [WebPage](/lesson/docs/platform/userinterface/externalobjects/webpage), [UI Component](/lesson/docs/platform/userinterface/externalobjects/uicomponent), [External Objects](/lesson/docs/platform/userinterface/externalobjects/basic).
+> Specific use case and code examples can be found in the following lessons: [WebPage]/docs/platform/userinterface/externalobjects/webpage, [UI Component]/docs/platform/userinterface/externalobjects/uicomponent, [External Objects]/docs/platform/userinterface/externalobjects/basic.
 
 **HTML:**
 - Content of your page, declared in a `.html` file.
@@ -62,7 +62,7 @@ As a *Static Web Page* isn't interacting with Simplicité's API or backend, you 
 ```
 
 **CLASS:**
-- Javascript where you declare all of your component's behaviour and interactions.
+- Javascript where you declare all of your component's behavior and interactions.
 - Most happens in the `async render(){ ... }` method.
 - Access your *html* using `const $content = this.ctn;` and then `$content.html(...)`.
 > You can also use more classic ways to access your elements like `document.getElementById()` or `$(<element-identifier>)`. Ensure your *HTML* content matches the logic you are using !

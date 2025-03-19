@@ -65,7 +65,7 @@ All OAuth2/OpenIDConnect providers requires at least the following settings:
 - Set `OAUTH2_CLIENT_SECRET <provider name>` or `client_secret` attribute in `AUTH_PROVIDERS`: your instance's client secret
 
 
-See [this document](/lesson/docs/authentication/tomcat-multi-auth-providers) for details.
+See [this document]/lesson/docs/authentication/auth-providers for details.
 
 > **Note**: in 3.x versions you have a unique provider so the `<provider name>` suffix must not be used,
 > nor the `AUTH_PROVIDERS` system parameter, but instead a `OAUTH2_PROVIDER` system parameter

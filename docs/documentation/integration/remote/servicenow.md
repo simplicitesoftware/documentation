@@ -8,7 +8,7 @@ ServiceNow integration
 
 This document applies to minor version 5.3 and above
 
-It describes how to configure [ServiceNow&reg;](https://www.servicenow.com) (SNOW) tables as Simplicit&eacute;&reg; business objects.
+It describes how to configure [ServiceNow&reg;](https://www.servicenow.com) (SNOW) tables as Simplicité business objects.
 
 SNOW table as a service business object
 ---------------------------------------

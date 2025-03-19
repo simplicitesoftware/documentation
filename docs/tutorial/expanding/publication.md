@@ -5,11 +5,11 @@ title: 2.13. Customizing exports
 
 # Building the "Order Management" Training App : Customizing exports - Publications
 
-> Prerequisite : [The Supplier, Product, Client and Order objects are linked together](/lesson/tutorial/expanding/relations)
+> Prerequisite : [The Supplier, Product, Client and Order objects are linked together]/docs/tutorial/expanding/relations
 
 ## What is a Publication ?
 
-In Simplicité, publications allow you to generate custom exports. Whether using template files, expressions, or Java methods, publications offer flexible ways to produce structured documents and reports... [Learn more](/lesson/docs/platform/userinterface/objectsrendering/publications)
+In Simplicité, publications allow you to generate custom exports. Whether using template files, expressions, or Java methods, publications offer flexible ways to produce structured documents and reports... [Learn more]/docs/platform/userinterface/objectsrendering/publications
 
 
 ## Exporting in Excel the list of a Supplier's Products
@@ -22,7 +22,7 @@ To add a Publication to TrnSupplier, follow the steps below :
 3. Fill in the Publication information like so : 
 	- Code : **TrnSupPublication**
 	- Usage : **On object only**
-	- Visiblity : **Visible**
+	- Visibility : **Visible**
 	- Translation : **Test Excel Publication**
 	- Output file name : **Export-[VALUE:trnSupName]**
 	- Forced MIME type : **Microsoft Excel**
@@ -63,7 +63,7 @@ public byte[] printExcel(PrintTemplate pt) {
 ## Test the Pivot table with the usertest User
 
 1. Clear the platform's cache and log in using *usertest*
-	> For a detailed step-by-step, see : [Testing the User](/lesson/tutorial/getting-started/user#activating-and-testing-the-user)
+	> For a detailed step-by-step, see : [Testing the User]/docs/tutorial/getting-started/user#activating-and-testing-the-user
 
 2. Open a Supplier
 3. Create Products for the Supplier if it has none

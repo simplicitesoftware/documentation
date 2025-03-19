@@ -6,7 +6,7 @@ title: Security guidelines
 Security guidelines
 ===================
 
-This document give some guidelines on how to improve security of your applications based on the Simplicit&eacute;&reg; platform.
+This document give some guidelines on how to improve security of your applications based on the Simplicité platform.
 
 > **Note**: Some recommandations are not necessarily applicable/relevant in every particular cases, you must adapt them to your context.
 
@@ -21,10 +21,10 @@ To ensure security it is thus **mandatory** to keep your deployed instances up-t
 
 ### Introduction
 
-The Simplicit&eacute;&reg; platform is designed to be secure, nothing is available without being explicitly granted.
+The Simplicité platform is designed to be secure, nothing is available without being explicitly granted.
 However a particular attention must be put on the following aspects.
 
-There are 4 endpoints available on Simplicit&eacute;&reg; platform:
+There are 4 endpoints available on Simplicité platform:
 
 - the UI endpoint
 - the API endpoint
@@ -58,7 +58,7 @@ by a reverse proxy-level filtering)
 
 At least you **should** disable the API tester page by setting the private system parameter `USE_API_TESTER` to `no`.
 
-For more information on default API authentication mechanisms, see [this document](/lesson/docs/integration/services-auth).
+For more information on default API authentication mechanisms, see [this document]/lesson/docs/integration/webservices/services-auth.
 
 <h3 id="ioendpoint">I/O endpoint</h3>
 
@@ -75,7 +75,7 @@ If you only use it from a limited set of origins you **should** filter the acces
 
 At least you **should** disable the I/O tester page by setting the private system parameter `USE_IO_TESTER` to `no`.
 
-For more information defaut on I/O authentication mechanisms, see [this document](/lesson/docs/integration/io-commandline).
+For more information defaut on I/O authentication mechanisms, see [this document]/lesson/docs/integration/webservices/io-commandline.
 
 > **Note 1**: for backward compatibility reasons (and for particular cases) the I/O and Git endpoints **also** use the legacy authentication
 > method bases on private system parameters names `EAI *` or, as of version 5, the `io.password` JVM argument or the `IO_PASSWORD` environment variable
@@ -194,12 +194,12 @@ they **should** be inhibited by removing grants on them if you don't use them.
 
 <h3 id="dataencryption">Data encryption</h3>
 
-Use built-in (see the Data Encryption part in [code examples](/lesson/docs/core/advanced-code-examples)) or third party data encryption especially when the database access is not limited to the application.
+Use built-in (see the Data Encryption part in [code examples]/docs/core/advanced-code-examples) or third party data encryption especially when the database access is not limited to the application.
 
 <h3 id="internalauth">Internal authentication</h3>
 
 If you use the internal authentication you **should** consider securing it by adding a second authentication factor (2FA) and/or by implementing custom rules (e.g.: disabling a login
-after a certain amount of erroneous password entry or enforcing appropriate password validation rules). See [this document](/lesson/docs/authentication/internal-auth) for details.
+after a certain amount of erroneous password entry or enforcing appropriate password validation rules). See [this document]/docs/authentication/internal-auth for details.
 
 You **should** also use the appropriate internal password hashing algorithm by setting the `HASH_PASSWORD` system parameter (note that changing this algorithm will require that all your users
 change their password).
@@ -208,7 +208,7 @@ You **should** also enable the "salting" of the above hashed internal password u
 change their password). As of version 6.2 you can also add a "pepper" string to this "salting" by configuring an environement variable `HASH_PASSWORD_PEPPER` or a JVM propery `hash.password.pepper`
 (note that adding or changing this pepper string will also require that all your users change their password).
 
-You **may** also consider implementing an anti-brute policy by using appropriate `PlatformHooks`. See [this document](/lesson/docs/authentication/internal-auth#antibruteforce) for a comprehensive example.
+You **may** also consider implementing an anti-brute policy by using appropriate `PlatformHooks`. See [this document]/docs/authentication/internal-auth#antibruteforce for a comprehensive example.
 
 You **should** also make sure the "god mode" (the ability to log in as any user) is disabled or restricted to the relevant users (e.g. support team).
 The principle is to set the private system parameter `GOD_MODE` to `no` and override it by user only for the relevant users.
@@ -275,18 +275,18 @@ You can also simply delete these external objects, but don't do it if you want t
 
 ### Introduction
 
-Simplicit&eacute;&reg; platform run on a server infrastructure. You **must** secure it properly by:
+Simplicité platform run on a server infrastructure. You **must** secure it properly by:
 
-- configuring firewalls accordingly to your configuration (the rules may be different whether you deploy Simplicit&eacute;&reg; behind a reverse proxy server or directly)
+- configuring firewalls accordingly to your configuration (the rules may be different whether you deploy Simplicité behind a reverse proxy server or directly)
 - restricting access to the command line (VPN, SSH keys, ...) and system accouts
 - protecting database credentials
 Etc.
 
-Simplicit&eacute;&reg; has no particular requirement at this level, all usual good practices in securing server infrastructure applies.
+Simplicité has no particular requirement at this level, all usual good practices in securing server infrastructure applies.
 
 ### Use SSL
 
-Your application endpoints **should** always be exposed as HTTPS (SSL). This can be achieved directy in the Java application server that runs Simplicit&eacute;&reg;
+Your application endpoints **should** always be exposed as HTTPS (SSL). This can be achieved directy in the Java application server that runs Simplicité
 or at the reverse proxy level (if you have configured one).
 
 ### SSH Access
@@ -297,9 +297,9 @@ The server infrastucture command line access **should** always use SSH (ideally 
 
 - Your server infrastructure **must** be kept up-to-date by applying **all** system updates on the fly. Many security vulnerabilities are at OS-level.
 - The JVM, database server, JDBC driver and Java application server **must** be kept up-to-date.
-- The Simplicit&eacute;&reg; updates **must** be applied as soon as they are made available 
+- The Simplicité updates **must** be applied as soon as they are made available 
 
-> **Note**: the warranty is void on a non up-to-date platform, keeping your Simplicit&eacute;&reg; platform up-to-date is not just **recommended** it is **mandatory**.
+> **Note**: the warranty is void on a non up-to-date platform, keeping your Simplicité platform up-to-date is not just **recommended** it is **mandatory**.
 
 <h2 id="docker">Securing Docker-based deployments</h2>
 
@@ -314,7 +314,7 @@ You **must** update the deployed containers using the latest Docker images on a 
 
 And of course, you **must** also apply the system upgrades on your host machine on similar a regular basis.
 
-<h2 id="sim">Securing the Simplicit&eacute;&reg; Instance Manager (SIM)</h2>
+<h2 id="sim">Securing the Simplicité Instance Manager (SIM)</h2>
 
 These are specific guidelines for the Simplicit&eacute; Instances Manager (SIM). See [this document](https:/lesson/docs/misc/manager) for details on the SIM.
 

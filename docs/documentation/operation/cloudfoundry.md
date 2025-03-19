@@ -7,13 +7,13 @@ Simplicit&eacute; on CloudFoundry
 =================================
 
 > **Warning**: this document may be **outdated** and incomplete.
-> Docker-based deployments (see [this document](/lesson/docs/operation/docker)) are to be preferred over deployement on a proprietary PaaS.
+> Docker-based deployments (see [this document]/docs/operation/docker) are to be preferred over deployement on a proprietary PaaS.
 > Our support capabilities on this PaaS is very limited so before choosing this option make sure you have required up-to-date expertise.
 
 IBM Bluemix
 -----------
 
-Simplicit&eacute;&reg; instances can easily be deployed on the CloudFoundry&reg;-based IBM Bluemix PaaS:
+Simplicité instances can easily be deployed on the CloudFoundry&reg;-based IBM Bluemix PaaS:
 
 <iframe width="450" height="254" src="//www.youtube.com/embed/P8cKAU2VDIg" frameborder="0" allowfullscreen></iframe>
 
@@ -40,7 +40,7 @@ Then login to your Bluemix account using the following command:
 
 ### Provision an instance
 
-Get the Simplicit&eacute;&reg; sandbox template from our GIT repository
+Get the Simplicité sandbox template from our GIT repository
 (see [simplicite.io website](https://www.simplicite.io) for details on how to get access to this repository).
 
 Prepare the `app.war` by:
@@ -54,7 +54,7 @@ you can use a standard ZIP tool instead, for instance a command line such as `zi
 
 Check and/or change the deployment parameters in the `manifest.yml` file (e.g. the allocated memory).
 
-Create a blank Simplicit&eacute;&reg; instance using the following command
+Create a blank Simplicité instance using the following command
 (the instance name is free but must be a URL-friendly string, e.g. `my_simplicite-123`,
 you can deploy several instances on your Bluemix account, each one needs a unique instance name):
 ```
@@ -92,7 +92,7 @@ cf delete <instance name>
 Pivotal
 -------
 
-Simplicit&eacute;&reg; instances can easily be deployed on the Pivotal CloudFoundry&reg; PaaS:
+Simplicité instances can easily be deployed on the Pivotal CloudFoundry&reg; PaaS:
 
 <iframe width="450" height="254" src="//www.youtube.com/embed/biIyeTruSf4" frameborder="0" allowfullscreen></iframe>
 
@@ -120,7 +120,7 @@ cf login
 
 ### Provision an instance
 
-Get the Simplicit&eacute;&reg; sandbox template from our GIT repository
+Get the Simplicité sandbox template from our GIT repository
 (see [simplicite.io website](https://www.simplicite.io) for details on how to get access to this repository).
 
 Prepare the `app.war` by:
@@ -136,7 +136,7 @@ you can use a standard ZIP tool instead, for instance a command line such as `zi
 
 Check and/or change the deployment parameters in the `manifest.yml` file (e.g. the allocated memory).
 
-Create a blank Simplicit&eacute;&reg; instance using the following command
+Create a blank Simplicité instance using the following command
 (the instance name is free but must be a URL-friendly string, e.g. `my_simplicite-123`,
 you can deploy several instances on your Pivotal account, each one needs a unique instance name):
 

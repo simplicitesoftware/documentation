@@ -40,7 +40,7 @@ public String preSave() {
 ```
 
 The placemap uses a particular instance of the object.
-The **initPlaceMap** hook is used to override the standard placemap behaviour.
+The **initPlaceMap** hook is used to override the standard placemap behavior.
 
 
 Exercise

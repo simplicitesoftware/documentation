@@ -18,7 +18,7 @@ In this section, we will walk through the process of creating a custom webpage *
 
 ![](img/web-page/myexternalpage-home.png)
 
-The presented web-pages are an "in-between" the complete external pages created using the **NPM Library** explained [here](/lesson/docs/front/javascript-dev), and the *UI Component* that you can create as shown in [this lesson](/lesson/docs/front/javascript-dev). Although such objects will be rendered at the `"/ext/"` of your Simplicité's instance URL (`https://<name>.demo.simplicite.io`), but still you can decide either to set this page public or private, thus requesting or not for credentials' validation before accessing it at the given URL.
+The presented web-pages are an "in-between" the complete external pages created using the **NPM Library** explained [here]/docs/front/javascript-dev, and the *UI Component* that you can create as shown in [this lesson]/docs/front/javascript-dev. Although such objects will be rendered at the `"/ext/"` of your Simplicité's instance URL (`https://<name>.demo.simplicite.io`), but still you can decide either to set this page public or private, thus requesting or not for credentials' validation before accessing it at the given URL.
 
 ## Object Creation
 
@@ -211,7 +211,7 @@ When developing the **Client-Side** script using the *namespace pattern* (as dem
 
 #### Accessing Business Objects
 
-Accessing Simplicité’s **Business Objects** follows the same approach outlined in the [UI Component](/lesson/docs/front/ui-component) and [JS Development](/lesson/docs/front/javascript-dev) lessons. Below is an example demonstrating how to *query* and *manipulate* Business Objects using  `$app.getBusinessObject()` and `BusinessObject.search()` methods:
+Accessing Simplicité’s **Business Objects** follows the same approach outlined in the [UI Component]/docs/front/ui-component and [JS Development]/docs/front/javascript-dev lessons. Below is an example demonstrating how to *query* and *manipulate* Business Objects using  `$app.getBusinessObject()` and `BusinessObject.search()` methods:
 
 ```javascript
 let app = new Simplicite.Ajax(params.root, "uipublic"); // params.root or ""
@@ -324,7 +324,7 @@ When implementing similar code, understanding the core mechanics is crucial. Her
 
 * `BusinessObject.getForCreate( function(){...} )`: this method *initializes* the default `BusinessObject.item`, preparing it for creation. Equivalent `getFor*()` methods exist for other actions, such as *Copy*, *Create*, and *Update*. These methods guide the preparation phase by ensuring the object is *properly instantiated* before any operation begins.
 
-* `BusinessObject.item`: this property serves as the *primary container* for any **Business Object**. It can either hold an *active instance* of the object or act as a *temporary placeholder* for upcoming actions like *creation*, *copying*, or *updating*. `BusinessObject.item` simplifies the creation management by maintaining a clear and accessible state of the object during the entire process (and still after if not overriden).
+* `BusinessObject.item`: this property serves as the *primary container* for any **Business Object**. It can either hold an *active instance* of the object or act as a *temporary placeholder* for upcoming actions like *creation*, *copying*, or *updating*. `BusinessObject.item` simplifies the creation management by maintaining a clear and accessible state of the object during the entire process (and still after if not overridden).
 
 * `BusinessObject.create()`: this method *finalizes* the creation process by *generating and loading* the object. By default, it operates on the existing `BusinessObject.item` without requiring additional arguments. The standard approach involves instantiating the object via `getForCreate()` and subsequently invoking `create()`, ensuring a *straightforward* and *efficient* creation process.
 
@@ -1267,7 +1267,7 @@ It’s also possible to include other tools, as long as they don’t override th
 | Moment®       | `appendMoment()`       | Moment [documentation](https://momentjs.com/docs/) |
 | FullCalendar® | `appendFullCalendar()` | Full Calendar [documentation](https://fullcalendar.io/docs) |
 
-> ***Note:*** For any other frameworks you can refer to the second method **Building Project** seen in the next section. Or directly using the Simplicité NPM library, explored in [this lesson](/lesson/docs/front/javascript-dev).
+> ***Note:*** For any other frameworks you can refer to the second method **Building Project** seen in the next section. Or directly using the Simplicité NPM library, explored in [this lesson]/docs/front/javascript-dev.
 
 #### Client-Side (setup)
 

@@ -30,8 +30,8 @@ const config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: "fr",
-    locales: ["fr"],
+    defaultLocale: "en",
+    locales: ["en"],
   },
   markdown: {
     mermaid: true,
@@ -126,14 +126,9 @@ const config = {
 
         // Optional: Algolia search parameters
         searchParameters: {},
-
-        // Optional: path for search page that enabled by default (`false` to disable it)
         searchPagePath: "search",
-
-        // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
         insights: false,
 
-        //... other Algolia params
       },
     }),
 };

@@ -266,7 +266,7 @@ Here is a detailled list of the menu's sub-section and the specific elements the
 | Active Link        | Border Color           | Any: defines the color of the single border, if you wanna hide it then untick the value.                                                                                       |
 | Active Link        | Bottom Border Color    | Any: defines the color of the border separating the active navigation link and the content, untick to hide.                                                                    |
 | Tabs Content       | Background Color       | Any: defines the background color for the `tab-content` part only, rendered on very last layer.                                                                                |
-| Tabs Content       | Text Color             | Any: defines the color of all informative texts within the `tab-content`, doesn't apply to buttons or text within other elements, is overriden by `text-color` from **Fields** |
+| Tabs Content       | Text Color             | Any: defines the color of all informative texts within the `tab-content`, doesn't apply to buttons or text within other elements, is overridden by `text-color` from **Fields** |
 | Tabs Content       | Border Color           | Any: defines the color of the border of the whole content part, untick to hide.                                                                                                |
 | Tabs Content       | Shadow                 | [0;100]: defines the `box-shadow` style for the tab-content (not nav-links!), with the following range; 0 ~ `none`, 50 ~ `solid .125rem .125rem 1rem #e0e0e0`, 100 ~ `solid .125rem .125rem 2rem #e0e0e0` |
 

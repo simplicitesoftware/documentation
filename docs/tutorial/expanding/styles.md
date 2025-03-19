@@ -5,11 +5,11 @@ title: 2.9. Adding icons and a theme
 
 # Building the "Order Management" Training App : Adding icons and a theme
 
-> Prerequisite : [The Order has a state model](/lesson/tutorial/expanding/states) and a [home page](/lesson/tutorial/expanding/views) exists
+> Prerequisite : [The Order has a state model]/docs/tutorial/expanding/states and a [home page]/docs/tutorial/expanding/views exists
 
 ## What is a Theme ?
 
-A theme defines the logo and the main colors of the interface...[Learn more](/lesson/docs/platform/userinterface/themes)
+A theme defines the logo and the main colors of the interface...[Learn more]/docs/platform/userinterface/themes
 
 ## Creating a Theme
 
@@ -35,7 +35,7 @@ To create a Theme and add it to the App, follow the steps below :
 
 To add an icon to a Supplier Business object, follow the steps below :
 
-1. In the **Buiness objects > Business objects** menu, open **TrnSupplier**
+1. In the **Business objects > Business objects** menu, open **TrnSupplier**
 2. Click the *magnifying glass* on the **Icon code** field to select an icon  
     ![](img/styles/icon-pick.png)
 3. Click **Save**
@@ -85,7 +85,7 @@ Repeat these step 3 -> 5 for :
 ## Test the Theme with the usertest User
 
 1. Clear the platform's cache and log in using *usertest*
-    > For a detailed step-by-step, see : [Testing the User](/lesson/tutorial/getting-started/user#activating-and-testing-the-user)
+    > For a detailed step-by-step, see : [Testing the User]/docs/tutorial/getting-started/user#activating-and-testing-the-user
 
 :::tip[Success]
   <p>The new Theme and header logo are applied to the App</p>

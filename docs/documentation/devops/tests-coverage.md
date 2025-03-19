@@ -17,9 +17,9 @@ Our standard images already contains the up-to-date JaCoCo tool by default in th
 
 To enable coverage measurement of unit tests execution just pass the `JACOCO_MODULES` environment variable to the container with a space-separated list of modules (e.g. `-e JACOCO_MODULES="MyModule MyOtherModule"`).
 
-The JaCoCo agent exec file is generated at the location denoted by the `JACOCO_DESTFILE` environment variable which defaults to `/usr/local/tomcat/jacoco/jacoco.exec`.
-You must ensure persistence for this file, for instance by mounting the default `/usr/local/tomcat/jacoco` folder (e.g. `-v ./jacoco:/usr/local/tomcat/jacoco`)
-which is also useful for report generation as this default folder is the default location for report files, see bellow.
+The JaCoCo agent exec file is generated at the location denoted by the `JACOCO_DESTFILE` environment variable which defaults to `/usr/local/tomcat/webapps/ROOT/WEB-INF/dbdoc/content/jacoco/jacoco.exec`.
+You must ensure persistence for the above `jacoco` folder (which is the case if you already ensure the persistence of the `dbdoc` folder), for instance by mounting a dedicated volume.
+This is also useful for report generation as this default folder is also the default location for report files, see bellow.
 
 To be able to generate a human-readable report (see bellow) you must also mount the `src` and `bin` folders
 located in the `/usr/local/tomcat/webapps/ROOT/WEB-INF` folder because both of them are used by the report generation process.
@@ -50,15 +50,9 @@ This means you **must** stop the JVM **before** generating the report as explain
 
 ### Using Docker images
 
-Execute the following Docker command on your running container:
+You just have to stop and restart the container for the human-readable HTML report to be generated in the folder location denoted by the `JACOCO_REPORTDIR` environment variable which defaults to `/usr/local/tomcat/webapps/ROOT/WEB-INF/dbdoc/content/jacoco` (in order to be available as the static webapp `https://<base url>/content/jacoco/`).
 
-```text
-docker exec <container ID or name> jacocoreport.sh
-```
-
-The generated human-readable HTML reports will be then available at the folder location denoted by the `JACOCO_REPORTDIR` environment variable which defaults to `/usr/local/tomcat/webapps/jacoco` (in order to be available as the static webapp `https://<base url>/jacoco/`).
-
-> **Note**: as said above you should you can make the report folder available outside of the container by mounting it as a volume to ensure its persistence.
+> **Note**: as said above you should you can make the report folder available outside of the container ensuring its persistence by the appropriate volume.
 
 ### Manually
 

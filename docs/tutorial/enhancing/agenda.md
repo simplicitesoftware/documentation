@@ -13,7 +13,7 @@ For information about the version and libraries used, see the **FULLCALENDAR_LIB
 V3,V4 and V5 versions of FullCalendar are integrated.  
 
 The calendar uses a particular instance of the object.  
-The **initAgenda** hook is used to override the standard calendar behaviour.  
+The **initAgenda** hook is used to override the standard calendar behavior.  
 
 
 

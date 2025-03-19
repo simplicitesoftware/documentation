@@ -8,9 +8,9 @@ OpenDataSoft integration
 
 This document applies to version 3.0 MAINTENANCE 20 and above.
 
-It describes how to configure [OpenDataSoft&reg;](http://www.opendatasoft.com/) (ODS) datasets as Simplicit&eacute;&reg; business objects.
+It describes how to configure [OpenDataSoft&reg;](http://www.opendatasoft.com/) (ODS) datasets as Simplicité business objects.
 
-It also describe how to publish an ODS dataset from a Simplicit&eacute;&reg; business object REST API.
+It also describe how to publish an ODS dataset from a Simplicité business object REST API.
 
 ODS dataset as a service business object
 ----------------------------------------

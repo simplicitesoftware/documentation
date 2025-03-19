@@ -18,7 +18,7 @@ A user can be:
 
 1. Authentication & Access
     - By default, users log in using a **username and password**
-    - Authentication can be enhanced with [multi-factor authentication](/lesson/docs/authentication/internal-auth) or [third-party authentication providers](/lesson/docs/authentication/oauth2)
+    - Authentication can be enhanced with [multi-factor authentication]/docs/authentication/internal-auth or [third-party authentication providers]/docs/authentication/oauth2
     - Access to business objects and functionalities is governed by responsibilities
 2. User Status 
     - Enabled: The user can log in and access the platform
@@ -36,19 +36,19 @@ A user can be:
 | Date format | Override the date format for the user |
 | Number format | Override the number format for the user |
 | Time zone | Override system timezone for user |
-| Home page | User's home page (overriden by the active scope) |
+| Home page | User's home page (overridden by the active scope) |
 | Menu visible | Display / Hide menu for the user |
 | Default opened domain | Default menu opened after connecting |
-| Authentication | See [internal authentication](/lesson/docs/authentication/internal-auth) |
+| Authentication | See [internal authentication]/docs/authentication/internal-auth |
 
 ## Configuration objects linked to a User
 
-- [Dashboards](/lesson/docs/platform/userinterface/views/dashboard) : List of Dashboards created by the user
-- [Responsibilites](/lesson/docs/platform/usersrights/responsibilities) : List of a user's Responsiblities
+- [Dashboards]/docs/platform/userinterface/views/dashboard : List of Dashboards created by the user
+- [Responsibilities]/docs/platform/usersrights/responsibilities : List of a user's Responsibilities
 
 ## Learn more
 
-- [Internal authentication](/lesson/docs/authentication/internal-auth)
-- [Authentication providers](/lesson/docs/authentication/auth-providers)
-- [OAuth2](/lesson/docs/authentication/oauth2)
+- [Internal authentication]/docs/authentication/internal-auth
+- [Authentication providers]/docs/authentication/auth-providers
+- [OAuth2]/docs/authentication/oauth2
 - [Custom user object](https://community.simplicite.io/t/custom-user-object)

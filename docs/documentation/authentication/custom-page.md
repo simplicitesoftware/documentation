@@ -25,7 +25,7 @@ Declare your custom authentication provider in the `AUTH_PROVIDERS` system param
 ]
 ```
 
-See [this document](/lesson/docs/authentication/tomcat-multi-auth-providers) for details on how to configure authentication providers.
+See [this document]/lesson/docs/authentication/auth-providers for details on how to configure authentication providers.
 > **Warning**: Before making these changes, make sure that you will still be able to login with a user having at least a responsibility on the ADMIN group.
 
 <h3 id="PlatformHooks">Grant hooks</h3>

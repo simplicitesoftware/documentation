@@ -5,11 +5,11 @@ title: 2.5. Creating a state model
 
 # Building the "Order Management" Training App : Creating a State model
 
-> Prerequisite : [The Supplier, Product, Client and Order objects are complete and linked together](/lesson/tutorial/expanding/fieldarea)
+> Prerequisite : [The Supplier, Product, Client and Order objects are complete and linked together]/docs/tutorial/expanding/fieldarea
 
 ## What is a State model ?
 
-A state model defines the different statuses a business object can have and controls how it transitions between them. It enables filtered views, enforces permissions on state changes, and automates actions triggered by transitions. Setting up a state model ensures a structured workflow for business objects... [Learn more](/lesson/docs/platform/businessprocess/state)
+A state model defines the different statuses a business object can have and controls how it transitions between them. It enables filtered views, enforces permissions on state changes, and automates actions triggered by transitions. Setting up a state model ensures a structured workflow for business objects... [Learn more]/docs/platform/businessprocess/state
 
 ## Creating a State model for the Order Business object
 
@@ -17,8 +17,8 @@ A state model defines the different statuses a business object can have and cont
 
 To add a State field to the Order Business object, follow the steps below :
 
-1. Add a **mandatory enumeration** field to the **TrnOrder** Business object in the [previsoulsy](/lesson/tutorial/expanding/fieldarea#structuring-the-order-template) created "Order" Field Area
-    > For a detailed guide on how to add a field, see [Getting started : Create field](/lesson/tutorial/getting-started/attribute)
+1. Add a **mandatory enumeration** field to the **TrnOrder** Business object in the [previously]/docs/tutorial/expanding/fieldarea#structuring-the-order-template created "Order" Field Area
+    > For a detailed guide on how to add a field, see [Getting started : Create field]/docs/tutorial/getting-started/attribute
 2. Fill in the Field fields like so : 
     - Label : **State**
     - Logical name : **trnOrdState** *should be auto-completed* 
@@ -85,7 +85,7 @@ To create a State model for the the Order Business object, follow the steps belo
 To test the State model, follow the steps below :
 
 1. Clear the platform's cache and log in using *usertest*
-    > For a detailed step-by-step, see : [Testing the User](/lesson/tutorial/getting-started/user#activating-and-testing-the-user)
+    > For a detailed step-by-step, see : [Testing the User]/docs/tutorial/getting-started/user#activating-and-testing-the-user
 
 :::tip[Success]
   <b>Expected result :</b>
@@ -97,7 +97,7 @@ To test the State model, follow the steps below :
 :::
 
 2. Open or create an Order 
-    For a detailed step-by-step, see : [Adding data](/lesson/tutorial/expanding/relations#create-an-order)
+    For a detailed step-by-step, see : [Adding data]/docs/tutorial/expanding/relations#create-an-order
 3. Click **Validate**  
     ![](img/states/validate-order.png)
 4. Click **Yes**

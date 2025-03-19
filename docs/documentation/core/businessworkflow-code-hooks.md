@@ -39,7 +39,7 @@ the user session (i.e. not the dynamic ones that may be updated in other hooks)
 
 For instance it can be used to:  
 
-- Change some related object definition: field behaviour (visibility, updatability, ...) depending on user's rights 
+- Change some related object definition: field behavior (visibility, updatability, ...) depending on user's rights 
 - Change some activities definition
 
 Example:

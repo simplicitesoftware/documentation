@@ -11,23 +11,23 @@ General/installation/operation
 
 > Is it possible to use the _foo_ database, the _bar_ application server, the _baz_ JVM version, ...?
 
-Please refer to the [compatibily tables](/lesson/docs/compatibility).
+Please refer to the [compatibily tables]/docs/compatibility.
 
-For details on some specific installation/operation requirements, please refer to the miscellaneous documentations on [this page](./).
+For details on some specific installation/operation requirements, please refer to the miscellaneous documentation.
 
 Versions
 --------
 
 > What is the current maintenance status of version `x.y`?
 
-Please check [this document](/lesson/docs/versions) and the latest release notes of considered version (links available on [this page](../)).
+Please check [this document]/lesson/versions and the latest release notes of considered version.
 
 Usage
 -----
 
 > Where can I find general usage documentation for the generic web UI?
 
-You can find such information the the [UI documentation](./04-ui/).
+You can find such information the the UI documentation.
 
 Design
 ------
@@ -36,7 +36,7 @@ Design
 
 > Where to starts with to build my first business application?
 
-A good start is the [training website](https://training.simplicite.io) and then you can dig deeper in the [documentation](./).
+A good start is the [Getting started]/docs/tutorial/getting-started,
 
 ### Business objects
 
@@ -76,7 +76,7 @@ You can browse the [core documentations](./01-core/) for code examples (general,
 
 > Are there some limitations or usual traps on the server side scripts that I should be aware of?
 
-**Yes!** Please refer to [this documentation](/lesson/docs/core/basic-code-examples#javascript-engine-traps) for details on things to avoid (to avoid headhaches).
+**Yes!** Please refer to [this documentation]/docs/core/basic-code-examples#javascript-engine-traps for details on things to avoid (to avoid headhaches).
 
 ### Integration/APIs
 
@@ -93,4 +93,4 @@ Configuration
 
 > How can I configure the logging of the application?
 
-Please refer to [this document](/lesson/docs/misc/logging)
+Please refer to [this document]/docs/misc/logging

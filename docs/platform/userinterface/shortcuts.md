@@ -20,7 +20,7 @@ Shorcuts in Simplicité are quick access points to functionalities available by 
 | Visibility| Set the display |
 | Icon | Icon displayed next to the translated shortcut value |
 | Shorthand | Ability to associate a keyboard shortcut |
-| Module Name | Define the [module](/lesson/docs/platform/project/module) to which it belongs. |
+| Module Name | Define the [module]/docs/platform/project/module to which it belongs. |
 
 
 ## Features 

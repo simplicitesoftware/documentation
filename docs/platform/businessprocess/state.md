@@ -27,7 +27,7 @@ Before defining states, ensure the following conditions are met
 
 1. Define the State Field  
    - Select the Business Object whose going to follow a state model  
-   - Create an enumerated field to store the State ([see Creating a Field](/lesson/tutorial/getting-started/attribute))  
+   - Create an enumerated field to store the State ([see Creating a Field]/docs/tutorial/getting-started/attribute)  
    - Add possible values representing different states (e.g.: Draft, Approved, Rejected)   
    - Mark the field as Required  
 2. State creation wizard  
@@ -47,6 +47,6 @@ Before defining states, ensure the following conditions are met
    - Choose the *ModelState* template.    
    - Add a state created in 2.  
    - Right click on the state and choose *Fetch related* to insert all the relative states or select all the states to insert.  
-   - The model presents the different states and their transitions, as well as the group(s) of rights authorised to make the transitions.   
+   - The model presents the different states and their transitions, as well as the group(s) of rights authorized to make the transitions.   
    - Double click on a state opens the state form.  Double click on a transition open the transition form.   
    ![](img/state/state6.png)    

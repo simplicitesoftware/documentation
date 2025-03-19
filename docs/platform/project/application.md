@@ -63,5 +63,5 @@ When associating modules with an application, different relationship rules can b
 
 ## Read More
 
-- [Managing Git Repositories](/lesson/docs/integration/webservices/git-repositories)
+- [Managing Git Repositories]/docs/integration/webservices/git-repositories
 

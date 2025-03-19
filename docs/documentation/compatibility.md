@@ -6,21 +6,21 @@ title: Compatibility
 Compatibility tables
 =================
 
-This document gives a non exhaustive list of architectures and infrastructure components the Simplicit&eacute;&reg; platform is compliant with.
+This document gives a non exhaustive list of architectures and infrastructure components the Simplicité platform is compliant with.
 
 Containers deployments (Docker and PaaS)
 ----------------------------------------
 
 The **ideal** / **preferred** deployment model is to deploy Simplicit&eacute; platform as **Docker&reg; container(s)**
 from our standard pre-built images available on [DockerHub](https://hub.docker.com/r/simplicite/) or from custom images that you build to fit your needs.
-See [this document](/lesson/docs/operation/docker) for details.
+See [this document]/docs/operation/docker for details.
 
 It is also possible to deploy it as managed application container(s) on a wide range of platforms as a service (**PaaS**) such as:
 
-- Any CloudFoundry flavor (see. [this document](/lesson/docs/operation/cloudfoundry) for details))
-- AWS ElasticBeanstalk (see. [this document](/lesson/docs/operation/aws-elasticbeanstalk) for details))
-- Heroku (see. [this document](/lesson/docs/operation/heroku) for details))
-- Openshift (see. [this document](/lesson/docs/operation/openshift) for details))
+- Any CloudFoundry flavor (see. [this document]/docs/operation/cloudfoundry for details))
+- AWS ElasticBeanstalk (see. [this document]/docs/operation/aws-elasticbeanstalk for details))
+- Heroku (see. [this document]/docs/operation/heroku for details))
+- Openshift (see. [this document]/docs/operation/openshift for details))
 Etc.
 
 In both cases you will need an external database service - custom or as a service (DBaaS).
@@ -56,7 +56,7 @@ Our **recommended** OS family for production is Linux.
 
 The OS can run either on **physical** or **virtual** servers or in Docker&reg; **containers**.
 
-It is also possible to deploy Simplicit&eacute;&reg; platform on **PaaS** buildpacks CloudFoundry&reg;, Heroku&reg;, OpenShift&reg;, etc.
+It is also possible to deploy Simplicité platform on **PaaS** buildpacks CloudFoundry&reg;, Heroku&reg;, OpenShift&reg;, etc.
 
 <h3 id="jvm">Java VM</h3>
 
@@ -74,7 +74,7 @@ The following table only indicates the **LTS (Long Term Support)** JVM versions.
 
 1. Not tested and not supported but should work.
 
-In **bold** the recommended choice for considered Simplicit&eacute;&reg; version.
+In **bold** the recommended choice for considered Simplicité version.
 
 > **Note**: Whichever JVM version you use, you **MUST** use its **up-to-date release**.
 > Only these up-to-date releases are tested and supported.

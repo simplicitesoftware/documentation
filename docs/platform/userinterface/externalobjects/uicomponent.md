@@ -7,9 +7,9 @@ title: UI page or component
 
 ## Introduction
 
-"UI page or component" is a type of [External Object](/lesson/docs/platform/userinterface/externalobjects/basic) that is used to implement **specific front components** within your Simplicité instance. Thus creating **custom interactive components** to embedd to your interfaces.
+"UI page or component" is a type of [External Object]/docs/platform/userinterface/externalobjects/basic that is used to implement **specific front components** within your Simplicité instance. Thus creating **custom interactive components** to embed to your interfaces.
 
-Thanks to such objects you can create dynamic elements that have customed behaviours and can seamlessly interact with Simplicité's API.
+Thanks to such objects you can create dynamic elements that have custom behaviors and can seamlessly interact with Simplicité's API.
 
 ## How to create
 
@@ -19,7 +19,7 @@ Similarly to creating any type of *External Object*, go to *User Interface > Ext
     - **Code** that is the name of your object.
     > While naming your objects, we **highly** recommend to follow the suggested nomenclature *ModulePrefix + ObjectName*.
     - **Nature** set to **UI page or component**.
-    - **UI Widget** tells if your external object shall be considered as a *widget* or not, declaring weither or not it can be used in [dashboard](/lesson/docs/platform/userinterface/views/dashboard).
+    - **UI Widget** tells if your external object shall be considered as a *widget* or not, declaring wether or not it can be used in [dashboard]/docs/platform/userinterface/views/dashboard.
     > In **both** case, the component is usable in **any editable view**, the only difference is its possible including in dashboards.
 
     > Example values:  
@@ -27,10 +27,10 @@ Similarly to creating any type of *External Object*, go to *User Interface > Ext
 
 2. **Save** your object and click **Create resources**:  
     ![](img/uicomponent/uicomp_createresources.png)
-    - This creates the default [resources](/lesson/docs/platform/userinterface/resources) for your external object:
+    - This creates the default [resources]/docs/platform/userinterface/resources for your external object:
         - **HTML** in which you'll define your object's content structure.
         - **STYLES** that is your object's stylesheet.
-        - **CLASS** where the component's behaviour will happen.  
+        - **CLASS** where the component's behavior will happen.  
         ![](img/uicomponent/uicomp_resources.png)
     - How to work with those is explored in the [implementation](#how-to-implement) section of this lesson.
 
@@ -60,13 +60,13 @@ Similarly to creating any type of *External Object*, go to *User Interface > Ext
 
 ## How to implement
 
-To actually implement *custom behaviours* and specific *interactions* for your component, you will have to dive into some web-development through the **Resources** of your external object.
+To actually implement *custom behaviors* and specific *interactions* for your component, you will have to dive into some web-development through the **Resources** of your external object.
 
 There are 2 different categories for your external object's implementation:
 
 1. The *setup* & *instantiation* that is done using a *Java Script* 
     - `com.simplicite.webapp.web.ResponsiveExternalObject` by default
-    - Can be overriden by a java code extending `ResponsiveExternalObject` or at least `ExternalObject` (the main parent class).
+    - Can be overridden by a java code extending `ResponsiveExternalObject` or at least `ExternalObject` (the main parent class).
 
 2. The *workflow* and *behavior* that is done using the *Javascript Resource*.
     - JS class extending `Simplicite.UI.ExternalObject`
@@ -340,7 +340,7 @@ There are several keypoints to understand and keep in mind while developing in t
 ```
 </details>
 
-### JS behaviour
+### JS behavior
 
 In the **CLASS** resource, you will write the JS script for your component's behavior. Here you will have the possibility to use both the [JSDoc](https://platform.simplicite.io/6.2/jsdoc/) for frontend operations direclty in the **CLASS** resource's script, and to make few calls to the *Java* code of your component to add custom server-side operations.
 
@@ -360,7 +360,7 @@ The key concepts and understanding that you need are:
 - You can work with Simplicité's API and core library using several entry points such as `$ui`, `$app` or `$grant` (documented in the [Ajax library](https://platform.simplicite.io/6.2/jsdoc/global.html)).
 - You can manipulate most of the *BusinessObjects* and elements through the `BusinessObject.search( function() {...} )` method.
 
-You may need to implement some behaviours and features specifically on the *server-side* (though in the java code). Such workflow is required when you don't want to share informations with the front (public) or you just want the calculations to be done by the backend. 
+You may need to implement some behaviors and features specifically on the *server-side* (though in the java code). Such workflow is required when you don't want to share informations with the front (public) or you just want the calculations to be done by the backend. 
 
 1. **Javascript:** make a call to the [service](https://platform.simplicite.io/6.2/jsdoc/Simplicite.UI.ExternalObject.html#service) hook, and pass the informations and data you need as arguments.
 ```javascript
@@ -544,18 +544,18 @@ Simplicite.UI.ExternalObjects.DemoWelcomeCard = class extends Simplicite.UI.Exte
 | ----- | ----------- |
 | Code | External Object's unique identifier |
 | Nature | Type of the External Object, here **UI page or component** |
-| Source Code | Java code for customized server-side behaviours |
+| Source Code | Java code for customized server-side behaviors |
 | Class | Extended class for the Java code, here `com.simplicite.webapp.web.ResponsiveExternalObject` |
 | Icon | External Object's logo |
 | UI Widget | Indicates if this element shall be considered as a *Widget* or not. |
 
 ## Read More
 
-- [Widgets](/lesson/docs/misc/widgets) already implemented within Simplicité's **Demo** module.
-- [Code Examples](/lesson/docs/core/externalobject-code-examples)
+- [Widgets]/docs/misc/widgets already implemented within Simplicité's **Demo** module.
+- [Code Examples]/docs/core/externalobject-code-examples
 - [JSDoc](https://platform.simplicite.io/6.2/jsdoc/)
 - [Javadoc](https://platform.simplicite.io/6.2/javadoc/)
 
 **JS Dev**
-- [Javascript Development](/lesson/docs/front/javascript-dev).
-- [Ajax Library](/lesson/docs/front/lib-ajax).
+- [Javascript Development]/docs/front/javascript-dev.
+- [Ajax Library]/docs/front/lib-ajax.

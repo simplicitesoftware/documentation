@@ -25,7 +25,7 @@ The timesheet object generated contains :
 
 
 The timesheet uses a particular instance of the object.  
-The **initTimesheet**, **pre/postSaveTimesheet** hooks are used to override the standard timesheet behaviour.  
+The **initTimesheet**, **pre/postSaveTimesheet** hooks are used to override the standard timesheet behavior.  
 
 <div class="warning">The input fields will only be used for the timesheet. You can add a numeric attribute which does not belong to the N,N relationship object.</div>
 

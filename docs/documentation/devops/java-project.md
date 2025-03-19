@@ -6,7 +6,7 @@ title: Java project
 Project package and ANT tasks
 =============================
 
-This document describes the typical Simplicit&eacute;&reg; project package derived from the standard setup package.
+This document describes the typical Simplicité project package derived from the standard setup package.
 
 Project package folders
 -----------------------
@@ -58,7 +58,7 @@ At each maintenance release you must synchronize your project with the setup pac
 After this synchronization is done, the typical sequence for upgrading your instance is:
 
 1. Make a **full backup** of your instance and of its data (database and documents)
-2. Update the technical platform components (JVM, application server, RDBMS, ...) to their appropriate **up-to-date** versions (please refer to [this document](/lesson/docs/compatibility) for details on approriate components versions for your Simplicit&eacute;&reg; version
+2. Update the technical platform components (JVM, application server, RDBMS, ...) to their appropriate **up-to-date** versions (please refer to [this document]/docs/compatibility for details on approriate components versions for your Simplicité version
 3. Start your application server and apply system patches using `ant apply[current]systempatches`
 4. Stop your application server and upgrade the application package using `ant deploy`
 5. Restart your application server

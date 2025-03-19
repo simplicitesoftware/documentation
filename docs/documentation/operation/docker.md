@@ -6,11 +6,11 @@ title: Docker
 Simplicit&eacute; on Docker
 ===========================
 
-Simplicit&eacute;&reg; instances can easily be deployed on the Docker engine.
+Simplicité instances can easily be deployed on the Docker engine.
 
 This document gives you extended information on how to use/configure such Docker-based deployments, including in advanced cases.
 
-A simplified **[tutorial](/lesson/docs/operation/docker-tutorial)** is also available for a **step by step** procedure in the usual case.
+A simplified **[tutorial]/docs/operation/docker-tutorial** is also available for a **step by step** procedure in the usual case.
 
 Prerequisites <span id="prerequistes"></span>
 ---------------------------------------------
@@ -20,17 +20,17 @@ or an account at a cloud provider allowing Docker images deployments.
 
 Take a look at the [Docker documentation](https://docs.docker.com/) for details.
 
-Run a Simplicit&eacute;&reg; platform container <span id="run"></span>
+Run a Simplicité platform container <span id="run"></span>
 ----------------------------------------------------------------------
 
 ### Introduction
 
-To run a Simplicit&eacute;&reg; platform container you can either use one of our **pre-built images** as is
+To run a Simplicité platform container you can either use one of our **pre-built images** as is
 or build a **custom image** that fits your custom needs.
 
 ### Use the pre-built platform images <span id="prebuiltimages"></span>
 
-Pre-built **platform** images including the latest Simplicit&eacute;&reg; intances are available and can be run as is.
+Pre-built **platform** images including the latest Simplicité intances are available and can be run as is.
 
 This is the best/normal approach if you don't have specific needs.
 
@@ -42,14 +42,14 @@ Please [contact us](mailto:contact@simplicitesoftware.com) to get access to thes
 
 If, for some **good reasons**, you can't use one of the above pre-built images as is you can build your own custom image:
 
-- Pull the Simplicit&eacute;&reg; Docker **platform** image from the appropriate registry: `docker pull registry.simplicite.io/platform:<tag>`
+- Pull the Simplicité Docker **platform** image from the appropriate registry: `docker pull registry.simplicite.io/platform:<tag>`
 and build a new child image customizing what you need to customize (e.g. add SSL certificates, etc.)
 
 or (not recommended except for very specific requirements and **reserved to Simplicité experts only**):
 
-- Get the Simplicit&eacute;&reg; instance template from our **private** Git repository,
+- Get the Simplicité instance template from our **private** Git repository,
 please [contact us](mailto:contact@simplicitesoftware.com) to get access to this Git repository.
-- Pull the Simplicit&eacute;&reg; Docker **server** image from the appropriate registry: `docker pull registry.simplicite.io/server:<tag>`
+- Pull the Simplicité Docker **server** image from the appropriate registry: `docker pull registry.simplicite.io/server:<tag>`
 and build a new child image adding the application package of the instance template (in the `app` folder of the instance template).
 
 > **Note**: if your server has no access to internet you can still get the image manually by saving it on a server
@@ -58,7 +58,7 @@ and build a new child image adding the application package of the instance templ
 
 ### Basic procedure on CentOS 7 <span id="centos"></span>
 
-On an "out of the box" **CentOS 7** server you can start a clean & fresh Simplicit&eacute;&reg; **sandbox** instance with the folowing commands in only few seconds:
+On an "out of the box" **CentOS 7** server you can start a clean & fresh Simplicité **sandbox** instance with the folowing commands in only few seconds:
 
 First, install the standard Docker service:
 
@@ -356,7 +356,7 @@ Note that this means that any Java compiled class must be provided otherwise, e.
 
 ### Force overridden values of system parameters at startup <span id="sysparams"></span>
 
-It is possible to set the overriden value of system parameters at startup by using `-e SYSPARAM_<system param name>=<overridden system param value>` environment variables.
+It is possible to set the overridden value of system parameters at startup by using `-e SYSPARAM_<system param name>=<overridden system param value>` environment variables.
 
 ### Developper mode <span id="developper-mode"></span>
 
@@ -694,7 +694,7 @@ You need to check carefully the build logs to see which libraries were ignored.
 Run with Docker Compose tool <span id="dockercompose"></span>
 -------------------------------------------------------------
 
-You can use the Docker Compose tool to start an database container and a Simplicit&eacute;&reg; instace container.
+You can use the Docker Compose tool to start an database container and a Simplicité instace container.
 
 ### Prerequisites
 
@@ -774,7 +774,7 @@ sudo docker-compose up [-d]
 > ```
 >
 > In the above example the server certificate's keystore file as located as `/etc/ssl/myapp.jks` on the host machine and
-> its password is `mypassword`. See [this document](/lesson/docs/misc/java-ssl) to learn how to build such a keystore file.
+> its password is `mypassword`. See [this document]/docs/misc/java-ssl to learn how to build such a keystore file.
 
 ### MySQL/MariaDB <span id="dockercompose-mysql"></span>
 
@@ -916,7 +916,7 @@ is **always** the right thing to do before **any** container upgrade (Simplicit�
 Run on a Kubernetes cluster <span id="kubernetes"></span>
 ---------------------------------------------------------
 
-See [this document](/lesson/docs/operation/kubernetes).
+See [this document]/docs/operation/kubernetes.
 
 Troubleshooting <span id="troubleshooting"></span>
 --------------------------------------------------

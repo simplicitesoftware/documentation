@@ -23,7 +23,7 @@ See this [document] (/lesson/docs/core/businessobject-code-hooks)
 Name: unique name required  
 Code: internal code required  
 Type: Screen workflow  
-Source code: any java class which modify default behaviour  
+Source code: any java class which modify default behavior  
 Module: application module  
 
 When the process is created 2 activities are generated: Begin and End.
