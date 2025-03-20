@@ -68,7 +68,7 @@ The file can also be designated by a URL then the `--form file=@<file>` is to be
 - An optional extra parameter can be set to get processing logs or not: `--form log=<true|false>` (defaults to `false`)
 - An optional extra parameter can be set to indicate processing logs output format: `--form output=<plain|xml>` (defaults to `plain`)
 
-> **Note**: the standard XML, ZIP and CSV formats are described [here](../../schemas/)
+> **Note**: the standard XML, ZIP and CSV formats are described [here](/docs/documentation/integration/webservices/standard-formats)
 
 Exports <span id="exports"></span>
 ----------------------------------
@@ -95,7 +95,7 @@ TODO: arguments for various formats (XML/JSON)
 **********************************************
 -->
 
-> **Note**: the standard XML, ZIP and CSV formats are described [here](../../schemas/)
+> **Note**: the standard XML, ZIP and CSV formats are described [here](/docs/documentation/integration/webservices/standard-formats)
 
 Git <span id="git"></span>
 --------------------------

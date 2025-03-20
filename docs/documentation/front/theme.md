@@ -70,7 +70,7 @@ Creating a theme begins with clicking the **Create** button from the **User Inte
 After creating and saving your themes, the styles are compiled, and you can see that files were added to your theme object, they serve to apply your styles through all selected interfaces, there are 3 of them:
 
 1) `constants.less`: this file is the result of what you applied in the *Theme Editor*, it basically contains all the values you defined as *less constants*.
-2) `addons.less`: allows you to either override the existing styles, or to add new ones if wanted (further developed in [this lesson](lessons/docs/front/styles)).
+2) `addons.less`: allows you to either override the existing styles, or to add new ones if wanted (further developed in [this lesson](/docs/documentation/front/styles).
 3) `themeName_gen.css`: contains all the compiled styles from both `constants` and `addons` less files. It is the final results of all the theming work done before.
 
 ## Organization

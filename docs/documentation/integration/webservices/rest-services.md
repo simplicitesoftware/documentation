@@ -13,8 +13,8 @@ This document describes how the generic REST API services are working.
 
 > **Warning**: before considering using these **low level** generic REST services directly,
 > please consider using the various **wrappers** we provide on top of these services:
-> - The [standard Ajax API](/docs/documentation/apis/ajax-api) for use within the generic web UI and/or using the generic UI's libs as custom UI framework
-> - The [Node.js and browser JavaScript API](/docs/documentation/apis/nodejs-api) for any external used based on the JavaScript language
+> - The [standard Ajax API](/docs/documentation/integration/librairies/ajax-api) for use within the generic web UI and/or using the generic UI's libs as custom UI framework
+> - The [Node.js and browser JavaScript API](/docs/documentation/integration/librairies/nodejs-api) for any external used based on the JavaScript language
 >   or any JavaScript-based frameworks (Angular, React, Vue, ...)
 > - Etc.
 

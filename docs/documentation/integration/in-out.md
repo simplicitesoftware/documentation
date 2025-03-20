@@ -78,7 +78,7 @@ An adapter is a tool that "adapts" the data from a file to the business data mod
 - pre-built mechanism for line-by-line logging
 - import supervision object with logs and stats
 
-There are built-in adapters for standard Simplicité formats, but you'll generally need to build your own adapters for your custom formats. [Read the full adapter documentation here](/docs/documentation/integration/adapters/adapters)
+There are built-in adapters for standard Simplicité formats, but you'll generally need to build your own adapters for your custom formats. [Read the full adapter documentation here](/docs/platform/settings/adapters.md)
 
 ### Using data
 
