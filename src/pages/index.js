@@ -55,7 +55,7 @@ export default function Home() {
       title={`Welcome to ${siteConfig.title}`}
       description="Documentation for Simplicité Platform"
     >
-      <meta name="algolia-site-verification"  content="B839DFBA0B802335" />
+      <meta name="algolia-site-verification"  content="DBF11A7F8CBEB1D8" />
       <main className={styles.mainContent}>
         <div className="container">
           {/* Introduction */}
