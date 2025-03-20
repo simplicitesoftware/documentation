@@ -211,7 +211,7 @@ You **should** also enable the "salting" of the above hashed internal password u
 change their password). As of version 6.2 you can also add a "pepper" string to this "salting" by configuring an environement variable `HASH_PASSWORD_PEPPER` or a JVM propery `hash.password.pepper`
 (note that adding or changing this pepper string will also require that all your users change their password).
 
-You **may** also consider implementing an anti-brute policy by using appropriate `PlatformHooks`. See [this document](/docs/documentation/authentication/internal-auth#antibruteforce) for a comprehensive example.
+You **may** also consider implementing an anti-brute policy by using appropriate `PlatformHooks`. See [this document](/docs/documentation/authentication/internal-auth#anti-brute-force-attacks) for a comprehensive example.
 
 You **should** also make sure the "god mode" (the ability to log in as any user) is disabled or restricted to the relevant users (e.g. support team).
 The principle is to set the private system parameter `GOD_MODE` to `no` and override it by user only for the relevant users.

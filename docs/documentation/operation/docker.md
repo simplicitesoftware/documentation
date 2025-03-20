@@ -125,7 +125,7 @@ Tags <span id="tags"></span>
 
 There are several variants of the prebuilt images: `registry.simplicite.io/platform:<tag>`
 
-Exposed ports <span id="ports"></span>
+Exposed ports
 --------------------------------------
 
 The prebuilt images are configured to exposes the following ports for different usage:

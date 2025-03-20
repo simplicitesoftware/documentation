@@ -69,8 +69,6 @@ You can connect using the `designer` user account (default password is `designer
 
 Optionally, the demo application configuration package and the associated test data package can be loaded on your instance.
 
-These packages are available [here](../../modules).
-
 Import the demo application configuration on the instance using the following commands:
 ```shell
 curl -u designer:designer --form service=zipimport --form  url=https://www.simplicite.io/resources/modules/demo-app.zip <instance base URL>/io
@@ -152,8 +150,6 @@ You can connect using the `designer` user account (default password is `designer
 ### Load the demo application
 
 Optionally, the demo application configuration package and the associated test data package can be loaded on your instance.
-
-These packages are available [here](../../modules).
 
 Import the demo application configuration on the instance using the following commands:
 

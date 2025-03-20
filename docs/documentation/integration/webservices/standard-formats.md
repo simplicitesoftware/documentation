@@ -18,7 +18,7 @@ All other fields are non mandatory (except if we are talking of madatory fields 
 Standard XML format
 -------------------
 
-The standard XML follows these [XSD schemas](./schemas/). To summarize it consist in a list of `object` blocs with list of  `data` blocs inside.
+The standard XML follows these [XSD schemas](https://www.simplicite.io/resources/schemas/). To summarize it consist in a list of `object` blocs with list of  `data` blocs inside.
 Each `object` corresponds to one business object, each `data` bloc correspond to one record of the business object.
 In a `data` bloc, each tag correspond to one of the objet field, the field tags can be different from on bloc to another.
 

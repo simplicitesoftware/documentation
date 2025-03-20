@@ -27,7 +27,7 @@ If you're new to Simplicité, we recommend starting with:
 
 ## Additional Resources
 
-- [Release Notes](/docs/category/release-notest): Latest platform updates and changes
+- [Release Notes](/docs/versions/release-notes/v6-2.md): Latest platform updates and changes
 
 ---
 

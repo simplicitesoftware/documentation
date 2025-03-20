@@ -1261,7 +1261,7 @@ It’s also possible to include other tools, as long as they don’t override th
 | JQuery        | `appendJQuery()`       | JQuery [offical page](https://api.jquery.com/) |
 | JQPlot        | `appendJQPlot()`       | JQPlot [documentation](http://www.jqplot.com/docs/files/usage-txt.html) |
 | Bootbox®      | `appendBootbox()`      | Bootbox [documentation](https://bootboxjs.com/documentation.html) |
-| Bootstrap®    | `appendBoostrap()`     | Bootstrap latest [documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/) |
+| Bootstrap®    | `appendBootstrap()`     | Bootstrap latest [documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/) |
 | ChartJS       | `appendChartjs()`      | ChartJs [page](https://www.chartjs.org/) |
 | Markdown      | `appendMarkdown()`     | Markdown [guide](https://www.markdownguide.org/) |
 | Moment®       | `appendMoment()`       | Moment [documentation](https://momentjs.com/docs/) |

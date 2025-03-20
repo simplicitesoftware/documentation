@@ -52,7 +52,7 @@ To connect to the application with **usertest**, follow the steps below :
         - Click **Clear all sessions and all server caches**  
         ![](img/user/clear-cache.png)
     - Via the keyboard shortcut : [ <kbd>Alt</kbd>+<kbd>C</kbd>+<kbd>C</kbd> ]
-    > For more information about the cache, see the [Platform cache](/docs/documentation/core/objects/platform-cache) section. 
+    <!-- > For more information about the cache, see the [Platform cache](/docs/documentation/core/objects/platform-cache) section.  -->
 
 4. Log-in using **usertest** :
     - Login : **usertest**
@@ -109,7 +109,7 @@ To do so, follow the steps below :
 
 Troubleshooting
 ---------------------------
-> These steps must be done using the **designer** user with **no active module filter**, see [Module filter](/docs/platform/project/module#module-filtering)
+> These steps must be done using the **designer** user with **no active module filter**, see [Module filter](/docs/platform/project/module#module-filtering--default-module)
 - <span class="error">Authentication error</span> when logging in, check that : 
     - **usertest** is active
     - password is reset

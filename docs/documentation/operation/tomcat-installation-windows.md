@@ -29,7 +29,7 @@ JVM
 ---
 
 Dowload and install an up to date Java VM Developpement Kit (or a Runtime Environment if you don't plan to do debugging) in the appropriate version
-for your target Simplicité platform version and suitable for your version of Windows (see [this document](/docs/documentation/compatibility#jvm) for JVM compliance details).
+for your target Simplicité platform version and suitable for your version of Windows (see [this document](/docs/documentation/compatibility#java-vm) for JVM compliance details).
 
 Register the `JAVA_HOME` environment variable as the path of your JVM Installation (e.g. `C:\Program Files\Java\jdk-x.y.z`) and add `%JAVA_HOME%\bin` to the system `PATH`.
 
@@ -73,7 +73,7 @@ Clone the Simplicité webapp instance template of your target platform version:
 Where `<version>` is one of the available versions, e.g. `4.0`
 
 > **Note**: as of version 4.0 there are several branches on the instance template,
-> make sure to use **only** the **release** branch in production, see [this document](/lesson/versions) for details on versions and branches.
+> make sure to use **only** the **release** branch in production, see [this document](/docs/versions/versioning.md) for details on versions and branches.
 >
 > We thus recommend that you only clone the **release** branch by adding `--single-branch --branch release` to the `git clone` instruction above.
 

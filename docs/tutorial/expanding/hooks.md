@@ -24,7 +24,7 @@ To add this business rule, override the `postValidate` hook by following the ste
 2. Click **Edit code**, select **Java** and click **Confirm**  
 	![](img/hooks/edit-code.png)	
 3. Override the `postValidate` method with the following implementation :
-	> The `postValidate` hook is called after the platform's `validate()` and is used to to add validation rules. For more information, see [Hooks](/docs/documentation/core/objects/businessobject-code-hooks#prepostvalidatehooks)
+	> The `postValidate` hook is called after the platform's `validate()` and is used to to add validation rules. For more information, see [Hooks](/docs/documentation/core/objects/businessobject-code-hooks#pre-and-post-validation-hooks)
 ```java 
 @Override
 public List<String> postValidate() {

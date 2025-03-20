@@ -6,7 +6,7 @@ title: Quality
 Quality
 =======
 
-See [this document](/docs/documentation/versions/versioning) for details on the platform's versioning strategies and the the [security guidelines](/docs/documentation/security) for more details on how to secure your deployments.
+See [this document](/docs/versions/versioning) for details on the platform's versioning strategies and the the [security guidelines](/docs/documentation/security) for more details on how to secure your deployments.
 
 Dependencies
 ------------

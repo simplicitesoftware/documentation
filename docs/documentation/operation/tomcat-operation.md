@@ -301,5 +301,5 @@ Platform updates
 
 > **Note**: this chapter is not applicable when using our Docker images. When using such images the Simplicité platform is always up-to-date in the latest images.
 
-The Simplicité&reg; platform **must** be updated regularly, at least on its maintenance branch (see [versions](/lesson/versions)),
+The Simplicité&reg; platform **must** be updated regularly, at least on its maintenance branch (see [versions](/docs/versions/versioning.md)),
 depending on the way it has been installed the processus may vary.

@@ -35,7 +35,7 @@ Basic example
 > and/or for versions 3.x and 4.0 **legacy UI** (still available for backward compatibility).
 >
 > For the 4.0 **responsive UI**'s single page custom components the implementation pattern is different,
-> please refer to the dedicated section below [Responsive UI pattern](/docs/documentation/core/externalobject-code-examples#responsive).
+> please refer to the dedicated section below [Responsive UI pattern](/docs/documentation/core/externalobject-code-examples#responsive-ui).
 
 #### Legacy UI
 
@@ -200,7 +200,7 @@ The responsive UI requires a JavaScript statement (even empty like above) to be 
 
 > **Note**: If you return a plain string it will be rendered as a **legacy page** (displayed in an iframe for backward compatiblity).
 
-See [this section](/docs/documentation/core/externalobject-code-examples#responsive) for other examples dedicated to the responsive UI.
+See [this section](/docs/documentation/core/externalobject-code-examples#responsive-ui) for other examples dedicated to the responsive UI.
 
 Using resources and custom HTML/JavaScript/CSS
 ----------------------------------------------

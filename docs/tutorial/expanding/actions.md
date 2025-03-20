@@ -28,7 +28,7 @@ To create an Action for the Product Business object, follow the steps below :
 5. Fill in the Function information like so :
     - Function : **TRN_PRD_INCREASE_STOCK_A**
     - Object : **TrnProduct**  
-    > For more information about Functions, see [Functions](/docs/platform/usersrights/functions)
+    > For more information about Functions, see [Functions](/docs/platform/usersrights/function)
 6. Click **Save**
 7. In the **Grant** panel linked to the **Function**, click **Associate Groups**  
     ![](img/actions/create-grant.png)

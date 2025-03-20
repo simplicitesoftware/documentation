@@ -11,7 +11,7 @@ General/installation/operation
 
 > Is it possible to use the _foo_ database, the _bar_ application server, the _baz_ JVM version, ...?
 
-Please refer to the [compatibily tables](/docs/documentation/compatibility).
+<!-- Please refer to the [compatibily tables](/docs/documentation/compatibility). -->
 
 For details on some specific installation/operation requirements, please refer to the miscellaneous documentation.
 
@@ -20,7 +20,7 @@ Versions
 
 > What is the current maintenance status of version `x.y`?
 
-Please check [this document](/lesson/versions) and the latest release notes of considered version.
+<!-- Please check [this document](/docs/versions/versioning.md) and the latest release notes of considered version. -->
 
 Usage
 -----
@@ -36,7 +36,7 @@ Design
 
 > Where to starts with to build my first business application?
 
-A good start is the [Getting started](/docs/tutorial/getting-started),
+<!-- A good start is the [Getting started](/docs/tutorial/getting-started), -->
 
 ### Business objects
 
@@ -72,25 +72,25 @@ Coding
 
 > Where can I find general documentation and code samples on server side scripting?
 
-You can browse the [core documentations](./01-core/) for code examples (general, business objects hooks, business workflows hooks, adapters, publications, dispositions, ...).
+<!-- You can browse the [core documentations](./01-core/) for code examples (general, business objects hooks, business workflows hooks, adapters, publications, dispositions, ...). -->
 
 > Are there some limitations or usual traps on the server side scripts that I should be aware of?
 
-**Yes!** Please refer to [this documentation](/docs/documentation/core/basic-code-examples#javascript-engine-traps) for details on things to avoid (to avoid headhaches).
+<!-- **Yes!** Please refer to [this documentation](/docs/documentation/core/basic-code-examples#javascript-engine-traps) for details on things to avoid (to avoid headhaches). -->
 
 ### Integration/APIs
 
 > Where can I find general documentation on integration interfaces, APIs, code samples...?
 
-You can browse the [documentations](./):
+<!-- You can browse the [documentations](./): -->
 
-* Code samples for core configuration items (business objects, workflows, disposition, adapters, ...) in the [core documentations](./01-core/)
-* Integration interfaces usage (CLI, web services, ...) in the [integration documentations](./02-integration/)
-* Helper libs (Ajax, ...) in the [APIs documentations](./03-apis/)
+<!-- * Code samples for core configuration items (business objects, workflows, disposition, adapters, ...) in the [core documentations](./01-core/) -->
+<!-- * Integration interfaces usage (CLI, web services, ...) in the [integration documentations](./02-integration/) -->
+<!-- * Helper libs (Ajax, ...) in the [APIs documentations](./03-apis/) -->
 
 Configuration
 -------------
 
 > How can I configure the logging of the application?
 
-Please refer to [this document](/docs/documentation/misc/logging)
+<!-- Please refer to [this document](/docs/documentation/misc/logging) -->

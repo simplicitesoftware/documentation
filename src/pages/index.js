@@ -85,7 +85,7 @@ export default function Home() {
             <DocSection
               title="Release Notes"
               description="Latest updates, changes, and improvements."
-              link="/docs/category/release-notes"
+              link="/docs/versions/release-notes/v6-2"
               icon={Icons.releases}
             />
           </div>
