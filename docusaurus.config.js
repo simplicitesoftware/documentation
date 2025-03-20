@@ -90,7 +90,7 @@ const config = {
             ],
           },
           {
-            to: "/docs/category/release-notes",
+            to: "/docs/versions/versioning/",
             label: "Versions",
             position: "left",
           },
