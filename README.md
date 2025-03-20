@@ -76,7 +76,7 @@ console.log('What a great log');
 
 In addition to the basic Markdown syntax, we have a special admonitions syntax by wrapping text with a set of 3 colons, followed by a label denoting its type. 
 
-See (Admonitions how-to)[https://docusaurus.io/docs/markdown-features/admonitions]
+See [Admonitions how-to](https://docusaurus.io/docs/markdown-features/admonitions)
 
 
 ### See more
