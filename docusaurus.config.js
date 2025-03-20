@@ -14,7 +14,7 @@ const config = {
   baseUrl: "/",
   // GitHub pages deployment config.
   organizationName: "simplicitesoftware", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
+  projectName: "documentation", // Usually your repo name.
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
   onBrokenAnchors: "throw",
@@ -37,7 +37,7 @@ const config = {
       ({
         docs: {
           sidebarPath: "./sidebars.js",
-          showLastUpdateTime: true,
+          showLastUpdateTime: true
         },
         theme: {
           customCss: "./src/css/custom.css",
@@ -93,7 +93,7 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
-        additionalLanguages: ['java'],
+        additionalLanguages: ['java', 'bash'],
       },
       algolia: {
         // The application ID provided by Algolia
