@@ -6,12 +6,12 @@ title: FAQ
 Frequently Asked Question
 =========================
 
-General/installation/operation
+General / installation / operation
 ------------------------------
 
 > Is it possible to use the _foo_ database, the _bar_ application server, the _baz_ JVM version, ...?
 
-<!-- Please refer to the [compatibily tables](/docs/documentation/compatibility). -->
+Please refer to the [compatibility tables](/docs/documentation/compatibility).
 
 For details on some specific installation/operation requirements, please refer to the miscellaneous documentation.
 
@@ -20,7 +20,7 @@ Versions
 
 > What is the current maintenance status of version `x.y`?
 
-<!-- Please check [this document](/docs/versions/versioning.md) and the latest release notes of considered version. -->
+Please check [this document](/docs/versions/versioning.md) and the latest release notes of considered version.
 
 Usage
 -----
@@ -36,7 +36,7 @@ Design
 
 > Where to starts with to build my first business application?
 
-<!-- A good start is the [Getting started](/docs/tutorial/getting-started), -->
+A good start is the [Getting started](/docs/tutorial/welcome.md)
 
 ### Business objects
 
@@ -47,7 +47,7 @@ Not yet, this is in the roadmap for next version. At that stage you still need t
 > How can we set the number of rows in list ?
 
 This is a global setting defined at user level (min and max number of rows per lists) and dynamically configurable at list level.
-For business objects with few rows you can inhibitate the pagination, then all rows will be displayed
+For business objects with few rows you can inhibit the pagination, then all rows will be displayed
 
 Keep in mind that lists with a high number of rows combined with many fields visible on lists will result in huge page volumes with poor performances (and low useability).
 
@@ -72,25 +72,25 @@ Coding
 
 > Where can I find general documentation and code samples on server side scripting?
 
-<!-- You can browse the [core documentations](./01-core/) for code examples (general, business objects hooks, business workflows hooks, adapters, publications, dispositions, ...). -->
+You can browse the [core documentations](/docs/category/core) for code examples (general, business objects hooks, business workflows hooks, adapters, publications, dispositions, ...).
 
 > Are there some limitations or usual traps on the server side scripts that I should be aware of?
 
-<!-- **Yes!** Please refer to [this documentation](/docs/documentation/core/basic-code-examples#javascript-engine-traps) for details on things to avoid (to avoid headhaches). -->
+**Yes!** Please refer to [this documentation](/docs/documentation/core/basic-code-examples) for details on things to avoid (to avoid headaches). 
 
 ### Integration/APIs
 
 > Where can I find general documentation on integration interfaces, APIs, code samples...?
 
-<!-- You can browse the [documentations](./): -->
-
-<!-- * Code samples for core configuration items (business objects, workflows, disposition, adapters, ...) in the [core documentations](./01-core/) -->
-<!-- * Integration interfaces usage (CLI, web services, ...) in the [integration documentations](./02-integration/) -->
-<!-- * Helper libs (Ajax, ...) in the [APIs documentations](./03-apis/) -->
+* Code samples for core configuration items (business objects, workflows, disposition, adapters, ...) in the [core documentation](/docs/category/core)
+* Integration interfaces usage (CLI, web services, ...) in the [integration documentation](/docs/category/integration)
+* Helper libs (Ajax, ...) in the [APIs documentation](/docs/category/librairies)
 
 Configuration
 -------------
 
+>
+
 > How can I configure the logging of the application?
 
-<!-- Please refer to [this document](/docs/documentation/misc/logging) -->
+Please refer to [this document](/docs/documentation/misc/logging.md)

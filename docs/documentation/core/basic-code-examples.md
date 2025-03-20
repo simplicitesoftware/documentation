@@ -13,7 +13,7 @@ For more details on **Rhino** scripting you can check [the Mozilla Rhino documen
 
 > **Note**:
 >
-> Object code can be written in Java (or JavaScript which will be executed by the Rhino server-side engine, just like the executed fields), but good practice is to perfer Java language which  
+> Object code can be written in Java (or JavaScript which will be executed by the Rhino server-side engine, just like the executed fields), but good practice is to prefer Java language which  
 > include a compilation step and ensure that the syntax of the script is correct. In advanced use cases that are not part of this tutorial, the use of Java gives access > to all of the classic application development tools: step-by-step debugging, unit tests, development in a Java IDE, code quality analysis with Sonar etc..
 
 > Examples are provided both in Rhino and Java so as you can see the syntax differences.
