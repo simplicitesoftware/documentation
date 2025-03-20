@@ -51,5 +51,4 @@ A user can be:
 - [Internal authentication](/docs/documentation/authentication/internal-auth)
 - [Authentication providers](/docs/documentation/authentication/auth-providers)
 - [OAuth2](/docs/documentation/authentication/oauth2)
-- [Custom user object](https://community.simplicite.io/t/custom-user-object)
-- [Custom user object](/lesson/docs/misc/custom-user)
+- [Custom user object](/docs/documentation/misc/custom-user.md)
