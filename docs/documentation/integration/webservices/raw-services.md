@@ -6,7 +6,8 @@ title: Raw services
 RAW services
 =============
 
-<h2 id="intro">Introduction</h2>
+Introduction
+------------
 
 This document describes how raw data services are working.
 
@@ -42,7 +43,8 @@ It will be noted `<base URL>` in the rest of the document.
 
 > **Note**: In production the services endpoint's URL should be restricted only to allowed origins e.g. using URL filtering based on request's origin IP address or similar approaches.
 
-<h2 id="pooling">Scalability and performances</h2>
+Scalability and performances
+----------------------------
 
 For optimal performances under high concurrent volume it may be useful to enable the API pooling by setting the `USE_WEBSERVICES_OBJECTPOOL` to `yes`, especially
 when using a single user (e.g. calls from a "public" frontend).
@@ -50,7 +52,8 @@ when using a single user (e.g. calls from a "public" frontend).
 This allow calls to the services to be processed by a per-user pool of business objects.
 The pool size can be adjusted/limied using the `WEBSERVICES_OBJECTPOOL_MAXPEROBJECT`  and `WEBSERVICES_OBJECTPOOL_MAXTOTAL` system parameters.
 
-<h2 id="services">Data services</h2>
+Data services
+-------------
 
 ### Business object service
 
@@ -69,14 +72,14 @@ To get data from the `LANG` list of values the call is:
 ```shell
 	curl -u <login>[:<password>] "<base URL>/data?lov=LANG"
 ```
-<h3 id="excel">Usage in Microsoft Excel&reg;</h3>
+### Usage in Microsoft Excel&reg;
 
 Typical usage of raw data services is to configure traditional external datasources in Microsoft Excel&reg;.
 
 > **Note**: In recent Excel versions (Office 2016+) a much better approach is to use the **PowerQuery** tool (which is now provided by default with Excel) and the REST services.
 > See dedicated section in [this document](/docs/documentation/misc/excel) for details.
 
-<h3 id="googlespreadsheets">Usage in Google Spreadsheets&reg;</h3>
+### Usage in Google Spreadsheets&reg;
 
 As of version 3.1 MAINTENANCE 07, another possible usage of raw data services is to configure external datasources in Google Spreadsheetsl&reg;.
 

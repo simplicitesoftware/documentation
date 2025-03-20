@@ -6,7 +6,8 @@ title: Externalobject code examples
 External object code examples
 =============================
 
-<h2 id="principles">Principles</h2>
+Principles
+----------
 
 An external object is basically a custom HTML page/component that can be made available into the generic web UI's authenticated zone or in the public zone.
 
@@ -25,7 +26,8 @@ Please refer to [this document](/docs/documentation/integration/webservices/cust
 
 The content of an external page is produced by the `display` method of its server side script.
 
-<h2 id="basic">Basic example</h2>
+Basic example
+-------------
 
 > **Warning**
 >
@@ -200,7 +202,8 @@ The responsive UI requires a JavaScript statement (even empty like above) to be 
 
 See [this section](/docs/documentation/core/externalobject-code-examples#responsive) for other examples dedicated to the responsive UI.
 
-<h2 id="usingresources">Using resources and custom HTML/JavaScript/CSS</h2>
+Using resources and custom HTML/JavaScript/CSS
+----------------------------------------------
 
 If resources are associated to an external object, they are automatically processed as follows:
 
@@ -270,7 +273,8 @@ wp.appendCSS("p { color: red; }");
 wp.appendJS("function myfct() { ... }");
 ```
 
-<h2 id="usinghttpparams">Using HTTP parameters</h2>
+Using HTTP parameters
+---------------------
 
 The `display` method takes a single `params` argument which is a populated instance
 of `com.simplicite.webapp.util.ServletParameter`.
@@ -317,7 +321,8 @@ When used inside the generic web UI authenticated zone with navigation (i.e. by 
 to the page URL), you can get the previous page URL by calling `params.getBackLocation()`. This can be used,
 for instance, by a close button.
 
-<h2 id="usingmulti">Using many instances of a same external object on a same page</h2>
+Using many instances of a same external object on a same page
+-------------------------------------------------------------
 
 The container `.external-content` must be passed thru the rendering function and its body don't have to have an unique id.
 
@@ -342,7 +347,8 @@ return { render: render };
 })();
 ```
 
-<h2 id="usingothers">Using other features</h2>
+Using other features
+--------------------
 
 ### Ajax APIs
 
@@ -678,7 +684,8 @@ The other thing to to is to call `setPublic(true)` in the `display` method.
 Most of the time, this kind of public external object does not need to use the default UI layout. This can be achieved by
 calling `setDecoration(false)` in the `display` method as described above.
 
-<h2 id="redirects">Redirects</h2>
+Redirects
+---------
 
 Sometime an external object only redirects to another page after having applied some business logic.
 
@@ -710,7 +717,8 @@ instead of hard coding the URLs that may change in the future.
 > Redirect statements are however **partially** supported for backward compatibility by the responsive UI.
 > They may still make sense though in standalone pages outside of the responsive UI.
 
-<h2 id="others">Other types</h2>
+Other types
+-----------
 
 Example of an external object generating a PDF document (using the iText&reg; library wrapper 2.1.7 version):
 
@@ -781,7 +789,8 @@ which renders as:
 
 > **Note**: for a more coprehensive description on how to write custom webservices please refer to [this document](/docs/documentation/integration/webservices/custom-services)
 
-<h2 id="responsive">Responsive UI pattern</h2>
+Responsive UI pattern
+---------------------
 
 The **version 4.0 responsive UI** is a single page UI, so the implementation of custom components is using a different pattern than the standalone page pattern of the above examples.
 

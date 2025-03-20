@@ -12,7 +12,8 @@ This document implies that you are exposing your Java-implemented modules on the
 or, at least, export them as a structured archive (e.g. ZIP).
 When doing so your module is structured as an [Apache Maven projects](https://maven.apache.org/).
 
-<h2 id="tests">Implementing tests</h2>
+Implementing tests
+------------------
 
 ### Using unit tests classes
 
@@ -150,14 +151,16 @@ public String unitTests() {
 }
 ```
 
-<h2 id="ui">Run from UI</h2>
+Run from UI
+-----------
 
 To invoke the unit tests from the UI, open the definition of your unit tests shared code, business object, business worflow, external object, etc.
 and click on the _Unit tests_ action button.
 
 The result is displayed in a popup.
 
-<h2 id="api">Run from API</h2>
+Run from API
+------------
 
 You can also invoke the action from the API endpoint (for instance if you want to automate the tests execution using this endpoint).
 
@@ -212,7 +215,8 @@ curl -s <API credentials> <base URL>/api/rest/ObjectExternal/<external object ro
 
 Etc.
 
-<h2 id="io">Run from I/O</h2>
+Run from I/O
+------------
 
 You can also invoke a shared code unit tests shared code class execution from the I/O services endpoint (for instance if you want to automate the tests execution using this endpoint).
 

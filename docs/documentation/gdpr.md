@@ -6,7 +6,8 @@ title: GDPR guidelines
 GDPR guidelines
 ===============
 
-<h2 id="introduction">Introduction</h2>
+Introduction
+------------
 
 Out of the box, the Simplicitt&eacute; platform **software** (refered as "the platform" in the rest of this document) does not manage any private data.
 
@@ -21,7 +22,8 @@ you in this task.
 > These databases are **external software components** from the point of view of the the platform.
 > In other words the platform itself does not store any data.
 
-<h2 id="businessdata">Business data</h2>
+Business data
+-------------
 
 When you configure business data (typically business objects and associated buisness fields) you should trace
 whether this data is a private data. E.g. by indicating it explicitly in the description of the business object, business
@@ -43,7 +45,8 @@ build exports/reports on this information.
 >
 > You are still free to extend this basic classification to your needs as this field is not used in the platform's core engine.
 
-<h2 id="users">Users</h2>
+Users
+-----
 
 ### User data
 
@@ -69,7 +72,8 @@ the login of the user who has created/updated the considered record.
 
 You can implement specific business logic to erase/anonymize this timestamping data if required.
 
-<h2 id="social">Social posts</h2>
+Social posts
+------------
 
 The social posts (globals or associated to business object records) are linked to the `User` business object
 by the `pstUserId` reference field.
@@ -78,7 +82,8 @@ Social posts can be globally inhibited or at a business object per business obje
 
 You can also implement specific business logic to erase/anonymize this social post data if required.
 
-<h2 id="logging">Logging</h2>
+Logging
+-------
 
 ### Database logs
 

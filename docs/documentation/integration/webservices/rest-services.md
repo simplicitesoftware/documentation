@@ -6,7 +6,8 @@ title: REST services
 REST services
 =============
 
-<h2 id="intro">Introduction</h2>
+Introduction
+------------
 
 This document describes how the generic REST API services are working.
 
@@ -55,7 +56,8 @@ The examples are done on the system parameter object `SystemParam` for a busines
 
 > **Note**: In production the services endpoint's URL should be restricted only to allowed origins e.g. using URL filtering based on request's origin IP address or similar approaches.
 
-<h2 id="pooling">Scalability and performances</h2>
+Scalability and performances
+----------------------------
 
 For optimal performances under high concurrent volume it may be useful to enable the API pooling by setting the `USE_WEBSERVICES_OBJECTPOOL` to `yes`, especially
 when using a single user (e.g. calls from a "public" frontend).
@@ -63,7 +65,8 @@ when using a single user (e.g. calls from a "public" frontend).
 This allow calls to the services to be processed by a per-user pool of business objects.
 The pool size can be adjusted/limied using the `WEBSERVICES_OBJECTPOOL_MAXPEROBJECT`  and `WEBSERVICES_OBJECTPOOL_MAXTOTAL` system parameters.
 
-<h2 id="appinfo">Application info</h2>
+Application info
+----------------
 
 Calling `<base URL>` returns information on application and user:
 ```
@@ -72,7 +75,8 @@ Calling `<base URL>` returns information on application and user:
 As of version **3.1** appending `?session=true` to this URL only returns minimalistic information on the server session.
 For instance, calling this basic session information is an efficient way to keep the session alive with a minimal system consumption.
 
-<h2 id="create">Create</h2>
+Create
+------
 
 To create a new system parameter `TEST` with value `foo`, the required JSON data is as follows (it obviously **must** include all required fields of the considered business object):
 
@@ -109,7 +113,8 @@ The response of the call is a complete JSON data as follows:
 
 Note the `row_id` field value returned (noted `<row ID>` in the example) that will be used for the other REST calls.
 
-<h2 id="get">Get</h2>
+Get
+---
 
 Once you know the row ID of a record you can get it (go to "Search" paragraph for search principles based on other fields than the row ID).
 
@@ -135,7 +140,8 @@ By default you get the document ID of all document and image fields.
 If you want to get the content of the document and image fields you need to append `_inline_documents=true` to the URL.
 If you want to get the thumbnail content of the image fields you need to append `_inline_thumbnails=true` to the URL.
 
-<h2 id="update">Update</h2>
+Update
+------
 
 Once you know the row ID of a record you can update it.
 
@@ -167,7 +173,8 @@ The response is the same as the one you got from creation and get calls, except 
 }
 ```
 
-<h2 id="delete">Delete</h2>
+Delete
+------
 
 Once you know the row ID of a record you can delete it.
 
@@ -183,7 +190,8 @@ The response only indicates the row ID that has been deleted:
 }
 ```
 
-<h2 id="searching">Search</h2>
+Search
+------
 
 Search is as get but without a row ID.
 
@@ -236,7 +244,8 @@ The result provides an array of matching indexed records (each of them including
 
 The options described above applies for this search also.
 
-<h2 id="metadata">Meta-data</h2>
+Meta-data
+---------
 
 You can get the business object meta-data with a get call with the optional URL parameter `_metadata`:
 ```
@@ -244,7 +253,8 @@ You can get the business object meta-data with a get call with the optional URL 
 ```
 An optional `_metadacontext` allows to specify object context.
 
-<h2 id="action">Run custom action</h2>
+Run custom action
+-----------------
 
 You can run a custom action on the business object with a get call with the optional URL parameter `_action`:
 ```
@@ -256,7 +266,8 @@ or (as of version 5.1):
 ```
 The row ID is to be set for record level custom actions. On global custom actions the search capabilities applies.
 
-<h2 id="publication">Apply publication template</h2>
+Apply publication template
+--------------------------
 
 You can apply a publication template on the business object with a get call with the optional URL parameter `_printtemplate`:
 ```
@@ -268,7 +279,8 @@ or (as of version 5.1):
 ```
 The row ID is to be set for record level publication templates. On global publication templates the search capabilities applies.
 
-<h2 id="pivottable">Get pivot table data</h2>
+Get pivot table data
+--------------------
 
 You can get a pivot table result on the business object with a get call with the optional URL parameter `_crosstab`:
 ```
@@ -276,14 +288,16 @@ You can get a pivot table result on the business object with a get call with the
 ```
 The search capabilities applies.
 
-<h2 id="doc">Service documentation</h2>
+Service documentation
+---------------------
 
 As of **version 3.1** you can get the business object service documentation with a get call with the optional URL parameter `_doc`: `<base URL>/SystemParam/?_doc=true`
 
 The default documentation format is _Markdown_ but you can format it as HTML using the optional `&_output=html`
 or, as of version 4.0, as an OpenAPI/Swagger schema using `_output=openapi`.
 
-<h2 id="examples">Usage example using HTML/Ajax</h2>
+Usage example using HTML/Ajax
+-----------------------------
 
 [This Github repository](https://github.com/simplicitesoftware/ajax-demo) is a very basic example of usage of REST services from an HTML page.
 

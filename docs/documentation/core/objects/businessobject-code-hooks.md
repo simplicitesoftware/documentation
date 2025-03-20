@@ -29,9 +29,10 @@ The choice depends on the nature of the considered business logic:
 Some very common and useful code examples are given in the [basic code examples](/docs/documentation/core/basic-code-examples) document.
 <!-- and some more unusual examples are given [advanced code examples](/docs/documentation/core/advanced-code-examples) document.-->
 
-<h2 id="definitionhooks">Object definition and right-related hooks</h2>
+Object definition and right-related hooks
+-----------------------------------------
 
-<h3 id="postload">Post load hook</h3>
+### Post load hook
 
 The `postLoad` hook is called **once**, when the object definition is loaded.
 It can therefore be used to modify the **static** object definition.
@@ -59,7 +60,7 @@ public void postLoad() {
 }
 ```
 
-<h3 id="isopencreatecopyupdatedeleteenable">Access rights enabling/disabling hooks</h3>
+### Access rights enabling/disabling hooks
 
 The `isOpenEnable`, `isCreateEnable`, `isCopyEnable`, `isUpdateEnable` and `isDeleteEnable` hooks
 allow to dynamically enable/disable open, create, copy, update, delete rights on the object.
@@ -95,7 +96,7 @@ public boolean isDeleteEnable(String[] row) {
 }
 ```
 
-<h3 id="isactionenable">Custom action processing right enabling/disabling hook</h3>
+### Custom action processing right enabling/disabling hook
 
 The `isActionEnable` hook has a similar use as above right hooks but for custom actions.
 
@@ -118,7 +119,7 @@ public boolean isActionEnable(String[] row, String action) {
 
 > See [this document](/docs/documentation/core/custom-actions-examples) for details on how to implement custom actions.
 
-<h3 id="isprintemplateenable">Publication processing right enabling/disabling hook</h3>
+### Publication processing right enabling/disabling hook
 
 The `isPrintTemplateEnable` hook has a similar use as above right hooks but for publications.
 
@@ -136,7 +137,7 @@ public boolean isPrintTemplateEnable(String[] row, String printTemplateName) {
 
 > See [this document](/docs/platform/userinterface/objectsrendering/publications) for details on how to implement publications.
 
-<h3 id="isstatetransitionenable">State transitions hook</h3>
+### State transitions hook
 
 The `isStateTransitionEnable` hook allows to dynamically enable/disable a state transition.
 
@@ -154,7 +155,7 @@ public boolean isStateTransitionEnable(String fromStatus, String toStatus) {
 }
 ```
 
-<h3 id="canreference">Panel objects hook</h3>
+### Panel objects hook
 
 The `canReference` hook allows to show/hide linked objects' panels based on custom business rules.
 
@@ -169,7 +170,7 @@ public boolean canReference(String objectName, String fieldName) {
 ```
 
 
-<h3 id="canupdateall">Bulk update hook</h3>
+### Bulk update hook
 
 The `canUpdateAll` hook allows to dynamically enable/disable the bulk update feature.
 
@@ -184,7 +185,7 @@ public boolean canUpdateAll(ObjectField fieldName) {
 ```
 
 
-<h3 id="ishistoric">Data history hook</h3>
+### Data history hook
 
 The `isHistoric` hook allows to dynamically restrict the standard historization. By default, this method return true when the business object has been designed with the historic property.
 Above, the data bulk update is allowed to user who does not belong to MYGROUP.  
@@ -199,7 +200,8 @@ public boolean isHistoric() {
 }
 ```
 
-<h2 id="datapreparationhooks">Data preparation hooks</h2>
+Data preparation hooks
+----------------------
 
 These data preparation hooks are Object UI-oriented hooks because they are called before displaying a page for read or write (create, update, delete) of an object item.
 
@@ -212,7 +214,7 @@ These data preparation hooks are Object UI-oriented hooks because they are calle
 These hooks are useful for dynamically changing the behavior of an object in a particular use context
 (e.g. changing one field as updatable depending on the value of another field, forcing a default field values at creation, etc.).
 
-<h3 id="initcreatcopyupdatedelete">Create, copy, update and delete preparation hooks</h3>
+### Create, copy, update and delete preparation hooks
 
 The `initCreate`, `initCopy`, `initUpdate` and `initDelete` hooks are called each time you open a form to create, copy, update or delete.
 
@@ -239,7 +241,7 @@ public void initDelete() {
 }
 ```
 
-<h3 id="initlist">List preparation hook</h3>
+### List preparation hook
 
 The `initList` hook is called each time a list is displayed.
 
@@ -267,7 +269,7 @@ MyObject.initList = function(parent) {
 
 </details>
 
-<h3 id="initsearch">Search preparation hook</h3>
+### Search preparation hook
 
 The `initSearch` hook is called before a search form is displayed.
 
@@ -283,7 +285,7 @@ public void initSearch() {
 }
 ```
 
-<h3 id="initrefselect">Reference lookup preparation hook</h3>
+### Reference lookup preparation hook
 
 The `initRefSelect` hook is called before a reference lookup popup is displayed.
 
@@ -316,7 +318,7 @@ public void initRefSelect(ObjectDB parent) {
 The `initDataMapSelect` hook has the same behavior to get referenced data by values.
 
 
-<h3 id="initaction">Action preparation hooks</h3>
+### Action preparation hooks
 
 When action has confirm fields this hook allows to prepare them before rendering.
 
@@ -331,7 +333,7 @@ public void initAction(Action action) {
 }
 ```
 
-<h3 id="otherinit">Other preparation hooks</h3>
+### Other preparation hooks
 
 The `initExport`, `initCrosstab`, `initGraph`, `initAgenda`, `initPrintTemplate` hooks are called before
 displaying the result of an export, a pivot table, a chart, an agenda, a publication.
@@ -339,9 +341,10 @@ displaying the result of an export, a pivot table, a chart, an agenda, a publica
 They allow to define field filters for example, field values, etc. just before the result is displayed.
 
 
-<h2 id="dataprocessinghooks">Data processing hooks</h2>
+Data processing hooks
+---------------------
 
-<h3 id="prepostvalidatehooks">Pre and post validation hooks</h3>
+### Pre and post validation hooks
 
 These `preValidate` and `postValidate` hooks are called before and after the generic data validation
 is made by the engine.  
@@ -383,7 +386,7 @@ public List<String> postValidate() {
 In the above example, the error messages code (`ERR_TEST`) corresponds to a static text
 configured in the `TEXT` list.
 
-<h3 id="prepostselecthooks">Pre and post selection hooks</h3>
+### Pre and post selection hooks
 
 The `preSelect` and `postSelect` hooks are called before/after selecting the object data (in a list they are called for each list items). 
 
@@ -401,7 +404,7 @@ public void preSelect(String rowId, boolean copy) {
 }
 ```
 
-<h3 id="prepostcreateundatedeletehooks">Pre and post creation, update, deletion hooks</h3>
+### Pre and post creation, update, deletion hooks
 
 The `preCreate`, `preUpdate`, `preDelete`, `postCreate`, `postUpdate`, `postDelete` hooks are called before/after creating, updating, deleting the object data.
 
@@ -455,7 +458,7 @@ Post delete hook can be used to implement some business rules after the object i
 > **Note**: to generate unique codes based on the **row ID** the right approach is to configure a default value expression on your field with an expression like
 > `[EXPR:Tool.format("ABC-%05d", Long.valueOf([ROWID]))]` (in this example the field gets `ABC-00123` as value at the creation of a record with row ID `123`)
 
-<h3 id="prepostsavehooks">Pre and post save hooks</h3>
+### Pre and post save hooks
 
 The `preSave` and `postSave` hooks are called before/after saving the object data.
 
@@ -514,7 +517,7 @@ String js =
 return HTMLTool.javascriptStatement(js);
 ```
 
-<h3 id="prepostsearchhooks">Pre and post search hooks</h3>
+### Pre and post search hooks
 
 The `preSearch` and `postSearch` hooks are called before/after searching the object data: before/after the search core method is called.  
 
@@ -563,7 +566,7 @@ public String postDelete() {
 }
 ```
 
-<h3 id="prepostupdatealldeleteallhooks">Pre and post bulk update and bulk delete hooks</h3>
+### Pre and post bulk update and bulk delete hooks
 
 The `preUpdateAll`, `postUpdateAll`, `preDeleteAll` and `postDeleteAll` hooks are called before/after a data bulk update or bulk delete.
 
@@ -586,7 +589,7 @@ public String preUpdateAll(Parameters params) {
 };
 ```
 
-<h3 id="importhooks">Import hooks</h3>
+### Import hooks
 
 The `preImport` and `postImport` hooks are called before/after a data is imported.
 
@@ -613,7 +616,7 @@ These hooks are called to add specific behaviors before/after an import.
 	}
 ```
 
-<h3 id="exporthooks">Export hooks</h3>
+### Export hooks
 
 The `isExportAllowed` hook is called before exporting data to deny or confirm the export.
 
@@ -679,7 +682,7 @@ public String getExportFileName(String type, String name, String row[]) {
 }
 ```
 
-<h3 id="prepostalerthooks">Pre and post alerts hooks</h3>
+### Pre and post alerts hooks
 
 The `preAlert` and `postAlert` hooks are called before/after the alert is sending.  
 
@@ -746,7 +749,7 @@ public String postSave() {
 }
 ```
 
-<h3 id="predefinedsearchhooks">Predefined searches hooks</h3>
+### Predefined searches hooks
 
 It is possible to add code during the predefined search creation:
 
@@ -779,9 +782,10 @@ It is possible to add code during the predefined search creation:
 	}
 ```
 
-<h2 id="otherhooks">Other hooks</h2>
+Other hooks
+-----------
 
-<h3 id="shortlabelhook">Short label hook</h3>
+### Short label hook
 
 The `getUserKeyLabel` hook can be used to override a business object record's default "short" label (the one which is displayed on form titles, on indexed search results, on treeviews, ...)
 
@@ -797,7 +801,7 @@ public String getUserKeyLabel(String[] row) {
 }
 ```
 
-<h3 id="stylehook">Style hook</h3>
+### Style hook
 
 It is possible to set style (for instance a CSS class) on a field based on business logic:
 
@@ -831,7 +835,7 @@ public String getStyle(ObjectField field, String[] row) {
 }
 ```
 
-<h3 id="helphooks">Help hooks</h3>
+### Help hooks
 
 As of version `3.2 MAINTENANCE06` the `getHelp` and `getCtxHelp` hooks can be use to dynamically create/update main help and contextual helps:
 
@@ -850,7 +854,7 @@ public String getCtxHelp(String context) {
 };
 ```
 
-<h3 id="usinghistory">Using history</h3>
+### Using history
 
 If a `MyObject` business object is historized, there is an additional business object names `MyObjectHistoric` that stores the values of each record.
 
@@ -866,7 +870,7 @@ h.getField("row_idx").setOrder(-1); // Reverse order on history index
 h.search(false);
 ```
 
-<h3 id="redirections">Redirection</h3>
+### Redirection
  
 It is possible to open a given "abstract" father object (e.g. `Vegetable`) record
 as its corresponding specialized child object (e.g. `Carrot` or `Cabbage`) record by implementing a father-child redirect hook.
@@ -912,7 +916,7 @@ public String[] getTargetObject(String rowId, String[] row) {
 
 This mechanism can also be used to do redirection between objects that don't have a father-child relationship.
 
-<h3 id="metaobjlink">Meta-object link</h3>
+### Meta-object link
 
 Useful to indicate with inherited object have to be displayed in a panel of a parent object within a meta-object link.
 
@@ -934,7 +938,8 @@ public static String getTargetMetaObject(Grant g, String object, String field, S
 }
 ```
 
-<h2 id="inheritance">Inheritance</h2>
+Inheritance
+-----------
 
 Let's say you have a `MyChildObject` that inherits from `MyFatherObject` you can call the hooks of the father object's code
 from the child object's code by using the `MyFatherObject.<hook name>.call(this, <hook arguments>)` syntax (the `.call(this, ` part

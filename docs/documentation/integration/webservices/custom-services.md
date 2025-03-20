@@ -6,7 +6,8 @@ title: Custom services
 Custom services
 ===============
 
-<h2 id="intro">Introduction</h2>
+Introduction
+------------
 
 This document describes how to implement custom services (e.g. custom REST APIs) using external objects.
 
@@ -39,7 +40,8 @@ It will be noted `<base URL>` in the rest of the document.
 
 > **Warning**: In production the services endpoint's URL should be restricted only to allowed origins e.g. using URL filtering based on request's origin IP address or similar approaches.
 
-<h2 id="pooling">Scalability and performances</h2>
+Scalability and performances
+----------------------------
 
 For optimal performances under high concurrent volume it may be useful to enable the API pooling by setting the `USE_WEBSERVICES_OBJECTPOOL` to `yes`, especially
 when using a single user (e.g. calls from a "public" frontend).
@@ -47,14 +49,15 @@ when using a single user (e.g. calls from a "public" frontend).
 This allow calls to the services to be processed by a per-user pool of external objects.
 The pool size can be adjusted/limied using the `WEBSERVICES_EXTOBJECTPOOL_MAXPEROBJECT`  and `WEBSERVICES_EXTOBJECTPOOL_MAXTOTAL` system parameters.
 
-<h2 id="implementation">Service implementation</h2>
+Service implementation
+----------------------
 
 A custom service is just a plain external object (check [this document](/docs/documentation/core/externalobject-code-examples) for general principles of external objects).
 
 In particular this external object needs to be granted to the user that will be calling it on the API endpoint.
 
 
-<h3 id="java">Java</h3>
+### Java
 
 In **Java** as of version 4.0.P23 you can extends the more convenient `com.simplicite.webapp.services.RESTServiceExternalObject` helper class
 dedicated to custom JSON/REST services implementation.
@@ -88,7 +91,8 @@ public class MyServiceV1 extends com.simplicite.webapp.services.RESTServiceExter
 
 > **Note**: by default the non implemented method `get/post/put/del/head` of this helper class return a plain 400 ("Bad request") error.
 
-<h2 id="calling">Service call</h2>
+Service call
+------------
 
 Then the service could be called (using `POST` method in this example) like this:
 ```shell
@@ -113,7 +117,8 @@ The result is then:
 }
 ```
 
-<h2 id="mappedbusinessobjects">Mapped business object services helper class</h2>
+Mapped business object services helper class
+--------------------------------------------
 
 As of version 4.0.P23 a high-level helper class `com.simplicite.webapp.services.RESTMappedObjectsExternalObject`
 is provided to simply expose Simplicit&eacute; business object CRUD in a simplified and customized way.

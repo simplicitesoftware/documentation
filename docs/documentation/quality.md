@@ -8,9 +8,10 @@ Quality
 
 See [this document](/docs/documentation/versions/versioning) for details on the platform's versioning strategies and the the [security guidelines](/docs/documentation/security) for more details on how to secure your deployments.
 
-<h2 id="dependencies">Dependencies</h2>
+Dependencies
+------------
 
-<h3 id="upgrades">Dependencies upgrade policy</h3>
+### Dependencies upgrade policy
 
 Except in case of a critical ("zero-day") vulnerability which may be actually exploited in the context of Simplicité,
 the third party components are **only** upgraded on the `master` branch (development = alpha).
@@ -32,7 +33,7 @@ The Java dependencies up-to-date check is done using Apache Maven and its [depen
 
 The JavaScript dependencies up-to-date check is done using the [npm check update tool](https://www.npmjs.com/package/npm-check-updates).
 
-<h3 id="audits">Dependencies security audits</h3>
+### Dependencies security audits
 
 #### Java dependencies audit
 
@@ -46,7 +47,8 @@ As of version 5, a dependencies security audit using the [npm audit tool](https:
 
 It is done at each build of each version for each branch.
 
-<h2 id="codequality">Platform code quality</h2>
+Platform code quality
+---------------------
 
 ### Linters
 
@@ -69,7 +71,8 @@ The whole code (Java, JavaScript and styles) is regularly checked using the [Son
 
 The SonarQube analysis is done on the `master` branch at least prior to pushing it to the `prerelease` branch.
 
-<h2 id="audits">External audits</h2>
+External audits
+---------------
 
 Various audits are done, by external consulting firms, on a regular basis to detect potential security breaches and other security-related issues
 
@@ -84,7 +87,8 @@ The results of these audits are always taken into account with **highest priorit
 
 All fixes are transposed to all branches, including the long term maintenance branches.
 
-<h2 id="docker">Docker images</h2>
+Docker images
+-------------
 
 The "server" images `registry.simplicite.io/server`, from which the "platform" images `registry.simplicite.io/platform` are built, are rebuilt on a regular basis,
 in general for each new platform revision, using the up-to-date official base images of various OS flavors (CentOS, AlmaLinux, Alpine Linux, ...).

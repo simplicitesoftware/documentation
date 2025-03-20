@@ -12,7 +12,8 @@ It describes how to configure and use remote LDAP objects.
 
 > **Warning**: this configuraton item is still being developed, its configuration strategy is likely to change.
 
-<h2 id="configuration">Configuration</h2>
+Configuration
+-------------
 
 To configure a remote LDAP business object the _Table_ field value must be `service-ldap`.
 

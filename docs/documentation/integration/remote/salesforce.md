@@ -10,7 +10,8 @@ This document applies to version 3.0 MAINTENANCE 20 and above.
 
 It describes how to configure and use remote [SalesForce&reg;](http://www.salesforce.com/) objects.
 
-<h2 id="configuration">Configuration</h2>
+Configuration
+-------------
 
 To configure a remote SalesForce&reg; business object the _Table_ field value must be `service-salesforce`.
 
@@ -33,7 +34,8 @@ explicitly or implicitly configured Simplicité fields, by default the list is `
 - `ignored: [<array of SalesForce field names>]` allows to define a list of fields that are not taken into account on Simplicité side,
 by default the list is: `["IsDeleted", "OwnerId", "SystemModstamp", "MasterRecordId"]`.
 
-<h2 id="credentials">Credentials</h2>
+Credentials
+-----------
 
 The credentials, that can be shared among several business objects of the same remote SalesForce&reg; instance are configured as JSON in a system parameter (either a global server parameter or a user server parameter):
 

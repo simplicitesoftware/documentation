@@ -6,7 +6,8 @@ title: OAuth2
 OAuth2 Authentication
 ============================
 
-<h2 id="providers">Providers</h2>
+Providers
+---------
 
 The following table indicates OAuth2/OpenIDConnect providers supports per Simplicité version:
 
@@ -24,7 +25,8 @@ For subsequent versions **multiple** providers can be configured at the same tim
 (2) FranceConnect being an OpenIDConnect-compliant provider, starting with version 4.0
 it should thus be configured as an OpenIDConnect provider instead.
 
-<h2 id="webappsettings">Webapp prerequisites</h2>
+Webapp prerequisites
+--------------------
 
 The changes to be done (if not already done) are :
 
@@ -37,7 +39,8 @@ The changes to be done (if not already done) are :
 
 > **Warning**: Before doing these changes, **make sure** that you will still be able to login with a user having at least a responsibility on the `ADMIN` group.
 
-<h2 id="common">Common settings</h2>
+Common settings
+---------------
 
 The callback URL (redirect URI) to configure in your OAuth2/OpenIDConnect IdP for your instance is `<base URL>/oauth2callback`.
 
@@ -74,7 +77,8 @@ See [this document](/docs/documentation/authentication/auth-providers) for detai
 If needed, the logout URL to configure in your OAuth2/OpenIDConnect IdP for your instance is `<base URL>/logout`
 or `<base URL>/logoutconfirm` (for displaying just a logout confirmation page).
 
-<h2 id="openidconnect">Generic OpenIDConnect provider settings</h2>
+Generic OpenIDConnect provider settings
+---------------------------------------
 
 As of version 4.0 it is possible to configure generic OpenIDConnect (OIDC) providers (see [this specification](http://openid.net/connect/) for details on the OIDC standards).
 
@@ -227,7 +231,8 @@ public String getAuthTokenInfo(String token) {
 ```
 
 
-<h2 id="google">Google provider</h2>
+Google provider
+---------------
 
 Register a new client ID on the [Google Developers Console](https://console.developers.google.com) for the application:
 
@@ -258,7 +263,8 @@ In `AUTH_PROVIDERS` just add Google settings as follow, for example to add conse
 >   Only additional scopes needs to be configured.
 > - In 3.x versions you have a unique provider so the `<Google provider name>` suffix must not be set
 
-<h2 id="microsoftliveid">Microsoft LiveID provider</h2>
+Microsoft LiveID provider
+-------------------------
 
 Register a new client ID on the [Microsoft LiveID application portal](https://apps.dev.microsoft.com) for the application (the OAuth2 callback URL will be `<url>/oauth2callback`):
 
@@ -269,7 +275,8 @@ Activate the **required** _User.Read_ on the portal and, optionally, activate an
 Optionally set `OAUTH2_SCOPES <Microsoft LiveID provider name>` with additional OAuth2 scopes you may need
 see Microsoft LiveID documentation for the values of the possible scopes, if you have several scopes use space as separator.
 
-<h2 id="granthooks">Grant hooks</h2>
+Grant hooks
+-----------
 
 If needed you can implement additional business logic in the `GrantHooks` Java class or Rhino script.
 
@@ -342,7 +349,8 @@ public void preLoadGrant(Grant g) {
 }
 ```
 
-<h2 id="customzingloginscreen">Customizing the login screen</h2>
+Customizing the login screen
+----------------------------
 
 If you want to change the top logo you can create a `OAUTH2_LOGO` **image** resource (ideal type = SVG and ideal dimension = 120x120 px)
 

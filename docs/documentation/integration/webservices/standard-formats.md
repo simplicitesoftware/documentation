@@ -6,7 +6,8 @@ title: Standard formats
 Standard I/O formats
 ====================
 
-<h2 id="introduction">Introduction</h2>
+Introduction
+------------
 
 All standard I/O formats (XML, ZIP and CSV) are rowID-less formats that allows data exchange between instances.
 
@@ -14,7 +15,8 @@ Each record in these formats **must** have as a minimum the functional keys fiel
 
 All other fields are non mandatory (except if we are talking of madatory fields in the context of a record creation).
 
-<h2 id="xml">Standard XML format</h2>
+Standard XML format
+-------------------
 
 The standard XML follows these [XSD schemas](./schemas/). To summarize it consist in a list of `object` blocs with list of  `data` blocs inside.
 Each `object` corresponds to one business object, each `data` bloc correspond to one record of the business object.
@@ -61,14 +63,16 @@ In XML format the document fields are inlined in the XML, the content of the doc
 
 A same XML file can have several `object` blocs correspoding to several different business objects, however to respect relational links these blocs must be put in an appropriat order.
 
-<h2 id="zip">Standard ZIP format</h2>
+Standard ZIP format
+-------------------
 
 The standard ZIP format is an archive file that contains one or several standard XML files in the root folder
 and an arbitrary subfolder structure for the documents which are referenced in the XML files as a relative path within the archive.
 
 These XML files are processed in the order of their name.
 
-<h2 id="csv">Standard CSV format</h2>
+Standard CSV format
+-------------------
 
 The standard CSV format is for one business only.
 
@@ -87,10 +91,12 @@ Again you **must** at least have the functional keys of your business object on 
 
 The XML action mode for CSV import is `upsert`.
 
-<h2 id="json">Standard JSON format</h2>
+Standard JSON format
+--------------------
 
 **to be completed**
 
-<h2 id="yaml">Standard YAML format</h2>
+Standard YAML format
+--------------------
 
 **to be completed**

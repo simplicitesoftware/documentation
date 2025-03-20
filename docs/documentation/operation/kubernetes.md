@@ -8,14 +8,16 @@ Simplicit&eacute; on Kubernetes
 
 > **Warning**: This document is a work in progress DRAFT
 
-<h2 id="prerequistes">Prerequisites</h2>
+Prerequisites
+-------------
 
 Configure a Kubernetes cluster and at least a worker.
 
 Install the [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) on the client machine.
 And configure it in `$HOME/.kube/config`.
 
-<h2 id="preflightchecks">Preflight checks</h2>
+Preflight checks
+----------------
 
 Verify the configuration:
 
@@ -31,7 +33,8 @@ Verify the cluster:
 	kubectl cluster-info
 	kubectl cluster-info dump
 
-<h2 id="privateimages">Allow use of private images</h2>
+Allow use of private images
+---------------------------
 
 The Simplicité images needs appropriate credentials on DockerHub.
 
@@ -47,7 +50,8 @@ Alternatively you can create the secret directly (without signin in to DockerHub
 ```
 	kubectl create secret docker-registry regcred --docker-server=https://index.docker.io/v1/ --docker-username=<your username> --docker-password=<your password> --docker-email=<your email address>
 ```
-<h2 id="sandbox">Basic Simplicité sandbox example using Kompose&reg;</h2>
+Basic Simplicité sandbox example using Kompose&reg;
+---------------------------------------------------
 
 For this basic example we will be using the [Kompose tool](https:installation.md) tool.
 
@@ -108,7 +112,8 @@ In the above case you can now point your browser to `http://6fvb57vqjk.lb.c4.gra
 
 > **Warning**: in this sandbox example there is no persistence at all, no data survives when the container is shut down.
 
-<h2 id="example">Comprehensive example</h2>
+Comprehensive example
+---------------------
 
 In this example we will be using custom manifests for deploying a PostgreSQL database and a Simplicité instance.
 

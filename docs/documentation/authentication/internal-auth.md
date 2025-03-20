@@ -6,7 +6,8 @@ title: Internal auth
 Internal authentication tips and tricks
 =======================================
 
-<h2 id="2fa">Second authentication factor (2FA)</h2>
+Second authentication factor (2FA)
+----------------------------------
 
 As of **version 5.2** it is possible to configure a second authentication factor
 on the internal authentication.
@@ -30,7 +31,8 @@ A custom 2FA mode is implementable using the dedicated `initMFA` and `checkMFA` 
 - `initMFA` allow you to initialize a second factor (e.g.: generate a one time code for the entered login and send it by an appropriate canal)
 - `checkMFA` allow you to check the second factor against what has been generated
 
-<h2 id="antibruteforce">Anti brute-force attacks</h2>
+Anti brute-force attacks
+------------------------
 
 As of **version 5.1** it is possible to implement a logic for blocking/limiting "brute force" attacks
 or any abusive number of attempts to log in using the internal authentication.

@@ -8,15 +8,17 @@ Additional datasources howto
 
 This document shows how to configure additional datasources that can be used to configure Simplicité business objets that points to remote databases.
 
-<h2 id="tomcat">Context-level configuration for Tomcat</h2>
+Context-level configuration for Tomcat
+--------------------------------------
 
 You can manually put additional datasources resources in the deployed `META-INF/context.xml` (refer to Tomcat documentation for details)
 
-<h2 id="config">Configuration-level configuration</h2>
+Configuration-level configuration
+---------------------------------
 
 As of version 3.1 it is possible to configure additional datasources either as environment variables or as system parameters.
 
-<h3 id="postgresql">PostgreSQL</h3>
+### PostgreSQL
 
 For instance, if you configure a `MY_PGSQL_DATASOURCE` for a **PostgreSQL** database as:
 
@@ -31,7 +33,7 @@ For instance, if you configure a `MY_PGSQL_DATASOURCE` for a **PostgreSQL** data
 
 You can then configure a business object with `MY_PGSQL_DATASOURCE;[<schema name>.]<table name>` in the table name.
 
-<h3 id="mysql">MySQL/MariaDB</h3>
+### MySQL/MariaDB
 
 Or, for instance, if you configure a `MY_MYSQL_DATASOURCE` for a **MySQL/MariaDB** database as:
 
@@ -46,7 +48,7 @@ Or, for instance, if you configure a `MY_MYSQL_DATASOURCE` for a **MySQL/MariaDB
 
 You can then configure a business object with `MY_MYSQL_DATASOURCE;<table name>` in the table name.
 
-<h3 id="oracke">Oracle</h3>
+### Oracle
 
 Or, for instance, if you configure a `MY_ORACLE_DATASOURCE` for an **Oracle** database as:
 
@@ -63,7 +65,7 @@ Or, for instance, if you configure a `MY_ORACLE_DATASOURCE` for an **Oracle** da
 
 You can then configure a business object with `MY_ORACLE_DATASOURCE;[<schema name>.]<table name>` in the table name.
 
-<h3 id="sqlserver">Microsoft SQLServer</h3>
+### Microsoft SQLServer
 
 Or, for instance, if you configure a `MY_SQLSERVER_DATASOURCE` for an **Microsoft SQLServer** database as:
 
@@ -78,7 +80,7 @@ Or, for instance, if you configure a `MY_SQLSERVER_DATASOURCE` for an **Microsof
 
 You can then configure a business object with `MY_SQLSERVER_DATASOURCE;[<schema name>.]<table name>` in the table name.
 
-<h3 id="extjdbc">External JDBC driver</h3>
+### External JDBC driver
 
 As of version 5.0, you can specify an external location for the JDBC driver location of the datasource:
 

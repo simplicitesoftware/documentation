@@ -10,7 +10,8 @@ Custom authentication page or redirect
 
 > **Warning**: This auth bypasses some of the simplicité security. You are responsible for the security of this page. You should pay attention to the various vulnerabilities of a login page (such as sql injection, XSS, Brute Force Attack, Inappropriate Error Handling ...) and password security.
 
-<h2 id="webappsettings">Webapp settings</h2>
+Webapp settings
+---------------
 Declare your custom authentication provider in the `AUTH_PROVIDERS` system parameter, e.g.:
 
 ```json
@@ -28,7 +29,7 @@ Declare your custom authentication provider in the `AUTH_PROVIDERS` system param
 See [this document](/docs/documentation/authentication/auth-providers) for details on how to configure authentication providers.
 > **Warning**: Before making these changes, make sure that you will still be able to login with a user having at least a responsibility on the ADMIN group.
 
-<h3 id="PlatformHooks">Grant hooks</h3>
+### Grant hooks
 
 Then you can implement `PlatformHooks`'s `customAuthPage method` to redirect to external login page or to return custom html page, and `customAuth method` to interpret the return of the custom auth page.
 The **example** below uses the mustache template of `XXX_CUSTOM_LOG` resource for the auth page. 

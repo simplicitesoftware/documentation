@@ -26,7 +26,8 @@ This can be done either:
 
 Then you also need to set the `USE_GIT` system parameter to `yes`.
 
-<h2 id="export">Export</h2>
+Export
+------
 
 To export the `MyModule` module as a Git repository the first thing to do is to create or update the module's repository
 using the dedicated action on the _Module_ object:
@@ -39,11 +40,13 @@ Then you can clone the module's repository by:
 ```
 The credentials you have to use in this case are the same as the one you can use for the I/O interface.
 
-<h2 id="import">Import</h2>
+Import
+------
 
 Any `git push [origin]` on the cloned module's repository triggers a module import (e.g. after having made some local changes or to upgrade another instance by pushing on another remote).
 
-<h2 id="origin">Import from an origin remote</h2>
+Import from an origin remote
+----------------------------
 
 It is possible to configure a module that is linked to an external Git repository by adding following settings to your module:
 
@@ -84,7 +87,8 @@ E.g. from a **public** GitHub repository:
 As of version 5.2, you can set the JVM properties (`remote.git.username/password`) or the environment variables (`REMOTE_GIT_USERNAME/PASSWORD`)
 if you want to avoid configuring username/password credentials in your module's settings. A **much better approach** being to use a SSH URI with configured SSH public/private keys.
 
-<h2 id="advanced">Advanced</h2>
+Advanced
+--------
 
 The Git repositories created/cloned by Simplicit&eacute;:
 
@@ -100,7 +104,7 @@ The Git repositories created/cloned by Simplicit&eacute;:
 If you manually create/clone repositories used by Simplicit&eacute; (which is not supposed to be done except for very specific needs)
 make sure to create/clone **non bare** repositories and make sure to have these two options activated (which is not the case by default).
 
-<h3 id="branch">Branch</h3>
+### Branch
 
 You can specify the branch to use in the origin definition (or in the remotes definitions, see bellow):
 
@@ -114,7 +118,7 @@ You can specify the branch to use in the origin definition (or in the remotes de
 }
 ```
 
-<h3 id="remotes">Other remotes</h3>
+### Other remotes
 
 You can specify additional remotes:
 

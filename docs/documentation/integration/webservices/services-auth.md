@@ -24,7 +24,8 @@ The calls examples are given using the `curl` command line tool (that can easily
 > as they allow to re-use the same server session (identified by the `JSESSIONID` cookie).
 > In versions 4.0+ a technical session is used to avoid taking care of the session cookie.
 
-<h2 id="login">Login</h2>
+Login
+-----
 
 A first call to the login service is needed to get an access token:
 ```
@@ -82,7 +83,8 @@ As this login service is only dedicated to webservices, no interactive login/pas
 
 > **Note**: If the credentials are incomplete or not accepted for any reason the response will be an HTTP code `401`.
 
-<h2 id="call">Use access token in service calls</h2>
+Use access token in service calls
+---------------------------------
 
 All subsequent calls **must** pass the access token in the custom `X-Simplicite-Authorization` header:
 ```
@@ -98,7 +100,8 @@ All subsequent calls **must** pass the access token in the custom `X-Simplicite-
 >   As of **version 5.1** (and backported in version 4.0) it is possible to customize the name of this URL
 >   parameter using the `USERTOKENS_URL_PARAM` system parameter.
 
-<h2 id="logout">Logout</h2>
+Logout
+------
 
 To explicitly log out (before the server session times out) the logout service can be called:
 ```

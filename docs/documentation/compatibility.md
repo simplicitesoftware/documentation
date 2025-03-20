@@ -41,7 +41,7 @@ The versions indicated below are to be considered as **minimal** versions on whi
 Some of them are now outdated and **should not** be considered as recommended versions.
 Using such old versions is likely to be a source of potentially tricky problems that you would not have with up-to-date components.
 
-<h3 id="os">OS</h3>
+### OS
 
 Any OS on which a suitable Java JVM is officially available. This includes:
 
@@ -58,7 +58,7 @@ The OS can run either on **physical** or **virtual** servers or in Docker&reg; *
 
 It is also possible to deploy Simplicité platform on **PaaS** buildpacks CloudFoundry&reg;, Heroku&reg;, OpenShift&reg;, etc.
 
-<h3 id="jvm">Java VM</h3>
+### Java VM
 
 The following table only indicates the **LTS (Long Term Support)** JVM versions.
 
@@ -79,7 +79,7 @@ In **bold** the recommended choice for considered Simplicité version.
 > **Note**: Whichever JVM version you use, you **MUST** use its **up-to-date release**.
 > Only these up-to-date releases are tested and supported.
 
-<h3 id="appservers">Application servers</h3>
+### Application servers
 
 | ![](https://platform.simplicite.io/logos/logo125.png) | JEE Web profile (1) | Webapp  |
 |:-----------------------------------------------------:|---------------------|---------|
@@ -103,7 +103,8 @@ The webapp implementation we recommend are:
 > **Note**: Whichever application server version you use, you **MUST** use its  **up-to-date maintenance release**. 
 > Only these up-to-date releases are tested and supported.
 
-<h2 id="databases">Databases</h2>
+Databases
+---------
 
 | ![](https://platform.simplicite.io/logos/logo125.png) | PostgreSQL | MySQL | Oracle   | SQLServer |
 |:-----------------------------------------------------:|------------|-------|----------|-----------|
@@ -118,7 +119,8 @@ The webapp implementation we recommend are:
 > Whichever database server you use, you **SHOULD** use an **up-to-date release version** instead of the above minimal versions.
 > Only these up-to-date release versions are tested and supported.
 
-<h2 id="browsers">Web browsers</h2>
+Web browsers
+------------
 
 | ![](https://platform.simplicite.io/logos/logo125.png) | Edge (1) |Firefox (1) | Chrome (1) | Safari (1) | IE11    |
 |:-----------------------------------------------------:|----------|------------|------------|------------|---------|

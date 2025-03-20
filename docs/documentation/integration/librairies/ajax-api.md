@@ -340,7 +340,8 @@ $("body").append($("<img/>", { src: news.getImageThumbnailURL(i) }));
 However this approach only makes sense from a custom page managed within the generic UI.
 From an external page using the webservices gateway each displayed image as `<img/>` tag is likely to initiate a separate session.
 
-<h2 id="business-object-services">Business objects services</h2>
+Business objects services
+-------------------------
 
 ### Get business object instance
 
@@ -354,7 +355,7 @@ The instance name is optional, by default the instance name is `ajax_<object nam
 
 The `autoRefreshMetaData` parameter forces a meta data refresh afetr every service call. It defaults to `false`.
 
-<h3 id="business-object-getmetadata">Get meta data</h3>
+### Get meta data
 
 The `getMetaData` service gets object meta data (an optional context can be specified).
 
@@ -367,7 +368,7 @@ obj.getMetaData(function(metadata) {
 
 Note that once called the `getMetaData` service, the object metadata remains available in the `obj.metadata` variable.
 
-<h3 id="business-object-search">Search records</h3>
+### Search records
 
 The `search` service searches records according to specified filters (if no filters argument is set no search filters are applied).
 
@@ -433,7 +434,7 @@ obj.search(function(list) {
 }, undefined, { inlineDocs: true });
 ```
 
-<h3 id="business-object-count">Count records</h3>
+### Count records
 
 As of **version 3.2 MAINTENANCE 05**, the `getCount` service counts records according to specified filters (if no filters argument is set no search filters are applied).
 
@@ -444,7 +445,7 @@ obj.getCount(function(c) {
 }[, { <field1>: <filter1>, ..., <fieldN>: <filterN> }]);
 ```
 
-<h3 id="business-object-indexsearhc">Search records from index</h3>
+### Search records from index
 
 As of **version 3.1 MAINTENANCE 07**, the `indexsearch` service searches records matching the specified index request (if the object is indexed).
 
@@ -460,7 +461,7 @@ The result includes the index-related information (keys, index value, score) and
 
 The object `list` variable is also set with the list of returned records.
 
-<h3 id="get-filters">Get current filters</h3>
+### Get current filters
 
 The `getFilters` service gets current filters.
 
@@ -472,7 +473,7 @@ obj.getFilters(function(filters) {
 
 Note that once called the `getFilters` service, the object filters remains available in the `obj.filters` variable.
 
-<h3 id="business-object-get">Get single record</h3>
+### Get single record
 
 The `get` service gets one single record from specified row ID.
 
@@ -507,7 +508,7 @@ this is the equivalent as calling the `get` service with `"0"` as row ID
 is set to `"0"` in the returened record)
 - `getForDelete` which initialize a record for deletion
 
-<h3 id="business-object-create">Create record</h3>
+### Create record
 
 The `create` service sends a record for creation.
 
@@ -584,7 +585,7 @@ Where the corresponding HTML form components are:
 &lt;input type="button" id="ok" value="OK"/&gt;
 ```
 
-<h3 id="business-object-update">Update record</h3>
+### Update record
 
 The `update` service sends a record for update.
 
@@ -610,7 +611,7 @@ obj.getForUpdate(function(item) {
 
 > **Warning**: The principles for setting a document for update is as above except that the `id` should be left as is so as the document is just updated.
 
-<h3 id="business-object-copy">Copy record</h3>
+### Copy record
 
 A copy is a creation where the record to create is got by the `getForCopy` service.
 
@@ -624,7 +625,7 @@ obj.getForCopy(function(item) {
 });
 ```
 
-<h3 id="business-object-delete">Delete record</h3>
+### Delete record
 
 The `del` service deletes the record that corresponds to specified row ID.
 
@@ -634,7 +635,7 @@ obj.del(function() {
 }, rowID);
 ```
 
-<h3 id="business-object-parameters">Object parameters</h3>
+### Object parameters
 
 The `setParameter` service sets a single object parameter.
 
@@ -658,7 +659,7 @@ obj.getParameter(function(value) {
 }, "MYOBJPARAM");
 ```
 
-<h3 id="business-object-action">Call action</h3>
+### Call action
 
 The `action` service runs a specified action.
 
@@ -670,7 +671,7 @@ obj.action(function(result) {
 }, "myAction");
 ```
 
-<h3 id="business-object-publication">Apply publication template</h3>
+### Apply publication template
 
 The `print` service applies a specified publication template.
 
@@ -682,7 +683,7 @@ obj.print(function(result) {
 }, "MyPublicationTemplate");
 ```
 
-<h3 id="business-object-pivottable">Get pivot table data</h3>
+### Get pivot table data
 
 The `crosstab` service processes a specified pivot table.
 
@@ -694,7 +695,7 @@ obj.crosstab(function(table) {
 }, "MyPivotTable");
 ```
 
-<h3 id="business-object-tips">Thread safe considerations</h3>
+### Thread safe considerations
 
 Due to the way Simplicité handles its business object instances,
 calling several APIs in paralel on the same business object instance is not thread safe.
@@ -720,9 +721,10 @@ myloop(0, 10, function() {
 });
 ```
 
-<h2 id="business-process-services">Business processes services</h2>
+Business processes services
+---------------------------
 
-<h3 id="business-process-get">Get a business process</h3>
+### Get a business process
 
 To get an existing business process :
 
@@ -730,7 +732,7 @@ To get an existing business process :
 var pcs = app.getBusinessProcess("<process name>");
 ```
 
-<h3 id="business-process-getmetadata">Get meta data</h3>
+### Get meta data
 
 The `getMetaData` service gets process meta data.
 
@@ -743,17 +745,19 @@ pcs.getMetaData(function (metadata) {
 Note that once called the `getMetaData` service, the process meta data remains available in the `pcs.metadata` variable.
 
 <!-- 
-<h2 id="external-object-services">External objects services</h2>
+External objects services
+-------------------------
 
-<h3 id="business-external-object-get">Get external object</h3>
+### Get external object
 
 **TO BE COMPLETED**
 
-<h3 id="business-external-object-getmetadata">Get meta data</h3>
+### Get meta data
 
 **TO BE COMPLETED**
 -->
 
-<h2 id="custom-usage">Custom usage</h2>
+Custom usage
+------------
 
 Example in plain HTML, see [this GitHub repository](https://github.com/simplicitesoftware/ajax-demo/blob/master/basic-ajaxlib-example.html)

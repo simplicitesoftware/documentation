@@ -10,14 +10,16 @@ This document give some guidelines on how to improve security of your applicatio
 
 > **Note**: Some recommandations are not necessarily applicable/relevant in every particular cases, you must adapt them to your context.
 
-<h2 id="upgrades">Platform upgrades</h2>
+Platform upgrades
+-----------------
 
 The platform regularly receive upgrades that potentially include security related fixes.
 The details of the fixes/changes are available in the release notes.
 
 To ensure security it is thus **mandatory** to keep your deployed instances up-to-date.
 
-<h2 id="endpoints">Securing application endpoints</h2>
+Securing application endpoints
+------------------------------
 
 ### Introduction
 
@@ -43,13 +45,13 @@ In particular the `designer` user's password **must** be hard to guess (this is 
 Enforcing a second authentification factor (2FA) **should** also be considered. Ideally using an authentication application (e.g. Google or Microsoft Authenticator)
 Alternatively the `designer` user can be deactivated (or only some of its rights), at least when not used (but this may complexify delivery processes).
 
-<h3 id="uiendpoint">UI endpoint</h3>
+### UI endpoint
 
 The UI endpoint has some public (non authenticated) components that may be used for the purpose of explicitly exposing some features publicly.
 
 A particular attention **must** be put on what is granted to the `public` user (through its default `PUBLIC` group or any other group that you grant him)
 
-<h3 id="apiendpoint">API endpoint</h3>
+### API endpoint
 
 If you don't use the API endpoint you **should** disable it by setting the private system parameter `USE_API` to `no`.
 
@@ -60,7 +62,7 @@ At least you **should** disable the API tester page by setting the private syste
 
 For more information on default API authentication mechanisms, see [this document](/docs/documentation/integration/webservices/services-auth).
 
-<h3 id="ioendpoint">I/O endpoint</h3>
+### I/O endpoint
 
 You **must** secure access to the I/O endoint.
 
@@ -87,7 +89,7 @@ For more information defaut on I/O authentication mechanisms, see [this document
 > **Note 2** the I/O endpoint is needed for multiple-nodes deployments to allow propagating various application-wide events amongst nodes (e.g. clear cache).
 > Setting appropriate network filtering and credentials is thus **required** in this particular case.
 
-<h3 id="gitendpoint">Git endpoint</h3>
+### Git endpoint
 
 If you use the Git endpoint you **must** secure its access.
 
@@ -101,7 +103,7 @@ If you don't use the Git endpoint you **should** disable it by setting the priva
 If you only use it from a limited set of origins you **should** filter the access to this endpoint
 (e.g. by using the "whitelist" Docker configuration or by a reverse proxy-level filtering)
 
-<h3 id="healthcheck">Health-check</h3>
+### Health-check
 
 The `/health` page/service allow you to get health-check technical information on a running instance. 
 
@@ -113,7 +115,7 @@ This is relevant to disable it completely if, for instance, you use the JMX serv
 If you only use it from a limited set of origins you **should** filter the access to this endpoint
 (e.g. by using the "whitelist" Docker configuration or by a reverse proxy-level filtering)
 
-<h3 id="mavenrepo">Maven repository</h3>
+### Maven repository
 
 The instance exposes a Maven repository of the 3rd party Java components on the `/maven ` URI.
 This is only relevant in development.
@@ -132,25 +134,26 @@ You **may** also consider disabling the inclusion of the `manifest.json` to the 
 As a matter of fact, due to the absence of the session ID cookie by some web browser when downloading this manifest file, the session ID is passed
 in the URL which makes it more visible than as a cookie (e.g; in an access log).
 
-<h2 id="application">Securing your application's configuration and custom code</h2>
+Securing your application's configuration and custom code
+---------------------------------------------------------
 
-<h3 id="publicrights">Public rights</h3>
+### Public rights
 
 Be careful on what you grant to the `public` user (typicaly through the `PUBLIC` group or by additional resposnsibilities associated to this user)
 because everything granted to this user is made available on the public UI components
 
-<h3 id="privatesysparams">Private system parameters</h3>
+### Private system parameters
 
 Be sure to configure as _Private_ type all system parameters that holds confidential data that you don't want to be available elsewhere
 than on the server side (e.g. services credentials, passwords, ...)
 
-<h3 id="filtering">Business object filtering</h3>
+### Business object filtering
 
 If you have a business object with dynamic filtering rules (e.g. implemented in the `postLoad` hook based on rules on user's responsibilities and/or business object instance name),
 you **should** set `1=2` as default static filtering rule. As a metter of fact, if for any reason you code is not working well it will result in giving no access to any data instead of
 giving access to all data.
 
-<h3 id="forbiddenfields">Forbidden fields</h3>
+### Forbidden fields
 
 A _invisible_ business object field is still visible if you inspect the HTML of the UI and is still available on the API calls. To be sure a field is only usable on the
 server side you **must** mark it _Forbidden_.
@@ -158,45 +161,45 @@ server side you **must** mark it _Forbidden_.
 As above for filtering, if a field's visibility is dynamically set by code, be sure to configure it as _Forbidden_ in your static configuration. If for any reason your code
 does not work the field will remain by default not avialable.
 
-<h3 id="xss">Cross site scripting vulnerabilities</h3>
+### Cross site scripting vulnerabilities
 
 If you implement a **custom** page (e.g. via an external object), make sure to take into account the risk of cross site scripting vulnerabilities (passing `<script>` or `<svg>` with script
 in a HTTP parameter). Basic protection is to systematically display values got from HTTP parameters using `Tool.toHTML/toJS`.
 
 The platform code implements such XSS prevention on all pages.
 
-<h3 id="sqlinjection">SQL injection vulnerabilities</h3>
+### SQL injection vulnerabilities
 
 If you write **custom** SQL statements make sure to take into account the risk of SQL injection vulnerabilities. Basic protection is to systematically use host variables or, at least, protect the values inserted in your SQL statements using `Tool.toSQL`.
 
 The platform code implements such SQL injection prevention for all SQL statements.
 
-<h3 id="uploadtypes">Restrict uploadable document or images MIME type</h3>
+### Restrict uploadable document or images MIME type
 
 If your objects include document or image type filed you **should** explicitly add a list of allowed MIME types at the associated "book shells" record level.
 
-<h3 id="uploadsize">Restrict uploadable size for document or images</h3>
+### Restrict uploadable size for document or images
 
 It is possible to restrict the maximum upload size of document or images by using the `MAX_UPLOAD_SIZE` system parameter.
 
 Note that it is recommended to set such an upload size limit at Tomcat level and/or at the reverse proxy level.
 
-<h3 id="crcf">CRCF protection</h3>
+### CRCF protection
 
 If you implement a **custom** page with a form, make ur to implement a CRCF protection mechanism.
 
 The platform code implements such CRCF protection in all page with forms.
 
-<h3 id="lowleveltools">Low level tools</h3>
+### Low level tools
 
 System users (such as `designer`) have access by default to low level tools on the generic UI (database and document database browsers). These tools are standard external objects
 they **should** be inhibited by removing grants on them if you don't use them.
 
-<h3 id="dataencryption">Data encryption</h3>
+### Data encryption
 
 Use built-in (see the Data Encryption part in [code examples](/docs/documentation/core/advanced-code-examples)) or third party data encryption especially when the database access is not limited to the application.
 
-<h3 id="internalauth">Internal authentication</h3>
+### Internal authentication
 
 If you use the internal authentication you **should** consider securing it by adding a second authentication factor (2FA) and/or by implementing custom rules (e.g.: disabling a login
 after a certain amount of erroneous password entry or enforcing appropriate password validation rules). See [this document](/docs/documentation/authentication/internal-auth) for details.
@@ -216,7 +219,7 @@ The principle is to set the private system parameter `GOD_MODE` to `no` and over
 If all or some your users don't always use a strictly personnal browser you **should** also disable the ability of the browser to keep track of the non expired user tokens
 (this allows to switch between these users). You can do so by setting the private system parameter `USE_CHANGE_USER` to `no`.
 
-<h3 id="httpheaders">Custom HTTP headers</h3>
+### Custom HTTP headers
 
 Although it should rather be done at the reverse proxy level (or at Tomcat level), it is possible to add custom HTTP headers to all responses by setting the `HTTP_HEADER` system parameter.
 
@@ -240,7 +243,7 @@ The following example, that should be adapted be adapted to your own needs, does
 }
 ```
 
-<h3 id="samesitecookies">Same-site cookies policy</h3>
+### Same-site cookies policy
 
 By default Tomcat sets the same-site cookie to `unset` (see [this page](https://tomcat.apache.org/tomcat-9.0-doc/config/cookie-processor.html)).
 
@@ -271,7 +274,8 @@ in particular:
 
 You can also simply delete these external objects, but don't do it if you want to keep the possibility to use these tools for punctual maintenance/investigation activities.
 
-<h2 id="infrastructure">Securing your infrastructure</h2>
+Securing your infrastructure
+----------------------------
 
 ### Introduction
 
@@ -301,7 +305,8 @@ The server infrastucture command line access **should** always use SSH (ideally 
 
 > **Note**: the warranty is void on a non up-to-date platform, keeping your Simplicité platform up-to-date is not just **recommended** it is **mandatory**.
 
-<h2 id="docker">Securing Docker-based deployments</h2>
+Securing Docker-based deployments
+---------------------------------
 
 If you deploy the platform using Docker images you can strengthen the security of the deployed container(s) by applying an
 [**hardened** deployment configuration](https://github.com/simplicitesoftware/docker/blob/master/examples/docker-compose/docker-compose-secure.yml)
@@ -314,7 +319,8 @@ You **must** update the deployed containers using the latest Docker images on a 
 
 And of course, you **must** also apply the system upgrades on your host machine on similar a regular basis.
 
-<h2 id="sim">Securing the Simplicité Instance Manager (SIM)</h2>
+Securing the Simplicité Instance Manager (SIM)
+----------------------------------------------
 
 These are specific guidelines for the Simplicit&eacute; Instances Manager (SIM). See [this document](https:/docs/documentation/misc/manager) for details on the SIM.
 

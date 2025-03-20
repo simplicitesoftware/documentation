@@ -12,7 +12,8 @@ It can easily be transposed to other technical platforms.
 > **Note**: Some pieces of information are also applicable - unless otherwise specified - when using our **Docker images**.
 > For more details on Docker images-based deployments please refer to [this document](/docs/documentation/operation/docker) 
 
-<h2 id="restarting">Services restarting</h2>
+Services restarting
+-------------------
 
 > **Note**: this chapter is not applicable when using Docker our images.
 
@@ -41,7 +42,8 @@ Then the services are to be restarted in the following order:
 	* NGINX: `systemctl start nginx.service`
 - Start the **Tomcat** service: `/etc/init.d/tomcat start`
 
-<h2 id="logs">Logs reviewing</h2>
+Logs reviewing
+--------------
 
 To help with diagnostics, several kind of logs can be usefull:
 
@@ -78,7 +80,8 @@ errors (the only error logs that requires investigation are the one that corresp
 - Any log at level `FATAL` generally requires services restart with prior technical investigation
 (typically if the error correspond to a memory or file system issue requires actions at OS level)
 
-<h2 id="housekeeping">Housekeeping</h2>
+Housekeeping
+------------
 
 ### Database logs
 
@@ -144,7 +147,8 @@ Some document processing in your code may result in inconsitencies between the d
 - through the user interface : _Document_ &gt; _Synchronize documents_ list action
 - through the I/O `SYNCDOCS` service (accessible through the I/O (`/io`) endpoint or the API (`/api`) endpoint, cf [IO command-line doc](/docs/documentation/integration/webservices/io-commandline))
 
-<h2 id="saving">Save and restore</h2>
+Save and restore
+----------------
 
 For a given application a comprehensive save consist in:
 
@@ -157,7 +161,8 @@ To restore the application, the database dump and the archive must be restored i
 
 > **Note**: as of version 3.2 the documents can be stored in the database as BLOBs, in this case saving the database is sufficient (no need to save the document data directory)
 
-<h2 id="monitoring">Monitoring</h2>
+Monitoring
+----------
 
 All technical components may need to be monitored (especially Tomcat and the database engine) using any convenient tool.
 
@@ -254,7 +259,8 @@ ElapsedTime=230
 
 If both page/service does not return response or returns a HTTP status different from `200` or if the response value for `status` is not `OK`, something needs to be investigated/fixed.
 
-<h2 id="systemupdates">System updates</h2>
+System updates
+--------------
 
 > **Note**: this chapter is not applicable when using our Docker images. When using such images the system is always up-to-date in the latest images.
 
@@ -283,13 +289,15 @@ To clean up old kernels you can do:
 	sudo dnf install yum-utils
 	sudo package-cleanup --oldkernels --count=2
 
-<h2 id="tomcatupdates">Tomcat updates</h2>
+Tomcat updates
+--------------
 
 > **Note**: this chapter is not applicable when using our Docker images. When using such images Tomcat is always up-to-date in the latest images.
 
 The Tomcat server **must** be updated regularly, depending on the way it has been installed the processus may vary.
 
-<h2 id="platformupdates">Platform updates</h2>
+Platform updates
+----------------
 
 > **Note**: this chapter is not applicable when using our Docker images. When using such images the Simplicité platform is always up-to-date in the latest images.
 

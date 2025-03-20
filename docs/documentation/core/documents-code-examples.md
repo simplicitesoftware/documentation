@@ -67,7 +67,8 @@ List<DocumentDB> docs = multiDocs !=null ? multiDocs.getDocuments() : null;
 ```
 
 
-<h2 id="qrcode">QRCodes images</h2>
+QRCodes images
+--------------
 
 As of version 3.0, the standard `QRCodeTool` helper class provides various methods for generating QR codes images as PNG.
 
@@ -77,7 +78,8 @@ Typical usage is to set an image field with a URL QR code:
 obj.getField("myQRCode").setDocument(obj, "qrcode.png", QRCodeTool.qrCodeImage(Globals.getContextURL()));
 ```
 
-<h2 id="barcode">Barcodes images</h2>
+Barcodes images
+---------------
 
 As of version 3.1, the standard `BarcodeTool` helper class provides various methods for generating EAN13 Barcodes.
 
@@ -97,7 +99,8 @@ A EAN13 code (12 digits + 1 checksum digit) can then be used to generate a JPEG 
 ```java
 obj.getField("myEAN13Barcode").setDocument(obj, code + ".jpg", BarcodeTool.ean13Image(code));
 ```
-<h2 id="pdf">PDF documents using iText&reg; 2.1.7</h2>
+PDF documents using iText&reg; 2.1.7
+------------------------------------
 
 This example is given in the server-side **Rhino** scripting language. It can be easily transposed to **Java** language.
 
@@ -146,7 +149,8 @@ Note that it is possible to insert resource images in the PDF document, e.g.:
 pdf.add(PDFTool.getImageFromResource(obj.getGrant(), "MYIMAGERESOURCECODE"));
 ```
 
-<h2 id="excel">Excel(R) sheet using Apache POI&reg;</h2>
+Excel(R) sheet using Apache POI&reg;
+------------------------------------
 
 ### Create sheet fron scratch
 

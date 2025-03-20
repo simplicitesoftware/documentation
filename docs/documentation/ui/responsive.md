@@ -8,7 +8,8 @@ Responsive UI
 
 This document explains the UI engine for responsive usage (applicable to version 4.0 and above).
 
-<h2 id="conception">Conception</h2>
+Conception
+----------
 
 The responsive UI is based on the disposition `responsive` with a simple startup and site parts configured as disposition resources:
 
@@ -44,7 +45,7 @@ The view layer provides the rendering with several functions:
 * `Simplicite.UI.View.Update`: displays the bulk-update screen
 * `Simplicite.UI.View.Workflow`: displays the screen flows with activities
 * `Simplicite.UI.View.Prefs`: displays the object preferences
-* `Simplicite.UI.View.Widget`: displays some simple widget (i.e. bagde, avatar, loader, switch, completion...)
+* `Simplicite.UI.View.Widget`: displays some simple widget (i.e. badge, avatar, loader, switch, completion...)
 * `Simplicite.UI.View.ZIP`: simple ZIP editor to remove/add file in folders
 
 **Extension**: the engine needs a renderer tool, only one component have been yet released:
@@ -73,7 +74,8 @@ The controller provides the business logic between the model and the view:
 All the rendering will be made by the browser in one-page based on JQuery and Bootstrap.
 Most functions have been implemented on responsive UI, other functions are only wrapped in an iframe with the backend rendering (i.e. crosstab, script editor).
 
-<h2 id="libs">External libs</h2>
+External libs
+-------------
 
 This engine integrates some popular third party libraries:
 
@@ -84,7 +86,8 @@ This engine integrates some popular third party libraries:
 - ChartJS for charting
 - Etc.
 
-<h2 id="globals">Global properties</h2>
+Global properties
+-----------------
 
 `Simplicite.UI.Globals` contains all the default options that will be used by each object.
 Each UI object gets a copy in `obj.locals.ui` to override the default behaviors.
@@ -480,7 +483,8 @@ _nota_
 </div>
 ```
 
-<h2 id="devices">Devices</h2>
+Devices
+-------
 
 ### Desktop
 
@@ -524,7 +528,8 @@ Almost similar as desktop, except :
 * Search are available in dialog box only
 * Most actions are deported in "plus" button
 
-<h2 id="global-events">Global events</h2>
+Global events
+-------------
 
 Some common events are triggered by the UI to predefined classes. 
 A specific component can implement some of then to add dynamic behaviors.
@@ -599,11 +604,12 @@ $(myDiv).attr("data-event-close", "mycanclose").on("mycanclose", function(e, cbk
 ```
 
 
-<h2 id="hooks">Client side hooks</h2>
+Client side hooks
+-----------------
 
 The UI engine is a singleton named `$ui`.
 
-<h3 id="main-page-hooks">Main page startup</h3>
+### Main page startup
 
 Use system parameters :
 
@@ -651,7 +657,7 @@ or the disposition `SCRIPT` to override properties or functions, for example:
 })(window.$ui, jQuery);
 ```
 
-<h3 id="business-objects-hooks">Business object hooks</h3>
+### Business object hooks
 
 To add specific behaviors, the designer must add a JS resource 
 - From version 6.0: named `CLASS` to override the default implementation
@@ -1181,7 +1187,8 @@ Result:
 ![](img/responsive/panel_ct.png)
 
 
-<h2 id="styles">Styles</h2>
+Styles
+------
 
 * Global CSS can be changed in the Disposition `STYLES`
 * or create a CSS resource named STYLES per object and add specific styles
@@ -1205,7 +1212,8 @@ For example:
 }
 ```
 
-<h2 id="stand-alone">Stand-alone usage</h2>
+Stand-alone usage
+-----------------
 
 The engine can be loaded in a stand-alone page:
 
@@ -1413,13 +1421,15 @@ _Form_
 
 ![Demo order form](img/responsive/uidemo3.png)
 
-<h2 id="jsdoc">JSDoc for responsive UI</h2>
+JSDoc for responsive UI
+-----------------------
 
 The JSDoc is available [here](https://platform.simplicite.io/current/jsdoc/)
 
-<h2 id="third-party">Examples of third party client-side APIs integration</h2>
+Examples of third party client-side APIs integration
+----------------------------------------------------
 
-<h3 id="third-party-googlemaps-autocomplete">Google Maps autocomplete API</h3>
+### Google Maps autocomplete API
 
 For a `MyObject` with a `myAddressField` text field and a `myCoordinatesField` geographical coordinates,
 it is possible to add the client autocomplete API feature on a **main form** by implementing it like this:
@@ -1501,7 +1511,8 @@ var MyObject = (function(ui) {
 })(window.$ui);
 ```
 
-<h2 id="external-object">Example of responsive external object</h2>
+Example of responsive external object
+-------------------------------------
 
 ![Demo external object](img/responsive/extobj.png)
 

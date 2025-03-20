@@ -15,7 +15,8 @@ It should also be easily transposable to Debian flavored Linux distribution.
 
 If you are looking for installation guideline for a Windows server installation, please refer to [this document](/docs/documentation/operation/tomcat-installation-windows).
 
-<h2 id="prerequisites">Prerequisites</h2>
+Prerequisites
+-------------
 
 As `root` or using `sudo`, install all required packages and do all required system configurations:
 
@@ -144,7 +145,8 @@ Optionally, you can add extra useful packages (back as `root`):
 
 	yum install vim git wget lynx nmap ...
 
-<h2 id="option1">Option 1 - Expose Tomcat using an Apache AJP reverse proxy</h2>
+Option 1 - Expose Tomcat using an Apache AJP reverse proxy
+----------------------------------------------------------
 
 As `root`, install apache with SSL module :
 
@@ -223,7 +225,8 @@ Enable and start Tomcat:
 	chkconfig tomcat on
 	/etc/init.d/tomcat start
 
-<h2 id="option2">Option 2 - Expose Tomcat using a NGINX HTTP reverse proxy</h2>
+Option 2 - Expose Tomcat using a NGINX HTTP reverse proxy
+---------------------------------------------------------
 
 As `root`, install NGINX :
 
@@ -330,7 +333,8 @@ The rest is the same as above for Apache.
 > **Note**: SELinux may be causing HTTP `502` errors, check [this post](http://stackoverflow.com/questions/27435655/nginx-proxy-pass-not-working-in-selinux) for a solution that works.
 > A quick solution being to run the following command as `root`: `setsebool httpd_can_network_connect 1 -P`
 
-<h2 id="option3">Option 3 - Expose Tomcat using the xinetd daemon</h2>
+Option 3 - Expose Tomcat using the xinetd daemon
+------------------------------------------------
 
 The xinetd daemon allows to expose Tomcat HTTP (`8080`) and HTTPS (`8444`) ports as default HTTP (`80`) and HTTPS (`443`) ports.
 
@@ -377,7 +381,8 @@ Enable and start xinetd:
 
 The `/etc/init.d/tomcat` script (and associated commands) is the same as when using above Apache reverse proxy option.
 
-<h2 id="option4">Option 4 - Expose Tomcat using the jsvc daemon</h2>
+Option 4 - Expose Tomcat using the jsvc daemon
+----------------------------------------------
 
 Tomcat provides a tool (that needs to be compiled) to allow it to use default HTTP (`80`) and HTTPS (`443`) ports.
 
@@ -468,7 +473,8 @@ Enable and start Tomcat:
 	chkconfig tomcat on
 	/etc/init.d/tomcat start
 
-<h2 id="notes">Notes</h2>
+Notes
+-----
 
 ### Max upload size
 

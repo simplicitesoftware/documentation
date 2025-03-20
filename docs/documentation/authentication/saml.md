@@ -11,7 +11,8 @@ transposed to other providers.
 
 > **Note**: This document only applies to **version 4.0** and above.
 
-<h2 id="webappsettings">Webapp settings</h2>
+Webapp settings
+---------------
 
 The changes to be done are :
 
@@ -35,7 +36,8 @@ See [this document](/docs/documentation/authentication/auth-providers) for detai
 
 > **Warning**: Before doing these changes, **make sure** that you will still be able to login with a user having at least a responsibility on the `ADMIN` group.
 
-<h2 id="googlesettings">Google settings</h2>
+Google settings
+---------------
 
 Declare a new SAML app on [Google Admin Console](https://admin.google.com) (in _Apps &gt; SAML apps_)
 for the application (the SAML ACS URL and start URL will be `<url>/saml`):
@@ -44,7 +46,8 @@ for the application (the SAML ACS URL and start URL will be `<url>/saml`):
 
 If you configure several SAML apps you **must** choose a unique entity ID for each of them.
 
-<h2 id="settings">Application settings</h2>
+Application settings
+--------------------
 
 > Note: this section is **depprecated** as of version 4.0.P23 for which the authentication providers configuration is done using the `AUTH_PROVIDERS` JSON system parameters.
 > See [this document](/docs/documentation/authentication/auth-providers) for details.
@@ -83,7 +86,7 @@ Add the IDP settings of your Google SAML app as system parameters:
 </object>
 </simplicite>
 ```
-<h3 id="othersettings">Other optional settings</h3>
+### Other optional settings
    
 Depending on the SSO strategies others configurations are possible :  
 
@@ -99,7 +102,7 @@ Depending on the SSO strategies others configurations are possible :
 | SAML_SP_PRIVATEKEY         | -----BEGIN RSA PRIVATE KEY-----(...)-----END RSA PRIVATE KEY | Private key of the SP.                                                                        |
 | SAML_USERINFO_MAPPINGS     | JSON data                                                    | User info fields mappings for synchronization (firstname, lastname, email and phone)          |
 
-<h3 id="granthooks">Grant hooks</h3>
+### Grant hooks
 
 Then you can implement `GrantHooks`'s `parseAuth` method to handle the returned
 Google account identifier if required.

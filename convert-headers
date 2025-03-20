@@ -1,0 +1,74 @@
+import re
+import os
+
+def convert_headers_to_markdown(text):
+    # Convert h2 tags with underlines
+    def replace_h2(match):
+        title = match.group(1)
+        underline = '-' * len(title)
+        return f"{title}\n{underline}"
+    
+    # Convert h3 tags to ### style (no underline)
+    def replace_h3(match):
+        title = match.group(1)
+        return f"### {title}"
+    
+    # Pattern for h2 and h3
+    h2_pattern = r'<h2 id="[^"]*">([^<]*)</h2>'
+    h3_pattern = r'<h3 id="[^"]*">([^<]*)</h3>'
+    
+    # Replace h2 first, then h3
+    text = re.sub(h2_pattern, replace_h2, text)
+    text = re.sub(h3_pattern, replace_h3, text)
+    
+    return text
+
+def process_directory(directory_path):
+    converted_files = 0
+    failed_files = []
+    
+    # Walk through directory recursively
+    for root, dirs, files in os.walk(directory_path):
+        for file in files:
+            if file.endswith('.md'):
+                file_path = os.path.join(root, file)
+                try:
+                    # Read file
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        content = f.read()
+                    
+                    # Convert content
+                    converted = convert_headers_to_markdown(content)
+                    
+                    # Write back to file
+                    with open(file_path, 'w', encoding='utf-8') as f:
+                        f.write(converted)
+                    
+                    converted_files += 1
+                    print(f"Converted: {file_path}")
+                    
+                except Exception as e:
+                    failed_files.append((file_path, str(e)))
+                    print(f"Error processing {file_path}: {e}")
+    
+    # Print summary
+    print("\nConversion Summary:")
+    print(f"Successfully converted: {converted_files} files")
+    if failed_files:
+        print("\nFailed conversions:")
+        for file_path, error in failed_files:
+            print(f"- {file_path}: {error}")
+
+# Ask for directory path
+while True:
+    directory_path = input("Please enter the directory path containing markdown files: ")
+    
+    if os.path.exists(directory_path) and os.path.isdir(directory_path):
+        print(f"\nProcessing markdown files in {directory_path}...")
+        process_directory(directory_path)
+        break
+    else:
+        print("Directory not found!")
+        retry = input("Would you like to try another directory? (y/n): ")
+        if retry.lower() != 'y':
+            break

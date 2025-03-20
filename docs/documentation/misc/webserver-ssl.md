@@ -6,7 +6,8 @@ title: Webserver SSL
 Apache SSL configuration
 ========================
 
-<h2 id="ca">Certificate Authority</h2>
+Certificate Authority
+---------------------
 
 CA key with password: 
 
@@ -20,7 +21,8 @@ Optionaly you can exported the certificate in PKCS#12 format:
 
 	openssl pkcs12 -export -inkey CA.key -in CA.crt -out CA.p12
 
-<h2 id="server">Server</h2>
+Server
+------
 
 Web server key and certificate request:
 
@@ -38,7 +40,8 @@ You can use this procedure to create either single host or wildcard certificate.
 
 > **Note**: It is also possible to create a certificate for **both** host and wilcard by appending an appropriate "SAN" (`subjectAltName`) configuration to your `openssl.cnf` file, see [this document](http://wiki.cacert.org/FAQ/subjectAltName))
 
-<h2 id="client">Client</h2>
+Client
+------
 
 User key and certificate request :
 
@@ -117,7 +120,8 @@ For the above examples, the typical `curl` call would be something like:
 
 See [this document](/docs/documentation/authentication/customauth) for details on how to use client certificate on Simplicit&eacute; side;
 
-<h2 id="letsencrypt">Using LetsEncrypt&reg; service</h2>
+Using LetsEncrypt&reg; service
+------------------------------
 
 Install the **CertBot** tool:
 

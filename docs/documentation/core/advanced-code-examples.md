@@ -15,11 +15,12 @@ Please refer to [basic code examples](/docs/documentation/core/basic-code-exampl
 
 > Examples are provided both in Rhino and Java so as you can see the syntax differences.
 
-<h2 id="parameters">Sharing parameters</h2>
+Sharing parameters
+------------------
 
 It can be useful to store parameters (or serializable objects) in the user's session (Grant) or object instances (ObjectDB)
 
-<h3 id="objectparam">Object-level parameter</h3>
+### Object-level parameter
 
 - Share parameters between screens in the user's navigation: a component needs to know from where it has been opened...
 - Use some parameters in Action: asynchronous or recursive calls to limit the stack size (with heap memory)
@@ -138,7 +139,7 @@ MyObject.postSave = function() {
 
 Etc.
 
-<h3 id="globalparam">Global parameter</h3>
+### Global parameter
 
 To make a global setting, it is necessary to use the system singleton
 
@@ -148,7 +149,7 @@ Grant.getSystemAdmin().getParameter(name);
 Grant.getSystemAdmin().removeParameter(name);
 ```
 
-<h3 id="sessionparam">Session parameter</h3>
+### Session parameter
 
 The best solution is to load the parameter depending on user in the `GrantHooks` at logon:
 
@@ -194,7 +195,8 @@ GrantHooks.postLoadGrant = function(grant) {
 - `value`: store small values/objects in memory (parameters are in the user's session = the JVM heap)
 - use the `removeParameter` to free memory when the parameter has been used (if not parameters will expire with the session)
 
-<h2 id="validations">Advanced validations</h2>
+Advanced validations
+--------------------
 
 ### Phone number validations
 
@@ -223,9 +225,10 @@ f.setValue("myPhoneNumber", new PhoneNumTool("fr").getNationalNumber(f.getValue(
 
 > **Note**: it is also possible to format as international number using `getInternationalNumber` instead of `getNationalNumber`
 
-<h2 id="preparation">Data preparation</h2>
+Data preparation
+----------------
 
-<h3 id="dynamiclist">Dynamic list generation</h3>
+### Dynamic list generation
 
 In order to programmatically generate a list of values, you have to:
 
@@ -269,7 +272,8 @@ MyObject.postLoad = function(){
 ```
 </details>
 
-<h2 id="encryption">Data encryption</h2>
+Data encryption
+---------------
 
 As of version 3.2 you can use the `EncryptionTool`class to encrypt/decrypt a field value.
 `EncryptionTool` uses the system parameter `ENCRYPTION_ALGORITHM` (defaults to `AES`).
@@ -384,7 +388,8 @@ public String fieldEncryptDB(ObjectField f, String value, boolean encrypt, Strin
 }
 ```
 
-<h2 id="clientcertificate">Call remote URL with client certificate</h2>
+Call remote URL with client certificate
+---------------------------------------
 
 In this example the object is storing the client certificate JKS file as a document field
 and the certificate password as a password field.

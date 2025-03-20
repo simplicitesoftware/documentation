@@ -208,7 +208,7 @@ Then using function from statically instantiated elements can be done as:
 ```html
 <div id="demowelcomecard">
 	<h1 class="custom-header-title">Hello World !</h1>
-	<h3 id="custom-result-text">none</h3>
+	### none
 	<button onclick="demowelcomecard.foo()">Click me</button>
 </div>
 ```

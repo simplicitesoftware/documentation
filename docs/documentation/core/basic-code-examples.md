@@ -21,7 +21,8 @@ For more details on **Rhino** scripting you can check [the Mozilla Rhino documen
 > it must be **explicitly** used (it can't be implicit like in Java code).
 >
 
-<h2 id="namingconventions">Naming conventions</h2>
+Naming conventions
+------------------
 
 Recommended naming conventions are:
 
@@ -33,7 +34,8 @@ Recommended naming conventions are:
 Since version 4, the platform includes automatic naming convention validation (activated by a SYNTAX system parameter whose value is yes by default).  
 This is available for objects, functions, groups, domains and actions.  
 
-<h2 id="inclusions">Packages inclusions</h2>
+Packages inclusions
+-------------------
 
 All scripts are processed with the following packages included **by default** (no need to import them explicitly):
 
@@ -96,9 +98,10 @@ console.log(StringUtils.isNumeric("123")); // true
 
 </details>
 
-<h2 id="logging">Logging</h2>
+Logging
+-------
 
-<h3 id="consolelogging">Console logging</h3>
+### Console logging
 
 It is possible to log messages using:
 
@@ -197,9 +200,10 @@ protected long methodEnd(String method) {
 }
 ```
 
-<h2 id="businessobjects">Business objects manipulation</h2>
+Business objects manipulation
+-----------------------------
 
-<h3 id="selecting">Selecting</h3>
+### Selecting
 
 Selecting a **single record** from its row ID.
 
@@ -231,7 +235,7 @@ if (o.select(rowId)) {
 ```
 </details>
 
-<h3 id="searching">Searching</h3>
+### Searching
 
 Search **multiple records** with filters and ordering.
 
@@ -342,7 +346,7 @@ obj.search(true, maxRowsPerPage, (rows) -> {
 });
 ```
 
-<h3 id="enum">Using enumerations fields' code/values</h3>
+### Using enumerations fields' code/values
 
 Enumeration fields are particular because they refer a list of value which consist of a list of **code** and **value**.
 
@@ -373,7 +377,7 @@ for (var i = 0; i < l.size(); i++)) {
 ```
 </details>
 
-<h3 id="filtering">Filtering</h3>
+### Filtering
 
 The setSearchSpec is a method that allows you to set an SQL where clause on your business object.
 
@@ -400,9 +404,10 @@ public void postLoad() {
 }
 ``` 
 
-<h2 id="others">Others</h2>
+Others
+------
 
-<h3 id="emails">Sending emails</h3>
+### Sending emails
 
 #### Java
 
@@ -420,7 +425,7 @@ public void postLoad() {
 	);
 ```
 
-<h3 id="zip">ZIP files</h3>
+### ZIP files
 
 #### Read ZIP file
 

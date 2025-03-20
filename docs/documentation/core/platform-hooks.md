@@ -17,7 +17,8 @@ This document describes the hooks that can be implemented to put some **addition
 
 >These hooks are located in the singleton shared code named `PlatformHooks`.
 
-<h2 id="authhooks">Authentication hooks</h2>
+Authentication hooks
+--------------------
 
 The `customAuth` (version 3.2+), `parseAuth` (version 3.0+) and `postAuth` (version 4.0+) can be used to implement/customize authentication flows.
 
@@ -50,19 +51,22 @@ Check:
 - [this document about OAuth2 authentication](/docs/documentation/authentication/oauth2)
 - [this document about SAML authentication](/docs/documentation/authentication/saml) for details.
 
-<h2 id="startpagehook">Custom start page hook</h2>
+Custom start page hook
+----------------------
 
 As of version 5.0 `customStartPage` platform hooks allows to implement a custom low-level start page `/` instead of the default start page that only redirects to `/ui/`.  
 
 Note that similar start page customization can also be achieved at a higher level by implementing the `displayPublic` hook of a disposition associated to the `public` user.
 
-<h2 id="startpagehook">Custom authentication page hook</h2>
+Custom authentication page hook
+-------------------------------
 
 As of version 5.0, the `customAuthPage` platform hooks allows to implement a custom authentication/page.
 
 For more details  [refer to this documentation](/docs/documentation/authentication/custom-page)
 
-<h2 id="startpagehook">Custom health check hook</h2>
+Custom health check hook
+------------------------
 
 As of version 6.2 the `customHealthCheck` platform hook allows to implement e custom health check, e.g.:
 
@@ -76,7 +80,8 @@ public void customHealthCheck(HttpServletRequest request, HttpServletResponse re
 		.put("date", Tool.toDatetime(new Date())));
 }
 ```
-<h2 id="rightshooks">User rights hooks</h2>
+User rights hooks
+-----------------
 
 ### `preLoadGrant` &amp; `postLoadGrant`
 
@@ -134,7 +139,8 @@ PlatformHooks.postLoadGrant(g) {
 ```
 </details>
 
-<h2 id="menuhooks">Menu hooks</h2>
+Menu hooks
+----------
 
 ### `isMenuEnable`
 
@@ -167,7 +173,8 @@ PlatformHooks.isMenuEnable(g, domain, item) {
 ```
 </details>
 
-<h2 id="searchhooks">Fulltext search hooks</h2>
+Fulltext search hooks
+---------------------
 
 ### `preSearchIndex` &amp; `postSearchIndex`
 
@@ -237,7 +244,8 @@ PlatformHooks.postSearchIndex = function(g, rows) {
 ```
 </details>
 
-<h2 id="otherhooks">Other hooks</h2>
+Other hooks
+-----------
 
 ### `validatePassword`
 

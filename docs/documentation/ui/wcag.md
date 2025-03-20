@@ -8,7 +8,8 @@ WCAG 2.1 / RGAA
 
 This document explains the Web Content Accessibility Guidelines (applicable to version 5.3 and above).
 
-<h2 id="region">UI Regions</h2>
+UI Regions
+----------
 
 The core UI supports common accessibility with 4 regions:
 - Header and Footer
@@ -67,7 +68,8 @@ Complex widgets are not accessible because of massive mouse usage thru drag&drop
 
 They are optional and dedicated to designers.
 
-<h2 id="basics">Basics</h2>
+Basics
+------
 
 ### Aria-label, title and tooltip
 
@@ -126,7 +128,8 @@ Example:
 }
 ```
 
-<h2 id="keyboard">Keyboard accessibility</h2>
+Keyboard accessibility
+----------------------
 
 ### Access keys
 
@@ -188,13 +191,15 @@ Some designer access:
 - `ALT-X` : open the script/code editor
 
 
-<h2 id="refdocs">Documentation</h2>
+Documentation
+-------------
 
 - [WCAG21 from w3c.org](https://www.w3.org/TR/WCAG21)
 - [French WCAG 2.1](https://www.w3.org/Translations/WCAG21-fr)
 - [French RGAA 4 from DINUM](https://accessibilite.numerique.gouv.fr)
 
-<h2 id="tools">Web accessibility testing</h2>
+Web accessibility testing
+-------------------------
 
 - W3C evaluating
   [w3c.org test-evaluate](https://www.w3.org/WAI/test-evaluate)

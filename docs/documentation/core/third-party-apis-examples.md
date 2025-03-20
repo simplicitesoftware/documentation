@@ -18,7 +18,8 @@ These are examples of calls to various third party APIs done on server side. Mos
 > - Rhino: `a == b`, Java: `a.equals(b)`
 > - Rhino: `a != b`, Java: `!a.equals(b)`
 
-<h2 id="introduction">Introduction</h2>
+Introduction
+------------
 
 Simplicité being a Java platform, calling **any** HTTP-based can be done using either:
 
@@ -39,7 +40,8 @@ But the same cloud be achieved using one of the low-level above approaches.
 
 Note that some of these 3rd party APIs may need a paying subscription and/or may have a limited free tier.
 
-<h2 id="calendar">Calendar</h2>
+Calendar
+--------
 
 This example is based on the **client side** Google Calendar API.
 
@@ -220,7 +222,8 @@ public String preCreate() {
 }
 ```
 
-<h2 id="geocoding">Geocoding</h2>
+Geocoding
+---------
 
 ### Google Maps
 
@@ -241,7 +244,8 @@ if (a.hasChanged())
 ```
 > **Note**: to debug response from the API you can use the `DCORESV001` log event code
 
-<h2 id="tranlation">Translation</h2>
+Translation
+-----------
 
 ### Google Translate
 
@@ -264,7 +268,8 @@ try {
 ```
 > **Note**: to debug response from the API you can use the `DCORESV001` log event code
 
-<h2 id="sms">SMS</h2>
+SMS
+---
 
 As of **version 4.0** it is possible to use the `SMSTool` helper class for the following providers:
 
@@ -330,7 +335,8 @@ Where the `SMSENVOI_CONFIG` system parameter has the following JSON value:
 }
 ```
 
-<h2 id="emails">Emails</h2>
+Emails
+------
 
 ### SendWithUs
 
@@ -539,7 +545,8 @@ data.put("Vars", vars)
 JSONObject res = e.send("registration", data);
 ```
 
-<h2 id="currencies">Currency rates</h2>
+Currency rates
+--------------
 
 ### Fixer.io
 
@@ -593,7 +600,8 @@ Typical usage would be `MyCurrency.getRates.call(this, "EUR", ["USD", "GBP"]);`.
 
 <!--
 
-<h2 id="payment">Payment</h2>
+Payment
+-------
 
 ### Stripe
 
@@ -601,7 +609,8 @@ Typical usage would be `MyCurrency.getRates.call(this, "EUR", ["USD", "GBP"]);`.
 
 -->
 
-<h2 id="cloud">Cloud</h2>
+Cloud
+-----
 
 ### Apache JClouds
 

@@ -39,19 +39,19 @@ Deployment modes
 
 Exposing the application server thru a Apache/NGINX reverse proxy as described below is not mandatory but rather a good practice.
 
-<h3 id="deployment-web">Web mode</h3>
+### Web mode
 
 ![Web mode](img/architecture/architecture-webmode.png)
 
 In this mode the publication layers (UI and API) have direct access to Simplicité engine.
 
-<h3 id="deployment-jee-webprofile">JEE web profile mode</h3>
+### JEE web profile mode
 
 ![JEE web profile mode](img/architecture/architecture-webprofilemode.png)
 
 In this mode the publication layers (UI and API) have access to an EJB lite-wrapped Simplicité engine.
 
-<h3 id="deployment-jee-fullprofile">JEE full profile mode</h3>
+### JEE full profile mode
 
 ![JEE full profile mode](img/architecture/architecture-fullprofilemode.png)
 

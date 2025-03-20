@@ -215,7 +215,8 @@ sudo chmod +x /usr/bin/docker-compose
 sudo docker-compose --version
 ```
 
-<h2 id="descriptors">Docker compose descriptors</h2>
+Docker compose descriptors
+--------------------------
 
 The sample `docker-compose.yml` files below are using different databases.
 
@@ -223,7 +224,7 @@ Create a folder for your instance (e.g. `myinstance`), all following files must 
 
 > **Note**: Alternatively you can add `--project-name=myinstance` to all `docker-compose` command invokations.
 
-<h3 id="hsqldb">Embedded HSQL database (1 container)</h3>
+### Embedded HSQL database (1 container)
 
 ```yaml
 version: "3"
@@ -247,7 +248,7 @@ volumes:
 > **Warning**: if you are planning to use a reverse proxy and/or to expose simplicite in HTTPS, make sure you use the apppropriate port mapping and configuration
 > see [this document](/docs/documentation/operation/docker#ports) for more details.
 
-<h3 id="mysql">MySQL database (2 containers)</h3>
+### MySQL database (2 containers)
 
 ```yaml
 version: "3"
@@ -295,7 +296,7 @@ volumes:
 > **Warning**: if you are planning to use a reverse proxy and/or to expose simplicite in HTTPS, make sure you use the apppropriate port mapping and configuration
 > see [this document](/docs/documentation/operation/docker#ports) for more details.
 
-<h3 id="postgresql">PostgreSQL database (2 containers)</h3>
+### PostgreSQL database (2 containers)
 
 ```yaml
 version: "3"
@@ -341,14 +342,15 @@ volumes:
 > **Warning**: if you are planning to use a reverse proxy and/or to expose simplicite in HTTPS, make sure you use the apppropriate port mapping and configuration
 > see [this document](/docs/documentation/operation/docker#ports) for more details.
 
-<h3 id="oracle_mssqsl">Oracle or SQLServer database</h3>
+### Oracle or SQLServer database
 
 For Oracle/SQLServer databases you need to build a **custom** Docker image in which you add the **appropriate** Oracle/SQLServer client and JDBC driver
 (for these two databases these components are not redistribuables and **must** correspond to the database server version you are using).
 
 Check [this GitHub repository](https://github.com/simplicitesoftware/docker) for examples.
 
-<h2 id="manage">Start/stop/upgrade</h2>
+Start/stop/upgrade
+------------------
 
 To start the container(s):
 
@@ -368,7 +370,8 @@ To update the images (after stopping the containers(s)):
 sudo docker-compose pull
 ```
 
-<h2 id="nginx">Optional: Add an SSL-enabled NGINX reverse proxy</h2>
+Optional: Add an SSL-enabled NGINX reverse proxy
+------------------------------------------------
 
 To add an NGINX reverse proxy to expose your instances **over SSL** do the following changes
 to the `docker-compose.yml` file:
@@ -470,7 +473,7 @@ http {
 The mapped `/etc/sslserver.crt` and `/etc/sslserver.key` are the SSL certificate and corresponding key
 that you have obtained/bought for your hostname(s).
 
-<h3 id="gzip">GZIP compression</h3>
+### GZIP compression
 
 In all cases you **should** configure GZIP compression. Depending on your deployment strategy it can be done at different level.
 
@@ -478,19 +481,19 @@ In all cases you **should** configure GZIP compression. Depending on your deploy
 - it can be done (and in most case it is preferrable) at the reverse proxy level
   (see, for instance, the `gzip on;` statement in the above NGINX configuration file)
 
-<h3 id="websockets">Websockets</h3>
+### Websockets
 
 Websockets-based features (such as pushing servers logs to the browser's console) can be totally **inhibited** using the `WEBSOCKETS=false`.
 This may be required on some networks (e.g. with old proxies) where websockets are filtered or forced closed after a given timeout.
  
-<h3 id="compiler">Java compiler</h3>
+### Java compiler
 
 The Java compiler can be totally **inhibited** using the `COMPILER=false`.
 This may be required in some particular cases (e.g. security reasons).
 
 Note that this means that any Java compiled class must be provided otherwise, e.g. by mounting/copying externally built JARs in the `WEB-INF/lib` of the webapp.
  
-<h3 id="selfsigned-certificate">Generate a self-signed certificate</h3>
+### Generate a self-signed certificate
 
 You can generate them as a **self-signed** certficate with the following commands:
 
@@ -504,7 +507,7 @@ openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt
 
 > **Note**: a self-signed certificate will generate warnings in your browser
 
-<h3 id="letsencrypt-certificate">Use a LetsEncrypt certificate</h3>
+### Use a LetsEncrypt certificate
 
 You can obtain a free **signed** certificate from the **LetsEncrypt** service, there are some steps to go thru:
 
@@ -557,7 +560,8 @@ sudo certbot certonly --webroot -w . -d <myhostname>
 
 > **Note**: the above step are not required when you renew the certificate by `sudo certbot renew`.
 
-<h2 id="connecting">Connecting to a running container</h2>
+Connecting to a running container
+---------------------------------
 
 List the running containers with:
 
@@ -573,7 +577,8 @@ sudo docker exec -it <container ID or name> bash
 
 Inside the container the Tomcat base folder is `/usr/local/tomcat`.
 
-<h2 id="logs">Reviewing logs of a running container</h2>
+Reviewing logs of a running container
+-------------------------------------
 
 List the running containers with:
 
@@ -587,10 +592,12 @@ Look for the container ID or name of the Simplicité container and execute stand
 sudo docker logs -f <container ID or name>
 ```
 
-<h2 id="licensekey">Deploying wih a license key</h2>
+Deploying wih a license key
+---------------------------
 
 See [Auto Setup](/docs/documentation/operation/auto-setup)
 
-<h2 id="modules">Deploying with business modules</h2>
+Deploying with business modules
+-------------------------------
 
 See [Auto Setup](/docs/documentation/operation/auto-setup)

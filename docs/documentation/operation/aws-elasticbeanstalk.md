@@ -15,7 +15,8 @@ This document consider you are using a standard **Simplicité cloud instance tem
 > Our support capabilities on this PaaS is very limited so before choosing this option make sure you have required up-to-date expertise.
 
 
-<h2 id="database">Provision a database</h2>
+Provision a database
+--------------------
 
 It is required that you provision an external database as a service such as a AWS RDS&reg; database instance.
 
@@ -31,17 +32,20 @@ This is **required** because default Apache DBCP2 connection pool implementation
 
 > **Note**: you can't use an ephemeral instance using an embedded HSQLDB database because it is not compliant with `org.apache.tomcat.jdbc.pool` connection pool implementation.
 
-<h2 id="provision">Provision a Elastic Beanstalk&reg; environment</h2>
+Provision a Elastic Beanstalk&reg; environment
+----------------------------------------------
 
 Using the web console or the `eb` CLI, create a Tomcat environment with a minimum of 512Mb max memory.
 
-<h2 id="deploy">Deploy the instance</h2>
+Deploy the instance
+-------------------
 
 The JDBC driver suitable for your database must be copied in the `WEB-INF/lib` folder.
 
 Then package the WAR file and, using the web console or the `eb` CLI, upload it to your Elastic Beanstalk&reg; environment.
 
-<h2 id="blobs">Use BLOBs for documents</h2>
+Use BLOBs for documents
+-----------------------
 
 The document need to be stored into the database as BLOBs. To do so configure the `DOC_DIR` system parameter as `BLOB` and clear the cache.
 

@@ -38,7 +38,7 @@ In real life, the implementation of this custom authentication will certainly be
 Default custom authentication
 -----------------------------
 
-The plaform includes a default custom authentication that returns the value of an HTTP header whose name is configured
+The platform includes a default custom authentication that returns the value of an HTTP header whose name is configured
 in the `AUTH_HEADER` system parameter.
 
 If this returned header values does not contain a simple plain text login you can use it to determine the appropriate login by using the `parseAuth` hook.
