@@ -28,7 +28,7 @@ The calls examples are given using the `curl` command line tool
 
 For an application deployed on `myapp` webapp root, the base URL of the custom services is:
 
-```
+```sh
 http[s]://<host[:<port>]>/myapp/api/ext
 ```
 
@@ -120,7 +120,7 @@ The result is then:
 ## Mapped business object services helper class
 
 As of version 4.0.P23 a high-level helper class `com.simplicite.webapp.services.RESTMappedObjectsExternalObject`
-is provided to simply expose Simplicit&eacute; business object CRUD in a simplified and customized way.
+is provided to simply expose Simplicité business object CRUD in a simplified and customized way.
 
 Example:
 
@@ -138,12 +138,12 @@ public class v1 extends com.simplicite.webapp.services.RESTMappedObjectsExternal
 		addField("users", "email", "usr_email");
 
 		// Map the user's responsibility business object attributes
-		addObject("user-resps", "Responsability");
+		addObject("user-resps", "Responsibility");
 		addField("user-resps", "login", "rsp_login_id.usr_login");
 		addField("user-resps", "group", "rsp_group_id.grp_name");
 		addField("user-resps", "startDate", "rsp_start_dt");
 		addField("user-resps", "endDate", "rsp_end_dt");
-		addField("user-resps", "active", "rsp_activ");
+		addField("user-resps", "active", "rsp_active");
 		// Map the reference from responsibility to user
 		addRefField("user-resps", "users", "userId", "rsp_login_id");
 	}

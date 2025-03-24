@@ -9,7 +9,7 @@ Ajax API
 Introduction
 ------------
 
-The JavaScript files to include to use the Simplicit&eacute;&reg Ajax API are:
+The JavaScript files to include to use the Simplicité&reg Ajax API are:
 
 - `scripts/ajax/appsession.js` (required) for application level services
 - `scripts/ajax/grant.js` (required) for grant data manipulation (as of version 4.0)
@@ -42,7 +42,7 @@ Where `<root>` can be either:
 
 - a simple application root (e.g. `myapp`) in that case the base URL is considered to be the same as the
 current application base URL (this is typically what to do in case of custom page managed within
-a Simplicit&eacute;&reg application, for instance as a configured external object)
+a Simplicité&reg application, for instance as a configured external object)
 - an absolute application URL (e.g. `http://myserver:8080/myapp` or `http://myserver:8080/appws`)
 
 And where `<gateway>` is:

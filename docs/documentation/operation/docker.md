@@ -3,7 +3,7 @@ sidebar_position: 10
 title: Docker
 ---
 
-Simplicit&eacute; on Docker
+Simplicité on Docker
 ===========================
 
 Simplicité instances can easily be deployed on the Docker engine.

@@ -3,7 +3,7 @@ sidebar_position: 30
 title: CloudFoundry
 ---
 
-Simplicit&eacute; on CloudFoundry
+Simplicité on CloudFoundry
 =================================
 
 > **Warning**: this document may be **outdated** and incomplete.

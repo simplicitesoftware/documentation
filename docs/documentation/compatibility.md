@@ -11,7 +11,7 @@ This document gives a non exhaustive list of architectures and infrastructure co
 Containers deployments (Docker and PaaS)
 ----------------------------------------
 
-The **ideal** / **preferred** deployment model is to deploy Simplicit&eacute; platform as **Docker&reg; container(s)**
+The **ideal** / **preferred** deployment model is to deploy Simplicité platform as **Docker&reg; container(s)**
 from our standard pre-built images available on [DockerHub](https://hub.docker.com/r/simplicite/) or from custom images that you build to fit your needs.
 See [this document](/docs/documentation/operation/docker) for details.
 
@@ -24,12 +24,12 @@ It is also possible to deploy it as managed application container(s) on a wide r
 Etc.
 
 In both cases you will need an external database service - custom or as a service (DBaaS).
-See the "Databases" section for details on Simplicit&eacute; database compliances.
+See the "Databases" section for details on Simplicité database compliances.
 
 Custom deployments
 ------------------
 
-It is still possible, although highly **discouraged**, to deploy Simplicit&eacute; on custom IaaS infrastructures or even on premises servers.
+It is still possible, although highly **discouraged**, to deploy Simplicité on custom IaaS infrastructures or even on premises servers.
 In such a case you need to verify that your technical platform complies with the following recommendations.
 
 ### Introduction
@@ -37,7 +37,7 @@ In such a case you need to verify that your technical platform complies with the
 By default, our **recommendation** is that you use only the current **up to date** versions of **all technical components**
 (OS, JVM, application server, database server, web servers) unless explicitly stated otherwise.
 
-The versions indicated below are to be considered as **minimal** versions on which Simplicit&eacute; platform should run.
+The versions indicated below are to be considered as **minimal** versions on which Simplicité platform should run.
 Some of them are now outdated and **should not** be considered as recommended versions.
 Using such old versions is likely to be a source of potentially tricky problems that you would not have with up-to-date components.
 

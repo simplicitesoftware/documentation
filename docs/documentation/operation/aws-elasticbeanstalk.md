@@ -3,7 +3,7 @@ sidebar_position: 60
 title: AWS ElasticBeansTalk
 ---
 
-Simplicit&eacute; on AWS elastic Beanstalk&reg;
+Simplicité on AWS elastic Beanstalk&reg;
 ===============================================
 
 Simplicité instances can easily be deployed on the AWS Elastic Beanstalk&reg; platform.

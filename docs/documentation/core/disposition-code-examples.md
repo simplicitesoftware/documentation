@@ -48,7 +48,7 @@ public String display(Parameters params) {
 	
 	wp.appendHTML("<div id=\"main\"></div>");
 	
-	wp.appendHTML("<div id=\"footer\">&copy; Simplicit&eacute; Software</div>");
+	wp.appendHTML("<div id=\"footer\">&copy; Simplicité Software</div>");
 	
 	return wp.toString();
 }
@@ -80,7 +80,7 @@ MyDisp.display = function(params) {
 	
 	wp.appendHTML("<div id=\"main\"></div>");
 	
-	wp.appendHTML("<div id=\"footer\">&copy; Simplicit&eacute; Software</div>");
+	wp.appendHTML("<div id=\"footer\">&copy; Simplicité Software</div>");
 	
 	return wp.toString();
 };

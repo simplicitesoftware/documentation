@@ -6,7 +6,7 @@ title: Load balancing
 Load balancing
 ==============
 
-This document applies to Simplicit&eacute; version 4.0 and above using internal OAuth2 authentication.
+This document applies to Simplicité version 4.0 and above using internal OAuth2 authentication.
 
 Apache + Tomcat
 ---------------
@@ -39,6 +39,6 @@ And configure each Tomcat node's `conf/server.xml` like this:
 (...)
 ```
 
-> **Note**: this configuration correspond to **root** deployed Simplicit&eacute; instances.
+> **Note**: this configuration correspond to **root** deployed Simplicité instances.
 > When transposing this to your particular case pay a great attention to the trailing slashes which are **mandatory**
 > for the load balancing to run properly.

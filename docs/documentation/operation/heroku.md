@@ -3,7 +3,7 @@ sidebar_position: 40
 title: Heroku
 ---
 
-Simplicit&eacute; on Heroku&reg;
+Simplicité on Heroku&reg;
 ================================
 
 Simplicité instances can easily be deployed on the Heroku&reg; PaaS.

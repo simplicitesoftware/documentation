@@ -64,7 +64,7 @@ Modules using Java
 ------------------
 
 In this case the Simplicité module is considered as a **Java module** by Sonarqube&reg;.
-As of **Version 4.0.P22** this is straightforward as the Git repository of the Simplicit&eacute; module
+As of **Version 4.0.P22** this is straightforward as the Git repository of the Simplicité module
 is structured as an Apache Maven&reg; project which is directly managed by Sonarqube&reg;.
 
 ### Prerequisites

@@ -6,7 +6,7 @@ title: UTF-8 howto
 UTF-8 encoding
 ==============
 
-Starting with version **3.1**, Simplicit&eacute; is using by default using the **UTF-8** encoding (previous versions were using by default the ISO-8859-1 encoding).
+Starting with version **3.1**, Simplicité is using by default using the **UTF-8** encoding (previous versions were using by default the ISO-8859-1 encoding).
 
 Depending on your installation, using UTF-8 may require some addition configurations described below.
 

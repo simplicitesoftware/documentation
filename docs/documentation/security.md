@@ -322,7 +322,7 @@ And of course, you **must** also apply the system upgrades on your host machine 
 Securing the Simplicité Instance Manager (SIM)
 ----------------------------------------------
 
-These are specific guidelines for the Simplicit&eacute; Instances Manager (SIM). See [this document](https:/docs/documentation/misc/manager) for details on the SIM.
+These are specific guidelines for the Simplicité Instances Manager (SIM). See [this document](https:/docs/documentation/misc/manager) for details on the SIM.
 
 #### SIM credentials
 

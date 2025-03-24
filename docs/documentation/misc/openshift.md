@@ -3,7 +3,7 @@ sidebar_position: 50
 title: Openshift
 ---
 
-Simplicit&eacute; on OpenShift&reg;
+Simplicité on OpenShift&reg;
 ==================================
 
 Simplicité instances can easily be deployed on the OpenShift&reg; PaaS.
