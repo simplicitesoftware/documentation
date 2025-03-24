@@ -779,7 +779,6 @@ sudo docker-compose up [-d]
 Create the following `docker-compose.yml` file:
 
 ```yaml
-version: "3"
 services:
   db:
     image: mysql:latest
@@ -834,7 +833,6 @@ sudo docker-compose up [-d]
 Create the following `docker-compose.yml` file:
 
 ```yaml
-version: "3"
 services:
   db:
     image: postgres:latest
