@@ -60,16 +60,19 @@ last_update:
   author: custom author name
 ---
 
-# Markdown Features
-
-My Document Markdown content
-```
 
 ### Code blocks
 
 You can add a `title` to the code block by adding a title key after the language (leave a space between them).
 ```js
 console.log('What a great log');
+```
+
+### Custom title ids : 
+
+The following syntax will allow a link to `[text](/url#my-explicit-id)` instead of the default `[text](/url#hello-world)`
+````
+### Hello World {#my-explicit-id}
 ```
 
 ### Admonitions
