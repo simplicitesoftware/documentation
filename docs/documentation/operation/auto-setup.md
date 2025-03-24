@@ -6,9 +6,9 @@ title: Auto Setup
 Automated setup
 ================
 
-The most classic way of installing an app on an instance is to deploy an empty instance and import modules as the designer user, usually through the UI, the I/O endpoint or using Git pushes/pulls. 
+The most classic way of installing an app on an instance is to deploy an empty instance and import modules as the designer user, usually through the UI, the I/O endpoint or using Git pushes/pulls.
 
-However, there are many contexts that call for mechanisms to install or update a fully-functionning app without ever having to connect to it. 
+However, there are many contexts that call for mechanisms to install or update a fully-functionning app without ever having to connect to it.
 
 This document presents two features that aim at accomplishing just that:
 - licence packaging
@@ -28,7 +28,7 @@ Alternatively you can pass the content of the license key (in either XML, JSON o
 As of version 5.1.6 it is possible to add business modules' ZIP files in the `webapps/ROOT/WEB-INF/modules` folder.
 These ZIP files will be imported **if required** at startup following an import specification JSON/YAML file located at the same place.
 
-The import procedure decides whether importing the specified module is required based on the specified version: 
+The import procedure decides whether importing the specified module is required based on the specified version:
 if the module already exists in the database in a version which is higher or equals to the specified version, then no import is done.
 
 The import specification file must be names `<any thing>-importspec.<json|yaml>` and its format is like:
@@ -135,7 +135,6 @@ E.g. 1: Passing `MODULES_IMPORT_SPEC` to a `docker` CLI command line: `-e MODULE
 E.g. 2: Setting `MODULES_IMPORT_SPEC` in a `docker-compose.yml` file:
 
 ```yaml
-version: "3"
 services:
   simplicite:
     image: registry.simplicite.io/platform:<tag>

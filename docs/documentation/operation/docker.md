@@ -69,7 +69,7 @@ sudo systemctl enable docker
 sudo systemctl start docker
 ```
 
-> **Note**: by default Docker is allowed to change the firewall rules to open exposed ports. 
+> **Note**: by default Docker is allowed to change the firewall rules to open exposed ports.
 > To disable this behavior you need to edit `/usr/lib/systemd/system/docker.service` cartridge file
 > and add `--iptables=false` to the `ExecStart` command.
 
@@ -587,7 +587,7 @@ and thus the container's `8443` port (exposed here using `-p 8443:8443`) is the 
 
 #### Add a custom certificate <span id="addcertificate"></span>
 
-If you need to add a custom certificate (e.g. a CA certificate or a database certificate) to the image you must build a derived image from 
+If you need to add a custom certificate (e.g. a CA certificate or a database certificate) to the image you must build a derived image from
 one of our image using a `Dockerfile` like:
 
 For **CentOS** based-images:
@@ -717,7 +717,6 @@ sudo docker login
 Create the following `docker-compose.yml` file:
 
 ```yaml
-version: "3"
 services:
   web:
     image: registry.simplicite.io/platform:<tag>
@@ -748,7 +747,6 @@ sudo docker-compose up [-d]
 > **Note**: if you want to enable SSL you need to add items in the service's ports, environment and volumes sections:
 >
 > ```yaml
-> version: "3"
 > services:
 >   web:
 >     image: registry.simplicite.io/platform:<tag>

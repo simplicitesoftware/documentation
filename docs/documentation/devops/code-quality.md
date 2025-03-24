@@ -17,8 +17,6 @@ The easiest way to start a Sonarqube&reg; server is to use the [official Sonarqu
 For instance you can use the following Docker compose file:
 
 ```yaml
-version: "3"
-
 services:
   sonarqube:
     image: sonarqube:community
@@ -34,7 +32,6 @@ services:
       - sonarqube_data:/opt/sonarqube/data
       - sonarqube_extensions:/opt/sonarqube/extensions
       - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
-
   db:
     image: postgres:latest
     restart: always
@@ -44,7 +41,6 @@ services:
       POSTGRES_DB: sonar
     volumes:
       - postgresql_data:/var/lib/postgresql/data
-
 volumes:
   sonarqube_conf:
   sonarqube_data:
