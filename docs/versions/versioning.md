@@ -6,7 +6,7 @@ title: Versioning
 Versioning
 ===========
 
-## Versions
+## Versions {#versions}
 
 | **Version** | **Maintenance State**      | **Support type** | **Release date**                            | **Maintenance end date**                    | **Docker images tags**              | **Template branch** |
 |-------------|----------------------------|------------------|---------------------------------------------|---------------------------------------------|-------------------------------------|---------------------|
@@ -19,7 +19,7 @@ Versioning
 | [5.1](/docs/versions/release-notes/v5-1.md)        | ❌ Expired                 | Short term (STS) | September 1st, 2021                         | October 31st, 2022                          | `5.1[-light]`, `5.1.x`              | `5.1[-light]`       |
 | [5.0](/docs/versions/release-notes/v5-0.md)       | ❌ Expired                 | Short term (STS) | January 11th, 2021                          | September 30th, 2021                        | `5.0[-light]`, `5.0.x`              | `5.0[-light]`       |
 | `4.0`       | ⛔ Outdated!               | Long-term (LTS)  | 2018                                        | January 15th, 2024                          | `4[-light]`, `4.0[-light]`          | `4.0[-light]`       |
-| `3.x`       | ⛔ Outdated!               | Long-term (LTS)  | 2014 (for 3.0)                              | July 3rd, 2020                              
+| `3.x`       | ⛔ Outdated!               | Long-term (LTS)  | 2014 (for 3.0)                              | July 3rd, 2020
 
 Some interchangeable terms:
 - **Current release**: release, latest version, latest stable
@@ -33,9 +33,9 @@ The [platform site](https://platform.simplicite.io) contains generated technical
 
 The [compatibility page](/docs/documentation/compatibility) maintains a list of compatible options to chose from when running Simplicité: OS, Database, Browser, etc.
 
-### Versioning strategy
+### Versioning strategy {#versioning}
 
-Simplicité follows a flavour of **semantic versioning**. 
+Simplicité follows a flavour of **semantic versioning**.
 
 A `major.minor.revision` (eg. `6.1.21`) numbering system is used where:
 - the `major` number is incremented for **new features with major breaking changes**
@@ -45,13 +45,13 @@ A `major.minor.revision` (eg. `6.1.21`) numbering system is used where:
 Unreleased (alpha and beta) version's numbers can be subject to change if a major breaking changes are introduced in the platform
 (for example, planned version `5.4` was never released as `5.4` but became version `6.0` instead).
 
-### Maintenance strategy
+### Maintenance strategy {#maintenance}
 
 1. When a new minor version is released, the last minor version (n-1) gets a **Standard maintenance period (>= 3 months)**
 2. When a new major version is released, the last minor version (n-1) gets a **Long Term Support (LTS) maintenance period (>= 3 years)**
 3. Thus, some parameters of version `n` are definitively fixed once version `n+1` is released:
-    - **support type**: if `n+1` becomes major, then `n` becomes LTS. 
-    - **maintenance end date**: depends on the release date of `n+1` and if it falls under the major/minor category 
+    - **support type**: if `n+1` becomes major, then `n` becomes LTS.
+    - **maintenance end date**: depends on the release date of `n+1` and if it falls under the major/minor category
 
 **NB:** Major breaking changes are anticipated way ahead on the roadmap, so when a new major version in the workings it is announced with plenty of time ahead.
 
@@ -59,9 +59,9 @@ Unreleased (alpha and beta) version's numbers can be subject to change if a majo
 
 > **Once a version is released, it only receives critical fixes**. There are exceptions to this rule for the latest release where easily backportable and backward-compatible features are sometimes included.
 
-## Upgrade requirements
+## Upgrade requirements {#upgrade}
 
-Maintainers of a Simplicité application have the duty of keeping the platform up-to-date which is **at the very least on the last revision of a maintained version**. 
+Maintainers of a Simplicité application have the duty of keeping the platform up-to-date which is **at the very least on the last revision of a maintained version**.
 
 Not upgrading the platform is associated to numerous risks:
 - Security: due to known CVEs (bugs) on the platform or any of its dependencies
