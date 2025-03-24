@@ -100,6 +100,12 @@ export default function Home() {
                 href="https://community.simplicite.io"
                 icon={Icons.forum}
               />
+               <ResourceLink
+                title="JavaDoc etc."
+                description="Access JavaDoc and other documentation"
+                href="https://platform.simplicite.io/"
+                icon={Icons.trial}
+              />
               <ResourceLink
                 title="GitHub"
                 description="Access example projects and implementations"

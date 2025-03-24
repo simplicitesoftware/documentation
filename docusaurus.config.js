@@ -88,6 +88,11 @@ const config = {
             label: "Versions",
             position: "left",
           },
+          {
+            to: "https://platform.simplicite.io/",
+            label: "JavaDoc etc.",
+            position: "left",
+          },
         ],
       },
       prism: {
