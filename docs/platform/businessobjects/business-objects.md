@@ -50,7 +50,7 @@ We **highly** recommend you use the business object **creation assistant** to cr
 1. Access the list of Business objects :
     - Business objects > Business objects  
     ![](img/business-objects/obj-list.png)
-2. Click **Creation assitant**
+2. Click **Creation assistant**
 3. Fill in the Object information and click **Create** :  
     > Example values :  
     ![](img/business-objects/obj-values.png)
@@ -69,7 +69,7 @@ We **highly** recommend you use the business object **creation assistant** to cr
 | Extend of Logical name | Used for inheritance (parent object) |
 | Icon code | Object's logo |
 
- 
+
 
 ## Read more   
 

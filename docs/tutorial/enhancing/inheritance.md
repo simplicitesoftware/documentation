@@ -1,30 +1,54 @@
 ---
-sidebar_class_name: hidden
-sidebar_position: 14
-title: Inheritance
+sidebar_position: 3
+title: 3.3. Creating an inherited object
+description: Creating an inherited object to filter data
 ---
 
-Inheritance
-====================
+# Building the "Order Management" Training App : Creating an inherited object
 
-The concept of inheritance was discussed in the chapter **Links** through the different types of links (links or Inheritance) available in the modeler. 
-It is possible to create an object configured as a child object in Simplicité. 
+> Prerequisite : [You have a basic understanding of the Simplicité platform, and the steps in Enhancing are completed](/docs/category/2-expanding-your-app)
 
-The characteristics of a child are :
-- The object is in the same database table as its father (the object it inherits) but does not have the same logical name
-- The object inherits all the fields of its father and to which we can add specific fields
-- The object inherits the behavior of its father with possible overloading
-- The object inherits the same constraints as its father
-- The object does not inherit the rights of its father
-- The object inherits the state diagram of its father but the state transitions must be enabled on the child object
 
-One of the design patterns commonly used in Simplicité is to create an child object of `SimpleUser` (m_user table).
-Thus it will be possible to delegate user management to an application administrator profile, to add fields specific to the user (business unit, department, etc.)
+## What is inheritance ?
 
-Exercise
-====================
+Inheritance is a mechanism that allows a Business Object to inherit properties and methods from another Business Object. In Simplicité, inheritance can be used to customize a System Object, display filtered lists... [Learn more](/docs/platform/businessobjects/business-objects.md#configuration)
 
-- Create a child object `TrnProductlowPrice` of the object `TrnProduct` with a price between 0 and 50 euros
-- Add the object in the menu
-- Display the list of products with a price lower than 50 euros on the home page `TrnHome`.
- 
+## Creating an inheritor of TrnProduct
+
+Let's use the inheritance pattern to access a list of "cheap" Products (price ranging from 10 to 50€).
+
+To do so, follow the steps below :
+1. In the **Business objects > Business objects** menu, click **Creation assistant** 
+    > For a detailed guide, see [Add an object](/docs/tutorial/expanding/addobjects)
+2. Create a Business object :
+    - Code : **TrnProductCheap**
+    - Table : **trn_product** (the table is the same as the parent object's)
+3. Click **Next**
+4. Create a Translation for the object :
+    - English : **Cheap products|Cheap product**
+5. Grant a Read only function to the *TRN_SUPERADMIN* Group  
+<details>
+    <summary>Screenshot</summary>
+
+    ![](img/inheritance/add-grant.png)
+</details>
+6. Follow all the steps of the creation process
+7. In the **Extend of Logical name** field of **TrnProductCheap**, select **TrnProduct**  
+    ![](img/inheritance/extend-field.png)
+8. Click **More** on the Objects form  
+    ![](img/inheritance/more.png)
+9. Set the following value in the **Filter** field : `trn_prd_price < 50`   
+    ![](img/inheritance/filter-value.png)
+10. Click **Save**
+
+
+## Test the newly created inheritor with `usertest` 
+
+1. Clear the platform's cache and log in using *usertest*
+    > For a detailed step-by-step, see : [Testing the User](/docs/tutorial/getting-started/user#activating-and-testing-the-user)
+
+:::tip[Success]
+The `Cheap product` menu entry is visible and the list of Products with a price lower than 50 is displayed when clicked  
+
+![](img/inheritance/success.png)
+::::

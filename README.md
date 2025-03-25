@@ -59,7 +59,7 @@ last_update:
   date: 1/1/2000
   author: custom author name
 ---
-
+```
 
 ### Code blocks
 
