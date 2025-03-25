@@ -15,7 +15,7 @@ By extension it can also be used to generate other type of files such as a PDF d
 But this is not a typical use of external objects as there are other mechanisms for generating such contents (e.g. publication templates).
 
 As of **version 3.1** external objects can also be used to provide custom web services (typically JSON/REST web services) on the API endpoint.
-Please refer to [this document](/docs/documentation/integration/webservices/custom-services) for details.
+Please refer to [this document](/documentation/integration/webservices/custom-services) for details.
 
 > **Note**:
 >
@@ -35,7 +35,7 @@ Basic example
 > and/or for versions 3.x and 4.0 **legacy UI** (still available for backward compatibility).
 >
 > For the 4.0 **responsive UI**'s single page custom components the implementation pattern is different,
-> please refer to the dedicated section below [Responsive UI pattern](/docs/documentation/core/externalobject-code-examples#responsive-ui).
+> please refer to the dedicated section below [Responsive UI pattern](/documentation/core/externalobject-code-examples#responsive-ui).
 
 #### Legacy UI
 
@@ -200,7 +200,7 @@ The responsive UI requires a JavaScript statement (even empty like above) to be 
 
 > **Note**: If you return a plain string it will be rendered as a **legacy page** (displayed in an iframe for backward compatiblity).
 
-See [this section](/docs/documentation/core/externalobject-code-examples#responsive-ui) for other examples dedicated to the responsive UI.
+See [this section](/documentation/core/externalobject-code-examples#responsive-ui) for other examples dedicated to the responsive UI.
 
 Using resources and custom HTML/JavaScript/CSS
 ----------------------------------------------
@@ -360,7 +360,7 @@ As indicated above, the Ajax APIs JavaScripts are included by default in the **s
 * using dedicated APIs of the web helper classes in **non standard** pages, e.g. using `wp.appendAjax()`
 where `wp` is an instance of a sub class of `com.simplicite.webapp.web.WebPage`
 
-The usage of the Ajax APIs itself is described in details in another [document](/docs/documentation/integration/librairies/ajax-api). Here is just a simple **standard** page example:
+The usage of the Ajax APIs itself is described in details in another [document](/documentation/integration/librairies/ajax-api). Here is just a simple **standard** page example:
 
 **Java**
 
@@ -387,7 +387,7 @@ MyExtObj.display = function(params) {
 
 Decorated standard pages includes the UI tools by default (non standard page need to include it explicitly, e.g. using `wp.appendUITools()` where `wp` is an instance of a sub class of `com.simplicite.webapp.web.WebPage`).
 
-The usage of the UI tools APIs itself is described in details in another [document](/docs/documentation/core/ui-tools-code-examples). Here is just a simple **standard** page example:
+The usage of the UI tools APIs itself is described in details in another [document](/documentation/core/ui-tools-code-examples). Here is just a simple **standard** page example:
 
 ```javascript
 MyExtObj.display = function(params) {
@@ -395,7 +395,7 @@ MyExtObj.display = function(params) {
 };
 ```
 
-> **Warning**: these legacy UI tools are not available in the responsive UI, see [this document](/docs/documentation/ui/responsive)
+> **Warning**: these legacy UI tools are not available in the responsive UI, see [this document](/documentation/ui/responsive)
 > for details on the responsive UI JavaScript API.
 
 ### jQPlot&reg; charts
@@ -613,7 +613,7 @@ public class MyExtObj extends com.simplicite.util.ExternalObject {
 }
 ```
 
-For both legacy and responsive UI check the [Fullcalendar&reg; documentation](http://arshaw.com/fullcalendar/docs/) for details on usage.
+For both legacy and responsive UI check the [Fullcalendar&reg; documentation](http://arshaw.com/fullcalendar/) for details on usage.
 
 
 Typical usage (using Rhino script) as a standalone **standard** page for version **4.0 legacy UI** (or for versions 3.x UI) is something like:
@@ -787,7 +787,7 @@ which renders as:
 {"hello":"world"}
 ```
 
-> **Note**: for a more coprehensive description on how to write custom webservices please refer to [this document](/docs/documentation/integration/webservices/custom-services)
+> **Note**: for a more coprehensive description on how to write custom webservices please refer to [this document](/documentation/integration/webservices/custom-services)
 
 Responsive UI pattern
 ---------------------

@@ -23,11 +23,11 @@ This documentation is organized into sections corresponding to the platform's me
 
 If you're new to Simplicité, we recommend starting with:
 
-- [Quick Start Guide](/docs/category/1-getting-started/)
+- [Quick Start Guide](/category/1-getting-started/)
 
 ## Additional Resources
 
-- [Release Notes](/docs/versions/release-notes/v6-2.md): Latest platform updates and changes
+- [Release Notes](/versions/release-notes/v6-2.md): Latest platform updates and changes
 
 ---
 

@@ -9,12 +9,12 @@ Select object
 ### What is a Select object ?
 
 A **Select Object** is an object whose table content is based on the result of an SQL query.  
-It is considered as a [business object](/docs/platform/businessobjects/business-objects) by the platform and therefore benefits from the same functionalities (search, list, form, cross tables, publication, etc.). 
+It is considered as a [business object](/platform/businessobjects/business-objects) by the platform and therefore benefits from the same functionalities (search, list, form, cross tables, publication, etc.). 
 
 ### How to create a Select object ?
 
 To create a select object follow the steps below :
-1. create an [business object](/docs/tutorial/getting-started/object) whose table name is set to the special word `select`  
+1. create an [business object](/tutorial/getting-started/object) whose table name is set to the special word `select`  
    ![](img/select-objects/select.png)
 2. set the SQL query either:
    - in the **Filter** attribute of the object

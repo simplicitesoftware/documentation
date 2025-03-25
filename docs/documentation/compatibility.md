@@ -13,14 +13,14 @@ Containers deployments (Docker and PaaS)
 
 The **ideal** / **preferred** deployment model is to deploy Simplicité platform as **Docker&reg; container(s)**
 from our standard pre-built images available on [DockerHub](https://hub.docker.com/r/simplicite/) or from custom images that you build to fit your needs.
-See [this document](/docs/documentation/operation/docker) for details.
+See [this document](/documentation/operation/docker) for details.
 
 It is also possible to deploy it as managed application container(s) on a wide range of platforms as a service (**PaaS**) such as:
 
-- Any CloudFoundry flavor (see. [this document](/docs/documentation/operation/cloudfoundry) for details))
-- AWS ElasticBeanstalk (see. [this document](/docs/documentation/operation/aws-elasticbeanstalk) for details))
-- Heroku (see. [this document](/docs/documentation/operation/heroku) for details))
-- Openshift (see. [this document](/docs/documentation/operation/openshift) for details))
+- Any CloudFoundry flavor (see. [this document](/documentation/operation/cloudfoundry) for details))
+- AWS ElasticBeanstalk (see. [this document](/documentation/operation/aws-elasticbeanstalk) for details))
+- Heroku (see. [this document](/documentation/operation/heroku) for details))
+- Openshift (see. [this document](/documentation/operation/openshift) for details))
 Etc.
 
 In both cases you will need an external database service - custom or as a service (DBaaS).

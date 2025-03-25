@@ -9,7 +9,7 @@ title: Grant
 
 In Simplicité, a Grant defines the association between a Group and a Function, determining the rights assigned to a Group. These rights are then inherited by all Users linked to that Group. Managing access at the Group level ensures a structured and scalable permission system.
 
-Since Simplicité version 6, Function-based rights (Grants) apply to business objects for CRUD operations and actions. Many others configuration objects now rely on [permissions](/docs/platform/usersrights/permissions) instead of Functions. This evolution improves the security model by allowing more granular control over access to different types of objects. 
+Since Simplicité version 6, Function-based rights (Grants) apply to business objects for CRUD operations and actions. Many others configuration objects now rely on [permissions](/platform/usersrights/permissions) instead of Functions. This evolution improves the security model by allowing more granular control over access to different types of objects. 
 
 ## Configuration
 
@@ -18,7 +18,7 @@ Since Simplicité version 6, Function-based rights (Grants) apply to business ob
 | Group name | The Group receiving the Grant. |
 | Function name | The Function defining access rights to objects. |
 | Enabled | Determines whether the function is linked to the group. When Enabled is false, the group no longer has this function.  |
-| Module name | Define the [module](/docs/platform/project/module) to which it belongs.   |  
+| Module name | Define the [module](/platform/project/module) to which it belongs.   |  
 
 ## Features 
 

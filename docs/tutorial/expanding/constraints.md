@@ -5,11 +5,11 @@ title: 2.11. Configuring business rules
 
 # Building the "Order Management" Training App : Configuring business rules - Constraints
 
-> Prerequisite : [The Order object has a state model](/docs/tutorial/expanding/states)
+> Prerequisite : [The Order object has a state model](/tutorial/expanding/states)
 
 ## What is a Constraint ?
 
-In Simplicité, constraints allow to enforce business rules by dynamically controlling object properties, visibility, and behavior, while ensuring secure backend validation... [Learn more](/docs/platform/businessobjects/constraints)
+In Simplicité, constraints allow to enforce business rules by dynamically controlling object properties, visibility, and behavior, while ensuring secure backend validation... [Learn more](/platform/businessobjects/constraints)
 
 ## Adding a Constraint to the Order Business Object
 
@@ -47,7 +47,7 @@ To do so, follow the steps below :
 ## Test the Constraint with the usertest User
 
 Clear the platform's cache and log in using *usertest*
-> For a detailed step-by-step, see : [Testing the User](/docs/tutorial/getting-started/user#activating-and-testing-the-user)
+> For a detailed step-by-step, see : [Testing the User](/tutorial/getting-started/user#activating-and-testing-the-user)
 
 :::tip[Success]
   <p>For a new Order, the <b>Quantity</b> field is updatable</p>

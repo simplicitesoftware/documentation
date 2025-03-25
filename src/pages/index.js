@@ -73,19 +73,19 @@ export default function Home() {
             <DocSection
               title="Getting Started"
               description="New to Simplicité? Start here with our step-by-step tutorial."
-              link="/docs/tutorial/welcome"
+              link="/tutorial/welcome"
               icon={Icons.tutorial}
             />
             <DocSection
               title="Documentation"
               description="Detailed technical documentation and configuration guides."
-              link="/docs/platform/welcome"
+              link="/platform/welcome"
               icon={Icons.docs}
             />
             <DocSection
               title="Release Notes"
               description="Latest updates, changes, and improvements."
-              link="/docs/versions/release-notes/v6-2"
+              link="/versions/release-notes/v6-2"
               icon={Icons.releases}
             />
           </div>

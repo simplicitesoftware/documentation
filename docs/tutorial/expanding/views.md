@@ -5,18 +5,18 @@ title: 2.8. Creating a home page
 
 # Building the "Order Management" Training App : Creating a Home page
 
-> Prerequisite : [The designer user has the TRN_SUPERADMIN responsibility](/docs/tutorial/getting-started/user#adding-designer-to-trn_superadmin), the Order has [state model](/docs/tutorial/expanding/states) and a [pivot table](/docs/tutorial/expanding/pivot-table).
+> Prerequisite : [The designer user has the TRN_SUPERADMIN responsibility](/tutorial/getting-started/user#adding-designer-to-trn_superadmin), the Order has [state model](/tutorial/expanding/states) and a [pivot table](/tutorial/expanding/pivot-table).
 
 ## What is a Home page ?
 
-A View is a structured collection of components that define user interfaces, such as domain or group homepages. It can include predefined searches, crosstabs, custom UI components... [Learn more](/docs/platform/userinterface/views/home-page)
+A View is a structured collection of components that define user interfaces, such as domain or group homepages. It can include predefined searches, crosstabs, custom UI components... [Learn more](/platform/userinterface/views/home-page)
 
 ## Creating a Home page for the TRN_SUPERADMIN Group
 
 To create a home page for the TRN_SUPERADMIN Group, follow the steps below :
 
 1. In the **User interface > Views > Home page** menu, open **TrainingScope**
-    > This home page was automatically created during the [Create module](/docs/tutorial/getting-started/module) process.   
+    > This home page was automatically created during the [Create module](/tutorial/getting-started/module) process.   
 
     ![](img/views/home-page-form.png)
 2. Click ![](img/views/edit-view-btn.png)
@@ -64,7 +64,7 @@ To create a home page for the TRN_SUPERADMIN Group, follow the steps below :
 ## Test the Home page with the usertest User
 
 1. Clear the platform's cache and log in using *usertest*
-    > For a detailed step-by-step, see : [Testing the User](/docs/tutorial/getting-started/user#activating-and-testing-the-user)
+    > For a detailed step-by-step, see : [Testing the User](/tutorial/getting-started/user#activating-and-testing-the-user)
 
 :::tip[Success]
   <p>The Home page displays the "Pending orders" view and the "Orders per state" pivot table</p>

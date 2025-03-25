@@ -6,17 +6,17 @@ title: Tomcat installation on Windows
 Tomcat installation guidelines for Windows server
 =================================================
 
-> **Warning**: before choosing this "traditional" installation procedure you should consider other approches such as using [Docker containers](/docs/documentation/operation/docker).
+> **Warning**: before choosing this "traditional" installation procedure you should consider other approches such as using [Docker containers](/documentation/operation/docker).
 
 This document only gives only very **general guidelines**, not a detailled/precise procedure.
 
-If needed refer to the [Linux installation document](/docs/documentation/operation/tomcat-installation-linux) for more details.
+If needed refer to the [Linux installation document](/documentation/operation/tomcat-installation-linux) for more details.
 
 Databases
 ---------
 
 Download and install the chosen up-to-date database engine server suitable for your target Simplicité platfor and suitable for your version of Windows
-(see [this document](/docs/documentation/compatibility#databases) for databases compliance details):
+(see [this document](/documentation/compatibility#databases) for databases compliance details):
 
 - MySQL/MariaDB
 - PostgreSQL
@@ -29,7 +29,7 @@ JVM
 ---
 
 Dowload and install an up to date Java VM Developpement Kit (or a Runtime Environment if you don't plan to do debugging) in the appropriate version
-for your target Simplicité platform version and suitable for your version of Windows (see [this document](/docs/documentation/compatibility#java-vm) for JVM compliance details).
+for your target Simplicité platform version and suitable for your version of Windows (see [this document](/documentation/compatibility#java-vm) for JVM compliance details).
 
 Register the `JAVA_HOME` environment variable as the path of your JVM Installation (e.g. `C:\Program Files\Java\jdk-x.y.z`) and add `%JAVA_HOME%\bin` to the system `PATH`.
 
@@ -73,7 +73,7 @@ Clone the Simplicité webapp instance template of your target platform version:
 Where `<version>` is one of the available versions, e.g. `4.0`
 
 > **Note**: as of version 4.0 there are several branches on the instance template,
-> make sure to use **only** the **release** branch in production, see [this document](/docs/versions/versioning.md) for details on versions and branches.
+> make sure to use **only** the **release** branch in production, see [this document](/versions/versioning.md) for details on versions and branches.
 >
 > We thus recommend that you only clone the **release** branch by adding `--single-branch --branch release` to the `git clone` instruction above.
 
@@ -121,4 +121,4 @@ Our support is thus only avaible if you use these recommended up-to-date compone
 
 ### Security guidelines
 
-Make sure to review our [security guidelines](/docs/documentation/security)
+Make sure to review our [security guidelines](/documentation/security)

@@ -14,10 +14,10 @@ In such objects you will be able to interact with Simplicité by using the [Ajax
 
 There are several types of *External Objects*, that all serve a certain use-case of type of need:
 - Basic
-- [UI page or component](/docs/platform/userinterface/externalobjects/uicomponent)
-- [Web-page](/docs/platform/userinterface/externalobjects/webpage)
+- [UI page or component](/platform/userinterface/externalobjects/uicomponent)
+- [Web-page](/platform/userinterface/externalobjects/webpage)
 - JQuery web page
-- [Static web site](/docs/platform/userinterface/externalobjects/staticsite)
+- [Static web site](/platform/userinterface/externalobjects/staticsite)
 - REST web service
 - Mapped REST web service
 - GraphQL web service
@@ -27,13 +27,13 @@ There are several types of *External Objects*, that all serve a certain use-case
 
 The most used are:
 - **Basic:** to create all type of elements, but mostly to handle external objects that should be accessible both in **public** & **private** zones (outside or inside of Simplicité's interfaces).
-- **UI page or component:** to create *widgets* that can be embedded in any [Dashboard](/docs/platform/userinterface/views/dashboard) or any **View**.
+- **UI page or component:** to create *widgets* that can be embedded in any [Dashboard](/platform/userinterface/views/dashboard) or any **View**.
 - **Web-page:** to create components rendered exclusively in the *public* zone as standalone pages still interacting dynamically with a Simplicité's instance.
 - **Static web site:** to create standalone webpages that are not interacting with any Simplicité's instance.
 
 ### Structure
 
-All **External Objects** are organized as web elements, thus are composed of 3 [resources](/docs/platform/userinterface/resources):
+All **External Objects** are organized as web elements, thus are composed of 3 [resources](/platform/userinterface/resources):
 - **HTML** is the resource containing the *html* code of your object that defines its core structure and organization.
 - **STYLES** is the resource containing the stylesheet (*css* or *less*) associated with your object's HTML.
 - **CLASS** is the resource with the javascript file inside of which you will code the behaviors and interactions for your External Object.
@@ -61,7 +61,7 @@ The **Basic** nature refers directly to the mother class `com.simplicite.util.Ex
     - **Code** for your external object's name.
     - **Nature** shall be **Basic**.
     - **Module Name** for the module containing your external object.
-    - **UI Widget** to **Yes** if your object can be added to a [dashboard](/docs/platform/userinterface/views/dashboard) and **No** otherwise.
+    - **UI Widget** to **Yes** if your object can be added to a [dashboard](/platform/userinterface/views/dashboard) and **No** otherwise.
     > Example values:
     > ![](img/basic/basic_extobj_fields.png)
 4. Click **Save**.
@@ -125,9 +125,9 @@ The **Basic** nature refers directly to the mother class `com.simplicite.util.Ex
 ## Read More
 
 **Tips & Advices**
-- [Javascript Development](/docs/documentation/front/javascript-dev).
-- [Ajax Library](/docs/documentation/front/lib-ajax).
+- [Javascript Development](/documentation/front/javascript-dev).
+- [Ajax Library](/documentation/front/lib-ajax).
 
 **Details & Specificities**
-- [Web Pages](/docs/documentation/front/web-page) with "Basic" Nature.
-- [Code examples](/docs/documentation/front/ui-component) for *"UI component"* (walkthrough).
+- [Web Pages](/documentation/front/web-page) with "Basic" Nature.
+- [Code examples](/documentation/front/ui-component) for *"UI component"* (walkthrough).

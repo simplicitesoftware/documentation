@@ -405,7 +405,7 @@ Documents directory, either:
 - `BLOB` to store documents in the database (in this case a local document directory needs to be configured in the `DOC_LOCAL_DIR` for fallback strategy)
 
 
-[See database how-to to manage DB documents](/docs/documentation/misc/databases-howto)
+[See database how-to to manage DB documents](/documentation/misc/databases-howto)
 
 ### `DOC_LOCAL_DIR`
 
@@ -645,7 +645,7 @@ yes/no to show the messages (error, info...) inlined with there related fields.
 **Description**
 
 - FullCalendar supported version: `3` (for backward backward compatibility) or `4` or `5`. 
-- To upgrade your specific calendar from legacy V3 to V4 or V5 see: https://fullcalendar.io/docs/upgrading-from-v3
+- To upgrade your specific calendar from legacy V3 to V4 or V5 see: https://fullcalendar.io/upgrading-from-v3
 
 ### `GIT_FORMAT`
 

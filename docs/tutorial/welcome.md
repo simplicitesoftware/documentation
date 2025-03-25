@@ -73,4 +73,4 @@ While Simplicité offers multiple ways to reach any screen, these tutorials prov
 
 ---
 
-Ready to begin? Start with [Creating a Module](/docs/tutorial/getting-started/module) to build your first Simplicité application.
+Ready to begin? Start with [Creating a Module](/tutorial/getting-started/module) to build your first Simplicité application.

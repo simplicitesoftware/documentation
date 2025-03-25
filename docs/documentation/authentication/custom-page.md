@@ -26,7 +26,7 @@ Declare your custom authentication provider in the `AUTH_PROVIDERS` system param
 ]
 ```
 
-See [this document](/docs/documentation/authentication/auth-providers) for details on how to configure authentication providers.
+See [this document](/documentation/authentication/auth-providers) for details on how to configure authentication providers.
 > **Warning**: Before making these changes, make sure that you will still be able to login with a user having at least a responsibility on the ADMIN group.
 
 ### Grant hooks

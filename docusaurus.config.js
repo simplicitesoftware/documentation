@@ -37,7 +37,8 @@ const config = {
       ({
         docs: {
           sidebarPath: "./sidebars.js",
-          showLastUpdateTime: true
+          showLastUpdateTime: true,
+          routeBasePath: '/'
         },
         theme: {
           customCss: "./src/css/custom.css",
@@ -84,7 +85,7 @@ const config = {
             ],
           },
           {
-            to: "/docs/versions/versioning/",
+            to: "/versions/versioning/",
             label: "Versions",
             position: "left",
           },

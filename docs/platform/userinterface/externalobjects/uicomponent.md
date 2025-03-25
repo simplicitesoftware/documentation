@@ -7,7 +7,7 @@ title: UI page or component
 
 ## Introduction
 
-"UI page or component" is a type of [External Object](/docs/platform/userinterface/externalobjects/basic) that is used to implement **specific front components** within your Simplicité instance. Thus creating **custom interactive components** to embed to your interfaces.
+"UI page or component" is a type of [External Object](/platform/userinterface/externalobjects/basic) that is used to implement **specific front components** within your Simplicité instance. Thus creating **custom interactive components** to embed to your interfaces.
 
 Thanks to such objects you can create dynamic elements that have custom behaviors and can seamlessly interact with Simplicité's API.
 
@@ -19,7 +19,7 @@ Similarly to creating any type of *External Object*, go to *User Interface > Ext
     - **Code** that is the name of your object.
     > While naming your objects, we **highly** recommend to follow the suggested nomenclature *ModulePrefix + ObjectName*.
     - **Nature** set to **UI page or component**.
-    - **UI Widget** tells if your external object shall be considered as a *widget* or not, declaring wether or not it can be used in [dashboard](/docs/platform/userinterface/views/dashboard).
+    - **UI Widget** tells if your external object shall be considered as a *widget* or not, declaring wether or not it can be used in [dashboard](/platform/userinterface/views/dashboard).
     > In **both** case, the component is usable in **any editable view**, the only difference is its possible including in dashboards.
 
     > Example values:
@@ -27,7 +27,7 @@ Similarly to creating any type of *External Object*, go to *User Interface > Ext
 
 2. **Save** your object and click **Create resources**:
     ![](img/uicomponent/uicomp_createresources.png)
-    - This creates the default [resources](/docs/platform/userinterface/resources) for your external object:
+    - This creates the default [resources](/platform/userinterface/resources) for your external object:
         - **HTML** in which you'll define your object's content structure.
         - **STYLES** that is your object's stylesheet.
         - **CLASS** where the component's behavior will happen.
@@ -551,11 +551,11 @@ Simplicite.UI.ExternalObjects.DemoWelcomeCard = class extends Simplicite.UI.Exte
 
 ## Read More
 
-- [Widgets](/docs/documentation/misc/widgets) already implemented within Simplicité's **Demo** module.
-- [Code Examples](/docs/documentation/core/externalobject-code-examples)
+- [Widgets](/documentation/misc/widgets) already implemented within Simplicité's **Demo** module.
+- [Code Examples](/documentation/core/externalobject-code-examples)
 - [JSDoc](https://platform.simplicite.io/current/jsdoc/)
 - [Javadoc](https://platform.simplicite.io/current/javadoc/)
 
 **JS Dev**
-- [Javascript Development](/docs/documentation/front/javascript-dev).
-- [Ajax Library](/docs/documentation/front/lib-ajax).
+- [Javascript Development](/documentation/front/javascript-dev).
+- [Ajax Library](/documentation/front/lib-ajax).

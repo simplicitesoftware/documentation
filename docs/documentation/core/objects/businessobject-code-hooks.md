@@ -16,7 +16,7 @@ Note that other mechanisms exists to add some business logic to your business ob
 - state transitions expressions
 - etc.
 
-See [this document](/docs/documentation/core/expressions) for details on expressions.
+See [this document](/documentation/core/expressions) for details on expressions.
 
 Hooks are very powerful as you can write any needed code, but you need to be careful on the choice of the hook to put your logic in.
 The choice depends on the nature of the considered business logic:
@@ -26,8 +26,8 @@ The choice depends on the nature of the considered business logic:
 - data preparation logic,
 - etc.
 
-Some very common and useful code examples are given in the [basic code examples](/docs/documentation/core/basic-code-examples) document.
-<!-- and some more unusual examples are given [advanced code examples](/docs/documentation/core/advanced-code-examples) document.-->
+Some very common and useful code examples are given in the [basic code examples](/documentation/core/basic-code-examples) document.
+<!-- and some more unusual examples are given [advanced code examples](/documentation/core/advanced-code-examples) document.-->
 
 Object definition and right-related hooks
 -----------------------------------------
@@ -117,7 +117,7 @@ public boolean isActionEnable(String[] row, String action) {
 }
 ```
 
-> See [this document](/docs/documentation/core/custom-actions-examples) for details on how to implement custom actions.
+> See [this document](/documentation/core/custom-actions-examples) for details on how to implement custom actions.
 
 ### Publication processing right enabling/disabling hook
 
@@ -135,7 +135,7 @@ public boolean isPrintTemplateEnable(String[] row, String printTemplateName) {
 }
 ```
 
-> See [this document](/docs/platform/userinterface/objectsrendering/publications) for details on how to implement publications.
+> See [this document](/platform/userinterface/objectsrendering/publications) for details on how to implement publications.
 
 ### State transitions hook
 

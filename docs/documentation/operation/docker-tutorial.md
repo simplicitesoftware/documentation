@@ -245,7 +245,7 @@ volumes:
 ```
 
 > **Warning**: if you are planning to use a reverse proxy and/or to expose simplicite in HTTPS, make sure you use the apppropriate port mapping and configuration
-> see [this document](/docs/documentation/operation/docker#exposed-ports) for more details.
+> see [this document](/documentation/operation/docker#exposed-ports) for more details.
 
 ### MySQL database (2 containers)
 
@@ -292,7 +292,7 @@ volumes:
 > **Note**: that the `DB_HOST` environment variable of the `simplicite` is using the name of the `db` service as hostname.
 
 > **Warning**: if you are planning to use a reverse proxy and/or to expose simplicite in HTTPS, make sure you use the apppropriate port mapping and configuration
-> see [this document](/docs/documentation/operation/docker#exposed-ports) for more details.
+> see [this document](/documentation/operation/docker#exposed-ports) for more details.
 
 ### PostgreSQL database (2 containers)
 
@@ -337,7 +337,7 @@ volumes:
 > **Note**: that the `DB_HOST` environment variable of the `simplicite` is using the name of the `db` service as hostname.
 
 > **Warning**: if you are planning to use a reverse proxy and/or to expose simplicite in HTTPS, make sure you use the apppropriate port mapping and configuration
-> see [this document](/docs/documentation/operation/docker#exposed-ports) for more details.
+> see [this document](/documentation/operation/docker#exposed-ports) for more details.
 
 ### Oracle or SQLServer database
 
@@ -393,7 +393,7 @@ services:
 And, of course, remove the exposed `80` port from the `simplicite` and expose the `8443` **locally** olny
 (i.e. remove the `-80:8080` and add `- 127.0.0.1:8443:8443` in the `ports` section of your deployment descriptors).
 
-> **Warning**: As explained in [this document](/docs/documentation/operation/docker#exposed-ports) the `8080` port is for an **HTTP** enpoint of the reverse proxy
+> **Warning**: As explained in [this document](/documentation/operation/docker#exposed-ports) the `8080` port is for an **HTTP** enpoint of the reverse proxy
 > and the `8443` port is for an **HTTPS** endpoint of the reverse proxy.
 > If you don't use the right port for the right usage (typically if you misuse the `8080` for an HTTPS endpoint of the reverse proxy) it **will** result in unexpected behaviors
 
@@ -592,9 +592,9 @@ sudo docker logs -f <container ID or name>
 Deploying wih a license key
 ---------------------------
 
-See [Auto Setup](/docs/documentation/operation/auto-setup)
+See [Auto Setup](/documentation/operation/auto-setup)
 
 Deploying with business modules
 -------------------------------
 
-See [Auto Setup](/docs/documentation/operation/auto-setup)
+See [Auto Setup](/documentation/operation/auto-setup)

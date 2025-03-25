@@ -11,7 +11,7 @@ Simplicité instances can easily be deployed on the AWS Elastic Beanstalk&reg; p
 This document consider you are using a standard **Simplicité cloud instance template** cloned from Git.
 
 > **Warning**: this document may be **outdated** and incomplete.
-> Docker-based deployments (see [this document](/docs/documentation/operation/docker)) are to be preferred over deployement on a proprietary PaaS.
+> Docker-based deployments (see [this document](/documentation/operation/docker)) are to be preferred over deployement on a proprietary PaaS.
 > Our support capabilities on this PaaS is very limited so before choosing this option make sure you have required up-to-date expertise.
 
 

@@ -6,7 +6,7 @@ title: Custom actions examples
 Custom action examples
 ======================
 
-Please refer to [basic code examples](/docs/documentation/core/basic-code-examples) document for naming conventions and logging strategies.
+Please refer to [basic code examples](/documentation/core/basic-code-examples) document for naming conventions and logging strategies.
 
 Server-side custom action
 --------------------------

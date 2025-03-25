@@ -18,7 +18,7 @@ In this section, we will walk through the process of creating a custom webpage *
 
 ![](img/web-page/myexternalpage-home.png)
 
-The presented web-pages are an "in-between" the complete external pages created using the **NPM Library** explained [here](/docs/documentation/front/javascript-dev), and the *UI Component* that you can create as shown in [this lesson](/docs/documentation/front/javascript-dev). Although such objects will be rendered at the `"/ext/"` of your Simplicité's instance URL (`https://<name>.demo.simplicite.io`), but still you can decide either to set this page public or private, thus requesting or not for credentials' validation before accessing it at the given URL.
+The presented web-pages are an "in-between" the complete external pages created using the **NPM Library** explained [here](/documentation/front/javascript-dev), and the *UI Component* that you can create as shown in [this lesson](/documentation/front/javascript-dev). Although such objects will be rendered at the `"/ext/"` of your Simplicité's instance URL (`https://<name>.demo.simplicite.io`), but still you can decide either to set this page public or private, thus requesting or not for credentials' validation before accessing it at the given URL.
 
 ## Object Creation
 
@@ -211,7 +211,7 @@ When developing the **Client-Side** script using the *namespace pattern* (as dem
 
 #### Accessing Business Objects
 
-Accessing Simplicité’s **Business Objects** follows the same approach outlined in the [UI Component](/docs/documentation/front/ui-component) and [JS Development](/docs/documentation/front/javascript-dev) lessons. Below is an example demonstrating how to *query* and *manipulate* Business Objects using  `$app.getBusinessObject()` and `BusinessObject.search()` methods:
+Accessing Simplicité’s **Business Objects** follows the same approach outlined in the [UI Component](/documentation/front/ui-component) and [JS Development](/documentation/front/javascript-dev) lessons. Below is an example demonstrating how to *query* and *manipulate* Business Objects using  `$app.getBusinessObject()` and `BusinessObject.search()` methods:
 
 ```javascript
 let app = new Simplicite.Ajax(params.root, "uipublic"); // params.root or ""
@@ -1259,15 +1259,15 @@ It’s also possible to include other tools, as long as they don’t override th
 | Tool Name     | Method                 | Tool documentation (official) |
 |---------------|------------------------|-------------------------------|
 | JQuery        | `appendJQuery()`       | JQuery [offical page](https://api.jquery.com/) |
-| JQPlot        | `appendJQPlot()`       | JQPlot [documentation](http://www.jqplot.com/docs/files/usage-txt.html) |
+| JQPlot        | `appendJQPlot()`       | JQPlot [documentation](http://www.jqplot.com/files/usage-txt.html) |
 | Bootbox®      | `appendBootbox()`      | Bootbox [documentation](https://bootboxjs.com/documentation.html) |
-| Bootstrap®    | `appendBootstrap()`     | Bootstrap latest [documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/) |
+| Bootstrap®    | `appendBootstrap()`     | Bootstrap latest [documentation](https://getbootstrap.com/5.3/getting-started/introduction/) |
 | ChartJS       | `appendChartjs()`      | ChartJs [page](https://www.chartjs.org/) |
 | Markdown      | `appendMarkdown()`     | Markdown [guide](https://www.markdownguide.org/) |
-| Moment®       | `appendMoment()`       | Moment [documentation](https://momentjs.com/docs/) |
+| Moment®       | `appendMoment()`       | Moment [documentation](https://momentjs.com/) |
 | FullCalendar® | `appendFullCalendar()` | Full Calendar [documentation](https://fullcalendar.io/docs) |
 
-> ***Note:*** For any other frameworks you can refer to the second method **Building Project** seen in the next section. Or directly using the Simplicité NPM library, explored in [this lesson](/docs/documentation/front/javascript-dev).
+> ***Note:*** For any other frameworks you can refer to the second method **Building Project** seen in the next section. Or directly using the Simplicité NPM library, explored in [this lesson](/documentation/front/javascript-dev).
 
 #### Client-Side (setup)
 
@@ -1504,7 +1504,7 @@ If you want to explore these concepts further and understand how they coexist, h
 
 	<div id="vuefront-footer">
 		<p class="vuefront-footer-text">&copy; Simplcit&eacute; Software</p>
-		<a href="https://docs.simplicite.io/docs/documentation/front/web-page" class="vuefront-footer-text">Associated Tutorial</a>
+		<a href="https://docs.simplicite.io/documentation/front/web-page" class="vuefront-footer-text">Associated Tutorial</a>
 	</div>
 </template>
 

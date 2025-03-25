@@ -78,7 +78,7 @@ An adapter is a tool that "adapts" the data from a file to the business data mod
 - pre-built mechanism for line-by-line logging
 - import supervision object with logs and stats
 
-There are built-in adapters for standard Simplicité formats, but you'll generally need to build your own adapters for your custom formats. [Read the full adapter documentation here](/docs/platform/settings/adapters.md)
+There are built-in adapters for standard Simplicité formats, but you'll generally need to build your own adapters for your custom formats. [Read the full adapter documentation here](/platform/settings/adapters.md)
 
 ### Using data
 
@@ -121,11 +121,11 @@ Please refer to the [publication tutorial lesson]/lesson/tutorial/development/pu
 There is ample documentation about the different ways of exposing data. 
 
 The built-in webservices are :
-- [REST Services](/docs/documentation/integration/webservices/rest-services) (described in a Swagger/OpenAPI formal in the module exports)
-- [SOAP Services](/docs/documentation/integration/webservices/soap-services)
-- [Raw Services](/docs/documentation/integration/webservices/raw-services)
+- [REST Services](/documentation/integration/webservices/rest-services) (described in a Swagger/OpenAPI formal in the module exports)
+- [SOAP Services](/documentation/integration/webservices/soap-services)
+- [Raw Services](/documentation/integration/webservices/raw-services)
 
-It is also possible to write your own APIs through dedicated External Objects, as documented in [Custom Services](/docs/documentation/integration/webservices/custom-services) and [this tip'n'trick](https://community.simplicite.io/t/custom-webservice-example/1970)
+It is also possible to write your own APIs through dedicated External Objects, as documented in [Custom Services](/documentation/integration/webservices/custom-services) and [this tip'n'trick](https://community.simplicite.io/t/custom-webservice-example/1970)
 
 
 

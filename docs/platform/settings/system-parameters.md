@@ -61,4 +61,4 @@ It is required to clear the platform's cache to apply changes made to System Par
 
 ## Learn more
 
-- [System Parameters List](/docs/documentation/core/system-parameters-list)  
+- [System Parameters List](/documentation/core/system-parameters-list)  

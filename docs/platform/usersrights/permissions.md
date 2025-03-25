@@ -79,8 +79,8 @@ It is required to clear the platform's cache to apply changes made to Permission
 
 ## Learn more
 
-- [Functions](/docs/platform/usersrights/function)
-- [Grant](/docs/platform/usersrights/grant)
-- [Business object](/docs/platform/businessobjects/business-objects)
+- [Functions](/platform/usersrights/function)
+- [Grant](/platform/usersrights/grant)
+- [Business object](/platform/businessobjects/business-objects)
   
 

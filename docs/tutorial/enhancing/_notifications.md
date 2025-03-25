@@ -16,7 +16,7 @@ Notifications allow to alert users when an event occurs and are configured in :
 They :
 - are linked to a business object, 
 - are triggered by an action (create, update, delete) 
-- can optionally have an execution condition in the form of an [expression](/docs/documentation/core/expressions).
+- can optionally have an execution condition in the form of an [expression](/documentation/core/expressions).
 - can be sent :
     - through multiple broadcast channels 
     - to multiple recipients
@@ -45,7 +45,7 @@ The following channels are available:
 
 ### Web push
 
-Read more about the Push API on [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Push_API) and the [VAPID RFC](https://datatracker.ietf.org/doc/rfc8292/)
+Read more about the Push API on [MDN](https://developer.mozilla.org/en-US/Web/API/Push_API) and the [VAPID RFC](https://datatracker.ietf.org/doc/rfc8292/)
 
 Web push notification require a set of system parameters :
 - `WEBPUSH` : `yes`

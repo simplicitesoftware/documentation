@@ -19,7 +19,7 @@ For information, virtual links can also be displayed.
 
 The business model uses a particular instance of the object.
 
-The list of hooks is described [here](/docs/documentation/core/modeler-code-hooks).
+The list of hooks is described [here](/documentation/core/modeler-code-hooks).
 
 
 

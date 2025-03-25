@@ -18,7 +18,7 @@ When creating a Module, Simplicité’s Module creation assistant includes a ste
 3. Define the Domain by specifying:
     - Domain code – The functional key of the domain.  
     - Parent Domain (if applicable) – Allows hierarchical menus.  
-    - Module name – Define the [module](/docs/platform/project/module) to which it belongs. Defaults to the one currently being created.  
+    - Module name – Define the [module](/platform/project/module) to which it belongs. Defaults to the one currently being created.  
     - Icon – Customizes the menu’s appearance.
     - Order - order in the interface.   
     - Hide the home page - Domains can have Home page 
@@ -34,7 +34,7 @@ If a Domain was not created during module setup, you can manually add it later:
 3. ![](img/domains/domain1.png)
 4. Fill in the required fields:
     - Domain Code – The functional key of Domain object.
-    - Module name - Define the [module](/docs/platform/project/module) to which it belongs. 
+    - Module name - Define the [module](/platform/project/module) to which it belongs. 
     - Parent Domain (optional) – Defines a menu hierarchy.
     - Icon - Customizes the menu’s appearance.
     - Order - order the display of the domain in the menu. 
@@ -42,7 +42,7 @@ If a Domain was not created during module setup, you can manually add it later:
     - Home page - can be associated to a specific Home page. 
     - Description - to appear in generated documentation.  
 Save the Domain and verify its appearance in the UI.
-1. Managing Domain Access ([Permissions](/docs/platform/usersrights/permissions))  
+1. Managing Domain Access ([Permissions](/platform/usersrights/permissions))  
 Domains are only visible to users with the appropriate permissions.
 Ensure the relevant Groups have access to the Domain.  
 ![](img/domains/domain2.png)

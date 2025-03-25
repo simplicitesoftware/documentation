@@ -11,7 +11,7 @@ This document describes how to implement custom services (e.g. custom REST APIs)
 
 These custom services should only be made available on the **API endpoint**.
 
-The authentication mechanisms available on the API endpoint are described in [this document](/docs/documentation/integration/webservices/services-auth)
+The authentication mechanisms available on the API endpoint are described in [this document](/documentation/integration/webservices/services-auth)
 the credentials that needs to be passed to the calls are noted `<credentials>`.
 
 > **Warning**: never use the **public UI endpoint** instead of the API endpoint: the public UI endpoint
@@ -52,7 +52,7 @@ The pool size can be adjusted/limied using the `WEBSERVICES_EXTOBJECTPOOL_MAXPER
 
 ## Service implementation
 
-A custom service is just a plain external object (check [this document](/docs/documentation/core/externalobject-code-examples) for general principles of external objects).
+A custom service is just a plain external object (check [this document](/documentation/core/externalobject-code-examples) for general principles of external objects).
 
 In particular this external object needs to be granted to the user that will be calling it on the API endpoint.
 

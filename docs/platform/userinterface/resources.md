@@ -7,7 +7,7 @@ title: Resources
 
 ## Introduction
 
-When creating any [business object](/docs/platform/businessobjects/business-objects) or [external object](/docs/platform/userinterface/externalobjects/basic) of any type, you have the possibility to give it resources to pass it specific kinds of items. Resources are also used by the [disposition](/) and [business process](/) objects.
+When creating any [business object](/platform/businessobjects/business-objects) or [external object](/platform/userinterface/externalobjects/basic) of any type, you have the possibility to give it resources to pass it specific kinds of items. Resources are also used by the [disposition](/) and [business process](/) objects.
 
 Resources has to be associated to an unique object which they'll be only available for. 
 

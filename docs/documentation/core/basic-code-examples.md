@@ -9,7 +9,7 @@ Basic code examples
 These basic guidelines and examples are given using the server-side **Rhino** scripting language syntax for usage within business object
 scripts, workflow scripts, external object scripts, ...
 
-For more details on **Rhino** scripting you can check [the Mozilla Rhino documentation](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Rhino/Documentation)
+For more details on **Rhino** scripting you can check [the Mozilla Rhino documentation](https://developer.mozilla.org/en-US/Mozilla/Projects/Rhino/Documentation)
 
 > **Note**:
 >

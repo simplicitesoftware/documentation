@@ -6,7 +6,7 @@ title: Advanced code examples
 Advanced code examples
 ======================
 
-Please refer to [basic code examples](/docs/documentation/core/basic-code-examples) document for naming conventions and logging strategies. 
+Please refer to [basic code examples](/documentation/core/basic-code-examples) document for naming conventions and logging strategies. 
 
 > **Note**:
 >

@@ -5,11 +5,11 @@ title: 1.4. Creating a User
 
 # Building the "Order Management" Training App : Creating a User
 
-> Prerequisite : [A Business object with a field must be created before starting this tutorial](/docs/tutorial/getting-started/object)
+> Prerequisite : [A Business object with a field must be created before starting this tutorial](/tutorial/getting-started/object)
 
 ## What is a User ?
 
-Users belong to Groups, and each user-group relationship is defined by a Responsibility. Groups are granted to Business object CRUD functions, in turn granting a User to a Business Object... [Learn more](/docs/platform/usersrights/users)
+Users belong to Groups, and each user-group relationship is defined by a Responsibility. Groups are granted to Business object CRUD functions, in turn granting a User to a Business Object... [Learn more](/platform/usersrights/users)
 
 ## Creating a User
 
@@ -19,13 +19,13 @@ To create a test user, follow the steps below :
     - Login : **usertest**  
     ![](img/user/process.png)
 3. Click **Next**
-4. Choose a [previously](/docs/tutorial/getting-started/module) created Group :
+4. Choose a [previously](/tutorial/getting-started/module) created Group :
     - **TRN_SUPER_ADMIN** *if exists, this should be selected by default*  
     ![](img/user/group.png)
 5. Click **Next**
 6. Create a Responsibility, click **Next**  
     ![](img/user/resp.png)
-    > For more information about Domains, see the [Responsibility](/docs/platform/usersrights/responsibilities) section. 
+    > For more information about Domains, see the [Responsibility](/platform/usersrights/responsibilities) section. 
 7. Choose a new group :
     - For now, select **no**
 8. Click **Next**
@@ -52,7 +52,7 @@ To connect to the application with **usertest**, follow the steps below :
         - Click **Clear all sessions and all server caches**  
         ![](img/user/clear-cache.png)
     - Via the keyboard shortcut : [ <kbd>Alt</kbd>+<kbd>C</kbd>+<kbd>C</kbd> ]
-    <!-- > For more information about the cache, see the [Platform cache](/docs/documentation/core/objects/platform-cache) section.  -->
+    <!-- > For more information about the cache, see the [Platform cache](/documentation/core/objects/platform-cache) section.  -->
 
 4. Log-in using **usertest** :
     - Login : **usertest**
@@ -109,7 +109,7 @@ To do so, follow the steps below :
 
 Troubleshooting
 ---------------------------
-> These steps must be done using the **designer** user with **no active module filter**, see [Module filter](/docs/platform/project/module#module-filtering--default-module)
+> These steps must be done using the **designer** user with **no active module filter**, see [Module filter](/platform/project/module#module-filtering--default-module)
 - <span class="error">Authentication error</span> when logging in, check that : 
     - **usertest** is active
     - password is reset

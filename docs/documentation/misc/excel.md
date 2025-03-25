@@ -9,7 +9,7 @@ Using data in Microsoft Excel
 Using web external data source
 ------------------------------
 
-It is possible to use the data RAW services as an external data source. See [this document](/docs/documentation/integration/webservices/raw-services) for details.
+It is possible to use the data RAW services as an external data source. See [this document](/documentation/integration/webservices/raw-services) for details.
 
 If you are using a recent version (2016+) or an older version with the PowerQuery addon,
 this approach is not ideal and you should consider using the PowerQuery and the REST services tool instead (see below).

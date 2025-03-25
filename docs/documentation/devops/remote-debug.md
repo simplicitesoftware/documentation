@@ -17,7 +17,7 @@ Server side <span id="server"></span>
 When using our standard images you can (re)start your container with JPDA enabled by adding
 `-e JPDA=true -p <port, e.g. 8000 or 12345>:8000` to your `docker run` command.
 
-See [this document](/docs/documentation/operation/docker) for details.
+See [this document](/documentation/operation/docker) for details.
 
 ### Simplicité Instances Manager (SIM) <span id="sim"></span>
 

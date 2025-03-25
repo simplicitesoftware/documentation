@@ -94,7 +94,7 @@ By default PostgreSQL does not provide case-insensitive search match when using 
 
 Active maintenance releases of Simplicité now use by default the non standard `ILIKE` comporator.
 
-See [this document](https://www.postgresql.org/docs/9.6/static/functions-matching.html) for details.
+See [this document](https://www.postgresql.org/9.6/static/functions-matching.html) for details.
 
 ### Database linking
 

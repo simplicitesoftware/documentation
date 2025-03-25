@@ -6,11 +6,11 @@ description: Creating a custom REST endpoint
 
 # Building the "Order Management" Training App : Creating a custom REST endpoint
 
-> Prerequisite : [You have a basic understanding of the Simplicité platform, and the steps in Enhancing are completed](/docs/category/2-expanding-your-app)
+> Prerequisite : [You have a basic understanding of the Simplicité platform, and the steps in Enhancing are completed](/category/2-expanding-your-app)
 
 ## What is a custom web service ?
 
-By default, for each object, Simplicité exposes default REST endpoints. Sometimes, the default REST endpoints don't cover the business requirements, custom web services can be created with **External Objects**. An External Object can be used to implement a specific UI component, a custom front-end, a specific web service... [Learn more](/docs/category/external-objects)
+By default, for each object, Simplicité exposes default REST endpoints. Sometimes, the default REST endpoints don't cover the business requirements, custom web services can be created with **External Objects**. An External Object can be used to implement a specific UI component, a custom front-end, a specific web service... [Learn more](/category/external-objects)
 
 ## Creating an endpoint to retrieve the List of Suppliers
 

@@ -13,7 +13,7 @@ Prerequisites
 
 Configure a Kubernetes cluster and at least a worker.
 
-Install the [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) on the client machine.
+Install the [Kubernetes CLI](https://kubernetes.io/tasks/tools/install-kubectl/) on the client machine.
 And configure it in `$HOME/.kube/config`.
 
 Preflight checks

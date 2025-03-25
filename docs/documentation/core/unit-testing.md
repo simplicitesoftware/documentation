@@ -226,7 +226,7 @@ You can also invoke a shared code unit tests shared code class execution from th
 curl -s -u <I/O credentials> --form service=unittests --form test=<test name> <base URL>/io | jq '.'
 ```
 
-> **Note**: if you are using the [instances manager](https:/docs/documentation/misc/manager) the above command can be issued as:
+> **Note**: if you are using the [instances manager](https:/documentation/misc/manager) the above command can be issued as:
 >
 > ```plaintext
 > sim unittests <unit tests shared code logical name>

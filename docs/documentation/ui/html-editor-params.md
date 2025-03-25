@@ -22,7 +22,7 @@ The field appears as a web editor on form and on editing list.
 
 TinyMCE
 -------
-The web editor used is an external tool, `TinyMCE`. It is highly configurable. You will find all documentation and how to configure it on <a href="https://www.tinymce.com/docs/" target="_blank">TinyMCE website</a>.
+The web editor used is an external tool, `TinyMCE`. It is highly configurable. You will find all documentation and how to configure it on <a href="https://www.tinymce.com/" target="_blank">TinyMCE website</a>.
 
 Those are the default options:
 

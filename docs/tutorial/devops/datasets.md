@@ -5,11 +5,11 @@ title: 4.1 Creating a dataset
 
 # Building the "Order Management" Training App : Creating a Dataset
 
-> Prerequisite : [The Supplier, Product, Client and Order objects are linked together and contain data](/docs/tutorial/expanding/relations)
+> Prerequisite : [The Supplier, Product, Client and Order objects are linked together and contain data](/tutorial/expanding/relations)
 
 ## What is a Dataset ?
 
-A dataset is a structured collection of data used for testing or transferring information between instances. Unlike technical exports, which may create inconsistencies, a dataset export ensures data integrity by using functional keys instead of technical IDs... [Learn more](/docs/platform/project/datasets)
+A dataset is a structured collection of data used for testing or transferring information between instances. Unlike technical exports, which may create inconsistencies, a dataset export ensures data integrity by using functional keys instead of technical IDs... [Learn more](/platform/project/datasets)
 
 ## Configuring an "export order" for the objects
 

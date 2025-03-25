@@ -294,7 +294,7 @@ To receive message on webapp, the browser needs 2 parameters:
 
 2) Add a **public** system param `FIREBASE_CONFIG` to init firebase on client-side:
 
-- see https://firebase.google.com/docs/web/setup 
+- see https://firebase.google.com/web/setup 
 - or access to console / Project / Setup / Add Firebase to your Web application
 
 ```
@@ -368,7 +368,7 @@ curl --header "Authorization: key=<cloud messaging server key>" --header "Conten
 
 see
 - https://github.com/arnesson/cordova-plugin-firebase/issues/764
-- https://firebase.google.com/docs/reference/admin/java/reference/com/google/firebase/messaging/AndroidNotification.Builder.html#setIcon(java.lang.String)
+- https://firebase.google.com/reference/admin/java/reference/com/google/firebase/messaging/AndroidNotification.Builder.html#setIcon(java.lang.String)
 
 
 Deploy on Google Play Store
@@ -420,12 +420,12 @@ Deploy on Apple Store
 
 ### Install the iOS platform
 
-https://cordova.apache.org/docs/fr/latest/guide/platforms/ios/
+https://cordova.apache.org/fr/latest/guide/platforms/ios/
 
 You will have to do the same with iOS platform on your Mac. It is not possible to build the app on PC/Windows.
 iOS app requires Xcode to compile swift code and cordova plugins.
 
-See https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html
+See https://cordova.apache.org/en/latest/guide/platforms/ios/index.html
 
 - Create your apple ID: https://developer.apple.com/account/#/welcome
 - Download Xcode 10
@@ -519,7 +519,7 @@ The application needs many icons to target all iOS versions.
 
 See all steps here:
 
-- https://firebase.google.com/docs/cloud-messaging/ios/certs
+- https://firebase.google.com/cloud-messaging/ios/certs
 - https://medium.com/@felipepucinelli/how-to-add-push-notifications-in-your-cordova-application-using-firebase-69fac067e821
 
 

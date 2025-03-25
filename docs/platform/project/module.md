@@ -17,7 +17,7 @@ Simplicité is configured via **configuration objects** that provide the descrip
 
 ### Creation 
 
-> If you are creating your first Module use the [Module creation assistant](/docs/tutorial/getting-started/module)
+> If you are creating your first Module use the [Module creation assistant](/tutorial/getting-started/module)
 
 To create a Module, follow the steps below :
 1. Click **Create** in Project > Module
@@ -63,4 +63,4 @@ When a Module filter is set, the header button is *highlighted*.
 
 ## Read more
 
-- [Managing git repositories](/docs/documentation/integration/webservices/git-repositories)
+- [Managing git repositories](/documentation/integration/webservices/git-repositories)

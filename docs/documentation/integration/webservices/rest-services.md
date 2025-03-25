@@ -13,14 +13,14 @@ This document describes how the generic REST API services are working.
 
 > **Warning**: before considering using these **low level** generic REST services directly,
 > please consider using the various **wrappers** we provide on top of these services:
-> - The [standard Ajax API](/docs/documentation/integration/librairies/ajax-api) for use within the generic web UI and/or using the generic UI's libs as custom UI framework
-> - The [Node.js and browser JavaScript API](/docs/documentation/integration/librairies/nodejs-api) for any external used based on the JavaScript language
+> - The [standard Ajax API](/documentation/integration/librairies/ajax-api) for use within the generic web UI and/or using the generic UI's libs as custom UI framework
+> - The [Node.js and browser JavaScript API](/documentation/integration/librairies/nodejs-api) for any external used based on the JavaScript language
 >   or any JavaScript-based frameworks (Angular, React, Vue, ...)
 > - Etc.
 
 These generic REST API services should only be used on the **API endpoint**.
 
-The authentication mechanisms available on the API endpoint are described in [this document](/docs/documentation/integration/webservices/services-auth)
+The authentication mechanisms available on the API endpoint are described in [this document](/documentation/integration/webservices/services-auth)
 the credentials that needs to be passed to the calls are noted `<credentials>`.
 
 > **Warning**: never use the **public UI endpoint** instead of the API endpoint: the public UI endpoint
@@ -45,7 +45,7 @@ _NB4: As of **version 3.0**, the API endpoint is also available in the main weba
 ```
 http[s]://<host[:<port>]>/myapp/api/rest
 ```
-_if you are using this API endpoint please refer to [this document](/docs/documentation/integration/webservices/services-auth) for details on the authentication mechanisms._
+_if you are using this API endpoint please refer to [this document](/documentation/integration/webservices/services-auth) for details on the authentication mechanisms._
 
 It will be noted `<base URL>` in the rest of the document.
 

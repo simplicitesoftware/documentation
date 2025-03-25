@@ -6,12 +6,12 @@ description: Creating an inherited object to filter data
 
 # Building the "Order Management" Training App : Creating an inherited object
 
-> Prerequisite : [You have a basic understanding of the Simplicité platform, and the steps in Enhancing are completed](/docs/category/2-expanding-your-app)
+> Prerequisite : [You have a basic understanding of the Simplicité platform, and the steps in Enhancing are completed](/category/2-expanding-your-app)
 
 
 ## What is inheritance ?
 
-Inheritance is a mechanism that allows a Business Object to inherit properties and methods from another Business Object. In Simplicité, inheritance can be used to customize a System Object, display filtered lists... [Learn more](/docs/platform/businessobjects/business-objects.md#configuration)
+Inheritance is a mechanism that allows a Business Object to inherit properties and methods from another Business Object. In Simplicité, inheritance can be used to customize a System Object, display filtered lists... [Learn more](/platform/businessobjects/business-objects.md#configuration)
 
 ## Creating an inheritor of TrnProduct
 
@@ -19,7 +19,7 @@ Let's use the inheritance pattern to access a list of "cheap" Products (price ra
 
 To do so, follow the steps below :
 1. In the **Business objects > Business objects** menu, click **Creation assistant** 
-    > For a detailed guide, see [Add an object](/docs/tutorial/expanding/addobjects)
+    > For a detailed guide, see [Add an object](/tutorial/expanding/addobjects)
 2. Create a Business object :
     - Code : **TrnProductCheap**
     - Table : **trn_product** (the table is the same as the parent object's)
@@ -45,7 +45,7 @@ To do so, follow the steps below :
 ## Test the newly created inheritor with `usertest` 
 
 1. Clear the platform's cache and log in using *usertest*
-    > For a detailed step-by-step, see : [Testing the User](/docs/tutorial/getting-started/user#activating-and-testing-the-user)
+    > For a detailed step-by-step, see : [Testing the User](/tutorial/getting-started/user#activating-and-testing-the-user)
 
 :::tip[Success]
 The `Cheap product` menu entry is visible and the list of Products with a price lower than 50 is displayed when clicked  

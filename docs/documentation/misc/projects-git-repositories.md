@@ -9,7 +9,7 @@ Simplicité platform Git Repositories
 This document describe how to use **platform** Git repositories.
 
 > **Note**: starting with version 3.2 the configuration modules can be exposed as Git repositories (managed by the Simplicité instance itself).
-> This document **does not** deal of this feature. Please refer to [this document](/docs/documentation/integration/webservices/git-repositories) instead.
+> This document **does not** deal of this feature. Please refer to [this document](/documentation/integration/webservices/git-repositories) instead.
 
 Prerequisites
 -------------
@@ -39,8 +39,8 @@ The instances templates packages usage is straigtforward: it contains a preinsta
 You just need to clone the desired **instance template** package from `https://<username>[:<password>]@platform.git.simplicite.io/template-<x.y>.git`,
 copy the content of the `app` in your Tomcat's `webapps` folder and start Tomcat.
 
-> **Note**: the instance templates are used by our [instance manager](https:/docs/documentation/misc/manager) and by our [Docker container](/docs/documentation/operation/docker)
-> and other PaaS containers ([Bluemix](/docs/documentation/operation/cloudfoundry), [Pivotal](/docs/documentation/operation/cloudfoundry), [Heroku](/docs/documentation/operation/heroku), [OpenShift](/docs/documentation/operation/openshift), ...)
+> **Note**: the instance templates are used by our [instance manager](https:/documentation/misc/manager) and by our [Docker container](/documentation/operation/docker)
+> and other PaaS containers ([Bluemix](/documentation/operation/cloudfoundry), [Pivotal](/documentation/operation/cloudfoundry), [Heroku](/documentation/operation/heroku), [OpenShift](/documentation/operation/openshift), ...)
 
 ### Setup package usages
 
@@ -49,5 +49,5 @@ copy the content of the `app` in your Tomcat's `webapps` folder and start Tomcat
 4. Setup the project using `ant setup` ANT task
 3. If needed adjust manually the resulting build and properties files in your project
 
-See [project package and ANT tasks document](/docs/documentation/devops/java-project) for details on how to proceed with installation/deployement of your project.
+See [project package and ANT tasks document](/documentation/devops/java-project) for details on how to proceed with installation/deployement of your project.
 

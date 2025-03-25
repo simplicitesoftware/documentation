@@ -118,7 +118,7 @@ For the above examples, the typical `curl` call would be something like:
 
 ### Using client certificate authentication on Simplicité side
 
-See [this document](/docs/documentation/authentication/customauth) for details on how to use client certificate on Simplicité side;
+See [this document](/documentation/authentication/customauth) for details on how to use client certificate on Simplicité side;
 
 Using LetsEncrypt&reg; service
 ------------------------------
