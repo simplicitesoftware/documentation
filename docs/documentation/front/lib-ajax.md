@@ -27,7 +27,7 @@ Within your Simplicité's instances and applications, the MVC components are ref
 
 The **Model** in the Simplicité solution is responsible for *handling the data and business logic* of the application. It serves as the backbone of the system, managing interactions with the database and ensuring the integrity of the data. In Simplicité's case, the Model is implemented through the `Simplicité.Ajax` library, which acts as the *bridge* between the *backend* and the *front-end*. This component ensures that data is retrieved, processed, and delivered in a structured way, providing a consistent foundation for the application’s operations. By centralizing data handling, the Model enables smooth integration with the other layers, fostering a reliable and scalable system.
 
-### View 
+### View
 
 The **View** is the part of the architecture that *manages the user interface* and *presentation layer*. It is implemented using the `Simplicité.UI.View.*` classes, which handle the rendering and display of UI components. The View *translates* the data provided by the *Model* into a *user-friendly format*, allowing users to interact with the application effortlessly. In Simplicité, this layer is designed to be **highly customizable**, enabling developers to modify styles and scripts to match specific requirements. By focusing solely on presentation, the View ensures a clear separation of concerns, making it easier to adapt and enhance the user experience.
 
@@ -39,21 +39,21 @@ The **Controller** is the *central orchestrator* of the Simplicité solution, ma
 
 Simplicité allows you to also communicate only with specific parts of it --some like `$ui`, `$app` or `$view` have been quickly explained before-- but there are other that are important to be aware of in order to enhance your capacities with Simplicité's development.
 
-* [`$ui`](https://platform.simplicite.io/6.1/jsdoc/global.html#$ui) represents the **UI Singleton** --of type `Simplicite.UI.Engine`-- that basically is the *Main UI Controller* with an abstract view to display components.
+* [`$ui`](https://platform.simplicite.io/current/jsdoc/global.html#$ui) represents the **UI Singleton** --of type `Simplicite.UI.Engine`-- that basically is the *Main UI Controller* with an abstract view to display components.
 
-* [`$app`](https://platform.simplicite.io/6.1/jsdoc/global.html#$app) represents the **Ajax Service** --of type `Simplicite.Application`-- that behaves like the *Main Model* for your current Simplicité instance/session.
+* [`$app`](https://platform.simplicite.io/current/jsdoc/global.html#$app) represents the **Ajax Service** --of type `Simplicite.Application`-- that behaves like the *Main Model* for your current Simplicité instance/session.
 
-* [`$view`](https://platform.simplicite.io/6.1/jsdoc/global.html#$view) represents the **View Engine** --of type `Simplicite.UI.View`-- which is the *Main View* that must be loaded by the *Model* in order to access and use display controls. It implements the UI interfaces, and interacts with the *Controller* to access data.
+* [`$view`](https://platform.simplicite.io/current/jsdoc/global.html#$view) represents the **View Engine** --of type `Simplicite.UI.View`-- which is the *Main View* that must be loaded by the *Model* in order to access and use display controls. It implements the UI interfaces, and interacts with the *Controller* to access data.
 
-* [`$grant`](https://platform.simplicite.io/6.1/jsdoc/global.html#$grant) represent the **User Rights** --of type `Simplicite.Ajax.Grant`-- and allows to access and possibly manipulate the instance through the rights of the current user.
+* [`$grant`](https://platform.simplicite.io/current/jsdoc/global.html#$grant) represent the **User Rights** --of type `Simplicite.Ajax.Grant`-- and allows to access and possibly manipulate the instance through the rights of the current user.
 
-* [`$nav`](https://platform.simplicite.io/6.1/jsdoc/global.html#$nav) represents the **Navigation Controller** --of type `Simplicite.UI.Navigator`-- thanks to which you can possibly navigate through your Simplicité application through the *Navigation* tool.
+* [`$nav`](https://platform.simplicite.io/current/jsdoc/global.html#$nav) represents the **Navigation Controller** --of type `Simplicite.UI.Navigator`-- thanks to which you can possibly navigate through your Simplicité application through the *Navigation* tool.
 
-* [`$root`](https://platform.simplicite.io/6.1/jsdoc/global.html#$root) represents the **Server Root URL** --of type `String`-- through which you can get and access the static resources of your Simplicité instance/session.
+* [`$root`](https://platform.simplicite.io/current/jsdoc/global.html#$root) represents the **Server Root URL** --of type `String`-- through which you can get and access the static resources of your Simplicité instance/session.
 
-* [`$tools`](https://platform.simplicite.io/6.1/jsdoc/global.html#$tools) represents the **Bootstrap Tools** --of type `Simplicite.UI.View`-- that allows you to use a bunch of Bootstrap specific methods and workflows (for example BootstrapWebPages for external pages, or bootstrap's specific widgets).
+* [`$tools`](https://platform.simplicite.io/current/jsdoc/global.html#$tools) represents the **Bootstrap Tools** --of type `Simplicite.UI.View`-- that allows you to use a bunch of Bootstrap specific methods and workflows (for example BootstrapWebPages for external pages, or bootstrap's specific widgets).
 
-*[`$T`](https://platform.simplicite.io/6.1/jsdoc/global.html#$T) represents the **Translated text Shorthand** --method taking `TEXT <string>` and `plural <boolean>` as parameters-- that allows to quickly translate any given code.
+*[`$T`](https://platform.simplicite.io/current/jsdoc/global.html#$T) represents the **Translated text Shorthand** --method taking `TEXT <string>` and `plural <boolean>` as parameters-- that allows to quickly translate any given code.
 
 Most of those are also accessible directly from the each other, even tho it is mainly from `$ui` as it acts as the **Controller**:
 
@@ -83,7 +83,7 @@ As they are a core feature of Simplicité, it is important to understand some of
 
 | Command                             | Returns                              | Description                                                                                                |
 |-------------------------------------|--------------------------------------|------------------------------------------------------------------------------------------------------------|
-| create(cbk, items, params)          | void                                 | Creates and loads a new item that can be customized with **params**.                                       | 
+| create(cbk, items, params)          | void                                 | Creates and loads a new item that can be customized with **params**.                                       |
 | getFields()                         | Array of Simplicite.Ajax.ObjectField | Returns an array of all the object's *fields*                                                              |
 | getField(name, id)                  | Simplicite.Ajax.ObjectField          | Returns the field with **name** and **id** from the *fields array* in the *meta-data*.                     |
 | getCount(cbk, filters, params)      | integer                              | Returns the count of *rows* with the **filters** to be applied (current ones if absent).                   |

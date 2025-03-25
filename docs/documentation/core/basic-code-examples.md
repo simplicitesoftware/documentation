@@ -13,7 +13,7 @@ For more details on **Rhino** scripting you can check [the Mozilla Rhino documen
 
 > **Note**:
 >
-> Object code can be written in Java (or JavaScript which will be executed by the Rhino server-side engine, just like the executed fields), but good practice is to prefer Java language which  
+> Object code can be written in Java (or JavaScript which will be executed by the Rhino server-side engine, just like the executed fields), but good practice is to prefer Java language which
 > include a compilation step and ensure that the syntax of the script is correct. In advanced use cases that are not part of this tutorial, the use of Java gives access > to all of the classic application development tools: step-by-step debugging, unit tests, development in a Java IDE, code quality analysis with Sonar etc..
 
 > Examples are provided both in Rhino and Java so as you can see the syntax differences.
@@ -31,8 +31,8 @@ Recommended naming conventions are:
 - Name field as you would name a Java variable (do not start by a capital letter, but afterwards put a capital
   letter at the beginning of each word, e.g. `myFirstName`)
 
-Since version 4, the platform includes automatic naming convention validation (activated by a SYNTAX system parameter whose value is yes by default).  
-This is available for objects, functions, groups, domains and actions.  
+Since version 4, the platform includes automatic naming convention validation (activated by a SYNTAX system parameter whose value is yes by default).
+This is available for objects, functions, groups, domains and actions.
 
 Packages inclusions
 -------------------
@@ -117,7 +117,7 @@ AppLog.fatal(e,getGrant());   // Fatal level message
 ```
 
 <details>
-<summary>Rhino JavaScript equivalent</summary>  
+<summary>Rhino JavaScript equivalent</summary>
 
 ```javascript
 console.debug("Hello world !");   // Debug level message
@@ -126,7 +126,7 @@ console.warning("Hello world !"); // Warning level message
 console.error("Hello world !");   // Error level message
 console.fatal("Hello world !");   // Fatal level message
 ```
-</details>  
+</details>
 
 It is also possible to link a message to an explicit log code:
 
@@ -171,7 +171,7 @@ protected void hookBegin(String hook, int maxTime, int maxStack) throws HookExce
 		maxTime = 10000; // warning after 10s in ms
 
 	// default duration is 2s by default
-	// default stack is set 20 to stop infinite calls loop => HookException 
+	// default stack is set 20 to stop infinite calls loop => HookException
 	super.hookBegin(hook, maxTime, maxStack);
 }
 
@@ -268,7 +268,7 @@ synchronized (o.getLock()) {
 	o.resetOrders();
 	o.getField("myField1").setOrder(1); // order by myField1 ascendant
 	o.getField("myField2").setOrder(-2); // then order by myField2 descendant
-	
+
 	// A non-paginated search can consume a lot of memory
 	// The designer must ensure that the search is limited/filtered
 	for (String[] row : o.search()) {
@@ -384,25 +384,25 @@ The setSearchSpec is a method that allows you to set an SQL where clause on your
 For example , users can only read, update the data they have created
 users can only view or modify the data to which they are assigned...etc
 
-If it's a static filter that never changes, use the postLoad hook to define your search spec.   
-The object's table alias is t.   
-The alias of the related object table is t_logical name technical key.   
+If it's a static filter that never changes, use the postLoad hook to define your search spec.
+The object's table alias is t.
+The alias of the related object table is t_logical name technical key.
 
 #### Java
 
 ```java
-@Override   
-public void postLoad() {   
-	if (getGrant().hasResponsibility(USER_GROUP))   
-		setSearchSpec("t.column1='abc' or t.column2>123");    
+@Override
+public void postLoad() {
+	if (getGrant().hasResponsibility(USER_GROUP))
+		setSearchSpec("t.column1='abc' or t.column2>123");
 }
 
-@Override   
-public void postLoad() {   
-	if (getGrant().hasResponsibility(USER_GROUP))   
-		setSearchSpec(getSearchSpec() + " and exists(select 1 FROM table1 where t_userAssignedId.row_id=" + getGrant().getUserId());    
+@Override
+public void postLoad() {
+	if (getGrant().hasResponsibility(USER_GROUP))
+		setSearchSpec(getSearchSpec() + " and exists(select 1 FROM table1 where t_userAssignedId.row_id=" + getGrant().getUserId());
 }
-``` 
+```
 
 Others
 ------
@@ -414,12 +414,12 @@ Others
 ```java
 	ObjectDB obj = getGrant().getTmpObject("myObject");
 	ObjectField myObjectFile = obj.getField("myObjFile"); // must be of type file
-	
-	// https://platform.simplicite.io/resources/latest/javadoc/com/simplicite/util/tools/MailTool.html
+
+	// https://platform.simplicite.io/current/javadoc/com/simplicite/util/tools/MailTool.html
 	MailTool mail = new MailTool(getGrant());
 	mail.addRcpt("contact@null.fr");
 	mail.setSubject("Test Mail");
-	mail.addAttach(obj, myObjectFile); 
+	mail.addAttach(obj, myObjectFile);
 	mail.setBody("<p>Hello</p>");
 	mail.send();
 	);

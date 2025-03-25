@@ -16,36 +16,36 @@ External objects of this type are exclusively rendered in the *public zone*, whi
 
 ## How to create
 
-The creation process is similar to the one for any *External Object*: 
+The creation process is similar to the one for any *External Object*:
 
 1. Go to *User Interface > External Objects > Show all*, and then click **Create**
 
 2. During the form's filling, ensure you select *Web Page* as **Nature**.
     - **UI Widget** should be set as **No**
     - Ensure you assign the right **Module Name** for your object.
-    > Example values:  
+    > Example values:
     > ![](img/webpage/webpage_createform.png)
 
 3. Click **Save**.
 
-  
+
 ![](img/webpage/webpage_createresource.png)
 
 4. From the updated object's form, click **Create Resources** to create the web [Resources](/docs/platform/userinterface/resources).
     - Ensure **CLASS** **HTML** and **STYLES** well appear in the *Resources* tab.
-    > Created Resources:  
+    > Created Resources:
     > ![](img/webpage/webpage_resources.png)
 
-  
+
 ![](img/webpage/webpage_editcode.png)
 
 5. Finally, click **Edit Code** to create the custom *Java class* code for your object.
     - You should see the **Class** field empty.
     - **Source Code** field should have the `<your-object-code>.java` file referenced.
-    > Result Form:  
+    > Result Form:
     > ![](img/webpage/webpage_javasource.png)
 
-  
+
 The code for your webpage shall look like this by default:
 
 ```java
@@ -92,7 +92,7 @@ Using *Web Page* external objects, you have two logics to implement:
 
 2. **Server-Side logic:** here is defined your object's instantiation and global setup, in a class extending `com.simplicite.webapp.web.WebPageExternalObject`.
     - Most of it is declared within the `public Object displayBody(Parameters params){ ... }`.
-    - Your page is rendered by referencing the **CLASS** resource through `javascript(getName() + ".render();");`  
+    - Your page is rendered by referencing the **CLASS** resource through `javascript(getName() + ".render();");`
     - **Other Possible Structure**
         - Your page is implemented using the `com.simplicite.webapp.web.BootstrapWebPage` class with `new BootstrapWebPage(params.getRoot(), getDisplay())`.
         - Your **CLASS** javascript code is called using `String render = getName() + ".render(params.toJsonObject().toString())"` then `wp.setReady(render)` and `return wp.toString()`.
@@ -110,19 +110,19 @@ Using *Web Page* external objects, you have two logics to implement:
 public Object display(Parameters params) {
 	// Bootstrap page
 	BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), getDisplay());
-	
+
 	wp.appendAjax(true);
 
 	wp.appendJSInclude(HTMLTool.getResourceJSURL(this, "CLASS"));
 	wp.appendCSSInclude(HTMLTool.getResourceCSSURL(this, "STYLES"));
 	wp.appendHTML(HTMLTool.getResourceHTMLContent(this, "HTML"));
-	
+
 	JSONObject p = params.toJSONObject();
 
     String imageResource = HTMLTool.getResourceImageURL(this, "IMAGE");
-    
+
     p.put("customImage", imageResource); // Add IMAGE image to params
-	
+
 	wp.setReady(this.getName() + ".render(" + p.toString() + ");");
 
 	return wp.toString();
@@ -133,8 +133,8 @@ public Object display(Parameters params) {
 ## Read More
 
 **JavaDoc links**
-- [BootstrapWebPage](https://platform.simplicite.io/6.2/javadoc/com/simplicite/webapp/web/BootstrapWebPage.html)
-- [WebPageExternalObject](https://platform.simplicite.io/6.2/javadoc/com/simplicite/webapp/web/WebPageExternalObject.html)
+- [BootstrapWebPage](https://platform.simplicite.io/current/javadoc/com/simplicite/webapp/web/BootstrapWebPage.html)
+- [WebPageExternalObject](https://platform.simplicite.io/current/javadoc/com/simplicite/webapp/web/WebPageExternalObject.html)
 
 **Other Lessons**
 - [Resources](/docs/platform/userinterface/resources)

@@ -60,7 +60,7 @@ public class MyExternalObject extends ExternalObject {
 			setDecoration(false);
 
 			BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), getDisplay());
-			
+
 			wp.appendAjax();
 			wp.appendJSInclude(HTMLTool.getResourceJSURL(this, "CLASS"));
 			wp.appendCSSInclude(HTMLTool.getResourceCSSURL(this, "STYLES"));
@@ -89,7 +89,7 @@ The primary methods to utilize are as follows:
 
 - `setReady()`: Inherited from `com.simplicité.webapp.web.JqueryWebPage`, this method ensures the jQuery document is fully initialized and ready for JavaScript execution (e.g., `render()` or `main()`).
 
-> For more information on the **BootstrapWebPage** class, refer to the [official documentation](https://platform.simplicite.io/6.1/javadoc/com/simplicite/webapp/web/BootstrapWebPage.html) and the [Javadoc](https://platform.simplicite.io/6.1/javadoc/).
+> For more information on the **BootstrapWebPage** class, refer to the [official documentation](https://platform.simplicite.io/current/javadoc/com/simplicite/webapp/web/BootstrapWebPage.html) and the [Javadoc](https://platform.simplicite.io/current/javadoc/).
 
 
 ### Page Access
@@ -223,7 +223,7 @@ product.search(function() {
 
 	for (let i=0; i<product.count; i++)
 	{
-		prd = 
+		prd =
 	}
 }, null, {});
 ```
@@ -307,15 +307,15 @@ let cli, prd; // dynamically fetch the DemoClient and DemoProduct you wanna asso
 order.getForCreate(function() {
     order.item.demoOrdCliId = cli.row_id;
     order.item.demoOrdCliId__demoCliCode = cli.demoCliCode;
-    
+
     order.item.demoOrdPrdId = prd.row_id
     order.item.demoOrdPrdId__demoPrdReference = prd.demoPrdReference
     order.item.demoOrdPrdId__demoPrdUnitPrice = prd.demoPrdUnitPrice;
     order.item.demoOrdPrdId__demoPrdStock = prd.demoPrStock;
-    
+
     order.item.demoOrdQuantity = "1"; // you can dynamically set this
     order.item.demoOrdComments = `Order created from 'MyExternalPage'.`;
-    
+
     order.create();
 });
 ```
@@ -346,13 +346,13 @@ Once the image is *passed through the params*, you can *retrieve* it in your **J
 ```javascript
 function render(params) {
     let resourceImage = params.myImage
-    // now you can pass it as a 'src' or do whatever you want with it :) 
+    // now you can pass it as a 'src' or do whatever you want with it :)
 
     // rest of code ...
 }
 ```
 
-#### Database documents 
+#### Database documents
 
 A *common scenario* you may encounter involves *fetching* and *displaying* images from *business objects*. This can be achieved by leveraging **Business Object Fields**, as demonstrated in the following JavaScript snippet:
 
@@ -412,7 +412,7 @@ let product = app.getBusinesssObject("DemoProduct");
 let productNames = await getProductNames();
 
 async function getProductNames() {
-	// Wrap your database call within a promise: 
+	// Wrap your database call within a promise:
 	let result = await new Promise((resolve, reject) => {
 	    product.search(function() {
 
@@ -479,25 +479,25 @@ public class MyExternalObject extends ExternalObject {
 
 			// Bootstrap page
 			BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), getDisplay());
-			
+
 			wp.appendAjax(true);
 			wp.appendJSInclude(HTMLTool.getResourceJSURL(this, "CLASS"));
 			wp.appendCSSInclude(HTMLTool.getResourceCSSURL(this, "STYLES"));
 			wp.appendHTML(HTMLTool.getResourceHTMLContent(this, "HTML"));
-			
+
 			JSONObject p = params.toJSONObject();
 	        String websiteCoverURL = HTMLTool.getResourceImageURL(this, "WEBSITE");
 	        String tutorialCoverURL = HTMLTool.getResourceImageURL(this, "TUTORIAL");
 	        String forumCoverURL = HTMLTool.getResourceImageURL(this, "FORUM");
 	        String platformCoverURL = HTMLTool.getResourceImageURL(this, "PLATFORM");
-	        
+
 	        if (websiteCoverURL != null) {
 	        	p.put("websiteImage", websiteCoverURL);
 	        	p.put("tutorialImage", tutorialCoverURL);
 	        	p.put("forumImage", forumCoverURL);
 	            p.put("platformImage", platformCoverURL);
 	        }
-			
+
 			wp.setReady(this.getName() + ".render(" + p.toString() + ");");
 
 			return wp.toString();
@@ -526,7 +526,7 @@ public class MyExternalObject extends ExternalObject {
 		</div>
 	</div>
 	<div id="myexternalobject-footer">
-		
+
 	</div>
 </div>
 ```
@@ -540,7 +540,7 @@ const MyExternalObject = (function($) {
     let currentContentId = 'home';
 	let homeContent, productContent, supplierContent, orderContent;
 	let content;
-	
+
 	// hardcoding WEBCLI fields because not figuring out how to fetch them...
 	let cli = {
 		demoCliCode: "WEBCLI",
@@ -552,35 +552,35 @@ const MyExternalObject = (function($) {
     function render(params)
     {
     	console.log("render with params: "+JSON.stringify(params));
-    	
+
         app = new Simplicite.Ajax(params.root, "uipublic");
-        
+
         productBO = app.getBusinessObject("DemoProduct");
         supplierBO = app.getBusinessObject("DemoSupplier");
         orderBO = app.getBusinessObject("DemoOrder");
-        
+
         // Those are unused DUHUH
         clientBO = app.getBusinessObject("DemoClient");
         contactBO = app.getBusinessObject("DemoContact");
-        
+
         content = document.getElementById("myexternalobject-content");
-        
+
         let images = [
         	params.websiteImage,
         	params.tutorialImage,
         	params.forumImage,
         	params.platformImage
         ];
-        
+
         homeContent = createHomeContent(images);
-        
+
         changeContent(homeContent);
     }
-	
+
     async function navigate(target)
     {
     	if (target == currentContentId) return;
-    	
+
     	let tmp = "";
     	switch (target)
     	{
@@ -595,21 +595,21 @@ const MyExternalObject = (function($) {
     			break;
     		default: break;
     	}
-    	
+
     	changeContent(tmp, target);
     }
-    
+
     function changeContent(newContent, newContentId)
     {
-    
+
     	if (newContent=="") return;
-    	
+
     	content.innerHTML = "";
     	content.innerHTML = newContent;
-    	
+
     	currentContentId = newContentId;
     }
-    
+
     function createHomeContent(images)
     {
     	let content = `
@@ -630,21 +630,21 @@ const MyExternalObject = (function($) {
     		</div>
     	</div>
     	`;
-    	
+
     	homeContent = content;
-    	
+
     	return content;
     }
-    
+
     async function createProductContent() {
 	    let productsDiv = ``;
-	
+
 	    let content = await new Promise((resolve, reject) => {
 	        productBO.search(function() {
 	            for (let i = 0; i < productBO.list.length; i++) {
 	                let prd = productBO.list[i];
 					let imageSrc = `data:${prd.demoPrdPicture.mime};base64,${prd.demoPrdPicture.content}`;
-					
+
 	                let prdDiv = `
 	                <div class="myexternalobject-product-card">
 	                    <div class="product-card-upper">
@@ -667,7 +667,7 @@ const MyExternalObject = (function($) {
 	                `;
 	                productsDiv += prdDiv;
 	            }
-	
+
 	            let result = `
 	            <div id="myexternalobject-product-content">
 	                <div id="myexternalobject-product-list">
@@ -675,29 +675,29 @@ const MyExternalObject = (function($) {
 	                </div>
 	            </div>
 	            `;
-	
+
 	            resolve(result);  // Resolve the Promise with the HTML content
 	        }, (err) => {
 	            console.error("Error during search", err);
 	            reject(err);  // Reject the Promise if there's an error
 	        }, { inlineDocuments: true, });
 	    });
-		
+
 		productContent = content;
 	    return content;  // Return the resolved HTML content
 	}
-    
+
     async function createSupplierContent()
     {
     	let suppliersDiv = ``;
-	
+
 	    let content = await new Promise((resolve, reject) => {
 	        supplierBO.search(function() {
 	            for (let i = 0; i < supplierBO.count; i++) {
 	                let sup = supplierBO.list[i];
-	                
+
 					let logoSrc = `data:${sup.demoSupLogo.mime};base64,${sup.demoSupLogo.content}`;
-					
+
 					let award = sup.demoSupComments.split('\n')[1];
 	                let supDiv = `
 	                <div class="myexternalobject-supplier-row">
@@ -714,10 +714,10 @@ const MyExternalObject = (function($) {
 	                    </div>
 	                </div>
 	                `;
-	                
+
 	                suppliersDiv += supDiv;
 	            }
-	
+
 	            let result = `
 	            <div id="myexternalobject-supplier-content">
 	                <div id="myexternalobject-supplier-list">
@@ -725,19 +725,19 @@ const MyExternalObject = (function($) {
 	                </div>
 	            </div>
 	            `;
-	
+
 	            resolve(result);  // Resolve the Promise with the HTML content
 	        }, (err) => {
 	            console.error("Error during search", err);
 	            reject(err);  // Reject the Promise if there's an error
 	        }, { inlineDocuments: true, });
 	    });
-    	
+
     	supplierContent = content;
-    	
+
     	return content;
     }
-    
+
     function goToPage(pageId)
     {
     	let windowURL = "";
@@ -757,31 +757,31 @@ const MyExternalObject = (function($) {
     			break;
     		default: break;
     	}
-    	
+
     	if (windowURL!="")
     		window.open(windowURL, "_blank");
     }
-    
+
     function orderProduct(prdId, prdRef, prdPrice, prdStock)
     {
 		const date = getTodayFormattedDate();
-    	
+
     	orderBO.getForCreate(function() {
     		orderBO.item.demoOrdCliId = cli.row_id;
     		orderBO.item.demoOrdCliId__demoCliCode = cli.demoCliCode;
-    		
+
     		orderBO.item.demoOrdPrdId = prdId; // prd.row_id
     		orderBO.item.demoOrdPrdId__demoPrdReference = prdRef; // prd.demoPrdReference
     		orderBO.item.demoOrdPrdId__demoPrdUnitPrice =prdPrice; //  prd.demoPrdUnitPrice
     		orderBO.item.demoOrdPrdId__demoPrdStock = prdStock; // prd.demoPrStock
-    		
+
     		orderBO.item.demoOrdQuantity = "1"; //next step is to have a quick form to select this ...
     		orderBO.item.demoOrdComments = `Order created from 'MyExternalObject' on ${date}`;
-    		
+
     		orderBO.create();
     	});
     }
-    
+
     function getTodayFormattedDate()
     {
     	const today = new Date();
@@ -1159,9 +1159,9 @@ body::-webkit-scrollbar {
 
 # Webpages using frameworks
 
-## Vue.js 
+## Vue.js
 
-In order to build custom webpages using the **Vue.js** web framework, you have two possible ways that are slightly different, you can either work with the **resource files** of your external object --with a subtle change in the architecture of those files-- or you can directly create a Vue.js project that you build and then use as a resource within your external object. 
+In order to build custom webpages using the **Vue.js** web framework, you have two possible ways that are slightly different, you can either work with the **resource files** of your external object --with a subtle change in the architecture of those files-- or you can directly create a Vue.js project that you build and then use as a resource within your external object.
 
 > ***Note:*** The two methods are working well but still aren't quite the same when it comes to your mindset and vision while developping them.
 
@@ -1172,7 +1172,7 @@ The main specificities are to be considered when setting up your *server-side* c
 All code snippets and examples are derived from an external page we created as a hands-on demonstration. The complete code for this page can be found at the end of the document.
 ![](img/web-page/customvue-page.png)
 
-#### Server-Side 
+#### Server-Side
 
 First, for webpages built with only HTML, CSS, and JavaScript, you need to use a slightly modified Java code that sets up a *BootstrapWebPage*. This helps properly initialize your webpage and leads to JavaScript similar to what we covered earlier.
 
@@ -1190,7 +1190,7 @@ public class MyCustomVuePage extends ExternalObject {
 			setDecoration(false);
 
 			BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), getDisplay());
-			
+
 			wp.appendAjax();
 			wp.appendJSInclude(HTMLTool.getResourceJSURL(this, "CLASS"));
 			wp.appendCSSInclude(HTMLTool.getResourceCSSURL(this, "STYLES"));
@@ -1232,7 +1232,7 @@ public class MyCustomVuePage extends ExternalObject {
                 wp.setReady(render);
                 return wp.toString();
             } else {
-                appendVue(); 
+                appendVue();
                 return javascript(render);
             }
         } catch (Exception e) {
@@ -1249,7 +1249,7 @@ Here’s a breakdown of the modifications made, along with explanations for why 
 2) *Initiating "render" before the statement:* Since the "render" string is used in both conditions, it makes sense to declare it in the global scope rather than repeating the declaration twice. This keeps the code cleaner and more efficient.
 3) *Use of `appendVue()`:* When using Vue within Simplicité, the `com.simplicite.web.webapp.BootstrapWebPage` method must be used. This method declares the necessary variables and components to ensure the Vue application works correctly.
 
-> ***Warning:*** This option only works for specific web frameworks that are available in the [BootstrapWebPage doc](https://platform.simplicite.io/6.1/javadoc/com/simplicite/webapp/web/BootstrapWebPage.html).
+> ***Warning:*** This option only works for specific web frameworks that are available in the [BootstrapWebPage doc](https://platform.simplicite.io/current/javadoc/com/simplicite/webapp/web/BootstrapWebPage.html).
 
 The available web-tools with this method are:
 - Vue® with `BootstrapWebPage.appendVue()`, which allows you to use the framework’s components, workflows, and logic.
@@ -1276,16 +1276,16 @@ The *JavaScript client-side* script differs from the one used for *native custom
 The JS script is indeed very different, even if the overall structure is similar to the one we've previously seen, it is specific to Vue's features:
 ```javascript
 var MyCustomVuePage = MyCustomVuePage || (() => {
-	
+
 	function render(params) {
 		try {
 			if (typeof Vue === 'undefined')
 				throw 'Vue.js not available';
 
 			const data = {};
-			
+
 			const app = typeof $ui !== 'undefined' ? $ui.getAjax() : new Simplicite.Ajax(params.root, 'uipublic');
-			
+
 			// creating Vue app & mounting it to resource html
 			const vue = Vue.createApp({
 				data() { return data; },
@@ -1293,7 +1293,7 @@ var MyCustomVuePage = MyCustomVuePage || (() => {
 			});
 
 			vue.mount("#mycustomvuefront"); // mounting vue app on resource html
-			
+
 		} catch(e) {
 			$('#mycustomvuepage').text(`Error: ${e.message}`);
 		}
@@ -1312,9 +1312,9 @@ Understanding the differences in the script is crucial to grasp how Vue communic
 
 3) **Creating Vue App:** To initialize Vue, we use `createApp()`, passing data and methods as:
 ```javascript
-const appInstance = createApp({  
-  data() { return data; },  
-  methods: { ... }  
+const appInstance = createApp({
+  data() { return data; },
+  methods: { ... }
 });
 ```
 This is key because:
@@ -1355,7 +1355,7 @@ While most of the other features from the Vue framework are accessible:
 
 While implementing your SCRIPT resource file, there are a few important things to keep in mind to avoid errors and bugs:
 
-1) **Order of Methods:** 
+1) **Order of Methods:**
 The first thing to consider is the order in which you define your methods, as incorrect sequencing can lead to unnecessary issues. The proper order is:
 * First instantiate your app with: `const app = typeof $ui !== 'undefined' ? $ui.getAjax() : new Simplicite.Ajax(params.root, 'uipublic');`, ensuring that the app is correctly set up before making any other calls.
 * Then call `createApp()` to create the Vue application component. This step allows you to perform asynchronous calls such as `search()`.
@@ -1395,10 +1395,10 @@ As mentioned earlier, the methods, variables, and values you pass from the SCRIP
 In the HTML, you can simply refer to the variable as varName, as shown in the following example:
 ```javascript
 function render(params) {
-	const data = { // you can pass data at declaration if you want 
+	const data = { // you can pass data at declaration if you want
 		coverImage: params.coverUrl // the common example are the objects passed through 'params' from the java script
 	};
-	
+
 	const vue = Vue.createApp({
 		data() { return data; },
 		methods: {}
@@ -1426,10 +1426,10 @@ function render(params) {
 function render(params) {
 
 	// previous part of code
-	
+
 	const vue = Vue.createApp({
 		data() { return data; },
-		methods: { 
+		methods: {
 			fooInner(){
 				console.log("foo from inside !");
 			},
@@ -1463,7 +1463,7 @@ If you want to explore these concepts further and understand how they coexist, h
 			<span class="vuefront-title-sign">/</span>
 			<span class="vuefront-title-name">Vue.js</span>
 		</div>
-		
+
 		<div class="vuefront-header-buttons">
 			<!-- Here Dynamically input the different suppliers (clicking them lists only their items down below -->
 			<button class="vuefront-suppplier-button" v-on:click="displayProducts(null)">
@@ -1477,7 +1477,7 @@ If you want to explore these concepts further and understand how they coexist, h
 			</template>
 		</div>
 	</div>
-	
+
 	<div id="vuefront-body">
 		<div class="vuefront-product-list">
 			<!-- Here Dynamically put the products (yet with no filter) -->
@@ -1526,13 +1526,13 @@ console.log("<script setup>");
 	align-items: center;
 	gap: 24px;
 	padding-top: 56px;
-	
+
 	.vuefront-header-title {
 		color: white;
 		display: flex;
 		align-items: center;
 		gap: 32px;
-		
+
 		.vuefront-title-name {
 			font-size: 48px;
 		}
@@ -1540,21 +1540,21 @@ console.log("<script setup>");
 			font-size: 64px;
 		}
 	}
-	
+
 	.vuefront-header-buttons {
 		display: flex;
 		gap: 8px;
-		
+
 		.vuefront-suppplier-button {
 			background: none;
 			color: #A4F0C7;
 			border-radius: 16px 16px 0 0;
 			border: solid 4px #A4F0C7;
 			border-bottom: none;
-			padding: 8px 16px;	
+			padding: 8px 16px;
 			font-weight: bold;
 			transition: all 0.25s ease;
-			
+
 			&:hover {
 				background: rgba(164, 240, 199, 0.25);
 			}
@@ -1582,16 +1582,16 @@ console.log("<script setup>");
 	flex-direction: row;
 	gap: 16px;
 	padding: 16px 16px;
-	
+
 	overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
-	
+
 	.vuefront-product-card {
 	    display: flex;
 	    flex-direction: column;
 	    border: solid 2px #1F1F1F;
-	    
+
 	    .vuefront-product-picture {
 	    	background: rgba(0,0,0, 0.25);
 	    	height: 50%;
@@ -1605,7 +1605,7 @@ console.log("<script setup>");
 	    	align-items: center;
 	    	height: 50%;
 	    	width: 100%;
-	    	
+
 	    	.vuefront-product-name {
 	    		width: 100%;
 	    		font-size: 20px;
@@ -1613,7 +1613,7 @@ console.log("<script setup>");
 	    		padding: 4px 8px;
 	    		border-bottom: solid 2px #1F1F1F;
 	    	}
-	    	
+
 	    	.vuefront-product-card-infos {
 	    		display: flex;
 	    		justify-content: space-between;
@@ -1621,12 +1621,12 @@ console.log("<script setup>");
 	    		padding: 4px 8px;
 	    		width: 100%;
 	    		border-bottom: solid 2px #1F1F1F;
-	    		
+
 	    		.vuefront-product-supplier {
 	    			font-style: italic;
 	    		}
 	    	}
-	    	
+
 	    	.vuefront-product-card-actions {
 	    		display: flex;
 	    		justify-content: space-between;
@@ -1634,7 +1634,7 @@ console.log("<script setup>");
 	    		width: 100%;
 	    		border-bottom: solid 2px #1F1F1F;
 	    	}
-	    	
+
 	    	.vuefront-product-card-order {
 	    		border: none;
 	    		background: none;
@@ -1642,7 +1642,7 @@ console.log("<script setup>");
 	    		height: 100%;
 	    		transition: all 0.5s ease;
 	    		font-size: 20px;
-	    		
+
 	    		&:hover {
 	    			background: rgba(0,0,0, 0.5);
 	    			font-weight: bold;
@@ -1650,7 +1650,7 @@ console.log("<script setup>");
 	    		}
 	    	}
 	    }
-	    
+
 	    transition: all 0.33s ease;
 	    &:hover {
 	    	background: rgba(0,0,0, 0.1);
@@ -1666,13 +1666,13 @@ console.log("<script setup>");
 	color: white;
 	height: 28px;
 	font-size: 16px;
-	
+
 	a {
 		margin-left: 24px;
 		text-decoration: none;
 		color: white;
 		transition: all 0.25s ease;
-		
+
 		&:hover {
 			opacity: 0.5;
 		}
@@ -1697,27 +1697,27 @@ var DemoVueJSFrontendCopy = DemoVueJSFrontendCopy || (() => {
 		demoCliFirstname: "Robert",
 		demoCliLastname: "ROSS"
 	};
-	
+
 	function render(params) {
 		try {
 			if (typeof Vue === 'undefined')
 				throw 'Vue.js not available';
 
-			const data = { 
+			const data = {
 				coverImage: params.coverImage
 			};
 			console.log("Data Image: "+params.coverImage+" vs "+data.coverImage);
-			
+
 			const app = typeof $ui !== 'undefined' ? $ui.getAjax() : new Simplicite.Ajax(params.root, 'uipublic');
-			
-			// initializing & fetching Simplicité-related objects 
+
+			// initializing & fetching Simplicité-related objects
 			const supplier = app.getBusinessObject("DemoSupplier");
 			const product = app.getBusinessObject("DemoProduct");
 			const order = app.getBusinessObject("DemoOrder");
-			
+
 			supplierList = [];
 			productList = [];
-			
+
 			// creating Vue app & mounting it to resource html
 			const vue = Vue.createApp({
 				data() { return data; },
@@ -1725,29 +1725,29 @@ var DemoVueJSFrontendCopy = DemoVueJSFrontendCopy || (() => {
 					displayProducts(s){ this.item = s; },
 					orderProduct(p){
 						console.log("ordering product -> "+p.demoPrdName);
-						
+
 						const date = new Date();
-    	
+
 				    	order.getForCreate(function() {
 				    		order.item.demoOrdCliId = cli.row_id;
 				    		order.item.demoOrdCliId__demoCliCode = cli.demoCliCode;
-				    		
+
 				    		order.item.demoOrdPrdId = p.row_id;
 				    		order.item.demoOrdPrdId__demoPrdReference = p.demoPrdReference;
 				    		order.item.demoOrdPrdId__demoPrdUnitPrice = p.demoPrdUnitPrice;
 				    		order.item.demoOrdPrdId__demoPrdStock = p.demoPrdStock;
-				    		
+
 				    		order.item.demoOrdQuantity = "1";
 				    		order.item.demoOrdComments = `Custom Vue Front Order on ${date}`;
-				    		
+
 				    		order.create();
-				    		
+
 				    		showToast(`Order Sent for Product: ${p.demoPrdReference}`);
 				    	});
 					}
 				}
 			});
-			
+
 			// search methods (before or after "createApp" ??)
 				// -> AFTER because first creating app then mounting it WITHIN search .
 			supplier.search(function() {
@@ -1758,9 +1758,9 @@ var DemoVueJSFrontendCopy = DemoVueJSFrontendCopy || (() => {
 					supplierList.push(sup);
 				}
 				data.supList = supplierList;
-				
+
 			}, null, { inlineDocs: true });
-			
+
 			product.search(function() {
 				let productList = [];
 				for(let i=0; i<product.count; i++)
@@ -1769,22 +1769,22 @@ var DemoVueJSFrontendCopy = DemoVueJSFrontendCopy || (() => {
 					productList.push(prd);
 				}
 				data.prdList = productList;
-				
+
 				data.item = null; // tmp object storage ?
 				vue.mount('#demovuejsfrontend-copy'); // Call this WITHIN search to mount once every fetch is done.
 			}, null, { inlineDocs: true });
-			
+
 		} catch(e) {
 			$('#demovuejsfrontend-copy').text(`Error: ${e.message}`);
 		}
 	}
-	
+
 	function showToast(message) {
 	    const toast = document.createElement('div');
 	    toast.classList.add('custom-toast');
 	    toast.innerText = message;
 	    document.body.appendChild(toast);
-	    
+
 	    setTimeout(() => {
 	        toast.classList.add('fade-out');
 	        setTimeout(() => toast.remove(), 500);  // Remove after fade-out

@@ -10,9 +10,9 @@ title: Basic
 
 It is an object that allows for customized interactions and behaviors within Simplicité. They are objects that you will implement to serve specific needs.
 
-In such objects you will be able to interact with Simplicité by using the [Ajax Library](https://platform.simplicite.io/6.2/jsdoc/index.html) to properly interact with the native part of your solution.
+In such objects you will be able to interact with Simplicité by using the [Ajax Library](https://platform.simplicite.io/current/jsdoc/index.html) to properly interact with the native part of your solution.
 
-There are several types of *External Objects*, that all serve a certain use-case of type of need:  
+There are several types of *External Objects*, that all serve a certain use-case of type of need:
 - Basic
 - [UI page or component](/docs/platform/userinterface/externalobjects/uicomponent)
 - [Web-page](/docs/platform/userinterface/externalobjects/webpage)
@@ -36,7 +36,7 @@ The most used are:
 All **External Objects** are organized as web elements, thus are composed of 3 [resources](/docs/platform/userinterface/resources):
 - **HTML** is the resource containing the *html* code of your object that defines its core structure and organization.
 - **STYLES** is the resource containing the stylesheet (*css* or *less*) associated with your object's HTML.
-- **CLASS** is the resource with the javascript file inside of which you will code the behaviors and interactions for your External Object. 
+- **CLASS** is the resource with the javascript file inside of which you will code the behaviors and interactions for your External Object.
 
 And in addition, all external objects works with a **Java Class** that ensures both their proper setup, and the rendering of the web resources.
 
@@ -62,14 +62,14 @@ The **Basic** nature refers directly to the mother class `com.simplicite.util.Ex
     - **Nature** shall be **Basic**.
     - **Module Name** for the module containing your external object.
     - **UI Widget** to **Yes** if your object can be added to a [dashboard](/docs/platform/userinterface/views/dashboard) and **No** otherwise.
-    > Example values:  
+    > Example values:
     > ![](img/basic/basic_extobj_fields.png)
 4. Click **Save**.
-5. Click **Create Resources** to create the web-resources (html|css|js) for your object.  
+5. Click **Create Resources** to create the web-resources (html|css|js) for your object.
 ![](img/basic/basic_resources.png)
 
 6. (optional) Click **Edit Code** to generate the custom java class for your object.
-    <details>  
+    <details>
     <summary>Default java code</summary>
 
     ```java
@@ -107,13 +107,13 @@ The **Basic** nature refers directly to the mother class `com.simplicite.util.Ex
         }
     }
     ```
-    </details>  
-  
+    </details>
+
 7. Click **Save** and your object is ready to be implemented.
 
 ## Configuration
 
-| Field | Description | 
+| Field | Description |
 | ----- | ----------- |
 | Code | External Object's unique identifier |
 | Nature | Type of the External Object, here **UI page or component** |

@@ -7,35 +7,35 @@ title: Static Web Site
 
 ## What is a Static Web Site ?
 
-Simplicité's [External Objects](/docs/platform/userinterface/externalobjects/basic) allow you to create **Static Web Site** objects; standalone web pages used to display elements without being logged nor interacting with any feature from Simplicité's backend. 
+Simplicité's [External Objects](/docs/platform/userinterface/externalobjects/basic) allow you to create **Static Web Site** objects; standalone web pages used to display elements without being logged nor interacting with any feature from Simplicité's backend.
 
 In other terms it is a static site that you create using either the native web stack (html, css, js) or specific web-frameworks (Vue, Angular, ...).
 
 ## How to create
 
-The creation process is similar to the one for any *External Object*: 
+The creation process is similar to the one for any *External Object*:
 
 1. Go to *User Interface > External Objects > Show all*, and then click **Create**
 
 2. During the form's filling, ensure you select *Static Web Site* as **Nature**.
     - **UI Widget** should be set as **No**
     - Ensure you assign the right **Module Name** for your object.
-    > Example values:  
+    > Example values:
     > ![](img/staticsite/staticsite_createform.png)
 
 3. Click **Save**.
 
-  
+
 ![](img/staticsite/staticsite_createresources.png)
 
 4. From the updated object's form, click **Create Resources** to create the web [Resources](/docs/platform/userinterface/resources).
     - Ensure **CLASS** **HTML** and **STYLES** well appear in the *Resources* tab.
-    > Created Resources:  
+    > Created Resources:
     > ![](img/staticsite/staticsite_resources.png)
 
 ## Usage
 
-As a *Static Web Page* isn't interacting with Simplicité's API or backend, you only have the 3 resources to worry about. For the development specific to Simplicité refer to the [JSdoc](https://platform.simplicite.io/6.2/jsdoc/global.html).
+As a *Static Web Page* isn't interacting with Simplicité's API or backend, you only have the 3 resources to worry about. For the development specific to Simplicité refer to the [JSdoc](https://platform.simplicite.io/current/jsdoc/global.html).
 
 > Specific use case and code examples can be found in the following lessons: [WebPage](/docs/platform/userinterface/externalobjects/webpage), [UI Component](/docs/platform/userinterface/externalobjects/uicomponent), [External Objects](/docs/platform/userinterface/externalobjects/basic).
 
@@ -81,5 +81,5 @@ Simplicite.UI.ExternalObjects.TrnStaticPage = class extends Simplicite.UI.Extern
 
 ## Read More
 
-- [JSDoc](https://platform.simplicite.io/6.2/jsdoc/global.html)
-- [StaticSiteExternalObject](https://platform.simplicite.io/6.2/javadoc/com/simplicite/webapp/web/StaticSiteExternalObject.html) (javadoc)
+- [JSDoc](https://platform.simplicite.io/current/jsdoc/global.html)
+- [StaticSiteExternalObject](https://platform.simplicite.io/current/javadoc/com/simplicite/webapp/web/StaticSiteExternalObject.html) (javadoc)

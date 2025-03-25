@@ -83,9 +83,9 @@ try
 catch (err) console.error(err.message);
 ```
 
-The rest of this example is focusing on a Native based web-page using basic web technologies: **HTML**, **CSS**, **JS**. 
+The rest of this example is focusing on a Native based web-page using basic web technologies: **HTML**, **CSS**, **JS**.
 
-### Basic Setup 
+### Basic Setup
 
 The first step to create your custom front with the NPM Simplicite library is the same as for most of other **Node.js** projects:
 
@@ -97,19 +97,19 @@ The first step to create your custom front with the NPM Simplicite library is th
 
 Once the basic setup for your Simplicité-powered project is installed, the next step is to *structure it* like any standard web project using **Node.js**. This typically results in the following file structure:
 
-CustomNativeFront/  
-&nbsp;&nbsp;&nbsp;&nbsp;public/  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;style.css  
-&nbsp;&nbsp;&nbsp;&nbsp;views/  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index.html  
-&nbsp;&nbsp;&nbsp;&nbsp;app.js  
-&nbsp;&nbsp;&nbsp;&nbsp;package.json  
-  
+CustomNativeFront/
+&nbsp;&nbsp;&nbsp;&nbsp;public/
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;style.css
+&nbsp;&nbsp;&nbsp;&nbsp;views/
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index.html
+&nbsp;&nbsp;&nbsp;&nbsp;app.js
+&nbsp;&nbsp;&nbsp;&nbsp;package.json
+
 
 - Place all *dynamically accessed* resources, such as stylesheets and scripts for specific pages, in the **public** folder (for now, this may only include `index.html`).
 - Store all your `.html` files representing *individual pages* in the **views** folder.
 - Your main javascript code (for project's setting up at least) will be written in the `app.js` file.
-  
+
 > ***Note:*** Properly setting up and understanding why your project directory is organized this way is important to later properly implement your javascript code and ensure consistency throughout your project if you want to scale it.
 
 ### Javascript Code
@@ -175,7 +175,7 @@ const app = simplicite.session({
 - `url` defines the url for your Simplicité session, for most of the demos we use `https://demo.dev2.simplicite.io`.
 - `username` sets the username to access the session, ensure this is a valid one.
 - `password` sets the password to access the session, ensure it's the good one for your user and session.
-- `debug` defines if yes or not your session is used in debug mode. 
+- `debug` defines if yes or not your session is used in debug mode.
 </details>
 
 In the code, you’ll notice that your information can either be hardcoded with *string* values or secured by referencing a `.env` file created in your root directory. For this use case, the `.env` file might look like this:
@@ -218,7 +218,7 @@ server.use(express.static(dir + '/public'));
 <summary>Code Details</summary>
 
 - `serverHost` and `serverPort` are instanciated either from your **.env** file, **command line arguments**, or **hardcoded values**, and defines the host *IP address* and *Port* where your app should run.
-- `const server = express()` creates an express application instance, that will handle incoming HTTP requests and also manage routes & responses. 
+- `const server = express()` creates an express application instance, that will handle incoming HTTP requests and also manage routes & responses.
 - `server.disable('x-powered-by');` disables the specified header in HTTP responses, included for security reasons as it prevents revealing that app is runing on express (supposed to make it less vulnerable).
 - `const dir` stores the directory path for current module/file, converting the `import.meta.url` into a regular file path with `fileURLToPath()`, and extracting the directory part for this part using `dirname()`. It ensures the proper referencing of files relative to current **app.js** script.
 - `server.use()` serves static files from `/public` directory, and can be accessed by visiting `/filename` in browser. It enables frontend assets (images, stylesheets, additional scripts, ...).
@@ -375,12 +375,12 @@ The Simplicité JavaScript API repositories provide a wealth of examples and dem
 
 # Core Javascript usages
 
-**JavaScript development** in Simplicité plays a critical role in extending and customizing front-end functionalities. While Simplicité's core architecture is mainly *Java-based*, JavaScript is most frequently encountered in specific contexts, particularly in *External Objects* and *front-end development* scenarios. These use cases arise when there is a need to create specific, client-side behaviors or *integrate external components* into the Simplicité platform.  
+**JavaScript development** in Simplicité plays a critical role in extending and customizing front-end functionalities. While Simplicité's core architecture is mainly *Java-based*, JavaScript is most frequently encountered in specific contexts, particularly in *External Objects* and *front-end development* scenarios. These use cases arise when there is a need to create specific, client-side behaviors or *integrate external components* into the Simplicité platform.
 
-The *recurring use* of JavaScript in these contexts stems from its ability to:  
-  - Enhance user interaction with *responsive* front-end elements.  
-  - Provide flexibility in implementing custom *business logic* at the client level.  
-  - Seamlessly integrate *external libraries* or *APIs* that complement Simplicité’s core functionalities.  
+The *recurring use* of JavaScript in these contexts stems from its ability to:
+  - Enhance user interaction with *responsive* front-end elements.
+  - Provide flexibility in implementing custom *business logic* at the client level.
+  - Seamlessly integrate *external libraries* or *APIs* that complement Simplicité’s core functionalities.
 
 By focusing on these key contexts, JavaScript development within Simplicité complements its Java-based backend, enabling a richer, more adaptable, and interactive front-end experience. Whether building custom components, enhancing default UI behaviors, or connecting external systems, JavaScript is an indispensable tool for unlocking the full potential of the Simplicité platform.
 
@@ -393,7 +393,7 @@ The main utility for javascript development within Simplicité is the implementa
 The javascript development will happen within the *SCRIPT* resource of your *External Object*, and will allow you to do two things:
 
 1) **Customized behaviors:** first, you are gonna be able to apply custom behaviors and interactions for your custom object
-2) **Communicate with Simplicité:** then, you will be able to make your widget even more interactive by allowing it to discuss in various ways 
+2) **Communicate with Simplicité:** then, you will be able to make your widget even more interactive by allowing it to discuss in various ways
 
 In this case, you can declare all your javascript code within the *SCRIPT* resource, make sure that you respect common rules and methodologies, so define your methods thoughfully, don't make redundant code, don't hesitate to document your code and make reusable functions in case you need it.
 
@@ -502,7 +502,7 @@ public class MyExternalObject extends ExternalObject {
 
 			// Bootstrap page
 			BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), getDisplay());
-			
+
 			wp.appendAjax();
 			wp.appendJSInclude(HTMLTool.getResourceJSURL(this, "CLASS"));
 			wp.appendCSSInclude(HTMLTool.getResourceCSSURL(this, "STYLES"));
@@ -542,9 +542,9 @@ var MyExternalObject = (function($) {
 ```
 
 ***Code Overview:***
-- `var MyExternalPage = ...`, here the code is encapsulatied within a local variable in order to avoid polluting the global namespace.
+- `var MyExternalPage = ...`, here the code is encapsulated within a local variable in order to avoid polluting the global namespace.
 - `(function($) {...})(jQuery)` defines an immediately-invoked function expression receiving `jQuery` as an argument.
-- `new Simplicite.Ajax()` declares a new instance for the Simplicité session, with parameters `approot = ""` and `gateway = "uipublic"`. To make sure you are applying the right parameters, refer to [this part](https://platform.simplicite.io/6.1/jsdoc/Simplicite.Ajax.html) of the documentation.
+- `new Simplicite.Ajax()` declares a new instance for the Simplicité session, with parameters `approot = ""` and `gateway = "uipublic"`. To make sure you are applying the right parameters, refer to [this part](https://platform.simplicite.io/current/jsdoc/Simplicite.Ajax.html) of the documentation.
 - `function render(params) {...}` is the method called in the **Java code** to be executed when DOM is fully loaded (by `setReady()` method).
 
 To keep on going with your javascript development with this setup, you just have to declare your functions in the encapsulated function, and make sure to call the functions using the correct namespace in your `.html` resource file. In our case if you declare a *sayHello* function in yoir javascript code, then you must call `MyExternalPage.sayHello` inside of your html file.
