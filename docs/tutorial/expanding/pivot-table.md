@@ -3,16 +3,6 @@ sidebar_position: 7
 title: 2.7. Creating a pivot table
 ---
 
-<!--
-
-Create a pivot table that summarizes the number of orders by product, supplier (columns) and by state.
-
-- via the template editor, join the id and the name of the supplier on the order from the product object
-- in Interface > Pivot Tables, create a new pivot table `TrnTcOrders`.
-- create two "column" axes (supplier and product) and one "row" axis (report). 
-- clear the cache and note the presence of the pivot table
--->
-
 # Building the "Order Management" Training App : Creating a Pivot table
 
 > Prerequisite : [The Order object has a state model](/docs/tutorial/expanding/states)

@@ -1,12 +1,12 @@
 ---
-sidebar_position: 240
+sidebar_position: 2
 title: 3.2. Adding a custom web service
 description: Creating a custom REST endpoint
 ---
 
 # Building the "Order Management" Training App : Creating a custom REST endpoint
 
-> Prerequisite : [The Supplier, Product, Client and Order objects are linked together](/docs/tutorial/expanding/relations)
+> Prerequisite : [You have a basic understanding of the Simplicité platform, and the steps in Enhancing are completed](/docs/category/2-expanding-your-app)
 
 ## What is a custom web service ?
 
@@ -150,6 +150,7 @@ public class TrnWebService extends com.simplicite.webapp.services.RESTServiceExt
 
 }
 ```
+[Source file](TrnWebService.java)
 
 ### Adding the TRN_PUBLIC Group to `public` user 
 
@@ -167,7 +168,7 @@ For both the `TrnSupplier` and `TrnProduct` object, grant TRN_PUBLIC to the READ
 ## Test the endpoint
 
 Public endpoints are available on `<base_url>/api/ext/<External Object Name>` 
-Call the endpoint via Postman or `curl` 
+Clear the platform's cache and call the endpoint via Postman or `curl` 
 
 :::tip[Success]
 ```sh

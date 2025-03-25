@@ -1,5 +1,5 @@
 ---
-sidebar_position: 60
+sidebar_position: 1
 title: 3.1. Creating virtual links
 ---
 
