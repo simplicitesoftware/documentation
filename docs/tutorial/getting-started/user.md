@@ -107,48 +107,49 @@ To do so, follow the steps below :
 ***
 
 
-Troubleshooting
----------------------------
+## Troubleshooting
 > These steps must be done using the **designer** user with **no active module filter**, see [Module filter](/platform/project/module#module-filtering--default-module)
-- <span class="error">Authentication error</span> when logging in, check that : 
+
+"Authentication error" when logging in, check that : 
     - **usertest** is active
     - password is reset
 
-- No menu is displayed when logged in, check that :
-    - The the Domain exist, contains **TrnSupplier** and is granted to **TRN_SUPERADMIN** :  
-        
-        - In **Business objects > Domains** 
-        - Open **TrnDomain** : 
-            - The Domain is granted to **TRN_SUPERADMIN** :
-                - In the **Permissions** tab, there should **TRN_SUPERADMIN**
-                    > If not, create it
-            - The Domain contains the **TrnSupplier** Business object :
-                - In the **Main menu** tab, there should be **TrnSupplier** 
-                    > If not, create it    
+No menu is displayed when logged in, check that :
 
-            ![](img/user/trbl-domain.png)
-  
-    - **TrnSupplier** has a CRUD Function, and is granted to **TRN_SUPERADMIN**
-        - In **Business objects > Business objects**
-        - Open **TrnSupplier** :
-            - In the **Functions** panel linked to the Object :
-                - There should be a **Read, create, update and delete** Function (TRN_SUP_CRUD)
-                    > If not, create it  
+- The the Domain exist, contains **TrnSupplier** and is granted to **TRN_SUPERADMIN** :  
+    
+    - In **Business objects > Domains** 
+    - Open **TrnDomain** : 
+        - The Domain is granted to **TRN_SUPERADMIN** :
+            - In the **Permissions** tab, there should **TRN_SUPERADMIN**
+                > If not, create it
+        - The Domain contains the **TrnSupplier** Business object :
+            - In the **Main menu** tab, there should be **TrnSupplier** 
+                > If not, create it    
 
-                ![](img/user/trbl-object.png) 
+        ![](img/user/trbl-domain.png)
 
-                - Open the **TRN_SUP_CRUD** Function :
-                    - In the **Grant** panel linked to the Function :
-                        - There should be the **TRN_SUPERADMIN** Group
-                            > If not, create it
+- **TrnSupplier** has a CRUD Function, and is granted to **TRN_SUPERADMIN**
+    - In **Business objects > Business objects**
+    - Open **TrnSupplier** :
+        - In the **Functions** panel linked to the Object :
+            - There should be a **Read, create, update and delete** Function (TRN_SUP_CRUD)
+                > If not, create it  
 
-                ![](img/user/trbl-function.png) 
+            ![](img/user/trbl-object.png) 
 
-    - **usertest** has the **TRN_SUPERADMIN** Responsibility :
-        - In **Users and rights > Users > Show all**
-        - Open **usertest** :
-            - In the **Responsibilities** panel linked to the user :
-                - There should be **TRN_SUPERADMIN**
-                    > If not, create it
-                
-            ![](img/user/trbl-user.png) 
+            - Open the **TRN_SUP_CRUD** Function :
+                - In the **Grant** panel linked to the Function :
+                    - There should be the **TRN_SUPERADMIN** Group
+                        > If not, create it
+
+            ![](img/user/trbl-function.png) 
+
+- **usertest** has the **TRN_SUPERADMIN** Responsibility :
+    - In **Users and rights > Users > Show all**
+    - Open **usertest** :
+        - In the **Responsibilities** panel linked to the user :
+            - There should be **TRN_SUPERADMIN**
+                > If not, create it
+            
+        ![](img/user/trbl-user.png) 
