@@ -5,7 +5,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Simplicité Documentation",
-  favicon: "img/favicon.svg",
+  favicon: "img/simplicite_white.svg",
 
   // Set the production url of your site here
   url: "https://documentation.simplicite.io/",
