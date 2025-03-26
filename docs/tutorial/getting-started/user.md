@@ -72,7 +72,14 @@ You should now be connected with **usertest**
     ![](img/user/success-logon.png)
 :::
 
-## Adding designer to TRN_SUPERADMIN
+:::info[Log back in with `designer`]
+- Click the username in the top-right of the platform
+![](img/user/access-menu.png)
+- Click **Log out**  
+![](img/user/quit.png)
+:::
+
+## Adding `designer` to TRN_SUPERADMIN
 
 Before moving on, and to make testing / configuration easier, we will add the `designer` (*or the user used to design the application*) user to the **TRN_SUPERADMIN** Group. 
 
@@ -110,11 +117,11 @@ To do so, follow the steps below :
 ## Troubleshooting
 > These steps must be done using the **designer** user with **no active module filter**, see [Module filter](/platform/project/module#module-filtering--default-module)
 
-"Authentication error" when logging in, check that : 
+### "Authentication error" when logging in 
     - **usertest** is active
     - password is reset
 
-No menu is displayed when logged in, check that :
+### No menu is displayed when logged in
 
 - The the Domain exist, contains **TrnSupplier** and is granted to **TRN_SUPERADMIN** :  
     

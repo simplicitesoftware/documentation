@@ -63,7 +63,10 @@ export default function Home() {
             <h2>Welcome to Simplicité Documentation</h2>
             <p>
               Simplicité is a low-code platform that empowers developers to
-              build enterprise applications. Get started with our comprehensive
+              build enterprise applications.
+            </p>
+            <p>
+              Get started with our comprehensive
               documentation, tutorials, and resources.
             </p>
           </section>
