@@ -6,14 +6,14 @@ title: Widgets
 Widgets
 ====================
 
-Widgets are easily configurable external objects, usually used to compose home pages. 
+Widgets are easily configurable external objects, usually used to compose home pages.
 
 ![home](img/widgets/home.png)
 
 How to integrate (reminder)
 ---------------------------
 
-This is just a reminder, as widgets just build on the existing external objects 
+This is just a reminder, as widgets just build on the existing external objects
 
 - create a view (home page, domain home, etc)
 - through the view template editor, add a view area
@@ -25,14 +25,15 @@ This is just a reminder, as widgets just build on the existing external objects
     - UI Widget: Yes
     - Nature: UI Page or component
     - Class: one of the available widgets
-        - `com.simplicite.webapp.web.widgets.CountersExternalObject`
-        - `com.simplicite.webapp.web.widgets.CarouselExternalObject`
-        - `com.simplicite.webapp.web.widgets.CardsExternalObject`
+        - `com.simplicite.webapp.web.widgets.CountersExternalObject` (as of version 6.1)
+        - `com.simplicite.webapp.web.widgets.CarouselExternalObject` (as of version 6.1)
+        - `com.simplicite.webapp.web.widgets.CardsExternalObject` (as of version 6.1)
+		- `com.simplicite.webapp.web.widgets.MermaidExternalObject` (as of version 6.2)
 
 Counters
 --------
 
-The **CountersExternalObject** counts how many of some objects there is in the database.
+The **Counters** external object widget counts how many of some objects there is in the database.
 
 ![counters](img/widgets/counters.png)
 
@@ -53,13 +54,12 @@ Configuration is done like such in the configuration field of the external objec
 }
 ```
 
-
 Carousel
----------
+--------
 
 ![carousel](img/widgets/carousel.png)
 
-The **CarouselExternalObject** displays a carousel of data and is configured with the following JSON:
+The **Carousel** external object widget displays a carousel of data and is configured with the following JSON:
 
 ```json
 {
@@ -76,11 +76,11 @@ The **CarouselExternalObject** displays a carousel of data and is configured wit
 ```
 
 Cards
-------
+-----
 
 ![cards](img/widgets/cards.png)
 
-The **CardsExternalObject** displays data as cards and is configured with the following JSON:
+The **Cards** external object widget displays data as cards and is configured with the following JSON:
 
 ```json
 {
@@ -96,4 +96,26 @@ The **CardsExternalObject** displays data as cards and is configured with the fo
 }
 ```
 
+Mermaid chart
+-------------
 
+![](img/widgets/mermaid.png)
+
+The **Mermaid** external object widget displays a Mermaid charts from a specification.
+
+The principle is to configure the external object with the `com.simplicite.webapp.web.widgets.MermaidExternalObject` class
+and to provide the Mermaid specification either:
+
+- statically in the settings of the external object as in the above example
+- dynamically using the `getMermaidChartSpec` hook of the class
+
+e.g.
+
+```text
+sequenceDiagram
+    Customer->>User: I want to order a laptop
+    User->>Customer: Your order is placed
+    User->>Admin: Please validate
+    Admin->>User: Done!
+    User->>Customer: Your order is on its way
+```
