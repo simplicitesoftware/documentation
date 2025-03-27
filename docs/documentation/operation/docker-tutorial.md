@@ -6,7 +6,7 @@ title: Docker tutorial
 Deploying Simplicité with Docker images tutorial
 ================================================
 
-For this tutorial we use an out-of-the-box **CentOS 7**, **CentOS 8/AlmaLinux/RockyLinux** or **Debian** host but this can be transposed to any other host OS.
+For this tutorial we use an out-of-the-box **CentOS 7**, **CentOS 8+/AlmaLinux/RockyLinux** or **Debian** host but this can be transposed to any other host OS.
 
 By following the steps below you should have an easily-maintainable **production-grade** deployment of Simplicité up and running **in a few minutes**.
 
@@ -24,7 +24,7 @@ sudo yum -y update && sudo yum clean all
 sudo reboot
 ```
 
-Update system on **CentOS 8/AlmaLinux/RockyLinux**:
+Update system on **CentOS 8+/AlmaLinux/RockyLinux**:
 
 ```bash
 sudo dnf -y update && sudo dnf clean all
@@ -51,17 +51,10 @@ sudo systemctl enable firewalld
 sudo systemctl start firewalld
 ```
 
-Install and enable firewall  on **CentOS 8/AlmaLinux/RockyLinux**:
+Install and enable firewall  on **CentOS 8+/AlmaLinux/RockyLinux**:
 
 ```bash
 sudo dnf -y install firewalld && sudo dnf clean all
-```
-
-> **Note**: > Depending on the version of Docker that you use and if your host is running **CentOS 8/AlmaLinux/RockyLinux** you may encounter issues with Docker networking vs firewall rules.
-> In such a case, you can try changing the default firewall backend to iptables in `/etc/firewalld/firewalld.conf` (replace `FirewallBackend=nftables` by `FirewallBackend=iptables`).
-> Note that some recent host kernels do not support iptables anymore, don't try this in this case.
-
-```bash
 sudo systemctl enable firewalld
 sudo systemctl start firewalld
 ```
@@ -95,7 +88,7 @@ sudo yum -y install vim-enhanced git wget curl zip unzip && sudo yum clean all
 sudo yum -y install epel-release && sudo yum -y install certbot htop && sudo yum clean all
 ```
 
-Install other useful packages on **CentOS 8/AlmaLinux/RockyLinux**:
+Install other useful packages on **CentOS 8+/AlmaLinux/RockyLinux**:
 
 ```bash
 sudo dnf -y install vim-enhanced git wget curl zip unzip && sudo dnf clean all
@@ -131,7 +124,7 @@ Install database clients on **CentOS 7**:
 sudo yum -y install mariadb postgresql && sudo yum clean all
 ```
 
-Install database clients on **CentOS 8/AlmaLinux/RockyLinux**:
+Install database clients on **CentOS 8+/AlmaLinux/RockyLinux**:
 
 ```bash
 sudo dnf -y install mariadb postgresql && sudo dnf clean all
@@ -153,7 +146,7 @@ sudo systemctl enable docker
 sudo systemctl start docker
 ```
 
-Install **Docker** on **CentOS 8/AlmaLinux/RockyLinux**:
+Install **Docker** on **CentOS 8+/AlmaLinux/RockyLinux**:
 
 ```bash
 sudo dnf -y install 'dnf-command(config-manager)'
@@ -205,7 +198,7 @@ Install the **Docker compose** tool on **CentOS 7**:
 sudo yum -y install epel-release && sudo yum -y install docker-compose && sudo yum clean all
 ```
 
-Install the **Docker compose** tool on **CentOS 8/AlmaLinux/RockyLinux** or **Debian**:
+Install the **Docker compose** tool on **CentOS 8+/AlmaLinux/RockyLinux** or **Debian**:
 
 Check the latest `X.Y.Z` version on [GitHub](https://github.com/docker/compose/releases/latest).
 
