@@ -25,64 +25,77 @@ For subsequent versions **multiple** providers can be configured at the same tim
 (2) FranceConnect being an OpenIDConnect-compliant provider, starting with version 4.0
 it should thus be configured as an OpenIDConnect provider instead.
 
-Webapp prerequisites
---------------------
+Configuration
+---------------
 
-The changes to be done (if not already done) are :
+### Webapp prerequisites
 
+Your application's URL **must** be exposed over HTTPS, SSL encryption is **mandatory** for any OAuth2/OpenIDConnect based authentication.
+
+<details>
+<summary>Skip this if you are using a standard Simplicité Docker image</summary>
+
+If you are using our standard Docker images or our instance tempates these changes are already done.
+
+In other case, it might be necessary to :
 - Remove all realm-related settings in `WEB-INF/web.xml` (security-constraint, login-config and security-role tags)
 - Optionaly remove also the realm definition in `META-INF/context.xml`
 
-> **Notes**:
-> - If you are using our standard Docker images or our instance tempates these changes are already done
-> - Your application's URL **must** be exposed over HTTPS, SSL encryption is **mandatory** for any OAuth2/OpenIDConnect based authentication.
-
 > **Warning**: Before doing these changes, **make sure** that you will still be able to login with a user having at least a responsibility on the `ADMIN` group.
 
-Common settings
----------------
+</details>
 
-The callback URL (redirect URI) to configure in your OAuth2/OpenIDConnect IdP for your instance is `<base URL>/oauth2callback`.
+### In the Indentity Provider
 
-As of version 4.0 a global system parameter `AUTH_PROVIDERS` contains the description of the various providers you configure.
-
-Ex:
-
-```json
-[
-	{ "name": "google", "type": "oauth2", "sync": true },
-	{ "name": "microsoft", "type": "oauth2", "sync": false },
-	{ "name": "linkedin", "type": "oauth2", "sync": false },
-	{ "name": "franceconnect", "type": "oauth2" },
-	{ "name": "myoidc", "type": "oauth2", "label": "Sign in with your private IdP", "sync": true }
-	(...)
-]
-```
-
-> **Note**: for historical reasons the names `google`, `microsoft`, `linkedin` and `franceconnect` are **reserved** as they correspond to dedicated connectors.
-> To use the **generic** OpenIDConnect connector you must use another name (such as the `myoidc` of the above example).
-
-All OAuth2/OpenIDConnect providers requires at least the following settings:
-
-- Set `OAUTH2_CLIENT_ID <provider name>` or `client_id` attribute in `AUTH_PROVIDERS`: your instance's client ID
-- Set `OAUTH2_CLIENT_SECRET <provider name>` or `client_secret` attribute in `AUTH_PROVIDERS`: your instance's client secret
-
-
-See [this document](/documentation/authentication/auth-providers) for details.
-
-> **Note**: in 3.x versions you have a unique provider so the `<provider name>` suffix must not be used,
-> nor the `AUTH_PROVIDERS` system parameter, but instead a `OAUTH2_PROVIDER` system parameter
-> must be configured with the name of your unique provider
+The callback URL (redirect URI) to configure **in your OAuth2/OpenIDConnect identity provider** for your instance is `<base URL>/oauth2callback`.
 
 If needed, the logout URL to configure in your OAuth2/OpenIDConnect IdP for your instance is `<base URL>/logout`
 or `<base URL>/logoutconfirm` (for displaying just a logout confirmation page).
 
-Generic OpenIDConnect provider settings
----------------------------------------
+### In Simplicité
 
-As of version 4.0 it is possible to configure generic OpenIDConnect (OIDC) providers (see [this specification](http://openid.net/connect/) for details on the OIDC standards).
+All OAuth2/OpenIDConnect providers requires **at least** the following settings:
 
-Beyond the above common system parameters, for the OIDC providers there are some additional system parameters that needs to be configured:
+- `name` : a unique name for your provider
+- `type`: `oauth2`
+- `client_id`: your instance's client ID
+- `client_secret`: your instance's client secret
+
+Example `AUTH_PRODIDERS` configuration (refer to the [auth providers doc](auth-providers) if necessary):
+
+```json
+[
+	{ "name": "google", "type": "oauth2", "sync": true, "client_id": "", "client_secret": "" },
+	{ "name": "microsoft", "type": "oauth2", "sync": false, "client_id": "", "client_secret": "" },
+	{ "name": "linkedin", "type": "oauth2", "sync": false, "client_id": "", "client_secret": "" },
+	{ "name": "franceconnect", "type": "oauth2", "client_id": "", "client_secret": "" },
+	{ "name": "myoidc", "type": "oauth2", "label": "Sign in with your private IdP", "sync": true, "client_id": "", "client_secret": "" }
+	(...)
+]
+```
+
+:::warning
+
+For historical reasons the names `google`, `microsoft`, `linkedin` and `franceconnect` are **reserved** as they correspond to dedicated connectors.
+To use the **generic** OpenIDConnect connector you must use another name (such as the `myoidc` of the above example).
+
+The FranceConnect provider is a OIDC-compliant provider, its management as a dedicated provider has been kept in version 4.0 for backward compatibility but it **should** now be rather configured as a generic OIDC provider. 
+
+:::
+
+OpenIDConnect
+-------------
+
+:::info
+
+To learn more about OpenIDConnect (and its relationship with OAuth2), pleaser refer [its documentation](https://openid.net/developers/how-connect-works/).
+
+:::
+
+
+### Settings
+
+Beyond the common OAuth2 settings, there are some additional system parameters that needs to be configured for the OIDC providers :
 
 | **Setting** | **Required** | **Comments** | **Availability** |
 |---|---|---|---|
@@ -97,17 +110,20 @@ Beyond the above common system parameters, for the OIDC providers there are some
 | `pkce_code_verifier_length` | optional | to define the length of the PKCE code verifier, defaults to `64` | v5.2.30 |
 | `non_ssl_urls_allowed` | optional | to allow using non SSL URLs (Note that this does not comply with OAuth2/OpenIDConnect standards, it should never be used unless you absolutly need it) | v5.2.32 |
 
+### Default scopes
 
-> **Note**: By default the OIDC OAuth2 implementation uses by default the `openid` and `profile` scopes when calling user info endpoint.
-> Only **additional** scopes need to be configured using the `OAUTH2_SCOPES` system parameter or`scopes` attribute in `AUTH_PROVIDERS`if needed.
-> If for some **very specific** reasons you need other default scopes, you can use the `OAUTH2_DEFAULT_SCOPES` system parameter  or `default_scopes` attribute in `AUTH_PROVIDERS`.
-> In both cases the syntax for multiple scopes is space-separated.
+By default the OIDC OAuth2 implementation uses by default the `openid` and `profile` scopes when calling user info endpoint.
+
+Only **additional** scopes need to be configured using the `OAUTH2_SCOPES` system parameter or`scopes` attribute in `AUTH_PROVIDERS`if needed.
+
+If for some **very specific** reasons you need other default scopes, you can use the `OAUTH2_DEFAULT_SCOPES` system parameter  or `default_scopes` attribute in `AUTH_PROVIDERS`.
+
+In both cases the syntax for multiple scopes is space-separated.
+
+### User info mappings
 
 By default, the relevant user info fields defined by the OIDC standards are used to update corresponding user field (e.g. `given_name` for first name, `family_name`, etc.).
 As for any OAuth2 provider it is possible to do a custom parsing of user info response in the `postLoadGrant` grant hook as described above.
-
-> **Note**: The FranceConnect provider is a OIDC-compliant provider, its management as a dedicated provider has been kept in version 4.0 for backward compatibility but
-> it **should** now be rather configured as a generic OIDC provider. 
 
 For instance here is a _Keycloak_ integration configuration for `AUTH_PROVIDERS`:
 
@@ -158,8 +174,8 @@ Example:
 
 As of version 5, it is possible to proceed with additional JWT token processing using `jwt_*` settings described bellow.
 
-API endpoint authentication
----------------------------
+Token validation
+-----------------
 
 As of version 5, it is possible to use external authentication tokens on the API endpoint. Some additional configuration is required in the `AUTH_PROVIDERS` system parameter
 depending on the (exclusive) validation method of the token:
@@ -230,9 +246,10 @@ public String getAuthTokenInfo(String token) {
 }
 ```
 
+Specific providers
+-------------------
 
-Google provider
----------------
+### Google
 
 Register a new client ID on the [Google Developers Console](https://console.developers.google.com) for the application:
 
@@ -263,8 +280,7 @@ In `AUTH_PROVIDERS` just add Google settings as follow, for example to add conse
 >   Only additional scopes needs to be configured.
 > - In 3.x versions you have a unique provider so the `<Google provider name>` suffix must not be set
 
-Microsoft LiveID provider
--------------------------
+### Microsoft LiveID
 
 Register a new client ID on the [Microsoft LiveID application portal](https://apps.dev.microsoft.com) for the application (the OAuth2 callback URL will be `<url>/oauth2callback`):
 

@@ -8,8 +8,6 @@ Authentication providers
 
 > This document applies to version **4.0 P23** and above.
 
-## Introduction
-
 Simplicité offers a wide array of authentication solutions with the following ones working out-of-the-box, with no coding involved:
 - **internal:** this is the default classic Simplicité mechanism that store user's passwords in the database
 - **OAuth2**
@@ -52,14 +50,6 @@ The authentication providers are to be configured with the `AUTH_PROVIDERS` syst
 ]
 ```
 
-You might find some provider settings documented with the deprecated syntax. With recent versions, you should be able to specify all 
-of the provider's settings in the JSON (including, from v5.3.39, PEM certificates encoded as base64)
-
-|                                          | Setting specification                                           | Example                   |
-|------------------------------------------|-----------------------------------------------------------------|---------------------------|
-| In `AUTH_PROVIDERS` as JSON              | `<setting (lowercase)>`                                          | `"client_id"`             |
-| ⚠️ Deprecated ⚠️ As individual sys param   | `<type (uppercase)>_<setting (uppercase)> <provider (lowercase)>` | `OAUTH2_CLIENT_ID google` |
-
 ### Common settings
 
 The JSON settings include the common attributes:
@@ -73,31 +63,52 @@ The JSON settings include the common attributes:
 | `sync`    | `true` / `false`                              | optional     |                                                                |
 | `image`   | String                                        | optional     | disposition resource name                                      |
 
+:::warning
+
+For historical reasons the names `google`, `microsoft`, `linkedin` and `franceconnect` are **reserved** as they correspond to dedicated connectors.
+
+:::
+
 
 If the provider is configured as **not visible**, it is still accessible by appending `?_provider=<type>:<name>` (e.g.: `?_provider=internal:simplicite`) to the base URL.
 
-**Note**: : You can also customize/add a custom logo for a given provider on the provider choice page by configuring
-an SVG image resource named `<type (in uppercase)>_SIGNIN_<name (in uppercase)>` (e.g. `LDAP_SIGNIN_MYOPENLDAP`).
-As of version 5 it is configured through the `image` setting.
+
 
 ### Specific settings
 
-The other settings depends on the provider's type, please refer to the following document for details:
+Extra mandatory settings might exist depending on the provider's type, please refer to the corresponding authentication documentation for details.
 
-- [OAuth2](/documentation/authentication/oauth2) 
-- [SAML](/documentation/authentication/saml)
+### Deprecated syntax
+
+Before Simplicité v4, providers were configured in individual system parameters instead of one single JSON. PEM certificates are embedable in the JSON as base64 starting of v5.3.39.
+
+|                                                                     | Setting specification                                             | Example                   |
+|---------------------------------------------------------------------|-------------------------------------------------------------------|---------------------------|
+| In `AUTH_PROVIDERS` as JSON                                         | `<setting (lowercase)>`                                           | `"client_id"`             |
+| ⚠️ Deprecated in v4 ⚠️ Individual system parameters                 | `<type (uppercase)>_<setting (uppercase)> <provider (lowercase)>` | `OAUTH2_CLIENT_ID google` |
+| ⚠️ Deprecated in v5 ⚠️ Image as implicitely specified resource name | `<type (uppercase)>_SIGNIN_<provider (uppercase)>`                | `LDAP_SIGNIN_MYOPENLDAP`  |
+
+
+:::warning
+
+You might still find some provider settings documented with the deprecated syntax.
+
+:::
 
 ## Troubleshooting
 
 To investigate authentication issues you can **temporarly** activate the `DAUTHCS001` log event.
 
-> Make sure to deactivate it as it produces **very verbose** output.
-
-<details>
-<summary>Click to open</summary>
-
 ![dauthcs001.png](img/auth-providers/dauthcs001.png)
 
-> Before Simplicité v6, this menu item used to be in the "Operation" domain, in the extended view.
+:::warning
 
-</details>
+Make sure to deactivate it as it produces **very verbose** output.
+
+:::
+
+:::info
+
+Before Simplicité v6, this menu item used to be in the "Operation" domain, in the extended view.
+
+:::
