@@ -65,11 +65,79 @@ Example `AUTH_PRODIDERS` configuration (refer to the [auth providers doc](auth-p
 
 ```json
 [
-	{ "name": "google", "type": "oauth2", "sync": true, "client_id": "", "client_secret": "" },
-	{ "name": "microsoft", "type": "oauth2", "sync": false, "client_id": "", "client_secret": "" },
-	{ "name": "linkedin", "type": "oauth2", "sync": false, "client_id": "", "client_secret": "" },
-	{ "name": "franceconnect", "type": "oauth2", "client_id": "", "client_secret": "" },
-	{ "name": "myoidc", "type": "oauth2", "label": "Sign in with your private IdP", "sync": true, "client_id": "", "client_secret": "" }
+	{ 
+		"name": "google", 
+		"type": "oauth2", 
+		"sync": true, 
+		"client_id": "", 
+		"client_secret": "" 
+	},
+	{ 
+		"name": "microsoft", 
+		"type": "oauth2", 
+		"sync": false, 
+		"client_id": "", 
+		"client_secret": ""
+	},
+	{ 
+		"name": "linkedin", 
+		"type": "oauth2", 
+		"sync": false, 
+		"client_id": "", 
+		"client_secret": ""
+	},
+	{ 
+		"name": "franceconnect", 
+		"type": "oauth2", 
+		"client_id": "", 
+		"client_secret": "" 
+	},
+	{ 
+		"name": "myoidc", 
+		"type": "oauth2", 
+		"label": "Sign in with your private IdP", 
+		"sync": true,
+		"client_id": "", 
+		"client_secret": "" 
+	}
+	{
+		"name": "oidc-with-all-params",
+		"type": "oauth2",
+		"label": "Sign in with MyProvider",
+		"sync": true,
+		"visible": true,
+		"client_id": "<my client ID>",
+		"client_secret": "<my client secret>",
+		"redirect_url": "<instance_url>/oauth2callback",
+		"base_url": "https://<idp_url>",
+		"authorize_url": "<base_url>/authorize",
+		"token_url": "<base_url>/token",
+		"userinfo_url": "<base_url>/userinfo",
+		"logout_url": "<base_url>/logout",
+		"tokeninfo_url": "<base_url>/tokeninfo",
+		"tokeninfo_mappings": {
+			"login": "user_id"
+		},
+		"client_credentials_mode": "authheader|params",
+		"scopes": "additional_scope",
+		"userinfo_mappings": {
+			"login":     "username",
+			"firstName": { "field": "usr_first_name" },
+			"lastName":  { "field": "usr_last_name" },
+			"email":     { "field": "usr_email" },
+			"address":   { "field": "usr_address1" },
+			"myfield":   { "field": "myUserField" },
+			"myparam":   { "param": "APP_MYPARAM" },
+			"title":     { "field": "usr_title", "transform": { "M.":"MR", "Mme":"MRS", "Mlle":"MS" } },
+			"unit":      { "field": "myUserUnit", "param": "APP_USER_UNIT" }
+		},
+		"jwt_issuer": "<url>",
+		"jwt_secret": "",
+		"jwt_claims_mappings": { 
+			"login": "preferred_username"
+		},
+		"jwt_check_nonce": true
+	}
 	(...)
 ]
 ```
@@ -290,6 +358,32 @@ Activate the **required** _User.Read_ on the portal and, optionally, activate an
 
 Optionally set `OAUTH2_SCOPES <Microsoft LiveID provider name>` with additional OAuth2 scopes you may need
 see Microsoft LiveID documentation for the values of the possible scopes, if you have several scopes use space as separator.
+
+### LinkedIn
+
+```json
+{
+  "name": "linkedin",
+  "type": "oauth2",
+  (...)
+}
+```
+
+### FranceConnect
+
+:::warning
+
+The FranceConnect provider is a OIDC-compliant provider, its management as a dedicated provider has been kept in v4.0 for backward compatibility but it should now be rather configured as a **generic OIDC provider**, without using the `franceconnect` name.
+
+:::
+
+```json
+{
+  "name": "franceconnect",
+  "type": "oauth2",
+  (...)
+}
+```
 
 Grant hooks
 -----------
