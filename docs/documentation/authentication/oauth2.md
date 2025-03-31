@@ -11,19 +11,18 @@ Providers
 
 The following table indicates OAuth2/OpenIDConnect providers supports per Simplicité version:
 
-| Provider      | 3.1(1) | 3.2 | 4.0 and 5 |
-|---------------|--------|-----|-----------|
-| OpenIDConnect | No     | No  | Yes       |
-| Google        | Yes    | Yes | Yes       |
-| Microsoft     | No     | Yes | Yes       |
-| LinkedIn      | No     | Yes | Yes       |
-| FranceConnect | Yes    | Yes | Yes (2)   |
+| Provider      | v3  | v4      | v5      | v6      |
+|---------------|-----|---------|---------|---------|
+| OpenIDConnect | No  | Yes     | Yes     | Yes     |
+| Google        | Yes | Yes     | Yes     | Yes     |
+| Microsoft     | No  | Yes     | Yes     | Yes     |
+| LinkedIn      | No  | Yes     | Yes     | Yes     |
+| FranceConnect | Yes | Yes (1) | Yes (1) | Yes (1) |
+| KeyCloak      | No  | Yes (2) | Yes     | Yes     |
 
-(1) version 3.1 allows only one **unique** OAuth2 provider to be configured.
-For subsequent versions **multiple** providers can be configured at the same time.
+(1) FranceConnect being an OpenIDConnect-compliant provider, starting with version 4.0 it should thus be configured as a generic OpenIDConnect provider instead.
 
-(2) FranceConnect being an OpenIDConnect-compliant provider, starting with version 4.0
-it should thus be configured as an OpenIDConnect provider instead.
+(2) Only as a generic OpenIDConnect provider.
 
 Configuration
 ---------------
@@ -384,6 +383,22 @@ The FranceConnect provider is a OIDC-compliant provider, its management as a ded
   (...)
 }
 ```
+
+### KeyCloak
+
+```json
+{
+  "name": "keycloak-1",
+  "type": "oauth2",
+  (...)
+}
+```
+
+The name of KeyCloak does not necessary have to be `keycloak`, it just has to **start** with that string. This is so there can be multiple keycloak providers.
+
+This provider adds specific KeyCloak functionality like userinfo group maping,  users/roles/groups synchronisation, etc. 
+
+Refer to the [dedicated Keycloak documentation](keycloak) for details.
 
 Grant hooks
 -----------
