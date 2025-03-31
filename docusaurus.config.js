@@ -70,21 +70,16 @@ const config = {
             label: "Tutorial",
           },
           {
-            type: 'dropdown',
-            label: 'Documentation',
-            position: 'left',
-            items: [
-              {
-                sidebarId:"platformSidebar",
-                type: "docSidebar",
-                label: "Platform",
-              },
-              {
-                sidebarId:"documentationSidebar",
-                type: "docSidebar",
-                label: "More",
-              },
-            ],
+            type: "docSidebar",
+            sidebarId: "platformSidebar",
+            position: "left",
+            label: "Make",
+          },
+          {
+            type: 'docSidebar',
+            label: 'Docs',
+            sidebarId:"documentationSidebar",
+            position: 'left'
           },
           {
             to: "/versions/versioning/",
