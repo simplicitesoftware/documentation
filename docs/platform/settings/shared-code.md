@@ -52,6 +52,6 @@ Shared Code can be used in various scenarios, including Java class creation, bus
 
 ## Learn more
 
-- [PlatformHooks](/documentation/core/platform-hooks)  
-- [Unit testing](/documentation/core/unit-testing)    
+- [PlatformHooks](/docs/core/platform-hooks)  
+- [Unit testing](/docs/core/unit-testing)    
 

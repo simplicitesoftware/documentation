@@ -169,4 +169,4 @@ body {
 
 ## Read More
 
-- [Styles](/documentation/front/styles) using *addon.less*.
+- [Styles](/docs/front/styles) using *addon.less*.

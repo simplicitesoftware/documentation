@@ -125,9 +125,9 @@ The **Basic** nature refers directly to the mother class `com.simplicite.util.Ex
 ## Read More
 
 **Tips & Advices**
-- [Javascript Development](/documentation/front/javascript-dev).
-- [Ajax Library](/documentation/front/lib-ajax).
+- [Javascript Development](/docs/front/javascript-dev).
+- [Ajax Library](/docs/front/lib-ajax).
 
 **Details & Specificities**
-- [Web Pages](/documentation/front/web-page) with "Basic" Nature.
-- [Code examples](/documentation/front/ui-component) for *"UI component"* (walkthrough).
+- [Web Pages](/docs/front/web-page) with "Basic" Nature.
+- [Code examples](/docs/front/ui-component) for *"UI component"* (walkthrough).
