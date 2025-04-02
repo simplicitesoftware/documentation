@@ -63,4 +63,4 @@ When a Module filter is set, the header button is *highlighted*.
 
 ## Read more
 
-- [Managing git repositories](/docs/integration/webservices/git-repositories)
+- [Managing git repositories](/documentation/integration/webservices/git-repositories)

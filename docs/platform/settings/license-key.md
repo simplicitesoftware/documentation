@@ -35,7 +35,7 @@ Check the you are on the **“Simplicité Administrator”** scope
 Using a generic service
 -----------------------
 
-Call a service interface: I/O (preferred) or API to create or update the license key record (see [integration interfaces](/docs/integration/webservices/io-commandline) for details).
+Call a service interface: I/O (preferred) or API to create or update the license key record (see [integration interfaces](/documentation/integration/webservices/io-commandline) for details).
 
 Example using the I/O service interface:
 

@@ -31,7 +31,7 @@ The [platform site](https://platform.simplicite.io) contains generated technical
 - Java & JS dependencies list
 - CVE Audit report
 
-The [compatibility page](/docs/compatibility) maintains a list of compatible options to chose from when running Simplicité: OS, Database, Browser, etc.
+The [compatibility page](/documentation/compatibility) maintains a list of compatible options to chose from when running Simplicité: OS, Database, Browser, etc.
 
 ### Versioning strategy {#versioning}
 

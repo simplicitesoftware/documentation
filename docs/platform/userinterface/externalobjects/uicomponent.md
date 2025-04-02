@@ -551,11 +551,11 @@ Simplicite.UI.ExternalObjects.DemoWelcomeCard = class extends Simplicite.UI.Exte
 
 ## Read More
 
-- [Widgets](/docs/misc/widgets) already implemented within Simplicité's **Demo** module.
-- [Code Examples](/docs/core/externalobject-code-examples)
+- [Widgets](/documentation/misc/widgets) already implemented within Simplicité's **Demo** module.
+- [Code Examples](/documentation/core/externalobject-code-examples)
 - [JSDoc](https://platform.simplicite.io/current/jsdoc/)
 - [Javadoc](https://platform.simplicite.io/current/javadoc/)
 
 **JS Dev**
-- [Javascript Development](/docs/front/javascript-dev).
-- [Ajax Library](/docs/front/lib-ajax).
+- [Javascript Development](/documentation/front/javascript-dev).
+- [Ajax Library](/documentation/front/lib-ajax).
