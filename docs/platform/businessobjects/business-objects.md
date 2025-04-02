@@ -15,8 +15,8 @@ Business objects are usually linked to a database table, enabling standard **Cre
 
 However, some objects are not tied to a table:  
 
-- **[Select objects](/documentation/core/objects/select-objects)** – based on SQL queries  
-- **[Service objects](/documentation/core/objects/service-objects)** – interact with external services
+- **[Select objects](/docs/core/objects/select-objects)** – based on SQL queries  
+- **[Service objects](/docs/core/objects/service-objects)** – interact with external services
 
 Since business objects form the foundation of the platform, most functionalities revolve around them, including:  
 
@@ -65,7 +65,7 @@ We **highly** recommend you use the business object **creation assistant** to cr
 | Field | Description | 
 | ----- | ----------- |
 | Code | Object's unique identifier |
-| Table | Table name / *service* for a [Service object](/documentation/core/objects/service-objects) / *select* for a [Select object](/documentation/core/objects/select-objects) |
+| Table | Table name / *service* for a [Service object](/docs/core/objects/service-objects) / *select* for a [Select object](/docs/core/objects/select-objects) |
 | Extend of Logical name | Used for inheritance (parent object) |
 | Icon code | Object's logo |
 
@@ -73,10 +73,10 @@ We **highly** recommend you use the business object **creation assistant** to cr
 
 ## Read more   
 
-- [Business objects hooks](/documentation/core/objects/businessobject-code-hooks)
-- [Select objects](/documentation/core/objects/select-objects)
-- [Service objects](/documentation/core/objects/service-objects)
-- [Custom service objects](/documentation/integration/remote/custom)
+- [Business objects hooks](/docs/core/objects/businessobject-code-hooks)
+- [Select objects](/docs/core/objects/select-objects)
+- [Service objects](/docs/core/objects/service-objects)
+- [Custom service objects](/docs/integration/remote/custom)
 
 <!--
 ## Business object Hooks
@@ -92,7 +92,7 @@ It is conceivable that a webservice call is needed to find out whether the attri
 It is for these cases that it is possible to extend the default behavior of business objects. The default behavior is coded in a Simplicité Java class called `ObjectDB`. All business objects inherit from this class, which provides a number of hooks that are executed at different points in the business object's lifecycle. By inheriting from this class and overriding the hooks, it becomes possible to modify the behavior of the business object. The exhaustive list of hooks can be found in the [JavaDoc](https://platform.simplicite.io/current/javadoc/), and here we present only the more common ones. *The possibilities are endless, and a thorough understanding of the hooks and the Java Simplicité API is an important part of success*.
 
 Object scripts can be written in Java or JavaScript (which will be executed by Rhino, just like the executed fields), but **good practice is to use Java scripts** which include a compilation step and ensure that the syntax of the script is correct. *In advanced use cases that are not part of this tutorial, the use of Java gives access to all of the classic application development tools: step-by-step debugging, unit tests, development in a Java IDE, code quality analysis with Sonar etc.*.
-[Learn more](/documentation/code/businessobject-code-hooks)
+[Learn more](/docs/code/businessobject-code-hooks)
 
 ## Business object instances & cache 
 
