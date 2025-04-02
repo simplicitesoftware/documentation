@@ -26,6 +26,8 @@ Some interchangeable terms:
 - **Beta**: release candidate, pre-release, test version
 - **Alpha**: master, development version, nightly build
 
+> **Important**: maintained versions should never be used for new, or still in implementation phase, projects. Using the current release is always the good option for such projects.
+
 The [platform site](https://platform.simplicite.io) contains generated technical docs for all versions:
 - [JavaDoc](https://platform.simplicite.io/current/javadoc/) & [JSDoc](https://platform.simplicite.io/current/jsdoc/)
 - Java & JS dependencies list
