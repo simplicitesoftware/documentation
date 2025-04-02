@@ -16,7 +16,7 @@ Notifications allow to alert users when an event occurs and are configured in :
 They :
 - are linked to a business object, 
 - are triggered by an action (create, update, delete) 
-- can optionally have an execution condition in the form of an [expression](/documentation/core/expressions).
+- can optionally have an execution condition in the form of an [expression](/docs/core/expressions).
 - can be sent :
     - through multiple broadcast channels 
     - to multiple recipients

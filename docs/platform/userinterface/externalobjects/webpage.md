@@ -141,5 +141,5 @@ public Object display(Parameters params) {
 - [Static Web Sites](/platform/userinterface/externalobjects/staticsite)
 
 **JS Dev**
-- [Javascript Development](/documentation/front/javascript-dev).
-- [Ajax Library](/documentation/front/lib-ajax).
+- [Javascript Development](/docs/front/javascript-dev).
+- [Ajax Library](/docs/front/lib-ajax).

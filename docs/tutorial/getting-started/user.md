@@ -52,7 +52,7 @@ To connect to the application with **usertest**, follow the steps below :
         - Click **Clear all sessions and all server caches**
         ![](img/user/clear-cache.png)
     - Via the keyboard shortcut : [ <kbd>Alt</kbd>+<kbd>C</kbd>+<kbd>C</kbd> ]
-    <!-- > For more information about the cache, see the [Platform cache](/documentation/core/objects/platform-cache) section.  -->
+    <!-- > For more information about the cache, see the [Platform cache](/docs/core/objects/platform-cache) section.  -->
 
 4. Log-in using **usertest** :
     - Login : **usertest**
