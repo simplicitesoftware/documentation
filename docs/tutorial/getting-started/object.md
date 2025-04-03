@@ -9,7 +9,7 @@ title: 1.2. Creating a Business object
 
 ## What is a Business object ?
 
-Business objects are the cornerstone of the platform, structuring data, enforcing rules, and driving key features.... [Learn more](/platform/businessobjects/business-objects)
+Business objects are the cornerstone of the platform, structuring data, enforcing rules, and driving key features.... [Learn more](/make/businessobjects/business-objects)
 
 ## Creating a Business object
 
@@ -18,7 +18,7 @@ To create a Business object, follow the steps below :
 1. Click **Creation assistant** in Business objects > Business objects    
 	![](img/object/assistant.png)
 
-	> This assistant is also available via the Modeler, for more information see the [How to create an object using the modeler](/platform/businessobjects/business-objects#creation-assistant-via-the-modeler)
+	> This assistant is also available via the Modeler, for more information see the [How to create an object using the modeler](/make/businessobjects/business-objects#creation-assistant-via-the-modeler)
 2. Fill in the Object information like so :
 	- Code : **TrnSupplier**
 	- Table : **trn_supplier**

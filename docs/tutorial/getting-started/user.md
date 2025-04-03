@@ -9,7 +9,7 @@ title: 1.4. Creating a User
 
 ## What is a User ?
 
-Users belong to Groups, and each user-group relationship is defined by a Responsibility. Groups are granted to Business object CRUD functions, in turn granting a User to a Business Object... [Learn more](/platform/usersrights/users)
+Users belong to Groups, and each user-group relationship is defined by a Responsibility. Groups are granted to Business object CRUD functions, in turn granting a User to a Business Object... [Learn more](/make/usersrights/users)
 
 ## Creating a User
 
@@ -25,7 +25,7 @@ To create a test user, follow the steps below :
 5. Click **Next**
 6. Create a Responsibility, click **Next**
     ![](img/user/resp.png)
-    > For more information about Domains, see the [Responsibility](/platform/usersrights/responsibilities) section.
+    > For more information about Domains, see the [Responsibility](/make/usersrights/responsibilities) section.
 7. Choose a new group :
     - For now, select **no**
 8. Click **Next**
@@ -115,7 +115,7 @@ To do so, follow the steps below :
 
 
 ## Troubleshooting
-> These steps must be done using the **designer** user with **no active module filter**, see [Module filter](/platform/project/module#module-filtering--default-module)
+> These steps must be done using the **designer** user with **no active module filter**, see [Module filter](/make/project/module#module-filtering--default-module)
 
 "Authentication error" when logging in, check that :
 

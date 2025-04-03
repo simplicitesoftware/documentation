@@ -9,7 +9,7 @@ Select object
 ### What is a Select object ?
 
 A **Select Object** is an object whose table content is based on the result of an SQL query.  
-It is considered as a [business object](/platform/businessobjects/business-objects) by the platform and therefore benefits from the same functionalities (search, list, form, cross tables, publication, etc.). 
+It is considered as a [business object](/make/businessobjects/business-objects) by the platform and therefore benefits from the same functionalities (search, list, form, cross tables, publication, etc.). 
 
 ### How to create a Select object ?
 

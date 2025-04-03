@@ -9,7 +9,7 @@ title: 2.11. Configuring business rules
 
 ## What is a Constraint ?
 
-In Simplicité, constraints allow to enforce business rules by dynamically controlling object properties, visibility, and behavior, while ensuring secure backend validation... [Learn more](/platform/businessobjects/constraints)
+In Simplicité, constraints allow to enforce business rules by dynamically controlling object properties, visibility, and behavior, while ensuring secure backend validation... [Learn more](/make/businessobjects/constraints)
 
 ## Adding a Constraint to the Order Business Object
 

@@ -15,7 +15,7 @@ It is used to make a service call in order to obtain data without storing it in 
 The most common use case is to query the referential database services (country database, municipality database, etc.) without having to duplicate the data.  
 As many attributes need to be associated with the service object as are returned by the service call, and the names of the attributes need to be mapped to the names received in the flow.  
 
-The service object is seen by the platform as a [business object](/platform/businessobjects/business-objects).
+The service object is seen by the platform as a [business object](/make/businessobjects/business-objects).
 
 The hooks to be implemented are **loadServiceConfig**, **countService()**, **searchService**, **selectService**, **createService**,  **updateService**, **deleteService**.  
 

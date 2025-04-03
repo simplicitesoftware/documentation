@@ -9,7 +9,7 @@ title: 2.9. Adding icons and a theme
 
 ## What is a Theme ?
 
-A theme defines the logo and the main colors of the interface...[Learn more](/platform/userinterface/themes)
+A theme defines the logo and the main colors of the interface...[Learn more](/make/userinterface/themes)
 
 ## Creating a Theme
 

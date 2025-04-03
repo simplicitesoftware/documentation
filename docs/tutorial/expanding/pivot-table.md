@@ -9,7 +9,7 @@ title: 2.7. Creating a pivot table
 
 ## What is a Pivot table ?
 
-Pivot tables provide a powerful way to analyze data by cross-referencing fields within a business object. Users can configure tables by selecting which fields appear as rows, columns, and values, with various customization options like filtering, axis swapping, and export capabilities... [Learn more](/platform/userinterface/objectsrendering/pivot-table)
+Pivot tables provide a powerful way to analyze data by cross-referencing fields within a business object. Users can configure tables by selecting which fields appear as rows, columns, and values, with various customization options like filtering, axis swapping, and export capabilities... [Learn more](/make/userinterface/objectsrendering/pivot-table)
 
 ## Adding a Pivot table to the Order Business object
 

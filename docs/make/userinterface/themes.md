@@ -9,7 +9,7 @@ title: Themes
 
 A theme is an object that defines the visual & graphics styles of a Simplicité's native interface. You create it through the embedded **Theme Editor**, and you then have the possibility to refine it by adding a custom stylesheet (written in LESS or CSS) that will define styles applied globally over your interfaces.
 
-A theme has to be associated to a [scope](/platform/userinterface/views/home-page#scopes).
+A theme has to be associated to a [scope](/make/userinterface/views/home-page#scopes).
 
 ## Theme Editor
 
@@ -64,7 +64,7 @@ Start by creating the theme object by going to *User Interface > Themes* and cli
 
 ## Usage
 
-Once that you created your theme, you can use it on any **View** that is of type [Home page](/platform/userinterface/views/home-page) by applying it from the view's form:
+Once that you created your theme, you can use it on any **View** that is of type [Home page](/make/userinterface/views/home-page) by applying it from the view's form:
 
 1. Open your view's form at *User Interface > Views > Home page*.
 

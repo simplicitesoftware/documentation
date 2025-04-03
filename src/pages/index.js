@@ -82,7 +82,7 @@ export default function Home() {
             <DocSection
               title="Documentation"
               description="Detailed technical documentation and configuration guides."
-              link="/platform/welcome"
+              link="/make/welcome"
               icon={Icons.docs}
             />
             <DocSection

@@ -135,7 +135,7 @@ public boolean isPrintTemplateEnable(String[] row, String printTemplateName) {
 }
 ```
 
-> See [this document](/platform/userinterface/objectsrendering/publications) for details on how to implement publications.
+> See [this document](/make/userinterface/objectsrendering/publications) for details on how to implement publications.
 
 ### State transitions hook
 

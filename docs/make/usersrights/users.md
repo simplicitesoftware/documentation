@@ -43,8 +43,8 @@ A user can be:
 
 ## Configuration objects linked to a User
 
-- [Dashboards](/platform/userinterface/views/dashboard) : List of Dashboards created by the user
-- [Responsibilities](/platform/usersrights/responsibilities) : List of a user's Responsibilities
+- [Dashboards](/make/userinterface/views/dashboard) : List of Dashboards created by the user
+- [Responsibilities](/make/usersrights/responsibilities) : List of a user's Responsibilities
 
 ## Learn more
 

@@ -9,7 +9,7 @@ title: 2.3. Structuring forms
 
 ## What is a Field Area ?
 
-A Field Area groups related fields in forms and lists for better organization... [Learn more](/platform/userinterface/templating/fields-areas)
+A Field Area groups related fields in forms and lists for better organization... [Learn more](/make/userinterface/templating/fields-areas)
 
 ## Customizing the Order Business object form
 

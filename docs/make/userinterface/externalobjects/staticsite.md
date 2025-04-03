@@ -7,7 +7,7 @@ title: Static Web Site
 
 ## What is a Static Web Site ?
 
-Simplicité's [External Objects](/platform/userinterface/externalobjects/basic) allow you to create **Static Web Site** objects; standalone web pages used to display elements without being logged nor interacting with any feature from Simplicité's backend.
+Simplicité's [External Objects](/make/userinterface/externalobjects/basic) allow you to create **Static Web Site** objects; standalone web pages used to display elements without being logged nor interacting with any feature from Simplicité's backend.
 
 In other terms it is a static site that you create using either the native web stack (html, css, js) or specific web-frameworks (Vue, Angular, ...).
 
@@ -28,7 +28,7 @@ The creation process is similar to the one for any *External Object*:
 
 ![](img/staticsite/staticsite_createresources.png)
 
-4. From the updated object's form, click **Create Resources** to create the web [Resources](/platform/userinterface/resources).
+4. From the updated object's form, click **Create Resources** to create the web [Resources](/make/userinterface/resources).
     - Ensure **CLASS** **HTML** and **STYLES** well appear in the *Resources* tab.
     > Created Resources:
     > ![](img/staticsite/staticsite_resources.png)
@@ -37,7 +37,7 @@ The creation process is similar to the one for any *External Object*:
 
 As a *Static Web Page* isn't interacting with Simplicité's API or backend, you only have the 3 resources to worry about. For the development specific to Simplicité refer to the [JSdoc](https://platform.simplicite.io/current/jsdoc/global.html).
 
-> Specific use case and code examples can be found in the following lessons: [WebPage](/platform/userinterface/externalobjects/webpage), [UI Component](/platform/userinterface/externalobjects/uicomponent), [External Objects](/platform/userinterface/externalobjects/basic).
+> Specific use case and code examples can be found in the following lessons: [WebPage](/make/userinterface/externalobjects/webpage), [UI Component](/make/userinterface/externalobjects/uicomponent), [External Objects](/make/userinterface/externalobjects/basic).
 
 **HTML:**
 - Content of your page, declared in a `.html` file.

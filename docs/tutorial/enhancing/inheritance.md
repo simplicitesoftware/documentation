@@ -11,7 +11,7 @@ description: Creating an inherited object to filter data
 
 ## What is inheritance ?
 
-Inheritance is a mechanism that allows a Business Object to inherit properties and methods from another Business Object. In Simplicité, inheritance can be used to customize a System Object, display filtered lists... [Learn more](/platform/businessobjects/business-objects.md#configuration)
+Inheritance is a mechanism that allows a Business Object to inherit properties and methods from another Business Object. In Simplicité, inheritance can be used to customize a System Object, display filtered lists... [Learn more](/make/businessobjects/business-objects.md#configuration)
 
 ## Creating an inheritor of TrnProduct
 
