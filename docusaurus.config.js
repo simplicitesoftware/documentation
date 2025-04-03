@@ -8,7 +8,7 @@ const config = {
   favicon: "img/simplicite_favicon.png",
 
   // Set the production url of your site here
-  url: "https://documentation.simplicite.io/",
+  url: "https://docs.simplicite.io/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
