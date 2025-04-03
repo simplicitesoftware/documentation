@@ -11,7 +11,7 @@ Versioning
 | **Version** | **Maintenance State**      | **Support type** | **Release date**                            | **Maintenance end date**                    | **Docker images tags**              | **Template branch** |
 |-------------|----------------------------|------------------|---------------------------------------------|---------------------------------------------|-------------------------------------|---------------------|
 | [6.3](/versions/release-notes/v6-3.md)      | 🚧 Alpha                   | Not applicable   | *<abbr title="To Be Determined">TBD</abbr>* | *<abbr title="To Be Determined">TBD</abbr>* | `6-alpha[-light]`                   | `6.3[-light]`       |
-| [6.2](/versions/release-notes/v6-2.md)       | ✅ **Current release**     | Current          | Feb 10th, 2025                              | *<abbr title="To Be Determined">TBD</abbr>* | `6[-light]`, `6.2[-light]`, `6.2.x` | `6.2[-light]`       |
+| [6.2](/versions/release-notes/v6-2.md)       | ✅ **Current release** (*) | Current          | Feb 10th, 2025                              | *<abbr title="To Be Determined">TBD</abbr>* | `6[-light]`, `6.2[-light]`, `6.2.x` | `6.2[-light]`       |
 | [6.1](/versions/release-notes/v6-1.md) | ☑️ Maintained              | Short term (STS) | July 10th, 2024                             | May 11th, 2025                              | `6.1[-light]`, `6.1.x`              | `6.1[-light]`       |
 | [6.0](/versions/release-notes/v6-0.md)       | ❌ Expired                 | Short term (STS) | January 31st, 2024                          | October 31th, 2024                          | `6.0[-light]`, `6.0.x`              | `6.0[-light]`       |
 | [5.3](/versions/release-notes/v5-3.md)        | ☑️ Maintained              | Long-term (LTS)  | April 24th, 2023                            | January 31st, 2027                          | `5[-light]`, `5.3[-light]`, `5.3.x` | `5.3[-light]`       |
@@ -21,12 +21,12 @@ Versioning
 | `4.0`       | ⛔ Outdated!               | Long-term (LTS)  | 2018                                        | January 15th, 2024                          | `4[-light]`, `4.0[-light]`          | `4.0[-light]`       |
 | `3.x`       | ⛔ Outdated!               | Long-term (LTS)  | 2014 (for 3.0)                              | July 3rd, 2020
 
+(*) **Important**: maintained versions should not be used for new, or still in implementation phase, projects. Using the current release is always the best option.
+
 Some interchangeable terms:
 - **Current release**: release, latest version, latest stable
 - **Beta**: release candidate, pre-release, test version
 - **Alpha**: master, development version, nightly build
-
-> **Important**: maintained versions should never be used for new, or still in implementation phase, projects. Using the current release is always the good option for such projects.
 
 The [platform site](https://platform.simplicite.io) contains generated technical docs for all versions:
 - [JavaDoc](https://platform.simplicite.io/current/javadoc/) & [JSDoc](https://platform.simplicite.io/current/jsdoc/)
