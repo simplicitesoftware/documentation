@@ -91,6 +91,12 @@ const config = {
             label: "JavaDoc etc.",
             position: "left",
           },
+          {
+            href: 'https://github.com/simplicitesoftware/documentation',
+            position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository',
+          }
         ],
       },
       prism: {
