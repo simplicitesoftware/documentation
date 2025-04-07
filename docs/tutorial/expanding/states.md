@@ -13,8 +13,7 @@ A state model defines the different statuses a business object can have and cont
 
 ## Creating a State model for the Order Business object
 
-### Adding a mandatory "State" field
-
+### Adding a mandatory "State" field {#add-enum}
 To add a State field to the Order Business object, follow the steps below :
 
 1. Add a **mandatory enumeration** field to the **TrnOrder** Business object in the [previously](/tutorial/expanding/fieldarea#structuring-the-order-template) created "Order" Field Area

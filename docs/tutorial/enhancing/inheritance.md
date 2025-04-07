@@ -26,12 +26,13 @@ To do so, follow the steps below :
 3. Click **Next**
 4. Create a Translation for the object :
     - English : **Cheap products|Cheap product**
-5. Grant a Read only function to the *TRN_SUPERADMIN* Group  
-<details>
+5. Grant a Read only function to the *TRN_SUPERADMIN* Group
+     ![](img/inheritance/add-grant.png)
+<!--<details>
     <summary>Screenshot</summary>
 
     ![](img/inheritance/add-grant.png)
-</details>
+</details>-->
 6. Follow all the steps of the creation process
 7. In the **Extend of Logical name** field of **TrnProductCheap**, select **TrnProduct**  
     ![](img/inheritance/extend-field.png)
