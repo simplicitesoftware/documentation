@@ -8,32 +8,41 @@ Platform hooks
 
 This document describes the hooks that can be implemented to put some **additional** business logic at user session level.
 
-> **Important**: As of version 5.0, static grant hooks are **deprecated**, they are replaced by the platform hooks singleton with same methods.  
->**Rhino** scripting language is no longer supported in Simplicité version 6.0+.
+> **Important**: As of version 5.0, static grant hooks are **deprecated**, they are replaced by the platform hooks singleton with same methods.
+> **Rhino** scripting language is no longer supported in Simplicité version 6.0+.
 
 > This document describes `PlatformHooks` implementation examples but it can be directly transposed to legacy `GrantHooks`.
 
->None of these hooks **needs** to be implemented. You can implement one or several of these hooks if you want to apply out some dynamic business logic that goes beyond what can be configured.
+> None of these hooks **needs** to be implemented. You can implement one or several of these hooks if you want to apply out some dynamic business logic that goes beyond what can be configured.
 
->These hooks are located in the singleton shared code named `PlatformHooks`.
+> These hooks are located in the singleton shared code named `PlatformHooks`.
+
+Platform init hook
+-------------------
+
+The `postPlatformInit` (version 4.0+) platform hook can be used to do some unique processing after the platform instance startup.
+
+For instance you can use it to read and use some **immutable** settings passed to the instance using an anvironment variable or a JVM argument.
+
+> **Note** This initialization-related platform hook is called only once, it is not re-called after a clear cache
 
 Authentication hooks
 --------------------
 
-The `customAuth` (version 3.2+), `parseAuth` (version 3.0+) and `postAuth` (version 4.0+) can be used to implement/customize authentication flows.
+The `customAuth` (version 3.2+), `parseAuth` (version 3.0+) and `postAuth` (version 4.0+) platform hooks can be used to implement/customize authentication flows.
 
 ```mermaid
 flowchart TD
-    A0-->H 
+    A0-->H
     H -- Yes -->B
     H -- No -->A
     B-->D
     D-->A
     A-->E
-    E-->F 
+    E-->F
     F-->G1
     G1-->G
-    A0(customAuth) 
+    A0(customAuth)
     A("parseAuth (extract login)")
     B(preAuth)
     D("postAuth")
@@ -47,14 +56,14 @@ flowchart TD
 Check:
 
 - [JavaDoc](https://platform.simplicite.io/current/javadoc/com/simplicite/util/PlatformHooks.html)
-- [this document about custom authentication](/docs/authentication/customauth), 
+- [this document about custom authentication](/docs/authentication/customauth),
 - [this document about OAuth2 authentication](/docs/authentication/oauth2)
 - [this document about SAML authentication](/docs/authentication/saml) for details.
 
 Custom start page hook
 ----------------------
 
-As of version 5.0 `customStartPage` platform hooks allows to implement a custom low-level start page `/` instead of the default start page that only redirects to `/ui/`.  
+The `customStartPage` (version 5.0+) platform hook allows to implement a custom low-level start page `/` instead of the default start page that only redirects to `/ui/`.
 
 Note that similar start page customization can also be achieved at a higher level by implementing the `displayPublic` hook of a disposition associated to the `public` user.
 
@@ -68,7 +77,7 @@ For more details  [refer to this documentation](/docs/authentication/custom-page
 Custom health check hook
 ------------------------
 
-As of version 6.2 the `customHealthCheck` platform hook allows to implement e custom health check, e.g.:
+The `customHealthCheck` (version 6.2+) platform hook allows to implement e custom health check, e.g.:
 
 ```java
 @Override
@@ -80,13 +89,14 @@ public void customHealthCheck(HttpServletRequest request, HttpServletResponse re
 		.put("date", Tool.toDatetime(new Date())));
 }
 ```
-User rights hooks
------------------
+
+User loading hooks
+------------------
 
 ### `preLoadGrant` &amp; `postLoadGrant`
 
-Two hooks can be used to dynamically customize the user rights.
- 
+These two platform hooks can be used to dynamically customize the user profile and rights.
+
 The `preLoadGrant` is called **before** actually loading the user rights (at that stage the user is authenticated and the platform only knows its login).
 
 Example:
@@ -138,6 +148,14 @@ PlatformHooks.postLoadGrant(g) {
 }
 ```
 </details>
+
+There are also some **finer** hooks that are **enclosed** between the above `pre/postLoadGrant`:
+
+- `preLoadSystemParams` &amp; `postLoadSystemParams` called before and after loading the user's system parameters
+- `preLoadProfile` &amp; `postLoadProfile` called before and after loading the main user's settings (e.g. names, language, timezone, ...)
+- `preLoadResponsibilities` &amp; `postLoadResponsibilities` called before and after loading the user's responsibilities
+- `preLoadMenu` &amp; `postLoadMenu` called before and after loading the user's menu entries
+- `preLoadHome` &amp; `postLoadHome` called before and after loading the user's home page
 
 Menu hooks
 ----------
@@ -198,7 +216,7 @@ public List<SearchItem> postSearchIndex(Grant g, List<SearchItem> rows) {
 		AppLog.info("data "+item.data,g); // Default payload or summary to display
 		if (!Tool.isEmpty(item.values)) {
 			// Optional object values as a List of String
-		}	
+		}
 	}
 
 	// Sample to add an item on top
@@ -229,16 +247,16 @@ PlatformHooks.postSearchIndex = function(g, rows) {
 		console.log("data "+item.data); // Default payload or summary to display
 		if (item.values) {
 			//... Optional object values as a List of String
-		}	
+		}
 	}
-	
+
 	// Sample to add an item on top
 	var item = new SearchItem();
 	item.score = "1000";
 	item.ukey = "The best item";
 	item.data = "This item is always returned...";
 	if (rows) rows.add(0,item);
-	
+
 	return rows;
 }
 ```
@@ -249,7 +267,7 @@ Other hooks
 
 ### `validatePassword`
 
-This hook is called when a password change is attempted, it can be used to implement custom rules for password fomat validation:
+This platform hook is called when a password change is attempted, it can be used to implement custom rules for password fomat validation:
 
 
 **Java**
@@ -279,14 +297,14 @@ PlatformHooks.validatePassword = function(g, pwd) {
 It can returns either a single error message (like in the example above) or an array of error messages.
 An error message can either be a hard-coded label (like in the example above)
 or, better, the code of a configured static text (so as it is displayed in the user's language).
-Otherwise, it must either return nothing (like in the example above) or an explicit `null` value to indicate that the password is accepted. 
+Otherwise, it must either return nothing (like in the example above) or an explicit `null` value to indicate that the password is accepted.
 
 The default system-level implementation for password validation is that a password must have at least 8 digits.
 The error(s) returned by the above hooks are **added** to the default error message returned when password length is less than 8 digits.
 
 ### `logout`
 
-This hook is called when an explicit or implicit logout occurs (it is called just before the session is dropped)
+This platform hook is called when an explicit or implicit logout occurs (it is called just before the session is dropped)
 
 **Java**
 
@@ -309,7 +327,7 @@ PlatformHooks.logout = function(g) {
 
 ### `downloadDocument`
 
-This hook is called when a document download has been requested and has been successfully checked (versions 3.2+):
+This platform hook is called when a document download has been requested and has been successfully checked (versions 3.2+):
 
 **Java**
 
