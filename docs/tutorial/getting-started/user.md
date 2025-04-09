@@ -115,7 +115,7 @@ To do so, follow the steps below :
 
 
 ## Troubleshooting
-> These steps must be done using the **designer** user with **no active module filter**, see [Module filter](/make/project/module#module-filtering--default-module)
+> These steps must be done using the **designer** user with **no active module filter**, see [Module filter](/make/project/module#module-filtering)
 
 "Authentication error" when logging in, check that :
 

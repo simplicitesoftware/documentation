@@ -29,7 +29,7 @@ To grant the RedoLog object to the TRN_SUPERADMIN Group, follow the steps below 
     ![](img/historization/module-filter.png)
 2. Click **Show all**  
     ![](img/historization/show-all.png)
-    > For more information about module filters, see [Module filters](/make/project/module#module-filtering--default-module)
+    > For more information about module filters, see [Module filters](/make/project/module#module-filtering)
 3. In the **Business objects > Business objects** menu, open **RedoLog**  
     ![](img/historization/redolog-list.png)
 4. Open the **RedoLog-R** Function in the Functions list linked to the RedoLog object  

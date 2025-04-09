@@ -62,7 +62,7 @@ public List<String> postValidate() {
 }
 ```
 
-### Implement back-end code for the Product's "Increase Stock" action
+### Implement back-end code for the Product's "Increase Stock" action {#increase-stock-method}
 
 To implement back-end code for the Increase stock action, follow the steps below : 
 1. In the **Business objects > Actions** menu, open **Increase Stock**  

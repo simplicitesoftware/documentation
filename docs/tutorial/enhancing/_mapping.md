@@ -1,7 +1,6 @@
 ---
-sidebar_class_name: hidden
 sidebar_position: 15
-title: Mapping
+title: 3.4. Mapping
 ---
 
 Mapping
