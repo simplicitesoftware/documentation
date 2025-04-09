@@ -155,7 +155,9 @@ There are also some **finer** hooks that are **enclosed** between the above `pre
 - `preLoadProfile` &amp; `postLoadProfile` called before and after loading the main user's settings (e.g. names, language, timezone, ...)
 - `preLoadResponsibilities` &amp; `postLoadResponsibilities` called before and after loading the user's responsibilities
 - `preLoadMenu` &amp; `postLoadMenu` called before and after loading the user's menu entries
-- `preLoadHome` &amp; `postLoadHome` called before and after loading the user's home page
+
+The `preLoadHome` &amp; `postLoadHome` hooks are called before and after loading the user's home page, which appends after the user loading above,
+but also each time the user changes its scope (a scope being associated to a home page)
 
 Menu hooks
 ----------
