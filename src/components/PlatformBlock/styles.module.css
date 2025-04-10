@@ -92,14 +92,12 @@
   box-sizing: border-box;
   border-radius: .33rem;
   border: solid 0.065rem transparent;
-  background: rgba(255,255,255, 0.1);
   b {
     font-weight: 600;
     font-size: 1.125rem;
   }
   a {
     padding-left: .5rem;
-    color: white;
     opacity: 0.6;
     text-decoration: none;
     transition: all 0.25s ease-in;
@@ -109,6 +107,27 @@
     }
   }
   &:hover { border-color: rgba(255,255,255, 0.25);}
+}
+
+html[data-theme='dark'] .auditBlock,
+html[data-theme='dark'] .jsBlock,
+html[data-theme='dark'] .javaBlock {
+  background: rgba(255,255,255, 0.1);
+  border-color: rgba(255,255,255, 0.25);
+  a {
+    color: white;
+    &:hover { border-color: rgba(255,255,255, 0.25);}
+  }
+}
+html[data-theme='light'] .auditBlock,
+html[data-theme='light'] .jsBlock,
+html[data-theme='light'] .javaBlock {
+  background: rgba(0,0,0, 0.1);
+  border-color: rgba(0,0,0, 0.25);
+  a {
+    color: black;
+    &:hover { border-color: rgba(0,0,0, 0.25);}
+  }
 }
 
 .dockerInfos {
