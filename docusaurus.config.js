@@ -84,12 +84,15 @@ const config = {
           {
             to: "/versions/versioning/",
             label: "Versions",
+            sidebarId:"versionSidebar",
             position: "left",
           },
           {
-            to: "https://platform.simplicite.io/",
+            to: "/resources/platform_resources/",
             label: "JavaDoc etc.",
+            sidebarId:"resourceSidebar",
             position: "left",
+            css: "./src/css/platformBlocks.css",
           },
           {
             href: 'https://github.com/simplicitesoftware/documentation',

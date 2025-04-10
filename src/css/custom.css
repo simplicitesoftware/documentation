@@ -78,3 +78,6 @@
 .hidden {
   display: none !important
 }
+
+/* Cheating to make the blocks still referenced in right panel... */
+.ghost-md-anchor { opacity: 0; }

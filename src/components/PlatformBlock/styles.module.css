@@ -1,0 +1,285 @@
+.platformBlock {
+  position: relative;
+  box-sizing: border-box;
+  border: solid 0.025rem transparent;
+  display: flex;
+  flex-direction: column;
+  padding: .25rem .75rem;
+  width: 90%;
+  height: fit-content;
+  transition: all .25s ease-in;
+}
+
+.platformBlock:hover {
+  border-radius: .33rem;
+  margin-left: .5rem;
+  & .maintenance {
+    right: -2rem;
+  }
+}
+
+.blockHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 650;
+}
+
+.maintenance {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  font-size: 1.5rem;
+  font-style: italic;
+  padding: .33rem .66rem;
+  border-radius: .5rem;
+  transition: all .25s ease-in;
+}
+
+.blockBody {
+  display: flex;
+  flex-direction: column;
+  padding: .5rem;
+  gap: .5rem;
+}
+
+.comment {
+  font-style: italic;
+}
+
+.b {
+  font-weight: 500;
+}
+
+.blockLinks {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: fit-content;
+}
+
+.docLinks, .mavLinks {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 0 !important;
+  gap: .75rem;
+}
+
+.docLinks a, .mavLinks a {
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  border: solid 1px transparent;
+  font-size: 1.25rem;
+  color: inherit;
+  padding: .25rem 0;
+  transition: all 0.25s ease-in;
+}
+.dockerInfos {
+  margin-top: .5rem;
+  display: flex;
+  width: 100%;
+  justify-content: start;
+  align-items: center;
+  gap: 1.25rem;
+}
+.dockTitle, .packTitle {
+  font-size: 1.25rem;
+  text-align: left;
+}
+.dockTag {
+  padding: .125rem .5rem;
+  border-radius: .33rem;
+  transition: all 0.25s ease-in;
+  &:hover {
+    cursor: default;
+    opacity: 0.75;
+  }
+}
+.packageLinks {
+  margin-top: .5rem;
+  display: flex;
+  width: 100%;
+  justify-content: start;
+  align-items: center;
+  gap: 1.25rem;
+}
+.packInfo {
+  font-weight: 400;
+  opacity: 0.75;
+}
+.packageLinks a {
+  text-decoration: none;
+  padding: .125rem .5rem;
+  border-radius: .33rem;
+  transition: all 0.25s ease-in;
+  border: solid 0.065rem transparent;
+  &:hover {
+    cursor: pointer;
+    border-radius: .4rem;
+  }
+}
+
+.docLinks a:hover, .mavLinks a:hover {
+  border-radius: .33rem;
+}
+
+.docLinks a:active, .mavLinks a:active {
+  border-radius: 0rem;
+}
+/* Ghost anchor for navigation */
+.ghostMdAnchor {
+  position: relative;
+  top: -5rem;
+  visibility: hidden;
+  height: 0;
+}
+
+/* Dark theme styles */
+html[data-theme='dark'] .maintenance {
+  background-color: #e7e7e7;
+  color: black;
+}
+html[data-theme='dark'] .docLinks a, 
+html[data-theme='dark'] .mavLinks a {
+  border-color: rgba(255,255,255, 0.25);
+  background-color: rgba(255,255,255, 0.05);
+}
+
+html[data-theme='dark'] .docLinks a:hover, 
+html[data-theme='dark'] .mavLinks a:hover {
+  background-color: rgba(255,255,255, 0.1);
+}
+
+html[data-theme='dark'] .docLinks a:active, 
+html[data-theme='dark'] .mavLinks a:active {
+  background-color: rgba(255,255,255, 0.05);
+}
+
+html[data-theme='dark'] .dockTag,
+html[data-theme='dark'] .packageLinks a {
+  background:  rgba(23,23,23, 0.5);
+  color: #b9b9b9;
+  &:hover {
+    background-color: rgba(23,23,23, 0.33);
+    border-color: rgba(185,185,185, 0.75);
+  }
+}
+/* Light theme styles */
+html[data-theme='light'] .maintenance {
+  background-color: #474747;
+  color: white;
+}
+html[data-theme='light'] .docLinks a, 
+html[data-theme='light'] .mavLinks a {
+  border-color: rgba(0,0,0, 0.25);
+  background-color: rgba(0,0,0, 0.05);
+}
+
+html[data-theme='light'] .docLinks a:hover, 
+html[data-theme='light'] .mavLinks a:hover {
+  background-color: rgba(0,0,0, 0.1);
+}
+
+html[data-theme='light'] .docLinks a:active, 
+html[data-theme='light'] .mavLinks a:active {
+  background-color: rgba(0,0,0, 0.05);
+}
+html[data-theme='light'] .dockTag,
+html[data-theme='light'] .packageLinks a {
+  background:  rgba(241,241,241, 0.5);
+  color: #303030;
+  &:hover {
+    background-color: rgba(241,241,241, 0.33);
+    border-color: rgba(185,185,185, 0.75);
+  }
+}
+
+/* Version status styles - Dark theme */
+html[data-theme='dark'] .active {
+  background-color: #1e5a39;
+  border-color: #b7f3d2;
+  color: #b7f3d2;
+}
+
+html[data-theme='dark'] .active .blockBody {
+  color: #dbf9e9;
+}
+
+html[data-theme='dark'] .alpha {
+  background-color: #1e1e65;
+  border-color: #b7b7fe;
+  color: #b7b7fe;
+}
+
+html[data-theme='dark'] .alpha .blockBody {
+  color: #dbdbfe;
+}
+
+html[data-theme='dark'] .shortterm,
+html[data-theme='dark'] .longterm {
+  background-color: #664a63;
+  border-color: #ffe3fc;
+  color: #ffe3fc;
+}
+
+html[data-theme='dark'] .shortterm .blockBody,
+html[data-theme='dark'] .longterm .blockBody {
+  color: #fff1fe;
+}
+
+html[data-theme='dark'] .expired {
+  background-color: #661d1d;
+  border-color: #ffb6b6;
+  color: #ffb6b6;
+}
+
+html[data-theme='dark'] .expired .blockBody {
+  color: #ffdbdb;
+}
+
+html[data-theme='dark'] .expired.outdated {
+  opacity: 0.5;
+}
+
+/* Version status styles - Light theme */
+
+html[data-theme='light'] .active {
+  background-color: #bcf7d7;
+  border-color: #235e3e;
+  color: #235e3e;
+}
+
+html[data-theme='light'] .alpha {
+  background-color: #bbb9ff;
+  border-color: #222066;
+  color: #222066;
+}
+
+html[data-theme='light'] .shortterm,
+html[data-theme='light'] .longterm {
+  background-color: #f7d8f8;
+  border-color: #5e3f5f;
+  color: #5e3f5f;
+}
+
+html[data-theme='light'] .expired {
+  background-color: #fdafb3;
+  border-color: #64161a;
+  color: #64161a;
+}
+
+.outdated {
+  opacity: 0.5;
+}
