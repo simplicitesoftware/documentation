@@ -22,8 +22,20 @@ Platform init hook
 
 The `postPlatformInit` (version 4.0+) platform hook can be used to do some unique processing after the platform instance startup.
 
-For instance you can use it to read and use some **immutable** settings passed to the instance using an anvironment variable or a JVM argument.
+For instance you can use it to read and use some **immutable** settings passed to the instance using an environment variable or a JVM argument, e.g.
 
+```java
+@Override
+public String postPlatformInit(Grant sys) {
+	String setting = System.getenv("SOME_ENV");
+	if (!Tool.isEmpty(setting)) {
+		sys.setSystemParam("MY_SETTING", setting); // set it in database
+		sys.setParameter("MY_SETTING", setting); // set it in memory for current system user singleton
+		return "MY_SETTING has been set from the SOME_ENV env var";
+	}
+	return "SOME_ENV env var is not set";
+}
+```
 > **Note** This initialization-related platform hook is called only once, it is not re-called after a clear cache
 
 Authentication hooks
