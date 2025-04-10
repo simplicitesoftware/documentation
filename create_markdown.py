@@ -74,13 +74,37 @@ def create_block_component(version):
 def md_header(position, title):
     return f"---\nsidebar_position: {position}\ntitle: {title}\n---\n\n{title}\n==================\n\n"
 
-# Versionning (table) page -> minimal informations with links to platform for more technicities
-def create_platform_page(data):
+def create_platform_page_1(data):
     md_content = md_header(10, "Platform Resources")
     for version in data.items():
         md_content += create_block_component(version)
     return md_content
 
+def create_platform_page(data):
+    md_content = md_header(10, "Platform Resources")
+    
+    # Convert items to list for easier iteration in pairs
+    versions = list(data.items())
+    
+    # Process versions in pairs
+    for i in range(0, len(versions), 2):
+        # Start a horizontal flex row
+        md_content += '<div class="platform-row">\n'
+        
+        # Add the current version block
+        md_content += '<div class="platform-block">\n'
+        md_content += create_block_component(versions[i])
+        md_content += '</div>\n'
+        
+        # Add the second version block if it exists
+        if i + 1 < len(versions):
+            md_content += '<div class="platform-block">\n'
+            md_content += create_block_component(versions[i + 1])
+            md_content += '</div>\n'
+        # Close the row
+        md_content += '</div>\n'
+    
+    return md_content
 
 # Platform (blocks) page -> full informations with all required links & informations, styled to match old "platform.simplicite.io"
 def create_versionning_page(data):

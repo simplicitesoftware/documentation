@@ -6,6 +6,8 @@ title: Platform Resources
 Platform Resources
 ==================
 
+<div class="platform-row">
+<div class="platform-block">
 <div class="ghost-md-anchor" id="6-3">
 ## 🚧 6.3 - alpha
 </div>
@@ -40,6 +42,8 @@ Platform Resources
   ]}
 >
 </PlatformBlock>
+</div>
+<div class="platform-block">
 <div class="ghost-md-anchor" id="6-2">
 ## ✅ 6.2 - current
 </div>
@@ -74,6 +78,10 @@ Platform Resources
   ]}
 >
 </PlatformBlock>
+</div>
+</div>
+<div class="platform-row">
+<div class="platform-block">
 <div class="ghost-md-anchor" id="6-1">
 ## ☑️ 6.1
 </div>
@@ -108,6 +116,8 @@ Platform Resources
   ]}
 >
 </PlatformBlock>
+</div>
+<div class="platform-block">
 <div class="ghost-md-anchor" id="6-0">
 ## ❌ 6.0
 </div>
@@ -142,6 +152,10 @@ Platform Resources
   ]}
 >
 </PlatformBlock>
+</div>
+</div>
+<div class="platform-row">
+<div class="platform-block">
 <div class="ghost-md-anchor" id="5-3">
 ## ☑️ 5.3 - LTS
 </div>
@@ -176,6 +190,8 @@ Platform Resources
   ]}
 >
 </PlatformBlock>
+</div>
+<div class="platform-block">
 <div class="ghost-md-anchor" id="5-2">
 ## ❌ 5.2
 </div>
@@ -210,6 +226,10 @@ Platform Resources
   ]}
 >
 </PlatformBlock>
+</div>
+</div>
+<div class="platform-row">
+<div class="platform-block">
 <div class="ghost-md-anchor" id="5-1">
 ## ❌ 5.1
 </div>
@@ -244,6 +264,8 @@ Platform Resources
   ]}
 >
 </PlatformBlock>
+</div>
+<div class="platform-block">
 <div class="ghost-md-anchor" id="5-0">
 ## ❌ 5.0
 </div>
@@ -278,6 +300,10 @@ Platform Resources
   ]}
 >
 </PlatformBlock>
+</div>
+</div>
+<div class="platform-row">
+<div class="platform-block">
 <div class="ghost-md-anchor" id="4-0">
 ## ❌ 4.0
 </div>
@@ -312,6 +338,8 @@ Platform Resources
   ]}
 >
 </PlatformBlock>
+</div>
+<div class="platform-block">
 <div class="ghost-md-anchor" id="3-2">
 ## ❌ 3.2
 </div>
@@ -333,6 +361,10 @@ Platform Resources
   packages={[]}
 >
 </PlatformBlock>
+</div>
+</div>
+<div class="platform-row">
+<div class="platform-block">
 <div class="ghost-md-anchor" id="3-1">
 ## ❌ 3.1
 </div>
@@ -354,6 +386,8 @@ Platform Resources
   packages={[]}
 >
 </PlatformBlock>
+</div>
+<div class="platform-block">
 <div class="ghost-md-anchor" id="3-0">
 ## ❌ 3.0
 </div>
@@ -375,3 +409,5 @@ Platform Resources
   packages={[]}
 >
 </PlatformBlock>
+</div>
+</div>

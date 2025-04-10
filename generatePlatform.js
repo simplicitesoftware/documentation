@@ -7,9 +7,9 @@ const tmpFilePath = path.join(__dirname, "tmp_json.json");
 const URL = "https://platform.simplicite.io/versions.json"
 const jsonPath = "./formatted_versions.json"
 
-let FROM_PLATFORM = false;
+// let FROM_PLATFORM = true;
 
-if (FROM_PLATFORM) {
+// if (FROM_PLATFORM) {
     fetch(URL)
     .then(response => response.json())
     .then(data => {
@@ -33,9 +33,10 @@ if (FROM_PLATFORM) {
         );
     })
     .catch(error => console.error(`\nError fetching json at "${URL}":\n`, error, "\n"));
-}
-else
-{
+// }
+// else
+// {
+/*
     try {
         // Read from the local JSON file instead of fetching from URL
         const data = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
@@ -63,4 +64,5 @@ else
     } catch (error) {
         console.error(`\nError reading or parsing JSON from "${jsonPath}":\n`, error, "\n");
     }
-}
+        */
+// }

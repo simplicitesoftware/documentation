@@ -96,3 +96,18 @@
 
 /* Cheating to make the blocks still referenced in right panel... */
 .ghost-md-anchor { opacity: 0; }
+
+/* Placing blocks per group of 2 */
+.platform-row {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.platform-block {
+  display:flex;
+  flex-direction: column;
+  width: 50%;
+  flex: 1;
+}

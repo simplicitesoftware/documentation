@@ -5,16 +5,15 @@
   display: flex;
   flex-direction: column;
   padding: .25rem .75rem;
-  width: 50%;
+  width: 100%;
   height: fit-content;
   transition: all .25s ease-in;
 }
 
 .platformBlock:hover {
-  border-radius: .33rem;
-  margin-left: .25rem;
+  border-radius: .5rem;
   & .maintenance {
-    right: -1.5rem;
+    top: -1.5rem;
   }
 }
 
@@ -30,13 +29,14 @@
 
 .maintenance {
   position: absolute;
-  top: -1rem;
-  right: -1rem;
+  top: -.75rem;
+  right: -.75rem;
   font-size: 1.5rem;
   font-style: italic;
   padding: .33rem .66rem;
   border-radius: .5rem;
   transition: all .25s ease-in;
+  z-index: 2;
 }
 
 .blockBody {
@@ -106,28 +106,27 @@
       padding-left: .75rem;
     }
   }
-  &:hover { border-color: rgba(255,255,255, 0.25);}
 }
 
 html[data-theme='dark'] .auditBlock,
 html[data-theme='dark'] .jsBlock,
 html[data-theme='dark'] .javaBlock {
   background: rgba(255,255,255, 0.1);
-  border-color: rgba(255,255,255, 0.25);
   a {
     color: white;
     &:hover { border-color: rgba(255,255,255, 0.25);}
   }
+  &:hover { border-color: rgba(255,255,255, 0.25);}
 }
 html[data-theme='light'] .auditBlock,
 html[data-theme='light'] .jsBlock,
 html[data-theme='light'] .javaBlock {
   background: rgba(0,0,0, 0.1);
-  border-color: rgba(0,0,0, 0.25);
   a {
     color: black;
     &:hover { border-color: rgba(0,0,0, 0.25);}
   }
+  &:hover { border-color: rgba(0,0,0, 0.25);}
 }
 
 .dockerInfos {
@@ -261,6 +260,7 @@ html[data-theme='dark'] .active {
   background-color: #1e5a39;
   border-color: #b7f3d2;
   color: #b7f3d2;
+  &:hover { background-color: rgba(30, 90, 57, 0.8); }
 }
 
 html[data-theme='dark'] .active .blockBody {
@@ -268,9 +268,10 @@ html[data-theme='dark'] .active .blockBody {
 }
 
 html[data-theme='dark'] .alpha {
-  background-color: #1e1e65;
+  background-color: rgba(30, 30, 101, 1);
   border-color: #b7b7fe;
   color: #b7b7fe;
+  &:hover { background-color: rgba(30, 30, 101, 0.8); }
 }
 
 html[data-theme='dark'] .alpha .blockBody {
@@ -282,6 +283,7 @@ html[data-theme='dark'] .longterm {
   background-color: #664a63;
   border-color: #ffe3fc;
   color: #ffe3fc;
+  &:hover { background-color: rgba(102, 74, 99, 0.8); }
 }
 
 html[data-theme='dark'] .shortterm .blockBody,
@@ -293,14 +295,11 @@ html[data-theme='dark'] .expired {
   background-color: #661d1d;
   border-color: #ffb6b6;
   color: #ffb6b6;
+  &:hover { background-color: rgba(102, 29, 29, 0.8); }
 }
 
 html[data-theme='dark'] .expired .blockBody {
   color: #ffdbdb;
-}
-
-html[data-theme='dark'] .expired.outdated {
-  opacity: 0.5;
 }
 
 /* Version status styles - Light theme */
@@ -328,6 +327,9 @@ html[data-theme='light'] .expired {
   background-color: #fdafb3;
   border-color: #64161a;
   color: #64161a;
+  &:hover {
+    background-color: red;
+  }
 }
 
 .outdated {
