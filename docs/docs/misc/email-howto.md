@@ -29,10 +29,10 @@ When `mail.debug` is set to `"true"`, the output is quite verbose, it is not sui
 
 ### Related system parameters
 
-The `mail.from` must be defined in 2 other parameters:
+The `mail.from` can be contextually overridden in 2 other parameters:
+
 - in `EMAIL_DEFAULT_SENDER`: default sender
 - and `BPMALERT_FROM`: used by Alert defined in a state transition
-
 
 ### SMTP server with authentication
 
@@ -117,6 +117,7 @@ Until **version 4.0** you can still configure the dedicated `mail/simplicite` co
 />
 ```
 
-It is however strongly recommended to use configuration-level as described above.
+It is however **strongly recommended** to use configuration-level as described above.
 
-> **WARNING** As of version 5.x this legacy approach is **not possible anymore** as the `javax.mail.*` package has been replaced by the new `jakarta.mail.*`.
+> **WARNING** As of version 5.x this context-level is **not possible anymore** as the `javax.mail.*` package has been replaced by the new `jakarta.mail.*`
+> which is not compatible with this legacy approach.
