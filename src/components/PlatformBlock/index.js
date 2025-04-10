@@ -6,8 +6,9 @@ export default function PlatformBlock({
   maintenance = '',
   releaseVersion = '',
   releaseDate = '',
-  docResources = [],
-  mavenResources = [],
+  javaResources = [],
+  jsResources = [],
+  auditResources = [],
   dockerTags = [],
   packages = []
 }) {
@@ -39,19 +40,31 @@ export default function PlatformBlock({
             released <span className={styles.b}>{releaseDate}</span>
           </span>
           <div className={styles.blockLinks}>
-            <div className={styles.docLinks}>
-              {docResources.map((doc, index) => (
-                <a key={index} href={doc.url} target="_blank" rel="noopener noreferrer">
-                  {doc.name} doc
+            <div className={styles.javaBlock}>
+              <b>Java:</b>
+              {javaResources.map((resource, index) => (
+                <a key={index} href={resource.url} target="_blank" rel="noopener noreferrer">
+                  {resource.name}
                 </a>
               ))}
             </div>
-            <div className={styles.mavLinks}>
-              {mavenResources.map((maven, index) => (
-                <a key={index} href={maven.url} target="_blank" rel="noopener noreferrer">
-                  maven {maven.name}
-                </a>
-              ))}
+            <div className={styles.rightBlock}>
+              <div className={styles.jsBlock}>
+                <b>JavaScript:</b>
+                {jsResources.map((resource, index) => (
+                  <a key={index} href={resource.url} target="_blank" rel="noopener noreferrer">
+                    {resource.name}
+                  </a>
+                ))}
+              </div>
+              <div className={styles.auditBlock}>
+                <b>Dependency Audit:</b>
+                {auditResources.map((resource, index) => (
+                  <a key={index} href={resource.url} target="_blank" rel="noopener noreferrer">
+                    {resource.name}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
           <div className={styles.dockerInfos}>
@@ -61,6 +74,7 @@ export default function PlatformBlock({
                 {tag}
               </span>
             ))}
+            {/* TODO: link to registry-ui OR copy to clipboard */}
           </div>
           <div className={styles.packageLinks}>
           <span className={styles.packTitle}>Packages <span className={styles.packInfo}>(auth required)</span>:</span>

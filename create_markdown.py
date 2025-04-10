@@ -15,31 +15,45 @@ def create_block_component(version):
     code += f'  releaseVersion="{version_data["version"]}"\n'
     code += f'  releaseDate="{prettier_date(version_data["date"])}"\n'
     
-    # Handle doc resources
+    # Handle java-related resources -> { doc, deps-f, deps-l, m-site, m-deps, deps-audit-f, deps-audit-l }
+    javaResources= '  javaResources={[\n'
+    jsResources= '  jsResources={[\n'
+    auditResources= '  auditResources={[\n'
+
     if 'doc' in version_data['resources']:
-        code += '  docResources={[\n'
-        for doc_name, doc_url in version_data['resources']['doc'].items():
-            code += f'    {{ name: "{doc_name}", url: "{doc_url}" }},\n'
-        code += '  ]}\n'
-    else:
-        code += '  docResources={[]}\n'
+        java_doc = version_data['resources']['doc']['java']
+        js_doc = version_data['resources']['doc']['js']
+        javaResources += f'    {{ name: "documentation", url: "{java_doc}" }},\n'
+        jsResources += f'    {{ name: "documentation", url: "{js_doc}" }},\n'
+
+    if 'dependencies' in version_data['resources']:
+        for dep in version_data['resources']['dependencies']:
+            if 'java' in dep:
+                javaResources += f'    {{ name: "{dep.replace("java","dependencies")}", url: "{version_data["resources"]["dependencies"][dep]}" }},\n'
+            elif 'js' in dep:
+                jsResources += f'    {{ name: "{"dependencies" if dep=="js" else dep}", url: "{version_data["resources"]["dependencies"][dep]}" }},\n'
+            elif 'audit' in dep:
+                auditResources += f'    {{ name: "{dep.replace("audit","report")}", url: "{version_data["resources"]["dependencies"][dep]}" }},\n'
     
-    # Handle maven resources
     if 'maven' in version_data['resources']:
-        code += '  mavenResources={[\n'
-        for maven_name, maven_url in version_data['resources']['maven'].items():
-            code += f'    {{ name: "{maven_name}", url: "{maven_url}" }},\n'
-        code += '  ]}\n'
-    else:
-        code += '  mavenResources={[]}\n'
-    
+        for mav in version_data['resources']['maven']:
+            javaResources += f'    {{ name: "maven-{mav}", url: "{version_data["resources"]["maven"][mav]}" }},\n'
+
+    javaResources += '  ]}\n'
+    jsResources += '  ]}\n'
+    auditResources += '  ]}\n'
+
+    code += javaResources
+    code += jsResources
+    code += auditResources
+
     # Add docker info if needed
     if 'docker' in version_data['resources']:
         dck_info = version_data['resources']['docker']['info']
         dck = dck_info.split("/")[-1]
         dck_light = dck + "-light"
         tags = [dck, dck_light]
-        code += '  dockerTags={'+f"{tags}"+"}\n"
+        code += '  dockerTags={\n'+f"{tags}"+"}\n"
     else:
         code += '  dockerTags={[]}\n'
     

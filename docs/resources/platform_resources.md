@@ -14,15 +14,24 @@ Platform Resources
   maintenance="alpha"
   releaseVersion="6.3.0"
   releaseDate="Wednesday, April 09, 2025"
-  docResources={[
-    { name: "java", url: "https://platform.simplicite.io/6.3/javadoc/" },
-    { name: "js", url: "https://platform.simplicite.io/6.3/jsdoc/" },
+  javaResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/6.3/javadoc/" },
+    { name: "dependencies", url: "https://platform.simplicite.io/6.3/java-dependencies.html" },
+    { name: "dependencies-light", url: "https://platform.simplicite.io/6.3/java-dependencies-light.html" },
+    { name: "maven-site", url: "https://platform.simplicite.io/6.3/site/" },
+    { name: "maven-repository", url: "https://platform.simplicite.io/6.3/maven/" },
   ]}
-  mavenResources={[
-    { name: "site", url: "https://platform.simplicite.io/6.3/site/" },
-    { name: "repository", url: "https://platform.simplicite.io/6.3/maven/" },
+  jsResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/6.3/jsdoc/" },
+    { name: "dependencies", url: "https://platform.simplicite.io/6.3/js-dependencies.html" },
+    { name: "js-licenses", url: "https://platform.simplicite.io/6.3/js-licenses.html" },
   ]}
-  dockerTags={['6-alpha', '6-alpha-light']}
+  auditResources={[
+    { name: "report", url: "https://platform.simplicite.io/6.3/dependency-check-report.html" },
+    { name: "report-light", url: "https://platform.simplicite.io/6.3/dependency-check-report-light.html" },
+  ]}
+  dockerTags={
+['6-alpha', '6-alpha-light']}
   packages={[
     { target: "linux", url: "https://platform.simplicite.io/downloads/simplicite-6.3.tar.gz" },
     { target: "linux_light", url: "https://platform.simplicite.io/downloads/simplicite-6.3-light.tar.gz" },
@@ -39,15 +48,24 @@ Platform Resources
   maintenance="active"
   releaseVersion="6.2.6"
   releaseDate="Tuesday, April 01, 2025"
-  docResources={[
-    { name: "java", url: "https://platform.simplicite.io/6.2/javadoc/" },
-    { name: "js", url: "https://platform.simplicite.io/6.2/jsdoc/" },
+  javaResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/6.2/javadoc/" },
+    { name: "dependencies", url: "https://platform.simplicite.io/6.2/java-dependencies.html" },
+    { name: "dependencies-light", url: "https://platform.simplicite.io/6.2/java-dependencies-light.html" },
+    { name: "maven-site", url: "https://platform.simplicite.io/6.2/site/" },
+    { name: "maven-repository", url: "https://platform.simplicite.io/6.2/maven/" },
   ]}
-  mavenResources={[
-    { name: "site", url: "https://platform.simplicite.io/6.2/site/" },
-    { name: "repository", url: "https://platform.simplicite.io/6.2/maven/" },
+  jsResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/6.2/jsdoc/" },
+    { name: "dependencies", url: "https://platform.simplicite.io/6.2/js-dependencies.html" },
+    { name: "js-licenses", url: "https://platform.simplicite.io/6.2/js-licenses.html" },
   ]}
-  dockerTags={['6.2', '6.2-light']}
+  auditResources={[
+    { name: "report", url: "https://platform.simplicite.io/6.2/dependency-check-report.html" },
+    { name: "report-light", url: "https://platform.simplicite.io/6.2/dependency-check-report-light.html" },
+  ]}
+  dockerTags={
+['6.2', '6.2-light']}
   packages={[
     { target: "linux", url: "https://platform.simplicite.io/downloads/simplicite-6.2.tar.gz" },
     { target: "linux_light", url: "https://platform.simplicite.io/downloads/simplicite-6.2-light.tar.gz" },
@@ -64,15 +82,24 @@ Platform Resources
   maintenance="shortterm"
   releaseVersion="6.1.27"
   releaseDate="Tuesday, April 01, 2025"
-  docResources={[
-    { name: "java", url: "https://platform.simplicite.io/6.1/javadoc/" },
-    { name: "js", url: "https://platform.simplicite.io/6.1/jsdoc/" },
+  javaResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/6.1/javadoc/" },
+    { name: "dependencies", url: "https://platform.simplicite.io/6.1/java-dependencies.html" },
+    { name: "dependencies-light", url: "https://platform.simplicite.io/6.1/java-dependencies-light.html" },
+    { name: "maven-site", url: "https://platform.simplicite.io/6.1/site/" },
+    { name: "maven-repository", url: "https://platform.simplicite.io/6.1/maven/" },
   ]}
-  mavenResources={[
-    { name: "site", url: "https://platform.simplicite.io/6.1/site/" },
-    { name: "repository", url: "https://platform.simplicite.io/6.1/maven/" },
+  jsResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/6.1/jsdoc/" },
+    { name: "dependencies", url: "https://platform.simplicite.io/6.1/js-dependencies.html" },
+    { name: "js-licenses", url: "https://platform.simplicite.io/6.1/js-licenses.html" },
   ]}
-  dockerTags={['6.1', '6.1-light']}
+  auditResources={[
+    { name: "report", url: "https://platform.simplicite.io/6.1/dependency-check-report.html" },
+    { name: "report-light", url: "https://platform.simplicite.io/6.1/dependency-check-report-light.html" },
+  ]}
+  dockerTags={
+['6.1', '6.1-light']}
   packages={[
     { target: "linux", url: "https://platform.simplicite.io/downloads/simplicite-6.1.tar.gz" },
     { target: "linux_light", url: "https://platform.simplicite.io/downloads/simplicite-6.1-light.tar.gz" },
@@ -89,15 +116,24 @@ Platform Resources
   maintenance="expired"
   releaseVersion="6.0.26"
   releaseDate="Thursday, October 31, 2024"
-  docResources={[
-    { name: "java", url: "https://platform.simplicite.io/6.0/javadoc/" },
-    { name: "js", url: "https://platform.simplicite.io/6.0/jsdoc/" },
+  javaResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/6.0/javadoc/" },
+    { name: "dependencies", url: "https://platform.simplicite.io/6.0/java-dependencies.html" },
+    { name: "dependencies-light", url: "https://platform.simplicite.io/6.0/java-dependencies-light.html" },
+    { name: "maven-site", url: "https://platform.simplicite.io/6.0/site/" },
+    { name: "maven-repository", url: "https://platform.simplicite.io/6.0/maven/" },
   ]}
-  mavenResources={[
-    { name: "site", url: "https://platform.simplicite.io/6.0/site/" },
-    { name: "repository", url: "https://platform.simplicite.io/6.0/maven/" },
+  jsResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/6.0/jsdoc/" },
+    { name: "dependencies", url: "https://platform.simplicite.io/6.0/js-dependencies.html" },
+    { name: "js-licenses", url: "https://platform.simplicite.io/6.0/js-licenses.html" },
   ]}
-  dockerTags={['6.0', '6.0-light']}
+  auditResources={[
+    { name: "report", url: "https://platform.simplicite.io/6.0/dependency-check-report.html" },
+    { name: "report-light", url: "https://platform.simplicite.io/6.0/dependency-check-report-light.html" },
+  ]}
+  dockerTags={
+['6.0', '6.0-light']}
   packages={[
     { target: "linux", url: "https://platform.simplicite.io/downloads/simplicite-6.0.tar.gz" },
     { target: "linux_light", url: "https://platform.simplicite.io/downloads/simplicite-6.0-light.tar.gz" },
@@ -114,15 +150,24 @@ Platform Resources
   maintenance="longterm"
   releaseVersion="5.3.66"
   releaseDate="Friday, March 28, 2025"
-  docResources={[
-    { name: "java", url: "https://platform.simplicite.io/5.3/javadoc/" },
-    { name: "js", url: "https://platform.simplicite.io/5.3/jsdoc/" },
+  javaResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/5.3/javadoc/" },
+    { name: "dependencies", url: "https://platform.simplicite.io/5.3/java-dependencies.html" },
+    { name: "dependencies-light", url: "https://platform.simplicite.io/5.3/java-dependencies-light.html" },
+    { name: "maven-site", url: "https://platform.simplicite.io/5.3/site/" },
+    { name: "maven-repository", url: "https://platform.simplicite.io/5.3/maven/" },
   ]}
-  mavenResources={[
-    { name: "site", url: "https://platform.simplicite.io/5.3/site/" },
-    { name: "repository", url: "https://platform.simplicite.io/5.3/maven/" },
+  jsResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/5.3/jsdoc/" },
+    { name: "dependencies", url: "https://platform.simplicite.io/5.3/js-dependencies.html" },
+    { name: "js-licenses", url: "https://platform.simplicite.io/5.3/js-licenses.html" },
   ]}
-  dockerTags={['5.3', '5.3-light']}
+  auditResources={[
+    { name: "report", url: "https://platform.simplicite.io/5.3/dependency-check-report.html" },
+    { name: "report-light", url: "https://platform.simplicite.io/5.3/dependency-check-report-light.html" },
+  ]}
+  dockerTags={
+['5.3', '5.3-light']}
   packages={[
     { target: "linux", url: "https://platform.simplicite.io/downloads/simplicite-5.3.tar.gz" },
     { target: "linux_light", url: "https://platform.simplicite.io/downloads/simplicite-5.3-light.tar.gz" },
@@ -139,15 +184,24 @@ Platform Resources
   maintenance="expired"
   releaseVersion="5.2.54"
   releaseDate="Wednesday, January 31, 2024"
-  docResources={[
-    { name: "java", url: "https://platform.simplicite.io/5.2/javadoc/" },
-    { name: "js", url: "https://platform.simplicite.io/5.2/jsdoc/" },
+  javaResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/5.2/javadoc/" },
+    { name: "dependencies", url: "https://platform.simplicite.io/5.2/java-dependencies.html" },
+    { name: "dependencies-light", url: "https://platform.simplicite.io/5.2/java-dependencies-light.html" },
+    { name: "maven-site", url: "https://platform.simplicite.io/5.2/site/" },
+    { name: "maven-repository", url: "https://platform.simplicite.io/5.2/maven/" },
   ]}
-  mavenResources={[
-    { name: "site", url: "https://platform.simplicite.io/5.2/site/" },
-    { name: "repository", url: "https://platform.simplicite.io/5.2/maven/" },
+  jsResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/5.2/jsdoc/" },
+    { name: "dependencies", url: "https://platform.simplicite.io/5.2/js-dependencies.html" },
+    { name: "js-licenses", url: "https://platform.simplicite.io/5.2/js-licenses.html" },
   ]}
-  dockerTags={['5.2', '5.2-light']}
+  auditResources={[
+    { name: "report", url: "https://platform.simplicite.io/5.2/dependency-check-report.html" },
+    { name: "report-light", url: "https://platform.simplicite.io/5.2/dependency-check-report-light.html" },
+  ]}
+  dockerTags={
+['5.2', '5.2-light']}
   packages={[
     { target: "linux", url: "https://platform.simplicite.io/downloads/simplicite-5.2.tar.gz" },
     { target: "linux_light", url: "https://platform.simplicite.io/downloads/simplicite-5.2-light.tar.gz" },
@@ -164,15 +218,24 @@ Platform Resources
   maintenance="expired"
   releaseVersion="5.1.66"
   releaseDate="Tuesday, October 31, 2023"
-  docResources={[
-    { name: "java", url: "https://platform.simplicite.io/5.1/javadoc/" },
-    { name: "js", url: "https://platform.simplicite.io/5.1/jsdoc/" },
+  javaResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/5.1/javadoc/" },
+    { name: "dependencies", url: "https://platform.simplicite.io/5.1/java-dependencies.html" },
+    { name: "dependencies-light", url: "https://platform.simplicite.io/5.1/java-dependencies-light.html" },
+    { name: "maven-site", url: "https://platform.simplicite.io/5.1/site/" },
+    { name: "maven-repository", url: "https://platform.simplicite.io/5.1/maven/" },
   ]}
-  mavenResources={[
-    { name: "site", url: "https://platform.simplicite.io/5.1/site/" },
-    { name: "repository", url: "https://platform.simplicite.io/5.1/maven/" },
+  jsResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/5.1/jsdoc/" },
+    { name: "dependencies", url: "https://platform.simplicite.io/5.1/js-dependencies.html" },
+    { name: "js-licenses", url: "https://platform.simplicite.io/5.1/js-licenses.html" },
   ]}
-  dockerTags={['5.1', '5.1-light']}
+  auditResources={[
+    { name: "report", url: "https://platform.simplicite.io/5.1/dependency-check-report.html" },
+    { name: "report-light", url: "https://platform.simplicite.io/5.1/dependency-check-report-light.html" },
+  ]}
+  dockerTags={
+['5.1', '5.1-light']}
   packages={[
     { target: "linux", url: "https://platform.simplicite.io/downloads/simplicite-5.1.tar.gz" },
     { target: "linux_light", url: "https://platform.simplicite.io/downloads/simplicite-5.1-light.tar.gz" },
@@ -189,15 +252,24 @@ Platform Resources
   maintenance="expired"
   releaseVersion="5.0.71"
   releaseDate="Monday, October 31, 2022"
-  docResources={[
-    { name: "java", url: "https://platform.simplicite.io/5.0/javadoc/" },
-    { name: "js", url: "https://platform.simplicite.io/5.0/jsdoc/" },
+  javaResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/5.0/javadoc/" },
+    { name: "dependencies", url: "https://platform.simplicite.io/5.0/java-dependencies.html" },
+    { name: "dependencies-light", url: "https://platform.simplicite.io/5.0/java-dependencies-light.html" },
+    { name: "maven-site", url: "https://platform.simplicite.io/5.0/site/" },
+    { name: "maven-repository", url: "https://platform.simplicite.io/5.0/maven/" },
   ]}
-  mavenResources={[
-    { name: "site", url: "https://platform.simplicite.io/5.0/site/" },
-    { name: "repository", url: "https://platform.simplicite.io/5.0/maven/" },
+  jsResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/5.0/jsdoc/" },
+    { name: "dependencies", url: "https://platform.simplicite.io/5.0/js-dependencies.html" },
+    { name: "js-licenses", url: "https://platform.simplicite.io/5.0/js-licenses.html" },
   ]}
-  dockerTags={['5.0', '5.0-light']}
+  auditResources={[
+    { name: "report", url: "https://platform.simplicite.io/5.0/dependency-check-report.html" },
+    { name: "report-light", url: "https://platform.simplicite.io/5.0/dependency-check-report-light.html" },
+  ]}
+  dockerTags={
+['5.0', '5.0-light']}
   packages={[
     { target: "linux", url: "https://platform.simplicite.io/downloads/simplicite-5.0.tar.gz" },
     { target: "linux_light", url: "https://platform.simplicite.io/downloads/simplicite-5.0-light.tar.gz" },
@@ -214,15 +286,24 @@ Platform Resources
   maintenance="expired"
   releaseVersion="4.0.P25"
   releaseDate="Monday, January 15, 2024"
-  docResources={[
-    { name: "java", url: "https://platform.simplicite.io/4.0/javadoc/" },
-    { name: "js", url: "https://platform.simplicite.io/4.0/jsdoc/" },
+  javaResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/4.0/javadoc/" },
+    { name: "dependencies", url: "https://platform.simplicite.io/4.0/java-dependencies.html" },
+    { name: "dependencies-light", url: "https://platform.simplicite.io/4.0/java-dependencies-light.html" },
+    { name: "maven-site", url: "https://platform.simplicite.io/4.0/site/" },
+    { name: "maven-repository", url: "https://platform.simplicite.io/4.0/maven/" },
   ]}
-  mavenResources={[
-    { name: "site", url: "https://platform.simplicite.io/4.0/site/" },
-    { name: "repository", url: "https://platform.simplicite.io/4.0/maven/" },
+  jsResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/4.0/jsdoc/" },
+    { name: "dependencies", url: "https://platform.simplicite.io/4.0/js-dependencies.html" },
+    { name: "js-licenses", url: "https://platform.simplicite.io/4.0/js-licenses.html" },
   ]}
-  dockerTags={['4.0', '4.0-light']}
+  auditResources={[
+    { name: "report", url: "https://platform.simplicite.io/4.0/dependency-check-report.html" },
+    { name: "report-light", url: "https://platform.simplicite.io/4.0/dependency-check-report-light.html" },
+  ]}
+  dockerTags={
+['4.0', '4.0-light']}
   packages={[
     { target: "linux", url: "https://platform.simplicite.io/downloads/simplicite-4.0.tar.gz" },
     { target: "linux_light", url: "https://platform.simplicite.io/downloads/simplicite-4.0-light.tar.gz" },
@@ -239,12 +320,16 @@ Platform Resources
   maintenance="expired"
   releaseVersion="3.2.P09"
   releaseDate="Thursday, July 02, 2020"
-  docResources={[
-    { name: "java", url: "https://platform.simplicite.io/3.2/javadoc/" },
-    { name: "js", url: "https://platform.simplicite.io/3.2/jsdoc/" },
+  javaResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/3.2/javadoc/" },
   ]}
-  mavenResources={[]}
-  dockerTags={['3.2', '3.2-light']}
+  jsResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/3.2/jsdoc/" },
+  ]}
+  auditResources={[
+  ]}
+  dockerTags={
+['3.2', '3.2-light']}
   packages={[]}
 >
 </PlatformBlock>
@@ -256,12 +341,16 @@ Platform Resources
   maintenance="expired"
   releaseVersion="3.1.M14"
   releaseDate="Saturday, May 25, 2019"
-  docResources={[
-    { name: "java", url: "https://platform.simplicite.io/3.1/javadoc/" },
-    { name: "js", url: "https://platform.simplicite.io/3.1/jsdoc/" },
+  javaResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/3.1/javadoc/" },
   ]}
-  mavenResources={[]}
-  dockerTags={['3.1', '3.1-light']}
+  jsResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/3.1/jsdoc/" },
+  ]}
+  auditResources={[
+  ]}
+  dockerTags={
+['3.1', '3.1-light']}
   packages={[]}
 >
 </PlatformBlock>
@@ -273,12 +362,16 @@ Platform Resources
   maintenance="expired"
   releaseVersion="3.0.M37"
   releaseDate="Tuesday, September 25, 2018"
-  docResources={[
-    { name: "java", url: "https://platform.simplicite.io/3.0/javadoc/" },
-    { name: "js", url: "https://platform.simplicite.io/3.0/jsdoc/" },
+  javaResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/3.0/javadoc/" },
   ]}
-  mavenResources={[]}
-  dockerTags={['3.0', '3.0-light']}
+  jsResources={[
+    { name: "documentation", url: "https://platform.simplicite.io/3.0/jsdoc/" },
+  ]}
+  auditResources={[
+  ]}
+  dockerTags={
+['3.0', '3.0-light']}
   packages={[]}
 >
 </PlatformBlock>
