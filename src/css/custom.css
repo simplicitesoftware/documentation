@@ -71,6 +71,21 @@
     var(--ifm-transition-timing-default);
 }
 
+.header-npm-link::before {
+  content: '';
+  width: 33px;
+  height: 24px;
+  display: flex;
+  background-color: var(--ifm-navbar-link-color);
+  mask-image: url("data:image/svg+xml,%3Csvg width='33' height='24' viewBox='0 0 33 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.666992 18.1593H9.55588V20H16.667V18.1593H32.667V7H0.666992V18.1593ZM9.55588 16.3186H7.7781V10.6814H6.00033V16.3186H2.44477V8.84071H9.55588V16.3186ZM18.4448 16.3186H14.8892V18.1593H11.3337V8.84071H18.4448V16.3186ZM30.8892 16.3186H29.1114V10.6814H27.3337V16.3186H25.5559V10.6814H23.7781V16.3186H20.2225V8.84071H30.8892V16.3186Z' fill='black'/%3E%3Cpath d='M14.9114 12.5451L14.9448 14.4204H16.6114L16.6448 12.5451L16.667 10.6814H14.8892L14.9114 12.5451Z' fill='black'/%3E%3C/svg%3E%0A");
+  transition: background-color var(--ifm-transition-fast)
+    var(--ifm-transition-timing-default);
+}
+
+.header-npm-link:hover::before {
+  background-color: var(--ifm-navbar-link-hover-color);
+}
+
 .header-github-link:hover::before {
   background-color: var(--ifm-navbar-link-hover-color);
 }

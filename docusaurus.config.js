@@ -95,6 +95,12 @@ const config = {
             css: "./src/css/platformBlocks.css",
           },
           {
+            href: 'https://www.npmjs.com/package/simplicite',
+            position: 'right',
+            className: 'header-npm-link',
+            'aria-label': 'NPM Simplicité API package',
+          },
+          {
             href: 'https://github.com/simplicitesoftware/documentation',
             position: 'right',
             className: 'header-github-link',
