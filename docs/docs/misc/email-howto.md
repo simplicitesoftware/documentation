@@ -13,6 +13,11 @@ Configuration-level configuration
 
 As of version 3.1 it is possible to configure the mail service properties as JSON in the `MAIL_SERVICE` system parameter.
 
+As of version 4.0 it is strongly recommended to use this kind of configuration over the legacy context-level configuration (see bellow).
+
+As of version 5.3 it is possible to pass the mail service configuration as the `MAIL_SERVICE` environment variable instead of the system parameter
+(if both are present only the environment variable is taken into account). YAML syntax instead of JSON is also possible as of version 5.3.
+
 For instance, to use a simple SMTP server you can set it like this:
 
 ```json

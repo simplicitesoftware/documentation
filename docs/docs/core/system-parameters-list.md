@@ -7,7 +7,7 @@ System Parameters List
 ======================
 
 **ATTENTION**: This list provide data about **System Parameters** available on Simplicité as of **4.0 version**.
-Some system parameters might not be available on previous version or default value might be different. 
+Some system parameters might not be available on previous version or default value might be different.
 
 ### `ACE_OPTIONS`
 
@@ -18,7 +18,7 @@ Some system parameters might not be available on previous version or default val
 	"invisibles": false,
 	"theme": "eclipse",
 	"keybindings": "default",
-	"wrap": true  
+	"wrap": true
 }
 ```
 
@@ -327,7 +327,7 @@ Set to yes to convert OS like wildcards (`*` and `?`) into SQL wildcards (`%` an
 
 **Description**
 
-Internal use to identify the host running Unique cron-jobs. Value is calculated.  
+Internal use to identify the host running Unique cron-jobs. Value is calculated.
 
 ### `CRON_LOCK_OWNER`
 
@@ -507,7 +507,7 @@ Import directory. Relative to `PROJECT_DIR` or absolute path.
 
 **Description**
 
-- Limit the number of rows to export in CSV, Excel or PDF only 
+- Limit the number of rows to export in CSV, Excel or PDF only
 - 0 or negative value means no limitation
 
 ### `EXPORT_MODULE_ARTIFACTS`
@@ -644,7 +644,7 @@ yes/no to show the messages (error, info...) inlined with there related fields.
 
 **Description**
 
-- FullCalendar supported version: `3` (for backward backward compatibility) or `4` or `5`. 
+- FullCalendar supported version: `3` (for backward backward compatibility) or `4` or `5`.
 - To upgrade your specific calendar from legacy V3 to V4 or V5 see: https://fullcalendar.io/upgrading-from-v3
 
 ### `GIT_FORMAT`
@@ -872,12 +872,12 @@ Technical, do not change/remove, needed in user's parameters
 
 **Description**
 
-User's activities tracking:  
+User's activities tracking:
 
-- database: save actions in m_redolog  
-- prune: integer to define the depth to store in DB  
-- unit: prune unit (hour, day, month, year)  
-- logger: true to export data thru log4j  
+- database: save actions in m_redolog
+- prune: integer to define the depth to store in DB
+- unit: prune unit (hour, day, month, year)
+- logger: true to export data thru log4j
 
 ### `LOG_DEBUG`
 
@@ -965,10 +965,10 @@ yes/no to trace object usage in INFO level.
 
 ```json
 {
-	"database": true,  
-	"prune": 7,  
-	"unit": "day",  
-	"logger": true  
+	"database": true,
+	"prune": 7,
+	"unit": "day",
+	"logger": true
 }
 ```
 
@@ -1037,8 +1037,11 @@ yes/no to trace the warning level.
 
 **Description**
 
-Mail service configuration.
-The JSON key-values pairs are directly used as properties to instantiate the mail session.
+Mail service configuration (JSON or YAML).
+
+It can be overridden by the `MAIL_SERVICE` environment variable.
+
+The key-values pairs are directly used as properties to instantiate the mail session.
 
 > Note: `mail.from` are car be overridden by `EMAIL_DEFAULT_SENDER` and `BPMALERT_FROM` (for state transition). Both these system parameters are **deprecated** in 6.2.
 
@@ -1490,7 +1493,7 @@ Sources directory. Relative to PROJECT_DIR or absolute path.
 
 ```json
 [
-	"https://cdn.jsdelivr.net/gh/simplicitesoftware/resources@latest/public/appstore_demo.json", 
+	"https://cdn.jsdelivr.net/gh/simplicitesoftware/resources@latest/public/appstore_demo.json",
 	"https://cdn.jsdelivr.net/gh/simplicitesoftware/resources@latest/public/appstore_apps.json",
 	"https://cdn.jsdelivr.net/gh/simplicitesoftware/resources@latest/public/appstore_tools.json"
 ]
@@ -1538,7 +1541,7 @@ Temporary work directory. Relative to PROJECT_DIR or absolute path.
 
 **Description**
 
-Technical parameter 
+Technical parameter
 
 ### `TRELLO_SERVICE`
 
@@ -1836,7 +1839,7 @@ Notify user when object is currently opened with update rights or deleted by oth
 
 **Description**
 
-- yes: force the insert statements to use Oracle sequences. 
+- yes: force the insert statements to use Oracle sequences.
 - no: evaluate a "max+1" for each row_id Must be in System module (before any XML import)
 
 ### `USE_POSTGRESQL_SEQUENCE`
@@ -1847,7 +1850,7 @@ Notify user when object is currently opened with update rights or deleted by oth
 
 **Description**
 
-- yes: force the insert statements to use PostgreSQL serial/sequences. 
+- yes: force the insert statements to use PostgreSQL serial/sequences.
 - no: evaluate a "max+1" for each row_id Must be in System module (before any XML import)
 
 ### `USE_ROWID_TABLE`
@@ -1858,7 +1861,7 @@ Notify user when object is currently opened with update rights or deleted by oth
 
 **Description**
 
-- yes: use the mutex m_rowid table to increment row_id by table (faster). 
+- yes: use the mutex m_rowid table to increment row_id by table (faster).
 - no: calculate a max+1 for each new row_id (backward compatibility)
 
 ### `USE_SEARCH_INDEX`

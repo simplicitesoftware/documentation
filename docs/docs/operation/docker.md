@@ -938,8 +938,35 @@ Andd restart docker:
 sudo systemctl start docker
 ```
 
-
 ### DNS
 
 If you experience network issues within your container it may be a DNS configuration issue
 that you can solve by adding an explict DNS serveur IP address e.g. `--dns=8.8.8.8` (public DNS by Google) or any private DNS relevant in your case.
+
+### Mail service
+
+It is possible to pass a `MAIL_SERVICE` environment variable to override the equivalent system parameter, e.g.
+
+- As "flat" JSON for simple `docker run`:
+
+```text
+-e {"mail.from": "simplicite@simplicite.fr", "mail.debug": "true", "mail.transport.protocol": "smtp", "mail.smtp.host": "smtp.gmail.com", "mail.smtp.port": "587", "mail.smtp.auth": "true", "mail.smtp.starttls.enable": "true", "mail.smtp.user": "simplicite@simplicite.fr", "password": "zlscxthutkvlrcuh"}
+```
+
+- Or as YAML in a docker-compose descriptor :
+
+```yaml
+(...)
+    environment:
+      MAIL_SERVICE: |
+        mail.from: "noreply@simplicite.fr"
+        mail.debug: "true"
+        mail.transport.protocol: "smtp"
+        mail.smtp.host: "..."
+        mail.smtp.port: "587"
+        mail.smtp.auth: "true"
+        mail.smtp.starttls.enable: "true"
+        mail.smtp.user: "..."
+        password: "..."
+(...)
+```
