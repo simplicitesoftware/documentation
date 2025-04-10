@@ -8,26 +8,6 @@ E-mail howto
 
 This document shows how to configure application server's e-mail service that is used by Simplicité to send e-mails.
 
-Tomcat context-level configuration
----------------------------------
-
-You can configure the dedicated `mail/simplicite` context service in the  `META-INF/context.xml`, e.g.
-
-```xml
-<Resource
-	name="mail/simplicite"
-	type="javax.mail.Session"
-	auth="Container"
-	mail.from="..."
-	mail.transport.protocol="smtp"
-	mail.smtp.host="..."
-	mail.smtp.port="..."
-...
-/>
-```
-
-As of version 3.1 this type of configuration is still possible but the bellow approach, by configuration, is more flexible.
-
 Configuration-level configuration
 ---------------------------------
 
@@ -105,7 +85,7 @@ Using TLS protocol on port 587:
 	"mail.smtp.user": "<GMail account username>",
 	"password": "<GMail account password>"
 }
-``` 
+```
 
 Sender email address
 --------------------
@@ -118,3 +98,25 @@ Use an external service like Mailchimp, MailJet or Sendwithus
 -------------------------------------------------------------
 
 See [Third party apis](/docs/core/third-party-apis-examples) page.
+
+Legacy Tomcat context-level configuration
+-----------------------------------------
+
+Until **version 4.0** you can still configure the dedicated `mail/simplicite` context service in the  `META-INF/context.xml`, e.g.
+
+```xml
+<Resource
+	name="mail/simplicite"
+	type="javax.mail.Session"
+	auth="Container"
+	mail.from="..."
+	mail.transport.protocol="smtp"
+	mail.smtp.host="..."
+	mail.smtp.port="..."
+...
+/>
+```
+
+It is however strongly recommended to use configuration-level as described above.
+
+> **WARNING** As of version 5.x this legacy approach is **not possible anymore** as the `javax.mail.*` package has been replaced by the new `jakarta.mail.*`.
