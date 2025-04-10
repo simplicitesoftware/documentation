@@ -7,7 +7,7 @@ def create_block_component(version):
     version_data = version[1]
     
     # Format the props for the PlatformBlock component
-    code = f'<div class="ghost-md-anchor" id="{get_anchor(version_number)}">\n## {prettier_anchor(version)}\n</div>\n'
+    code = f'<div class="ghost-md-anchor" id="{get_anchor(version_number)}">\n## {prettier_anchor(version[1], version[0])}\n</div>\n'
     
     code += f'<PlatformBlock\n'
     code += f'  version="{version_number}"\n'
@@ -99,7 +99,7 @@ def create_versionning_page(data):
         if maintenance_end_date == "Unknown" and maintenance.lower()=="expired":
             maintenance_end_date = "Not applicable"
         # Add table row
-        md_content += f"| [{version_number}]({f'/resources/platform_resources#{get_anchor(version_number)}'}) | {maintenance_state} | {prettier_date(maintenance_end_date)} |\n"
+        md_content += f"| [{version_number}]({f'/resources/platform_resources#{prettier_anchor_no_emoji(version_data, version_number)}'}) | {maintenance_state} | {prettier_date(maintenance_end_date)} |\n"
     
     return md_content
 
@@ -123,20 +123,35 @@ def pretty_maintenance(maintenance):
         case _:
             return maintenance
 
-def prettier_anchor(version):
-    match version[1]['maintenance']:
+def prettier_anchor(version, v_num):
+    match version['maintenance']: # version[1]['maintenance']
         case 'alpha':
-            return f"🚧 {version[0]} - alpha"
+            return f"🚧 {v_num} - alpha"
         case 'active':
-            return f"✅ {version[0]} - current"
+            return f"✅ {v_num} - current"
         case 'shortterm':
-            return f"☑️ {version[0]}"
+            return f"☑️ {v_num}" # %EF%B8%8F
         case 'longterm':
-            return f"☑️ {version[0]} - LTS"
+            return f"☑️ {v_num} - LTS"
         case 'expired':
-            return f"❌ {version[0]}"
+            return f"❌ {v_num}"
         case _:
-            return version[0]
+            return v_num
+
+def prettier_anchor_no_emoji(version, v_num):
+    str = v_num
+    match version['maintenance']:
+        case 'alpha':
+            str = f" {v_num} - alpha"
+        case 'active':
+            str = f" {v_num} - current"
+        case 'shortterm':
+            str = f"%EF%B8%8F {v_num}"
+        case 'longterm':
+            str = f"%EF%B8%8F {v_num} - lts"
+        case 'expired':
+            str = f" {v_num}"
+    return str.replace(" ", "-").replace(".","")
 
 def prettier_date(date):
     try:
