@@ -12,6 +12,7 @@ def create_block_component(version):
     code += f'<PlatformBlock\n'
     code += f'  version="{version_number}"\n'
     code += f'  maintenance="{version_data["maintenance"]}"\n'
+    code += f'  supportType="{version_data["support_type"]}"\n'
     code += f'  releaseVersion="{version_data["version"]}"\n'
     code += f'  releaseDate="{prettier_date(version_data["date"])}"\n'
     
@@ -49,13 +50,13 @@ def create_block_component(version):
 
     # Add docker info if needed
     if 'docker' in version_data['resources']:
-        dck_info = version_data['resources']['docker']['info']
-        dck = dck_info.split("/")[-1]
-        dck_light = dck + "-light"
-        tags = [dck, dck_light]
-        code += '  dockerTags={\n'+f"{tags}"+"}\n"
+        docker_info = version_data['resources']['docker']
+        code += '  dockerInfo={{\n'
+        for key, value in docker_info.items():
+            code += f'    "{key}": "{value}",\n'
+        code += '  }}\n'
     else:
-        code += '  dockerTags={[]}\n'
+        code += '  dockerInfo={{}}\n'
     
     # Handle packages resources
     if 'packages' in version_data['resources']:
@@ -166,11 +167,14 @@ def prettier_anchor(version, v_num):
         case 'alpha':
             return f"🚧 {v_num} - alpha"
         case 'active':
-            return f"✅ {v_num} - current"
-        case 'shortterm':
-            return f"☑️ {v_num}" # %EF%B8%8F
-        case 'longterm':
-            return f"☑️ {v_num} - LTS"
+            match version['support_type']:
+                case 'shortterm':
+                    return f"☑️ {v_num}"
+                case 'longterm':
+                    return f"☑️ {v_num} - LTS"
+                case _:
+                    return f"✅ {v_num} - current"
+        
         case 'expired':
             return f"❌ {v_num}"
         case _:

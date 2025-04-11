@@ -1,38 +1,72 @@
 import React from 'react';
+import { useState } from 'react';
 import styles from './styles.module.css';
 
 export default function PlatformBlock({ 
   version, 
   maintenance = '',
+  supportType = '',
   releaseVersion = '',
   releaseDate = '',
   javaResources = [],
   jsResources = [],
   auditResources = [],
-  dockerTags = [],
+  dockerInfo = {},
   packages = []
 }) {
+  const [copyMessage, setCopyMessage] = useState('');
+
   // Helper function to format maintenance status
-  const prettyMaintenance = (status) => {
-    const icons = {
-      'alpha': '🚧 Alpha',
-      'active': '✅ Current',
-      'shortterm': '☑️ Short Term (STS)',
-      'longterm': '☑️ Long Term (LTS)',
-      'expired': '❌ Expired',
-    };
-    return icons[status] || status;
+  const prettyMaintenance = (m, st) => {
+    switch (m) {
+      case 'alpha':
+        return '🚧 Alpha';
+      case 'active':
+        switch (st) {
+          case 'shortterm':
+            return '☑️ Short Term';
+          case 'longterm':
+            return '☑️ LTS';
+          default:
+            return '✅ Current';
+        }
+      case 'expired':
+        return '❌ Expired';
+      default:
+        return m+"-"+st;
+    }
   };
+
+  const blockClass = (m, st) => {
+    if (m === 'alpha' || m==='expired') return m;
+    else if (m==='active') {
+      if (st === 'shortterm' || st === 'longterm') return 'maintained';
+      else return 'active';
+    } else
+      return m+"-"+st;
+  }
+
+  const dockerAction = (value, isUrl) => {
+    if (isUrl) {
+      window.open(value, '_blank', 'noopener,noreferrer');
+    } else {
+      navigator.clipboard.writeText(value)
+        .then(() => {
+          setCopyMessage(`Copied to clipboard`);
+          setTimeout(() => setCopyMessage(''), 2000);
+        }).catch(err => {
+          console.error('Failed to copy: ', err);
+          setTimeout(() => setCopyMessage(''), 2000);
+        });
+    }
+  }
 
   return (
     <>
-      <div className={styles.ghostMdAnchor} id={version}>
-        <h2>{version}</h2>
-      </div>
-      <div className={`${styles.platformBlock} ${styles[maintenance]} ${styles[version<=4.0?"outdated":""]}`}>
+      <div className={`${styles.platformBlock} ${styles[blockClass(maintenance, supportType)]} ${styles[version<=4.0?"outdated":""]}`}>
         <div className={styles.blockHeader}>
           <span className={styles.title}>Version {version}</span>
-          <span className={styles.maintenance}>{prettyMaintenance(maintenance)}</span>
+          <span className={styles.maintenance}>{prettyMaintenance(maintenance,supportType)}</span>
         </div>
         <div className={styles.blockBody}>
           <span className={styles.comment}>
@@ -67,17 +101,36 @@ export default function PlatformBlock({
               </div>
             </div>
           </div>
-          <div className={styles.dockerInfos}>
-            <span className={styles.dockTitle}>Docker Tags:</span>
-            {dockerTags.map((tag) => (
-              <span className={styles.dockTag}>
-                {tag}
-              </span>
-            ))}
-            {/* TODO: link to registry-ui OR copy to clipboard */}
-          </div>
+          {/* Docker Info Section -> improved functionnalities */}
+          {Object.keys(dockerInfo).length > 0 && (
+            <div className={styles.dockerSection}>
+              <div className={styles.dockerInfos}>
+                <span className={styles.dockerTitle}>Docker:</span>
+                {copyMessage && <span className={styles.copyMessage}>{copyMessage}</span>}
+              </div>
+              <div className={styles.dockerTags}>
+                {dockerInfo.image && (
+                  <div className={styles.dockerTagItem}>
+                    <button className={styles.dockerTag}
+                      onClick={() => dockerAction(dockerInfo.image, false)}
+                      title="Click to copy to clipboard"
+                    >
+                      {dockerInfo.image.split(':')[1]}
+                    </button>
+                    {dockerInfo.info && (
+                      <button className={styles.dockerTag}
+                        onClick={() => dockerAction(dockerInfo.info, true)}
+                        title="View in registry"
+                      >
+                        registry
+                      </button>
+                    )}
+                    </div>
+                )}
+              </div>
+            </div>)}
           <div className={styles.packageLinks}>
-          <span className={styles.packTitle}>Packages <span className={styles.packInfo}>(auth required)</span>:</span>
+          <span className={styles.packTitle}>Packages:</span>
             {packages.map((pkg, index) => (
               <a key={index} href={pkg.url} target="_blank" rel="noopener noreferrer">
                 {pkg.target}

@@ -129,18 +129,87 @@ html[data-theme='light'] .javaBlock {
   &:hover { border-color: rgba(0,0,0, 0.25);}
 }
 
+/* Updated Docker section CSS */
+
+.dockerSection {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .dockerInfos {
-  margin-top: .5rem;
   display: flex;
   width: 100%;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1rem;
 }
-.dockTitle {
+
+.dockerTitle {
   font-size: 1.25rem;
   text-align: left;
+  min-width: 5rem;
 }
+
+.dockerTags {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.dockerTagItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dockerTagLabel {
+  font-size: 0.85rem;
+  font-weight: 500;
+  min-width: 9rem;
+  text-align: left;
+}
+
+.dockerTag {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.33rem;
+  transition: all 0.25s ease-in;
+  border: solid 0.065rem transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.dockerTag:hover {
+  opacity: 0.9;
+}
+
+/* Dark theme styles */
+html[data-theme='dark'] .dockerTag {
+  background: rgba(23, 23, 23, 0.5);
+  color: #b9b9b9;
+}
+
+html[data-theme='dark'] .dockerTag:hover {
+  background-color: rgba(23, 23, 23, 0.33);
+  border-color: rgba(185, 185, 185, 0.75);
+}
+
+/* Light theme styles */
+html[data-theme='light'] .dockerTag {
+  background: rgba(241, 241, 241, 0.5);
+  color: #303030;
+}
+
+html[data-theme='light'] .dockerTag:hover {
+  background-color: rgba(241, 241, 241, 0.33);
+  border-color: rgba(185, 185, 185, 0.75);
+}
+
 .packTitle {
   font-size: 0.75rem;
   text-align: left;
@@ -187,6 +256,7 @@ html[data-theme='light'] .javaBlock {
 .docLinks a:active, .mavLinks a:active {
   border-radius: 0rem;
 }
+
 /* Ghost anchor for navigation */
 .ghostMdAnchor {
   position: relative;
@@ -216,7 +286,7 @@ html[data-theme='dark'] .mavLinks a:active {
   background-color: rgba(255,255,255, 0.05);
 }
 
-html[data-theme='dark'] .dockTag,
+html[data-theme='dark'] .dockerTag,
 html[data-theme='dark'] .packageLinks a {
   background:  rgba(23,23,23, 0.5);
   color: #b9b9b9;
@@ -245,7 +315,7 @@ html[data-theme='light'] .docLinks a:active,
 html[data-theme='light'] .mavLinks a:active {
   background-color: rgba(0,0,0, 0.05);
 }
-html[data-theme='light'] .dockTag,
+html[data-theme='light'] .dockerTag,
 html[data-theme='light'] .packageLinks a {
   background:  rgba(241,241,241, 0.5);
   color: #303030;
@@ -278,16 +348,14 @@ html[data-theme='dark'] .alpha .blockBody {
   color: #dbdbfe;
 }
 
-html[data-theme='dark'] .shortterm,
-html[data-theme='dark'] .longterm {
+html[data-theme='dark'] .maintained {
   background-color: #664a63;
   border-color: #ffe3fc;
   color: #ffe3fc;
   &:hover { background-color: rgba(102, 74, 99, 0.8); }
 }
 
-html[data-theme='dark'] .shortterm .blockBody,
-html[data-theme='dark'] .longterm .blockBody {
+html[data-theme='dark'] .maintained .blockBody {
   color: #fff1fe;
 }
 
@@ -316,8 +384,7 @@ html[data-theme='light'] .alpha {
   color: #222066;
 }
 
-html[data-theme='light'] .shortterm,
-html[data-theme='light'] .longterm {
+html[data-theme='light'] .maintained {
   background-color: #f7d8f8;
   border-color: #5e3f5f;
   color: #5e3f5f;
