@@ -118,17 +118,19 @@ def create_versionning_page(data):
     # Add table rows for each version
     for version_number, version_data in data.items():
         maintenance = version_data["maintenance"]
+        support = version_data["support_type"] #can be null
         
         # Determine support type based on maintenance state
         # You might want to adjust this logic based on your specific requirements
         if maintenance.lower() == "active":
             maintenance_state = "✅ Current"
+            if support:
+                if support.lower() == "shortterm":
+                    maintenance_state = "☑️ Short Term - STS"
+                elif support.lower() == "longterm":
+                    maintenance_state = "☑️ Long Term - LTS"
         elif maintenance.lower() == "alpha":
             maintenance_state = "🚧 Alpha"
-        elif maintenance.lower() == "shortterm":
-            maintenance_state = "☑️ Short Term"
-        elif maintenance.lower() == "longterm":
-            maintenance_state = "☑️ Long Term (LTS)"
         elif maintenance.lower() == "expired":
             maintenance_state = "❌ Expired"
         else:

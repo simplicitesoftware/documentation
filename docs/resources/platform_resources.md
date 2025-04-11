@@ -27,7 +27,7 @@ Platform Resources
   jsResources={[
     { name: "documentation", url: "https://platform.simplicite.io/6.3/jsdoc/" },
     { name: "dependencies", url: "https://platform.simplicite.io/6.3/js-dependencies.html" },
-    { name: "js_licenses", url: "https://platform.simplicite.io/6.3/js_licenses.html" },
+    { name: "js_licenses", url: "https://platform.simplicite.io/6.3/js-licenses.html" },
   ]}
   auditResources={[
     { name: "report", url: "https://platform.simplicite.io/6.3/dependency-check-report.html" },
@@ -68,7 +68,7 @@ Platform Resources
   jsResources={[
     { name: "documentation", url: "https://platform.simplicite.io/6.2/jsdoc/" },
     { name: "dependencies", url: "https://platform.simplicite.io/6.2/js-dependencies.html" },
-    { name: "js_licenses", url: "https://platform.simplicite.io/6.2/js_licenses.html" },
+    { name: "js_licenses", url: "https://platform.simplicite.io/6.2/js-licenses.html" },
   ]}
   auditResources={[
     { name: "report", url: "https://platform.simplicite.io/6.2/dependency-check-report.html" },
@@ -111,7 +111,7 @@ Platform Resources
   jsResources={[
     { name: "documentation", url: "https://platform.simplicite.io/6.1/jsdoc/" },
     { name: "dependencies", url: "https://platform.simplicite.io/6.1/js-dependencies.html" },
-    { name: "js_licenses", url: "https://platform.simplicite.io/6.1/js_licenses.html" },
+    { name: "js_licenses", url: "https://platform.simplicite.io/6.1/js-licenses.html" },
   ]}
   auditResources={[
     { name: "report", url: "https://platform.simplicite.io/6.1/dependency-check-report.html" },
@@ -152,7 +152,7 @@ Platform Resources
   jsResources={[
     { name: "documentation", url: "https://platform.simplicite.io/6.0/jsdoc/" },
     { name: "dependencies", url: "https://platform.simplicite.io/6.0/js-dependencies.html" },
-    { name: "js_licenses", url: "https://platform.simplicite.io/6.0/js_licenses.html" },
+    { name: "js_licenses", url: "https://platform.simplicite.io/6.0/js-licenses.html" },
   ]}
   auditResources={[
     { name: "report", url: "https://platform.simplicite.io/6.0/dependency-check-report.html" },
@@ -195,7 +195,7 @@ Platform Resources
   jsResources={[
     { name: "documentation", url: "https://platform.simplicite.io/5.3/jsdoc/" },
     { name: "dependencies", url: "https://platform.simplicite.io/5.3/js-dependencies.html" },
-    { name: "js_licenses", url: "https://platform.simplicite.io/5.3/js_licenses.html" },
+    { name: "js_licenses", url: "https://platform.simplicite.io/5.3/js-licenses.html" },
   ]}
   auditResources={[
     { name: "report", url: "https://platform.simplicite.io/5.3/dependency-check-report.html" },
@@ -236,7 +236,7 @@ Platform Resources
   jsResources={[
     { name: "documentation", url: "https://platform.simplicite.io/5.2/jsdoc/" },
     { name: "dependencies", url: "https://platform.simplicite.io/5.2/js-dependencies.html" },
-    { name: "js_licenses", url: "https://platform.simplicite.io/5.2/js_licenses.html" },
+    { name: "js_licenses", url: "https://platform.simplicite.io/5.2/js-licenses.html" },
   ]}
   auditResources={[
     { name: "report", url: "https://platform.simplicite.io/5.2/dependency-check-report.html" },
@@ -279,7 +279,7 @@ Platform Resources
   jsResources={[
     { name: "documentation", url: "https://platform.simplicite.io/5.1/jsdoc/" },
     { name: "dependencies", url: "https://platform.simplicite.io/5.1/js-dependencies.html" },
-    { name: "js_licenses", url: "https://platform.simplicite.io/5.1/js_licenses.html" },
+    { name: "js_licenses", url: "https://platform.simplicite.io/5.1/js-licenses.html" },
   ]}
   auditResources={[
     { name: "report", url: "https://platform.simplicite.io/5.1/dependency-check-report.html" },
@@ -320,7 +320,7 @@ Platform Resources
   jsResources={[
     { name: "documentation", url: "https://platform.simplicite.io/5.0/jsdoc/" },
     { name: "dependencies", url: "https://platform.simplicite.io/5.0/js-dependencies.html" },
-    { name: "js_licenses", url: "https://platform.simplicite.io/5.0/js_licenses.html" },
+    { name: "js_licenses", url: "https://platform.simplicite.io/5.0/js-licenses.html" },
   ]}
   auditResources={[
     { name: "report", url: "https://platform.simplicite.io/5.0/dependency-check-report.html" },
@@ -363,7 +363,7 @@ Platform Resources
   jsResources={[
     { name: "documentation", url: "https://platform.simplicite.io/4.0/jsdoc/" },
     { name: "dependencies", url: "https://platform.simplicite.io/4.0/js-dependencies.html" },
-    { name: "js_licenses", url: "https://platform.simplicite.io/4.0/js_licenses.html" },
+    { name: "js_licenses", url: "https://platform.simplicite.io/4.0/js-licenses.html" },
   ]}
   auditResources={[
     { name: "report", url: "https://platform.simplicite.io/4.0/dependency-check-report.html" },

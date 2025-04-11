@@ -188,6 +188,11 @@ html[data-theme='light'] .javaBlock {
   opacity: 0.9;
 }
 
+.copyMessage {
+  opacity: 0.33;
+  font-style: italic;
+}
+
 /* Dark theme styles */
 html[data-theme='dark'] .dockerTag {
   background: rgba(23, 23, 23, 0.5);
@@ -227,6 +232,7 @@ html[data-theme='light'] .dockerTag:hover {
   margin-top: .5rem;
   display: flex;
   width: 100%;
+  flex-wrap: wrap;
   justify-content: start;
   align-items: center;
   gap: 0.75rem;
