@@ -57,7 +57,7 @@ def create_block_component(version):
         code += '  }}\n'
     else:
         code += '  dockerInfo={{}}\n'
-    
+    print(f"docker info: {version_data['resources']['docker']}\n")
     # Handle packages resources
     if 'packages' in version_data['resources']:
         code += '  packages={[\n'

@@ -127,6 +127,24 @@ export default function PlatformBlock({
                     )}
                     </div>
                 )}
+                {dockerInfo.image_light && (
+                  <div className={styles.dockerTagItem}>
+                    <button className={styles.dockerTag}
+                      onClick={() => dockerAction(dockerInfo.image_light, false)}
+                      title="Click to copy to clipboard"
+                    >
+                      {dockerInfo.image_light.split(':')[1]}
+                    </button>
+                    {dockerInfo.info_light && (
+                      <button className={styles.dockerTag}
+                        onClick={() => dockerAction(dockerInfo.info_light, true)}
+                        title="View in registry"
+                      >
+                        registry (light)
+                      </button>
+                    )}
+                    </div>
+                )}
               </div>
             </div>)}
           <div className={styles.packageLinks}>
