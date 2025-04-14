@@ -68,6 +68,28 @@ You can add a `title` to the code block by adding a title key after the language
 console.log('What a great log');
 ```
 
+### Code block tabs
+
+To use [code block tabs](https://docusaurus.io/docs/markdown-features/code-blocks#multi-language-support-code-blocks) that make some documentation more readable, use a `.mdx` file format and use the following syntax (put the import instructions before your first use of the tabs, or right **after** the front matter headings)
+
+```mdx
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="tab1" label="Tab1">
+
+
+
+</TabItem>
+<TabItem value="tab2" label="Tb2">
+
+
+
+</TabItem>
+</Tabs>
+```
+
 ### Custom title ids : 
 
 The following syntax will allow a link to `[text](/url#my-explicit-id)` instead of the default `[text](/url#hello-world)`
