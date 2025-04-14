@@ -16,7 +16,7 @@ Platform Resources
   maintenance="alpha"
   supportType="None"
   releaseVersion="6.3.0"
-  releaseDate="Friday, April 11, 2025"
+  releaseDate="Monday, April 14, 2025"
   javaResources={[
     { name: "documentation", url: "https://platform.simplicite.io/6.3/javadoc/" },
     { name: "dependencies", url: "https://platform.simplicite.io/6.3/java-dependencies.html" },

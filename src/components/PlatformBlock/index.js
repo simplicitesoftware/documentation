@@ -8,6 +8,7 @@ export default function PlatformBlock({
   supportType = '',
   releaseVersion = '',
   releaseDate = '',
+  initialReleaseDate = '',
   javaResources = [],
   jsResources = [],
   auditResources = [],
@@ -71,7 +72,10 @@ export default function PlatformBlock({
         <div className={styles.blockBody}>
           <span className={styles.comment}>
             Current revision <span className={styles.b}>{releaseVersion}</span>, 
-            released <span className={styles.b}>{releaseDate}</span>
+            {initialReleaseDate && (
+              <> initially released on <span className={styles.b}>{initialReleaseDate}</span>, </>
+            )}
+            with latest release on <span className={styles.b}>{releaseDate}</span>.
           </span>
           <div className={styles.blockLinks}>
             <div className={styles.javaBlock}>
