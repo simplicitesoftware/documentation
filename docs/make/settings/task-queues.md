@@ -1,5 +1,5 @@
 ---
-sidebar_position: 41
+sidebar_position: 60
 title: Task queues
 ---
 
@@ -9,7 +9,7 @@ Task Queues
 Introduction
 ------------
 
-As of Simplicité® version 4.0.P22, the asynchronous task execution model introduces a more flexible **task queue system**, replacing the single worker pool from earlier versions.
+As of Simplicité® version 6.0, the asynchronous task execution model introduces a more flexible **task queue system**, replacing the single worker pool from earlier versions.
 
 This system allows separation between **application-level** and **system-level** background jobs, with the ability to define **custom queues** tailored to specific workload types and resource usage requirements.
 
