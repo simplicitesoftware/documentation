@@ -55,38 +55,6 @@ public String display(Parameters params) {
 ```
 
 
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyDisp.display = function(params) {
-	var g = this.getGrant();
-	
-	var wp = new BootstrapWebPage(params.getRoot(), g.getParameter("WINDOW_TITLE", "Simplicité"), true);
-	wp.appendAjax();
-	wp.appendJSInclude(HTMLPage.getResourceJSURL(g, "SCRIPT")); // Include a client side JavaScript
-	wp.appendCSSInclude(HTMLPage.getResourceCSSURL(g, "STYLES")); // Include a custom stylesheet
-	wp.setFavicon(HTMLPage.getResourceIconURL(g, "FAVICON"));
-	wp.setReady("mydisp(\"" + wp.getRoot() + "\");");
-	
-	var sm = new LinkedHashMap();
-	sm.put("submenu1", "My sub menu 1");
-	sm.put("submenu2", "My sub menu 2");
-	var m = new LinkedHashMap();
-	m.put("menu1", "My menu 1");
-	m.put("menu2", wp.subMenu("menu2", "My menu 2", sm));
-	m.put("quit", "<span class=\"glyphicon glyphicon-off\"></span> " + g.T("QUIT"));
-	wp.setMenu("home", "<img src=\"" + HTMLPage.getResourceImageURL(g, "LOGO") + "\" style=\"margin: 5px;\"/>", m, false, true, true);
-	
-	wp.appendHTML("<div id=\"main\"></div>");
-	
-	wp.appendHTML("<div id=\"footer\">&copy; Simplicité Software</div>");
-	
-	return wp.toString();
-};
-```
-</details>
-
 As of version **3.1 MAINTENANCE 08**, the `displayPublic`, `displayPublicHome`, `displayHome`, `displayLogon` and `displayLogout`
 functions can be used on the same principle to override the public main page, public home page, authenticated home page, logon page and logout page when needed.
 
@@ -113,26 +81,6 @@ public String display(Parameters params) {
 }
 ```
 
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyDisp.displayLogon = function(params) {
-	var g = this.getGrant();
-	
-	var wp = new BootstrapWebPage(params.getRoot(), g.getParameter("WINDOW_TITLE", "Simplicité"), true);
-	
-	wp.appendJSInclude(HTMLPage.getResourceJSURL(g, "SCRIPT"));
-	wp.appendCSSInclude(HTMLPage.getResourceCSSURL(g, "STYLES"));
-	wp.setFavicon(HTMLPage.getResourceIconURL(g, "FAVICON"));
-	
-	wp.append(HTMLPage.getResourceHTMLContent(g, "LOGON"));
-	wp.setReady("loaded();");
-	
-	return wp.toString();
-};
-```
-</details>
 
 The disposition `LOGON` HTML resource being:
 

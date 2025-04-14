@@ -124,17 +124,6 @@ public void preLoadGrant(Grant g) {
 }
 ```
 
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-PlatformHooks.preLoadGrant(g) {
-	var login = g.getLogin();
-	// e.g. load custom responsibilities and user profile
-}
-```
-</details>
-
 The `postLoadGrant` is called **after** the user rights are loaded (responsibilities, system parameters...).
 
 Example:
@@ -149,17 +138,6 @@ public void postLoadGrant(Grant g) {
 	super.postLoadGrant(g);
 }
 ```
-
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-PlatformHooks.postLoadGrant(g) {
-	console.log("Hello " + g.getFirstName() + "!");
-	// e.g. add custom rights...
-}
-```
-</details>
 
 There are also some **finer** hooks that are **enclosed** between the above `pre/postLoadGrant`:
 
@@ -191,19 +169,6 @@ public boolean isMenuEnable(Grant g, String domain, String item) {
 	return !(g.hasResponsibility("SIMPLE_USER") && "DomainMarketing".equals(domain) && "Product".equals(item));
 }
 ```
-
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-PlatformHooks.isMenuEnable(g, domain, item) {
-	// Example to hide to group SIMPLE_USER the Product in the Marketing domain.
-	if (g.hasResponsibility("SIMPLE_USER") && domain=="DomainMarketing" && item=="Product")
-		return false;
-	return true;
-}
-```
-</details>
 
 Fulltext search hooks
 ---------------------
@@ -243,39 +208,6 @@ public List<SearchItem> postSearchIndex(Grant g, List<SearchItem> rows) {
 }
 ```
 
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-PlatformHooks.postSearchIndex = function(g, rows) {
-	// Access to the default result
-	for (var i=0; rows && i<rows.size(); i++) {
-		var item = rows.get(i);
-
-		// Change anything to display here...
-		console.log("score "+item.score);   // Optional scoring
-		console.log("object "+item.object); // Optional object name
-		console.log("row_id "+item.row_id); // Optional row_id
-		console.log("key "+item.key);   // Item unique key
-		console.log("ukey "+item.ukey); // Default user key to display
-		console.log("data "+item.data); // Default payload or summary to display
-		if (item.values) {
-			//... Optional object values as a List of String
-		}
-	}
-
-	// Sample to add an item on top
-	var item = new SearchItem();
-	item.score = "1000";
-	item.ukey = "The best item";
-	item.data = "This item is always returned...";
-	if (rows) rows.add(0,item);
-
-	return rows;
-}
-```
-</details>
-
 Other hooks
 -----------
 
@@ -296,17 +228,6 @@ public List<String> validatePassword(Grant g, String pwd) {
 	return msgs;
 }
 ```
-
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-PlatformHooks.validatePassword = function(g, pwd) {
-	if (pwd.indexOf("_") < 0)
-		return "A good password must include an underscore!";
-};
-```
-</details>
 
 It can returns either a single error message (like in the example above) or an array of error messages.
 An error message can either be a hard-coded label (like in the example above)
@@ -329,15 +250,6 @@ public void logout(Grant g) {
 	super.logout(g);
 }
 ```
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-PlatformHooks.logout = function(g) {
-	console.log("Bye bye " + g.getLogin() + "!");
-};
-```
-</details>
 
 ### `downloadDocument`
 
@@ -354,13 +266,3 @@ public void downloadDocument(Grant g, DocumentDB doc) {
 }
 ```
 
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-PlatformHooks.downloadDocument = function(g, doc) {
-	if (doc.getObjectRef() == "MyObject")
-		console.log("The doc " + doc.getId() + " from object " + doc.getObjectRef() + " has been downloaded by " + g.getLogin());
-};
-```
-</details>
