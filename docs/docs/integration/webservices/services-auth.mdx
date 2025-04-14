@@ -1,0 +1,193 @@
+---
+sidebar_position: 2
+title: API auth
+---
+
+API authentication
+=======================
+
+:::warning
+
+This document only applies to the API endpoint.
+
+This document **does not apply** to :
+- legacy webservices endpoint (that uses authentication methods configured at the server configuration level) 
+- the I/O endpoint
+- the GIT endpoint
+
+:::
+
+The example use the `curl` command line tool (that can easily be transposed to any other HTTP client tool or API).
+
+> **Note**: in version 3.x adding `-b cookies.txt -c cookies.txt` as arguments of the `curl` calls is **required**
+> as they allow to re-use the same server session (identified by the `JSESSIONID` cookie).
+> In versions 4.0+ a technical session is used to avoid taking care of the session cookie.
+
+API Base URL
+------------
+
+In all following examples, `$BASE_URL` is used to represent the app's API endpoint. 
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="tab1" label="default (ROOT deployement)">
+
+For a default root deployement, the API endpoint is `/api`
+
+```shell
+BASE_URL="http[s]://<host[:<port>]>/api"
+```
+
+</TabItem>
+<TabItem value="tab2" label="non ROOT deployement">
+
+For a non ROOT deployement, the API endpoint is `/myapp/api`
+
+```shell
+BASE_URL="http[s]://<host[:<port>]>/myapp/api"
+```
+
+</TabItem>
+</Tabs>
+
+Login
+-----
+
+**To get an access token**, a first call to the login service (`$BASE_URL/login[<optional parameter(s)>]`) is needed. As this login service is only dedicated to webservices, no interactive login/password entry mechanisms is available. Whatever method is used to retrieve the access token, it must be used for subsequent service calls. In all following examples, `$TOKEN` is used to represent the token.
+
+<Tabs>
+<TabItem value="tab1" label="HTTP Basic auth">
+
+```shell
+TOKEN=$(curl -u <login>[:<password>] "$BASE_URL/login")
+```
+
+</TabItem>
+<TabItem value="tab2" label="GET (not recommended)">
+
+:::warning
+
+[Information exposure through query strings in url](https://owasp.org/www-community/vulnerabilities/Information_exposure_through_query_strings_in_url) is a very bad practice, please use HTTP Basic Auth instead.
+
+:::
+
+```shell
+TOKEN=$(curl "$BASE_URL/login?username=<login>&password=<password>")
+```
+
+</TabItem>
+<TabItem value="tab3" label="POST (not recommended)">
+
+```shell
+TOKEN=$(curl --form "username=<login>" --form "password=<password>" "$BASE_URL/login")
+```
+
+</TabItem>
+</Tabs>
+
+:::info
+
+If the credentials are incomplete or not accepted for any reason the response will be an HTTP code `401`.
+
+:::
+
+### Plain text Response
+
+The **default response** is the access token as plain text.
+
+### Redirect URI Response
+
+If the optional parameter `redirect_uri=<redirect URI>` is set, the access token `<token>` is added to this URI as the `access_token` GET parameter
+and the response is an HTTP redirect to this URI.
+
+```shell
+curl -u <login>[:<password>] "$BASE_URL/login?redirect_uri=..."
+```
+
+### JSON Response
+
+It is possible to get a JSON formatted response instead of the plaintext default.
+
+<Tabs>
+<TabItem value="tab1" label="Accept header (v5.2.39+)">
+
+Set the `Accept` header to `application/json`:
+
+```shell
+curl -u <login>[:<password>] -H "Accept: application/json" "$BASE_URL/login"
+```
+
+</TabItem>
+<TabItem value="tab2" label="URL Parameter">
+
+Set the optional parameter `?format=json` or `?_json=true` or `_output=json`
+
+```shell
+curl -u <login>[:<password>] "$BASE_URL/login?format=json"
+```
+
+</TabItem>
+</Tabs>
+
+```json
+{
+	"authtoken": "<auth token, e.g. eVXGhFz5ovn1yCRU9N2U4rO7Chv9aiphSjUK5njA4clCSHXy5t>",
+	"sessionid": "<server session ID, e.g. FD22A705AE469A414333BD0DE6A0222D>",
+	"login": "<user login>",
+	"firstname": "<user first name>",
+	"lastname": "<user last name>",
+	"lang": <user language code, e.g. ENU>"
+}
+```
+
+### Oauth2 Response
+
+As of version 3.1 MAINTENANCE 07 it is also possible to get a OAuth2 style response by setting the optional parameter `?_oauth2=true` (or `_output=oauth2`).
+Note that in this case you **must** use HTTPS.
+
+```json
+{
+	"access_token": "<auth token, e.g. eVXGhFz5ovn1yCRU9N2U4rO7Chv9aiphSjUK5njA4clCSHXy5t>",
+	"token_type": "bearer",
+	"expires_in": <server session timeout, e.g. 300>,
+	"scope": null
+}
+```
+
+Service calls
+-------------
+
+All calls **must** pass the access token in the custom `X-Simplicite-Authorization` header:
+
+```shell
+curl -H "X-Simplicite-Authorization: Bearer $TOKEN" "$BASE_URL/..."
+```
+
+:::info
+
+After the server session times out the response will be an HTTP code `401`.
+
+:::
+
+:::info
+
+If for som odd reason you can't set the `X-Simplicite-Authorization` header you have two other options:
+
+- Use the default `Authorization` header with the same content (`Bearer <token>`)
+  but in some contexts (like in a web browser) this can be in conflict with other mechanisms using this header
+- Add `_x_simplicite_autorization_=<token>` as URL parameter.
+  As of **version 5.1** (and backported in version 4.0) it is possible to customize the name of this URL
+  parameter using the `USERTOKENS_URL_PARAM` system parameter.
+
+:::
+
+Logout
+------
+
+To explicitly log out (before the server session times out) the logout service can be called on `$BASE_URL/logout`
+
+```shell
+curl  -H "X-Simplicite-Authorization: Bearer <token>" "$BASE_URL/logout"
+```
