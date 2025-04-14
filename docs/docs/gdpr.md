@@ -9,13 +9,13 @@ GDPR guidelines
 Introduction
 ------------
 
-Out of the box, the Simplicitt&eacute; platform **software** (refered as "the platform" in the rest of this document) does not manage any private data.
+Out of the box, the Simplicité platform **software** (refered as "the platform" in the rest of this document) does not manage any private data.
 
 The only out of the box business object which has some potentially private data fields is the `User` business object level (see below),
 but out of the box the platform is only configured with anonymous technical users.
 
 The platform is designed to process the data you configure in it which may include some private data. It is your sole responsibility to comply
-with GDPR regarding this potential private data you have decided to manage with Simplicité. The following guidelines are dedicated to help
+with <abbr title="General Data Protection Regulation ">GDPR</abbr> (<abbr title="Règlement Général sur la Protection des Données">RGPD</abbr> in french) regarding this potential private data you have decided to manage with Simplicité. The following guidelines are dedicated to help
 you in this task.
 
 > **Note**: all data configured in the platform is physically stored in the database(s) you have configured for it.
