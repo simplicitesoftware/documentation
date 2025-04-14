@@ -17,41 +17,45 @@ Installation
 
 This step is required to make sure your host system is up-to-date.
 
-Update system on **CentOS 7**:
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-```bash
-sudo yum -y update && sudo yum clean all
-sudo reboot
-```
-
-Update system on **CentOS 8+/AlmaLinux/RockyLinux**:
+<Tabs>
+<TabItem value="py" label="CentOS 8+/AlmaLinux/RockyLinux">
 
 ```bash
 sudo dnf -y update && sudo dnf clean all
 sudo reboot
 ```
 
-Update system on **Debian**:
+</TabItem>
+<TabItem value="js" label="CentOS 7">
+
+```bash
+sudo yum -y update && sudo yum clean all
+sudo reboot
+```
+
+</TabItem>
+<TabItem value="java" label="Debian">
 
 ```bash
 sudo apt-get update && sudo apt-get upgrade
 sudo reboot
 ```
 
+</TabItem>
+</Tabs>
+
 ### Firewall setup
 
 Although it is highly recommended, this step is not required if you have an external firewall which already
 filters the access to your host.
 
-Install and enable firewall  on **CentOS 7**:
+Install and enable firewall :
 
-```bash
-sudo yum -y install firewalld && sudo yum clean all
-sudo systemctl enable firewalld
-sudo systemctl start firewalld
-```
-
-Install and enable firewall  on **CentOS 8+/AlmaLinux/RockyLinux**:
+<Tabs>
+<TabItem value="py" label="CentOS 8+/AlmaLinux/RockyLinux">
 
 ```bash
 sudo dnf -y install firewalld && sudo dnf clean all
@@ -59,12 +63,25 @@ sudo systemctl enable firewalld
 sudo systemctl start firewalld
 ```
 
-Install firewall on **Debian**:
+</TabItem>
+<TabItem value="js" label="CentOS 7">
+
+```bash
+sudo yum -y install firewalld && sudo yum clean all
+sudo systemctl enable firewalld
+sudo systemctl start firewalld
+```
+
+</TabItem>
+<TabItem value="java" label="Debian">
 
 ```bash
 sudo apt update
 sudo apt -y install firewalld
 ```
+
+</TabItem>
+</Tabs>
 
 Configure firewall:
 
@@ -81,19 +98,24 @@ sudo firewall-cmd --list-all
 
 This step is not required but provides various useful tools and aliases on your host.
 
-Install other useful packages on **CentOS 7**:
+<Tabs>
+<TabItem value="py" label="CentOS 8+/AlmaLinux/RockyLinux">
+
+```bash
+sudo dnf -y install vim-enhanced git wget curl zip unzip && sudo dnf clean all
+sudo dnf -y install epel-release && sudo dnf -y install certbot htop && sudo dnf clean all
+```
+
+</TabItem>
+<TabItem value="js" label="CentOS 7">
 
 ```bash
 sudo yum -y install vim-enhanced git wget curl zip unzip && sudo yum clean all
 sudo yum -y install epel-release && sudo yum -y install certbot htop && sudo yum clean all
 ```
 
-Install other useful packages on **CentOS 8+/AlmaLinux/RockyLinux**:
-
-```bash
-sudo dnf -y install vim-enhanced git wget curl zip unzip && sudo dnf clean all
-sudo dnf -y install epel-release && sudo dnf -y install certbot htop && sudo dnf clean all
-```
+</TabItem>
+</Tabs>
 
 Add these useful aliases to `~/.bashrc`:
 
@@ -118,35 +140,34 @@ EOF
 
 This step is not required if you don't plan to connect to the deployed databases from your host.
 
-Install database clients on **CentOS 7**:
-
-```bash
-sudo yum -y install mariadb postgresql && sudo yum clean all
-```
-
-Install database clients on **CentOS 8+/AlmaLinux/RockyLinux**:
+<Tabs>
+<TabItem value="py" label="CentOS 8+/AlmaLinux/RockyLinux">
 
 ```bash
 sudo dnf -y install mariadb postgresql && sudo dnf clean all
 ```
 
-Install database clients on **Debian**:
+</TabItem>
+<TabItem value="js" label="CentOS 7">
+
+```bash
+sudo yum -y install mariadb postgresql && sudo yum clean all
+```
+
+</TabItem>
+<TabItem value="java" label="Debian">
 
 ```bash
 sudo apt install mariadb-client postgresql-client
 ```
 
+</TabItem>
+</Tabs>
+
 ### Docker
 
-Install **Docker** on **CentOS 7**:
-
-```bash
-sudo yum -y install docker && sudo yum clean all
-sudo systemctl enable docker
-sudo systemctl start docker
-```
-
-Install **Docker** on **CentOS 8+/AlmaLinux/RockyLinux**:
+<Tabs>
+<TabItem value="py" label="CentOS 8+/AlmaLinux/RockyLinux">
 
 ```bash
 sudo dnf -y install 'dnf-command(config-manager)'
@@ -157,7 +178,17 @@ sudo systemctl enable docker
 sudo systemctl start docker
 ```
 
-Install **Docker** on **Debian**:
+</TabItem>
+<TabItem value="js" label="CentOS 7">
+
+```bash
+sudo yum -y install docker && sudo yum clean all
+sudo systemctl enable docker
+sudo systemctl start docker
+```
+
+</TabItem>
+<TabItem value="java" label="Debian">
 
 ```bash
 sudo apt update && sudo apt-get install apt-transport-https ca-certificates curl gnupg2 software-properties-common
@@ -167,6 +198,9 @@ sudo apt update && sudo apt install docker-ce
 sudo docker --version
 sudo systemctl status docker
 ```
+
+</TabItem>
+</Tabs>
 
 > **Note**:
 > By default Docker is allowed to change the firewall rules to open exposed ports.
@@ -192,13 +226,8 @@ Where `<tag>` is one of the available tags. E.g. `6-latest` = `6` or `5-latest` 
 
 ### Docker compose
 
-Install the **Docker compose** tool on **CentOS 7**:
-
-```bash
-sudo yum -y install epel-release && sudo yum -y install docker-compose && sudo yum clean all
-```
-
-Install the **Docker compose** tool on **CentOS 8+/AlmaLinux/RockyLinux** or **Debian**:
+<Tabs>
+<TabItem value="py" label="CentOS 8+/AlmaLinux/RockyLinux/Debian">
 
 Check the latest `X.Y.Z` version on [GitHub](https://github.com/docker/compose/releases/latest).
 
@@ -207,6 +236,16 @@ sudo curl -L "https://github.com/docker/compose/releases/download/vX.Y.Z/docker-
 sudo chmod +x /usr/bin/docker-compose
 sudo docker-compose --version
 ```
+
+</TabItem>
+<TabItem value="js" label="CentOS 7">
+
+```bash
+sudo yum -y install epel-release && sudo yum -y install docker-compose && sudo yum clean all
+```
+
+</TabItem>
+</Tabs>
 
 Docker compose descriptors
 --------------------------
