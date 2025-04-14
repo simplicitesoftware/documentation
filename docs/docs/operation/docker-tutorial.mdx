@@ -21,29 +21,23 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
-<TabItem value="py" label="CentOS 8+/AlmaLinux/RockyLinux">
-
+<TabItem value="almalinux" label="AlmaLinux/RockyLinux/CentOS 8+">
 ```bash
 sudo dnf -y update && sudo dnf clean all
 sudo reboot
 ```
-
 </TabItem>
-<TabItem value="js" label="CentOS 7">
-
+<TabItem value="centos7" label="CentOS 7">
 ```bash
 sudo yum -y update && sudo yum clean all
 sudo reboot
 ```
-
 </TabItem>
-<TabItem value="java" label="Debian">
-
+<TabItem value="debian" label="Debian">
 ```bash
 sudo apt-get update && sudo apt-get upgrade
 sudo reboot
 ```
-
 </TabItem>
 </Tabs>
 
@@ -55,31 +49,25 @@ filters the access to your host.
 Install and enable firewall :
 
 <Tabs>
-<TabItem value="py" label="CentOS 8+/AlmaLinux/RockyLinux">
-
+<TabItem value="almalinux" label="AlmaLinux/RockyLinux/CentOS 8+">
 ```bash
 sudo dnf -y install firewalld && sudo dnf clean all
 sudo systemctl enable firewalld
 sudo systemctl start firewalld
 ```
-
 </TabItem>
-<TabItem value="js" label="CentOS 7">
-
+<TabItem value="centos7" label="CentOS 7">
 ```bash
 sudo yum -y install firewalld && sudo yum clean all
 sudo systemctl enable firewalld
 sudo systemctl start firewalld
 ```
-
 </TabItem>
-<TabItem value="java" label="Debian">
-
+<TabItem value="debian" label="Debian">
 ```bash
 sudo apt update
 sudo apt -y install firewalld
 ```
-
 </TabItem>
 </Tabs>
 
@@ -99,27 +87,43 @@ sudo firewall-cmd --list-all
 This step is not required but provides various useful tools and aliases on your host.
 
 <Tabs>
-<TabItem value="py" label="CentOS 8+/AlmaLinux/RockyLinux">
-
+<TabItem value="almalinux" label="AlmaLinux/RockyLinux/CentOS 8+">
 ```bash
 sudo dnf -y install vim-enhanced git wget curl zip unzip && sudo dnf clean all
 sudo dnf -y install epel-release && sudo dnf -y install certbot htop && sudo dnf clean all
 ```
-
 </TabItem>
-<TabItem value="js" label="CentOS 7">
-
+<TabItem value="centos7" label="CentOS 7">
 ```bash
 sudo yum -y install vim-enhanced git wget curl zip unzip && sudo yum clean all
 sudo yum -y install epel-release && sudo yum -y install certbot htop && sudo yum clean all
 ```
-
 </TabItem>
 </Tabs>
 
 Add these useful aliases to `~/.bashrc`:
 
-```plaintext
+<Tabs>
+<TabItem value="almalinux" label="AlmaLinux/RockyLinux/CentOS 8+">
+```bash
+cat << EOF >> .bashrc
+alias vi=vim
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias dir='ls -alF'
+alias d='sudo docker'
+alias di='sudo docker images'
+alias dp='sudo docker ps --all'
+alias dv='sudo docker volume'
+alias dc='sudo docker compose'
+alias k='sudo kubectl'
+EOF
+. .bashrc
+```
+</TabItem>
+<TabItem value="centos7" label="CentOS 7">
+```bash
 cat << EOF >> .bashrc
 alias vi=vim
 alias rm='rm -i'
@@ -135,40 +139,35 @@ alias k='sudo kubectl'
 EOF
 . .bashrc
 ```
+</TabItem>
+</Tabs>
 
 ### Optional: Install database clients packages
 
 This step is not required if you don't plan to connect to the deployed databases from your host.
 
 <Tabs>
-<TabItem value="py" label="CentOS 8+/AlmaLinux/RockyLinux">
-
+<TabItem value="almalinux" label="AlmaLinux/RockyLinux/CentOS 8+">
 ```bash
 sudo dnf -y install mariadb postgresql && sudo dnf clean all
 ```
-
 </TabItem>
-<TabItem value="js" label="CentOS 7">
-
+<TabItem value="centos7" label="CentOS 7">
 ```bash
 sudo yum -y install mariadb postgresql && sudo yum clean all
 ```
-
 </TabItem>
-<TabItem value="java" label="Debian">
-
+<TabItem value="debian" label="Debian">
 ```bash
 sudo apt install mariadb-client postgresql-client
 ```
-
 </TabItem>
 </Tabs>
 
 ### Docker
 
 <Tabs>
-<TabItem value="py" label="CentOS 8+/AlmaLinux/RockyLinux">
-
+<TabItem value="almalinux" label="AlmaLinux/RockyLinux/CentOS 8+">
 ```bash
 sudo dnf -y install 'dnf-command(config-manager)'
 sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
@@ -177,19 +176,15 @@ sudo docker --version
 sudo systemctl enable docker
 sudo systemctl start docker
 ```
-
 </TabItem>
-<TabItem value="js" label="CentOS 7">
-
+<TabItem value="centos7" label="CentOS 7">
 ```bash
 sudo yum -y install docker && sudo yum clean all
 sudo systemctl enable docker
 sudo systemctl start docker
 ```
-
 </TabItem>
-<TabItem value="java" label="Debian">
-
+<TabItem value="debian" label="Debian">
 ```bash
 sudo apt update && sudo apt-get install apt-transport-https ca-certificates curl gnupg2 software-properties-common
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
@@ -198,7 +193,6 @@ sudo apt update && sudo apt install docker-ce
 sudo docker --version
 sudo systemctl status docker
 ```
-
 </TabItem>
 </Tabs>
 
@@ -227,23 +221,13 @@ Where `<tag>` is one of the available tags. E.g. `6-latest` = `6` or `5-latest` 
 ### Docker compose
 
 <Tabs>
-<TabItem value="py" label="CentOS 8+/AlmaLinux/RockyLinux/Debian">
-
-Check the latest `X.Y.Z` version on [GitHub](https://github.com/docker/compose/releases/latest).
-
-```bash
-sudo curl -L "https://github.com/docker/compose/releases/download/vX.Y.Z/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose
-sudo chmod +x /usr/bin/docker-compose
-sudo docker-compose --version
-```
-
+<TabItem value="almalinux" label="AlmaLinux/RockyLinux/CentOS 8+ and Debian">
+The compose plugin is installed by default.
 </TabItem>
-<TabItem value="js" label="CentOS 7">
-
+<TabItem value="centos7" label="CentOS 7">
 ```bash
 sudo yum -y install epel-release && sudo yum -y install docker-compose && sudo yum clean all
 ```
-
 </TabItem>
 </Tabs>
 
@@ -254,7 +238,7 @@ The sample `docker-compose.yml` files below are using different databases.
 
 Create a folder for your instance (e.g. `myinstance`), all following files must be created in this folder.
 
-> **Note**: Alternatively you can add `--project-name=myinstance` to all `docker-compose` command invokations.
+> **Note**: Alternatively you can add `--project-name=myinstance` to all Docker compose` command invocations.
 
 ### Embedded HSQL database (1 container)
 
@@ -276,7 +260,7 @@ volumes:
   myinstance-hsqldb-git:
 ```
 
-> **Warning**: if you are planning to use a reverse proxy and/or to expose simplicite in HTTPS, make sure you use the apppropriate port mapping and configuration
+> **Warning**: if you are planning to use a reverse proxy and/or to expose simplicite in HTTPS, make sure you use the appropriate port mapping and configuration
 > see [this document](/docs/operation/docker#exposed-ports) for more details.
 
 ### MySQL database (2 containers)
@@ -285,7 +269,7 @@ volumes:
 services:
   db:
     image: mysql:latest
-    restart: unless-stoped
+    restart: unless-stopped
     container_name: myinstance-mysql-database
     command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     environment:
@@ -323,7 +307,7 @@ volumes:
 
 > **Note**: that the `DB_HOST` environment variable of the `simplicite` is using the name of the `db` service as hostname.
 
-> **Warning**: if you are planning to use a reverse proxy and/or to expose simplicite in HTTPS, make sure you use the apppropriate port mapping and configuration
+> **Warning**: if you are planning to use a reverse proxy and/or to expose simplicite in HTTPS, make sure you use the appropriate port mapping and configuration
 > see [this document](/docs/operation/docker#exposed-ports) for more details.
 
 ### PostgreSQL database (2 containers)
@@ -374,7 +358,7 @@ volumes:
 ### Oracle or SQLServer database
 
 For Oracle/SQLServer databases you need to build a **custom** Docker image in which you add the **appropriate** Oracle/SQLServer client and JDBC driver
-(for these two databases these components are not redistribuables and **must** correspond to the database server version you are using).
+(for these two databases these components are not redistributable and **must** correspond to the database server version you are using).
 
 Check [this GitHub repository](https://github.com/simplicitesoftware/docker) for examples.
 
@@ -422,10 +406,10 @@ services:
 (...)
 ```
 
-And, of course, remove the exposed `80` port from the `simplicite` and expose the `8443` **locally** olny
+And, of course, remove the exposed `80` port from the `simplicite` and expose the `8443` **locally** only
 (i.e. remove the `-80:8080` and add `- 127.0.0.1:8443:8443` in the `ports` section of your deployment descriptors).
 
-> **Warning**: As explained in [this document](/docs/operation/docker#exposed-ports) the `8080` port is for an **HTTP** enpoint of the reverse proxy
+> **Warning**: As explained in [this document](/docs/operation/docker#exposed-ports) the `8080` port is for an **HTTP** endpoint of the reverse proxy
 > and the `8443` port is for an **HTTPS** endpoint of the reverse proxy.
 > If you don't use the right port for the right usage (typically if you misuse the `8080` for an HTTPS endpoint of the reverse proxy) it **will** result in unexpected behaviors
 
@@ -507,7 +491,7 @@ that you have obtained/bought for your hostname(s).
 In all cases you **should** configure GZIP compression. Depending on your deployment strategy it can be done at different level.
 
 - it can be done directly by the Tomcat of the Simplicité container using the `GZIP=true` environment variable.
-- it can be done (and in most case it is preferrable) at the reverse proxy level
+- it can be done (and in most case it is preferable) at the reverse proxy level
   (see, for instance, the `gzip on;` statement in the above NGINX configuration file)
 
 ### Websockets
@@ -524,7 +508,7 @@ Note that this means that any Java compiled class must be provided otherwise, e.
 
 ### Generate a self-signed certificate
 
-You can generate them as a **self-signed** certficate with the following commands:
+You can generate them as a **self-signed** certificate with the following commands:
 
 ```bash
 openssl genrsa -des3 -out server.key 4096
@@ -576,7 +560,7 @@ sudo certbot certonly --webroot -w . -d <myhostname>
 
 7) Uncomment the HTTPS config  in the `nginx.conf` file.
 
-8) Change the certificat and key volume mappings in the `docker-compose.yml` file to:
+8) Change the certificate and key volume mappings in the `docker-compose.yml` file to:
 
 ```yaml
 (...)
