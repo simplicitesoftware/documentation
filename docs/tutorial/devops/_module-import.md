@@ -18,11 +18,11 @@ The import can be done :
 - by uploading the zip file via the module form
 - by using the GIT mechanisms
 - by calling the io layer (in command line with `curl`), to upload the same zip file
-- by filling in the importspec file in json or yaml format (for specific docker images).
+- by filling in the import specification file in json or yaml format (for specific docker images).
 
 If it is not a module creation, but an update (a v2 for example), it is possible that *configuration elements have been deleted*. This is why the platform performs a comparison (diff) between the existing and the imported to remove these ghost objects.
 
-<div class="warning">Beware, the diff is  <strong>only</strong> done if you use the module import feature and not the more basic classic XML import feature.</div>
+<div class="warning">Beware, the diff is <strong>only</strong> done if you use the module import feature and not the more basic classic XML import feature.</div>
 
 Exercise
 ====================
