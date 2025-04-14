@@ -17,12 +17,6 @@ But this is not a typical use of external objects as there are other mechanisms 
 As of **version 3.1** external objects can also be used to provide custom web services (typically JSON/REST web services) on the API endpoint.
 Please refer to [this document](/docs/integration/webservices/custom-services) for details.
 
-> **Note**:
->
-> Some of the examples below are given using the server-side **Rhino** scripting language.
-> In such Rhino scripts the `this` variable correspond to the external object itself,
-> it must be **explicitly** used (it can't be implicit like in Java code).
-> but good practice is to use Java language which includes a compilation step and ensure that the syntax of the script is > correct. In advanced use cases that are not part of this tutorial, the use of Java gives access to all of the classic > > application development tools: step-by-step debugging, unit tests, development in a Java IDE, code quality analysis with Sonar etc..
 
 The content of an external page is produced by the `display` method of its server side script.
 
@@ -48,17 +42,6 @@ public Object display(Parameters params) {
 	return "<h1>Hello world !</h1>";
 }
 ```
-
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyExtObj.display = function(params) {
-	return "<h1>Hello world !</h1>";
-};
-```
-</details>
-
 
 Note that the `display` method is created in the `MyExtObj` namespace that corresponds to the name of the configured external object.
 
@@ -88,17 +71,6 @@ public Object display(Parameters params) {
 	return "<h1>Hello world !</h1>";
 }
 ```
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyExtObj.display = function(params) {
-	this.setDecoration(false); // Just a plain page
-	return "<h1>Hello world !</h1>";
-};
-```
-</details>
-
 Then the plain page will render like this:
 
 ![](img/externalobject-code-examples/externalobject-code-examples-4.png)
@@ -132,20 +104,6 @@ public Object display(Parameters params) {
 	return wp.toString();
 }
 ```
-
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyExtObj.display = function(params) {
-	this.setDecoration(false);
-	var wp = new JQueryWebPage(params.getRoot(), this.getDisplay());
-	wp.setReady("$('#hello').append('Hello world !');");
-	wp.appendHTML("<h1 id=\"hello\"></h1>");
-	return wp.toString();
-};
-```
-</details>
 
 The output is visually the same as above but the generated HTML is now:
 
@@ -230,22 +188,6 @@ public Object display(Parameters params) {
 }
 ```
 
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyExtObj.display = function(params) {
-	this.appendCSSInclude("http://url/of/a/file.css");
-	this.appendCSSIncludes([ "http://url/of/a/file1.css", "http://url/of/a/file2.css" ]);
-	this.appendJSInclude("http://url/of/a/file.js");
-	this.appendJSIncludes([ "http://url/of/a/file1.js", "http://url/of/a/file2.js" ]);
-	return "<p>Hello world !</p>"
-		+ HTMLTool.jsBlock("console.log('Hello again !');")
-		+ HTMLTool.cssBlock("p { color: red; }");
-};
-```
-</details>
-
 The `com.simplicite.util.tools.HTMLTool` helper class provides methods that can be used to get the URLs
 of packaged third party components' JavaScript/CSS (for use in the `append*` methods described above):
 
@@ -300,22 +242,6 @@ For example you can write a traditional form posted to server
 			+ "</form>";
 	}
 ```
-
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyExtObj.display = function(params) {
-	var name = params.getParameter("myname", "");
-	if (name != "") return "Hello " + name + " !";
-	return "<form action=\"" + params.getLocation() + "\" method=\"post\">"
-		+ "Your name: <input type=\"text\" name=\"myname\"/>"
-		+ "<input type=\"submit\"/>"
-		+ "</form>"
-};
-```
-</details>
-
 
 When used inside the generic web UI authenticated zone with navigation (i.e. by adding the URL parameter `nav=add` 
 to the page URL), you can get the previous page URL by calling `params.getBackLocation()`. This can be used,
@@ -372,17 +298,6 @@ public Object display(Parameters params) {
 }
 ```
 
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyExtObj.display = function(params) {
-	return "<div id=\"hello\"></div>"
-		+ HTMLTool.jsBlock("new Simplicite.Ajax().getGrant(function(g) { $('#hello').append('Hello ' + g.login); });");
-};
-```
-</details>
-
 ### Legacy UI tools (deprecated)
 
 Decorated standard pages includes the UI tools by default (non standard page need to include it explicitly, e.g. using `wp.appendUITools()` where `wp` is an instance of a sub class of `com.simplicite.webapp.web.WebPage`).
@@ -422,40 +337,7 @@ public class MyExtObj extends com.simplicite.util.ExternalObject {
 	}
 }
 ```
-<details>
-<summary> Legacy UI (deprecated)</summary>
-
-Typical usage (using Rhino script) as a standalone **standard** page for version **4.0 legacy UI** (or for versions 3.x UI) is something like:
-
-```javascript
-MyExtObj.display = function(params) {
-	this.appendCSSIncludes(HTMLTool.jqplotCSS());
-	this.appendJSIncludes(HTMLTool.jqplotJS());
-	return "<div id=\"mychart\"></div>" + HTMLTool.jsBlock("onload_functions.push(function() { $.jqplot('mychart', [[['Europe', 25],['Americas', 14],['Asia', 7]]], { seriesDefaults: { renderer: $.jqplot.PieRenderer }, legend:{ show: true } }); });");
-};
-```
-
-</details>
-
 Note that for simple charts you can also use the `Simplicite.UI` jQplot&reg; wrappers APIs.
-
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyExtObj.display = function(params) {
-	this.appendCSSIncludes(HTMLTool.jqplotCSS());
-	this.appendJSIncludes(HTMLTool.jqplotJS());
-	return "<div id=\"mypiechart\" style=\"width: 300px;\"></div>"
-		+ "<div id=\"mybarchart\" style=\"width: 300px;\"></div>"
-		+ HTMLTool.jsBlock("onload_functions.push(function() {"
-			+ "Simplicite.UI.pieChart('mypiechart', { values: [1, 2, 3], labels: ['Label 1', 'Label 2', 'Label 3'] });"
-			+ "Simplicite.UI.barChart('mybarchart', { values: [[1, 3, 5], [2, 4 ,6]], names: ['Serie 1', 'Serie 2'], labels: ['Label 1', 'Label 2', 'Label 3'] });"
-		+ "});");
-};
-```
-
-</details>
 
 For both legacy and responsive UI please refer to [jQPlot&reg; examples](http://www.jqplot.com/examples/) for details on usage.
 
@@ -483,21 +365,6 @@ public class MyExtObj extends com.simplicite.util.ExternalObject {
 }
 ```
 
-#### Legacy UI (deprecated)
-
-Typical usage (using Rhino script) as a standalone **standard** page for version **4.0 legacy UI** (or for versions 3.x UI) is something like:
-
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyExtObj.display = function(params) {
-	this.appendJSIncludes(HTMLTool.gmapJS());
-	return "<div id=\"mymap\" style=\"width: 400px; height: 400px;\"></div>"
-		+ HTMLTool.jsBlock("onload_functions.push(function() { Simplicite.Gmap.simpleDisplay('mymap', 8.8566667, 2.3509871, 15); });");
-};
-```
-</details>
 
 The above example uses the `Simplicite.Gmap` wrapper but the Google Maps&reg; API can also be directly used
 (check the [Google Maps&reg; API documentation](https://developers.google.com/maps) for details on usage).
@@ -526,22 +393,6 @@ public class MyExtObj extends com.simplicite.util.ExternalObject {
 	}
 }
 ```
-
-<details>
-<summary>Legacy UI (deprecated)</summary>
-
-Typical usage (using Rhino script) as a standalone **standard** page for version **4.0 legacy** UI (or for versions 3.x UI) is something like:
-
-```javascript
-MyExtObj.display = function(params) {
-	this.appendCSSIncludes(HTMLTool.htmleditorCSS());
-	this.appendJSIncludes(HTMLTool.htmleditorJS());
-	return "<textarea id=\"myeditor\" style=\"width: 100%; height: 200px;\">Hello world!</textarea>" +
-		HTMLTool.jsBlock("onload_functions.push(function() { tinymce.init({ selector: '#myeditor' }); });");
-};
-```
-</details>
-
 For both legacy and responsive UI check the [TinyMCE&reg; documentation](https://www.tiny.cloud/docs-4x/) for details on usage.
 
 ### Ace&reg; code editor
@@ -563,26 +414,6 @@ public Object display(Parameters params) {
 		HTMLTool.jsIncludes(HTMLTool.aceJS(), "UTF-8"); // Must be done like this and here!
 };
 ```
-
-<details>
-<summary>Legacy UI (deprecated)</summary>
-
-Typical usage (using Rhino script) as a standalone **standard** page for version **4.0 legacy** UI (or for versions 3.x UI) is something like:
-
-```javascript
-MyExtObj.display = function(params) {
-	return "<div style=\"position: relative;\">" +
-			"<div id=\"myeditor\" style=\"width: 400px; height: 300px;\"></div>" +
-		"</div>" +
-		HTMLTool.jsBlock("onload_functions.push(function() {" +
-			"var e = ace.edit('myeditor');" +
-			"e.getSession().setMode('ace/mode/html');" +
-			"e.getSession().setValue('<p>Hello world !</p>');" +
-		"});") +
-		HTMLTool.jsIncludes(HTMLTool.aceJS(), "UTF-8"); // Must be done like this and here!
-};
-```
-</details>
 
 For both legacy and responsive UI check the [Ace&reg; documentation](http://ace.c9.io) for details on usage.
 
@@ -936,20 +767,6 @@ public Object display(Parameters params) {
 } 
 ```
 
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyExtObject.display = function(params) {
-	this.addMustache();
-	var data = new JSONObject()
-		.put("greetings", "Hello")
-		.put("name", "Bob");
-	return this.javascript("$('#myextobject').html(Mustache.render($('#myextobject-template').html(), " + data.toString() + "));");
-};
-```
-</details>
-
 ### Submitting and returning dynamic data
 
 #### HTML resource:
@@ -999,18 +816,3 @@ public Object display(Parameters params) {
 } 
 ```
 
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyExtObject.display = function(params) {
-	if (params.isPost()) {
-		this.setJSONMIMEType();
-		return new JSONObject()
-			.put("greetings", "Hello")
-			.put("name", params.getParameter("name").trim());
-	}
-	return this.javascript(this.getName().".init(" + params.toJSON() + ");");
-};
-```
-</details>

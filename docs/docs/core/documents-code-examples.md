@@ -125,27 +125,9 @@ byte[] bytes = bos.toByteArray();
 // Do something with document content...
 ```
 
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-importPackage(Packages.com.lowagie.text);
-
-var bos = new java.io.ByteArrayOutputStream();
-	
-var pdf = PDFTool.open(bos);
-pdf.add(new Paragraph("Hello world !"));
-(...)
-PDFTool.close(pdf);
-
-var bytes = bos.toByteArray();
-// Do something with document content...
-```
-</details>
-
 Note that it is possible to insert resource images in the PDF document, e.g.:
 
-```javascript
+```java
 pdf.add(PDFTool.getImageFromResource(obj.getGrant(), "MYIMAGERESOURCECODE"));
 ```
 
@@ -173,22 +155,6 @@ bytes[] bytes = xls.generateToByteArray();
 ```
 
 
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-var xls = new ExcelPOITool(); // or ExcelPOITool(true); as of version 4.0, the true argument means using XLSX format
-var s = xls.newSheet("MyNewSheet");
-var r = xls.newRow(0);
-var c = xls.newCell(0, "Hello World !");
-r.add(c);
-s.add(r);
-xls.add(s);
-var bytes = xls.generateToByteArray();
-// Do something with document content...
-```
-</details>
-
 ### Using an existing template sheet
 
 For this advanced usage of the **Apache POI** lib you need to include the `org.apache.poi.hssf.usermodel` package explicitly.
@@ -212,25 +178,6 @@ for (int i = 0; i < rows.size(); i++) {
 	xls.addRow(sheet, r);
 }
 ```
-
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-importPackage(Packages.org.apache.poi.hssf.usermodel);
-(...)
- 
-var sheet = xls.addSheet("Custom");
-for (var i = 0; i < rows.size(); i++) {
-	var r = new ExcelRow(i);
-	var row = rows.get(i);
-	for (var j = 0; j < row.length; j++) {
-		r.add(xls.newCell(j, row[j]));
-	}
-	xls.addRow(sheet, r);
-}
-```
-</details>
 
 
 In the above example `doc` is a Simplicité document.

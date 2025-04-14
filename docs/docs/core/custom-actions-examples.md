@@ -27,17 +27,6 @@ public String myCustomAction() {
 }
 ```
 
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyObject.myCustomAction = function() {
-	var rowId = this.getRowId();
-	return Message.formatSimpleInfo("Using instance " + this.getInstanceName() + (!Tool.isEmpty(rowId) ? " and row ID " + rowId : ""));
-}
-```
-</details>
-
 On responsive UI (using ajax services) the action can return:
 
 - a textual message to be displayed in a UI dialog box (error and warning) or in a UI toast box (info)
@@ -74,20 +63,6 @@ public String myCustomAction(Map<String,String> params) {
 }
 ```
 
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-Previous V4 syntax supports `String` values only thru a `Map`:
-
-```javascript
-MyObject.myCustomAction = function(params) {
-	var myActionField = params!=null ? params.get("myActionField") : null;
-	...
-}
-```
-</details>
-
-
 This syntax is deprecated in V5 and must be replaced by a new
 V5 syntax to supports `ObjectField` directly as follow:
 **Java**
@@ -105,23 +80,6 @@ public String myCustomAction(Action a) {
 		
 }
 ```
-
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyObject.myCustomAction = function(action) {
-	var lang = this.getGrant().getLang();
-	var myActionField = action!=null ? action.get(lang, "myActionField").getValue() : null;
-	var myDoc = action!=null ? action.get(lang, "myDocField").getDocument() : null;
-	var file = myDoc.getUploadFile();
-	// do something with the document...
-	// Remove the file from /tmp directory
-	file.delete();
-	// ...
-}
-```
-</details>
 
 **Java**
 
@@ -199,18 +157,6 @@ public String postSave() {
 	...
 }
 ```
-
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyObject.postSave = function() {
-	var params = this.geObjectParameter("ActionFields");
-	var myActionField = params!=null ? params.get("myActionField") : null;
-	...
-}
-```
-</details>
 
 **V5 implementation:**
 

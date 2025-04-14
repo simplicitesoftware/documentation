@@ -6,20 +6,8 @@ title: Basic code examples
 Basic code examples
 ===================
 
-These basic guidelines and examples are given using the server-side **Rhino** scripting language syntax for usage within business object
-scripts, workflow scripts, external object scripts, ...
-
-For more details on **Rhino** scripting you can check [the Mozilla Rhino documentation](https://developer.mozilla.org/en-US/Mozilla/Projects/Rhino/docs)
-
-> **Note**:
->
-> Object code can be written in Java (or JavaScript which will be executed by the Rhino server-side engine, just like the executed fields), but good practice is to prefer Java language which
-> include a compilation step and ensure that the syntax of the script is correct. In advanced use cases that are not part of this tutorial, the use of Java gives access > to all of the classic application development tools: step-by-step debugging, unit tests, development in a Java IDE, code quality analysis with Sonar etc..
-
-> Examples are provided both in Rhino and Java so as you can see the syntax differences.
-> In Rhino scripts the `this` variable correspond to the contextual item (business object, workflow, external object, ...) itself,
-> it must be **explicitly** used (it can't be implicit like in Java code).
->
+These basic guidelines and examples show how to implement business logic within business objects, workflows, or external objects using Java.  
+Rhino-based scripting is deprecated. Business logic must now be written in Java, which ensures strong typing, compilation, and compatibility with development tools such as IDEs, debuggers, and SonarQube®.
 
 Naming conventions
 ------------------
@@ -57,26 +45,12 @@ It is possible to include a whole additional packages by:
 ```plaintext
 import <java class name (e.g. org.apache.commons.lang3)>.*;
 ```
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```plaintext
-importPackage(Packages.<java package name (e.g. org.apache.commons.lang3)>);
-```
-</details>
 
 or a single additional class by:
 #### Java
 ```plaintext
 import <java class name (e.g. org.apache.commons.lang3.StringUtils)>;
 ```
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```plaintext
-importClass(Packages.<java class name (e.g. org.apache.commons.lang3.StringUtils)>);
-```
-</details>
 Example:
 
 #### Java
@@ -86,18 +60,6 @@ import org.apache.commons.lang3.StringUtils;
 AppLog.info(StringUtils.isNumeric("hello world"),getGrant()); // false
 AppLog.info(StringUtils.isNumeric("123"),getGrant()); // true
 ```
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-
-importClass(Packages.org.apache.commons.lang3.StringUtils);
-console.log(StringUtils.isNumeric("hello world")); // false
-console.log(StringUtils.isNumeric("123")); // true
-```
-
-</details>
-
 Logging
 -------
 
@@ -116,18 +78,6 @@ AppLog.error(e,getGrant());   // Error level message
 AppLog.fatal(e,getGrant());   // Fatal level message
 ```
 
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-console.debug("Hello world !");   // Debug level message
-console.info("Hello world !");    // Info level message
-console.warning("Hello world !"); // Warning level message
-console.error("Hello world !");   // Error level message
-console.fatal("Hello world !");   // Fatal level message
-```
-</details>
-
 It is also possible to link a message to an explicit log code:
 
 #### Java
@@ -135,14 +85,6 @@ It is also possible to link a message to an explicit log code:
 ```java
 AppLog.log("MYLOGCODE_001","Hello world !",getGrant());
 ```
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-console.log("Hello world !", "MYLOGCODE_001");
-```
-</details>
-
 Note that if the log code is omitted the `log` method is the equivalent to the default `info`method.
 
 The messages are actually displayed depending on the log appenders configuration and on the log code associated configuration.
@@ -221,20 +163,6 @@ synchronized (o.getLock()) {
 }
 ```
 
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-
-```javascript
-var o = this.getGrant().getTmpObject("myObject");
-o.resetFilters(); // Just in case...
-if (o.select(rowId)) {
-	var val = o.getFieldValue("myField1");
-	// etc.
-}
-```
-</details>
-
 ### Searching
 
 Search **multiple records** with filters and ordering.
@@ -278,41 +206,6 @@ synchronized (o.getLock()) {
 	}
 }
 ```
-
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-var o = this.getGrant().getTmpObject("myObject");
-
-// Place filters if needed
-o.resetFilters();
-o.resetValues();
-o.setFieldFilter("myFkField", this.getRowId()); // Foreign key
-o.setFieldFilter("myField1", "ABC"); // simple text
-o.setFieldFilter("myField2", "is not null"); // or "is null"
-o.setFieldFilter("myField3", "in (1,5,8)"); // or "not in"
-o.setFieldFilter("myField4", "like 'AB%')"); // or "not like"
-o.getField("myDate1").setFilterDateMin(Tool.getCurrentDate());
-o.getField("myDatetime1").setFilterDateMax("2013-06-26 23:45:23");
-o.getField("myBoolean1").setFilter(true); // or false
-o.getField("myInteger1").setFilter(">100 and <200");
-o.getField("myString1").setFilter("='abc' or ='def'");
-
-// Place orders if needed
-o.resetOrders();
-o.getField("myField1").setOrder(1); // order by myField1 ascendant
-o.getField("myField2").setOrder(-2); // then order by myField2 descendant
-
-var rows = o.search(false);
-for (var i = 0; i < rows.size(); i++) {
-	var row = rows.get(i);
-	o.setValues(row, false /* or true if you do an update */);
-	var val = o.getField("myField1").getValue();
-	// etc.
-}
-```
-</details>
 
 With pagination to limit memory usage:
 
@@ -365,18 +258,6 @@ for (EnumItem item : o.getField("myField").getList().getAllItems()) {
 	// ...
 }
 ```
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-var l = o.getField("myField").getList().getAllItems();
-for (var i = 0; i < l.size(); i++)) {
-	var code = l.get(i).getCode();
-	(...)
-}
-```
-</details>
-
 ### Filtering
 
 The setSearchSpec is a method that allows you to set an SQL where clause on your business object.
@@ -445,23 +326,6 @@ public void readZip(File zipFile){
 	}
 }
 ```
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-	var destDir = new File(this.getGrant().getTmpDir() + "/mydata." + System.currentTimeMillis());
-	try {
-		var zipData = Tool.readUrlAsByteArray(url, true);
-		ZIPTool.extract(zipData, destDir);
-		// Do something with files of file contents located in destDir, e.g. using FileTool methods
-	} catch (e) {
-		console.log(e.message);
-	} finally {
-		FileTool.deleteFileOrDir(destDir);
-	}
-```
-</details>
-
 #### Write ZIP file
 
 This simple example zips a list of text files and return the ZIP file as a byte array:
@@ -482,25 +346,6 @@ public byte[] writeZip() {
 	}
 }
 ```
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-try {
-	var files = new HashMap<>();
-	var data = "Hello world";
-	files.put("test1.txt", (data + " 1").getBytes());
-	files.put("test2.txt", (data + " 2").getBytes());
-	// ...
-	files.put("testN.txt", (data + " N").getBytes());
-	return ZIPTool.build(files);
-}
-catch (e)
-{
-	console.log(e.message);
-}
-```
-</details>
 
 > **Note**: There are several other methods and variants in `Tool`, `ZIPTool` and `FileTool` that you can use to manipulate URLs and files
 

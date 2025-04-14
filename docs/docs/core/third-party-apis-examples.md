@@ -6,17 +6,7 @@ title: Third party apis examples
 Third party APIs examples
 =========================
 
-These are examples of calls to various third party APIs done on server side. Most examples are using the server-side **Rhino** scripting language.
-
-> **Note**:
->
-> The **Rhino**-only code examples can easily be transposed to equivalent **Java** code.
-> Some examples are provided both in Rhino and Java so as you can see the syntax differences.
->
-> Apart from the variable and methods declarations syntax, the main point of attention is regarding comparisons syntax for **non raw types**:
->
-> - Rhino: `a == b`, Java: `a.equals(b)`
-> - Rhino: `a != b`, Java: `!a.equals(b)`
+These are examples of calls to various third party APIs done on server side. 
 
 Introduction
 ------------
@@ -28,9 +18,9 @@ Simplicité being a Java platform, calling **any** HTTP-based can be done using 
 - Utility classes provided by Simplicité such as `com.simplicite.util.HTTPTool`
   or the very simple `Tool.readUrl(...)`, e.g. calling an REST-like API returning a JSON object:
 
-```javascript
-var result = new JSONObject(Tool.readUrl("http(s)://my3rdpartyapi.com/a/b/c?d=e"));
-var status = result.getString("myAPIStatus");
+```java
+JSONObject result = new JSONObject(Tool.readUrl("http(s)://my3rdpartyapi.com/a/b/c?d=e"));
+String status = result.getString("myAPIStatus");
 (...)
 ```
 
@@ -63,52 +53,6 @@ You may want to create `GOOGLE_CALENDAR_ID` system param to work on a specific c
 
 Here a generic script to use to create, update or delete an event.
 
-```javascript
-Calendar = function(g) {
-	var grant = g;
-	var calId = grant.getParameter("GOOGLE_CALENDAR_ID","");
-	var endpoint = "https://www.googleapis.com/calendar/v3/calendars/";
-	// For 3.x versions
-	//var token = new JSONObject(grant.getParameter("GOOGLE_TOKEN", "{}")).optString("access_token", "");
-	// For version 4.0+
-	var token = g.getSessionInfo().getToken();
-
-	function insert(req) {
-		var headers = new HashMap();
-		headers.put("Authorization", "Bearer " + token);
-		headers.put("Content-type", HTTPTool.getMimeTypeWithEncoding(HTTPTool.MIME_TYPE_JSON, "UTF-8")); // Explicitly set content type as UTF-8-encoded application/json (not needed in version 4.0 if req is a JSONObject/JSONArray)
-
-		var url = endpoint + calId + "/events";
-		var res = Tool.readUrl(url, null, null, req, headers,"UTF-8"); // Must use UTF-8 encoding
-		return new JSONObject(res);
-	}
-
-	function update(eventId, req) {
-		var headers = new HashMap();
-		headers.put("Authorization", "Bearer " + token);
-		headers.put("Content-type", HTTPTool.getMimeTypeWithEncoding(HTTPTool.MIME_TYPE_JSON, "UTF-8")); // Explicitly set content type as UTF-8-encoded application/json (not needed in version 4.0 if req is a JSONObject/JSONArray)
-		headers.put("X-HTTP-Method-Override","PUT");
-
-		var url = endpoint + calId + "/events/" + eventId;
-		var res = Tool.readUrl(url, null, null, req, headers,"UTF-8"); // Must use UTF-8 encoding
-		return new JSONObject(res);
-	}
-
-	function del(eventId) {
-		var headers = new HashMap();
-		headers.put("Authorization", "Bearer " + token);
-		headers.put("Content-type", HTTPTool.getMimeTypeWithEncoding(HTTPTool.MIME_TYPE_JSON, "UTF-8")); // Explicitly set content type as UTF-8-encoded application/json (not needed in version 4.0 if req is a JSONObject/JSONArray)
-		headers.put("X-HTTP-Method-Override","DELETE");
-
-		var url = endpoint + calId + "/events/" + eventId;
-		var res = Tool.readUrl(url, null, null, "", headers,"UTF-8"); // Must use UTF-8 encoding
-		return new JSONObject(res);
-	}
-	
-	return { insert: insert, update: update, del: del};
-};
-```
-**Java**
 ```Java
 import java.io.IOException;
 import java.util.*;
@@ -184,25 +128,6 @@ public class Calendar implements java.io.Serializable {
 You can now use the previsous script on a business object hook and create an event. See [business object hooks code examples](/docs/core/objects/businessobject-code-hooks)
 
 Example of a business object where event are created on google calendar. Date has to be on RFC3339 format. Simplicite provide method to change date to this specific format.
-**Rhino**
-```javascript
-MyBusinessObject.preCreate = function() {
-	var c = new Calendar(this.getGrant());
-	var data = new JSONObject();
-	data.put("summary",this.getFieldValue("title"));
-	// Format date to RFC3339
-	data.put("start", new JSONObject().put("dateTime",Tool.dateTimeToRFC3339(this.getFieldValue("startDatetime"))).put("timeZone","Europe/Paris"));
-	data.put("end", new JSONObject().put("dateTime",Tool.dateTimeToRFC3339(this.getFieldValue("endDatetime"))).put("timeZone","Europe/Paris"));
-	data.put("guestsCanInviteOthers", false);
-	data.put("guestsCanSeeOtherGuests", false);
-	var res = c.insert(data);
-	var id = res.getString("id");
-	// Keep eventId for next call (update or delete)
-	this.getField("eventId").setValue(id);
-};
-```
-
-**Java**
 ```Java
 @Override
 public String preCreate() {
@@ -229,13 +154,6 @@ Geocoding
 
 This example sets a `myCoords` object field (of type geocoordinates) with the coordinates returned by Google Maps geocoding service using the value of the `myAddress` text field.
 
-```javascript
-var a = this.getField("myAddress");
-if (a.hasChanged())
-	this.setFieldValue("myCoords", GMapTool.geocodeOne(a.getValue().replace("\n", ", ")));
-```
-
-**Java**
 ```Java
 	ObjectField a = getField("myAddress");
 	GMapTool gT=new GMapTool(getGrant());
@@ -251,12 +169,6 @@ Translation
 
 As of **version 4.0** it is possible to submit translation requests to Google Translate API using the `GoogleAPITool.translate()` method.
 
-```javascript
-var l = this.getField("myFrenchLabel");
-if (l.hasChanged())
-	this.setFieldValue("myEnglishLabel", GoogleAPITool.translate(this.getGrant(), l.getValue(), "fr", "en"));
-```
-**Java**
 ```Java
 try {
 	ObjectField l = getField("myFrenchLabel");
@@ -286,26 +198,6 @@ The service configuration and credentials being stored in the `SMS_SERVICE` syst
 
 This example uses [SMSEnvoi](http://www.smsenvoi.com/) "premium" SMS service.
 
-```javascript
-function sendSMS(phone, message) {
-	try {
-		var params = new JSONObject(Grant.getSystemAdmin().getParameter("SMSENVOI_CONFIG", "{}"));
-		var url = params.getString("url");
-		var email = params.getString("email");
-		var apikey = params.getString("apikey");
-
-		var res = Tool.readUrl(url, null, null, "email=" + HTTPTool.encode(email) + "&apikey=" + apikey + "&message[type]=sms&message[subtype]=PREMIUM&message[recipients]=" + HTTPTool.encode(phone) + "&message[content]=" + HTTPTool.encode(message), null, Globals.getPlatformEncoding());
-		console.log("Response: " + res);
-		
-		var r = new JSONObject(res);
-		var id = r.getInt("message_id");
-		console.log("SMS Id:" + id);
-	} catch(e) {
-		console.error(e.javaException ? e.javaException.getMessage() : e);
-	}
-};
-```
-**Java**
 ```Java
 public void sendSMS(Object phone,Object message) {
 	try {
@@ -342,30 +234,6 @@ Emails
 
 The following example uses [SendWithUs](https://www.sendwithus.com) email templating/formatting service.
 
-```javascript
-// data is a JSONObject, files is a JSONArray, returned value is a JSONObject
-function(to, template, data, files) {
-	try {
-		var config = new JSONObject(Grant.getSystemAdmin().getParameter("SENDWITHUS_CONFIG", "{}"));
-		var endpoint = config.optString("endpoint");
-		var apikey = config.optString("apikey");
-		var locale = config.optString("locale");
-	
-		var req = new JSONObject();
-		req.put("recipient", new JSONObject().put("address", to));
-		req.put("locale", locale);
-		if (data) req.put("template_data", data);
-		if (files) req.put("files", files);
-			
-		var res = Tool.readUrl(endpoint, apikey, "", req, null);
-		console.log("Response: " + res);
-		return new JSONObject(res);
-	} catch (e) {
-		console.error(e.javaException ? e.javaException.getMessage() : e);
-	}
-};
-```
-**Java**
 ```Java
 public JSONObject sendMail(String to,String template,JSONObject data,JSONArray files) {
 	String res="";
@@ -426,37 +294,6 @@ You may want to send transactionnal email. To do so, add your template id.
 
 Create a script that can be used on different business object or external object. For example : 
 
-```javascript
-ExternalEmail = function(g) {
-	var grant = g;
-
-	var config = new JSONObject(grant.getParameter("EXTERNAL_EMAIL_CONFIG", "{}"));
-	var provider = config.optString("provider");
-	var endpoint = config.optString("endpoint");
-	var apipublickey = config.optString("apipublickey");
-	var apiprivatekey = config.optString("apiprivatekey");
-	var templates = config.optJSONObject("templates");
-
-	// Send email using a template created on service side.
-	// template is a string and data is a JSONObject
-	function send(template, data) {
-		var headers = new HashMap();
-		headers.put("Content-Type", HTTPTool.getMimeTypeWithEncoding(HTTPTool.MIME_TYPE_JSON, "UTF-8")); // Explicitly set content type as UTF-8-encoded application/json (not needed in version 4.0)
-
-		var tmpl = templates.optString(template);
-
-		var req = data;
-		req.put("MJ-TemplateID", tmpl);
-
-		var res = Tool.readUrl(endpoint, apipublickey, apiprivatekey, req, headers, "UTF-8"); // Must use UTF-8 encoding
-		return new JSONObject(res);		
-	}
-	
-	return { send: send };
-};
-```
-
-**Java**
 ```Java
 public class ExternalEmail implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
@@ -504,27 +341,6 @@ public class ExternalEmail implements java.io.Serializable {
 
 You can now use the previsous script on a business object hook and send an email. See [business object hooks code examples](/docs/core/objects/businessobject-code-hooks)
 
-```javascript
-var e = new ExternalEmail(this.getGrant());
-var data = new JSONObject();
-data.put("FromEmail", "contact@simplicite.fr");
-data.put("FromName", "Simplicite Software");
-data.put("Subject", "Bonjour");
-// To be used with transactionnal email
-data.put("MJ-TemplateLanguage", true);
-
-var recipients = new JSONArray();
-recipients.put(new JSONObject().put("Email", this.getFieldValue("email")));
-data.put("Recipients", recipients);
-
-// Vars define on your template to be replace with
-var vars = new JSONObject();
-vars.put("firstname", this.getFieldValue("firstname"));
-data.put("Vars", vars);
-
-var res = e.send("registration", data);
-```
-**Java**
 ```Java
 ExternalEmail e = new ExternalEmail(getGrant());
 JSONObject data = new JSONObject();
@@ -552,30 +368,6 @@ Currency rates
 
 This example is a `MyCurrency` business object custom method that updates the records with rates values got from the [Fixer.io service](http://www.fixer.io).
 
-```javascript
-MyCurrency.getRates = function(base, currencies) {
-	try {
-		var res = Tool.readUrl("http://api.fixer.io/latest?base=" + base + (currencies ? "&symbols=" + currencies.join() : ""));
-		console.log("Response: " + res);
-
-		var rates = new JSONObject(res).getJSONObject("rates");
-
-		var ot = new BusinessObjectTool(this) // or this.getTool() in version 5+
-		this.resetFilters();
-		this.getField("curCurrency1").setFilter(base);
-		var rows = ot.search(false);
-		for (var i = 0; i < rows.size(); i++) {
-			var row = rows.get(i);
-			this.setValues(row, true);
-			this.setFieldValue("curRate", rates.optDouble(this.getFieldValue("curCurrency2"), 0))
-			ot.validateAndSave();
-		}
-	} catch (e) {
-		console.error(e.javaException ? e.javaException.getMessage() : e);
-	}
-}
-```
-**Java**
 ```Java
 public void getRates(String base, String[] currencies) {
 	try{

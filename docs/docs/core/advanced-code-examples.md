@@ -5,15 +5,9 @@ title: Advanced code examples
 
 Advanced code examples
 ======================
+These examples illustrate more complex use cases for implementing business logic in Java within Simplicité. They are intended for developers already familiar with the basics of object modeling and Java integration.  
 
-Please refer to [basic code examples](/docs/core/basic-code-examples) document for naming conventions and logging strategies. 
-
-> **Note**:
->
-> Object scripts can be written in Java or JavaScript (which will be executed by the Rhino engine, just like the executed fields), but good practice is to prefer Java language which  
-> include a compilation step and ensure that the syntax of the script is correct. In advanced use cases that are not part of this tutorial, the use of Java gives access > to all of the classic application development tools: step-by-step debugging, unit tests, development in a Java IDE, code quality analysis with Sonar etc..
-
-> Examples are provided both in Rhino and Java so as you can see the syntax differences.
+Before diving in, please refer to the [basic code examples](/docs/core/basic-code-examples) for guidelines on naming conventions and logging strategies to ensure consistency and maintainability.
 
 Sharing parameters
 ------------------
@@ -66,35 +60,6 @@ public void myAction() {
 }
 ```
 
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyObjectA.initUpdate = function() {
-	// To store the current RowId of this object
-	this.getGrant().setParameter("MYAPP_CONTEXT_ID", this.getRowId());
-}
-
-MyObjectB.initList = function(parent) {
-	// To use the current Id of A when a list B is displayed
-	var id = this.getGrant().getParameter("MYAPP_CONTEXT_ID");
-	if (id && id!="") // ...
-};
-
-MyExternalObjectC.display = function(param) {
-	// To use the current Id of A when the external object is displayed
-	var id = this.getGrant().getParameter("MYAPP_CONTEXT_ID");
-	if (id && id!="") ...
-};
-
-MyObjectB.myAction = function() {
-	// To use the current Id of A when a list B is displayed
-	var id = this.getGrant().getParameter("MY_CONTEXT_ID");
-	if (id && id!="") ...
-};
-```
-</details>
-
 Store a set of data (as `org.json.JSONObject` between hooks of the same object:
 
 **Java**
@@ -117,25 +82,6 @@ public String postSave() {
 	return super.postSave();
 }
 ```
-
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyObject.postValidate = function() {
-	var data = new JSONObject().put("key1", "value").put("key2", 123).put("key3", new JSONArray().put(new JSONObject(...)));
-	this.setParameter("MY_DATA", data);
-}
-MyObject.postSave = function() {
-	var data = this.getParameter("MY_DATA");
-	console.log(data.toString());
-	var k1 = data.getString("key1");
-	var k2 = data.getInt("key2");
-	var k3 = data.getJSONArray("key3");
-	// ...
-}
-```
-</details>
 
 Etc.
 
@@ -175,20 +121,6 @@ public void postLoadGrant(Grant g) {
 }
 ```
 
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-GrantHooks.postLoadGrant = function(grant) {
-	var login = grant.getLogin();
-	var employeeId = grant.simpleQuery("select ... query depending on login ...");
-	grant.setParameter("MYAPP_EMP_ID", employeeId || "unknown");
-	var empPhone = Tools.readURL("http://...external REST service...");
-	grant.setParameter("MYAPP_EMP_PHONE", empPhone || "");
-};
-```
-</details>
-
 ### Booby traps:
 
 - `name`: prefix the names of the grant-level parameters with your **unique** project code to prevent any conflicts
@@ -212,16 +144,6 @@ try {
 	AppLog.error(e, getGrant());
 }
 ```
-
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-var f = this.getFieldValue("myPhoneNumber");
-f.setValue("myPhoneNumber", new PhoneNumTool("fr").getNationalNumber(f.getValue()));
-```
-</details>
-
 
 > **Note**: it is also possible to format as international number using `getInternationalNumber` instead of `getNationalNumber`
 
@@ -254,23 +176,6 @@ public void postLoad() {
 	super.postLoad();
 }
 ```
-
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyObject.postLoad = function(){
-	var field = this.getField("myField");
-	field.setList(new ObjectFieldList(field)); // Empty the configured list
-
-	// Build list (here the next 10 years)
-	var list = field.getList();
-	var year = Tool.parseInt(Tool.getCurrentYear(), 2000);
-	for (var i = year; i <= year + 10; i++)
-		list.putItem(new EnumItem(i.toString(), this.getGrant().T("YEAR") + " " + i)); // enum item = (value, label)
-};
-```
-</details>
 
 Data encryption
 ---------------
@@ -318,36 +223,6 @@ public void postSelect(String rowId, boolean copy) {
 	super.postSelect(rowId, copy);
 }
 ```
-
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyObject.key = function() {
-	// ZZZ set as a system parameter (make sure to configure it as "private") ZZZ
-	//return this.getGrant().getParameter("MY_ENCRYPTION_KEY");
-	// or
-	// ZZZ pass this to the JVM by -Dmy.encryption.key=...
-	//return System.getProperty("my.encryption.key");
-	// or
-	// ZZZ set this in the JVM environment
-	return System.getEnv("MY_ENCRYPTION_KEY");
-	// etc.
-};
-
-MyObject.preSave = function() {
-	// Encrypt the value before saving
-	var l = this.getField("mySensitiveField");
-	l.setValue(EncryptionTool.encrypt(l.getValue(), MyObject.key.call(this)));
-};
-
-MyObject.postSelect = function(rowId, copy) {
-	// Decrypt the value after selecting it
-	var l = this.getField("mySensitiveField");
-	l.setValue(EncryptionTool.decrypt(l.getValue(), MyObject.key.call(this)));
-};
-```
-</details>
 
 > **Note**: an encrypted field using this method cannot be searchable except of exact values (by encrypting the search filter in the `preSearch` hook)
 
@@ -413,19 +288,6 @@ public String callAPI() {
 }
 ```
 
-<details>
-<summary>Rhino JavaScript equivalent</summary>
-
-```javascript
-MyObject.callAPI = function() {
-	var url = "https://myremotehost/myservice";
-	var cert = this.getField("myClientCertificateField").getDocument();
-	var pwd = this.getFieldValue("myClientCertificatePasswordField");
-	console.log("Calling " + url + " with client certificate " + cert.getName());
-	return Tool.readUrlWithClientCert(url, cert.getBytes(true), pwd);
-};
-```
-</details>
 > **Note**: the client certificate **must** be a JKS file, if you have a PEM certificate you can convert
 > it to JKS format converting it first as PKCS12 using `openssl pkcs12 -export -inkey mycert.key -in mycert.pem -out mycert.p12`
 > and then importing it in a JKS file using `keytool -importkeystore -destkeystore mycert.jks -srckeystore mycert.p12 -srcstoretype PKCS12`
