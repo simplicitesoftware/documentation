@@ -58,6 +58,7 @@ Platform Resources
   supportType="None"
   releaseVersion="6.2.7"
   releaseDate="Friday, April 11, 2025"
+  initialReleaseDate="Monday, February 10, 2025"
   javaResources={[
     { name: "documentation", url: "https://platform.simplicite.io/6.2/javadoc/" },
     { name: "dependencies", url: "https://platform.simplicite.io/6.2/java-dependencies.html" },
@@ -101,6 +102,7 @@ Platform Resources
   supportType="shortterm"
   releaseVersion="6.1.28"
   releaseDate="Friday, April 11, 2025"
+  initialReleaseDate="Wednesday, July 10, 2024"
   javaResources={[
     { name: "documentation", url: "https://platform.simplicite.io/6.1/javadoc/" },
     { name: "dependencies", url: "https://platform.simplicite.io/6.1/java-dependencies.html" },
@@ -142,6 +144,7 @@ Platform Resources
   supportType="longterm"
   releaseVersion="6.0.26"
   releaseDate="Thursday, October 31, 2024"
+  initialReleaseDate="Wednesday, January 31, 2024"
   javaResources={[
     { name: "documentation", url: "https://platform.simplicite.io/6.0/javadoc/" },
     { name: "dependencies", url: "https://platform.simplicite.io/6.0/java-dependencies.html" },
@@ -185,6 +188,7 @@ Platform Resources
   supportType="longterm"
   releaseVersion="5.3.67"
   releaseDate="Friday, April 11, 2025"
+  initialReleaseDate="Monday, April 24, 2023"
   javaResources={[
     { name: "documentation", url: "https://platform.simplicite.io/5.3/javadoc/" },
     { name: "dependencies", url: "https://platform.simplicite.io/5.3/java-dependencies.html" },
@@ -226,6 +230,7 @@ Platform Resources
   supportType="shortterm"
   releaseVersion="5.2.54"
   releaseDate="Wednesday, January 31, 2024"
+  initialReleaseDate="Wednesday, April 20, 2022"
   javaResources={[
     { name: "documentation", url: "https://platform.simplicite.io/5.2/javadoc/" },
     { name: "dependencies", url: "https://platform.simplicite.io/5.2/java-dependencies.html" },
@@ -269,6 +274,7 @@ Platform Resources
   supportType="shortterm"
   releaseVersion="5.1.66"
   releaseDate="Tuesday, October 31, 2023"
+  initialReleaseDate="Wednesday, September 01, 2021"
   javaResources={[
     { name: "documentation", url: "https://platform.simplicite.io/5.1/javadoc/" },
     { name: "dependencies", url: "https://platform.simplicite.io/5.1/java-dependencies.html" },
@@ -310,6 +316,7 @@ Platform Resources
   supportType="shortterm"
   releaseVersion="5.0.71"
   releaseDate="Monday, October 31, 2022"
+  initialReleaseDate="Monday, January 11, 2021"
   javaResources={[
     { name: "documentation", url: "https://platform.simplicite.io/5.0/javadoc/" },
     { name: "dependencies", url: "https://platform.simplicite.io/5.0/java-dependencies.html" },
@@ -353,6 +360,7 @@ Platform Resources
   supportType="longterm"
   releaseVersion="4.0.P25"
   releaseDate="Monday, January 15, 2024"
+  initialReleaseDate="2018"
   javaResources={[
     { name: "documentation", url: "https://platform.simplicite.io/4.0/javadoc/" },
     { name: "dependencies", url: "https://platform.simplicite.io/4.0/java-dependencies.html" },
@@ -394,6 +402,7 @@ Platform Resources
   supportType="longterm"
   releaseVersion="3.2.P09"
   releaseDate="Thursday, July 02, 2020"
+  initialReleaseDate="2014"
   javaResources={[
     { name: "documentation", url: "https://platform.simplicite.io/3.2/javadoc/" },
   ]}
@@ -422,6 +431,7 @@ Platform Resources
   supportType="shortterm"
   releaseVersion="3.1.M14"
   releaseDate="Saturday, May 25, 2019"
+  initialReleaseDate="2014"
   javaResources={[
     { name: "documentation", url: "https://platform.simplicite.io/3.1/javadoc/" },
   ]}
@@ -448,6 +458,7 @@ Platform Resources
   supportType="shortterm"
   releaseVersion="3.0.M37"
   releaseDate="Tuesday, September 25, 2018"
+  initialReleaseDate="2014"
   javaResources={[
     { name: "documentation", url: "https://platform.simplicite.io/3.0/javadoc/" },
   ]}

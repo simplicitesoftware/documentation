@@ -16,7 +16,8 @@ def create_block_component(version):
     code += f'  releaseVersion="{version_data["version"]}"\n'
     code += f'  releaseDate="{prettier_date(version_data["date"])}"\n'
     if 'initial_release_date' in version_data:
-        code += f'  initialReleaseDate="{prettier_date(version_data["initial_release_date"])}"\n'
+        if version_data["initial_release_date"] is not None:
+            code += f'  initialReleaseDate="{prettier_date(version_data["initial_release_date"])}"\n'
     
     # Handle java-related resources -> { doc, deps-f, deps-l, m-site, m-deps, deps-audit-f, deps-audit-l }
     javaResources= '  javaResources={[\n'
