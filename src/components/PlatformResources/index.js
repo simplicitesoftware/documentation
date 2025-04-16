@@ -201,13 +201,13 @@ function PlatformBlock({
             {/* Toggle UI */}
             <label className={styles.toggleSwitch}>
               <span className={styles.toggleLabel}>
-                {showLight ? 'Light Version' : 'Full Version'}
+                {showLight ? 'Light infos' : 'Full infos'}
               </span>
               <div className={styles.toggleContainer}>
                 <input
                   type="checkbox"
                   checked={showLight}
-                  onChange={handleToggleChange}
+                  onChange={handleToggle}
                 />
                 <span className={styles.toggleSlider}></span>
               </div>
