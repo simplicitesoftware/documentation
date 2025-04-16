@@ -1,6 +1,8 @@
 ---
 sidebar_position: 20
 title: Modules
+---
+
 # Module
 
 ## Introduction
