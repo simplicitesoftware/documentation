@@ -1,0 +1,204 @@
+/* ---------------- *
+     Design Tokens
+ * ---------------- */
+:root {
+    /* Spacings */
+    --spacing_xl: 1.5rem;
+    --spacing_l: 1rem;
+    --spacing_m: .75rem;
+    --spacing_sm: .5rem;
+    --spacing_s: .25rem;
+    --spacing_neg_xl: -1.5rem;
+    --spacing_neg_l: -1rem;
+    --spacing_neg_m: -.75rem;
+    --spacing_neg_sm: -.5rem;
+    --spacing_neg_s: -.25rem;
+
+    /* Texts */
+    --h1_size: 1.75rem;
+    --h2_size: 1.5rem;
+    --h3_size: 1.25rem;
+    --info_size: 1rem;
+
+    /* Borders */
+    --border_width_m: .125rem;
+    --border_width_s: .065rem;
+    --border_style: solid;
+
+    /* Interactions */
+    --transition: ease-in;
+    --transition_fast: .25s;
+    --transition_slow: .5s; 
+    --radius_hover: .5rem;
+    --opacity_hover: .5;
+    --transform_x_hover: 1.5rem;
+}
+
+[data-theme='light'] { /* Color Palette - Light */
+    --blue_bg: #bbb9ff;
+    --red_bg: #fdafb3;
+    --green_bg: #bcf7d7;
+    --purple_bg: #f7d8f8;
+    --blue_txt: #222066;
+    --red_txt: #64161a;
+    --green_txt: #235e3e;
+    --purple_txt: #5e3f5f;
+    --default_bg: #171717;
+    --default_txt: #f3f1ee;
+}
+
+[data-theme='dark'] { /* Color Palette - Dark */
+    --blue_bg: #1e1e65;
+    --red_bg: #661d1d;
+    --green_bg: #1e5a39;
+    --purple_bg: #664a63;
+    --blue_txt: #b7b7fe;
+    --red_txt: #ffb6b6;
+    --green_txt: #b7f3d2;
+    --purple_txt: #ffe3fc;
+    --default_bg: #f3f1ee;
+    --default_txt: #171717;
+}
+
+/* ---------------- *
+        Styles
+ * ---------------- */
+.pageContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing_xl);
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+    padding: 3.5rem 0 0 0;
+    margin: 0;
+
+    /* Embedded styles (to not override docusaurus' */
+    h1, h2, h3 {
+        margin: 0;
+        padding: 0;
+        font-weight: normal;
+    }
+
+    h1 {
+        font-size: var(--h1_size);
+        margin-bottom: var(--spacing_s) !important;
+        font-weight: 600;
+    }
+    h2 {
+        font-size: var(--h2_size);
+    }
+    h3 {
+        font-size: var(--h3_size);
+    }
+
+    span {
+        font-weight: 400;
+        font-size: var(--info_size);
+    }
+    b {
+        font-weight: 500;
+    }
+}
+
+.anchor {
+   opacity: 0.25; 
+}
+
+.block {
+    box-sizing: content-box;
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    min-width: 45%; /* meh */
+    flex-direction: column;
+    gap: var(--spacing_m);
+    padding: var(--spacing_sm);
+    border: solid var(--border_width_m) var(--default_bg);
+}
+.block:hover .type {
+    top: var(--spacing_neg_m);
+}
+
+.type {
+    position: absolute;
+    top: var(--spacing_neg_sm);
+    right: var(--spacing_neg_sm);
+    transition: top var(--transition_fast) var(--transition);
+    padding: var(--spacing_m);
+    background: var(--default_bg);
+    color: var(--default_txt);
+    * { font-weight: 500; }
+}
+
+/* Header styles */
+.blockHeader {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Body styles */
+.blockBody {
+
+}
+
+/* Footer styles */
+.blockFooter {
+
+}
+
+/* Toggle switch styling */
+.toggleSwitch {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing_m);
+  }
+  
+  .toggleLabel {
+    font-size: var(--info_size);
+  }
+  
+  .toggleContainer {
+    position: relative;
+    display: inline-block;
+    width: 3.5rem;
+    height: 1.5rem;
+  }
+  
+  .toggleContainer input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .toggleSlider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: var(--transition_fast) var(--transition);
+    border-radius: 1rem;
+  }
+  
+  .toggleSlider:before {
+    position: absolute;
+    content: "";
+    height: 1rem;
+    width: 1rem;
+    left: 0.25rem;
+    bottom: 0.25rem;
+    background-color: white;
+    transition: var(--transition_fast) var(--transition);
+    border-radius: 50%;
+  }
+  
+  .toggleContainer input:checked + .toggleSlider {
+    background-color: var(--blue_bg);
+  }
+  
+  .toggleContainer input:checked + .toggleSlider:before {
+    transform: translateX(2rem);
+  }

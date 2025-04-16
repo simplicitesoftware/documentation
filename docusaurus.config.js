@@ -92,7 +92,6 @@ const config = {
             label: "JavaDoc etc.",
             sidebarId:"resourceSidebar",
             position: "left",
-            css: "./src/css/platformBlocks.css",
           },
           {
             href: 'https://www.npmjs.com/package/simplicite',
