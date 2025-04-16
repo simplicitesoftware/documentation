@@ -1,6 +1,6 @@
 ---
 sidebar_position: 20
-title: Module
+title: Modules
 ---
 
 # Module

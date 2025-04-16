@@ -13,10 +13,10 @@ Server-side custom action
 
 A server-side action corresponds to an action with a value in the _method_ field.
 
-This _method_ field contains the name of a server-side **Rhino** script function or a **Java** method (depending on the language you are using).
+This _method_ field contains the name of a server-side **Java** method.
 
 For instance if you set `myCustomAction` as action _method_ and if you grant this action to the `MyObject` business object,
-the platform will look for the server-side **Rhino** script function or **Java** method called `MyObject.myCustomAction()` and will run it.
+the platform will look for the server-side **Java** method called `MyObject.myCustomAction()` and will run it.
 
 **Java**
 

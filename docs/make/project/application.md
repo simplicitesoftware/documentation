@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-title: Application
+title: Applications
 ---
 
 # Application

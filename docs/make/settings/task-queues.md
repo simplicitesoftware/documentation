@@ -70,7 +70,8 @@ This information can help in diagnosing bottlenecks or adjusting thread pool con
 Best Practices  
 --------------
 
-- Use **SysQueue** only for internal platform tasks.  
+- **SysQueue** is reserved to internal platform tasks.  
+- **AppQueue** is by default for your application jobs.  
 - For heavy or time-sensitive jobs, define **custom queues** with adjusted thread limits.  
 - Monitor queue metrics regularly to ensure proper job distribution and avoid worker starvation.  
 - Avoid assigning too many jobs to the default queue to prevent delays in application-level async actions.
