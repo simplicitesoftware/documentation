@@ -113,7 +113,7 @@
     min-width: 45%; /* meh */
     flex-direction: column;
     gap: var(--spacing_m);
-    padding: var(--spacing_sm);
+    padding: var(--spacing_m);
     border: solid var(--border_width_m) var(--default_bg);
 }
 .block:hover .type {
@@ -139,18 +139,58 @@
 
 /* Body styles */
 .blockBody {
+  display: flex;
+  width: 100%;
+  gap: var(--spacing_m);
+}
 
+.subBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing_s);
+  padding: var(--spacing_sm);
+  background: var(--default_txt);
+}
+
+.bodyRight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing_m);
+  width: 100%;
 }
 
 /* Footer styles */
 .blockFooter {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
 
+.docker {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  gap: var(--spacing_m);
+}
+
+.dockerItems {
+  display: flex;
+  justify-content: start;
+  gap: var(--spacing_m);
+}
+
+.dockerItem {
+  background: var(--default_txt);
+  border: solid 1px white;
+  padding: var(--spacing_s) var(--spacing_m);
 }
 
 /* Toggle switch styling */
 .toggleSwitch {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: end;
   gap: var(--spacing_m);
 }
 

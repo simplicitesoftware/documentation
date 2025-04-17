@@ -25,9 +25,8 @@ export default function PlatformResources({}) {
             .catch(err => console.error(`Error fetching json at "${URL}":\n-> ${err}\n`));
     }, []);
 
-    // Getters
-    function getJavaResources(vKey)
-    {
+    // Getters ~ Parsers
+    function getJavaResources(vKey) {
       let java = {
         base: [],
         light: [],
@@ -55,8 +54,7 @@ export default function PlatformResources({}) {
       return java;
     }
 
-    function getJSResources(vKey)
-    {
+    function getJSResources(vKey) {
       let js = [];
 
       let v = versions.get(vKey); // get from map
@@ -74,8 +72,7 @@ export default function PlatformResources({}) {
       return js;
     }
 
-    function getAuditResources(vKey)
-    {
+    function getAuditResources(vKey) {
       let audit = {
         light: [],
         full: []
@@ -91,6 +88,33 @@ export default function PlatformResources({}) {
       }
 
       return audit;
+    }
+
+    function getDockerInfos(vKey) {
+      let docker = {
+        light: [],
+        full: []
+      };
+
+      let v = versions.get(vKey);
+      let resources = v["resources"];
+
+      if ('docker' in resources) {
+        let dck = resources["docker"];
+        docker.full.push({name:dockerImageTag(dck["image"]), value:dck["image"]})
+        docker.full.push({name:"registry", value:dck["info"]})
+        docker.light.push({name:dockerImageTag(dck["image_light"]), value:dck["image_light"]})
+        docker.light.push({name:"registry (light)", value:dck["info_light"]})
+      }
+      console.log(`For V${vKey}, docker is ${JSON.stringify(docker)}`);
+      return docker;
+    }
+
+    function dockerImageTag(fullTag) {
+      let str = ""+fullTag;
+      let split = str.split("/");
+      let tag = split[split.length-1].split(":");
+      return tag[tag.length-1];
     }
 
     // Content
@@ -110,6 +134,7 @@ export default function PlatformResources({}) {
                       javaResources={getJavaResources(version)}
                       jsResources={getJSResources(version)}
                       auditResources={getAuditResources(version)}
+                      dockerInfo={getDockerInfos(version)}
                   />
                 </React.Fragment>
             ))}
@@ -128,7 +153,7 @@ function PlatformBlock({
     javaResources,
     jsResources,
     auditResources,
-    dockerInfo = {}
+    dockerInfo
 }) {
   const [showLight, setShowLight] = useState(true);
 
@@ -164,26 +189,55 @@ function PlatformBlock({
             <div className={styles.subBlock}>
               <h3>Java</h3>
               <div className={styles.blockItems}>
-                  {/* for ITEM in "javaResources"
-                        if _light_
-                        else _full_ */}
-                </div>
+                {/* Always display base resources */}
+                {javaResources.base.map((r,i) => (
+                  <div key={`base-${i}`} className={styles.blockItem}>
+                    <a href={r.url} target="_blank" rel="noopener noreferrer">{r.name}</a>
+                  </div>
+                ))}
+                {/* Additionnally display either light or full resources */}
+                {showLight
+                  ? javaResources.light.map((r,i) => (
+                    <div key={`light-${i}`} className={styles.blockItem}>
+                      <a href={r.url} target="_blank" rel="noopener noreferrer">{r.name}</a>
+                    </div>
+                  ))
+                  : javaResources.full.map((r,i) => (
+                    <div key={`full-${i}`} className={styles.blockItem}>
+                      <a href={r.url} target="_blank" rel="noopener noreferrer">{r.name}</a>
+                    </div>
+                  ))
+                }
+              </div>
             </div>
             <div className={styles.bodyRight}>
               <div className={styles.subBlock}>
                 <h3>Javascript</h3>
                 <div className={styles.blockItems}>
-                  {/* for ITEM in "jsResources"
-                        if _light_
-                        else _full_ */}
-                </div>
+                  {/* Always display everything (no light/full) */}
+                  {jsResources.map((r,i) => (
+                      <div key={`js-${i}`} className={styles.blockItem}>
+                        <a href={r.url} target="_blank" rel="noopener noreferrer">{r.name}</a>
+                      </div>
+                    ))}
+                  </div>
               </div>
               <div className={styles.subBlock}>
                 <h3>Dependency Audit</h3>
                 <div className={styles.blockItems}>
-                  {/* for ITEM in "auditResources"
-                        if _light_
-                        else _full_ */}
+                  {/* Display either light or full resources (no base) */}
+                  {showLight
+                    ? auditResources.light.map((r,i) => (
+                      <div key={`light-${i}`} className={styles.blockItem}>
+                        <a href={r.url} target="_blank" rel="noopener noreferrer">{r.name}</a>
+                      </div>
+                    ))
+                    : auditResources.full.map((r,i) => (
+                      <div key={`full-${i}`} className={styles.blockItem}>
+                        <a href={r.url} target="_blank" rel="noopener noreferrer">{r.name}</a>
+                      </div>
+                    ))
+                  }
                 </div>
               </div>
             </div>
@@ -192,13 +246,23 @@ function PlatformBlock({
           <div className={styles.docker}>
             <h3>Docker Info:</h3>
             <div className={styles.dockerItems}>
-              {/* for ITEM in "dockerInfo"
-                    if _dock-light_
-                    else _dock-full_ */}
+              {showLight
+                ? dockerInfo.light.map((d,i) => (
+                  <div key={`light-${i}`} className={styles.dockerItem}>
+                    {/* Handle copy-paste versus link */}
+                    {d.name}
+                  </div>
+                ))
+                : dockerInfo.full.map((d,i) => (
+                  <div key={`full-${i}`} className={styles.dockerItem}>
+                    {/* Handle copy-paste versus link */}
+                    {d.name}
+                  </div>
+                ))
+              }
             </div>
           </div>
           <div className={styles.toggle}>
-            {/* Toggle UI */}
             <label className={styles.toggleSwitch}>
               <span className={styles.toggleLabel}>
                 {showLight ? 'Light infos' : 'Full infos'}
