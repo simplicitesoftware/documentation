@@ -45,6 +45,7 @@
     --purple_txt: #5e3f5f;
     --default_bg: #171717;
     --default_txt: #f3f1ee;
+    --default_fade_bg: rgba(23, 23, 23, 0.1);
 }
 
 [data-theme='dark'] { /* Color Palette - Dark */
@@ -58,6 +59,7 @@
     --purple_txt: #ffe3fc;
     --default_bg: #f3f1ee;
     --default_txt: #171717;
+    --default_fade_bg: rgba(243, 241, 238, 0.1);
 }
 
 /* ---------------- *
@@ -116,19 +118,23 @@
     padding: var(--spacing_m);
     border: solid var(--border_width_m) var(--default_bg);
 }
+
 .block:hover .type {
-    top: var(--spacing_neg_m);
+    top: var(--spacing_neg_l);
 }
 
 .type {
     position: absolute;
-    top: var(--spacing_neg_sm);
-    right: var(--spacing_neg_sm);
+    top: var(--spacing_neg_m);
+    right: var(--spacing_neg_m);
     transition: top var(--transition_fast) var(--transition);
     padding: var(--spacing_m);
     background: var(--default_bg);
     color: var(--default_txt);
-    * { font-weight: 500; }
+    span {
+      font-size: var(--h2_size);
+      font-weight: 600;
+    }
 }
 
 /* Header styles */
@@ -150,7 +156,7 @@
   flex-direction: column;
   gap: var(--spacing_s);
   padding: var(--spacing_sm);
-  background: var(--default_txt);
+  background: var(--default_fade_bg);
 }
 
 .bodyRight {
@@ -158,6 +164,10 @@
   flex-direction: column;
   gap: var(--spacing_m);
   width: 100%;
+}
+
+.blockItems {
+
 }
 
 /* Footer styles */
@@ -182,8 +192,11 @@
 
 .dockerItem {
   background: var(--default_txt);
-  border: solid 1px white;
+  border: solid var(--border_width_s) var(--default_bg);
   padding: var(--spacing_s) var(--spacing_m);
+  &:hover {
+    opacity: .8;
+  }
 }
 
 /* Toggle switch styling */
@@ -242,4 +255,24 @@
 
 .toggleContainer input:checked + .toggleSlider:before {
   transform: translateX(2rem);
+}
+
+/* ---------------- *
+    Specificities
+ * ---------------- */
+.alpha {
+  background: var(--blue_bg);
+  color: var(--blue_txt);
+}
+.shortterm, .longterm {
+  background: var(--purple_bg);
+  color: var(--purple_txt);
+}
+.active {
+  background: var(--green_bg);
+  color: var(--green_txt);
+}
+.expired {
+  background: var(--red_bg);
+  color: var(--red_txt);
 }

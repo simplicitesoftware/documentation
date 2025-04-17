@@ -163,7 +163,42 @@ function PlatformBlock({
   }
 
   function prettierType(m, s) {
-    return m +" - "+ s;
+    let res;
+    switch (m) {
+      case "active":
+        switch (s) {
+          case "shortterm":
+            res = "☑️ Short Term";
+            break;
+          case "longterm":
+            res = "☑️ Long Term";
+            break;
+          default:
+            res = "✅ Current";
+            break;
+        }
+        break;
+      case "alpha":
+        res = "🚧 Alpha";
+        break;
+      case "expired":
+        res = "❌ Expired";
+        break;
+      default:
+        res = "Unknown Support";
+        break;
+    }
+    return res;
+  }
+
+  function getClassName(maintenance, supportType) {
+    if (maintenance == "active") {
+      if (supportType)
+        return supportType;
+      return maintenance;
+    }
+    else
+      return maintenance;
   }
 
   function handleToggle() {
@@ -172,7 +207,7 @@ function PlatformBlock({
   // TODO: redesign + proper structure
   return (
     <>
-      <div className={styles.block}>
+      <div className={`${styles.block} ${styles[getClassName(maintenance,supportType)]}`}>
         <div className={styles.type}>
           <span>{prettierType(maintenance, supportType)}</span>
         </div>
