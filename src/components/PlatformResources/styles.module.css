@@ -46,6 +46,7 @@
     --default_bg: #171717;
     --default_txt: #f3f1ee;
     --default_fade_bg: rgba(23, 23, 23, 0.1);
+    --default_fade_low_bg: rgba(23, 23, 23, 0.05);
 }
 
 [data-theme='dark'] { /* Color Palette - Dark */
@@ -60,6 +61,7 @@
     --default_bg: #f3f1ee;
     --default_txt: #171717;
     --default_fade_bg: rgba(243, 241, 238, 0.1);
+    --default_fade_low_bg: rgba(243, 241, 238, 0.05);
 }
 
 /* ---------------- *
@@ -108,15 +110,16 @@
 }
 
 .block {
-    box-sizing: content-box;
-    position: relative;
-    display: flex;
-    flex-grow: 1;
-    min-width: 45%; /* meh */
-    flex-direction: column;
-    gap: var(--spacing_m);
-    padding: var(--spacing_m);
-    border: solid var(--border_width_m) var(--default_bg);
+  margin-bottom: var(--spacing_m);
+  box-sizing: content-box;
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  min-width: 45%; /* meh */
+  flex-direction: column;
+  gap: var(--spacing_m);
+  padding: var(--spacing_m);
+  border: solid var(--border_width_m) var(--default_bg);
 }
 
 .block:hover .type {
@@ -156,7 +159,30 @@
   flex-direction: column;
   gap: var(--spacing_s);
   padding: var(--spacing_sm);
-  background: var(--default_fade_bg);
+  background: var(--default_fade_low_bg);
+  border: solid var(--border_width_s) transparent;
+  transition: all var(--transition_fast) var(--transition);
+
+  & a {
+    text-decoration: none;
+    opacity: .75;
+    margin-left: var(--spacing_m);
+    color: inherit;
+    transition: all var(--transition_fast) var(--transition);
+    &:hover {
+      margin-left: var(--spacing_l);
+      opacity: 1;
+      color: var(--default_bg);
+    }
+  }
+
+  &:hover {
+    border-color: var(--default_bg);
+
+    & h3 {
+      color: var(--default_bg);
+    }
+  }
 }
 
 .bodyRight {
@@ -167,7 +193,7 @@
 }
 
 .blockItems {
-
+  /* No styles ? */
 }
 
 /* Footer styles */
@@ -194,9 +220,19 @@
   background: var(--default_txt);
   border: solid var(--border_width_s) var(--default_bg);
   padding: var(--spacing_s) var(--spacing_m);
+  transition: opacity var(--transition_fast) var(--transition);
+  color: var(--default_bg);
+  opacity: 0.75;
+  cursor: pointer;
   &:hover {
-    opacity: .8;
+    opacity: 1;
   }
+}
+
+.copiedText {
+  font-size: var(--info_size);
+  margin-left: var(--spacing_sm);
+  opacity: .5;
 }
 
 /* Toggle switch styling */

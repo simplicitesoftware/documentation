@@ -4,7 +4,8 @@ import styles from './styles.module.css';
 
 const URL = "https://platform.simplicite.io/versions.json";
 
-export default function PlatformResources({}) {
+export default function PlatformResources({})
+{
     // Variables
     const [versions, setVersions] = useState(null);
 
@@ -154,8 +155,34 @@ function PlatformBlock({
     jsResources,
     auditResources,
     dockerInfo
-}) {
+})
+{
   const [showLight, setShowLight] = useState(true);
+  const [copied, setCopied] = useState('');
+  const [transition, setTransition] = useState(false);
+
+  useEffect(() => {
+    if (copied) {
+      const timer = setTimeout(() => {
+        setCopied('');
+      }, 2000);
+    }
+  }, [copied]);
+
+  function handleItemClick(value) {
+    if (value.startsWith("https://"))
+      window.open(value, "_blank");
+    else {
+      navigator.clipboard.writeText(value)
+        .then(() => {
+          setCopied("Copied to clipboard!");
+        })
+        .catch(err => {
+          console.error("Failed to copy: ",err);
+          setCopied('Failed to copy');
+        })
+    }
+  }
 
   function prettierDate(date) {
     let d = date;
@@ -203,7 +230,8 @@ function PlatformBlock({
 
   function handleToggle() {
     setShowLight(b => !b);
-  } 
+  }
+
   // TODO: redesign + proper structure
   return (
     <>
@@ -279,17 +307,25 @@ function PlatformBlock({
         </div>
         <div className={styles.blockFooter}>
           <div className={styles.docker}>
-            <h3>Docker Info:</h3>
+            <h3>Docker Info: {copied && <span className={styles.copiedText}>{copied}</span>}</h3>
             <div className={styles.dockerItems}>
               {showLight
                 ? dockerInfo.light.map((d,i) => (
-                  <div key={`light-${i}`} className={styles.dockerItem}>
+                  <div
+                    key={`light-${i}`}
+                    className={styles.dockerItem}
+                    onClick={() => handleItemClick(d.value)}
+                  >
                     {/* Handle copy-paste versus link */}
                     {d.name}
                   </div>
                 ))
                 : dockerInfo.full.map((d,i) => (
-                  <div key={`full-${i}`} className={styles.dockerItem}>
+                  <div
+                    key={`light-${i}`}
+                    className={styles.dockerItem}
+                    onClick={() => handleItemClick(d.value)}
+                  >
                     {/* Handle copy-paste versus link */}
                     {d.name}
                   </div>
@@ -321,7 +357,8 @@ function PlatformBlock({
 function Anchor({
     version,
     maintenance
-}) {
+})
+{
     // TODO: redesign + proper structure
     return (
         <>
