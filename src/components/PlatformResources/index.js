@@ -11,6 +11,15 @@ export default function PlatformResources({})
 
     // Methods
     useEffect(() => {
+      if (versions) {
+        // After data loads and renders, attempt to refresh the TOC
+        // This is a hacky solution but might work
+        const event = new Event('DOMContentLoaded');
+        window.document.dispatchEvent(event);
+      }
+    }, [versions]);
+
+    useEffect(() => {
         fetch(URL)
             .then(response => response.json())
             .then(data => {
@@ -118,6 +127,7 @@ export default function PlatformResources({})
       return tag[tag.length-1];
     }
 
+    let cpt = 0;
     // Content
     return (
       <>
@@ -355,17 +365,13 @@ function PlatformBlock({
 }
 
 function Anchor({
-    version,
-    maintenance
+    cpt
 })
 {
     // TODO: redesign + proper structure
     return (
         <>
-          ## BLOCK {version}
-          <div className={styles.anchor}> 
-              {version} - {maintenance}
-          </div>
+          <h2 id={`resources-section-${cpt}`}>Block n°{cpt}</h2>
         </>
     )
 }
