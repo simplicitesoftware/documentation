@@ -17,10 +17,10 @@ The following table indicates OAuth2/OpenIDConnect providers supports per Simpli
 | Google        | Yes | Yes     | Yes     | Yes     |
 | Microsoft     | No  | Yes     | Yes     | Yes     |
 | LinkedIn      | No  | Yes     | Yes     | Yes     |
-| FranceConnect | Yes | Yes (1) | Yes (1) | Yes (1) |
+| FranceConnect | Yes | Yes (1) | Yes (1) | Yes (2) |
 | KeyCloak      | No  | Yes (2) | Yes     | Yes     |
 
-(1) FranceConnect being an OpenIDConnect-compliant provider, starting with version 4.0 it should thus be configured as a generic OpenIDConnect provider instead.
+(1) FranceConnect being an OpenIDConnect-compliant provider, it should rather be configured as a generic OpenIDConnect provider instead.
 
 (2) Only as a generic OpenIDConnect provider.
 
@@ -64,40 +64,40 @@ Example `AUTH_PRODIDERS` configuration (refer to the [auth providers doc](auth-p
 
 ```json
 [
-	{ 
-		"name": "google", 
-		"type": "oauth2", 
-		"sync": true, 
-		"client_id": "", 
-		"client_secret": "" 
-	},
-	{ 
-		"name": "microsoft", 
-		"type": "oauth2", 
-		"sync": false, 
-		"client_id": "", 
-		"client_secret": ""
-	},
-	{ 
-		"name": "linkedin", 
-		"type": "oauth2", 
-		"sync": false, 
-		"client_id": "", 
-		"client_secret": ""
-	},
-	{ 
-		"name": "franceconnect", 
-		"type": "oauth2", 
-		"client_id": "", 
-		"client_secret": "" 
-	},
-	{ 
-		"name": "myoidc", 
-		"type": "oauth2", 
-		"label": "Sign in with your private IdP", 
+	{
+		"name": "google",
+		"type": "oauth2",
 		"sync": true,
-		"client_id": "", 
-		"client_secret": "" 
+		"client_id": "",
+		"client_secret": ""
+	},
+	{
+		"name": "microsoft",
+		"type": "oauth2",
+		"sync": false,
+		"client_id": "",
+		"client_secret": ""
+	},
+	{
+		"name": "linkedin",
+		"type": "oauth2",
+		"sync": false,
+		"client_id": "",
+		"client_secret": ""
+	},
+	{
+		"name": "franceconnect",
+		"type": "oauth2",
+		"client_id": "",
+		"client_secret": ""
+	},
+	{
+		"name": "myoidc",
+		"type": "oauth2",
+		"label": "Sign in with your private IdP",
+		"sync": true,
+		"client_id": "",
+		"client_secret": ""
 	}
 	{
 		"name": "oidc-with-all-params",
@@ -132,7 +132,7 @@ Example `AUTH_PRODIDERS` configuration (refer to the [auth providers doc](auth-p
 		},
 		"jwt_issuer": "<url>",
 		"jwt_secret": "",
-		"jwt_claims_mappings": { 
+		"jwt_claims_mappings": {
 			"login": "preferred_username"
 		},
 		"jwt_check_nonce": true
@@ -143,10 +143,11 @@ Example `AUTH_PRODIDERS` configuration (refer to the [auth providers doc](auth-p
 
 :::warning
 
-For historical reasons the names `google`, `microsoft`, `linkedin` and `franceconnect` are **reserved** as they correspond to dedicated connectors.
+For historical reasons the names `google`, `microsoft` and `linkedin` are **reserved** as they correspond to dedicated connectors.
 To use the **generic** OpenIDConnect connector you must use another name (such as the `myoidc` of the above example).
 
-The FranceConnect provider is a OIDC-compliant provider, its management as a dedicated provider has been kept in version 4.0 for backward compatibility but it **should** now be rather configured as a generic OIDC provider. 
+The FranceConnect provider is a OIDC-compliant provider, its management as a dedicated provider has been kept till version 5
+for backward compatibility but it **should** now be rather configured as a generic OIDC provider. It has been removed in version 6.
 
 :::
 
@@ -273,7 +274,7 @@ With the following provider added to `AUTH_PROVIDERS` :
 {
 	"name":"my_custom_provider", "type":"oauth2", "visible":false,
 	"tokeninfo_mappings" : {
-		"login": "my_mapped_login", 
+		"login": "my_mapped_login",
 		"expiry": "my_mapped_expiry",
 		"valid": "my_mapped_valid"
 	}
@@ -285,9 +286,9 @@ The following example performs an HTTP call to get the token info :
 ```java
 @Override
 public String getAuthTokenInfo(String token) {
-	
+
 	String url = "validation.url"
-	
+
 	String[] headers = new String[] {
 		"Content-Length: 157",
 		"Content-Type: application/x-www-form-urlencoded"
@@ -297,7 +298,7 @@ public String getAuthTokenInfo(String token) {
 	p.put("client_id", "my_client_id");
 	p.put("client_secret", "my_client_secret");
 	p.put("token", token);
-	
+
 	try {
 		String res = Tool.readUrl(url, null, null, "POST", p, headers, "UTF-8");
 		// ...
@@ -338,7 +339,7 @@ In `AUTH_PROVIDERS` just add Google settings as follow, for example to add conse
   "client_secret": "xxxxx",
   "scopes": "https://www.googleapis.com/auth/drive.file",
   "sync": true,
-  "visible": true 
+  "visible": true
 }
 ```
 
@@ -368,22 +369,6 @@ see Microsoft LiveID documentation for the values of the possible scopes, if you
 }
 ```
 
-### FranceConnect
-
-:::warning
-
-The FranceConnect provider is a OIDC-compliant provider, its management as a dedicated provider has been kept in v4.0 for backward compatibility but it should now be rather configured as a **generic OIDC provider**, without using the `franceconnect` name.
-
-:::
-
-```json
-{
-  "name": "franceconnect",
-  "type": "oauth2",
-  (...)
-}
-```
-
 ### KeyCloak
 
 ```json
@@ -396,7 +381,7 @@ The FranceConnect provider is a OIDC-compliant provider, its management as a ded
 
 The name of KeyCloak does not necessary have to be `keycloak`, it just has to **start** with that string. This is so there can be multiple keycloak providers.
 
-This provider adds specific KeyCloak functionality like userinfo group maping,  users/roles/groups synchronisation, etc. 
+This provider adds specific KeyCloak functionality like user info group mapping,  users/roles/groups synchronization, etc.
 
 Refer to the [dedicated Keycloak documentation](keycloak) for details.
 
@@ -406,7 +391,7 @@ Grant hooks
 If needed you can implement additional business logic in the `GrantHooks` Java class or Rhino script.
 
 The following **example** checks and removes the domain part of the account name in the `parseAuth` hook
-and creates/updates the corresponding application user (with responsibilities on `MYAPP_GROUP1` and `MYAPP_GROUP2` groups
+and creates/updates the corresponding application user with responsibilities on `MYAPP_GROUP1` and `MYAPP_GROUP2` groups
 on the fly in the `preLoadGrant` hook:
 
 ```Java
@@ -455,7 +440,7 @@ public void preLoadGrant(Grant g) {
 			String module = usr.getFieldValue("row_module_id.mdl_name");
 			AppLog.info("OAuth2 user " + g.getLogin() + " created in module " + module,g);
 			// Force a random password to avoid the change password popup
-	
+
 			usr.invokeMethod("resetPassword", null, null);
 
 			// Add responsibilities on designated groups

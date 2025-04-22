@@ -181,7 +181,7 @@ If required, you can specify additional settings to change the SonarQube&reg; co
 }
 ```
 
-### Linting settings
+### Linting settings {#linting}
 
 #### Checkstyle&reg; settings {#checkstyle}
 
