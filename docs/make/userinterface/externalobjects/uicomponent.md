@@ -55,6 +55,25 @@ Similarly to creating any type of *External Object*, go to *User Interface > Ext
     - Set the **Source** to **External Object** and the **External Page** to your component's name.
     > Example values:
     > ![](img/uicomponent/uicomp_modal_form.png)
+    - JSON **Data** contains:
+    	- the external object name
+		- optionally your contextual URL parameters (needed by the external object in this view)
+		- and fields values (only when External object definition has fields)
+
+```json
+{
+ "extobject": "UIObjectCounter",
+ "params": { "myparam1": "xxx", "myparam2": "yyy" }
+ "fields": {
+  "uiCounterTextColor": "",
+  "uiCounterFieldId__fld_name": "demoOrdTotal",
+  "uiCounterObjId__obo_name": "DemoOrder",
+  "uiCounterIcon": "fas/euro-sign",
+  "uiCounterColor": "red",
+  "uiCounterBgColor": ""
+ }
+}
+```
 
 5. Click **Save** in the modal's footer, **Save** in the template editor, and **Save** in the view's form. Then **Clear your cache** and by visiting your view, you should see your component.
 
