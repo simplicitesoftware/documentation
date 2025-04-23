@@ -49,5 +49,5 @@ copy the content of the `app` in your Tomcat's `webapps` folder and start Tomcat
 4. Setup the project using `ant setup` ANT task
 3. If needed adjust manually the resulting build and properties files in your project
 
-See [project package and ANT tasks document](/docs/devops/java-project) for details on how to proceed with installation/deployement of your project.
+See [project package and ANT tasks document](/docs/misc/java-project) for details on how to proceed with installation/deployement of your project.
 
