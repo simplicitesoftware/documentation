@@ -195,8 +195,26 @@ function PlatformBlock({
   }
 
   function prettierDate(date) {
-    let d = date;
-    return d;
+    if (!date) return 'N/A';
+    
+    try {
+        const d = new Date(date);
+        if (isNaN(d.getTime())) return date; // Return original if parsing fails
+        
+        const months = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+        
+        const month = months[d.getMonth()];
+        const day = d.getDate();
+        const year = d.getFullYear();
+        
+        return `${month} ${day} of ${year}`;
+    } catch (e) {
+        console.error('Error formatting date:', e);
+        return date; // Return original on error
+    }
   }
 
   function prettierType(m, s) {
@@ -252,7 +270,7 @@ function PlatformBlock({
         <div className={styles.blockHeader}> {/* Version + releases infos */}
           <h1>Version {version}</h1>
           <div className={styles.releases}>
-            <span className={styles.releaseItem}>Current: <b>{release}</b> on <b>{prettierDate(lastDate)}</b></span>
+            <span className={styles.releaseItem}>Current: <b>{release}</b> on <b>{prettierDate(lastDate)}</b> </span>
             {firstDate!=null &&
               <span className={styles.releaseItem}>First released on <b>{prettierDate(firstDate)}</b></span>
             }

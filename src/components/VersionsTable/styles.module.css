@@ -1,0 +1,38 @@
+[data-theme='light'] { /* Color Palette - Light */
+    --blue_bg: #bbb9ff;
+    --red_bg: #fdafb3;
+    --green_bg: #bcf7d7;
+    --purple_bg: #f7d8f8;
+}
+
+[data-theme='dark'] { /* Color Palette - Dark */
+    --blue_bg: #1e1e65;
+    --red_bg: #661d1d;
+    --green_bg: #1e5a39;
+    --purple_bg: #664a63;
+}
+
+table > thead > tr > th {
+    font-size: 1.5rem;
+}
+
+.versionCell {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.alpha {
+    background: var(--blue_bg) !important;
+}
+
+.shortterm, .longterm {
+    background: var(--purple_bg) !important;
+}
+
+.active {
+    background: var(--green_bg) !important;
+}
+
+.expired {
+    background: var(--red_bg) !important;
+}
