@@ -261,12 +261,25 @@ function PlatformBlock({
     setShowLight(b => !b);
   }
 
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <>
       <div id={version} className={`${styles.block} ${styles[getClassName(maintenance,supportType)]}`}>
         <div className={styles.type}>
           <span>{prettierType(maintenance, supportType)}</span>
         </div>
+        <button 
+          onClick={scrollToTop} 
+          className={styles.backToTopButton}
+        >
+          ↑
+        </button>
         <div className={styles.blockHeader}> {/* Version + releases infos */}
           <h1>Version {version}</h1>
           <div className={styles.releases}>

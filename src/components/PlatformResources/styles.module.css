@@ -281,7 +281,7 @@
   left: var(--spacing_s);
   bottom: var(--spacing_s);
   background-color: var(--default_txt);
-  transition: var(--transition_fast) var(--transition);
+  transition: all var(--transition_fast) var(--transition);
   border-radius: 50%;
 }
 
@@ -311,4 +311,28 @@
 .expired {
   background: var(--red_bg);
   color: var(--red_txt);
+}
+
+.backToTopButton {
+  position: absolute;
+  bottom: 0;
+  right: -2rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  opacity: .5;
+  transition: all var(--transition_fast) var(--transition);
+}
+
+.backToTopButton:hover {
+  opacity: 1;
+  padding-bottom: .25rem;
+}
+
+/* Make the .type container a flex container to align items */
+.type {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
