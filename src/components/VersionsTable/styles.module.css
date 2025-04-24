@@ -12,8 +12,12 @@
     --purple_bg: #664a63;
 }
 
-.versionCell {
-    font-weight: 500;
+.releaseNote {
+    margin-left: .75rem;
+    opacity: .5;
+    &:hover {
+        opacity: 1;
+    }
 }
 
 .alpha {

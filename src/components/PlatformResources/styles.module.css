@@ -127,7 +127,9 @@
 }
 
 .type {
-    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     top: var(--spacing_neg_m);
     right: var(--spacing_neg_m);
     transition: top var(--transition_fast) var(--transition);
@@ -190,10 +192,6 @@
   flex-direction: column;
   gap: var(--spacing_m);
   width: 100%;
-}
-
-.blockItems {
-  /* No styles ? */
 }
 
 /* Footer styles */
@@ -313,6 +311,9 @@
   color: var(--red_txt);
 }
 
+/* ---------------- *
+   SCROLL BEHAVIORS
+ * ---------------- */
 .backToTopButton {
   position: absolute;
   bottom: 0;
@@ -328,11 +329,4 @@
 .backToTopButton:hover {
   opacity: 1;
   padding-bottom: .25rem;
-}
-
-/* Make the .type container a flex container to align items */
-.type {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }

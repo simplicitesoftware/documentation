@@ -150,6 +150,9 @@ export default function VersionsTable({})
         }
     }
 
+    function toAnchor(v) {
+        return "v" + v.replace(".", "-");
+    }
     if (loading) return <div>Loading versions data...</div>;
     if (err) return <div>Error loading data: {err.message}</div>;
     if (!versions || versions.size === 0) return <div>No version data available</div>;
@@ -176,6 +179,12 @@ export default function VersionsTable({})
                                     onClick={(e) => scrollToBlock(version,e)}
                                 >
                                     {version}
+                                </a>
+                                <a
+                                    href={`../../versions/release-notes/${toAnchor(version)}`}
+                                    className={styles.releaseNote}
+                                >
+                                    note
                                 </a>
                             </td>
                             <td className={getClassName(data.maintenance, data.support_type)}>
