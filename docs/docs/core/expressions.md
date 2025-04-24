@@ -26,37 +26,37 @@ Here is a summary of available preprocessed tags that can be used in expressions
 > **Note**: The comprehensive descriptions below (and the [JavaDoc](https://platform.simplicite.io/current/javadoc/)) contains additional information.
 
 | [Grant level](https://platform.simplicite.io/current/javadoc/com/simplicite/util/GrantCore.html#prepareExpression-java.lang.String-java.lang.String-boolean-boolean-) | [Object level](https://platform.simplicite.io/current/javadoc/com/simplicite/util/ObjectCore.html#prepareExpression-java.lang.String-java.lang.String:A-boolean-boolean-) | [External object level](https://platform.simplicite.io/current/javadoc/com/simplicite/util/ExternalObject.html#prepareExpression-java.lang.String-) |
-|:-----------------:|:-------------------------------------------------:|:-------------------------:|
-|                   | All of Grant + following:                         | All of Grant + following: |
-| `[APPNAME]`       | `[CONTEXT:context]`                               | `[OBJECTID]`              |
-| `[ENCODING]`      | `[OBJECTID]`                                      | `[OBJECT]`                |
-| `[GRANT]`         | `[OBJECT]`                                        | `[OBJNAME]`               |
-| `[LOGIN]`         | `[TABLE]`                                         | `[OBJLABEL]`              |
-| `[USERID]`        | `[OBJNAME]`                                       | `[PARAM:parameter name]`  |
-| `[LANG]`          | `[OBJLABEL]`                                      |                           |
-| `[HASRESP:group]` | `[OBJINST]`                                       |                           |
-| `[TEXT:code]`     | `[PARENT]`                                        |                           |
-| `[SYSPARAM:name]` | `[PARENTNAME]`                                    |                           |
-|                   | `[PARENTLABEL]`                                   |                           |
-|                   | `[PARENTINST]`                                    |                           |
-|                   | `[CHILDOF:parent object name[:parent ref field]]` |                           |
-|                   | `[PANELOF:parent object name[:parent ref field]]` |                           |
-|                   | `[REFFROM:object name[:ref field]]`               |                           |
-|                   | `[DATAMAPFROM:object name]`                       |                           |
-|                   | `[STATUS]`                                        |                           |
-|                   | `[OLDSTATUS]`                                     |                           |
-|                   | `[STATUSCHANGED]`                                 |                           |
-|                   | `[ISNEW]`                                         |                           |
-|                   | `[ISCOPIED]`                                      |                           |
-|                   | `[ROWID]`                                         |                           |
-|                   | `[FIELD:name]`                                    |                           |
-|                   | `[COLUMN:input name]`                             |                           |
-|                   | `[LABEL:input name]`                              |                           |
-|                   | `[VALUE:input name]`                              |                           |
-|                   | `[OLDVALUE:input name]`                           |                           |
-|                   | `[DISPLAYVALUE:input name]`                       |                           |
-|                   | `[DISPLAYOLDVALUE:input name]`                    |                           |
-|                   | `[PARAM:parameter name]`                          |                           |
+|:----------------------:|:-------------------------------------------------:|:-------------------------:|
+|                        | All of Grant + following:                         | All of Grant + following: |
+| `[APPNAME]`            | `[CONTEXT:context]`                               | `[OBJECTID]`              |
+| `[ENCODING]`           | `[OBJECTID]`                                      | `[OBJECT]`                |
+| `[GRANT]`              | `[OBJECT]`                                        | `[OBJNAME]`               |
+| `[LOGIN]`              | `[TABLE]`                                         | `[OBJLABEL]`              |
+| `[USERID]`             | `[OBJNAME]`                                       | `[PARAM:parameter name]`  |
+| `[LANG]`               | `[OBJLABEL]`                                      |                           |
+| `[HASRESP:group]`      | `[OBJINST]`                                       |                           |
+| `[TEXT:code]`          | `[PARENT]`                                        |                           |
+| `[SYSPARAM:name]`      | `[PARENTNAME]`                                    |                           |
+| `[VERSION[:<module>]]` | `[PARENTLABEL]`                                   |                           |
+| `[ENV:<env var name>]` | `[PARENTINST]`                                    |                           |
+|                        | `[CHILDOF:parent object name[:parent ref field]]` |                           |
+|                        | `[PANELOF:parent object name[:parent ref field]]` |                           |
+|                        | `[REFFROM:object name[:ref field]]`               |                           |
+|                        | `[DATAMAPFROM:object name]`                       |                           |
+|                        | `[STATUS]`                                        |                           |
+|                        | `[OLDSTATUS]`                                     |                           |
+|                        | `[STATUSCHANGED]`                                 |                           |
+|                        | `[ISNEW]`                                         |                           |
+|                        | `[ISCOPIED]`                                      |                           |
+|                        | `[ROWID]`                                         |                           |
+|                        | `[FIELD:name]`                                    |                           |
+|                        | `[COLUMN:input name]`                             |                           |
+|                        | `[LABEL:input name]`                              |                           |
+|                        | `[VALUE:input name]`                              |                           |
+|                        | `[OLDVALUE:input name]`                           |                           |
+|                        | `[DISPLAYVALUE:input name]`                       |                           |
+|                        | `[DISPLAYOLDVALUE:input name]`                    |                           |
+|                        | `[PARAM:parameter name]`                          |                           |
 
 Description
 -----------
@@ -99,6 +99,8 @@ _ `[EXTOBJECTURL:<external object name>[:<optional URL parameters>]]` : External
 - `[HASRESP:<group>]` or `[HASRESPONSIBILITY:<group>]`: check if user has specified responsibility
 - `[TEXT:<code>]`: value of a static text
 - `[SYSPARAM:<name>]`: value of a system parameter (without surrounding quotes because a system parameter can be numeric)
+- `[VERSION[:<module>]]`: value of the version of a specified module or value of the `VERSION` system parameter if no module specified
+- `[ENV:<environment variable name>[:<default value>]]`: value of the specified environment variable or the specified default value if the environment variable is not set
 - `[APPLICATION]` or `[APPNAME]`: the application name
 - `[ENCODING]`: the application encoding
 - `[NOW]` (deprecated) or `[DATE`[:day offset]`]`: current date in service format yyyy-MM-dd (with optional day offset)
