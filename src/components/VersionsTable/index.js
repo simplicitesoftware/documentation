@@ -100,8 +100,26 @@ export default function VersionsTable({})
         }
     }
 
+    function scrollToBlock(v, e) {
+        e.preventDefault();
+        const elt = document.getElementById(v);
+
+        if (elt) {
+            const rect = elt.getBoundingClientRect();
+            const top = rect.top + window.pageYOffset;
+            const wh = window.innerHeight;
+            const h = rect.height;
+            const offset = top - (wh/2) + (h/2);
+
+            window.scrollTo({
+                top: offset,
+                behavior: 'smooth'
+            });
+        }
+    }
+
     if (loading) return <div>Loading versions data...</div>;
-    if (err) return <div>Error loading data: {error.message}</div>;
+    if (err) return <div>Error loading data: {err.message}</div>;
     if (!versions || versions.size === 0) return <div>No version data available</div>;
 
     return (
@@ -118,7 +136,14 @@ export default function VersionsTable({})
                 <tbody>
                     {Array.from(versions).map(([version, data]) => (
                         <tr key={version}>
-                            <td className={styles.versionCell}>{version}</td>
+                            <td className={styles.versionCell}>
+                                <a
+                                    href={`#${version}`}
+                                    onClick={(e) => scrollToBlock(version,e)}
+                                >
+                                    {version}
+                                </a>
+                            </td>
                             <td className={getClassName(data.maintenance, data.support_type)}>
                                 {formatStatus(data.maintenance, data.support_type)}
                             </td>

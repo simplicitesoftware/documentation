@@ -12,12 +12,7 @@
     --purple_bg: #664a63;
 }
 
-table > thead > tr > th {
-    font-size: 1.5rem;
-}
-
 .versionCell {
-    font-size: 1.5rem;
     font-weight: 500;
 }
 
@@ -35,4 +30,8 @@ table > thead > tr > th {
 
 .expired {
     background: var(--red_bg) !important;
+}
+
+html {
+    scroll-behavior: smooth;
 }

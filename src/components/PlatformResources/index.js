@@ -136,6 +136,7 @@ export default function PlatformResources({})
                 <React.Fragment key={version}>
                   {/* TODO: find a way to place a real anchor here */}
                   <PlatformBlock
+                    id={version}
                       version={version}
                       maintenance={data["maintenance"]}
                       supportType={data["support_type"]}
@@ -260,10 +261,9 @@ function PlatformBlock({
     setShowLight(b => !b);
   }
 
-  // TODO: redesign + proper structure
   return (
     <>
-      <div className={`${styles.block} ${styles[getClassName(maintenance,supportType)]}`}>
+      <div id={version} className={`${styles.block} ${styles[getClassName(maintenance,supportType)]}`}>
         <div className={styles.type}>
           <span>{prettierType(maintenance, supportType)}</span>
         </div>

@@ -6,4 +6,5 @@ title: Platform Resources
 Platform Resources
 ==================
 
+<VersionsTable/>
 <PlatformResources/>
