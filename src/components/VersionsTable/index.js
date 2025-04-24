@@ -37,33 +37,49 @@ export default function VersionsTable({})
             });
     }, []);
 
-    function formatStatus(m, st) {
-        let status;
+    function prettierMaintenance(m, st) {
+        let maintenance;
         switch (m) {
             case "active":
                 switch (st) {
                     case "shortterm":
-                        status = "☑️ Short Term";
+                        maintenance = "☑️ Maintained (*)";
                         break;
                     case "longterm":
-                        status = "☑️ Long Term";
+                        maintenance = "☑️ Maintained (*)";
                         break;
                     default:
-                        status = "✅ Current";
+                        maintenance = "✅ Current";
                         break;
                 }
                 break;
             case "alpha":
-                status = "🚧 Alpha";
+                maintenance = "🚧 Alpha";
                 break;
             case "expired":
-                status = "❌ Expired";
+                maintenance = "❌ Expired";
                 break;
             default:
-                status = "Unknown";
+                maintenance = "Not Applicable";
                 break;
         }
-        return status;
+        return maintenance;
+    }
+
+    function prettierSupport(st) {
+        let support;
+        switch (st) {
+            case "shortterm":
+                support = "Short Term - STS";
+                break;
+            case "longterm":
+                support = "Long Term - LTS";
+                break;
+            default:
+                support = "N/A";
+                break;
+        }
+        return support;
     }
 
     function getClassName(maintenance, supportType) {
@@ -90,10 +106,26 @@ export default function VersionsTable({})
             ];
             
             const month = months[d.getMonth()];
-            const day = d.getDate();
+            const d_ = d.getDate();
             const year = d.getFullYear();
             
-            return `${month} ${day} of ${year}`;
+            let day;
+            switch (d_) {
+                case 1:
+                    day = d_+"st";
+                    break;
+                case 2:
+                    day = d_+"nd";
+                    break;
+                case 3:
+                    day = d_+"rd";
+                    break;
+                default:
+                    day = d_+"th";
+                    break;
+            }
+
+            return `${month} ${day}, ${year}`;
         } catch (e) {
             console.error('Error formatting date:', e);
             return date; // Return original on error
@@ -129,8 +161,10 @@ export default function VersionsTable({})
                     <tr>
                         <th>Version</th>
                         <th>Status</th>
+                        <th>Support Type</th>
                         <th>First Release Date</th>
                         <th>Last Release</th>
+                        <th>Maintenance End</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -145,7 +179,10 @@ export default function VersionsTable({})
                                 </a>
                             </td>
                             <td className={getClassName(data.maintenance, data.support_type)}>
-                                {formatStatus(data.maintenance, data.support_type)}
+                                {prettierMaintenance(data.maintenance, data.support_type)}
+                            </td>
+                            <td className={getClassName(data.maintenance, data.support_type)}>
+                                {prettierSupport(data.support_type)}
                             </td>
                             <td className={styles.dateCell}>
                                 {prettierDate(data.initial_release_date)}
@@ -153,10 +190,12 @@ export default function VersionsTable({})
                             <td className={styles.releaseCell}>
                                 {data.version} - {prettierDate(data.date)}
                             </td>
+                            <td>{data.maintenance_end_date ? prettierDate(data.maintenance_end_date) : "N/A"}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            <span><b>(*) Important </b>⚠️ Maintained versions should not be used for new (or projects in implementation phase). Using the current release is <i>always</i> the best option 😉</span>
         </div>
     )
 }

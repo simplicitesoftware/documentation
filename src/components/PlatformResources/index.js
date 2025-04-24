@@ -168,7 +168,7 @@ function PlatformBlock({
     dockerInfo
 })
 {
-  const [showLight, setShowLight] = useState(true);
+  const [showLight, setShowLight] = useState(false);
   const [copied, setCopied] = useState('');
   const [transition, setTransition] = useState(false);
 
@@ -377,7 +377,7 @@ function PlatformBlock({
           <div className={styles.toggle}>
             <label className={styles.toggleSwitch}>
               <span className={styles.toggleLabel}>
-                {showLight ? 'Light infos' : 'Full infos'}
+                {(showLight ? 'Light' : 'Full') + " version"}
               </span>
               <div className={styles.toggleContainer}>
                 <input
