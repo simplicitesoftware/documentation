@@ -75,7 +75,7 @@ You should now be connected with **usertest**
 :::info[Log back in with `designer`]
 - Click the username in the top-right of the platform
 ![](img/user/access-menu.png)
-- Click **Log out**
+- Click **Quit**
 ![](img/user/quit.png)
 :::
 
