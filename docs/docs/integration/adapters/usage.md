@@ -26,21 +26,6 @@ public String myAction() {
 };
 ```
 
-<details>
-<summary>Rhino equivalent</summary>
-
-```javascript
-MyObject.myAction = function() {
-	var data = this.getFieldValue("myTextField").getBytes();
-	// Or for a document field:
-	// var data = this.getField("myDocumentField").getDocument().getBytes(true);
-	var res = new Integration().importADP(this.getGrant(), "MyAdapter", new ByteArrayInputStream(data), this.getName(), null);
-	return "<pre>" + res.getResultLog() + "</pre>"
-};
-```
-
-</details>
-
 Custom page (external object) to submit form data to adapter
 ---------------------------
 
