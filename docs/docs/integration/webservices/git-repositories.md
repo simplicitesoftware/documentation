@@ -3,9 +3,9 @@ sidebar_position: 20
 title: Git repositories
 ---
 
-# Git repositories (/git)
+# Git repositories (`/git`)
 
-As of **version 3.2 MAINTENANCE 03**, a new endpoint is available to export/import modules using [Git](https://git-scm.com/) over HTTP(S).
+The `/git` endpoint is dedicated to export/import modules using [Git](https://git-scm.com/) over HTTP(S).
 
 This feature relies on the Eclipse [JGit](https://github.com/eclipse-jgit/jgit) library.
 

@@ -1,10 +1,10 @@
 ---
 sidebar_position: 320
-title: Projects git repositories
+title: Projects Git repositories
 ---
 
 Simplicité platform Git Repositories
-===========================================
+=====================================
 
 This document describe how to use **platform** Git repositories.
 
@@ -34,7 +34,7 @@ All platform packages repositories are **read-only**.
 
 ### Instance template packages usage
 
-The instances templates packages usage is straigtforward: it contains a preinstalled Tomcat&reg; webapp (using, by default, and embedded HSQLDB&reg; database) that can be deployed as-is.
+The instances templates packages usage is straightforward: it contains a preinstalled Tomcat&reg; webapp (using, by default, and embedded HSQLDB&reg; database) that can be deployed as-is.
 
 You just need to clone the desired **instance template** package from `https://<username>[:<password>]@platform.git.simplicite.io/template-<x.y>.git`,
 copy the content of the `app` in your Tomcat's `webapps` folder and start Tomcat.
@@ -45,9 +45,9 @@ copy the content of the `app` in your Tomcat's `webapps` folder and start Tomcat
 ### Setup package usages
 
 1. Clone the desired **setup** package from `https://<username>[:<password>]@platform.git.simplicite.io/setup-<x.y>.git`
-2. Copy the content of the setup to a new Java project (avoid working with the setup respository itself unless you are a Git advanced user and are able to configure dedicated custom branches and remotes)
+2. Copy the content of the setup to a new Java project (avoid working with the setup repository itself unless you are a Git advanced user and are able to configure dedicated custom branches and remotes)
 4. Setup the project using `ant setup` ANT task
 3. If needed adjust manually the resulting build and properties files in your project
 
-See [project package and ANT tasks document](/docs/misc/java-project) for details on how to proceed with installation/deployement of your project.
+See [project package and ANT tasks document](/docs/misc/java-project) for details on how to proceed with installation/deployment of your project.
 
