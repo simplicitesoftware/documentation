@@ -89,7 +89,7 @@ const config = {
           },
           {
             to: "/resources/platform_resources/",
-            label: "JavaDoc etc.",
+            label: "JavaDoc etc.", // Platform Resources?
             sidebarId:"resourceSidebar",
             position: "left",
           },

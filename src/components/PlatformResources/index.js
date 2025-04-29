@@ -11,15 +11,6 @@ export default function PlatformResources({})
 
     // Methods
     useEffect(() => {
-      if (versions) {
-        // After data loads and renders, attempt to refresh the TOC
-        // This is a hacky solution but might work
-        const event = new Event('DOMContentLoaded');
-        window.document.dispatchEvent(event);
-      }
-    }, [versions]);
-
-    useEffect(() => {
         fetch(URL)
             .then(response => response.json())
             .then(data => {
@@ -116,7 +107,6 @@ export default function PlatformResources({})
         docker.light.push({name:dockerImageTag(dck["image_light"]), value:dck["image_light"]})
         docker.light.push({name:"registry (light)", value:dck["info_light"]})
       }
-      console.log(`For V${vKey}, docker is ${JSON.stringify(docker)}`);
       return docker;
     }
 
