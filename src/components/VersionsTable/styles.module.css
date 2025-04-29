@@ -1,15 +1,15 @@
 [data-theme='light'] { /* Color Palette - Light */
-    --blue_bg: #bbb9ff;
-    --red_bg: #fdafb3;
-    --green_bg: #bcf7d7;
-    --purple_bg: #f7d8f8;
+    --blue_overlay: rgba(187, 185, 255, 0.5); /*#bbb9ff*/
+    --red_overlay: rgba(253, 175, 179, 0.5); /*#fdafb3*/
+    --green_overlay: rgba(188, 247, 215, 0.5); /*#bcf7d7*/
+    --purple_overlay: rgba(247, 216, 248, 0.5) ; /*#f7d8f8*/
 }
 
 [data-theme='dark'] { /* Color Palette - Dark */
-    --blue_bg: #1e1e65;
-    --red_bg: #661d1d;
-    --green_bg: #1e5a39;
-    --purple_bg: #664a63;
+    --blue_overlay: rgba(30, 30, 101, 0.33);/*#1e1e65*/
+    --red_overlay: rgba(102, 29, 29, 0.33); /*#661d1d*/
+    --green_overlay: rgba(30, 90, 57, 0.33); /*#1e5a39*/
+    --purple_overlay: rgba(102, 74, 99, 0.33); /*#664a63*/
 }
 
 .releaseNote {
@@ -21,19 +21,19 @@
 }
 
 .alpha {
-    background: var(--blue_bg) !important;
+    background: var(--blue_overlay) !important;
 }
 
 .shortterm, .longterm {
-    background: var(--purple_bg) !important;
+    background: var(--purple_overlay) !important;
 }
 
 .active {
-    background: var(--green_bg) !important;
+    background: var(--green_overlay) !important;
 }
 
 .expired {
-    background: var(--red_bg) !important;
+    background: var(--red_overlay) !important;
 }
 
 html {
