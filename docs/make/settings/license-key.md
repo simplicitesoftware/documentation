@@ -26,7 +26,7 @@ Check the you are on the **“Simplicité Administrator”** scope
 
 ### 3) Access the **Licence Key** Object
 
-- Go to Operations > License key
+- Go to Settings > License key
 
 ### 4) Delete old key
 

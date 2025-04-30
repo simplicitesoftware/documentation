@@ -6,9 +6,9 @@ title: External editor
 External code editor
 =====================
 
-The code editor included in Simplicité does not have all the tooling and possibilities offered by an IDE. 
+The code editor included in Simplicité does not have all the tooling and possibilities offered by an IDE.
 
-Simplicité modules include git functionnality, so you can easily clone them locally and work on the sources. Refer to the [git documentation](/docs/integration/webservices/git-repositories#export) to see how to clone the module's git repository.
+Simplicité modules are published as Git repositories, so you can easily clone them locally and work on the sources. Refer to the [Git documentation](/docs/integration/webservices/git-repositories#export) to see how to clone the module's Git repository.
 
 Typically, you would:
 1. do some configuration on Simplicité
@@ -18,7 +18,7 @@ Typically, you would:
 5. commit those changes locally
 6. push the changes to Simplicité
 
-VS Code 
+VS Code
 -------
 
 To work with VSCode (and affiliates), it is usefull to add the [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) to get IntelliSense and Java debugging tools. Given that Simplicité modules are in fact exported as Maven projects, the extension will do all the necessary work when opening the project, for example to provide the necessary JavaDocs to get usefull autocompletion.
