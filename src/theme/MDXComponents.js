@@ -7,6 +7,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'; // Import all brands i
 import { fas } from '@fortawesome/free-solid-svg-icons'; // Import all solid icons.
 import PlatformResources from '@site/src/components/PlatformResources';
 import VersionsTable from '@site/src/components/VersionsTable';
+import PlatformBlock from '@site/src/components/PlatformBlock';
 
 library.add(fab, fas); // Add all icons to the library so you can use them without importing them individually.
 
@@ -16,5 +17,6 @@ export default {
   FontAwesomeIcon: FontAwesomeIcon, // Make the FontAwesomeIcon component available in MDX as <icon />.
   // Map custom components
   PlatformResources: PlatformResources,
+  PlatformBlock: PlatformBlock,
   VersionsTable: VersionsTable
 };

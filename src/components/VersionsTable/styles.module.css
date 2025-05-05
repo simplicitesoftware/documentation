@@ -20,22 +20,29 @@
     }
 }
 
-.alpha {
-    background: var(--blue_overlay) !important;
-}
+table {
+    .alpha {
+        background: var(--blue_overlay) !important;
+    }
 
-.shortterm, .longterm {
-    background: var(--purple_overlay) !important;
-}
+    .shortterm, .longterm {
+        background: var(--purple_overlay) !important;
+    }
 
-.active {
-    background: var(--green_overlay) !important;
-}
+    .active {
+        background: var(--green_overlay) !important;
+    }
 
-.expired {
-    background: var(--red_overlay) !important;
-}
+    .expired {
+        background: var(--red_overlay) !important;
+    }
+    }
 
 html {
     scroll-behavior: smooth;
+}
+
+h2:not(:first-child) {
+    /* Handling anchors from here ... */
+    opacity: 0;
 }

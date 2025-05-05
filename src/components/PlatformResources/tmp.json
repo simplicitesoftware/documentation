@@ -1,0 +1,38 @@
+{
+    "description": "Simplicite platform version 6.3 (alpha stage)",
+    "version": "6.3.0",
+    "date": "2025-04-30",
+    "maintenance": "alpha",
+    "support_type": None,
+    "initial_release_date": None,
+    "resources": {
+        "doc": {
+            "java": "https://platform.simplicite.io/6.3/javadoc/",
+            "js": "https://platform.simplicite.io/6.3/jsdoc/"
+        },
+        "dependencies": {
+            "java": "https://platform.simplicite.io/6.3/java-dependencies.html",
+            "java_light": "https://platform.simplicite.io/6.3/java-dependencies-light.html",
+            "js": "https://platform.simplicite.io/6.3/js-dependencies.html",
+            "js_licenses": "https://platform.simplicite.io/6.3/js-licenses.html",
+            "audit": "https://platform.simplicite.io/6.3/dependency-check-report.html",
+            "audit_light": "https://platform.simplicite.io/6.3/dependency-check-report-light.html"
+        },
+        "maven": {
+            "site": "https://platform.simplicite.io/6.3/site/",
+            "repository": "https://platform.simplicite.io/6.3/maven/"
+        },
+        "packages": {
+            "linux": "https://platform.simplicite.io/downloads/simplicite-6.3.tar.gz",
+            "linux_light": "https://platform.simplicite.io/downloads/simplicite-6.3-light.tar.gz",
+            "windows": "https://platform.simplicite.io/downloads/simplicite-6.3.zip",
+            "windows_light": "https://platform.simplicite.io/downloads/simplicite-6.3-light.zip"
+        },
+        "docker": {
+            "info": "https://registry-ui.simplicite.io/repo/platform/tag/6-alpha",
+            "image": "registry.simplicite.io/platform:6-alpha",
+            "info_light": "https://registry-ui.simplicite.io/repo/platform/tag/6-alpha-light",
+            "image_light": "registry.simplicite.io/platform:6-alpha-light"
+        }
+    }
+}
