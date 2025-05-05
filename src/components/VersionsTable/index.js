@@ -163,6 +163,7 @@ export default function VersionsTable({})
                 <thead>
                     <tr>
                         <th>Version</th>
+                        <th>Release Note</th>
                         <th>Status</th>
                         <th>Support Type</th>
                         <th>First Release Date</th>
@@ -173,18 +174,19 @@ export default function VersionsTable({})
                 <tbody>
                     {Array.from(versions).map(([version, data]) => (
                         <tr key={version}>
-                            <td className={styles.versionCell}>
+                            <td>
                                 <a
                                     href={`#${version}`}
                                     onClick={(e) => scrollToBlock(version,e)}
                                 >
                                     {version}
                                 </a>
+                            </td>
+                            <td>
                                 <a
                                     href={`../../versions/release-notes/${toAnchor(version)}`}
-                                    className={styles.releaseNote}
                                 >
-                                    note
+                                    Release Note
                                 </a>
                             </td>
                             <td className={getClassName(data.maintenance, data.support_type)}>

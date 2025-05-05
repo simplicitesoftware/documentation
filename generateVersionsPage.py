@@ -44,7 +44,6 @@ def get_java_resources(data):
         java["base"].append({"name":"Maven Site", "url":mav["site"]})
         java["base"].append({"name":"Maven Repo", "url":mav["repository"]})
     
-    print(f"Java resources: {java}")
     return java
 
 def get_js_resources(data):
@@ -103,9 +102,7 @@ def format_image_tag(tag):
     return t[len(t) - 1]
 
 def generate_block(version, maintenance, supportType, lastDate, release, firstDate, javaResources, jsResources, auditResources, dockerInfo):
-    """Generate the PlatformBlock component for the given informations"""
-    print(f"\nGenerating block with infos:\nVersion: {version}\nMaintenance: {maintenance}\nSupport Type: {supportType}\nlastDate: {lastDate}\nRelease: {release}\nFirst Date: {firstDate}\nJava Resources: {javaResources}\nJS Resources: {jsResources}\nAudit Resources: {auditResources}\nDocker Info: {dockerInfo}\n\n")
-    
+    """Generate the PlatformBlock component for the given informations"""    
     return f'<PlatformBlock version="{version}" maintenance="{maintenance}" supportType="{supportType}" lastDate="{lastDate}" release="{release}" firstDate="{firstDate}" javaResources={{{javaResources}}} jsResources={{{jsResources}}} auditResources={{{auditResources}}} dockerInfo={{{dockerInfo}}}/>\n'
 
 
@@ -141,7 +138,7 @@ def generate_markdown():
 
             f.write(f"{block}\n\n")
 
-        print(f"Generated {OUTPUT_FILE} with {len(versions)} versions.")
+        print(f"Successfully generated {OUTPUT_FILE} with {len(versions)} versions.")
 
 def generate_header():
     """Generate the header for the Markdown file."""

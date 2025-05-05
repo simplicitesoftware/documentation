@@ -82,15 +82,9 @@ const config = {
             position: 'left'
           },
           {
-            to: "/versions/versioning/",
+            to: "/versions",
             label: "Versions",
             sidebarId:"versionSidebar",
-            position: "left",
-          },
-          {
-            to: "/resources/platform_resources/",
-            label: "JavaDoc etc.", // Platform Resources?
-            sidebarId:"resourceSidebar",
             position: "left",
           },
           /*{

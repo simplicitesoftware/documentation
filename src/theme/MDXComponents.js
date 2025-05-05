@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import the 
 import { library } from '@fortawesome/fontawesome-svg-core'; // Import the library component.
 import { fab } from '@fortawesome/free-brands-svg-icons'; // Import all brands icons.
 import { fas } from '@fortawesome/free-solid-svg-icons'; // Import all solid icons.
-import PlatformResources from '@site/src/components/PlatformResources';
 import VersionsTable from '@site/src/components/VersionsTable';
 import PlatformBlock from '@site/src/components/PlatformBlock';
 
@@ -16,7 +15,6 @@ export default {
   ...MDXComponents,
   FontAwesomeIcon: FontAwesomeIcon, // Make the FontAwesomeIcon component available in MDX as <icon />.
   // Map custom components
-  PlatformResources: PlatformResources,
   PlatformBlock: PlatformBlock,
   VersionsTable: VersionsTable
 };
