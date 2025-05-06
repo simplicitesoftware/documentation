@@ -119,8 +119,9 @@ def generate_markdown():
         f.write(generate_header())
         f.write("<VersionsTable/>\n\n")
 
+        f.write("<div>\n\n")
         for version, data in versions.items():
-            f.write(f"## {prettier_anchor(version, data['maintenance'], data['support_type'])}\n\n")
+            f.write(f"<div>\n## {prettier_anchor(version, data['maintenance'], data['support_type'])}\n</div>\n\n")
             
             # Format and write the PlatformBlock component
             block = generate_block(
@@ -137,7 +138,9 @@ def generate_markdown():
             )
 
             f.write(f"{block}\n\n")
-
+        
+        f.write("</div>\n\n")
+        
         print(f"Successfully generated {OUTPUT_FILE} with {len(versions)} versions.")
 
 def generate_header():

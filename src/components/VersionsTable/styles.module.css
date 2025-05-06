@@ -42,7 +42,8 @@ html {
     scroll-behavior: smooth;
 }
 
-h2:not(:first-child) {
-    /* Handling anchors from here ... */
-    opacity: 0;
+article > div > div > div > h2 {
+    opacity: 0; /* Is it targeted enough ?.. */
+    margin-top: .5rem;
+    margin-bottom: 1rem;
 }
