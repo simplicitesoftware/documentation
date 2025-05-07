@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "generate-version": "python ./generateVersionsPage.py",
+    "generate-version": "python3 ./generateVersionsPage.py",
     "docusaurus": "docusaurus",
     "start": "npm run generate-version && docusaurus start",
     "build": "npm run generate-version && docusaurus build",
