@@ -183,11 +183,12 @@ export default function VersionsTable({})
                                 </a>
                             </td>
                             <td>
-                                <a
+                                {(!version.startsWith("4") && !version.startsWith("3")) ? <a
                                     href={`../../versions/release-notes/${toAnchor(version)}`}
                                 >
                                     Release Note
-                                </a>
+                                </a> 
+                                : "Unavailable"}
                             </td>
                             <td className={getClassName(data.maintenance, data.support_type)}>
                                 {prettierMaintenance(data.maintenance, data.support_type)}
