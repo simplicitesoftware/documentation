@@ -1,4 +1,4 @@
-import requests
+import urllib.request
 import json
 import os
 from collections import OrderedDict
@@ -10,14 +10,12 @@ OUTPUT_FILE = f"{OUTPUT_DIR}/versions.md"
 def fetch_data():
     """Fetch data from the given URL and return it as a JSON object."""
     try:
-        r = requests.get(URL)
-        r.raise_for_status()  # Raise an error for bad responses
-        data = r.json()['platform']
+        with urllib.request.urlopen(URL) as response:
+            data = json.loads(response.read().decode('utf-8'))['platform']
+            vmap = OrderedDict()
 
-        vmap = OrderedDict()
-
-        for v, d in data.items():
-            vmap[v] = d
+            for v, d in data.items():
+                vmap[v] = d
 
         return vmap 
     except Exception as e:
