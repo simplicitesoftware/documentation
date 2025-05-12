@@ -4,39 +4,10 @@ import styles from './styles.module.css';
 
 const URL = "https://platform.simplicite.io/versions.json";
 
-export default function VersionsTable({})
+export default function VersionsTable({
+    versions
+})
 {
-    const [versions, setVersions] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [err, setErr] = useState(null);
-
-    // Fetch version data on mount
-    useEffect(() => {
-        setLoading(true);
-        fetch(URL)
-            .then(response => {
-                if (!response.ok)
-                    throw new Error("Network response not OK");
-                return response.json();
-            })
-            .then(data => {
-                let platform = data['platform'];
-                let map = new Map();
-
-                Object.entries(platform).forEach(([v,c]) => {
-                    map.set(v,c);
-                });
-
-                setVersions(map);
-                setLoading(false);
-            })
-            .catch(err => {
-                console.error(`Error fetching json at "${URL}":\n-> ${err}\n`);
-                setErr(err);
-                setLoading(false);
-            });
-    }, []);
-
     function prettierMaintenance(m, st) {
         let maintenance;
         switch (m) {
@@ -153,8 +124,9 @@ export default function VersionsTable({})
     function toAnchor(v) {
         return "v" + v.replace(".", "-");
     }
-    if (loading) return <div>Loading versions data...</div>;
-    if (err) return <div>Error loading data: {err.message}</div>;
+
+    // if (loading) return <div>Loading versions data...</div>;
+    // if (err) return <div>Error loading data: {err.message}</div>;
     if (!versions || versions.size === 0) return <div>No version data available</div>;
 
     return (
@@ -172,37 +144,39 @@ export default function VersionsTable({})
                     </tr>
                 </thead>
                 <tbody>
-                    {Array.from(versions).map(([version, data]) => (
-                        <tr key={version}>
+                    {versions.map((v) => (
+                        <tr key={v.version}>
                             <td>
                                 <a
-                                    href={`#${version}`}
-                                    onClick={(e) => scrollToBlock(version,e)}
+                                    href={`#${v.version}`}
+                                    onClick={(e) => scrollToBlock(v.version,e)}
                                 >
-                                    {version}
+                                    {v.version}
                                 </a>
                             </td>
                             <td>
-                                {(!version.startsWith("4") && !version.startsWith("3")) ? <a
-                                    href={`../../versions/release-notes/${toAnchor(version)}`}
+                                {(!v.version.startsWith("4") && !v.version.startsWith("3")) ? <a
+                                    href={`../../versions/release-notes/${toAnchor(v.version)}`}
                                 >
                                     Release Note
                                 </a> 
                                 : "Unavailable"}
                             </td>
-                            <td className={getClassName(data.maintenance, data.support_type)}>
-                                {prettierMaintenance(data.maintenance, data.support_type)}
+                            <td className={getClassName(v.maintenance, v.support)}>
+                                {prettierMaintenance(v.maintenance, v.support)}
                             </td>
-                            <td className={getClassName(data.maintenance, data.support_type)}>
-                                {prettierSupport(data.support_type)}
+                            <td className={getClassName(v.maintenance, v.support)}>
+                                {prettierSupport(v.support)}
                             </td>
                             <td className={styles.dateCell}>
-                                {prettierDate(data.initial_release_date)}
+                                {prettierDate(v.releaseDate)}
                             </td>
                             <td className={styles.releaseCell}>
-                                {data.version} - {prettierDate(data.date)}
+                                {v.latestPatch} - {prettierDate(v.patchDate)}
                             </td>
-                            <td>{data.maintenance_end_date ? prettierDate(data.maintenance_end_date) : "N/A"}</td>
+                            <td>
+                                {v.endDate}
+                            </td>
                         </tr>
                     ))}
                 </tbody>

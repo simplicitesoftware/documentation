@@ -99,10 +99,36 @@ def format_image_tag(tag):
     t = split[len(split) - 1].split(":")
     return t[len(t) - 1]
 
+def versions_array(versions):
+    """Generate the versions array for the VersionsTable component"""
+    v = []
+    for version, data in versions.items():
+        if data['support_type'] == None:
+            data['support_type'] = "N/A"
+        if data['initial_release_date'] == None:
+            data['initial_release_date'] = "N/A"
+            
+        version_obj = {
+            'version': version,
+            'maintenance': data['maintenance'],
+            'support': data['support_type'],
+            'releaseDate': data['initial_release_date'],
+            'latestPatch': data['version'],
+            'patchDate': data['date']
+        }
+        
+        # Add maintenance_end_date if it exists
+        if 'maintenance_end_date' in data:
+            version_obj['endDate'] = data['maintenance_end_date']
+        else:
+            version_obj['endDate'] = "N/A"
+            
+        v.append(version_obj)
+    return v
+
 def generate_block(version, maintenance, supportType, lastDate, release, firstDate, javaResources, jsResources, auditResources, dockerInfo):
     """Generate the PlatformBlock component for the given informations"""    
     return f'<PlatformBlock version="{version}" maintenance="{maintenance}" supportType="{supportType}" lastDate="{lastDate}" release="{release}" firstDate="{firstDate}" javaResources={{{javaResources}}} jsResources={{{jsResources}}} auditResources={{{auditResources}}} dockerInfo={{{dockerInfo}}}/>\n'
-
 
 def generate_markdown():
     """Generate the Markdown file with anchors and PlatformBlock blocks"""
@@ -115,7 +141,7 @@ def generate_markdown():
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(generate_header())
-        f.write("<VersionsTable/>\n\n")
+        f.write(f"<VersionsTable versions={{{versions_array(versions)}}}/>\n\n")
 
         f.write("<div>\n\n")
         for version, data in versions.items():

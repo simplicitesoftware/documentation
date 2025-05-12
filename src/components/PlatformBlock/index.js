@@ -96,7 +96,7 @@ export default function PlatformBlock({
 
   function getClassName(maintenance, supportType) {
     if (maintenance == "active") {
-      if (supportType != "None")
+      if (supportType != "N/A")
         return supportType;
       return maintenance;
     }
