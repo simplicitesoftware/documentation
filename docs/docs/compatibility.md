@@ -64,8 +64,8 @@ The following table only indicates the **LTS (Long Term Support)** JVM versions.
 
 | ![](https://platform.simplicite.io/logos/logo125.png) | JVM 1.8 | JVM 11  | JVM 17  | JVM 21  |
 |:-----------------------------------------------------:|---------|---------|---------|---------|
-| Alpha 6.2                                             | no      | no      | yes (1) | **yes** |
-| **6.1** and legacy 6.0                                | no      | yes (1) | yes (1) | **yes** |
+| **6.2** and alpha 6.3                                 | no      | no      | yes (1) | **yes** |
+| Legacy 6.0 and 6.1                                    | no      | yes (1) | yes (1) | **yes** |
 | **5.x**                                               | no      | yes (1) | **yes** | yes (1) |
 | Legacy 4.0                                            | no      | yes (1) | **yes** | yes (1) |
 | Legacy 3.2                                            | yes (1) | **yes** | yes (1) | yes (1) |
@@ -100,7 +100,7 @@ The webapp implementation we recommend are:
 * **Webapp 6.0**: Apache Tomcat&reg; 10.1.x
 * **Webapp 4.0**: Apache Tomcat&reg; 9.0.x
 
-> **Note**: Whichever application server version you use, you **MUST** use its  **up-to-date maintenance release**. 
+> **Note**: Whichever application server version you use, you **MUST** use its  **up-to-date maintenance release**.
 > Only these up-to-date releases are tested and supported.
 
 Databases
