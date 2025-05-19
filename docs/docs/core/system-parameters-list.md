@@ -13,7 +13,7 @@ The system parameters are loaded from the database for each user (including the 
 into account user-level and disposition-level system parameters potential overrides.
 
 - When you invoke the `Grant.getParameter("<system param name>")` method you get the actual loaded value for the user.
-- When you invoke the `Grant.getSystemParam("<system param name>")` you get the **raw** main system parameter value from t
+- When you invoke the `Grant.getSystemParam("<system param name>")` you get the **raw** main system parameter value from the database, regardless of the user.
 - When you invoke the `Grant.getUserSystemParam("<system param name>")` you get the **raw** user-level system parameter value from the database, regardless of the user.
 
 ### Environment variables substitutions
@@ -27,7 +27,21 @@ The values of the designated environment variable are substituted when loading t
 > does not take into account these substitutions but you can use the `Tool.replaceEnvVars` helper method to do so.
 
 The typical usage of these substitutions is to avoid storing secrets in the database, e.g. client ID/secrets or certificates of an external authentication
-providers in the `AUTH_PROVIDERS` system parameter.
+providers in the `AUTH_PROVIDERS` system parameter:
+
+```json
+[
+	(...)
+	{
+		"name": "myprovider",
+		"type": "oauth2",
+		"client_id": "[ENV:MY_CLIENT_ID]",
+		"client_secret": "[ENV:MY_CLIENT_SECRET]",
+		(...)
+	},
+	(...)
+]
+```
 
 ### Environment variables overriding
 
