@@ -3,11 +3,11 @@ sidebar_position: 170
 title: System parameters list
 ---
 
-System Parameters List
+System Parameters list
 ======================
 
-**ATTENTION**: This list provide data about **System Parameters** available on Simplicité as of **4.0 version**.
-Some system parameters might not be available on previous version or default value might be different.
+**ATTENTION**: This list provide data about **system parameters** available on Simplicité as of **4.0 version**.
+Some system parameters might not be available on previous version or their default values might be different.
 
 ### `ACE_OPTIONS`
 
