@@ -13,32 +13,32 @@ System Parameters help centralize configuration, making it easier to maintain an
 
 ## Features
 
-1. **Global configuration**
+### Global configuration
 
-    - System Parameters store static values used throughout the application.
-    - They can define application-wide settings such as VAT rates, default currency, or timeout values.
+- System Parameters store static values used throughout the application.
+- They can define application-wide settings such as VAT rates, default currency, or timeout values.
 
-2. **User-level customization**
+### User-level customization
 
-    - Parameters can be assigned to individual users to override default system settings.
-    - They enable personalized configurations without modifying core application logic.
+- Parameters can be assigned to individual users to override default system settings.
+- They enable personalized configurations without modifying core application logic.
 
-2. **Disposition-level customization**
+### Disposition-level customization
 
-    - Parameters can be assigned to individual users to override default system settings.
-    - They enable per-disposition configurations without modifying core application logic.
+- Parameters can be assigned to individual users to override default system settings.
+- They enable per-disposition configurations without modifying core application logic.
 
-3. **Loading principles and usage**
+### Loading principles and usage
 
-    - The system parameters are loaded from the database for each user (including the system admin singleton user) taking
-      into account the above user-level and disposition-level system parameters potential customizations.
-    - Designers can use system parameters to adjust application behavior dynamically (if the value is updatable, see above).
-    - The system parameters can be accessed programmatically to control workflows, visibility, or validation rules.
-        - When you invoke the `Grant.getParameter("<system param name>")` method you get the actual **loaded** value for the user.
-        - When you invoke the `Grant.getSystemParam("<system param name>")` you get the **raw** main system parameter value from the database, regardless of the user.
-        - When you invoke the `Grant.getUserSystemParam("<system param name>")` you get the **raw** user-level system parameter value from the database, regardless of the user.
+- The system parameters are loaded from the database for each user (including the system admin singleton user) taking
+  into account the above user-level and disposition-level system parameters potential customizations.
+- Designers can use system parameters to adjust application behavior dynamically (if the value is updatable, see above).
+- The system parameters can be accessed programmatically to control workflows, visibility, or validation rules.
+    - When you invoke the `Grant.getParameter("<system param name>")` method you get the actual **loaded** value for the user.
+    - When you invoke the `Grant.getSystemParam("<system param name>")` you get the **raw** main system parameter value from the database, regardless of the user.
+    - When you invoke the `Grant.getUserSystemParam("<system param name>")` you get the **raw** user-level system parameter value from the database, regardless of the user.
 
-4. **Using environment variables substitutions**
+### Environment variables substitutions
 
 As of version 6.2 it is possible to use environment variables to partially alter the value of a system
 parameter using the `[ENV:<environment variable name>]` substitutions tags.
@@ -64,7 +64,7 @@ providers in the `AUTH_PROVIDERS` system parameter:
 ]
 ```
 
-5. **Using environment variables overrides**
+### Environment variables overrides
 
 As of version 6.2 it is possible to use environment variables to override the value of a given system
 parameter using the corresponding environment variable named `SIMPLICITE_SYSPARAM_<system parameter name>`.
