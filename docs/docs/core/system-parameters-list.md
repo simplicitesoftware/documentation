@@ -3,11 +3,47 @@ sidebar_position: 170
 title: System parameters list
 ---
 
-System Parameters List
-======================
+System Parameters
+=================
 
-**ATTENTION**: This list provide data about **System Parameters** available on Simplicité as of **4.0 version**.
-Some system parameters might not be available on previous version or default value might be different.
+Loading principles
+------------------
+
+The system parameters are loaded from the database for each user (including the system admin singleton user) taking
+into account user-level and disposition-level system parameters potential overrides.
+
+- When you invoke the `Grant.getParameter("<system param name>")` method you get the actual loaded value for the user.
+- When you invoke the `Grant.getSystemParam("<system param name>")` you get the **raw** main system parameter value from t
+- When you invoke the `Grant.getUserSystemParam("<system param name>")` you get the **raw** user-level system parameter value from the database, regardless of the user.
+
+### Environment variables substitutions
+
+As of version 6.2 it is possible to use environment variables to partially alter the value of a system
+parameter using the `[ENV:<environment variable name>]` substitutions tags.
+
+The values of the designated environment variable are substituted when loading the system parameters.
+
+> **Attention**: if you read the **raw** value from the database using `Grant.getSystemParam("<system parameter name>")` the returned value
+> does not take into account these substitutions but you can use the `Tool.replaceEnvVars` helper method to do so.
+
+The typical usage of these substitutions is to avoid storing secrets in the database, e.g. client ID/secrets or certificates of an external authentication
+providers in the `AUTH_PROVIDERS` system parameter.
+
+### Environment variables overriding
+
+As of version 6.2 it is possible to use environment variables to totally force the value of a given system
+parameter using the corresponding environment variable named `SIMPLICITE_SYSPARAM_<system parameter name>`.
+
+This is a forced override of the system parameter value which can't be updated at runtime (at UI level the form is also set read-only).
+
+> **Attention**: if you read the **raw** value from the database using `Grant.getSystemParam("<system parameter name>")` the returned value
+> does not take into account this override
+
+System parameters list
+----------------------
+
+**ATTENTION**: This list provide data about **system parameters** available on Simplicité as of **4.0 version**.
+Some system parameters might not be available on previous version or their default values might be different.
 
 ### `ACE_OPTIONS`
 
