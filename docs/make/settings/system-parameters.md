@@ -40,12 +40,13 @@ System Parameters help centralize configuration, making it easier to maintain an
 
 ### Environment variables substitutions
 
-As of version 6.2 it is possible to use environment variables to partially alter the value of a system
-parameter using the `[ENV:<environment variable name>]` substitutions tags.
-The values of the designated environment variable are substituted when loading the system parameters.
+As of version 6.2 it is possible to use environment variables and/or JVM properties to partially alter the value of a system
+parameter using the `[ENV:<environment variable name>]` and `[PROP:<JVM property name>]` substitutions tags.
+
+The values of the designated environment variable and/or JVM properties are substituted when loading the system parameters.
 
 > **Attention**: if you read the **raw** value from the database using `Grant.getSystemParam("<system parameter name>")` the returned value
-> does not take into account these substitutions but you can use the `Tool.replaceEnvVars` helper method to do so.
+> does not take into account these substitutions but you can use the `Tool.replaceEnvVars/replaceProperties/replaceEnvVarsAndProperties` helper methods to do so.
 
 The typical usage of these substitutions is to avoid storing secrets in the database, e.g. client ID/secrets or certificates of an external authentication
 providers in the `AUTH_PROVIDERS` system parameter:
@@ -54,7 +55,7 @@ providers in the `AUTH_PROVIDERS` system parameter:
 [
 	(...)
 	{
-		"name": "myprovider",
+		"name": "[PROP:my_provider]",
 		"type": "oauth2",
 		"client_id": "[ENV:MY_CLIENT_ID]",
 		"client_secret": "[ENV:MY_CLIENT_SECRET]",
