@@ -89,6 +89,66 @@ To generate VAPID keys, you can use the [web-push tool](https://www.npmjs.com/pa
 
 > *By default, notifications are sent through all configured channels to all configured recipients, but optionally, a channel can be limited to some of the configured recipients.*
 
+## Using Notifications in code
+
+### `preNotification` hook
+
+The `preNotification` hook is called before the notification is sent. It can be used to modify the notification's content or cancel the notification when an error message is returned.
+
+```java
+public class MyObject extends ObjectDB {
+
+    @Override
+    public String preNotification(Notification notification) {
+        notification.addContent("ENU", "A new notification has been created");
+        return null;
+    }
+}
+```
+
+### `postNotification` hook
+
+The `postNotification` hook is called after the notification is sent. It can be used to perform actions after the notification is sent.
+
+```java
+public class MyObject extends ObjectDB {
+
+    @Override
+    public void postNotification(Notification notification) {
+        // TODO: implement
+    }
+}
+```
+
+### Manually triggering a notification
+
+Notifications can be triggered manually by invoking the `push` method of the `NotificationTool` class.
+
+```java
+public class MyObject extends ObjectDB {
+
+    public void customTriggerMethod() {
+        Notification n = this.getNotification("MyNotification");
+        NotificationTool nTool = new NotificationTool(n);
+        nTool.push(this);
+    }
+}
+```
+
+## End-user features
+
+- Users granted to the `NOTI_USER` group have access to a **Notification** shortcut that can be pinned to the platform's header.
+![](img/notifications/pin-counter.png)
+
+- When clicking on the bell icon, the list of notifications is displayed.
+![](img/notifications/notification-list.png)
+
+- Notifications can be discarded by clicking on the **Check** button on a line or by clicking the **Mark all as read** button.
+- When clicking on a notification, the linked record is opened.
+
+- The **Customize** button allows to subscribe or unsubscribe from notifications : 
+    - Users can only unsubscribe from *non-mandatory* notifications (configured at the broadcast channel level)
+
 ## Read more
 
 - [Notifications tutorial](/tutorial/enhancing/notifications)

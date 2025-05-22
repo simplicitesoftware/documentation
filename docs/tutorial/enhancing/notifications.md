@@ -68,4 +68,7 @@ To add the `NOTI_USER` group to the `TRN_ADMIN` profile, follow the steps below 
 
 When validating an order, the notification bell in the platform's header is updated
 ![](img/notifications/notification-counter.png)
+
+The notification is displayed when clicking on the bell
+![](img/notifications/notification-display.png)
 ::::
