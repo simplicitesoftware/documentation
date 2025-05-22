@@ -1,5 +1,5 @@
 ---
-sidebar_position: 13
+sidebar_position: 4
 title: 3.3. Creating dynamic dropdowns
 ---
 

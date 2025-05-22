@@ -1,5 +1,5 @@
 ---
-sidebar_position: 70
+sidebar_position: 5
 title: 3.4. Writing unit tests
 ---
 
