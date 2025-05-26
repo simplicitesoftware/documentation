@@ -69,14 +69,14 @@ public String myCustomAction(Action action) {
 	// Document field
 	ObjectField myDocField = action.getConfirmField("myDocField");
 	DocumentDB doc = myDocField!=null ? myDocField.getDocument() : null;
-	AppLog.info(getClass(), "myAction", "DOCUMENT " + doc, getGrant());
+	AppLog.info(getClass(), "myCustomAction", "DOCUMENT " + doc, getGrant());
 	if (doc!=null) {
 		// Uploaded tmp file from UI
 		java.io.File file = doc.getUploadFile();
-		AppLog.info(getClass(), "myAction", "DOCUMENT FILE " + file, getGrant());
+		AppLog.info(getClass(), "myCustomAction", "DOCUMENT FILE " + file, getGrant());
 		// do something with the document...
 		// Example import the file thru Adapter
-		Message res = new Integration().importADP(getGrant(), "MyAdapterName", new FileInputStream(file), "Imported from UI myAction", null);
+		Message res = new Integration().importADP(getGrant(), "MyAdapterName", new FileInputStream(file), "Imported from UI myCustomAction", null);
 		// You must remove the file from /tmp directory when used
 		file.delete();
 		// ...
