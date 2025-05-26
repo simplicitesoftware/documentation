@@ -63,7 +63,7 @@ This syntax is deprecated but still compatible with V5 and simple fields.
 Now V5 syntax supports `ObjectField` directly to manipulate value or document:
 
 ```java
-public String myAction(Action action) {
+public String myCustomAction(Action action) {
 	// String field (text, date...)
 	String param = action.getConfirmField("myStringField").getValue();
 	// Document field
