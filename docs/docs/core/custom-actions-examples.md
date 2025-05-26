@@ -68,16 +68,16 @@ V5 syntax to supports `ObjectField` directly as follow:
 **Java**
 
 ```java
-public String myCustomAction(Action a) {
-	String = getGrant().getLang();
-	String actionField = action!=null ? action.get(lang, "myActionField").getValue() : null;
-	DocumentDB myDoc = action!=null ? action.get(lang, "myDocField").getDocument() : null;
-	File file = myDoc.getUploadFile();
-	// do something with the document...
-	// Remove the file from /tmp directory
-	file.delete();
-	// ...
-		
+public String myCustomAction(Action action) {
+	String actionField = action!=null ? action.get("myActionField").getValue() : null;
+	DocumentDB myDoc = action!=null ? action.get("myDocField").getDocument() : null;
+	File file = myDoc!=null ? myDoc.getUploadFile() : null;
+	if (file!=null) {
+		// do something with the document
+		// ...
+		// Remove the file from /tmp directory
+		file.delete();
+	}	
 }
 ```
 
