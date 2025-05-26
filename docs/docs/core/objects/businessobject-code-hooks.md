@@ -77,7 +77,7 @@ they just allow to **restrict** these rights depending on more complex business 
 @Override
 public boolean isCreateEnable() {
 	// In this example we check the status of parent object to allow/disallow creation  
-	var p = getParentObject();
+	ObjectDB p = getParentObject();
 	if (p != null && "MyParentObject".equals(p.getName()))
 		return "VALIDATED".equals(p.getStatus());
 	return true;
