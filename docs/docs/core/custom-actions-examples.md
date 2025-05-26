@@ -50,39 +50,6 @@ The action supports fields in the confirmation dialog:
 - If the field belong also to the object: the value is read only (to confirm a value or to preview a document)
 - If the field is standalone: the input field is updatable and will be sent to the server side as a String
 
-On server side the action's method will receive the fields within a `HashMap`:
-
-**Java**
-
-```java
-public String myCustomAction(Map<String,String> params) {
-		String value = params!=null? params.get("myActionField"): null;
-		...
-		return null;
-		
-}
-```
-
-This syntax is deprecated in V5 and must be replaced by a new
-V5 syntax to supports `ObjectField` directly as follow:
-**Java**
-
-```java
-public String myCustomAction(Action action) {
-	String actionField = action!=null ? action.get("myActionField").getValue() : null;
-	DocumentDB myDoc = action!=null ? action.get("myDocField").getDocument() : null;
-	File file = myDoc!=null ? myDoc.getUploadFile() : null;
-	if (file!=null) {
-		// do something with the document
-		// ...
-		// Remove the file from /tmp directory
-		file.delete();
-	}	
-}
-```
-
-**Java**
-
 Previous V4 syntax supports only `String` values thru a `Map<String,String>`:
 
 ```java
@@ -108,10 +75,12 @@ public String myAction(Action action) {
 		java.io.File file = doc.getUploadFile();
 		AppLog.info(getClass(), "myAction", "DOCUMENT FILE " + file, getGrant());
 		// do something with the document...
+		// Example import the file thru Adapter
+		Message res = new Integration().importADP(getGrant(), "MyAdapterName", new FileInputStream(file), "Imported from UI myAction", null);
 		// You must remove the file from /tmp directory when used
 		file.delete();
+		// ...
 	}
-	// ...
 }
 ```
 
