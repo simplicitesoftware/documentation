@@ -81,24 +81,24 @@ In **bold** the recommended choice for considered Simplicité version.
 
 ### Application servers
 
-| ![](https://platform.simplicite.io/logos/logo125.png) | JEE Web profile (1) | Webapp  |
-|:-----------------------------------------------------:|---------------------|---------|
-| **6.x**                                               | JEE 8 (2)           | 4.0 (2) |
-| **5.x**                                               | JEE 8               | 4.0     |
-| Legacy 4.0                                            | JEE 8               | 4.0     |
-| Legacy 3.2                                            | JEE 7               | 3.1     |
-| Legacy 3.1                                            | JEE 6               | 3.1     |
-| Legacy 3.0                                            | J2EE 1.4            | 2.5     |
+| ![](https://platform.simplicite.io/logos/logo125.png) | Web profile (1) | Webapp  |
+|:-----------------------------------------------------:|-----------------|---------|
+| **6.x**                                               | JEE 8 (2)       | 4.0 (2) |
+| **5.x**                                               | JEE 8           | 4.0     |
+| Legacy 4.0                                            | JEE 8           | 4.0     |
+| Legacy 3.2                                            | JEE 7           | 3.1     |
+| Legacy 3.1                                            | JEE 6           | 3.1     |
+| Legacy 3.0                                            | J2EE 1.4        | 2.5     |
 
-1. Web profile by default but full profile is also possible
-2. Compliance with JakartaEE 10 (an thus Webapp 6.0) was the target when for versions 6.x.
-However, at the time of the first minor version (6.0) release, some third party libs are still not yet compliant.
-Compliance with JakartaEE 10 is thus postponed to a future major version.
+1. Web profile is supposed to be used by default but full profile is also possible
+2. Compliance with JakartaEE (an thus Webapp version 6.0+) was the target when for versions 6.x.
+However, at the time of the first minor version 6.x release, some third party libs are still not yet compliant.
+Compliance with JakartaEE is thus postponed to a future major version.
 
 The webapp implementation we recommend are:
 
-* **Webapp 6.0**: Apache Tomcat&reg; 10.1.x
-* **Webapp 4.0**: Apache Tomcat&reg; 9.0.x
+* **Webapp 4.0** (JEE): Apache Tomcat&reg; 9.0.x
+* **Webapp 6.1** (JakartaEE): Apache Tomcat&reg; 11.0.x (will be supported in a future major version)
 
 > **Note**: Whichever application server version you use, you **MUST** use its  **up-to-date maintenance release**.
 > Only these up-to-date releases are tested and supported.
