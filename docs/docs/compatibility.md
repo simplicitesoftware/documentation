@@ -109,15 +109,15 @@ Databases
 | ![](https://platform.simplicite.io/logos/logo125.png) | PostgreSQL | MySQL | Oracle   | SQLServer |
 |:-----------------------------------------------------:|------------|-------|----------|-----------|
 | **6.x**                                               | 13+        | 8+    | 19c+     | 2019+     |
-| **5.x**                                               | 11+        | 5.7+  | 19c+     | 2019+     |
+| **5.x**                                               | 13+        | 8+    | 19c+     | 2019+     |
 | Legacy 4.0                                            | 10+        | 5.5+  | 12c+     | 2016+     |
 | Legacy 3.2                                            | 9+         | 5.1+  | 11g+     | 2012+     |
 | Legacy 3.1                                            | 9+         | 5.1+  | 11g+     | 2012+     |
 | Legacy 3.0                                            | 9+         | 5.1+  | 10g+     | 2008+     |
 
-> **Note**: The above versions are not the **recommended** version but the **minimal** versions on which the platform can run.
+> **Note**: The above versions are not the **recommended** version but the **minimal** versions on which the platform is supposed to run.
 > Whichever database server you use, you **SHOULD** use an **up-to-date release version** instead of the above minimal versions.
-> Only these up-to-date release versions are tested and supported.
+> Only the specified release versions are tested and supported (older versions than specified may work in some cases but we don't provide support if you use them).
 
 Web browsers
 ------------
