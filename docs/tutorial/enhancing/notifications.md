@@ -5,11 +5,11 @@ title: 3.5. Creating in-app notifications
 
 # Building the "Order Management" Training App : Creating in-app notifications
 
-> Prerequisite : [You have a basic understanding of the Simplicité platform, and the steps in Enhancing are completed](/category/2-expanding-your-app)
+> Prerequisite : [You have a basic understanding of the Simplicité platform, and the steps in "2. Expanding your app" are completed](/category/2-expanding-your-app)
 
 ## What are Notifications ?
 
-Notifications allow to alert users, via different channels, when an event linked to a business object occurs... For more information, see [Notifications](/make/userinteraction/notifications)
+Notifications allow to alert users, via different channels, when an event linked to a business object occurs... [Learn more](/make/userinteraction/notifications)
 
 ## Creating a notification for a Validated Order
 

@@ -1,30 +1,28 @@
 ---
-sidebar_position: 41
+sidebar_position: 10
 title: Business process
 ---
 
 Business process 
 =====================
 
-### What is a Business process ?
+## What is a Business process ?
 
 This document describes the business process configuration to create a business process "Screen workflow".
 
 Note that simple business process can only rely on configuration.
 
 You **need** to implement one or several hooks if you want to apply out some dynamic business logic that goes beyond what can be configured.
-See this [document] (/docs/core/businessobject-code-hooks)
 
+## How to create a Business process "Screen workflow" ?
 
-### How to create a Business process "Screen worflow" ?
+### Create a business process 
 
-#### Create a business process 
-
-Name: unique name required  
-Code: internal code required  
-Type: Screen workflow  
-Source code: any java class which modify default behavior  
-Module: application module  
+- Name: unique name required  
+- Code: internal code required  
+- Type: Screen workflow  
+- Source code: any java class which modify default behavior  
+- Module: application module  
 
 When the process is created 2 activities are generated: Begin and End.
 If these two activities did not exist or were removed, they must be created manually.
@@ -34,7 +32,7 @@ Save without exit.
 >
 > The other fields are only for long processes.
 
-#### Add process permission 
+### Add process permission 
 
 Go to Permission process tab to add rights to the process:
 
@@ -43,16 +41,16 @@ Instantiation: possibility to start the process
 Cancel process: possibility to stop the process  
 
 
-#### Put a process in a domain
+### Put a process in a domain
 
 Check that you can select your process in a domain form.
 
-#### Translate the business process 
+### Translate the business process 
 
 Add translations to your business process.  
 This translation will appear on all the activities in your process.
 
-#### Create activities
+### Create activities
 
 An activity wizard exists to create activities:
 
@@ -70,12 +68,12 @@ To create an activity, enter the following information:
 
 Other time related properties are used to alert if the activity is longer (/shorter).
 
-####  Translate activity 
+###  Translate activity 
 
 This step is to give a label in each language installed and a short help to the activity.  
 In addition, the translations appear on the left-hand side of the screen, enabling the user to track the progress of their process and view past and current activities.  
 
-#### Grant activity to workflow group
+### Grant activity to workflow group
 
 This step will define the access rights to the activity:
 
@@ -83,11 +81,11 @@ This step will define the access rights to the activity:
 - Write permission: In a wizard, this means to enter and click Next to confirm the activity
 - Cancel permission: In a wizard, this means click Skip without validation
 
-#### Create transitions
+### Create transitions
 
 This step allows you to create all possible transitions to and from the activity.
 
-#### Activity data
+### Activity data
 
 This last step of the wizard allows you to define properties for this activity:
 
@@ -120,7 +118,7 @@ Specific data for "Service call" activity:
 - Service.Mode = Synch or Asynch
 - Service.Name = name of the service to call (java method of the process)
 
-#### Activity link
+### Activity link
 
 To create a link between two activities:
 

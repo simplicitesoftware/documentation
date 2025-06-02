@@ -5,7 +5,7 @@ title: 3.1. Creating virtual links
 
 # Building the "Order Management" Training App : Creating virtual links
 
-> Prerequisite : [The Supplier, Product, Client and Order objects are linked together](/tutorial/expanding/relations)
+> Prerequisite : [You have a basic understanding of the Simplicité platform, and the steps in "2. Expanding your app" are completed](/category/2-expanding-your-app)
 
 ## What is a Virtual link ?
 
