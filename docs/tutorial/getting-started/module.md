@@ -17,7 +17,8 @@ To create a module, follow the steps below :
 
 1. Do one of the following :
     - Click **Start by creating a new module** on Simplicité's home page
-    - Click **Creation assistant** in Project > Modules
+    - Click **Creation assistant** in Project > Modules 
+    ![](img/module/creation_assistant.png)
 2. Fill in the Module fields like so :
     - Name : **Training**
     - Type : **Application**
