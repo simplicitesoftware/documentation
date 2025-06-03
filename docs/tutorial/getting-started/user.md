@@ -79,7 +79,7 @@ You should now be connected with **usertest**
 ![](img/user/quit.png)
 :::
 
-## Adding `designer` to TRN_SUPERADMIN
+## Adding `designer` to TRN_SUPERADMIN {#designer-superadmin}
 
 Before moving on, and to make testing / configuration easier, we will add the `designer` (*or the user used to design the application*) user to the **TRN_SUPERADMIN** Group.
 
