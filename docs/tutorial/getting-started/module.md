@@ -46,6 +46,8 @@ To create a module, follow the steps below :
 11. Click **Next**
 12. Fill in the View field like so :
     - Icon : click the magnifying glass and pick an icon
+        ![](img/module/scope.png)
+        ![](img/module/scope-2.png)
     > For more information about Views, see the [View](/make/userinterface/views/home-page) section.
 13. Click **Next**
 
