@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-title: Implementing a business process
+title: 3.6. Implementing a business process
 ---
 
 # Building the "Order Management" Training App : Implementing a business process
@@ -12,6 +12,11 @@ title: Implementing a business process
 A process is a sequence of screens that guides the user through a specific process. It can be used to create, update, delete, or approve data... [Learn more](/make/businessprocess/business-process)
 
 ## Creating a screen workflow to create an order
+
+:::warning
+Before starting, make sure the `TRN_SUPERADMIN` Group has the `Workflow permission` type :
+    ![](img/workflow/workflow-permission.png)
+:::
 
 To create a screen workflow to create an order, follow the steps below :
 
@@ -28,16 +33,30 @@ To create a screen workflow to create an order, follow the steps below :
     </details>
 3. Click **Save**
 4. In the **Activity** panel, click **Create**
-    ![](img/workflow/activity-create.png)
-5. Fill in the **Activity** fields like so :
-    - Name : **Begin**
-    - Code : **BEGIN**
-    - Module : **Training**
-6. Click **Save**
 
+### Creating the "Select a supplier" Activity
 
-Enable permission.
-Add the process to the domain.
+1. Click **Create Activity**
+	![](img/workflow/create-activity.png)
+2. Fill in the **Activity** fields like so :
+	- Step : **TRNOC-100** (*`TRNOC` being the Process code - `100` being the Activity's order*)
+	- Name : **SELECT_SUPPLIER**
+	- Type : **Search**
+	<details>
+            <summary>Configuration</summary>
+
+            ![](img/workflow/activity-step.png)
+    </details>
+3. Click **Next**
+4. Fill in the Activity's **Translation** like so :
+	- English : **Select a supplier**
+	<details>
+            <summary>Configuration</summary>
+
+            ![](img/workflow/activity-translation.png)
+    </details>
+5. Click **Next**
+
 
 Add 4 activities and link them together:
 * Activity for selecting the customer who places the order
