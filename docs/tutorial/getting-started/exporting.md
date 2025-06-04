@@ -76,6 +76,9 @@ Clear the platform's cache and log in with `deisgner`
 ## Troubleshooting 
 
 In case you encounter an error while importing the Module, you can download it [here](https://github.com/simplicitesoftware/documentation/tree/master/static/ressources/Training.xml) and import it manually.
+:::warning
+Make sure you delete the previous module before importing the new one.
+:::
 
 ## Read more
 - [Exporting a module as a Git repository](/docs/integration/webservices/git-repositories/#export)
