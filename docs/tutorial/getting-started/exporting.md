@@ -9,7 +9,7 @@ title: 1.5. Exporting a Module
 
 ## What is Module Export ?
 
-Module export allows you to save your application configuration as a package that can be imported into another instance. This is essential for version control, backup, and deployment purposes... [Learn more](/make/project/module#exporting-a-module)
+Module export allows you to save your application configuration as a package that can be imported into another instance. This is essential for version control, backup, and deployment purposes... [Learn more](/make/project/module)
 
 ## Exporting your Module
 
