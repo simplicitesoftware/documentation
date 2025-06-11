@@ -39,6 +39,6 @@ To create a field, follow the steps below :
 7. Click **Save**
 
 :::tip[Success]
-  <p>The <b>trnSupName</b> Field has been added to the <b>TrnSupplier</b> Business object and the template has a <b>Name</b> input visible on it</p>
+  <p>The <b>trnSupCode</b> Field has been added to the <b>TrnSupplier</b> Business object and the template has a <b>Code</b> input visible on it</p>
     ![](img/attribute/success.png)
 :::
