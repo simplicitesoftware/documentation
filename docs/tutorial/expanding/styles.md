@@ -74,7 +74,7 @@ Repeat these step 3 -> 5 for :
     - Icon : **icon/color/btn_orange**
     - Text color : **#ffffff**
     - Display on list : **Icon | Label**    
-- Validated 
+- Shipped 
     - Background color : **#93c47d**
     - Icon : **icon/color/btn_green**
     - Text color : **#ffffff**
