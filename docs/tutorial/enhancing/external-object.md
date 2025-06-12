@@ -144,7 +144,7 @@ public class TrnWebService extends com.simplicite.webapp.services.RESTServiceExt
 	 */
 	private long countPrdInstock(String supRowId) throws SearchException {
 		// Create filter for products with stock > 0 belonging to supplier
-		JSONObject filters = new JSONObject().put("demoPrdSupId", supRowId).put("demoPrdStock", "> 0");
+		JSONObject filters = new JSONObject().put("trnPrdSupId", supRowId).put("trnPrdStock", "> 0");
 		return getGrant().getIsolatedObject("TrnProduct").getTool().count(filters);
 	}
 
