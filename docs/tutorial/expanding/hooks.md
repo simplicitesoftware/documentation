@@ -70,6 +70,7 @@ To implement back-end code for the Increase stock action, follow the steps below
 2. Update the Action's information like so : 
 	- Execution : **Back**
 	- Method : **increaseStock**  
+	- URL : **empty**
 	![](img/hooks/action-form.png) 
 3. Click **Save & Close**
 4. In the **Business objects > Business objects** menu, open **TrnProduct**
