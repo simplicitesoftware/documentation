@@ -126,7 +126,13 @@ const config = {
           // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
         }
       }
-    })
+    }),
+    "future": {
+      experimental_faster: true,
+      "v4": {
+        "removeLegacyPostBuildHeadAttribute": true
+      }
+    }
 };
 
 export default config;
