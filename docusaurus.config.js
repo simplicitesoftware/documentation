@@ -82,15 +82,17 @@ const config = {
             position: 'left'
           },
           {
-            to: "/versions/versioning/",
+            to: "/versions",
             label: "Versions",
+            sidebarId:"versionSidebar",
             position: "left",
           },
-          {
-            to: "https://platform.simplicite.io/",
-            label: "JavaDoc etc.",
-            position: "left",
-          },
+          /*{
+            href: 'https://www.npmjs.com/package/simplicite',
+            position: 'right',
+            className: 'header-npm-link',
+            'aria-label': 'NPM Simplicité API package',
+          },*/
           {
             href: 'https://github.com/simplicitesoftware/documentation',
             position: 'right',
