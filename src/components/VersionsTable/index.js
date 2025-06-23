@@ -66,20 +66,20 @@ export default function VersionsTable({
 
     function prettierDate(date) {
         if (!date) return 'N/A';
-        
+
         try {
             const d = new Date(date);
             if (isNaN(d.getTime())) return date; // Return original if parsing fails
-            
+
             const months = [
                 'January', 'February', 'March', 'April', 'May', 'June',
                 'July', 'August', 'September', 'October', 'November', 'December'
             ];
-            
+
             const month = months[d.getMonth()];
             const d_ = d.getDate();
             const year = d.getFullYear();
-            
+
             let day;
             switch (d_) {
                 case 1:
@@ -139,8 +139,8 @@ export default function VersionsTable({
                         <th>Status</th>
                         <th>Support Type</th>
                         <th>First Release Date</th>
-                        <th>Last Release</th>
-                        <th>Maintenance End</th>
+                        <th>Last Release Date</th>
+                        <th>Maintenance End Date</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -159,7 +159,7 @@ export default function VersionsTable({
                                     href={`../../versions/release-notes/${toAnchor(v.version)}`}
                                 >
                                     Release Note
-                                </a> 
+                                </a>
                                 : "Unavailable"}
                             </td>
                             <td className={getClassName(v.maintenance, v.support)}>
@@ -175,7 +175,7 @@ export default function VersionsTable({
                                 {v.latestPatch} - {prettierDate(v.patchDate)}
                             </td>
                             <td>
-                                {v.endDate}
+                                {prettierDate(v.endDate)}
                             </td>
                         </tr>
                     ))}
