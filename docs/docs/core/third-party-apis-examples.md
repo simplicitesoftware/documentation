@@ -162,6 +162,25 @@ This example sets a `myCoords` object field (of type geocoordinates) with the co
 ```
 > **Note**: to debug response from the API you can use the `DCORESV001` log event code
 
+### Nominatim
+
+Nominatim is OpenStreetMap's geocoding service. Please read the [usage policy](https://operations.osmfoundation.org/policies/nominatim/) as it may not be suitable for you case.
+
+```java	
+private static String geoCode(String address, String zipCode, String city, String country) throws IOException,JSONException{
+	// PLEASE READ NOMINATIM USAGE POLICY
+	// https://operations.osmfoundation.org/policies/nominatim/
+	final String GEOCODE_SERVICE_URL = "https://nominatim.openstreetmap.org/search?format=jsonv2&q=";
+	JSONObject o = new JSONArray(Tool.readUrl(GEOCODE_SERVICE_URL+HTTPTool.encode(
+		address
+		+","+zipCode
+		+","+city
+		+","+country
+	))).getJSONObject(0);
+	return o.getString("lat")+","+o.getString("lon");
+}
+```
+
 Translation
 -----------
 
