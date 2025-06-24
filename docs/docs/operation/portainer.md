@@ -59,14 +59,32 @@ Minimal configuration is to allow the HTTP port `80` and HTTPS port `443` (along
 
 ## 3) Portainer install with lets encrypt and traefik
 
-This is a modified version of the config given in Portainer's doc "[Deploying Portainer behind Traefik Proxy](https://docs.portainer.io/advanced/reverse-proxy/traefik)"
+This is an adaptation of Portainer's doc "[Deploying Portainer behind Traefik Proxy](https://docs.portainer.io/advanced/reverse-proxy/traefik)"
 
-This config has to be copied at the home of your user and started with `sudo docker compose up -d`, after which you should be able to access `traefik.my.domain` and `portainer.my.domain`.
+1. create a local `acme.json` with `600` rights **prior** to starting this Docker compose configuration
+2. copy, adapt, and paste the following configuration at the home of your user 
+3. start the configured services with `sudo docker compose up -d`
+4. verify that you have access to `traefik.my.domain` and `portainer.my.domain`
+
+:::warning 
+
+**Do not** use the following configuration as is, make sure to adapt all lines that are marked `ADAPT` in the configuration.
+
+:::
+
+:::tip
+
+To generate the basic auth user / pwd, you can use the following command line (doubling the `$` is required)
+
+```
+htpasswd -bn your_user_name your_super_complex_password | sed 's/\$/$$/g'
+```
+
+:::
+
 
 <details>
 <summary>See config</summary>
-
-> **Important**: you must create a local `acme.json` with `600` rights **prior** to starting this Docker compose configuration.
 
 ```yaml
 services:
@@ -83,7 +101,7 @@ services:
       - "./acme.json:/acme.json"
     command:
       - --api.insecure=true
-      - --api.dashboard=true # to activate Traefik dashboard
+      - --api.dashboard=true # ADAPT to deactivate Traefik dashboard
       - --entrypoints.web.address=:80
       - --entrypoints.web.http.redirections.entrypoint.to=websecure
       - --entryPoints.web.http.redirections.entrypoint.scheme=https
@@ -95,17 +113,17 @@ services:
       - --providers.docker.network=proxy
       - --providers.docker.exposedByDefault=false
       - --certificatesresolvers.leresolver.acme.httpchallenge=true
-      - --certificatesresolvers.leresolver.acme.email=mail@my.domain #email for the generation of SSL certificates with Let's Encrypt. 
+      - --certificatesresolvers.leresolver.acme.email=mail@my.domain # ADAPT email for the generation of SSL certificates with Let's Encrypt. 
       - --certificatesresolvers.leresolver.acme.storage=./acme.json
       - --certificatesresolvers.leresolver.acme.httpchallenge.entrypoint=web
     labels:
       - traefik.enable=true
-      - traefik.http.routers.mydashboard.rule=Host(`traefik.my.domain`) # adapt domain
+      - traefik.http.routers.mydashboard.rule=Host(`traefik.my.domain`) # ADAPT domain name
       - traefik.http.routers.mydashboard.tls.certresolver=leresolver
       - traefik.http.routers.mydashboard.entrypoints=websecure
       - traefik.http.routers.mydashboard.service=api@internal
       - traefik.http.routers.mydashboard.middlewares=myauth
-      - traefik.http.middlewares.myauth.basicauth.users=admin:$$apr1$$HQ4CZZxC$$kUrQ6qAFrX4v/EAYFdrsh1 # adapt basic auth
+      - traefik.http.middlewares.myauth.basicauth.users=admin:$$apr1$$HQ4CZZxC$$kUrQ6qAFrX4v/EAYFdrsh1 # ADAPT basic auth
   portainer:
     image: portainer/portainer-ce:latest
     command: -H unix:///var/run/docker.sock
@@ -118,13 +136,13 @@ services:
     labels:
       # Frontend
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`portainer.my.domain`)" # adapt domain
+      - "traefik.http.routers.frontend.rule=Host(`portainer.my.domain`)" # ADAPT domain name
       - "traefik.http.routers.frontend.entrypoints=websecure"
       - "traefik.http.services.frontend.loadbalancer.server.port=9000"
       - "traefik.http.routers.frontend.service=frontend"
       - "traefik.http.routers.frontend.tls.certresolver=leresolver"
       # Edge
-      - "traefik.http.routers.edge.rule=Host(`edge.my.domain`)" # adapt domain
+      - "traefik.http.routers.edge.rule=Host(`edge.my.domain`)" # ADAPT domain name
       - "traefik.http.routers.edge.entrypoints=websecure"
       - "traefik.http.services.edge.loadbalancer.server.port=8000"
       - "traefik.http.routers.edge.service=edge"
@@ -138,7 +156,11 @@ volumes:
 
 </details>
 
-> The Traefik container and the Simplicité instances have to run in the same docker network, that's why we create a "proxy" network where we'll put all our containers.
+:::info
+
+The Traefik container and the Simplicité instances have to run in the same docker network, that's why we create a "proxy" network where we'll put all our containers.
+
+:::
 
 ## 4) Configure
 
