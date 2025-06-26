@@ -174,23 +174,24 @@ def generate_header():
 def prettier_anchor(version, maintenance, supportType):
     """Generate a prettier anchor for the version."""
     anchor = f"{version} {maintenance}-{supportType}"
-    match maintenance:
-        case "alpha":
-            anchor = f"🚧 {version} Alpha"
-        case "active":
-            if (supportType == "longterm"):
-                anchor = f"☑️ {version} Long Term Release"
-            elif (supportType == "shortterm"):
-                anchor = f"☑️ {version} Short Term Release"
-            else:
-                anchor = f"✅ {version} Current"
-        case "expired":
-            anchor = f"❌ {version}"
-            if (supportType=="longterm"):
-                anchor += " LTS"
-            elif (supportType=="shortterm"):
-                anchor += " STS"
-            anchor += " Expired"
+    
+    if maintenance == "alpha":
+        anchor = f"🚧 {version} Alpha"
+    elif maintenance == "active":
+        if supportType == "longterm":
+            anchor = f"☑️ {version} Long Term Release"
+        elif supportType == "shortterm":
+            anchor = f"☑️ {version} Short Term Release" 
+        else:
+            anchor = f"✅ {version} Current"
+    elif maintenance == "expired":
+        anchor = f"❌ {version}"
+        if supportType == "longterm":
+            anchor += " LTS"
+        elif supportType == "shortterm":
+            anchor += " STS"
+        anchor += " Expired"
+            
     return anchor
     
 if __name__ == "__main__":
