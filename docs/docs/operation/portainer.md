@@ -224,6 +224,19 @@ services:
     (...)
 ```
 
+
+To use [developer mode](/docs/docs/operation/docker.md#developper-mode-) for development-oriented features and for the [Simplicité VSCode tools extension](/docs/docs/devops/external-editor.md#simplicité-extension), add the following `DEV_MODE` environment variable.
+
+```yaml
+services:
+  test:
+    (...)
+    environment:
+      (...)
+      DEV_MODE: true
+      (...)
+```
+
 ## 6) Configure stack templates
 
 You can also configure Portainer to use our stack templates, to do so change the _App Templates_ URL in the settings using this URL: `https://cdn.jsdelivr.net/gh/simplicitesoftware/resources@latest/public/portainer_templates/templates.json`
