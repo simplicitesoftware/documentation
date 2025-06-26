@@ -785,7 +785,7 @@ services:
     # or image: mariadb:latest (if you prefer MariaDB)
     restart: always
     container_name: <myapp>-database
-    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     environment:
       MYSQL_ROOT_PASSWORD: "simplicite"
       MYSQL_DATABASE: "simplicite"
