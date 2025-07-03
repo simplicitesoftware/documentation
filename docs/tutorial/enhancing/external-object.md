@@ -155,8 +155,7 @@ public class TrnWebService extends com.simplicite.webapp.services.RESTServiceExt
 		} finally {
 			returnAPIObject(obj); // Return the API object instance to the pool
 		}
-}
-
+	}
 }
 ```
 [Source file](TrnWebService.java)
