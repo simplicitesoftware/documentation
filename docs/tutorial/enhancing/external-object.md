@@ -25,30 +25,30 @@ Let's say we want to call a custom endpoint that returns a list of Suppliers lik
             "nbPrdInStock": <nb of products in stock>
         },
         ...
-    ] 
+    ]
 }
 ```
 
-To create a custom endpoint, follow the steps below : 
+To create a custom endpoint, follow the steps below :
 1. In the **User interface > External Objects > Rest web service** menu, click **Create**
-2. Fill in the form like so : 
+2. Fill in the form like so :
     - Code : **TrnWebService**
-    - Nature : **REST web service**  
+    - Nature : **REST web service**
     ![](img/external-object/create.png)
 3. Click **Save**
 
 ### Making the endpoint public
 
-In the **Permissions** panel linked to the External Object : 
-1. Click **Create**  
+In the **Permissions** panel linked to the External Object :
+1. Click **Create**
     ![](img/external-object/create-permission.png)
-2. In the **Primary group** field, click `+` to create a new Group  
+2. In the **Primary group** field, click `+` to create a new Group
     ![](img/external-object/create-group.png)
-3. Fill in the Group fields like so : 
+3. Fill in the Group fields like so :
     - Name : **TRN_PUBLIC**
-    - Module Name : **Training**  
+    - Module Name : **Training**
     ![](img/external-object/group-values.png)
-4. Click **Save & Close** to create the new Group 
+4. Click **Save & Close** to create the new Group
 5. Click **Save & Close** on the `Create Permission` form to create the Permission
 
 ::::tip
@@ -57,11 +57,11 @@ The Endpoint is now granted to the users with the `TRN_PUBLIC` Responsibility
 
 ### Implementing the web service GET method
 
-1. Click **Edit code**  
+1. Click **Edit code**
     ![](img/external-object/edit-code.png)
 2. Select `Java`, and click **Confirm**
 
-Implement the `TrnWebService` Class like so : 
+Implement the `TrnWebService` Class like so :
 
 ```java title=TrnWebService.java
 package com.simplicite.extobjects.Training;
@@ -98,41 +98,44 @@ public class TrnWebService extends com.simplicite.webapp.services.RESTServiceExt
 	 */
 	@Override
 	public Object get(Parameters params) throws HTTPException {
-		// Get grant and supplier object
-		Grant g = getGrant();
-		ObjectDB supplier = g.getIsolatedObject("TrnSupplier");
-		
-		// Initialize response object with empty results
-		JSONObject results = new JSONObject()
-			.put("found", false)
-			.put("suppliers", new JSONArray());
-		
-		// Search for all suppliers
-		List<String[]> rslts = supplier.search(false);
-		if (rslts.isEmpty()) {
-			return results; // Return early if no suppliers found
-		}
-		
-		// Update found flag and get suppliers array
-		results.put("found", true);
-		JSONArray suppliers = results.getJSONArray("suppliers");
-		
-		// Process each supplier
-		for (String[] row : rslts) {
-			supplier.setValues(row);
-			try {
-				// Create supplier object with code, name and product count
-				suppliers.put(new JSONObject()
-					.put("code", supplier.getFieldValue("trnSupCode"))
-					.put("name", supplier.getFieldValue("trnSupName"))
-					.put("nbPrdInStock", countPrdInstock(supplier.getRowId())));
-			} catch (SearchException e) {
-				// Log error if product count fails for a supplier
-				AppLog.error("Error counting products in stock for supplier " + supplier.getFieldValue("trnSupCode"), e);
+		ObjectDB supplier;
+		try {
+			supplier = getGrant().getTmpObject("TrnSupplier"); // Borrow an API object instance from the pool (ZZZ must be returned, see below)
+
+			// Initialize response object with empty results
+			JSONObject results = new JSONObject()
+				.put("found", false)
+				.put("suppliers", new JSONArray());
+
+			// Search for all suppliers
+			List<String[]> rslts = supplier.search(false);
+			if (rslts.isEmpty()) {
+				return results; // Return early if no suppliers found
 			}
+
+			// Update found flag and get suppliers array
+			results.put("found", true);
+			JSONArray suppliers = results.getJSONArray("suppliers");
+
+			// Process each supplier
+			for (String[] row : rslts) {
+				supplier.setValues(row);
+				try {
+					// Create supplier object with code, name and product count
+					suppliers.put(new JSONObject()
+						.put("code", supplier.getFieldValue("trnSupCode"))
+						.put("name", supplier.getFieldValue("trnSupName"))
+						.put("nbPrdInStock", countPrdInstock(supplier.getRowId())));
+				} catch (SearchException e) {
+					// Log error if product count fails for a supplier
+					AppLog.error("Error counting products in stock for supplier " + supplier.getFieldValue("trnSupCode"), e);
+				}
+			}
+
+			return results;
+		} finally {
+			returnAPIObject(supplier); // Return the API object instance to the pool
 		}
-		
-		return results;
 	}
 
 	/**
@@ -145,14 +148,20 @@ public class TrnWebService extends com.simplicite.webapp.services.RESTServiceExt
 	private long countPrdInstock(String supRowId) throws SearchException {
 		// Create filter for products with stock > 0 belonging to supplier
 		JSONObject filters = new JSONObject().put("trnPrdSupId", supRowId).put("trnPrdStock", "> 0");
-		return getGrant().getIsolatedObject("TrnProduct").getTool().count(filters);
-	}
+		ObjectDB obj = null;
+		try {
+			obj = borrowAPIObject("TrnProduct");  // Borrow an API object instance from the pool (ZZZ MUST be returned, see below)
+			return obj.getTool().count(filters);
+		} finally {
+			returnAPIObject(obj); // Return the API object instance to the pool
+		}
+}
 
 }
 ```
 [Source file](TrnWebService.java)
 
-### Adding the TRN_PUBLIC Group to `public` user 
+### Adding the TRN_PUBLIC Group to `public` user
 
 Since the endpoint is available without authentication we need to add the TRN_PUBLIC responsibility to `public` :
 1. In **Users and rights > Users > Show all**, open `public`
@@ -167,8 +176,8 @@ For both the `TrnSupplier` and `TrnProduct` object, grant TRN_PUBLIC to the READ
 
 ## Test the endpoint
 
-Public endpoints are available on `<base_url>/api/ext/<External Object Name>` 
-Clear the platform's cache and call the endpoint via Postman or `curl` 
+Public endpoints are available on `<base_url>/api/ext/<External Object Name>`
+Clear the platform's cache and call the endpoint via Postman or `curl`
 
 :::tip[Success]
 ```sh

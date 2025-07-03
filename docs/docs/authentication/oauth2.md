@@ -452,7 +452,9 @@ public void preLoadGrant(Grant g) {
 		} catch (MethodException | CreateException | ValidateException e) {
 			AppLog.error(e, g);
 		} finally {
-			if (usr != null) usr.destroy();
+			// ZZZ An isolated object MUST be explicitly destroyed ZZZ
+			if (usr != null)
+				usr.destroy();
 		}
 	}
 	super.preLoadGrant(g);
