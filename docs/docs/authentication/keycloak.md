@@ -55,16 +55,16 @@ For instance, `"groups": [ "realm.roles", "groups", "group.name" ]` means that u
 - or a single name `"group": { name: "GROUP3" }`
  
 The `groups` mapping rule indicates a list of path in the userinfo containing a group or a list of groups to add to user's responsibilities.
-When this `groups` rule is specified, the user synchronization thru API will not be used, so the userinfo must contains all the granted groups on each logon.
+When this `groups` rule is specified, the user synchronization through API will not be used, so the userinfo must contains all the granted groups on each logon.
 
 Note: 5.3 supports several Keycloak providers, names must start with `keycloak` to be identified in `AUTH_PROVIDERS`.
 
-Roles and groups synchronization thru API
+Roles and groups synchronization through API
 -----------------------------------------
 
 > **Note**: This section only applies to **version 5.0** and above.
 
-A cron job can synchronize periodically thru the Keycloak REST API the users/roles/groups from Keycloak to local users/responsibilities/groups.
+A cron job can synchronize periodically through the Keycloak REST API the users/roles/groups from Keycloak to local users/responsibilities/groups.
 
 1) Create a system parameter `KEYCLOAK_SYNC` 
 
@@ -182,7 +182,7 @@ If the `access type` is set to `confidential`, you will have to add the `client_
 This parameter is not used by `public` access.
 
 
-You can test the API with `curl` before testing the connection thru Simplicite.
+You can test the API with `curl` before testing the connection through Simplicite.
 
 - The admin RESTful API has a base path /auth/admin/realms/
 - To get one access_token:
@@ -217,4 +217,4 @@ A synchronization task must be added to your `Crontab` to launch periodically th
 
 The run-as user must be granted to this function, by default `ADMIN` has the right to launch this action.
 
-This action is also accessible individually on UI thru the Groups list if the user is granted to the function.
+This action is also accessible individually on UI through the Groups list if the user is granted to the function.
