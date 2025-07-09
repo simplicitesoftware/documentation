@@ -6,46 +6,64 @@ title: KeyCloak
 KeyCloak&reg; integration
 =========================
 
+Keycloak install
+----------------
+
+:::warning
+
+This section is provided for testing purposes only, to install properly please refer to the [Official Keycloak docs](https://www.keycloak.org)
+
+:::
+
+This is an example of docker compose + Traefik deployement (ideal for a [Portainer server](/docs/operation/portainer) or similar)
+
+```yaml
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    command: start-dev
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: <admin_user>
+      KC_BOOTSTRAP_ADMIN_PASSWORD: <admin_pwd>
+      KC_HOSTNAME: "https://<keycloak_url>"
+      KC_HTTP_ENABLED: "true"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.keycloak.rule=Host(`<keycloak_url>`)"
+      - "traefik.http.routers.keycloak.entrypoints=websecure"
+      - "traefik.http.routers.keycloak.tls.certresolver=leresolver"
+      - "traefik.http.services.keycloak.loadbalancer.server.port=8080"
+    networks:
+      - proxy
+networks:
+  proxy:
+    name: proxy
+    external: true
+```
+
+Then follow the basic setup steps:
+1. create a `simplicite-test-realm` realm
+2. create a `simplicite-app` client in that realm (see [oidc idp docs](/docs/authentication/oauth2#in-the-indentity-provider))
+	- redirect URIs : `https://<instance_url>/oauth2callback`
+	- post logour URIs : `https://<instance_url>/logoutconfirm`
+	- other access URIs : `https://<instance_url>`
+	- client authentication **ON** (standard flow)
+	- the rest as is...
+3. copy the client secret from the credentials tab
+4. access `https://<keycloak_url>/realms/master/.well-known/openid-configuration` to get configuration urls
+
 OpenIDConnect configuration
 ---------------------------
 
-The authentication providers are to be configured as the `AUTH_PROVIDERS` system parameter.
-Simply add the Keycloak provider as follow:
+The authentication providers are to be configured as the `AUTH_PROVIDERS` system parameter as defined in the [OIDC doc](/docs/authentication/oauth2#in-simplicité).
 
-```json
-{
-	"name": "keycloak",
-	"type": "oauth2",
-	"label": "Sign in with Keycloak OAuth2 IdP",
-	"sync": true,
-	"visible": <true|false|<array of URLs>>,
-	"client_id": "<my client ID>",
-	"client_secret": "<my client secret>",
-	"authorize_url": "https://<host:port>/auth/realms/<myrealm>/protocol/openid-connect/auth",
-	"token_url":     "https://<host:port>/auth/realms/<myrealm>/protocol/openid-connect/token",
-	"userinfo_url":  "https://<host:port>/auth/realms/<myrealm>/protocol/openid-connect/userinfo",
-	"logout_url":    "https://<host:port>/auth/realms/<myrealm>/protocol/openid-connect/logout",
-	"userinfo_mappings": {
-		"login":     "preferred_username",
-		"firstname": "given_name",
-		"lastname":  "family_name",
-		"email":     "email",
-		"address":   { "field": "usr_address1" },
-		"myfield":   { "field": "myUserField" },
-		"myparam":   { "param": "APP_MYPARAM" },
-		"title":     { "field": "usr_title", "transform": { "M.":"MR", "Mme":"MRS", "Mlle":"MS" } },
-		"unit":      { "field": "myUserUnit", "param": "APP_USER_UNIT" },
-		"groups":    [ "realm.roles", "groups", "group.name" ],
-		"whitelist": [ "GROUP1", "GROUP2", "MYPREFIX_*", "MYAPP_*" ]
-	}
-}
-```
+:::note
 
-V5 `userinfo_mappings`has features to map simple fields:
+Simplicité v5.3 supports several Keycloak providers, names must start with `keycloak` to be identified in `AUTH_PROVIDERS`.
 
-- `field`: optional to set a User field with the userinfo value
-- `transform`: optional to change the value with a simple mapped value
-- `param`: optional to add a user's system parameter
+:::
+
+In addition of the common `AUTH_PROVIDERS` OIDC settings, Keycloak Authentication supports two extra `userinfo_mappings` :
 - `groups`: optional list of paths to specify where the user's responsibilities are listed
 - `whitelist`: optional list of allowed groups (to exclude all other groups from user-info), syntax supports the wildcard `*`
 
@@ -57,18 +75,149 @@ For instance, `"groups": [ "realm.roles", "groups", "group.name" ]` means that u
 The `groups` mapping rule indicates a list of path in the userinfo containing a group or a list of groups to add to user's responsibilities.
 When this `groups` rule is specified, the user synchronization through API will not be used, so the userinfo must contains all the granted groups on each logon.
 
-Note: 5.3 supports several Keycloak providers, names must start with `keycloak` to be identified in `AUTH_PROVIDERS`.
+**`AUTH_PROVIDERS` example:**
 
-Roles and groups synchronization through API
------------------------------------------
+```json
+[
+	{
+		"name": "simplicite",
+		"type": "internal"
+	},
+	{
+		"name": "keycloak",
+		"type": "oauth2",
+		"label": "Sign in with Keycloak OAuth2 IdP",
+		"visible": true,
+		"client_id": "<client_id>",
+		"client_secret": "<client_secrets>",
+		"authorize_url": "https://<keycloak_url>/realms/<myrealm>/protocol/openid-connect/auth",
+		"token_url":     "https://<keycloak_url>/realms/<myrealm>/protocol/openid-connect/token",
+		"userinfo_url":  "https://<keycloak_url>/realms/<myrealm>/protocol/openid-connect/userinfo",
+		"logout_url":    "https://<keycloak_url>/realms/<myrealm>/protocol/openid-connect/logout",
+		"sync": true,
+		"userinfo_mappings": {
+			"login":     "preferred_username",
+			"firstname": "given_name",
+			"lastname":  "family_name",
+			"email":     "email",
+			"address":   { "field": "usr_address1" },
+			"myfield":   { "field": "myUserField" },
+			"myparam":   { "param": "APP_MYPARAM" },
+			"title":     { "field": "usr_title", "transform": { "M.":"MR", "Mme":"MRS", "Mlle":"MS" } },
+			"unit":      { "field": "myUserUnit", "param": "APP_USER_UNIT" },
+			"groups":    [ "realm.roles", "groups", "group.name" ],
+			"whitelist": [ "GROUP1", "GROUP2", "MYPREFIX_*", "MYAPP_*" ]
+		}
+	}
+]
+```
 
-> **Note**: This section only applies to **version 5.0** and above.
+Roles and groups synchronization
+--------------------------------
+
+:::note
+
+This section only applies to **version 5.0** and above
+
+:::
 
 A cron job can synchronize periodically through the Keycloak REST API the users/roles/groups from Keycloak to local users/responsibilities/groups.
 
-1) Create a system parameter `KEYCLOAK_SYNC` 
+It is done by :
+1. configuring the REST API access in Keycloak and Simplicité
+2. configuring the synchronization options through a `KEYCLOAK_SYNC` system param
+3. configuring the periodical synchronization task through a CRON in Simplicité
 
-It specifies the list of Keycloak roles and groups to synchronize:
+### REST API Access
+
+#### In Keycloak
+
+Keycloak must define a user with credential to access the API:
+
+- The API user needs at least the right to read users, groups, roles, clients and realm. 
+- In `role mapping` section ensure that the client roles `realm-management` has the following records:
+    - query-clients
+    - query-realms
+    - view-clients
+    - view-realm
+    - view-users
+
+![kc_userapi_rolemappings](img/keycloak/kc_userapi_rolemappings.png)
+
+Make sure to create a credential with a non-temporary password:
+
+![](img/keycloak/kc_userapi_pwd.png)
+
+The client `admin-cli` must be enabled and with the protocol `openid-connect` as follow:
+
+![](img/keycloak/kc_admincli_client.png)
+
+If the `access type` is set to `confidential`, you will have to add the `client_secret` in the parameters of `KEYCLOAK_API`.
+This parameter is not used by `public` access.
+
+
+You can test the API with `curl` before testing the connection through Simplicite.
+
+- The admin RESTful API has a base path /auth/admin/realms/
+- To get one access_token:
+
+```
+curl -X POST https://<keycloak_url>/realms/<myrealm>/protocol/openid-connect/token \
+   -H "Content-Type: application/json" \
+   -d '{"grant_type": "password", "client_id": "admin-cli", "username": "<userapi>", "password": "<userpassword>"}'
+```
+
+- To list users:
+
+```
+curl -X GET https://<keycloak_url>/admin/realms/<myrealm>/users \
+	-H "Accept: application/json" \
+	-H "Authorization: Bearer <access_token>"
+```
+
+See https://www.keycloak.org
+
+See https://www.keycloak.org/docs-api/12.0/rest-api/index.html
+
+#### In Simplicité
+
+The `KeycloakTool` requires the system parameter `KEYCLOAK_API` to connect the Keyclock REST API.
+
+:::note
+
+Simplicité v5.3 supports several providers, named `KEYCLOAK_API <provider name>` 
+
+::: 
+
+```json
+{
+	"url": "https://<keycloak_url>",
+	"service_root": "/admin/realms",
+	"realm": "<my realm name>",
+	"client_id": "admin-cli",
+	"username": "<my user api>",
+	"password": "<my user password>",
+	"debug": false
+}
+```
+
+- You must clear the cache to reset the parameters into memory
+- Turn `debug` to `true` to see in logs during your integration tests:
+	- all requests and responses: token, user, group search...
+	- re-connection with the refresh_token when the API session has expired
+
+:::warning
+
+The API does not support special characters, spaces or accents in name of groups and roles.
+
+:::
+
+### Synchronization options
+
+#### KEYCLOAK_SYNC system parameter
+
+Create a system parameter `KEYCLOAK_SYNC` that specifies the list of Keycloak roles and groups to synchronize:
+
 - search: define the users to search in groups, roles and/or clients names
 	- groups: optional list of groups
 	- roles: optional list of realm roles
@@ -78,8 +227,6 @@ It specifies the list of Keycloak roles and groups to synchronize:
 	- `realmRoles`: true to synchronize users's realm roles
 	- `clientRoles`: true to synchronize users's client roles
 	- `prefix` will be added to the synchronized group or role to be identified against local group names
-
-Note: 5.3 supports several providers, named `KEYCLOAK_SYNC <provider name>` 
 
 ```json
 {
@@ -97,7 +244,13 @@ Note: 5.3 supports several providers, named `KEYCLOAK_SYNC <provider name>`
 }
 ```
 
-2) Local user/group mapping
+:::note
+
+Simplicité v5.3 supports several providers, named `KEYCLOAK_SYNC <provider name>` 
+
+:::
+
+#### Local user/group mapping
 
 | Parameter                | Value                                                                             | Description                                                                |
 |--------------------------|-----------------------------------------------------------------------------------|----------------------------------------------------------------------------|
@@ -125,89 +278,7 @@ The platform must define:
 - add social features with `USER_SYNC_GROUPS_FORCED` = `["SOCIAL_USER" ...]`
 - the administrators must keep their local rights: `USER_SYNC_GROUPS_EXCLUDE` = `["ADMIN", "GRANT_ADMIN", "SOCIAL_ADMIN", "KEYCLOAK_*"]`
 
-
-API Configuration
------------------
-
-1) Simplicite parameter
-
-The `KeycloakTool` requires the system parameter `KEYCLOAK_API` to connect the Keyclock REST API.
-
-Note: 5.3 supports several providers, named `KEYCLOAK_API <provider name>` 
-
-```json
-{
-	"url": "https://<host:port>/auth",
-	"service_root": "/admin/realms",
-	"realm": "<my realm name>",
-	"client_id": "admin-cli",
-	"username": "<my user api>",
-	"password": "<my user password>",
-	"debug": false
-}
-```
-
-- You must clear the cache to reset the parameters into memory
-- Turn `debug` to `true` to see in logs during your integration tests:
-
-	- all requests and responses: token, user, group search...
-	- re-connection with the refresh_token when the API session has expired
-
-**IMPORTANT**: the API does not support special characters, spaces or accents in name of groups and roles.
-
-2) Keycloak API user
-
-Keycloak must define a user with credential to access the API:
-
-- The API user needs at least the right to read users, groups, roles, clients and realm. 
-- In `role mapping` section ensure that the client roles `realm-management` has the following records:
-
-    - query-clients
-    - query-realms
-    - view-clients
-    - view-realm
-    - view-users
-
-![](img/keycloak/keycloak1.png)
-
-Make sure to create a credential with a non-temporary password:
-
-![](img/keycloak/keycloak2.png)
-
-The client `admin-cli` must be enabled and with the protocol `openid-connect` as follow:
-
-![](img/keycloak/keycloak3.png)
-
-If the `access type` is set to `confidential`, you will have to add the `client_secret` in the parameters of `KEYCLOAK_API`.
-This parameter is not used by `public` access.
-
-
-You can test the API with `curl` before testing the connection through Simplicite.
-
-- The admin RESTful API has a base path /auth/admin/realms/
-- To get one access_token:
-
-```
-curl -X POST https://<host:port>/auth/realms/<myrealm>/protocol/openid-connect/token \
-   -H "Content-Type: application/json" \
-   -d '{"grant_type": "password", "client_id": "admin-cli", "username": "<userapi>", "password": "<userpassword>"}'
-```
-
-- To list users:
-
-```
-curl -X GET https://<host:port>/auth/admin/realms/<myrealm>/users \
-	-H "Accept: application/json" \
-	-H "Authorization: Bearer <access_token>"
-```
-
-See https://www.keycloak.org
-
-See https://www.keycloak.org/docs-api/12.0/rest-api/index.html
-
-
-Synchronization scheduling
---------------------------
+### Synchronization scheduling
 
 A synchronization task must be added to your `Crontab` to launch periodically the following action:
 
