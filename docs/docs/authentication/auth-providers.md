@@ -101,6 +101,8 @@ To investigate authentication issues you can **temporarly** activate the `DAUTHC
 
 ![dauthcs001.png](img/auth-providers/dauthcs001.png)
 
+If you can't change the value, it's probably because your user does not have the `ADMIN_SYSTEM` user parameter that allows for system modification.
+
 :::warning
 
 Make sure to deactivate it as it produces **very verbose** output.
