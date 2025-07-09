@@ -6,12 +6,12 @@ title: KeyCloak
 KeyCloak&reg; integration
 =========================
 
-Keycloak install
-----------------
+Keycloak server installation
+----------------------------
 
 :::warning
 
-This section is provided for testing purposes only, to install properly please refer to the [Official Keycloak docs](https://www.keycloak.org)
+This install section is provided for testing purposes only, and is **not suitable for production**. To install properly please refer to the [Official Keycloak docs](https://www.keycloak.org)
 
 :::
 
@@ -115,12 +115,6 @@ When this `groups` rule is specified, the user synchronization through API will 
 Roles and groups synchronization
 --------------------------------
 
-:::note
-
-This section only applies to **version 5.0** and above
-
-:::
-
 A cron job can synchronize periodically through the Keycloak REST API the users/roles/groups from Keycloak to local users/responsibilities/groups.
 
 It is done by :
@@ -156,38 +150,25 @@ If the `access type` is set to `confidential`, you will have to add the `client_
 This parameter is not used by `public` access.
 
 
-You can test the API with `curl` before testing the connection through Simplicite.
+You can test the API with `curl` before testing the connection through Simplicite (see the [Keycloak REST API docs](https://www.keycloak.org/docs-api/latest/rest-api/index.html)):
 
-- The admin RESTful API has a base path /auth/admin/realms/
-- To get one access_token:
+- Get an access_token:
 
 ```
-curl -X POST https://<keycloak_url>/realms/<myrealm>/protocol/openid-connect/token \
-   -H "Content-Type: application/json" \
-   -d '{"grant_type": "password", "client_id": "admin-cli", "username": "<userapi>", "password": "<userpassword>"}'
+curl -d 'grant_type=password' -d 'client_id=admin-cli' -d 'username=userapi' -d 'password=userapi' https://<keycloak_url>/realms/<myrealm>/protocol/openid-connect/token
 ```
 
-- To list users:
+- List users (note the `/admin` in the URL):
 
 ```
 curl -X GET https://<keycloak_url>/admin/realms/<myrealm>/users \
 	-H "Accept: application/json" \
-	-H "Authorization: Bearer <access_token>"
+	-H "Authorization: Bearer <token>"
 ```
-
-See https://www.keycloak.org
-
-See https://www.keycloak.org/docs-api/12.0/rest-api/index.html
 
 #### In Simplicité
 
 The `KeycloakTool` requires the system parameter `KEYCLOAK_API` to connect the Keyclock REST API.
-
-:::note
-
-Simplicité v5.3 supports several providers, named `KEYCLOAK_API <provider name>` 
-
-::: 
 
 ```json
 {
@@ -244,12 +225,6 @@ Create a system parameter `KEYCLOAK_SYNC` that specifies the list of Keycloak ro
 }
 ```
 
-:::note
-
-Simplicité v5.3 supports several providers, named `KEYCLOAK_SYNC <provider name>` 
-
-:::
-
 #### Local user/group mapping
 
 | Parameter                | Value                                                                             | Description                                                                |
@@ -289,3 +264,17 @@ A synchronization task must be added to your `Crontab` to launch periodically th
 The run-as user must be granted to this function, by default `ADMIN` has the right to launch this action.
 
 This action is also accessible individually on UI through the Groups list if the user is granted to the function.
+
+Multiple Keycloak provider configuration
+----------------------------------------
+
+:::note
+
+Available starting Simplicité v5.3
+
+:::
+
+If you have to configure multiple Keycloak providers, use the following adaptations:
+1. in the `AUTH_PROVIDERS`, configure multiple providers that start with the word `keycloak` (eg `keycloak-internal` & `keycloak-external`)
+2. decline `KEYCLOAK_API` into multiple `KEYCLOAK_API <provider name>`  (eg `KEYCLOAK_API keycloak-internal` & `KEYCLOAK_API keycloak-external`)
+3. decline `KEYCLOAK_SYNC` into multiple `KEYCLOAK_SYNC <provider name>` (eg `KEYCLOAK_SYNC keycloak-internal` & `KEYCLOAK_SYNC keycloak-external`)
