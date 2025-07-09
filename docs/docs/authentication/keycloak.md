@@ -55,15 +55,9 @@ Then follow the basic setup steps:
 OpenIDConnect configuration
 ---------------------------
 
-The authentication providers are to be configured as the `AUTH_PROVIDERS` system parameter as defined in the [OIDC doc](/docs/authentication/oauth2#in-simplicité).
+The authentication providers are to be configured in the `AUTH_PROVIDERS` system parameter as defined in the [OIDC doc](/docs/authentication/oauth2#in-simplicité).
 
-:::note
-
-Simplicité v5.3 supports several Keycloak providers, names must start with `keycloak` to be identified in `AUTH_PROVIDERS`.
-
-:::
-
-In addition of the common `AUTH_PROVIDERS` OIDC settings, Keycloak Authentication supports two extra `userinfo_mappings` :
+In addition of the common `AUTH_PROVIDERS` OIDC settings, **Keycloak Authentication supports two extra `userinfo_mappings`** :
 - `groups`: optional list of paths to specify where the user's responsibilities are listed
 - `whitelist`: optional list of allowed groups (to exclude all other groups from user-info), syntax supports the wildcard `*`
 
@@ -72,7 +66,7 @@ For instance, `"groups": [ "realm.roles", "groups", "group.name" ]` means that u
 - array of groups `"groups": [ "GROUP1", "GROUP2" ]`
 - or a single name `"group": { name: "GROUP3" }`
  
-The `groups` mapping rule indicates a list of path in the userinfo containing a group or a list of groups to add to user's responsibilities.
+The `groups` mapping rulse indicates a list of path in the userinfo containing a group or a list of groups to add to user's responsibilities.
 When this `groups` rule is specified, the user synchronization through API will not be used, so the userinfo must contains all the granted groups on each logon.
 
 **`AUTH_PROVIDERS` example:**
