@@ -115,7 +115,9 @@ export default function Roadmap({}) {
       //     ? maxItems * cardHeight + (maxItems - 1) * gap + padding
       //     : 60;
       heights[version] = collapsedVersions.has(version)
-        ? 10
+        ? sortedVersions[sortedVersions.length - 1] === version
+          ? 30
+          : 0
         : maxItems > 0
         ? maxItems * cardHeight + (maxItems - 1) * gap + padding
         : 60;
