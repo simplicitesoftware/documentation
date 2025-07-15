@@ -1,0 +1,206 @@
+/* Variables CSS pour les couleurs */
+:root {
+  --color-feature: #5451FF54;
+  --color-enhancement: #58EC9B54;
+  --color-technical: #EC9DED54;
+  --color-maker: #FFD16654;
+  --color-deprecation: #FB364054;
+  --color-default: #E7E7E754;
+  
+  /* Couleurs des textes et autres */
+  --border-color: #ddd;
+  --card-background: transparent;
+  --card-background-hover: rgba(255,255,255, 0.1);
+}
+
+[data-theme='light'] { /* Color Changes - Light */
+  --border-color: #333;
+  --card-background-hover: rgba(0,0,9, 0.1);
+}
+
+
+
+/* Container principal */
+.roadmapContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding: 20px;
+  overflow-y: scroll;
+  min-height: 208px;
+}
+
+/* Colonne des versions */
+.versionColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.versionHeader {
+  font-weight: bold;
+  font-size: 16px;
+  padding: 12px 8px;
+  opacity: 0;
+}
+
+.versionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.versionCell {
+  padding: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: height 0.3s ease;
+  user-select: none;
+}
+
+.versionText {
+  flex: 1;
+  text-align: right;
+}
+
+.versionChevron {
+  padding-top: 4px;
+  margin-left: 8px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* Colonnes des types */
+.typeColumn {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 12px;
+}
+
+.typeHeader {
+  padding: 12px 16px;
+  /* border-radius: 8px; */
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Classes dynamiques pour chaque type */
+.typeHeaderFeature {
+  background-color: var(--color-feature);
+}
+
+.typeHeaderEnhancement {
+  background-color: var(--color-enhancement);
+}
+
+.typeHeaderTechnical {
+  background-color: var(--color-technical);
+}
+
+.typeHeaderMaker {
+  background-color: var(--color-maker);
+}
+
+.typeHeaderDeprecation {
+  background-color: var(--color-deprecation);
+}
+
+.typeHeaderDefault {
+  background-color: var(--color-default);
+}
+
+.typeContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.typeCell {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+/* Feature Cards */
+.featureCard {
+  border: 1px solid var(--border-color);
+  /* border-radius: 8px; */
+  padding: 8px;
+  margin: 4px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-background);
+  transition: all 0.25s ease-in;
+
+  &:hover {
+    background-color: var(--card-background-hover);
+    border-radius: 4px;
+  }
+}
+
+.cardTitle {
+  font-weight: bold;
+  margin-bottom: 6px;
+  font-size: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.cardProperties {
+  display: flex;
+  gap: 2px;
+  margin-top: 6px;
+}
+
+.propertyTag {
+  margin-right: 6px;
+  font-size: 10px;
+  padding: 2px 4px;
+  /* border-radius: 3px; */
+  opacity: 0.6;
+  transition: all 0.25s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.propertyTagClickable {
+  cursor: pointer;
+}
+
+.propertyTagDefault {
+  cursor: default;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .roadmapContainer {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+  }
+  
+  .versionColumn {
+    min-width: auto;
+  }
+  
+  .typeColumn {
+    flex: none;
+  }
+  
+  .featureCard {
+    min-width: auto;
+  }
+}
