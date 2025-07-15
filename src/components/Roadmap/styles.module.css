@@ -9,16 +9,30 @@
   
   /* Couleurs des textes et autres */
   --border-color: #ddd;
-  --card-background: transparent;
-  --card-background-hover: rgba(255,255,255, 0.1);
+  --card-background: rgba(255,255,255, 0.1);
+  --card-background-hover: rgba(255,255,255, 0.2);
+
+  /* Shared (across light/dark) styles for feature cards*/
+  --card-shared-background: #f3f1ee;
+  --card-shared-background-hover: #f3f1eeb1;
+  --card-shared-text: #303030;
 }
 
 [data-theme='light'] { /* Color Changes - Light */
   --border-color: #333;
-  --card-background-hover: rgba(0,0,9, 0.1);
+  --card-background: rgba(0,0,0, 0.1);
+  --card-background-hover: rgba(0,0,0, 0.2);
 }
 
-
+/* Eurk -> overriding docusaurus current styles for page's width */
+@media (min-width: 997px) {
+  /* Spécificité plus élevée */
+  .roadmapContainer [class*="docItemCol"],
+  body [class*="docItemCol"],
+  html [class*="docItemCol"] {
+    max-width: 100% !important;
+  }
+}
 
 /* Container principal */
 .roadmapContainer {
@@ -122,7 +136,7 @@
 }
 
 .typeCell {
-  padding: 8px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -131,19 +145,26 @@
 
 /* Feature Cards */
 .featureCard {
-  border: 1px solid var(--border-color);
-  /* border-radius: 8px; */
+  box-sizing: border-box;
+  /* border: 1px solid var(--border-color); */
+  border-radius: 6px;
   padding: 8px;
-  margin: 4px;
+  margin-bottom: 6px;
   min-width: 200px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: var(--card-background);
+  /* background-color: var(--card-background); */
+  background-color: var(--card-shared-background);
+  color: var(--card-shared-text);
+  border-left: solid 2px transparent;
   transition: all 0.25s ease-in;
 
   &:hover {
-    background-color: var(--card-background-hover);
-    border-radius: 4px;
+    /* background-color: var(--card-background-hover); */
+    /* border-radius: 12px; */
+    background-color: var(--card-shared-background-hover);
+    border-color: var(--card-shared-text);
   }
 }
 
@@ -164,10 +185,11 @@
 
 .propertyTag {
   margin-right: 6px;
-  font-size: 10px;
+  font-size: 12px;
   padding: 2px 4px;
+  font-weight: 700;
   /* border-radius: 3px; */
-  opacity: 0.6;
+  opacity: 0.8;
   transition: all 0.25s ease;
 
   &:hover {
