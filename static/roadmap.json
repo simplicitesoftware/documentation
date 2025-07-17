@@ -3,7 +3,7 @@
     "lines": [
         "v5.3",
         "v6.2",
-        "v7-0",
+        "v7.0",
         "v6.3",
         "v6.0",
         "v6.1"
@@ -1323,7 +1323,7 @@
                     "row_id": "89",
                     "prdChgOrigin": null,
                     "prdChgTicket": "https://community.simplicite.io/t/object-storage-for-documents/8865",
-                    "prdChgVrsId__prdVrsNumber": "v7-0"
+                    "prdChgVrsId__prdVrsNumber": "v7.0"
                 },
                 {
                     "prdChgReleaseNote": null,

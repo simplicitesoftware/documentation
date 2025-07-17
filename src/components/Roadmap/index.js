@@ -16,11 +16,11 @@ export default function Roadmap({}) {
         const response = await fetch(SRC_JSON);
         const jsonData = await response.json();
 
-        console.log("===== FETCHED ROADMAP JSON =====");
+        console.log("===== FETCHED ROADMAP LOCAL JSON =====");
         console.log(
           `generation_date: ${jsonData.generation_date}\nlines: ${jsonData.lines}\ncols: ${jsonData.cols}`
         );
-        console.log("================================");
+        console.log("======================================");
 
         setData(jsonData);
       } catch (err) {
@@ -106,14 +106,10 @@ export default function Roadmap({}) {
         maxItems = Math.max(maxItems, itemCount);
       });
 
-      const cardHeight = 80;
-      const gap = 4;
+      const cardHeight = 85; // Augmenter de 80 à 85px
+      const gap = 6; // Augmenter le gap de 4 à 6px
       const padding = 16;
 
-      // heights[version] =
-      //   maxItems > 0
-      //     ? maxItems * cardHeight + (maxItems - 1) * gap + padding
-      //     : 60;
       heights[version] = collapsedVersions.has(version)
         ? sortedVersions[sortedVersions.length - 1] === version
           ? 30
@@ -137,63 +133,75 @@ export default function Roadmap({}) {
   console.log("Hauteurs calculées:", versionHeights);
 
   return (
-    <div className={styles.roadmapContainer}>
-      {/* Colonne Version */}
-      <div className={styles.versionColumn}>
-        {/* Header Version */}
-        <div className={styles.versionHeader}>Version</div>
-
-        {/* Contenu versions */}
-        <div className={styles.versionContent}>
-          {sortedVersions.map((version, idx) => (
-            <div
-              key={idx}
-              className={styles.versionCell}
-              style={{ height: `${versionHeights[version]}px` }}
-              onClick={() => toggleVersion(version)}
-            >
-              <span className={styles.versionText}>{version}</span>
-              <span className={styles.versionChevron}>
-                {collapsedVersions.has(version) ? "⮞" : "⮟"}
-              </span>
-            </div>
-          ))}
-        </div>
+    <>
+      <div className={styles.roadmapHeader}>
+        🚀 Simplicité's non contractual roadmap &nbsp; | &nbsp; Last
+        updated:&nbsp;
+        {data.generation_date} {/* Use a 'prettier' method */}
       </div>
+      <div className={styles.roadmapContainer}>
+        {/* Colonne Version */}
+        <div className={styles.versionColumn}>
+          {/* Header Version */}
+          <div className={styles.versionHeader}>-</div>
 
-      {/* Colonnes Types */}
-      {data.cols.map((col, colIndex) => (
-        <div
-          key={colIndex}
-          className={styles.typeColumn + getTypeHeaderClass(col)}
-        >
-          {/* Header Type */}
-          <div className={getTypeHeaderClass(col)}>{col}</div>
-
-          {/* Contenu par version */}
-          <div className={styles.typeContent}>
-            {sortedVersions.map((version, versionIndex) => (
+          {/* Contenu versions */}
+          <div className={styles.versionContent}>
+            {sortedVersions.map((version, idx) => (
               <div
-                key={versionIndex}
-                className={styles.typeCell}
+                key={idx}
+                className={styles.versionCell}
                 style={{ height: `${versionHeights[version]}px` }}
+                onClick={() => toggleVersion(version)}
               >
-                {!collapsedVersions.has(version) &&
-                  itemsByVersion[version]
-                    ?.filter((item) => item.prdChgType === col)
-                    .map((item, itemIndex) => (
-                      <FeatureCard key={itemIndex} item={item} />
-                    ))}
+                <span className={styles.versionText}>{version}</span>
+                <span className={styles.versionChevron}>
+                  {collapsedVersions.has(version) ? "⮞" : "⮟"}
+                </span>
               </div>
             ))}
           </div>
         </div>
-      ))}
-    </div>
+
+        {/* Colonnes Types */}
+        {data.cols.map((col, colIndex) => (
+          <div
+            key={colIndex}
+            className={styles.typeColumn + getTypeHeaderClass(col)}
+          >
+            {/* Header Type */}
+            <div className={getTypeHeaderClass(col)}>{col}</div>
+
+            {/* Contenu par version */}
+            <div className={styles.typeContent}>
+              {sortedVersions.map((version, versionIndex) => (
+                <div
+                  key={versionIndex}
+                  className={styles.typeCell}
+                  style={{ height: `${versionHeights[version]}px` }}
+                >
+                  {!collapsedVersions.has(version) &&
+                    itemsByVersion[version]
+                      ?.filter((item) => item.prdChgType === col)
+                      .map((item, itemIndex) => (
+                        <FeatureCard key={itemIndex} item={item} />
+                      ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 
 const FeatureCard = ({ item }) => {
+  const hasReleaseNote =
+    item.prdChgReleaseNote && item.prdChgReleaseNote.trim() !== "";
+  const showPortalLink = item.prdChgTicket && item.prdChgTicket.trim() !== "";
+  const portalUrl = `https://portal.simplicite.fr?f=PrdChange%3B${item.row_id}`;
+
   const getPropertyLabel = (prop) => {
     const labels = {
       releaseNote: "Release Note",
@@ -206,12 +214,17 @@ const FeatureCard = ({ item }) => {
 
   const getPropertyText = (prop) => {
     const textMap = {
-      releaseNote: "Note",
       backported: "Backport",
       origin: "Origin",
       ticket: "Ticket",
     };
     return textMap[prop];
+  };
+
+  const handleCardClick = () => {
+    if (hasReleaseNote) {
+      window.open(item.prdChgReleaseNote, "_blank");
+    }
   };
 
   const handlePropertyClick = (val) => {
@@ -220,7 +233,7 @@ const FeatureCard = ({ item }) => {
   };
 
   const renderPropertyText = (property, value) => {
-    if (!value) return null;
+    if (!value || property === "releaseNote") return null;
 
     let text = getPropertyText(property);
     const label = getPropertyLabel(property);
@@ -235,7 +248,7 @@ const FeatureCard = ({ item }) => {
 
     const className = `${styles.propertyTag} ${
       isUrl ? styles.propertyTagClickable : styles.propertyTagDefault
-    }`;
+    } ${property === "ticket" ? "simplicite-team-viz" : ""}`;
 
     return (
       <span
@@ -250,7 +263,24 @@ const FeatureCard = ({ item }) => {
   };
 
   return (
-    <div className={styles.featureCard}>
+    <div
+      className={`${styles.featureCard} ${
+        hasReleaseNote ? styles.featureCardClickable : ""
+      }`}
+      onClick={handleCardClick}
+    >
+      {/* Pastille portal si classe présente */}
+      {showPortalLink && (
+        <div
+          className={styles.portalPastille}
+          title={`Voir dans le portal: ${item.prdChgCode}`}
+          onClick={(e) => {
+            e.stopPropagation(); // Empêcher le clic sur la carte
+            window.open(portalUrl, "_blank");
+          }}
+        />
+      )}
+
       {/* Titre : Emoji + Nom */}
       <div className={styles.cardTitle}>
         <span>{item.prdChgEmoji}</span>
