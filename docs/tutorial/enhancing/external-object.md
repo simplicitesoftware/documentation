@@ -100,7 +100,7 @@ public class TrnWebService extends com.simplicite.webapp.services.RESTServiceExt
 	public Object get(Parameters params) throws HTTPException {
 		ObjectDB supplier;
 		try {
-			supplier = getGrant().getTmpObject("TrnSupplier"); // Borrow an API object instance from the pool (ZZZ must be returned, see below)
+			supplier = borrowAPIObject("TrnSupplier"); // Borrow an API object instance from the pool (ZZZ must be returned, see below)
 
 			// Initialize response object with empty results
 			JSONObject results = new JSONObject()
