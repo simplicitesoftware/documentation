@@ -155,7 +155,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* background-color: var(--card-background); */
   background-color: var(--card-shared-background);
   color: var(--card-shared-text);
   border-left: solid 2px transparent;
@@ -211,19 +210,20 @@
   cursor: default;
 }
 
-.simplicite-team-viz {
+.simpliciteTeamViz {
   display: none !important; /* equivalent of 'visible:false' -> each member adds its own stylesheet for that (Simon's request) */
 }
 
 /* Pastille indication (portal link) */
 .portalPastille {
   position: absolute;
-  top: 6px;
-  right: 6px;
-  width: 16px;
-  height: 16px;
+  top: -8px;
+  right: -6px;
   background-color: var(--border-color);
-  border-radius: 50%;
+  color: var(--card-shared-background);
+  border-radius: 4px;
+  font-size: 10px;
+  padding: 2px 4px;
   cursor: pointer;
   transition: all 0.2s ease;
 

@@ -204,7 +204,6 @@ const FeatureCard = ({ item }) => {
 
   const getPropertyLabel = (prop) => {
     const labels = {
-      releaseNote: "Release Note",
       backported: "Backported",
       origin: "Origin",
       ticket: "Ticket",
@@ -248,7 +247,7 @@ const FeatureCard = ({ item }) => {
 
     const className = `${styles.propertyTag} ${
       isUrl ? styles.propertyTagClickable : styles.propertyTagDefault
-    } ${property === "ticket" ? "simplicite-team-viz" : ""}`;
+    } ${property === "ticket" ? styles.simpliciteTeamViz : ""}`;
 
     return (
       <span
@@ -278,7 +277,9 @@ const FeatureCard = ({ item }) => {
             e.stopPropagation(); // Empêcher le clic sur la carte
             window.open(portalUrl, "_blank");
           }}
-        />
+        >
+          Portal
+        </div>
       )}
 
       {/* Titre : Emoji + Nom */}
