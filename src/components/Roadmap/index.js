@@ -156,7 +156,7 @@ export default function Roadmap({}) {
               >
                 <span className={styles.versionText}>{version}</span>
                 <span className={styles.versionChevron}>
-                  {collapsedVersions.has(version) ? "⮞" : "⮟"}
+                  {collapsedVersions.has(version) ? "\u2B9E" : "\u2B9F"}
                 </span>
               </div>
             ))}

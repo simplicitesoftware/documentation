@@ -209,7 +209,7 @@
 }
 
 .simpliciteTeamViz {
-  display: none !important; /* equivalent of 'visible:false' -> each member adds its own stylesheet for that (Simon's request) */
+  display: none; /* equivalent of 'visible:false' -> each member adds its own stylesheet for that (Simon's request) */
 }
 
 /* Pastille indication (portal link) */
