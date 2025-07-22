@@ -261,6 +261,21 @@ const FeatureCard = ({ item }) => {
     );
   };
 
+  const renderPortalLink = () => {
+    if (!showPortalLink) return null;
+
+    return (
+      <span
+        key="portal"
+        title={`Voir dans le portal: ${item.prdChgCode}`}
+        onClick={() => window.open(portalUrl, "_blank")}
+        className={`${styles.propertyTag} ${styles.propertyTagClickable} ${styles.simpliciteTeamViz}`}
+      >
+        Portal
+      </span>
+    );
+  };
+
   return (
     <div
       className={`${styles.featureCard} ${
@@ -268,17 +283,13 @@ const FeatureCard = ({ item }) => {
       }`}
       onClick={handleCardClick}
     >
-      {/* Pastille portal si classe présente */}
-      {showPortalLink && (
+      {/* Bouton Release Note si présent */}
+      {hasReleaseNote && (
         <div
-          className={styles.portalPastille}
-          title={`Voir dans le portal: ${item.prdChgCode}`}
-          onClick={(e) => {
-            e.stopPropagation(); // Empêcher le clic sur la carte
-            window.open(portalUrl, "_blank");
-          }}
+          className={styles.releaseNotePastille}
+          title={`Voir les release notes: ${item.prdChgCode}`}
         >
-          Portal
+          Release Note
         </div>
       )}
 
@@ -294,13 +305,13 @@ const FeatureCard = ({ item }) => {
         item.prdChgOrigin ||
         item.prdChgTicket) && (
         <div className={styles.cardProperties}>
-          {renderPropertyText("releaseNote", item.prdChgReleaseNote)}
           {renderPropertyText(
             "backported",
             item.prdChgBackportVrsId__prdVrsNumber
           )}
           {renderPropertyText("origin", item.prdChgOrigin)}
           {renderPropertyText("ticket", item.prdChgTicket)}
+          {renderPortalLink()}
         </div>
       )}
     </div>
