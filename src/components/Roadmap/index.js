@@ -135,9 +135,7 @@ export default function Roadmap({}) {
   return (
     <>
       <div className={styles.roadmapHeader}>
-        🚀 Simplicité's non contractual roadmap &nbsp; | &nbsp; Last
-        updated:&nbsp;
-        {data.generation_date} {/* Use a 'prettier' method */}
+        Last update: {data.generation_date} {/* Use a 'prettier' method */}
       </div>
       <div className={styles.roadmapContainer}>
         {/* Colonne Version */}
@@ -206,7 +204,7 @@ const FeatureCard = ({ item }) => {
     const labels = {
       backported: "Backported",
       origin: "Origin",
-      ticket: "Ticket",
+      ticket: "R&D",
     };
     return labels[prop];
   };
@@ -215,7 +213,7 @@ const FeatureCard = ({ item }) => {
     const textMap = {
       backported: "Backport",
       origin: "Origin",
-      ticket: "Ticket",
+      ticket: "R&D",
     };
     return textMap[prop];
   };
