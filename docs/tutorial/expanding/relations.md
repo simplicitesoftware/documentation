@@ -64,10 +64,10 @@ Clear the platform's cache and log in using *usertest*
 
 :::tip[Success]
   <b>Expected result :</b>
-    <ul>
-        <li>The Suppliers, Clients, Products, Orders are visible</li>
-        <li>For each object, the Create button is displayed</li>
-    </ul>
+
+- The Suppliers, Clients, Products, Orders are visible
+- For each object, the Create button is displayed
+
     ![](img/relations/success-crud.png)
 :::
 

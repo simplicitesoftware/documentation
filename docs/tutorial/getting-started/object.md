@@ -40,6 +40,6 @@ To create a Business object, follow the steps below :
 9. Click **Next**
 
 :::tip[Success]
-  <p>The <b>TrnSupplier</b> Object is created and opened.</p>
+The <b>TrnSupplier</b> Object is created and opened.
 	![](img/object/success.png)
 :::

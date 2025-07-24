@@ -25,7 +25,7 @@ To export your Training module, follow the steps below :
     ![](img/export/download.png)
  
 :::tip[Success]
-  <p>The module is exported as an XML file containing the configuration</p>
+The module is exported as an XML file containing the configuration
     ![](img/export/success.png)
 :::
 
@@ -68,8 +68,8 @@ Follow the steps in [1.4. Creating a User > Adding designer to TRN_SUPERADMIN](/
 Clear the platform's cache and log in with `deisgner`
 
 :::tip[Success]
-  <p>Your application configuration is now safely exported and can be imported into another instance</p>
-  <p>Your instance is back in the same state it was at the beginning of this tutorial</p>
+- Your application configuration is now safely exported and can be imported into another instance
+- Your instance is back in the same state it was at the beginning of this tutorial
   ![](img/export/designer-success.png)
 :::
 

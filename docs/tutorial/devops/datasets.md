@@ -76,5 +76,7 @@ Repeat the steps above to delete existing Products, Suppliers and Clients
 2. Click **Yes**
 
 :::tip[Success]
-  <p>The data is successfully imported</p>
+
+The data is successfully imported
+
 :::

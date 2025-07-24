@@ -50,8 +50,8 @@ To create an Action for the Product Business object, follow the steps below :
 2. Open an existing Product
 
 :::tip[Success]
-  <p>The "Increase stock" button is visible</p>
+  The "Increase stock" button is visible
     ![](img/actions/success-btn.png)
-    <p>An alert is displayed when clicked</p>
+    An alert is displayed when clicked
     ![](img/actions/success-action.png)
 :::

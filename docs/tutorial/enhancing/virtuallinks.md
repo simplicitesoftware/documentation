@@ -75,6 +75,6 @@ t.row_id IN (
 2. Open a Supplier
 
 :::tip[Success]
-  <p>The "Supplier's customers" panel is visible and contains the list of clients that have ordered a Product from the Supplier</p>
+  The "Supplier's customers" panel is visible and contains the list of clients that have ordered a Product from the Supplier
     ![](img/virtuallinks/success.png)
 :::

@@ -67,6 +67,6 @@ To create a home page for the TRN_SUPERADMIN Group, follow the steps below :
     > For a detailed step-by-step, see : [Testing the User](/tutorial/getting-started/user#activating-and-testing-the-user)
 
 :::tip[Success]
-  <p>The Home page displays the "Pending orders" view and the "Orders per state" pivot table</p>
+The Home page displays the "Pending orders" view and the "Orders per state" pivot table
     ![](img/views/success.png)
 :::

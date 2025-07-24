@@ -50,8 +50,8 @@ Clear the platform's cache and log in using *usertest*
 > For a detailed step-by-step, see : [Testing the User](/tutorial/getting-started/user#activating-and-testing-the-user)
 
 :::tip[Success]
-  <p>For a new Order, the <b>Quantity</b> field is updatable</p>
+For a new Order, the <b>Quantity</b> field is updatable
     ![](img/constraints/success-updatable.png)
-    <p>For a Validated Order, the <b>Quantity</b> field is read-only</p>
+For a Validated Order, the <b>Quantity</b> field is read-only
     ![](img/constraints/success-readonly.png)
 :::

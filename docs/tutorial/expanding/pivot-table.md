@@ -85,9 +85,11 @@ The Pivot table should be configured like so :
     ![](img/pivot-table/pt-access.png)
 
 :::tip[Success]
-  <p>The "Orders per state" pivot table is displayed</p>
+
+- The "Orders per state" pivot table is displayed
     ![](img/pivot-table/success.png)
-    <p>You can create more orders in different states to add data to the pivot table.</p>
-    <p>In the <b>Chart</b> tab, you can generate a chart for the pivot table.</p>
-    <p>The <b>Search</b> button filters the data used for the pivot table</p>
+- You can create more orders in different states to add data to the pivot table.
+- In the <b>Chart</b> tab, you can generate a chart for the pivot table.
+- The <b>Search</b> button filters the data used for the pivot table
+
 :::

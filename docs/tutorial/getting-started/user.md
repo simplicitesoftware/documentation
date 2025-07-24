@@ -31,7 +31,7 @@ To create a test user, follow the steps below :
 8. Click **Next**
 
 :::tip[Success]
-  <p>The <b>usertest</b> User is created and opened</p>
+The <b>usertest</b> User is created and opened
     ![](img/user/success-user.png)
 :::
 
@@ -64,11 +64,11 @@ To connect to the application with **usertest**, follow the steps below :
 You should now be connected with **usertest**
 
 :::tip[Success]
-  <b>Expected result :</b>
-    <ul>
-        <li>A Menu entry is visible</li>
-        <li>The list of Suppliers is displayed when the menu is clicked</li>
-    </ul>
+<b>Expected result :</b>
+
+- A Menu entry is visible
+- The list of Suppliers is displayed when the menu is clicked
+
     ![](img/user/success-logon.png)
 :::
 
@@ -104,10 +104,10 @@ To do so, follow the steps below :
 
 :::tip[Success]
   <b>Expected result :</b>
-    <ul>
-        <li>"My App" Menu is visible</li>
-        <li>The list of Suppliers is displayed when the menu is clicked</li>
-    </ul>
+
+- "My App" Menu is visible
+- The list of Suppliers is displayed when the menu is clicked
+
     ![](img/user/designer-success.png)
 :::
 

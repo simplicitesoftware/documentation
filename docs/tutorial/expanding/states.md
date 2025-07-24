@@ -88,10 +88,8 @@ To test the State model, follow the steps below :
 
 :::tip[Success]
   <b>Expected result :</b>
-    <ul>
-        <li>In the Order menu</li>
-        <li>The list of States are visible</li>
-    </ul>
+- In the Order menu
+- The list of States are visible<
     ![](img/states/success-logon.png)
 :::
 
@@ -103,11 +101,11 @@ To test the State model, follow the steps below :
 
 
 :::tip[Success]
+
   <b>Expected result :</b>
-    <ul>
-        <li>The state field is updated with : "Validated"</li>
-        <li>The buttons "Cancel" and "Ship" are available</li>
-    </ul>
+- The state field is updated with : "Validated"
+- The buttons "Cancel" and "Ship" are available
     ![](img/states/success-state.png)
+    
 :::
 

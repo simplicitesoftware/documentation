@@ -57,7 +57,7 @@ To test the Calculated field, follow the steps below :
 4. Click **Save**
 
 :::tip[Success]
-  <b>Expected result :</b>
-    <p>The "Total" field is automatically updated</p>
+Expected result :
+The "Total" field is automatically updated
     ![](img/calculated-fields/success.png)
 :::

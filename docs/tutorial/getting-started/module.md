@@ -52,6 +52,6 @@ To create a module, follow the steps below :
 13. Click **Next**
 
 :::tip[Success]
-  <p>The <b>Training</b> Module is created and opened.</p>
+The <b>Training</b> Module is created and opened.
     ![](img/module/success.png)
 :::
