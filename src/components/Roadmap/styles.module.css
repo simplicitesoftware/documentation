@@ -23,16 +23,6 @@
   --card-background-hover: rgba(0,0,0, 0.2);
 }
 
-/* Eurk -> overriding docusaurus current styles for page's width */
-@media (min-width: 997px) {
-  /* Spécificité plus élevée */
-  .roadmapContainer [class*="docItemCol"],
-  body [class*="docItemCol"],
-  html [class*="docItemCol"] {
-    max-width: 100% !important;
-  }
-}
-
 /* En-tête du roadmap */
 .roadmapHeader {
   font-size: 20px;
