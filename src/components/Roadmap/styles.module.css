@@ -153,7 +153,6 @@
 
 /* Carte cliquable */
 .featureCardClickable {
-  cursor: pointer;
   border-left: solid 4px var(--border-color);
   &:hover {
     background-color: var(--card-shared-background-hover);
@@ -211,6 +210,8 @@ a.propertyTag {
 
   &:hover {
     transform: scale(1.1125);
+    color: var(--card-shared-background);
+    text-decoration: none;
   }
 }
 
