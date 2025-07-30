@@ -8,7 +8,7 @@ Security guidelines
 
 This document give some guidelines on how to improve security of your applications based on the Simplicité platform.
 
-> **Note**: Some recommandations are not necessarily applicable/relevant in every particular cases, you must adapt them to your context.
+> **Note**: Some recommendations are not necessarily applicable/relevant in every particular cases, you must adapt them to your context.
 
 Platform upgrades
 -----------------
@@ -39,10 +39,10 @@ except the public features that you choose to expose on the UI endpoint's public
 Locally stored password must be encrypted/hashed (see the  `HASH_PASSWORD` system parameter) accordingly to your local authentication configuration.
 And a second authentication factor **should** be enabled: standard TOTP via email, SMS or authentication applications is available as of version 5.2.
 
-> **Note**: When possible, using an external authentication mechanism is always a better and more secure approach than using loally stored password even with a second authetication factor.
+> **Note**: When possible, using an external authentication mechanism is always a better and more secure approach than using locally stored password even with a second authentication factor.
 
 In particular the `designer` user's password **must** be hard to guess (this is also applicable to any user granted with advanced rights) and changed regularly.
-Enforcing a second authentification factor (2FA) **should** also be considered. Ideally using an authentication application (e.g. Google or Microsoft Authenticator)
+Enforcing a second authentication factor (2FA) **should** also be considered. Ideally using an authentication application (e.g. Google or Microsoft Authenticator)
 Alternatively the `designer` user can be deactivated (or only some of its rights), at least when not used (but this may complexify delivery processes).
 
 ### UI endpoint
@@ -64,7 +64,7 @@ For more information on default API authentication mechanisms, see [this documen
 
 ### I/O endpoint
 
-You **must** secure access to the I/O endoint.
+You **must** secure access to the I/O endpoint.
 
 The I/O endpoint is dedicated for batch import/exports, including business modules installations/upgrades
 and system upgrades and thus should only be accessed from legitimate origins for these kind of processes.
@@ -77,7 +77,7 @@ If you only use it from a limited set of origins you **should** filter the acces
 
 At least you **should** disable the I/O tester page by setting the private system parameter `USE_IO_TESTER` to `no`.
 
-For more information defaut on I/O authentication mechanisms, see [this document](/docs/integration/webservices/io-commandline).
+For more information default on I/O authentication mechanisms, see [this document](/docs/integration/webservices/io-commandline).
 
 > **Note 1**: for backward compatibility reasons (and for particular cases) the I/O and Git endpoints **also** use the legacy authentication
 > method bases on private system parameters names `EAI *` or, as of version 5, the `io.password` JVM argument or the `IO_PASSWORD` environment variable
@@ -107,7 +107,7 @@ If you only use it from a limited set of origins you **should** filter the acces
 
 The `/health` page/service allow you to get health-check technical information on a running instance.
 
-You **should** secure the access to this URI by restricting access to the only IP in charge of techincal monitoring.
+You **should** secure the access to this URI by restricting access to the only IP in charge of technical monitoring.
 
 You can also disable this page/service by setting the `USE_HEALTH` system parameter to `no`.
 This is relevant to disable it completely if, for instance, you use the JMX services of the platform (or a third party monitoring toolset) for the platform monitoring.
@@ -139,7 +139,7 @@ Securing your application's configuration and custom code
 
 ### Public rights
 
-Be careful on what you grant to the `public` user (typicaly through the `PUBLIC` group or by additional resposnsibilities associated to this user)
+Be careful on what you grant to the `public` user (typically through the `PUBLIC` group or by additional responsibilities associated to this user)
 because everything granted to this user is made available on the public UI components
 
 ### Private system parameters
@@ -150,7 +150,7 @@ than on the server side (e.g. services credentials, passwords, ...)
 ### Business object filtering
 
 If you have a business object with dynamic filtering rules (e.g. implemented in the `postLoad` hook based on rules on user's responsibilities and/or business object instance name),
-you **should** set `1=2` as default static filtering rule. As a metter of fact, if for any reason you code is not working well it will result in giving no access to any data instead of
+you **should** set `1=2` as default static filtering rule. As a matter of fact, if for any reason you code is not working well it will result in giving no access to any data instead of
 giving access to all data.
 
 ### Forbidden fields
@@ -159,7 +159,7 @@ A _invisible_ business object field is still visible if you inspect the HTML of 
 server side you **must** mark it _Forbidden_.
 
 As above for filtering, if a field's visibility is dynamically set by code, be sure to configure it as _Forbidden_ in your static configuration. If for any reason your code
-does not work the field will remain by default not avialable.
+does not work the field will remain by default not available.
 
 ### Cross site scripting vulnerabilities
 
@@ -208,7 +208,7 @@ You **should** also use the appropriate internal password hashing algorithm by s
 change their password).
 
 You **should** also enable the "salting" of the above hashed internal password using the flag system parameter `SALT_PASSWORD=yes` (note that changing this flag will require that all your users
-change their password). As of version 6.2 you can also add a "pepper" string to this "salting" by configuring an environement variable `HASH_PASSWORD_PEPPER` or a JVM propery `hash.password.pepper`
+change their password). As of version 6.2 you can also add a "pepper" string to this "salting" by configuring an environment variable `HASH_PASSWORD_PEPPER` or a JVM property `hash.password.pepper`
 (note that adding or changing this pepper string will also require that all your users change their password).
 
 You **may** also consider implementing an anti-brute policy by using appropriate `PlatformHooks`. See [this document](/docs/authentication/internal-auth#anti-brute-force-attacks) for a comprehensive example.
@@ -216,7 +216,7 @@ You **may** also consider implementing an anti-brute policy by using appropriate
 You **should** also make sure the "god mode" (the ability to log in as any user) is disabled or restricted to the relevant users (e.g. support team).
 The principle is to set the private system parameter `GOD_MODE` to `no` and override it by user only for the relevant users.
 
-If all or some your users don't always use a strictly personnal browser you **should** also disable the ability of the browser to keep track of the non expired user tokens
+If all or some your users don't always use a strictly personal browser you **should** also disable the ability of the browser to keep track of the non expired user tokens
 (this allows to switch between these users). You can do so by setting the private system parameter `USE_CHANGE_USER` to `no`.
 
 ### Custom HTTP headers
@@ -247,7 +247,7 @@ The following example, that should be adapted be adapted to your own needs, does
 
 By default Tomcat sets the same-site cookie to `unset` (see [this page](https://tomcat.apache.org/tomcat-9.0-doc/config/cookie-processor.html)).
 
-This can be changed by uncommenting the `CookieProcessor` block in the `META-INF/context.xml` of the webapp and setting the approriate value in your case.
+This can be changed by uncommenting the `CookieProcessor` block in the `META-INF/context.xml` of the webapp and setting the appropriate value in your case.
 
 **Note**: If you use an external authentication system such as an OAuth2/OpenIDConnect or SAML IdP you must  use `lax` instead or `strict`
 
@@ -282,7 +282,7 @@ Securing your infrastructure
 Simplicité platform run on a server infrastructure. You **must** secure it properly by:
 
 - configuring firewalls accordingly to your configuration (the rules may be different whether you deploy Simplicité behind a reverse proxy server or directly)
-- restricting access to the command line (VPN, SSH keys, ...) and system accouts
+- restricting access to the command line (VPN, SSH keys, ...) and system accounts
 - protecting database credentials
 Etc.
 
@@ -290,12 +290,12 @@ Simplicité has no particular requirement at this level, all usual good practice
 
 ### Use SSL
 
-Your application endpoints **should** always be exposed as HTTPS (SSL). This can be achieved directy in the Java application server that runs Simplicité
+Your application endpoints **should** always be exposed as HTTPS (SSL). This can be achieved directly in the Java application server that runs Simplicité
 or at the reverse proxy level (if you have configured one).
 
 ### SSH Access
 
-The server infrastucture command line access **should** always use SSH (ideally key-based) authentication (and the keys should be secured by a robust passphrase).
+The server infrastructure command line access **should** always use SSH (ideally key-based) authentication (and the keys should be secured by a robust passphrase).
 
 ### System updates
 

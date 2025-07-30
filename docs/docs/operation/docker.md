@@ -132,8 +132,8 @@ The prebuilt images are configured to exposes the following ports for different 
 
 - Tomcat HTTP port `8080` for direct access or to be exposed directly as an HTTP endpoint or thru an **HTTP** reverse proxy endpoint (Apache, NGINX, ...)
 - Tomcat secure HTTP port `8443` to be exposed thru an **HTTPS** reverse proxy endpoint (Apache, NGINX, ...)
-- Tomcat SSL port `8444` to be exposed directly as an HTTPS endpoint, Note that this requires an addtional `-e` flag and to mount (or replace) the appropriate JKS certificate (see below)
-- Tomcat AJP port `8009` to be exposed thru an HTTP/HTTPS reverse proxy (Apache), this requires an additionalc `-e` flag (see below)
+- Tomcat SSL port `8444` to be exposed directly as an HTTPS endpoint, Note that this requires an additional `-e` flag and to mount (or replace) the appropriate JKS certificate (see below)
+- Tomcat AJP port `8009` to be exposed thru an HTTP/HTTPS reverse proxy (Apache), this requires an additional `-e` flag (see below)
 - Tomcat admin port `8005` for starting/stopping Tomcat from outside of the container (not supposed to be used)
 - Tomcat JPDA port `8000` for remote debugging Tomcat (Tomcat is started with the `jpda` keyword), this requires an additional `-e` flag (see below)
 - Tomcat JMX port `1099` for connecting a JMX monitoring tool on Tomcat (Tomcat is started with additional JVM options) and `1098` for RMI communication, this requires an additional `-e` flag (see below)
@@ -221,7 +221,7 @@ sudo docker run\
 > **Note**: If you plan to use a database server **running on the host machine** you need to get the appropriate IP address to pass as `DB_HOST` environment variable
 > (using `127.0.0.1` will **not** work unless you use `--net=host` which only makes sense in particular cases).
 >
-> To get this adress run the following command:
+> To get this address run the following command:
 >
 > ```bash
 > ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+'
@@ -244,7 +244,7 @@ See below, this is not recommended unless you have to handle huge volumes of doc
 
 ### Enable SSL Tomcat connector <span id="ssl"></span>
 
-It is possible to enable a SSL conector at Tomcat level (e.g. useful if you don't use a reverse proxy):
+It is possible to enable a SSL connector at Tomcat level (e.g. useful if you don't use a reverse proxy):
 
 - Enable/disable the SSL connector: `-e SSL=<true|false, defaults to false>`
 - Expose the SSL port: `-p <SSL port, e.g. 8444>:8444>`
@@ -304,7 +304,7 @@ You can enable or disable the I/O endpoint (`/io`) and you can define an IP addr
 
 > **Note**: When deploying several Simplicité nodes, make sure to configure a proper filtering rule and an I/O password to allow.
 > these nodes to communicate with each other (e.g. for propagating a clear cache).
-> This can be acheived by adding the dedicated environment variable `-e IO_PASSWORD=<a very complex password, can be plain text (not recommended) or hashed using configured algorithm (without salting)>`
+> This can be achieved by adding the dedicated environment variable `-e IO_PASSWORD=<a very complex password, can be plain text (not recommended) or hashed using configured algorithm (without salting)>`
 
 #### Enable/disable or define an IP address(es) white list on the Git enpoint <span id="gitwhitelist"></span>
 
@@ -518,7 +518,7 @@ or `-p [<listen host, e.g. 127.0.0.1>:]<local AJP port, e.g. 8009>:8009` in you 
 
 #### Example of a reverse proxy configuration using NGINX
 
-In this **very basic example** all plain HTTP trafic is redirected to HTTPS. The SSL certificates are handled by NGINX
+In this **very basic example** all plain HTTP traffic is redirected to HTTPS. The SSL certificates are handled by NGINX
 and thus the container's `8443` port (exposed here using `-p 8443:8443`) is the only one used.
 
 ```plaintext
@@ -553,7 +553,7 @@ server {
 
 #### Example of a reverse proxy configuration using Traefik
 
-In this **very basic example** all plain HTTP trafic is redirected to HTTPS. The SSL certificates are handled by Traefik
+In this **very basic example** all plain HTTP traffic is redirected to HTTPS. The SSL certificates are handled by Traefik
 and thus the container's `8443` port (exposed here using `-p 8443:8443`) is the only one used.
 
 ```plaintext
