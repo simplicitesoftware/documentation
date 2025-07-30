@@ -247,16 +247,17 @@ const FeatureCard = ({ item }) => {
       className={`${styles.featureCard} ${
         hasReleaseNote ? styles.featureCardClickable : ""
       }`}
-      onClick={handleCardClick}
     >
       {/* Bouton Release Note si présent */}
       {hasReleaseNote && (
-        <div
+        <a
           className={styles.releaseNotePastille}
           title={`Voir les release notes: ${item.prdChgCode}`}
+          href={item.prdChgReleaseNote}
+          target="_blank"
         >
           Release Note
-        </div>
+        </a>
       )}
 
       {/* Titre : Emoji + Nom */}
