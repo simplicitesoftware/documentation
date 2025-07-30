@@ -55,7 +55,7 @@ A particular attention **must** be put on what is granted to the `public` user (
 
 If you don't use the API endpoint you **should** disable it by setting the private system parameter `USE_API` to `no`.
 
-If you only use it from a limited set of origins you **should** filter the access to this endpoint (e.g. by using the "whitelist" Docker configuration or 
+If you only use it from a limited set of origins you **should** filter the access to this endpoint (e.g. by using the "whitelist" Docker configuration or
 by a reverse proxy-level filtering)
 
 At least you **should** disable the API tester page by setting the private system parameter `USE_API_TESTER` to `no`.
@@ -105,7 +105,7 @@ If you only use it from a limited set of origins you **should** filter the acces
 
 ### Health-check
 
-The `/health` page/service allow you to get health-check technical information on a running instance. 
+The `/health` page/service allow you to get health-check technical information on a running instance.
 
 You **should** secure the access to this URI by restricting access to the only IP in charge of techincal monitoring.
 
@@ -226,7 +226,7 @@ Although it should rather be done at the reverse proxy level (or at Tomcat level
 The following example, that should be adapted be adapted to your own needs, does the following:
 - The CSP policy is tailored to Simplicité's working
 - STS should be set, 1year is generally considered a good value
-- iframes limited to those of same origin 
+- iframes limited to those of same origin
 - deactivated XSS protection (a CORS policy is a better approach and **must be implemented**)
 - specified Referrer-Policy
 - force cache to verify content (no-cache does **not** mean absence of cache, but forces the browser to verify that cached files were not tampered)
@@ -262,7 +262,7 @@ To avoid this usage data to be available **should**  disable the by setting the 
 Some features (including the one above) relies, by default, on a websockets-based communication.
 Websockets can be globally inhibited by passing the `server.websocket=false` JVM argument.
 
-### Developpement tools
+### Development tools
 
 Even if they are already restricted to profiles that should not be used in production (see above), some tools that are only relevant in the context of development/testing **should** be disabled in production,
 in particular:
@@ -301,7 +301,7 @@ The server infrastucture command line access **should** always use SSH (ideally 
 
 - Your server infrastructure **must** be kept up-to-date by applying **all** system updates on the fly. Many security vulnerabilities are at OS-level.
 - The JVM, database server, JDBC driver and Java application server **must** be kept up-to-date.
-- The Simplicité updates **must** be applied as soon as they are made available 
+- The Simplicité updates **must** be applied as soon as they are made available
 
 > **Note**: the warranty is void on a non up-to-date platform, keeping your Simplicité platform up-to-date is not just **recommended** it is **mandatory**.
 

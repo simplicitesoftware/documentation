@@ -18,18 +18,18 @@ Portainer is a professional Docker cluster management tool that facilitates inst
 
 ![Portainer](img/portainer/portainer.png)
 
-## 1) Server deployement
+## 1) Server deployment
 
-Sizing of the server should be made acording to the needs, as always. Any up-to-date unix image should be able to run the containers.
+Sizing of the server should be made according to the needs, as always. Any up-to-date unix image should be able to run the containers.
 
 <details>
 <summary>Click to open</summary>
 
-- in this example, we chose a medium-sized server 
+- in this example, we chose a medium-sized server
     - 2 vCores
     - 50GiB storage
     - 250Mbps bandwidth
-- for the image, we chose almalinux 9
+- for the image, we chose Almalinux 9
 
 </details>
 
@@ -54,7 +54,7 @@ sudo sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 sudo reboot
 ```
 
-**Note**: Optionaly a firewall should be configuerd on the host (or among the host) to allow only the relevant traffic.
+**Note**: Optionally a firewall should be configured on the host (or among the host) to allow only the relevant traffic.
 Minimal configuration is to allow the HTTP port `80` and HTTPS port `443` (along with the SSH port `22` from legitimate origins) through this firewall.
 
 ## 3) Portainer install with lets encrypt and traefik
@@ -62,11 +62,11 @@ Minimal configuration is to allow the HTTP port `80` and HTTPS port `443` (along
 This is an adaptation of Portainer's doc "[Deploying Portainer behind Traefik Proxy](https://docs.portainer.io/advanced/reverse-proxy/traefik)"
 
 1. create a local `acme.json` with `600` rights **prior** to starting this Docker compose configuration
-2. copy, adapt, and paste the following configuration at the home of your user 
+2. copy, adapt, and paste the following configuration at the home of your user
 3. start the configured services with `sudo docker compose up -d`
 4. verify that you have access to `traefik.my.domain` and `portainer.my.domain`
 
-:::warning 
+:::warning
 
 **Do not** use the following configuration as is, make sure to adapt all lines that are marked `ADAPT` in the configuration.
 
@@ -113,7 +113,7 @@ services:
       - --providers.docker.network=proxy
       - --providers.docker.exposedByDefault=false
       - --certificatesresolvers.leresolver.acme.httpchallenge=true
-      - --certificatesresolvers.leresolver.acme.email=mail@my.domain # ADAPT email for the generation of SSL certificates with Let's Encrypt. 
+      - --certificatesresolvers.leresolver.acme.email=mail@my.domain # ADAPT email for the generation of SSL certificates with Let's Encrypt.
       - --certificatesresolvers.leresolver.acme.storage=./acme.json
       - --certificatesresolvers.leresolver.acme.httpchallenge.entrypoint=web
     labels:
@@ -164,14 +164,14 @@ The Traefik container and the Simplicité instances have to run in the same dock
 
 ## 4) Configure
 
-- access `https://portainer.my.domain` **right after starting the service** (it's only configurable for a limited amout of time)
-- create local environement
+- access `https://portainer.my.domain` **right after starting the service** (it's only configurable for a limited amount of time)
+- create local environment
 - create registry.simplicite.io registry, with authentication
 - pull a Simplicité image
 
 ## 5) Start a Simplicité instance
 
-This is the minimal configuration to get a working Simplicité (non persistent) instance. Create a "stack" (a docker compose deployement, in Portainer's semantics), and paste the following config. 
+This is the minimal configuration to get a working Simplicité (non persistent) instance. Create a "stack" (a docker compose deployment, in Portainer's semantics), and paste the following config.
 
 ```yaml
 services:
@@ -225,7 +225,7 @@ services:
 ```
 
 
-To use [developer mode](/docs/docs/operation/docker.md#developper-mode-) for development-oriented features and for the [Simplicité VSCode tools extension](/docs/docs/devops/external-editor.md#simplicité-extension), add the following `DEV_MODE` environment variable.
+To use [developer mode](/docs/docs/operation/docker.md#developer-mode-) for development-oriented features and for the [Simplicité VSCode tools extension](/docs/docs/devops/external-editor.md#simplicité-extension), add the following `DEV_MODE` environment variable.
 
 ```yaml
 services:
@@ -260,7 +260,7 @@ COMPOSE_PROJECT="XXXX" # the name of the stack
 APP_SERVICE="XXXX" # name of the service (not the container)
 APP_DBDOC_VOLUME="XXXX" # name of the volume (careful, docker compose prefixes it with the stack name)
 
-PSQL_SERVICE="" 
+PSQL_SERVICE=""
 PSQL_DBNAME="simplicite"
 PSQL_DBUSER="simplicite"
 

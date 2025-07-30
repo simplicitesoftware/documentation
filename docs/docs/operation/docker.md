@@ -12,8 +12,8 @@ This document gives you extended information on how to use/configure such Docker
 
 A simplified **[tutorial](/docs/operation/docker-tutorial)** is also available for a **step by step** procedure in the usual case.
 
-Prerequisites <span id="prerequistes"></span>
----------------------------------------------
+Prerequisites <span id="prerequisites"></span>
+----------------------------------------------
 
 Have a Linux server with Docker-ce installed and configured (e.g. with recent Linux distributions this is straightforward as Docker is part of the distributions)
 or an account at a cloud provider allowing Docker images deployments.
@@ -21,7 +21,7 @@ or an account at a cloud provider allowing Docker images deployments.
 Take a look at the [Docker documentation](https://docs.docker.com/) for details.
 
 Run a Simplicité platform container <span id="run"></span>
-----------------------------------------------------------------------
+----------------------------------------------------------
 
 ### Introduction
 
@@ -30,7 +30,7 @@ or build a **custom image** that fits your custom needs.
 
 ### Use the pre-built platform images <span id="prebuiltimages"></span>
 
-Pre-built **platform** images including the latest Simplicité intances are available and can be run as is.
+Pre-built **platform** images including the latest Simplicité instances are available and can be run as is.
 
 This is the best/normal approach if you don't have specific needs.
 
@@ -58,7 +58,7 @@ and build a new child image adding the application package of the instance templ
 
 ### Basic procedure on CentOS 7 <span id="centos"></span>
 
-On an "out of the box" **CentOS 7** server you can start a clean & fresh Simplicité **sandbox** instance with the folowing commands in only few seconds:
+On an "out of the box" **CentOS 7** server you can start a clean & fresh Simplicité **sandbox** instance with the following commands in only few seconds:
 
 First, install the standard Docker service:
 
@@ -87,7 +87,7 @@ The instance is then available on `http://<your server IP address or hostname>`
 
 ### Basic procedure on Debian 9 <span id="debian"></span>
 
-On an "out of the box" **Debian 9** server you can start a clean & fresh Simplicité&reg; **sandbox** instance with the folowing commands in only few seconds:
+On an "out of the box" **Debian 9** server you can start a clean & fresh Simplicité&reg; **sandbox** instance with the following commands in only few seconds:
 
 Install the up-to-date Docker-CE service:
 
@@ -358,9 +358,9 @@ Note that this means that any Java compiled class must be provided otherwise, e.
 
 It is possible to set the overridden value of system parameters at startup by using `-e SYSPARAM_<system param name>=<overridden system param value>` environment variables.
 
-### Developper mode <span id="developper-mode"></span>
+### Developer mode <span id="developer-mode"></span>
 
-If you plan to act as a developper on the container (e.g. use developpment-oriented features such as code formatting, etc.)
+If you plan to act as a developer on the container (e.g. use development-oriented features such as code formatting, etc.)
 you **must** add the `DEV_MODE` environment variable: `-e DEV_MODE=true`
 
 In particular, this environment variable enables access to the JDK `sun.com.tools` packages (compiler, ...).

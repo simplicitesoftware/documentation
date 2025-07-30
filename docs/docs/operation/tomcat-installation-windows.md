@@ -6,16 +6,16 @@ title: Tomcat installation on Windows
 Tomcat installation guidelines for Windows server
 =================================================
 
-> **Warning**: before choosing this "traditional" installation procedure you should consider other approches such as using [Docker containers](/docs/operation/docker).
+> **Warning**: before choosing this "traditional" installation procedure you should consider other approaches such as using [Docker containers](/docs/operation/docker).
 
-This document only gives only very **general guidelines**, not a detailled/precise procedure.
+This document only gives only very **general guidelines**, not a detailed/precise procedure.
 
 If needed refer to the [Linux installation document](/docs/operation/tomcat-installation-linux) for more details.
 
 Databases
 ---------
 
-Download and install the chosen up-to-date database engine server suitable for your target Simplicité platfor and suitable for your version of Windows
+Download and install the chosen up-to-date database engine server suitable for your target Simplicité m and suitable for your version of Windows
 (see [this document](/docs/compatibility#databases) for databases compliance details):
 
 - MySQL/MariaDB
@@ -28,7 +28,7 @@ There is nothing to do if you use an embedded HSQLDB.
 JVM
 ---
 
-Dowload and install an up to date Java VM Developpement Kit (or a Runtime Environment if you don't plan to do debugging) in the appropriate version
+Download and install an up to date Java VM Development Kit (or a Runtime Environment if you don't plan to do debugging) in the appropriate version
 for your target Simplicité platform version and suitable for your version of Windows (see [this document](/docs/compatibility#java-vm) for JVM compliance details).
 
 Register the `JAVA_HOME` environment variable as the path of your JVM Installation (e.g. `C:\Program Files\Java\jdk-x.y.z`) and add `%JAVA_HOME%\bin` to the system `PATH`.

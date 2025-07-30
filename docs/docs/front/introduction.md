@@ -7,7 +7,7 @@ Introduction to Frontend Dev
 ============================
 
 <div class="warning">
-    This lesson is a part of the <b>Frontend Development</b> category, which is meant to guide you through the frontend development within Simplicité. Thus it might be a bit longer and more verbosed than other lessons you will find in the <b>Simplicité Configuration Object</b> category.
+    This lesson is a part of the <b>Frontend Development</b> category, which is meant to guide you through the frontend development within Simplicité. Thus it might be a bit longer and more verbose than other lessons you will find in the <b>Simplicité Configuration Object</b> category.
 </div>
 
 This document presents Simplicité's tools and functionalities that can be used to *customize your UIs* and implement your own designs or looks while still accessing all of Simplicité's back-office features.
@@ -37,9 +37,9 @@ These customizations can extend to the layout and organization of your Simplicit
 
 ![](img/introduction/client-oriented-webpage.png)
 
-If your solution is *client-oriented*, you may benefit from creating a *custom front-end* that is tailored to meet the specific needs of your end-users and possible customers. For example you can want your client to be immersed in a specific environment if you wanna apply some specific marketing strategies or user-oriented designs. The idea is that Simplicité will allow you to customize the fronts of your applications, and even take them outside of the solutions if you don't want to mix anything together. 
+If your solution is *client-oriented*, you may benefit from creating a *custom front-end* that is tailored to meet the specific needs of your end-users and possible customers. For example you can want your client to be immersed in a specific environment if you wanna apply some specific marketing strategies or user-oriented designs. The idea is that Simplicité will allow you to customize the fronts of your applications, and even take them outside of the solutions if you don't want to mix anything together.
 
-There are numerous possibilities, but a common example is the one of having products and client ordering them, this is a workflow allowed by Simplicité by default (accessible & illustrated in the *Demo* module). But you could want a specific experience for your customers, for example to preview videos or very specific visualisations of your products. Another possibility is that you want your interfaces to contain widgets or layouts that you've already designed --also maybe implemented-- that you really want to include.
+There are numerous possibilities, but a common example is the one of having products and client ordering them, this is a workflow allowed by Simplicité by default (accessible & illustrated in the *Demo* module). But you could want a specific experience for your customers, for example to preview videos or very specific visualizations of your products. Another possibility is that you want your interfaces to contain widgets or layouts that you've already designed --also maybe implemented-- that you really want to include.
 
 **Example**: in case of a system or application containing orders, possibly emitted by clients, you might benefit from having a minimalist webpage using a more *user-friendly* interface than Simplicité's default one.
 
@@ -68,7 +68,7 @@ In order to properly manipulate and customize your Simplicité applications, it 
 - Global Search Tool
 - Scope Navigation
 - Shortcuts Dropdown
-- User Informations
+- User Information
 - Parameters Menu
 
 * **MENU -** contains all your application's sections, with sub-menus and categories, it helps you to intuitively navigate through your applications. You can also embed specific features and categories (trays, typed items, ...).
@@ -89,17 +89,17 @@ This part of the documentation follows the following organization and flow:
 5) An understanding of how to create [Custom UI Components](/docs/front/ui-component), breaking down the processes and techniques to do so using Simplicité's  *External Objects* and some *Web Development*.
 6) An extension of *UI Components* to now make those objects outside of Simplicité, creating [external webpages](/docs/front/web-page) that communicates with Simplicité's backend and allow for even more customized fronts.
 
-Still it is roughly organized in 2 parts, presenting first the basic and very accessible customizations, then delving into more tech aspects of customizations and adressing to web and frontend developpers. All documents are overall independent from each others if your need is only one specific concept, but it is also possible to read them in the right order and get a progressive understanding of how to customize and adapt your Simplicité applications.
+Still it is roughly organized in 2 parts, presenting first the basic and very accessible customizations, then delving into more tech aspects of customizations and addressing to web and frontend developers. All documents are overall independent from each others if your need is only one specific concept, but it is also possible to read them in the right order and get a progressive understanding of how to customize and adapt your Simplicité applications.
 
 ### Other relevant lessons
 
-Don't hesitate to also check on other lessons that are relevant for the presented concepts and features,: 
+Don't hesitate to also check on other lessons that are relevant for the presented concepts and features,:
 
-* [*External Objects (Tutorial)*](/tutorial/enhancing/external-object.md)  
-* [*Responsive UI (Documentation)*](/docs/ui/responsive)  
-* [*Custom UI disposition (Documentation)*](/docs/core/disposition-code-examples)  
-* [*Core Javascript (Documentation)*](/docs/core/javascript-code-examples)  
-* [*Interface tool `$ui` (Documentation)*](/docs/core/ui-tools-code-examples)  
-* [*Custom Services through External Objects (Documentation)*](/docs/integration/webservices/custom-services)  
-* [*Ajax API (Documentation)*](/docs/integration/librairies/ajax-api)  
+* [*External Objects (Tutorial)*](/tutorial/enhancing/external-object.md)
+* [*Responsive UI (Documentation)*](/docs/ui/responsive)
+* [*Custom UI disposition (Documentation)*](/docs/core/disposition-code-examples)
+* [*Core Javascript (Documentation)*](/docs/core/javascript-code-examples)
+* [*Interface tool `$ui` (Documentation)*](/docs/core/ui-tools-code-examples)
+* [*Custom Services through External Objects (Documentation)*](/docs/integration/webservices/custom-services)
+* [*Ajax API (Documentation)*](/docs/integration/librairies/ajax-api)
 * [*Simplicité NPM Javascript API Doc*](https://simplicitesoftware.github.io/javascript-api/)
