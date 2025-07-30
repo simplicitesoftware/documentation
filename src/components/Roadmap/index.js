@@ -197,25 +197,19 @@ export default function Roadmap({}) {
 const FeatureCard = ({ item }) => {
   const hasReleaseNote =
     item.prdChgReleaseNote && item.prdChgReleaseNote.trim() !== "";
-  const showPortalLink = item.prdChgTicket && item.prdChgTicket.trim() !== "";
   const portalUrl = `https://portal.simplicite.fr?f=PrdChange%3B${item.row_id}`;
 
-  const getPropertyLabel = (prop) => {
-    const labels = {
-      backported: "Backported",
-      origin: "Origin",
-      ticket: "R&D",
-    };
-    return labels[prop];
-  };
+  const getPropertyTitle = (prop,value) => getPropertyText(prop,null)+ " : "+value;
 
-  const getPropertyText = (prop) => {
+  const getPropertyText = (prop,value) => {
     const textMap = {
-      backported: "Backport",
+      backported: "Backported until ",
       origin: "Origin",
       ticket: "R&D",
+      portal: "Portal"
     };
-    return textMap[prop];
+    
+    return prop=="backported" && value!=null ? value : textMap[prop];
   };
 
   const handleCardClick = () => {
@@ -224,53 +218,27 @@ const FeatureCard = ({ item }) => {
     }
   };
 
-  const handlePropertyClick = (val) => {
-    // If URL then open in _blank
-    if (val && val.startsWith("https://")) window.open(val, "_blank");
-  };
-
-  const renderPropertyText = (property, value) => {
+  const renderProperty = (property, value) => {
     if (!value || property === "releaseNote") return null;
 
-    let text = getPropertyText(property);
-    const label = getPropertyLabel(property);
-    const isUrl =
-      value.startsWith &&
-      (value.startsWith("http://") || value.startsWith("https://"));
+    let text = getPropertyText(property,value);
+    const title = getPropertyTitle(property,value);
+    const isUrl = value.startsWith && (value.startsWith("http://") || value.startsWith("https://"));
+    const Tag = isUrl ? 'a' : 'span';
 
-    // Pour le backport, inclure la version dans le texte
-    if (property === "backported") {
-      text = `${value}`;
-    }
-
-    const className = `${styles.propertyTag} ${
-      isUrl ? styles.propertyTagClickable : styles.propertyTagDefault
-    } ${property === "ticket" ? styles.simpliciteTeamViz : ""}`;
+    const className = `${styles.propertyTag} ${property=="ticket" || property=="portal" ? styles.simpliciteTeamViz : ""}`;
 
     return (
-      <span
+      <Tag
         key={property}
-        title={`${label}: ${value}`}
-        onClick={() => handlePropertyClick(value)}
+        title={title}
+        href={isUrl ? value : undefined}
+        onClick={isUrl ? (e=>e.stopPropagation()) : undefined}
+        target={isUrl ? "_blank" : undefined}
         className={className}
       >
         {text}
-      </span>
-    );
-  };
-
-  const renderPortalLink = () => {
-    if (!showPortalLink) return null;
-
-    return (
-      <span
-        key="portal"
-        title={`Voir dans le portal: ${item.prdChgCode}`}
-        onClick={() => window.open(portalUrl, "_blank")}
-        className={`${styles.propertyTag} ${styles.propertyTagClickable} ${styles.simpliciteTeamViz}`}
-      >
-        Portal
-      </span>
+      </Tag>
     );
   };
 
@@ -298,18 +266,15 @@ const FeatureCard = ({ item }) => {
       </div>
 
       {/* Propriétés - seulement si au moins une existe */}
-      {(item.prdChgReleaseNote ||
+      {/*(item.prdChgReleaseNote ||
         item.prdChgBackportVrsId__prdVrsNumber ||
         item.prdChgOrigin ||
-        item.prdChgTicket) && (
+        item.prdChgTicket) &&*/ (
         <div className={styles.cardProperties}>
-          {renderPropertyText(
-            "backported",
-            item.prdChgBackportVrsId__prdVrsNumber
-          )}
-          {renderPropertyText("origin", item.prdChgOrigin)}
-          {renderPropertyText("ticket", item.prdChgTicket)}
-          {renderPortalLink()}
+          {renderProperty("backported",item.prdChgBackportVrsId__prdVrsNumber)}
+          {renderProperty("origin", item.prdChgOrigin)}
+          {renderProperty("ticket", item.prdChgTicket)}
+          {renderProperty("portal", portalUrl)}
         </div>
       )}
     </div>
