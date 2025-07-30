@@ -15,13 +15,6 @@ export default function Roadmap({}) {
       try {
         const response = await fetch(SRC_JSON);
         const jsonData = await response.json();
-
-        console.log("===== FETCHED ROADMAP LOCAL JSON =====");
-        console.log(
-          `generation_date: ${jsonData.generation_date}\nlines: ${jsonData.lines}\ncols: ${jsonData.cols}`
-        );
-        console.log("======================================");
-
         setData(jsonData);
       } catch (err) {
         console.error("Error during JSON loading:", err);
@@ -42,27 +35,6 @@ export default function Roadmap({}) {
       return newSet;
     });
   };
-
-  function sortVersions(versions) {
-    return [...versions].sort((a, b) => {
-      const parseVersion = (v) => {
-        const cleaned = v.replace("v", "");
-        return cleaned.split(".").map(Number);
-      };
-
-      const aNum = parseVersion(a);
-      const bNum = parseVersion(b);
-
-      for (let i = 0; i < Math.max(aNum.length, bNum.length); i++) {
-        const an = aNum[i] || 0;
-        const bn = bNum[i] || 0;
-
-        if (an !== bn) return bn - an;
-      }
-
-      return 0;
-    });
-  }
 
   function groupItemsByVersion(tableData) {
     const groupedItems = {};
@@ -96,7 +68,7 @@ export default function Roadmap({}) {
   const getVersionRowHeights = () => {
     const heights = {};
 
-    sortedVersions.forEach((version) => {
+    data.lines.forEach((version) => {
       let maxItems = 0;
 
       data.cols.forEach((col) => {
@@ -111,7 +83,7 @@ export default function Roadmap({}) {
       const padding = 16;
 
       heights[version] = collapsedVersions.has(version)
-        ? sortedVersions[sortedVersions.length - 1] === version
+        ? data.lines[data.lines.length - 1] === version
           ? 30
           : 0
         : maxItems > 0
@@ -125,7 +97,6 @@ export default function Roadmap({}) {
   // If no data found then return empty page
   if (!data) return <>No data was found...</>;
 
-  const sortedVersions = sortVersions(data.lines);
   const itemsByVersion = groupItemsByVersion(data.table);
   const versionHeights = getVersionRowHeights();
 
@@ -145,7 +116,7 @@ export default function Roadmap({}) {
 
           {/* Contenu versions */}
           <div className={styles.versionContent}>
-            {sortedVersions.map((version, idx) => (
+            {data.lines.map((version, idx) => (
               <div
                 key={idx}
                 className={styles.versionCell}
@@ -172,7 +143,7 @@ export default function Roadmap({}) {
 
             {/* Contenu par version */}
             <div className={styles.typeContent}>
-              {sortedVersions.map((version, versionIndex) => (
+              {data.lines.map((version, versionIndex) => (
                 <div
                   key={versionIndex}
                   className={styles.typeCell}
