@@ -440,7 +440,7 @@ Example:
 // (...)
 import com.simplicite.util.tools.CloudStorageTool;
 // (...)
-try (CloudStorageTool cst = new CloudStorageTool(getGrant().getJSONObjectParameter("MY_STORAGE_CONFIG")) {
+try (CloudStorageTool cst = new CloudStorageTool(getGrant(), getGrant().getJSONObjectParameter("MY_STORAGE_CONFIG")) {
 	cst.put(new JSONObject()
 		.put("name", "test.html")
 		.put("mime", HTTPTool.MIME_TYPE_HTML)
