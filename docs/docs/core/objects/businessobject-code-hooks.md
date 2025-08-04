@@ -51,7 +51,7 @@ For instance it can be used to:
 
 **Example:**
 
-```java
+```simplicite-java
 @Override
 public void postLoad() {
 	// In this example we set a restrictive search spec on object (to validated records only) if the user is in a specified group
@@ -324,7 +324,7 @@ When action has confirm fields this hook allows to prepare them before rendering
 
 **Exemple:**
 
-```java
+```simplicite-java
 @Override
 public void initAction(Action action) {
 	ObjectField f = action.getConfirmField("myFieldName");
@@ -471,7 +471,7 @@ or just to prevent saving in some particular cases, etc.
 
 **Example:**
 
-```Java
+```simplicite-java
 @Override
 public String postSave() {
 	// Update a data of a linked object after
@@ -804,8 +804,6 @@ public String getUserKeyLabel(String[] row) {
 ### Style hook
 
 It is possible to set style (for instance a CSS class) on a field based on business logic:
-
-
 
 **Rhino**:
 

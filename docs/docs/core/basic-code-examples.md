@@ -69,7 +69,7 @@ It is possible to log messages using:
 
 #### Java
 
-```java
+```simplicite-java
 AppLog.debug("Hello world !",getGrant());   // Debug level message
 AppLog.info("Hello world !",getGrant());    // Info level message
 // e is type java.lang.Throwable
@@ -82,7 +82,7 @@ It is also possible to link a message to an explicit log code:
 
 #### Java
 
-```java
+```simplicite-java
 AppLog.log("MYLOGCODE_001","Hello world !",getGrant());
 ```
 Note that if the log code is omitted the `log` method is the equivalent to the default `info`method.
@@ -151,7 +151,7 @@ Selecting a **single record** from its row ID.
 
 #### Java
 
-```java
+```simplicite-java
 ObjectDB o = getGrant().getTmpObject("myObject");
 synchronized (o.getLock()) {
 	o.resetFilters();
@@ -171,7 +171,7 @@ Without pagination:
 
 #### Java
 
-```java
+```simplicite-java
 ObjectDB o = getGrant().getTmpObject("myObject");
 synchronized (o.getLock()) {
 
@@ -215,7 +215,7 @@ You have to implement a callback for each page:
 
 V6 supports a `pageNum` parameter to calculate a global rownum in search:
 
-```java
+```simplicite-java
 final int maxRowsPerPage = 50;
 obj.search(true, maxRowsPerPage, (rows, pageNum) -> {
 	int rownum = maxRowsPerPage * pageNum;
@@ -271,7 +271,7 @@ The alias of the related object table is t_logical name technical key.
 
 #### Java
 
-```java
+```simplicite-java
 @Override
 public void postLoad() {
 	if (getGrant().hasResponsibility(USER_GROUP))
@@ -292,7 +292,7 @@ Others
 
 #### Java
 
-```java
+```simplicite-java
 	ObjectDB obj = getGrant().getTmpObject("myObject");
 	ObjectField myObjectFile = obj.getField("myObjFile"); // must be of type file
 
@@ -313,7 +313,7 @@ Others
 This simple example unzips a ZIP file read from a public URL and unzip it to a temporary folder for processing files:
 
 #### Java
-```java
+```simplicite-java
 public void readZip(File zipFile){
 	File destDir = new File(this.getGrant().getTmpDir() + "/mydata." + System.currentTimeMillis());
 	try {
