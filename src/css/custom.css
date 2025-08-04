@@ -7,6 +7,7 @@
   --ifm-color-primary-lighter: #7b7cfd;
   --ifm-color-primary-lightest: #abacfe;
   --ifm-background-color: #f3f1ee;
+  --ifm-container-width-xxl: 2300px;
 }
 
 [data-theme='dark'] {
@@ -110,4 +111,10 @@
   flex-direction: column;
   width: 50%;
   flex: 1;
+}
+
+@media (min-width: 2000px) {
+  .container {
+    max-width: var(--ifm-container-width-xxl);
+  }
 }
