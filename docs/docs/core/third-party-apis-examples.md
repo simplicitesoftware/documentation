@@ -11,10 +11,10 @@ These are examples of calls to various third party APIs done on server side.
 Introduction
 ------------
 
-Simplicité being a Java platform, calling **any** HTTP-based can be done using either:
+Simplicité being a Java platform, calling **any** HTTP-based resource (file, API, ...) can be done using either:
 
 - Standard low-level HTTP client Java API (`java.net.[http.]*`)
-- Included HTTP client libraries such as the Apache HTTP Client library
+- Included HTTP client libraries such as the Apache HTTP Client library or the Unirest client library for APIs
 - Utility classes provided by Simplicité such as `com.simplicite.util.HTTPTool`
   or the very simple `Tool.readUrl(...)`, e.g. calling an REST-like API returning a JSON object:
 
@@ -24,9 +24,10 @@ String status = result.getString("myAPIStatus");
 (...)
 ```
 
-The following **non limitative** list of examples are describing some specifc cases for which higher level utility classes exists
+The following **non limitative** list of examples are describing some specific cases for which higher level utility classes exists
 (provided by Simplicité and/or by the vendor of the 3rd party API, e.g. Google APIs).
-But the same cloud be achieved using one of the low-level above approaches.
+
+But the same could be achieved using one of the low-level above approaches.
 
 Note that some of these 3rd party APIs may need a paying subscription and/or may have a limited free tier.
 
@@ -40,7 +41,7 @@ This example is based on the **client side** Google Calendar API.
 
 ### Google Calendar API
 
-You should have activate Google Oauth2 authentication to use it. See [Tomcat OAuth2 authentification](/docs/authentication/oauth2)
+You should have activate Google OAuth2 authentication to use it. See [Tomcat OAuth2 authentication](/docs/authentication/oauth2)
 
 See [https://developers.google.com/google-apps/calendar](https://developers.google.com/google-apps/calendar/) for details.
 
@@ -125,7 +126,7 @@ public class Calendar implements java.io.Serializable {
 ```
 #### Code snippet using a business object
 
-You can now use the previsous script on a business object hook and create an event. See [business object hooks code examples](/docs/core/objects/businessobject-code-hooks)
+You can now use the previous script on a business object hook and create an event. See [business object hooks code examples](/docs/core/objects/businessobject-code-hooks)
 
 Example of a business object where event are created on google calendar. Date has to be on RFC3339 format. Simplicite provide method to change date to this specific format.
 ```Java
@@ -152,7 +153,8 @@ Geocoding
 
 ### Google Maps
 
-This example sets a `myCoords` object field (of type geocoordinates) with the coordinates returned by Google Maps geocoding service using the value of the `myAddress` text field.
+This example sets a `myCoords` object field (of type geographical coordinates) with the coordinates
+returned by Google Maps geocoding service using the value of the `myAddress` text field.
 
 ```Java
 	ObjectField a = getField("myAddress");
@@ -164,7 +166,7 @@ This example sets a `myCoords` object field (of type geocoordinates) with the co
 
 ### Nominatim
 
-Nominatim is OpenStreetMap's geocoding service. Please read the [usage policy](https://operations.osmfoundation.org/policies/nominatim/) as it may not be suitable for you case.
+**Nominatim** is OpenStreetMap's geocoding service. Please read the [usage policy](https://operations.osmfoundation.org/policies/nominatim/) as it may not be suitable for you case.
 
 ```java
 private static String geoCode(String address, String zipCode, String city, String country) throws IOException,JSONException{
@@ -294,7 +296,7 @@ Here an example to use MailJet external service to send email. See [MailJet Guid
 
 First create a system param with MailJet api data. You will need your public and private key.
 
-You may want to send transactionnal email. To do so, add your template id.
+You may want to send transactional email. To do so, add your template id.
 
 ```json
 {
@@ -358,7 +360,7 @@ public class ExternalEmail implements java.io.Serializable {
 
 #### Code snippet using a business Object
 
-You can now use the previsous script on a business object hook and send an email. See [business object hooks code examples](/docs/core/objects/businessobject-code-hooks)
+You can now use the previous script on a business object hook and send an email. See [business object hooks code examples](/docs/core/objects/businessobject-code-hooks)
 
 ```Java
 ExternalEmail e = new ExternalEmail(getGrant());
@@ -367,7 +369,7 @@ data.put("FromEmail", "contact@simplicite.fr");
 data.put("FromName", "Simplicite Software");
 data.put("Subject", "Bonjour");
 
-// To be used with transactionnal email
+// To be used with transactional email
 data.put("MJ-TemplateLanguage", true);
 JSONArray recipients = new JSONArray();
 recipients.put(new JSONObject().put("Email", getFieldValue("email")));
