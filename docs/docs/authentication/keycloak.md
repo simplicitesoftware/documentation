@@ -65,7 +65,7 @@ For instance, `"groups": [ "realm.roles", "groups", "group.name" ]` means that u
 - path within objects: `"realms": { "roles": [ "PROFILE1", "PROFILE2" ] }`
 - array of groups `"groups": [ "GROUP1", "GROUP2" ]`
 - or a single name `"group": { name: "GROUP3" }`
- 
+
 The `groups` mapping rulse indicates a list of path in the userinfo containing a group or a list of groups to add to user's responsibilities.
 When this `groups` rule is specified, the user synchronization through API will not be used, so the userinfo must contains all the granted groups on each logon.
 
@@ -122,7 +122,7 @@ It is done by :
 
 Keycloak must define a user with credential to access the API:
 
-- The API user needs at least the right to read users, groups, roles, clients and realm. 
+- The API user needs at least the right to read users, groups, roles, clients and realm.
 - In `role mapping` section ensure that the client roles `realm-management` has the following records:
     - query-clients
     - query-realms
@@ -197,7 +197,7 @@ Create a system parameter `KEYCLOAK_SYNC` that specifies the list of Keycloak ro
 	- groups: optional list of groups
 	- roles: optional list of realm roles
 	- clients: optional list of clients
-- import: 
+- import:
 	- `groups`: true to synchronize users's groups
 	- `realmRoles`: true to synchronize users's realm roles
 	- `clientRoles`: true to synchronize users's client roles
@@ -234,7 +234,7 @@ Create a system parameter `KEYCLOAK_SYNC` that specifies the list of Keycloak ro
 - Local rights to preserve (local admin, designer...) must be added into `USER_SYNC_GROUPS_EXCLUDE`, otherwise it will be removed
 - And `USER_SYNC_GROUPS_FORCED` can add common groups but unknown from Keycloak
 
-Example: 
+Example:
 
 - Keycloak has a role "SALES_MANAGER" and Simplicité a group "APP_SALES_MANAGER" with granted functions
 - All users must have the social features
@@ -243,7 +243,7 @@ Example:
 The platform must define:
 
 - a group "SALES_MANAGER" with profile "APP_SALES_MANAGER"
-- at least "SALES_MANAGER" in `USER_SYNC_GROUPS_INCLUDE` = `["SALES_MANAGER", "SALES_USER"...]` 
+- at least "SALES_MANAGER" in `USER_SYNC_GROUPS_INCLUDE` = `["SALES_MANAGER", "SALES_USER"...]`
 - add social features with `USER_SYNC_GROUPS_FORCED` = `["SOCIAL_USER" ...]`
 - the administrators must keep their local rights: `USER_SYNC_GROUPS_EXCLUDE` = `["ADMIN", "GRANT_ADMIN", "SOCIAL_ADMIN", "KEYCLOAK_*"]`
 
