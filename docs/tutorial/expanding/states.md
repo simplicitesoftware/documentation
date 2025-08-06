@@ -79,6 +79,27 @@ To create a State model for the the Order Business object, follow the steps belo
   A state model has been added to the TrnOrder Business object.
 :::
 
+### Optional Add a States navbar in form 
+
+1. On the "TrnOrder" Business object's form, click **Edit form**. This will open the template editor.
+![](img/states/template-editor.png)
+2. On the "TrnOrder" Business object's form, click **+ Add > States navbar**
+![](img/states/state-navbar.png)
+3. Choose how the state diagram bar will be displayed
+       - *Breadcrumb*  
+       - *Arrows*  
+       - *Metro line*  
+![](img/states/state-navbar2.png)
+4. Select what is displayed on milestones:  
+       - *Counter*: step counter  
+       - *History Date*: Last transition date  
+       - *History User*: User who performed the last transition  
+:::note     
+    - Visited steps are based on the history table
+	- Current step, optional and exception roles can have their own style
+	- Non visited milestones (from list of values) are displayed after the visited ones
+:::
+
 ## Test the State model with the usertest User
 
 To test the State model, follow the steps below :
@@ -109,3 +130,10 @@ To test the State model, follow the steps below :
     
 :::
 
+5. With optional states navbar
+:::tip[Success]
+
+  <b>Expected result :</b>
+    ![](img/states/state-navbar3.png)
+    
+:::
