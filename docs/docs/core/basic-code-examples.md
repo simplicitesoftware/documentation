@@ -312,7 +312,6 @@ Others
 
 This simple example unzips a ZIP file read from a public URL and unzip it to a temporary folder for processing files:
 
-#### Java
 ```simplicite-java
 public void readZip(File zipFile){
 	File destDir = new File(this.getGrant().getTmpDir() + "/mydata." + System.currentTimeMillis());
@@ -326,11 +325,11 @@ public void readZip(File zipFile){
 	}
 }
 ```
+
 #### Write ZIP file
 
 This simple example zips a list of text files and return the ZIP file as a byte array:
 
-#### Java
 ```java
 public byte[] writeZip() {
 	try {
@@ -344,6 +343,44 @@ public byte[] writeZip() {
 		AppLog.error(e,getGrant());
 		return new byte[0];
 	}
+}
+```
+
+Example to export a ZIP with documents from object fields using a temporary directory:
+
+```simplicite-java
+String tmpdir = FileTool.getRandomDirname(Platform.getTmpDir(), "myArchive");
+try {
+	File tmp = new File(tmpdir);
+	tmp.mkdirs();
+	List<String> files = new ArrayList<>();
+
+	// Copy files into temp
+	DocumentDB doc = obj.getField("myDocField").getDocument(getGrant());
+	String file = doc.getName();
+	try (FileOutputStream fos = new FileOutputStream(tmpdir+"/"+file)) {
+		// Do not use File ou bytes-array, only buffered stream
+		Tool.copy(doc.getInputStream(), fos);
+	}
+	files.add(file);
+	// other docs...
+
+	// Build ZIP
+	File fz = ZIPTool.build(tmpdir, "archive.zip", files);
+
+	// Copy in your output and discard the ZIP file from temp
+	try (DeleteOnCloseInputStream in = new DeleteOnCloseInputStream(fz)) {
+		Tool.copy(in, myOutputStream);
+	}
+}
+catch (Exception e) {
+	AppLog.error(e, getGrant());
+}
+finally {
+	// delete temporary directory
+	File tmp = new File(tmpdir);
+	if (tmp.isDirectory())
+		FileTool.deleteFileOrDir(tmp, true);
 }
 ```
 
