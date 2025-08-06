@@ -6,16 +6,16 @@ title: Tomcat installation on Windows
 Tomcat installation guidelines for Windows server
 =================================================
 
-> **Warning**: before choosing this "traditional" installation procedure you should consider other approches such as using [Docker containers](/docs/operation/docker).
+> **Warning**: before choosing this "traditional" installation procedure you should consider other approaches such as using [Docker containers](/docs/operation/docker).
 
-This document only gives only very **general guidelines**, not a detailled/precise procedure.
+This document only gives only very **general guidelines**, not a detailed/precise procedure.
 
 If needed refer to the [Linux installation document](/docs/operation/tomcat-installation-linux) for more details.
 
 Databases
 ---------
 
-Download and install the chosen up-to-date database engine server suitable for your target Simplicité platfor and suitable for your version of Windows
+Download and install the chosen up-to-date database engine server suitable for your target Simplicité m and suitable for your version of Windows
 (see [this document](/docs/compatibility#databases) for databases compliance details):
 
 - MySQL/MariaDB
@@ -28,7 +28,7 @@ There is nothing to do if you use an embedded HSQLDB.
 JVM
 ---
 
-Dowload and install an up to date Java VM Developpement Kit (or a Runtime Environment if you don't plan to do debugging) in the appropriate version
+Download and install an up to date Java VM Development Kit (or a Runtime Environment if you don't plan to do debugging) in the appropriate version
 for your target Simplicité platform version and suitable for your version of Windows (see [this document](/docs/compatibility#java-vm) for JVM compliance details).
 
 Register the `JAVA_HOME` environment variable as the path of your JVM Installation (e.g. `C:\Program Files\Java\jdk-x.y.z`) and add `%JAVA_HOME%\bin` to the system `PATH`.
@@ -36,7 +36,7 @@ Register the `JAVA_HOME` environment variable as the path of your JVM Installati
 Tomcat
 ------
 
-Clone the preconfigured Tomcat package (which is just an out of the box Tomcat package with administration webapps removed, with some settings fine-tuned and with some additional jars in the `lib` folder) with appropriate credentials:
+Clone the pre-configured Tomcat package (which is just an out of the box Tomcat package with administration webapps removed, with some settings fine-tuned and with some additional jars in the `lib` folder) with appropriate credentials:
 ```shell
 git clone https://<username>[:<password>]@platform.git.simplicite.io/tomcat.git
 ```
@@ -46,9 +46,9 @@ Then, make sure the `tomcat\logs` folder is present and writeable, this is **man
 
 Register the `TOMCAT_HOME` environment variable as the path of your Tomcat Installation (e.g. `C:\Users\Administrator\tomcat`).
 
-To start with, just change the plain HTTP Tomcat connector port number in `conf/server.xml` from `8080` to `80` and inhibitate other connectors
+To start with, just change the plain HTTP Tomcat connector port number in `conf/server.xml` from `8080` to `80` and inhibit other connectors
 (these other connectors are to be used in more complex situations such as mounting Tomcat behind a reverse proxy or make Tomcat handle SSL etc.
-These cases requires additional installation/preraration/configuration steps that are not described here).
+These cases requires additional installation/preparation/configuration steps that are not described here).
 
 Install Tomcat as a service:
 ```
@@ -94,7 +94,7 @@ Stop the Tomcat service.
 
 Create or replace the webapp from the instance template : copy the `app` folder as the `tomcat/webapps/ROOT`.
 
-Adjust the database connexion pool settings accordingly to your database installaion in `tomcat/webapps/ROOT/META-INF/context.xml`.
+Adjust the database connection pool settings accordingly to your database installation in `tomcat/webapps/ROOT/META-INF/context.xml`.
 
 Start the Tomcat service.
 
@@ -110,12 +110,12 @@ To benefit from our support you **must** upgrade the deployed version of the pla
 
 ### Base components upgrades
 
-The base components such as the Java JVM and the Tomcat server are also regularly upgraded by their repective vendors.
+The base components such as the Java JVM and the Tomcat server are also regularly upgraded by their respective vendors.
 
 The Simplicité platform is **only** validated and tested with up-to-date stable versions of these components (the ones that are shipped in our Docker images).
-Our support is thus only avaible if you use these recommended up-to-date components.
+Our support is thus only available if you use these recommended up-to-date components.
 
-- We thus highly recommend that you use and keep upgraded our preconfigured Tomcat package described above. We push the up-to-date version of Tomcat on it as soon as it is released.
+- We thus highly recommend that you use and keep upgraded our pre-configured Tomcat package described above. We push the up-to-date version of Tomcat on it as soon as it is released.
 - We also recommend that you maintain your JVM up-to-date on a very regular basis (Oracle issues a JVM major version every 6 months).
 - And, of course, we recommend that you keep your Windows platform up-to-date.
 

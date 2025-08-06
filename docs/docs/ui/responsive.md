@@ -372,11 +372,11 @@ _nota_
 | showSorting                  | displays the column sorting                                             | true                                       |
 | showIndex                    | displays the fulltext search                                            | metadata.indexable                         |
 | isExtended                   | show/hide fields on search form                                         | false                                      |
-| position                     | current position of search: 'column', 'popup' or 'docked'               |                                            |
 | minified                     | is parent list minified?                                                | false                                      |
-| dockable                     | is dockable near the list? (6.0+)                                       | true                                       |
-| pinable                      | is pinable on column fields?  (6.0)                                     | false                                      |
 | inst                         | optional instance name                                                  |                                            |
+| position                     | 'popup' or 'docked'                                                     |                                            |
+| dockable                     | is dockable near the list? (deprecated 6.3)                             | true                                       |
+| pinable                      | is pinable on column fields? (deprecated 6.3)                           | false                                      |
 
 ### Simplicite.UI.Globals.summary
 

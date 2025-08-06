@@ -1,11 +1,11 @@
 ---
-sidebar_position: 13
+sidebar_position: 4
 title: 3.3. Creating dynamic dropdowns
 ---
 
 # Building the "Order Management" Training App : Creating a dynamic dropdown - Linked lists
 
-> Prerequisite : [You have a basic understanding of the Simplicité platform, and the steps in Enhancing are completed](/category/2-expanding-your-app)
+> Prerequisite : [You have a basic understanding of the Simplicité platform, and the steps in "2. Expanding your app" are completed](/category/2-expanding-your-app)
 
 ## What is a Linked list ?
 

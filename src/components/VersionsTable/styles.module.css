@@ -1,0 +1,49 @@
+[data-theme='light'] { /* Color Palette - Light */
+    --blue_overlay: rgba(187, 185, 255, 0.5); /*#bbb9ff*/
+    --red_overlay: rgba(253, 175, 179, 0.5); /*#fdafb3*/
+    --green_overlay: rgba(188, 247, 215, 0.5); /*#bcf7d7*/
+    --purple_overlay: rgba(247, 216, 248, 0.5) ; /*#f7d8f8*/
+}
+
+[data-theme='dark'] { /* Color Palette - Dark */
+    --blue_overlay: rgba(30, 30, 101, 0.33);/*#1e1e65*/
+    --red_overlay: rgba(102, 29, 29, 0.33); /*#661d1d*/
+    --green_overlay: rgba(30, 90, 57, 0.33); /*#1e5a39*/
+    --purple_overlay: rgba(102, 74, 99, 0.33); /*#664a63*/
+}
+
+.releaseNote {
+    margin-left: .75rem;
+    opacity: .5;
+    &:hover {
+        opacity: 1;
+    }
+}
+
+table {
+    .alpha {
+        background: var(--blue_overlay) !important;
+    }
+
+    .shortterm, .longterm {
+        background: var(--purple_overlay) !important;
+    }
+
+    .active {
+        background: var(--green_overlay) !important;
+    }
+
+    .expired {
+        background: var(--red_overlay) !important;
+    }
+    }
+
+html {
+    scroll-behavior: smooth;
+}
+
+article > div > div > div > h2 {
+    opacity: 0; /* Is it targeted enough ?.. */
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+}

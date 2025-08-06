@@ -74,7 +74,7 @@ Repeat these step 3 -> 5 for :
     - Icon : **icon/color/btn_orange**
     - Text color : **#ffffff**
     - Display on list : **Icon | Label**    
-- Validated 
+- Shipped 
     - Background color : **#93c47d**
     - Icon : **icon/color/btn_green**
     - Text color : **#ffffff**
@@ -88,10 +88,11 @@ Repeat these step 3 -> 5 for :
     > For a detailed step-by-step, see : [Testing the User](/tutorial/getting-started/user#activating-and-testing-the-user)
 
 :::tip[Success]
-  <p>The new Theme and header logo are applied to the App</p>
-    <p>The objects have icons</p>
-    <p>The Order's state field have icons</p>
+
+- The new Theme and header logo are applied to the App
+- The objects have icons
+- The Order's state field have icons
     ![](img/styles/success.png)
-    <p>The Order's state transition actions have colours</p>
+- The Order's state transition actions have colours
     ![](img/styles/order-colours.png)
 :::

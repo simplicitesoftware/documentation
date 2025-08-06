@@ -53,6 +53,6 @@ To grant the RedoLog object to the TRN_SUPERADMIN Group, follow the steps below 
 4. Click **Save**
 
 :::tip[Success]
-  <p>The "Change Log" list shows the change in quantity</p>
+  The "Change Log" list shows the change in quantity
     ![](img/historization/success.png)
 :::

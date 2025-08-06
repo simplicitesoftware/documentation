@@ -70,6 +70,7 @@ To implement back-end code for the Increase stock action, follow the steps below
 2. Update the Action's information like so : 
 	- Execution : **Back**
 	- Method : **increaseStock**  
+	- URL : **empty**
 	![](img/hooks/action-form.png) 
 3. Click **Save & Close**
 4. In the **Business objects > Business objects** menu, open **TrnProduct**
@@ -128,20 +129,16 @@ Clear the platform's cache and log in using *usertest*
 > For a detailed step-by-step, see : [Testing the User](/tutorial/getting-started/user#activating-and-testing-the-user)
 
 :::tip[Success]
-  <ul>
-		<li>	
-			<p>When creating an Order with a negative quantity, an error occurs</p>
-			![](img/hooks/success-invalid.png)
-		</li>
-		<li>	
-			<p>When creating an Order with a quantity exceeding the product's amount of stock, an error occurs</p>
-			![](img/hooks/success-amount.png)
-		</li>
-		<li>
-			<p>When clicking on "Increase stock" on a Product, upon confirmation, it's stock is incremented by 10</p>
-		</li>
-		<li>
-			<p>When an Order is Validated the quantity is deducted from the Product's stock</p>
-		</li>
-	</ul>
+
+- When creating an Order with a negative quantity, an error occurs
+
+![](img/hooks/success-invalid.png)
+
+-  When creating an Order with a quantity exceeding the product's amount of stock, an error occurs
+
+![](img/hooks/success-amount.png)
+
+- When clicking on "Increase stock" on a Product, upon confirmation, it's stock is incremented by 10
+- When an Order is Validated the quantity is deducted from the Product's stock
+
 :::

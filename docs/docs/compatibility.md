@@ -64,8 +64,8 @@ The following table only indicates the **LTS (Long Term Support)** JVM versions.
 
 | ![](https://platform.simplicite.io/logos/logo125.png) | JVM 1.8 | JVM 11  | JVM 17  | JVM 21  |
 |:-----------------------------------------------------:|---------|---------|---------|---------|
-| Alpha 6.2                                             | no      | no      | yes (1) | **yes** |
-| **6.1** and legacy 6.0                                | no      | yes (1) | yes (1) | **yes** |
+| **6.2** and alpha 6.3                                 | no      | no      | yes (1) | **yes** |
+| Legacy 6.0 and 6.1                                    | no      | yes (1) | yes (1) | **yes** |
 | **5.x**                                               | no      | yes (1) | **yes** | yes (1) |
 | Legacy 4.0                                            | no      | yes (1) | **yes** | yes (1) |
 | Legacy 3.2                                            | yes (1) | **yes** | yes (1) | yes (1) |
@@ -81,26 +81,26 @@ In **bold** the recommended choice for considered Simplicité version.
 
 ### Application servers
 
-| ![](https://platform.simplicite.io/logos/logo125.png) | JEE Web profile (1) | Webapp  |
-|:-----------------------------------------------------:|---------------------|---------|
-| **6.x**                                               | JEE 8 (2)           | 4.0 (2) |
-| **5.x**                                               | JEE 8               | 4.0     |
-| Legacy 4.0                                            | JEE 8               | 4.0     |
-| Legacy 3.2                                            | JEE 7               | 3.1     |
-| Legacy 3.1                                            | JEE 6               | 3.1     |
-| Legacy 3.0                                            | J2EE 1.4            | 2.5     |
+| ![](https://platform.simplicite.io/logos/logo125.png) | Web profile (1) | Webapp  |
+|:-----------------------------------------------------:|-----------------|---------|
+| **6.x**                                               | JEE 8 (2)       | 4.0 (2) |
+| **5.x**                                               | JEE 8           | 4.0     |
+| Legacy 4.0                                            | JEE 8           | 4.0     |
+| Legacy 3.2                                            | JEE 7           | 3.1     |
+| Legacy 3.1                                            | JEE 6           | 3.1     |
+| Legacy 3.0                                            | J2EE 1.4        | 2.5     |
 
-1. Web profile by default but full profile is also possible
-2. Compliance with JakartaEE 10 (an thus Webapp 6.0) was the target when for versions 6.x.
-However, at the time of the first minor version (6.0) release, some third party libs are still not yet compliant.
-Compliance with JakartaEE 10 is thus postponed to a future major version.
+1. Web profile is supposed to be used by default but full profile is also possible
+2. Compliance with JakartaEE (an thus Webapp version 6.0+) was the target when for versions 6.x.
+However, at the time of the first minor version 6.x release, some third party libs are still not yet compliant.
+Compliance with JakartaEE is thus postponed to a future major version.
 
 The webapp implementation we recommend are:
 
-* **Webapp 6.0**: Apache Tomcat&reg; 10.1.x
-* **Webapp 4.0**: Apache Tomcat&reg; 9.0.x
+* **Webapp 4.0** (JEE): Apache Tomcat&reg; 9.0.x
+* **Webapp 6.1** (JakartaEE): Apache Tomcat&reg; 11.0.x (will be supported in a future major version)
 
-> **Note**: Whichever application server version you use, you **MUST** use its  **up-to-date maintenance release**. 
+> **Note**: Whichever application server version you use, you **MUST** use its  **up-to-date maintenance release**.
 > Only these up-to-date releases are tested and supported.
 
 Databases
@@ -109,15 +109,15 @@ Databases
 | ![](https://platform.simplicite.io/logos/logo125.png) | PostgreSQL | MySQL | Oracle   | SQLServer |
 |:-----------------------------------------------------:|------------|-------|----------|-----------|
 | **6.x**                                               | 13+        | 8+    | 19c+     | 2019+     |
-| **5.x**                                               | 11+        | 5.7+  | 12c+     | 2019+     |
+| **5.x**                                               | 13+        | 8+    | 19c+     | 2019+     |
 | Legacy 4.0                                            | 10+        | 5.5+  | 12c+     | 2016+     |
 | Legacy 3.2                                            | 9+         | 5.1+  | 11g+     | 2012+     |
 | Legacy 3.1                                            | 9+         | 5.1+  | 11g+     | 2012+     |
 | Legacy 3.0                                            | 9+         | 5.1+  | 10g+     | 2008+     |
 
-> **Note**: The above versions are not the **recommended** version but the **minimal** versions on which the platform can run.
+> **Note**: The above versions are not the **recommended** version but the **minimal** versions on which the platform is supposed to run.
 > Whichever database server you use, you **SHOULD** use an **up-to-date release version** instead of the above minimal versions.
-> Only these up-to-date release versions are tested and supported.
+> Only the specified release versions are tested and supported (older versions than specified may work in some cases but we don't provide support if you use them).
 
 Web browsers
 ------------

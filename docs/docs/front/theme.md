@@ -47,7 +47,7 @@ This tool enables you to *manage and customize* the overall design of your insta
 > ***Coming Soon:*** Two new themes (Dark & Light) aligned with Simplicité’s brand new look and identity !
 
 <details>
-<summary>"Mazette" Themes Overview</summary>
+<summary>"Mondrian" Themes Overview</summary>
 
 ![](img/theme/theme-mazettelight-overview.png)
 ![](img/theme/theme-mazettedark-overview.png)
@@ -126,7 +126,7 @@ The **Preview** section of the **Theme Editor** provides a *live visualization* 
 ![](img/theme/theme-editor-preview-form.png)
 </details>
 
-> ***Note:*** Other input types, such as *radio buttons*, *dropdown menus*, are not directly customizable within the Theme Editor but inherit styles from the selected base theme. 
+> ***Note:*** Other input types, such as *radio buttons*, *dropdown menus*, are not directly customizable within the Theme Editor but inherit styles from the selected base theme.
 > - Code editors for example are customizable through your theme's object form, in which you can modify the monokai based theme (light, dark).
 
 **List**: a core element of Simplicité’s UI, Lists display rows of data in table format and can be extensively styled for consistency and readability.
@@ -171,7 +171,7 @@ Here is a detailled list of the menu's sub-section and the specific elements the
 | Contents           | Padding Y              | [0;300]: defines the padding-top & padding-bottom of all elements displayed in different containers (texts, sub-panels, ...), thus modifying container's height.       |
 | Background         | Color                  | Any: defines the color of your whole background, noticeable mainly on the `WORK` part of the UI.                                                                       |
 
-    
+
 
 **Main**: configures the permanent UI elements, including the header, footer, and navigation breadcrumb.
 
@@ -191,7 +191,7 @@ Here is a detailled list of the menu's sub-section and the specific elements the
 | Footer Bar            | Text Color             | Any: defines the colors of the texts composing your footer section (links in it).                                                                                      |
 | Footer Bar            | Border Color           | Any: defines the colors & display of the `border-top` for your whole footer, can be hidden by unticking the value.                                                     |
 
-    
+
 
 **Menu**: allows you to style the main menu (typically located on the left), including states for embedded, active, and hovered items.
 ![](img/theme/theme-editor-style-menu.png)
@@ -210,18 +210,18 @@ Here is a detailled list of the menu's sub-section and the specific elements the
 | Status Menu          | Background Color       | Any: will define the **inactive** background color for the status items held in the sub-menus.                                                                           |
 | Status Menu          | Text Color             | Any: will define the **inactive** textcolor for the status items held in the sub-menus.                                                                                  |
 
-    
 
-**Panel**: focuses on the overarching style of *top-level Panels*, which can be previewed in the ***Panels*** section of the Preview. 
+
+**Panel**: focuses on the overarching style of *top-level Panels*, which can be previewed in the ***Panels*** section of the Preview.
 
 ![](img/theme/theme-editor-style-panel.png)
 
 | Element            | Style Value            | Value Range / Description                                                                                                                                                                         |
 |--------------------|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Panel Container    | Background Color       | Any: defines the background of your whole panel container, these elements are rendered on top of the `WORK` part of your UI. But on first layer for this element.                                 | 
+| Panel Container    | Background Color       | Any: defines the background of your whole panel container, these elements are rendered on top of the `WORK` part of your UI. But on first layer for this element.                                 |
 | Panel Container    | Text Color             | Any: defines the color of all texts within your Panel but not contained by another element.                                                                                                       |
 | Panel Container    | Border Radius          | [0;200]: defines the border radius of your Panel, so modifies the following corner; `top-left` & `top-right` from `panel-header`, and `bottom-left` & `bottom-right` from `panel-footer`.         |
-| Panel Container    | Box Shadows            | [0;100]: defines the `box-shadow` value for panel items, with the following relation; 0 ~ `box-shadow: none`, 50 ~ `box-shadow: .125rem .125rem 1rem` and 0 ~ `box-shadow: .125rem .125rem 2rem`. | 
+| Panel Container    | Box Shadows            | [0;100]: defines the `box-shadow` value for panel items, with the following relation; 0 ~ `box-shadow: none`, 50 ~ `box-shadow: .125rem .125rem 1rem` and 0 ~ `box-shadow: .125rem .125rem 2rem`. |
 | Panel Header       | Background Color       | Any: defines the background color of your panel's header, renderer on top of the background defined at first layer for this element.                                                              |
 | Panel Header       | Text Color             | Any: defines the color of all texts within the header of your panel, excluding for the ones of buttons.                                                                                           |
 | Panel Header       | Bottom Border          | Any: defines the color of the header's `bottom-border`, if you want to hide the border then simply untick the value.                                                                              |
@@ -236,10 +236,10 @@ Here is a detailled list of the menu's sub-section and the specific elements the
 
 | Element                | Style Value            | Value Range / Description                                                                                                                                                                              |
 |------------------------|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Sub-Panel Container    | Background Color       | Any: defines the background of your whole sub-panel container, first layer for this element.                                  | 
+| Sub-Panel Container    | Background Color       | Any: defines the background of your whole sub-panel container, first layer for this element.                                  |
 | Sub-Panel Container    | Text Color             | Any: defines the color of all texts within your Sub-Panel but not contained by another element.                                                                                                        |
 | Sub-Panel Container    | Border Radius          | [0;200]: defines the border radius of your Panel, so modifies the following corner; `top-left` & `top-right` from `sub-panel-header`, and `bottom-left` & `bottom-right` from `sub-panel-footer`.      |
-| Sub-Panel Container    | Box Shadows            | [0;100]: defines the `box-shadow` value for sub-panel items, with the following relation; 0 ~ `box-shadow: none`, 50 ~ `box-shadow: .125rem .125rem 1rem` and 0 ~ `box-shadow: .125rem .125rem 2rem`.  | 
+| Sub-Panel Container    | Box Shadows            | [0;100]: defines the `box-shadow` value for sub-panel items, with the following relation; 0 ~ `box-shadow: none`, 50 ~ `box-shadow: .125rem .125rem 1rem` and 0 ~ `box-shadow: .125rem .125rem 2rem`.  |
 | Sub-Panel Header       | Background Color       | Any: defines the background color of your sub-panel's header, renderer on top of the background defined at first layer for this element.                                                               |
 | Sub-Panel Header       | Text Color             | Any: defines the color of all texts within the header of your sub-panel, excluding for the ones of buttons.                                                                                            |
 | Sub-Panel Header       | Bottom Border          | Any: defines the color of the header's `bottom-border`, if you want to hide the border then simply untick the value.                                                                                   |
@@ -336,9 +336,9 @@ Here is a detailled list of the menu's sub-section and the specific elements the
 | Header             | Bottom Border Color    | Any: defines the `border-bottom-color` for the `modal-header` dialog item part, no values (empty) sets `border-bottom: none`. |
 | Footer             | Background Color       | Any: defines the `background-color` of the `modal-footer` part of the dialog item. |
 | Footer             | Text Color             | Any: defines the `color` of all text within the `modal-footer` part of dialog item only. |
-| Footer             | Top Border Color       | Any: defines the `border-top-color` for the `modal-footer` dialog item part, no values (empty) sets `border-top: none`. | 
+| Footer             | Top Border Color       | Any: defines the `border-top-color` for the `modal-footer` dialog item part, no values (empty) sets `border-top: none`. |
 
-    
+
 
 ### DOM Path Viewer
 

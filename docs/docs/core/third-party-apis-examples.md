@@ -6,15 +6,15 @@ title: Third party apis examples
 Third party APIs examples
 =========================
 
-These are examples of calls to various third party APIs done on server side. 
+These are examples of calls to various third party APIs done on server side.
 
 Introduction
 ------------
 
-Simplicité being a Java platform, calling **any** HTTP-based can be done using either:
+Simplicité being a Java platform, calling **any** HTTP-based resource (file, API, ...) can be done using either:
 
 - Standard low-level HTTP client Java API (`java.net.[http.]*`)
-- Included HTTP client libraries such as the Apache HTTP Client library
+- Included HTTP client libraries such as the Apache HTTP Client library or the Unirest client library for APIs
 - Utility classes provided by Simplicité such as `com.simplicite.util.HTTPTool`
   or the very simple `Tool.readUrl(...)`, e.g. calling an REST-like API returning a JSON object:
 
@@ -24,9 +24,10 @@ String status = result.getString("myAPIStatus");
 (...)
 ```
 
-The following **non limitative** list of examples are describing some specifc cases for which higher level utility classes exists
+The following **non limitative** list of examples are describing some specific cases for which higher level utility classes exists
 (provided by Simplicité and/or by the vendor of the 3rd party API, e.g. Google APIs).
-But the same cloud be achieved using one of the low-level above approaches.
+
+But the same could be achieved using one of the low-level above approaches.
 
 Note that some of these 3rd party APIs may need a paying subscription and/or may have a limited free tier.
 
@@ -40,14 +41,14 @@ This example is based on the **client side** Google Calendar API.
 
 ### Google Calendar API
 
-You should have activate Google Oauth2 authentication to use it. See [Tomcat OAuth2 authentification](/docs/authentication/oauth2)
+You should have activate Google OAuth2 authentication to use it. See [Tomcat OAuth2 authentication](/docs/authentication/oauth2)
 
 See [https://developers.google.com/google-apps/calendar](https://developers.google.com/google-apps/calendar/) for details.
 
 #### System parameters
 
 The `OAUTH2_SCOPES` system param has to contain `https://www.googleapis.com/auth/calendar`
-You may want to create `GOOGLE_CALENDAR_ID` system param to work on a specific calendar. 
+You may want to create `GOOGLE_CALENDAR_ID` system param to work on a specific calendar.
 
 #### Code snippet
 
@@ -81,14 +82,14 @@ public class Calendar implements java.io.Serializable {
 			HashMap<String,String> headers = new HashMap();
 			headers.put("Authorization", "Bearer " + token);
 			headers.put("Content-type", HTTPTool.getMimeTypeWithEncoding(HTTPTool.MIME_TYPE_JSON, "UTF-8")); // Explicitly set content type as UTF-8-encoded application/json (not needed in version 4.0 if req is a JSONObject/JSONArray)
-			String url = endpoint + calId + "/events";		
+			String url = endpoint + calId + "/events";
 			String res = Tool.readUrl(url, null, null, data, headers,"UTF-8");
 			return new JSONObject(res);
 		} catch (IOException e) {
 			AppLog.error(e, grant);
 		} // Must use UTF-8 encoding
 		return new JSONObject();
-		
+
 	}
 	public JSONObject update(String eventId, String req) {
 		String res="";
@@ -98,7 +99,7 @@ public class Calendar implements java.io.Serializable {
 			headers.put("Content-type", HTTPTool.getMimeTypeWithEncoding(HTTPTool.MIME_TYPE_JSON, "UTF-8")); // Explicitly set content type as UTF-8-encoded application/json (not needed in version 4.0 if req is a JSONObject/JSONArray)
 			headers.put("X-HTTP-Method-Override","PUT");
 			String url = endpoint + calId + "/events/" + eventId;
-		
+
 			res = Tool.readUrl(url, null, null, req, headers,"UTF-8"); // Must use UTF-8 encoding
 		} catch (IOException e) {
 			AppLog.error(e, grant);
@@ -117,15 +118,15 @@ public class Calendar implements java.io.Serializable {
 			res = Tool.readUrl(url, null, null, "", headers,"UTF-8");// Must use UTF-8 encoding
 		} catch (IOException e) {
 			AppLog.error(e, grant);
-		} 
+		}
 		return new JSONObject(res);
 	}
-	
+
 }
 ```
 #### Code snippet using a business object
 
-You can now use the previsous script on a business object hook and create an event. See [business object hooks code examples](/docs/core/objects/businessobject-code-hooks)
+You can now use the previous script on a business object hook and create an event. See [business object hooks code examples](/docs/core/objects/businessobject-code-hooks)
 
 Example of a business object where event are created on google calendar. Date has to be on RFC3339 format. Simplicite provide method to change date to this specific format.
 ```Java
@@ -152,7 +153,8 @@ Geocoding
 
 ### Google Maps
 
-This example sets a `myCoords` object field (of type geocoordinates) with the coordinates returned by Google Maps geocoding service using the value of the `myAddress` text field.
+This example sets a `myCoords` object field (of type geographical coordinates) with the coordinates
+returned by Google Maps geocoding service using the value of the `myAddress` text field.
 
 ```Java
 	ObjectField a = getField("myAddress");
@@ -161,6 +163,25 @@ This example sets a `myCoords` object field (of type geocoordinates) with the co
 		setFieldValue("myCoords", gT.geocodeOne(a.getValue().replace("\n", ", ")));
 ```
 > **Note**: to debug response from the API you can use the `DCORESV001` log event code
+
+### Nominatim
+
+**Nominatim** is OpenStreetMap's geocoding service. Please read the [usage policy](https://operations.osmfoundation.org/policies/nominatim/) as it may not be suitable for you case.
+
+```java
+private static String geoCode(String address, String zipCode, String city, String country) throws IOException,JSONException{
+	// PLEASE READ NOMINATIM USAGE POLICY
+	// https://operations.osmfoundation.org/policies/nominatim/
+	final String GEOCODE_SERVICE_URL = "https://nominatim.openstreetmap.org/search?format=jsonv2&q=";
+	JSONObject o = new JSONArray(Tool.readUrl(GEOCODE_SERVICE_URL+HTTPTool.encode(
+		address
+		+","+zipCode
+		+","+city
+		+","+country
+	))).getJSONObject(0);
+	return o.getString("lat")+","+o.getString("lon");
+}
+```
 
 Translation
 -----------
@@ -242,7 +263,7 @@ public JSONObject sendMail(String to,String template,JSONObject data,JSONArray f
 		String endpoint = config.optString("endpoint");
 		String apikey = config.optString("apikey");
 		String locale = config.optString("locale");
-	
+
 		JSONObject req = new JSONObject();
 		req.put("recipient", new JSONObject().put("address", to));
 		req.put("locale", locale);
@@ -271,11 +292,11 @@ Where the `SENDWITHUS_CONFIG` system parameter has the following JSON value:
 
 Here an example to use MailJet external service to send email. See [MailJet Guides](http://dev.mailjet.com/guides/).
 
-#### System parameter 
+#### System parameter
 
 First create a system param with MailJet api data. You will need your public and private key.
 
-You may want to send transactionnal email. To do so, add your template id.  
+You may want to send transactional email. To do so, add your template id.
 
 ```json
 {
@@ -292,7 +313,7 @@ You may want to send transactionnal email. To do so, add your template id.
 
 #### Code snippet
 
-Create a script that can be used on different business object or external object. For example : 
+Create a script that can be used on different business object or external object. For example :
 
 ```Java
 public class ExternalEmail implements java.io.Serializable {
@@ -333,13 +354,13 @@ public class ExternalEmail implements java.io.Serializable {
 		}
 		return new JSONObject(res);
 	}
-	
+
 }
 ```
 
 #### Code snippet using a business Object
 
-You can now use the previsous script on a business object hook and send an email. See [business object hooks code examples](/docs/core/objects/businessobject-code-hooks)
+You can now use the previous script on a business object hook and send an email. See [business object hooks code examples](/docs/core/objects/businessobject-code-hooks)
 
 ```Java
 ExternalEmail e = new ExternalEmail(getGrant());
@@ -348,7 +369,7 @@ data.put("FromEmail", "contact@simplicite.fr");
 data.put("FromName", "Simplicite Software");
 data.put("Subject", "Bonjour");
 
-// To be used with transactionnal email
+// To be used with transactional email
 data.put("MJ-TemplateLanguage", true);
 JSONArray recipients = new JSONArray();
 recipients.put(new JSONObject().put("Email", getFieldValue("email")));
@@ -406,36 +427,30 @@ Cloud
 
 ### Apache JClouds
 
-As of version 4.0 P19 the [Apache JClouds](https://jclouds.apache.org/) Cloud Storage Java libraries are integrated to the standard libs
-for use with the following stotages: AWS S3, OpenStack Swift, Google cloud storage and Azure Blob.
+The [Apache JClouds](https://jclouds.apache.org/) Cloud Storage Java libraries are integrated to the platform's standard libs
+for use with the following cloud storages: AWS S3, OpenStack Swift, Google cloud storage and Azure Blob.
 
-The `com.simplicite.util.tools.CloudStorage` class wrapper makes it easy to read/write files
-from/to the above cloud storages. Example:
+You can use either the JClouds API or the `com.simplicite.util.tools.CloudStorage` class wrapper which makes it easy to read/write files
+from/to the cloud storages.
+
+Example:
+
 **Java**
 ```java
 // (...)
-import java.util.Date;
-import com.simplicite.util.*;
-import com.simplicite.util.tools.*;
+import com.simplicite.util.tools.CloudStorageTool;
 // (...)
-CloudStorageTool cst = null;
-try {
-	cst = new CloudStorageTool(getGrant().getJSONObjectParameter("MY_STORAGE_CONFIG"));
-	String encoding = Globals.getPlatformEncoding();
-
+try (CloudStorageTool cst = new CloudStorageTool(getGrant(), getGrant().getJSONObjectParameter("MY_STORAGE_CONFIG")) {
 	cst.put(new JSONObject()
 		.put("name", "test.html")
 		.put("mime", HTTPTool.MIME_TYPE_HTML)
-		.put("encoding", encoding)
-		.put("content", "<html><body>hello world " + new Date() + "!</body></html>")
+		.put("content", "<html><body>hello world " + new java.util.Date() + "!</body></html>")
 	);
 
 	JSONObject file = cst.get("test.html", true);
-	AppLog.info(getClass(), "display", new String((byte[])file.get("content"), encoding), getGrant());
+	AppLog.info(new String((byte[])file.get("content")), getGrant());
 } catch (Exception e) {
-	AppLog.error(getClass(), "display", null, e, getGrant());
-} finally {
-	if (cst != null) cst.close();
+	AppLog.error(null, e, getGrant());
 }
 ```
 
@@ -462,7 +477,7 @@ Where the `MY_STORAGE_CONFIG` system parameter contains:
 	"tenant": "<your tenant name>",
 	"username": "<your user name>",
 	"password": "<your password>",
-	"authUrl": "<your auth enpoint URL>",
+	"authUrl": "<your auth endpoint URL>",
 	"region": "<your region name>",
 	"container": "<your container name>"
 }
@@ -490,3 +505,5 @@ Where the `MY_STORAGE_CONFIG` system parameter contains:
 	"debug": true
 }
 ```
+
+Note that the implicit encoding in the above example is the platform's encoding (which is UTF-8 by default).

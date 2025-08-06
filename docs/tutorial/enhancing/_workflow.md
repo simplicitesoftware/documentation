@@ -1,41 +1,62 @@
 ---
-sidebar_class_name: hidden
-sidebar_position: 25
-title: Business process
+sidebar_position: 7
+title: 3.6. Implementing a business process
 ---
 
-Business processes - workflow
-====================
+# Building the "Order Management" Training App : Implementing a business process
 
-A process (sequence of screens) is a wizard designed to assist the user during a specific process.   
-The process can be defined in the **Business Process/Business Process** menu.  
-The process is configured by :  
-    Type: input sequence or human task  
-    Class: any Java class that modifies the default behavior  
-    Module: application module  
+> Prerequisite : [You have a basic understanding of the Simplicité platform, and the steps in "2. Expanding your app" are completed](/category/2-expanding-your-app)
 
-A process is made up of activities.  
-When the process is created, 2 activities are generated: Begin and End.  
-If these two activities did not exist or have been deleted, they must be created manually.  
-Activities can be configured in the modeller by creating a specific diagram using the ModelProcess model.  
-Activities have data which can be used to customise workflow behavior.  
-## Process permission
-A process must be associated with the group in the "Process permission" tab in order to be instancied.
-In the process permission, the "Cancel permission" option adds an "Cancel process" button to all the activities in the process.   
-Each activity has its own permission, which can be configured in "Activity permission".  
-In the permission for an activity, the "Cancel permission" option adds a "Skip" button to the activity screen.  
+## What is a business process ?
 
+A process is a sequence of screens that guides the user through a specific process. It can be used to create, update, delete, or approve data... [Learn more](/make/businessprocess/business-process)
 
-## Screen workflow
-This is used to configure a specific screen sequence for short, complex processes with several actions to be executed sequentially.  
-### Exercise
-Create a screen sequence for creating a command.
-* Name = TrnOrdCreate
-* Code = TRNOC
-* Module = Training
+## Creating a screen workflow to create an order
 
-Enable permission.
-Add the process to the domain.
+:::warning
+Before starting, make sure the `TRN_SUPERADMIN` Group has the `Workflow permission` type :
+    ![](img/workflow/workflow-permission.png)
+:::
+
+To create a screen workflow to create an order, follow the steps below :
+
+1. In the **Business process > Business process** menu, click **Create**
+    ![](img/workflow/create.png)
+2. Fill in the **Business process** fields like so :
+    - Name : **TrnOrdCreate**
+    - Code : **TRNOC**
+    - Module : **Training**	
+	<details>
+            <summary>Configuration</summary>
+
+            ![](img/workflow/obj-configuration.png)
+    </details>
+3. Click **Save**
+4. In the **Activity** panel, click **Create**
+
+### Creating the "Select a supplier" Activity
+
+1. Click **Create Activity**
+	![](img/workflow/create-activity.png)
+2. Fill in the **Activity** fields like so :
+	- Step : **TRNOC-100** (*`TRNOC` being the Process code - `100` being the Activity's order*)
+	- Name : **SELECT_SUPPLIER**
+	- Type : **Search**
+	<details>
+            <summary>Configuration</summary>
+
+            ![](img/workflow/activity-step.png)
+    </details>
+3. Click **Next**
+4. Fill in the Activity's **Translation** like so :
+	- English : **Select a supplier**
+	<details>
+            <summary>Configuration</summary>
+
+            ![](img/workflow/activity-translation.png)
+    </details>
+5. Click **Next**
+
 
 Add 4 activities and link them together:
 * Activity for selecting the customer who places the order

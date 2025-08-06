@@ -5,7 +5,7 @@ title: 2.8. Creating a home page
 
 # Building the "Order Management" Training App : Creating a Home page
 
-> Prerequisite : [The designer user has the TRN_SUPERADMIN responsibility](/tutorial/getting-started/user#adding-designer-to-trn_superadmin), the Order has [state model](/tutorial/expanding/states) and a [pivot table](/tutorial/expanding/pivot-table).
+> Prerequisite : [The designer user has the TRN_SUPERADMIN responsibility](/tutorial/getting-started/user#designer-superadmin), the Order has [state model](/tutorial/expanding/states) and a [pivot table](/tutorial/expanding/pivot-table).
 
 ## What is a Home page ?
 
@@ -43,7 +43,7 @@ To create a home page for the TRN_SUPERADMIN Group, follow the steps below :
 2. Fill in the View area information like so : 
     - Type : **Crosstable**
     - Title enabled : **Toggled**
-    - Pivot table Name : **TrnOrderTc**  
+    - Pivot table Name : **TrnOrderPt**  
     - Table : **Toggled**   
     ![](img/views/view-area-tc.png)
 3. Click **Save**
@@ -67,6 +67,6 @@ To create a home page for the TRN_SUPERADMIN Group, follow the steps below :
     > For a detailed step-by-step, see : [Testing the User](/tutorial/getting-started/user#activating-and-testing-the-user)
 
 :::tip[Success]
-  <p>The Home page displays the "Pending orders" view and the "Orders per state" pivot table</p>
+The Home page displays the "Pending orders" view and the "Orders per state" pivot table
     ![](img/views/success.png)
 :::

@@ -429,6 +429,7 @@ public void preLoadGrant(Grant g) {
 		ObjectDB usr = null;
 		try {
 			// Create user if not exists
+			// ZZZ An isolated object **MUST** be explicitly destroyed in the finally block (see bellow) ZZZ
 			usr = Grant.getSystemAdmin().getIsolatedObject("User");
 			usr.setRowId(ObjectField.DEFAULT_ROW_ID);
 			usr.resetValues(true);
@@ -452,7 +453,9 @@ public void preLoadGrant(Grant g) {
 		} catch (MethodException | CreateException | ValidateException e) {
 			AppLog.error(e, g);
 		} finally {
-			if (usr != null) usr.destroy();
+			// ZZZ An isolated object **MUST** always be explicitly destroyed ZZZ
+			if (usr != null)
+				usr.destroy();
 		}
 	}
 	super.preLoadGrant(g);

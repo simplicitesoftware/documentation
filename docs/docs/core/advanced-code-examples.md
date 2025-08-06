@@ -26,7 +26,7 @@ Share a parameter between objects:
 
 **Java**
 
-```java
+```simplicite-java
 @Override
 public void initUpdate() {
 	getGrant().setParameter("MYAPP_CONTEXT_ID", getRowId());
@@ -89,7 +89,7 @@ Etc.
 
 To make a global setting, it is necessary to use the system singleton
 
-```javascript
+```java
 Grant.getSystemAdmin().setParameter(name, value);
 Grant.getSystemAdmin().getParameter(name);
 Grant.getSystemAdmin().removeParameter(name);
