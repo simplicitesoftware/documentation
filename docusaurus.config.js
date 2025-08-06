@@ -98,7 +98,13 @@ const config = {
             position: 'right',
             className: 'header-github-link',
             'aria-label': 'GitHub repository',
-          }
+          }/*,
+          {
+            href: 'https://deepwiki.com/simplicitesoftware/documentation',
+            position: 'right',
+            className: 'header-deepwiki-link',
+            'aria-label': 'Deepwiki',
+          }*/
         ],
       },
       prism: {
