@@ -39,3 +39,7 @@ A front-end constraint is **dynamic**, i.e. the user sees the impact on the form
 A back-end constraint is a genuine business rule, it is executed on the server during the preparation of the form, but also during the validation of the data sent by the user. The user will have no way of bypassing the rule. A back-end constraint, however, is not dynamic.
 
 That being said, the great advantage of constraints over business rules via code is that you can make them **both front and back**, to ensure secure business rules AND a dynamic user interface, without having to code these rules on both front and back-end scripts.
+
+## Read more   
+
+- [Creating a permission to override a property](/make/usersrights/permissions)

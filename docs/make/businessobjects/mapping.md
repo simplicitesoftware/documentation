@@ -18,9 +18,9 @@ It provides a way to:
 
 Mappings are useful in several scenarios:
 
-- 💡 **No relational link makes sense**: The two objects are conceptually unrelated in database terms, but need to share some data.
-- 📝 **Copy by value**: You want to duplicate information rather than point to a source (e.g., copying customer info into an invoice).
-- 📄 **Dynamic data sources**: You want to show values from a service or calculation.  
+- **No relational link makes sense**: The two objects are conceptually unrelated in database terms, but need to share some data.
+- **Copy by value**: You want to duplicate information rather than point to a source (e.g., copying customer info into an invoice).
+- **Dynamic data sources**: You want to show values from a service or calculation.  
 
 ## Mapping Types
 

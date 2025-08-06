@@ -47,7 +47,7 @@ We recommend creating Lists of Values directly in **Simplicité’s template edi
        - *Arrows*  
        - *Metro line*  
      - **Navbar options** – Select what is displayed on milestones:  
-       - *Counter*: Number of items in the state  
+       - *Counter*: step counter  
        - *History Date*: Last transition date  
        - *History User*: User who performed the last transition  
      - **Optional Model** – (Optional) Link the LOV to an existing state diagram model.  

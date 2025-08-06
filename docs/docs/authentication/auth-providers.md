@@ -26,7 +26,7 @@ The authentication providers are to be configured with the `AUTH_PROVIDERS` syst
 	{
 		"type": "internal",
 		"name": "simplicite",
-		"visible": false 
+		"visible": false
 	},
 	{
 		"type": "oauth2",
@@ -36,7 +36,7 @@ The authentication providers are to be configured with the `AUTH_PROVIDERS` syst
 		"client_id": "<my client ID>",
 		"client_secret": "<my client secret>"
 	},
-	{ 
+	{
 		"type": "saml",
 		"name": "google",
 		"label": "Sign in with Google SAML IdP",
@@ -44,7 +44,7 @@ The authentication providers are to be configured with the `AUTH_PROVIDERS` syst
 	},
 	{
 		"type": "ldap",
-		"name": "openldap", 
+		"name": "openldap",
 		"visible": [ "http://localhost:8080"]
 	}
 ]
@@ -64,15 +64,10 @@ The JSON settings include the common attributes:
 | `image`   | String                                        | optional     | disposition resource name                                      |
 
 :::warning
-
 For historical reasons the names `google`, `microsoft`, `linkedin` and `franceconnect` are **reserved** as they correspond to dedicated connectors.
-
 :::
 
-
 If the provider is configured as **not visible**, it is still accessible by appending `?_provider=<type>:<name>` (e.g.: `?_provider=internal:simplicite`) to the base URL.
-
-
 
 ### Specific settings
 
@@ -90,9 +85,7 @@ Before Simplicité v4, providers were configured in individual system parameters
 
 
 :::warning
-
 You might still find some provider settings documented with the deprecated syntax.
-
 :::
 
 ## Troubleshooting
@@ -104,13 +97,9 @@ To investigate authentication issues you can **temporarly** activate the `DAUTHC
 If you can't change the value, it's probably because your user does not have the `ADMIN_SYSTEM` user parameter that allows for system modification.
 
 :::warning
-
 Make sure to deactivate it as it produces **very verbose** output.
-
 :::
 
 :::info
-
 Before Simplicité v6, this menu item used to be in the "Operation" domain, in the extended view.
-
 :::
