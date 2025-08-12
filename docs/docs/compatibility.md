@@ -64,9 +64,10 @@ The following table only indicates the **LTS (Long Term Support)** JVM versions.
 
 | ![](https://platform.simplicite.io/logos/logo125.png) | JVM 1.8 | JVM 11  | JVM 17  | JVM 21  |
 |:-----------------------------------------------------:|---------|---------|---------|---------|
-| **6.2** and alpha 6.3                                 | no      | no      | yes (1) | **yes** |
-| Legacy 6.0 and 6.1                                    | no      | yes (1) | yes (1) | **yes** |
-| **5.x**                                               | no      | yes (1) | **yes** | yes (1) |
+| Alpha 7.0                                             | no      | no      | yes (1) | **yes** |
+| Alpha 6.3 and **6.2**                                 | no      | no      | yes (1) | **yes** |
+| Legacy 6.x                                            | no      | yes (1) | yes (1) | **yes** |
+| **5.3** and legacy 5.x                                | no      | yes (1) | **yes** | yes (1) |
 | Legacy 4.0                                            | no      | yes (1) | **yes** | yes (1) |
 | Legacy 3.2                                            | yes (1) | **yes** | yes (1) | yes (1) |
 | Legacy 3.1                                            | yes (1) | **yes** | yes (1) | yes (1) |
@@ -74,31 +75,29 @@ The following table only indicates the **LTS (Long Term Support)** JVM versions.
 
 1. Not tested and not supported but should work.
 
-In **bold** the recommended choice for considered Simplicité version.
+In **bold** the current Simplicité maintained minor version for considered major version.
 
-> **Note**: Whichever JVM version you use, you **MUST** use its **up-to-date release**.
+> **Note**: Whichever JVM version you use, you **MUST** always use its **up-to-date release**.
 > Only these up-to-date releases are tested and supported.
 
 ### Application servers
 
-| ![](https://platform.simplicite.io/logos/logo125.png) | Web profile (1) | Webapp  |
-|:-----------------------------------------------------:|-----------------|---------|
-| **6.x**                                               | JEE 8 (2)       | 4.0 (2) |
-| **5.x**                                               | JEE 8           | 4.0     |
-| Legacy 4.0                                            | JEE 8           | 4.0     |
-| Legacy 3.2                                            | JEE 7           | 3.1     |
-| Legacy 3.1                                            | JEE 6           | 3.1     |
-| Legacy 3.0                                            | J2EE 1.4        | 2.5     |
+| ![](https://platform.simplicite.io/logos/logo125.png) | Web profile (1) | Webapp |
+|:-----------------------------------------------------:|-----------------|--------|
+| Alpha 7.0                                             | JakartaEE 11    | 6.1    |
+| Alpha 6.3, **6.2** and legacy 6.x                     | JEE 8           | 4.0    |
+| **5.3** and legacy 5.x                                | JEE 8           | 4.0    |
+| Legacy 4.0                                            | JEE 8           | 4.0    |
+| Legacy 3.2                                            | JEE 7           | 3.1    |
+| Legacy 3.1                                            | JEE 6           | 3.1    |
+| Legacy 3.0                                            | J2EE 1.4        | 2.5    |
 
 1. Web profile is supposed to be used by default but full profile is also possible
-2. Compliance with JakartaEE (an thus Webapp version 6.0+) was the target when for versions 6.x.
-However, at the time of the first minor version 6.x release, some third party libs are still not yet compliant.
-Compliance with JakartaEE is thus postponed to a future major version.
 
 The webapp implementation we recommend are:
 
-* **Webapp 4.0** (JEE): Apache Tomcat&reg; 9.0.x
-* **Webapp 6.1** (JakartaEE): Apache Tomcat&reg; 11.0.x (will be supported in a future major version)
+- **Webapp 6.1** (JakartaEE): Apache Tomcat&reg; 11.0.x
+- **Webapp 4.0** (JEE): Apache Tomcat&reg; 9.0.x
 
 > **Note**: Whichever application server version you use, you **MUST** use its  **up-to-date maintenance release**.
 > Only these up-to-date releases are tested and supported.
@@ -108,8 +107,9 @@ Databases
 
 | ![](https://platform.simplicite.io/logos/logo125.png) | PostgreSQL | MySQL | Oracle   | SQLServer |
 |:-----------------------------------------------------:|------------|-------|----------|-----------|
-| **6.x**                                               | 13+        | 8+    | 19c+     | 2019+     |
-| **5.x**                                               | 13+        | 8+    | 19c+     | 2019+     |
+| Alpha 7.0                                             | 17+        | 8+    | 23c+     | 2022+     |
+| Alpha 6.3, **6.2** and legacy 6.x                     | 13+        | 8+    | 19c+     | 2019+     |
+| **5.3** and legacy 5.x                                | 13+        | 8+    | 19c+     | 2019+     |
 | Legacy 4.0                                            | 10+        | 5.5+  | 12c+     | 2016+     |
 | Legacy 3.2                                            | 9+         | 5.1+  | 11g+     | 2012+     |
 | Legacy 3.1                                            | 9+         | 5.1+  | 11g+     | 2012+     |
@@ -124,8 +124,9 @@ Web browsers
 
 | ![](https://platform.simplicite.io/logos/logo125.png) | Edge (1) |Firefox (1) | Chrome (1) | Safari (1) | IE11    |
 |:-----------------------------------------------------:|----------|------------|------------|------------|---------|
-| **6.x**                                               | yes      | yes        | yes        | yes        | no      |
-| **5.x**                                               | yes      | yes        | yes        | yes        | no      |
+| Alpha 7.0                                             | yes      | yes        | yes        | yes        | no      |
+| Alpha 6.3, **6.2** and legacy 6.x                     | yes      | yes        | yes        | yes        | no      |
+| **5.3** and legacy 5.x                                | yes      | yes        | yes        | yes        | no      |
 | Legacy 4.0                                            | yes      | yes        | yes        | yes        | yes (2) |
 | Legacy 3.x                                            | yes      | yes        | yes        | yes        | yes     |
 
