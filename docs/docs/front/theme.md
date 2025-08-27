@@ -29,18 +29,21 @@ This tool enables you to *manage and customize* the overall design of your insta
 *ThemeAdmin*: a primary theme for *administrators*, created from the `Dark Base`. It is mainly used by administrators or designer users who prefer a dark mode interface.
 <details>
 <summary>ThemeAdmin Overview</summary>
+
 ![](img/theme/theme-admin-overview.png)
 </details>
 
 *ThemeDesign*: built from the `Light Base`, this theme mirrors the *ThemeAdmin* in functionality but caters to those who prefer a *lighter mode*.
 <details>
 <summary>ThemeDesign Overview</summary>
+
 ![](img/theme/theme-design-overview.png)
 </details>
 
 *ThemeEtat*: designed following the *DSFR* (French government) *design norms*. It adheres to strict rules of **contrast**, **spacing**, and **accessibility** to meet public sector guidelines.
 <details>
 <summary>ThemeEtat Overview</summary>
+
 ![](img/theme/theme-etat-overview.png)
 </details>
 
@@ -92,6 +95,7 @@ The **Preview** section of the **Theme Editor** provides a *live visualization* 
 **Home**: displays the primary shared elements of Simplicité’s UI, such as the header and main menu. The menu highlights multiple states and hierarchies, including sub-menus and active domain indicators.
 <details>
 <summary>Home Preview</summary>
+
 ![](img/theme/theme-editor-preview-home.png)
 </details>
 
@@ -104,6 +108,7 @@ The **Preview** section of the **Theme Editor** provides a *live visualization* 
 
 <details>
 <summary>Buttons Preview</summary>
+
 ![](img/theme/theme-editor-preview-buttons.png)
 </details>
 
@@ -114,6 +119,7 @@ The **Preview** section of the **Theme Editor** provides a *live visualization* 
 
 <details>
 <summary>Panels Preview</summary>
+
 ![](img/theme/theme-editor-preview-panels.png)
 </details>
 
@@ -123,6 +129,7 @@ The **Preview** section of the **Theme Editor** provides a *live visualization* 
 3) ***References:*** editable links to other objects or data.
 <details>
 <summary>Form Preview</summary>
+
 ![](img/theme/theme-editor-preview-form.png)
 </details>
 
@@ -132,12 +139,14 @@ The **Preview** section of the **Theme Editor** provides a *live visualization* 
 **List**: a core element of Simplicité’s UI, Lists display rows of data in table format and can be extensively styled for consistency and readability.
 <details>
 <summary>List Preview</summary>
+
 ![](img/theme/theme-editor-preview-list.png)
 </details>
 
 **Dialog**: represents pop-up interfaces used for confirmations, alerts, or additional inputs. Styled similarly to Panels and Sub-Panels, Dialogs are designed for clear and concise communication with easily accessible actions.
 <details>
 <summary>Dialog Preview</summary>
+
 ![](img/theme/theme-editor-preview-dialog.png)
 </details>
 
