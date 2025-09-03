@@ -8,23 +8,23 @@ Compatibility tables
 
 This document gives a non exhaustive list of architectures and infrastructure components the Simplicité platform is compliant with.
 
-Containers deployments (Docker and PaaS)
-----------------------------------------
+Containers deployments
+----------------------
 
 The **ideal** / **preferred** deployment model is to deploy Simplicité platform as **Docker&reg; container(s)**
-from our standard pre-built images available on [DockerHub](https://hub.docker.com/r/simplicite/) or from custom images that you build to fit your needs.
+from our standard Docker images available or from custom images that you build to fit your needs.
 See [this document](/docs/operation/docker) for details.
 
-It is also possible to deploy it as managed application container(s) on a wide range of platforms as a service (**PaaS**) such as:
+:::info
+Our standard Docker images are built using the **most recent** up-to-date versions of the bellow OS, JVM and application servers.
+:::
 
-- Any CloudFoundry flavor (see. [this document](/docs/operation/cloudfoundry) for details))
-- AWS ElasticBeanstalk (see. [this document](/docs/operation/aws-elasticbeanstalk) for details))
-- Heroku (see. [this document](/docs/operation/heroku) for details))
-- Openshift (see. [this document](/docs/operation/openshift) for details))
-Etc.
-
-In both cases you will need an external database service - custom or as a service (DBaaS).
-See the "Databases" section for details on Simplicité database compliances.
+Note that it is also still possible to deploy it as managed application container(s) on a wide range of platforms as a service (**PaaS**) such as
+CloudFoundry flavor (see. [this document](/docs/operation/cloudfoundry) for details),
+AWS ElasticBeanstalk (see. [this document](/docs/operation/aws-elasticbeanstalk) for details),
+Heroku (see. [this document](/docs/operation/heroku) for details),
+Openshift (see. [this document](/docs/operation/openshift) for details),
+etc.
 
 Custom deployments
 ------------------
@@ -55,8 +55,6 @@ Our **recommended** OS family for production is Linux.
 > **Note**: Whichever OS you use, you **MUST** use keep it **up-to-date**.
 
 The OS can run either on **physical** or **virtual** servers or in Docker&reg; **containers**.
-
-It is also possible to deploy Simplicité platform on **PaaS** build packs CloudFoundry&reg;, Heroku&reg;, OpenShift&reg;, etc.
 
 ### Java VM
 
