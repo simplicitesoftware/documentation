@@ -16,7 +16,8 @@ from our standard Docker images available or from custom images that you build t
 See [this document](/docs/operation/docker) for details.
 
 :::info
-Our standard Docker images are built using the **most recent** up-to-date versions of the bellow OS, JVM and application servers.
+Our standard Docker images are built using the **most recent** up-to-date versions of the bellow OS, Java VM and application servers
+for considered Simplicité version.
 :::
 
 Note that it is also still possible to deploy it as managed application container(s) on a wide range of platforms as a service (**PaaS**) such as
