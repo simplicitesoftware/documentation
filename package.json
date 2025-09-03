@@ -21,11 +21,11 @@
     "@docusaurus/preset-classic": "^3.8.1",
     "@docusaurus/theme-mermaid": "^3.8.1",
     "@docusaurus/theme-search-algolia": "^3.8.1",
-    "@fortawesome/fontawesome-svg-core": "^7.0.0",
-    "@fortawesome/free-brands-svg-icons": "^7.0.0",
-    "@fortawesome/free-solid-svg-icons": "^7.0.0",
-    "@fortawesome/react-fontawesome": "^0.2.3",
-    "@mdx-js/react": "^3.1.0",
+    "@fortawesome/fontawesome-svg-core": "^7.0.1",
+    "@fortawesome/free-brands-svg-icons": "^7.0.1",
+    "@fortawesome/free-solid-svg-icons": "^7.0.1",
+    "@fortawesome/react-fontawesome": "^3.0.2",
+    "@mdx-js/react": "^3.1.1",
     "clsx": "^2.1.1",
     "docusaurus-plugin-image-zoom": "^3.0.1",
     "prism-react-renderer": "^2.4.1",
@@ -37,7 +37,7 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.8.1",
     "@docusaurus/types": "^3.8.1",
-    "npm-check-updates": "^18.0.2"
+    "npm-check-updates": "^18.0.3"
   },
   "browserslist": {
     "production": [
