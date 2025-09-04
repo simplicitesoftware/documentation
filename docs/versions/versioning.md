@@ -11,7 +11,7 @@ title: Release strategy
 
 Simplicité follows a flavour of **semantic versioning**.
 
-A `major.minor.revision` (eg. `6.1.21`) numbering system is used where:
+A `major.minor.revision` (eg. `6.2.15`) numbering system is used where:
 
 - the `major` number is incremented for **new features with major breaking changes**
 - the `minor` number is incremented for **new features** without major breaking changes
