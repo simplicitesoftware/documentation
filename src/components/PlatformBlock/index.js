@@ -44,20 +44,20 @@ export default function PlatformBlock({
 
   function prettierDate(date) {
     if (!date) return 'N/A';
-    
+
     try {
         const d = new Date(date);
         if (isNaN(d.getTime())) return date; // Return original if parsing fails
-        
+
         const months = [
             'January', 'February', 'March', 'April', 'May', 'June',
             'July', 'August', 'September', 'October', 'November', 'December'
         ];
-        
+
         const month = months[d.getMonth()];
         const day = d.getDate();
         const year = d.getFullYear();
-        
+
         return `${month} ${day} of ${year}`;
     } catch (e) {
         console.error('Error formatting date:', e);
@@ -83,6 +83,9 @@ export default function PlatformBlock({
         break;
       case "alpha":
         res = "🚧 Alpha";
+        break;
+      case "beta":
+        res = "🚧 Beta";
         break;
       case "expired":
         res = "❌ Expired";
@@ -121,8 +124,8 @@ export default function PlatformBlock({
         <div className={styles.type}>
           <span>{prettierType(maintenance, supportType)}</span>
         </div>
-        <button 
-          onClick={scrollToTop} 
+        <button
+          onClick={scrollToTop}
           className={styles.backToTopButton}
         >
           ↑
