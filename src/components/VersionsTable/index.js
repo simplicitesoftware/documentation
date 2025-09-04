@@ -27,11 +27,14 @@ export default function VersionsTable({
             case "alpha":
                 maintenance = "🚧 Alpha";
                 break;
+            case "beta":
+                maintenance = "🚧 Beta";
+                break;
             case "expired":
                 maintenance = "❌ Expired";
                 break;
             default:
-                maintenance = "Not Applicable";
+                maintenance = "N/A";
                 break;
         }
         return maintenance;
