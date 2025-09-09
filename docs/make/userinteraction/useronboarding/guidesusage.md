@@ -9,7 +9,7 @@ title: Guides Usage
 
 In Simplicité [version 6.3](/versions/release-notes/v6-3), **Guides Usage** provides visibility into how onboarding guides are actually used by end-users.  
 
-It tracks **who played a guide, when, and how far they went**, and aggregates this data into **[pivot tables](/userinterface/objectsrendering/pivot-table)** for managers or administrators.  
+It tracks **who played a guide, when, and how far they went**, and aggregates this data into **[pivot tables](/make/userinterface/objectsrendering/pivot-table)** for managers or administrators.  
 
 With Guides Usage, you can:
 - Measure **adoption of guides** after a release.  
