@@ -6,7 +6,7 @@ title: User guides
 # User Guides
 
 ## What is a User Guide?
-In Simplicité, a **User Guide** is an interactive tour designed to onboard users and help them understand how to use the application.  
+In Simplicité [version 6.3](/versions/release-notes/v6-3), a **User Guide** is an interactive tour designed to onboard users and help them understand how to use the application.  
 A guide can walk the user through various parts of the UI, highlighting steps, actions, and interactions.
 
 User Guides can be:
