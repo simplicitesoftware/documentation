@@ -48,8 +48,8 @@ To create a guide using Guide Recorder:
 ### Tips for Effective Guides
 
 - Keep instructions **concise and clear**.  
-- Highlight only **necessary elements** to avoid clutter.  
-- Test the guide in **preview mode** to ensure steps execute correctly.  
+- Highlight only **necessary elements** to avoid confusion.  
+- Test the guide to ensure steps execute correctly.  
 
 ## Managing Guides
 
@@ -57,7 +57,7 @@ After recording steps:
 
 - **Edit Steps** – modify titles, descriptions, or actions if needed.  
 - **Reorder Steps** – change the sequence of the guide if necessary.  
-- **Preview the Guide** – simulate the guide as an end-user to verify clarity.  
+- **Test the Guide** – simulate the guide as an end-user to verify clarity.  
 - **Publish** – make the guide available to end-users.  
 
 

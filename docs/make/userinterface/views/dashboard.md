@@ -78,3 +78,6 @@ $("#myWidget").addClass("js-view-filters").on("ui.view.filters", (e,filters) => 
 });
 ```
 
+## Learn more
+
+- [Widgets](/docs/misc/widgets)
