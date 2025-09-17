@@ -49,6 +49,12 @@ const config = {
   plugins: [
     require.resolve('docusaurus-plugin-image-zoom')
   ],
+  scripts: [
+    {
+      src: '/js/custom.js',
+      async: true,
+    },
+  ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
