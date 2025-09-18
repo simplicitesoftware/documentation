@@ -121,13 +121,13 @@ Databases
 Web browsers
 ------------
 
-| ![](https://platform.simplicite.io/logos/logo125.png) | Edge (1) |Firefox (1) | Chrome (1) | Safari (1) | IE11    |
-|:-----------------------------------------------------:|----------|------------|------------|------------|---------|
-| Alpha 7.0                                             | yes      | yes        | yes        | yes        | no      |
-| Alpha 6.3, **6.2** and legacy 6.x                     | yes      | yes        | yes        | yes        | no      |
-| **5.3** and legacy 5.x                                | yes      | yes        | yes        | yes        | no      |
-| Legacy 4.0                                            | yes      | yes        | yes        | yes        | yes (2) |
-| Legacy 3.x                                            | yes      | yes        | yes        | yes        | yes     |
+| ![](https://platform.simplicite.io/logos/logo125.png) | ECMAScript    | Edge (1) |Firefox (1) | Chrome (1) | Safari (1) | IE11    |
+|:-----------------------------------------------------:|---------------|----------|------------|------------|------------|---------|
+| Alpha 7.0                                             | ES2024 (ES15) | yes      | yes        | yes        | yes        | no      |
+| Alpha 6.3, **6.2** and legacy 6.x                     | ES2022 (ES13) | yes      | yes        | yes        | yes        | no      |
+| **5.3** and legacy 5.x                                | ES2020 (ES11) | yes      | yes        | yes        | yes        | no      |
+| Legacy 4.0                                            | ES2015 (ES6)  | yes      | yes        | yes        | yes        | yes (2) |
+| Legacy 3.x                                            | ES2009 (ES5)  | yes      | yes        | yes        | yes        | yes     |
 
-1. Up to date version only (recent previous versions are not supported but should work)
+1. Up to date version only (recent previous versions are not supported but should work, just make sur the version you use is compliant with specified ECMAScript version).
 2. Not recommended, not tested and not supported. You may experience poor performances and/or visual/functional issues, IE11 is officially retired on June 6th 2022.
