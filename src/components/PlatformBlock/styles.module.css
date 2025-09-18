@@ -253,7 +253,7 @@
 /* ---------------- *
     Specificities
  * ---------------- */
-.alpha {
+.alpha, .beta {
   background: var(--blue_bg);
   color: var(--blue_txt);
 }
@@ -261,7 +261,7 @@
   background: var(--purple_bg);
   color: var(--purple_txt);
 }
-.active {
+.active, .current {
   background: var(--green_bg);
   color: var(--green_txt);
 }
