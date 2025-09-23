@@ -14,6 +14,12 @@ To ask for a new feature, please use the ["Feature Request" category in our foru
 
 :::
 
+:::warning
+
+At this stage, the `v7.0` roadmap is very indicative and subject to change. This version's R&D effort is primarily focused on engine improvements and refactors, laying the groundwork for technical improvements.
+
+:::
+
 
 <Roadmap/>
 
