@@ -42,6 +42,8 @@ The versions indicated below are to be considered as **minimal** versions on whi
 Some of them are now outdated and **should not** be considered as recommended versions.
 Using such old versions is likely to be a source of potentially tricky problems that you would not have with up-to-date components.
 
+The minor version in **bold** are the current and maintained Simplicité minor versions.
+
 ### OS
 
 Any OS on which a suitable Java JVM is officially available. This includes:
@@ -53,7 +55,9 @@ Any OS on which a suitable Java JVM is officially available. This includes:
 
 Our **recommended** OS family for production is Linux.
 
-> **Note**: Whichever OS you use, you **MUST** use keep it **up-to-date**.
+:::tip
+**Note**: Whichever OS you use, you **MUST** use keep it **up-to-date**.
+:::
 
 The OS can run either on **physical** or **virtual** servers or in Docker&reg; **containers**.
 
@@ -64,9 +68,9 @@ The following table only indicates the **LTS (Long Term Support)** JVM versions.
 | ![](https://platform.simplicite.io/logos/logo125.png) | JVM 1.8 | JVM 11  | JVM 17  | JVM 21  | JVM 25  |
 |:-----------------------------------------------------:|---------|---------|---------|---------|---------|
 | Alpha 7.0                                             | no      | no      | yes (1) | yes (1) | **yes** |
-| Alpha 6.3 and **6.2**                                 | no      | no      | yes (1) | **yes** | yes (1) |
+| Beta 6.3 and current **6.2**                          | no      | no      | yes (1) | **yes** | yes (1) |
 | Legacy 6.x                                            | no      | yes (1) | yes (1) | **yes** | yes (1) |
-| **5.3** and legacy 5.x                                | no      | yes (1) | **yes** | yes (1) | yes (1) |
+| Maintained **5.3** and legacy 5.x                     | no      | yes (1) | **yes** | yes (1) | yes (1) |
 | Legacy 4.0                                            | no      | yes (1) | **yes** | yes (1) | yes (1) |
 | Legacy 3.2                                            | yes (1) | **yes** | yes (1) | yes (1) | yes (1) |
 | Legacy 3.1                                            | yes (1) | **yes** | yes (1) | yes (1) | yes (1) |
@@ -74,18 +78,20 @@ The following table only indicates the **LTS (Long Term Support)** JVM versions.
 
 1. Not tested and not supported but should work.
 
-In **bold** the current and maintained Simplicité minor version for considered major version.
+The "yes" in **bold** also denotes the JVM version included in our default Docker images.
 
-> **Note**: Whichever JVM version you use, you **MUST** always use its **up-to-date release**.
-> Only these up-to-date releases are tested and supported.
+:::tip
+**Note**: Whichever JVM version you use, you **MUST** always use its **up-to-date release**.
+Only these up-to-date releases are tested and supported.
+:::
 
 ### Application servers
 
 | ![](https://platform.simplicite.io/logos/logo125.png) | Web profile (1) | Webapp |
 |:-----------------------------------------------------:|-----------------|--------|
 | Alpha 7.0                                             | JakartaEE 11    | 6.1    |
-| Alpha 6.3, **6.2** and legacy 6.x                     | JEE 8           | 4.0    |
-| **5.3** and legacy 5.x                                | JEE 8           | 4.0    |
+| Beta 6.3, current **6.2** and legacy 6.x              | JEE 8           | 4.0    |
+| Maintained **5.3** and legacy 5.x                     | JEE 8           | 4.0    |
 | Legacy 4.0                                            | JEE 8           | 4.0    |
 | Legacy 3.2                                            | JEE 7           | 3.1    |
 | Legacy 3.1                                            | JEE 6           | 3.1    |
@@ -98,8 +104,10 @@ The webapp implementation we recommend are:
 - **Webapp 6.1** (JakartaEE): Apache Tomcat&reg; 11.0.x
 - **Webapp 4.0** (JEE): Apache Tomcat&reg; 9.0.x
 
-> **Note**: Whichever application server version you use, you **MUST** use its  **up-to-date maintenance release**.
-> Only these up-to-date releases are tested and supported.
+:::tip
+**Note**: Whichever application server version you use, you **MUST** use its  **up-to-date maintenance release**.
+Only these up-to-date releases are tested and supported.
+:::
 
 Databases
 ---------
@@ -107,27 +115,33 @@ Databases
 | ![](https://platform.simplicite.io/logos/logo125.png) | PostgreSQL | MySQL | Oracle   | SQLServer |
 |:-----------------------------------------------------:|------------|-------|----------|-----------|
 | Alpha 7.0                                             | 17+        | 8+    | 23c+     | 2022+     |
-| Alpha 6.3, **6.2** and legacy 6.x                     | 13+        | 8+    | 19c+     | 2019+     |
-| **5.3** and legacy 5.x                                | 13+        | 8+    | 19c+     | 2019+     |
+| Beta 6.3, current **6.2** and legacy 6.x              | 13+        | 8+    | 19c+     | 2019+     |
+| Maintained **5.3** and legacy 5.x                     | 13+        | 8+    | 19c+     | 2019+     |
 | Legacy 4.0                                            | 10+        | 5.5+  | 12c+     | 2016+     |
 | Legacy 3.2                                            | 9+         | 5.1+  | 11g+     | 2012+     |
 | Legacy 3.1                                            | 9+         | 5.1+  | 11g+     | 2012+     |
 | Legacy 3.0                                            | 9+         | 5.1+  | 10g+     | 2008+     |
 
-> **Note**: The above versions are not the **recommended** version but the **minimal** versions on which the platform is supposed to run.
-> Whichever database server you use, you **SHOULD** use an **up-to-date release version** instead of the above minimal versions.
-> Only the specified release versions are tested and supported (older versions than specified may work in some cases but we don't provide support if you use them).
+:::tip
+**Note**: The above versions are not the **recommended** version but the **minimal** versions on which the platform is supposed to run.
+Whichever database server you use, you **SHOULD** use an **up-to-date release version** instead of the above minimal versions.
+Only the specified release versions are tested and supported (older versions than specified may work in some cases but we don't provide support if you use them).
+:::
 
 Web browsers
 ------------
 
-| ![](https://platform.simplicite.io/logos/logo125.png) | ECMAScript    | Edge (1) |Firefox (1) | Chrome (1) | Safari (1) | IE11    |
-|:-----------------------------------------------------:|---------------|----------|------------|------------|------------|---------|
-| Alpha 7.0                                             | ES2024 (ES15) | yes      | yes        | yes        | yes        | no      |
-| Alpha 6.3, **6.2** and legacy 6.x                     | ES2022 (ES13) | yes      | yes        | yes        | yes        | no      |
-| **5.3** and legacy 5.x                                | ES2020 (ES11) | yes      | yes        | yes        | yes        | no      |
-| Legacy 4.0                                            | ES2015 (ES6)  | yes      | yes        | yes        | yes        | yes (2) |
-| Legacy 3.x                                            | ES2009 (ES5)  | yes      | yes        | yes        | yes        | yes     |
+| ![](https://platform.simplicite.io/logos/logo125.png) | _ECMAScript_    | Edge (1) |Firefox (1) | Chrome (1) | Safari (1) | IE11    |
+|:-----------------------------------------------------:|-----------------|----------|------------|------------|------------|---------|
+| Alpha 7.0                                             | _ES2024 (ES15)_ | yes      | yes        | yes        | yes        | no      |
+| Beta 6.3, current **6.2** and legacy 6.x              | _ES2022 (ES13)_ | yes      | yes        | yes        | yes        | no      |
+| Maintained **5.3** and legacy 5.x                     | _ES2020 (ES11)_ | yes      | yes        | yes        | yes        | no      |
+| Legacy 4.0                                            | _ES2015 (ES6)_  | yes      | yes        | yes        | yes        | yes (2) |
+| Legacy 3.x                                            | _ES2009 (ES5)_  | yes      | yes        | yes        | yes        | yes     |
 
 1. Up to date version only (recent previous versions are not supported but should work, just make sur the version you use is compliant with specified ECMAScript version).
 2. Not recommended, not tested and not supported. You may experience poor performances and/or visual/functional issues, IE11 is officially retired on June 6th 2022.
+
+:::tip
+**Note**: Whichever web browser you use, you **MUST** keep it **up-to-date**.
+:::
