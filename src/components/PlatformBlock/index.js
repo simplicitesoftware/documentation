@@ -43,7 +43,7 @@ export default function PlatformBlock({
   }
 
   function prettierDate(date) {
-    if (!date) return 'N/A';
+    if (!date) return "N/A";
 
     try {
         const d = new Date(date);
@@ -68,6 +68,15 @@ export default function PlatformBlock({
   function prettierType(m, s) {
     let res;
     switch (m) {
+      case "alpha":
+        res = "🚧 Alpha";
+        break;
+      case "beta":
+        res = "🚧 Beta";
+        break;
+      case "current":
+        res = "✅ Current";
+        break;
       case "active":
         switch (s) {
           case "shortterm":
@@ -77,21 +86,15 @@ export default function PlatformBlock({
             res = "☑️ Long Term";
             break;
           default:
-            res = "✅ Current";
+            res = "Unknown maintenance type";
             break;
         }
-        break;
-      case "alpha":
-        res = "🚧 Alpha";
-        break;
-      case "beta":
-        res = "🚧 Beta";
         break;
       case "expired":
         res = "❌ Expired";
         break;
       default:
-        res = "Unknown Support";
+        res = "Unknown support type";
         break;
     }
     return res;

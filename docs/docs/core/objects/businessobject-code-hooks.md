@@ -73,7 +73,7 @@ they just allow to **restrict** these rights depending on more complex business 
 
 **Example:**
 
-```java
+```simplicite-java
 @Override
 public boolean isCreateEnable() {
 	// In this example we check the status of parent object to allow/disallow creation  
@@ -362,7 +362,7 @@ Only error message(s) prevents the actual saving of the record.
 
 **Examples:**
 
-```java
+```simplicite-java
 @Override
 public List<String> preValidate() {
 	List<String> msgs = new ArrayList<String>();
@@ -527,7 +527,7 @@ Post search hook is called after search to add specific code for instance to eva
 
 **Examples:**
 
-```Java
+```simplicite-java
 @Override
 public void preSearch() {
 	getField("objField1").setFilter("is null or <1000");

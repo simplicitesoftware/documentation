@@ -28,7 +28,7 @@ To do so, follow the steps below :
 
 Implement the `TrnProductTest` class like so : 
 
-```java title=TrnProductTest.java
+```simplicite-java title=TrnProductTest.java
 package com.simplicite.tests.Training;
 
 import static org.junit.Assert.assertEquals;
@@ -37,10 +37,9 @@ import static org.junit.Assert.fail;
 import org.json.JSONObject;
 import org.junit.Test;
 
-import com.simplicite.bpm.*;
-import com.simplicite.util.*;
-import com.simplicite.util.exceptions.*;
-import com.simplicite.util.tools.*;
+import com.simplicite.util.Grant;
+import com.simplicite.util.ObjectDB;
+import com.simplicite.util.ObjectField;
 
 /**
  * Unit tests for the TrnProduct business object

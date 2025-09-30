@@ -100,9 +100,6 @@ export default function Roadmap({}) {
   const itemsByVersion = groupItemsByVersion(data.table);
   const versionHeights = getVersionRowHeights();
 
-  console.log("Items groupés par version:", itemsByVersion);
-  console.log("Hauteurs calculées:", versionHeights);
-
   return (
     <>
       <div className={styles.roadmapHeader}>
@@ -125,7 +122,7 @@ export default function Roadmap({}) {
               >
                 <span className={styles.versionText}>{version}</span>
                 <span className={styles.versionChevron}>
-                  {collapsedVersions.has(version) ? "\u2B9E" : "\u2B9F"}
+                  {collapsedVersions.has(version) ? "▶️" : "🔽"} {/* \u2B9E & \u2B9F aren't working on MACOS*/}
                 </span>
               </div>
             ))}

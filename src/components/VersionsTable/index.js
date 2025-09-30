@@ -11,6 +11,15 @@ export default function VersionsTable({
     function prettierMaintenance(m, st) {
         let maintenance;
         switch (m) {
+            case "alpha":
+                maintenance = "🚧 Alpha";
+                break;
+            case "beta":
+                maintenance = "🚧 Beta";
+                break;
+            case "current":
+                maintenance = "✅ Current";
+                break;
             case "active":
                 switch (st) {
                     case "shortterm":
@@ -20,15 +29,9 @@ export default function VersionsTable({
                         maintenance = "☑️ Maintained (*)";
                         break;
                     default:
-                        maintenance = "✅ Current";
+                        maintenance = "N/A";
                         break;
                 }
-                break;
-            case "alpha":
-                maintenance = "🚧 Alpha";
-                break;
-            case "beta":
-                maintenance = "🚧 Beta";
                 break;
             case "expired":
                 maintenance = "❌ Expired";
@@ -141,8 +144,8 @@ export default function VersionsTable({
                         <th>Release Note</th>
                         <th>Status</th>
                         <th>Support Type</th>
-                        <th>First Release Date</th>
-                        <th>Last Release Date</th>
+                        <th>Initial Release Date</th>
+                        <th>Last Build Date</th>
                         <th>Maintenance End Date</th>
                     </tr>
                 </thead>

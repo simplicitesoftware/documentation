@@ -222,7 +222,7 @@ Asynchronous action launched by the UI with tracking
 
 Since 6.0 the method signature can get a new parameter to implement the tracking:
 
-```java
+```simplicite-java
 public String myAction(Action action, AsyncTracker tracker) {
 	try {
 		// Already running ?

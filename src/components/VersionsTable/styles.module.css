@@ -21,7 +21,7 @@
 }
 
 table {
-    .alpha {
+    .alpha, .beta {
         background: var(--blue_overlay) !important;
     }
 
@@ -29,7 +29,7 @@ table {
         background: var(--purple_overlay) !important;
     }
 
-    .active {
+    .active, .current {
         background: var(--green_overlay) !important;
     }
 

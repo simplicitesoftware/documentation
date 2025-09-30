@@ -21,7 +21,7 @@ To add a Pivot table to the TrnOrder Business object, follow the steps below :
 2. In the **Pivot tables** list linked to the Business object, click **Create**  
     ![](img/pivot-table/create-pivot.png)
 3. Fill in the Pivot table information like so :
-    - Name : **TrnOrderPt**
+    - Name : **TrnOrderTc**
     - Default function : **Sum**
     - *other required values should be set by default*  
     ![](img/pivot-table/pivot-data.png)

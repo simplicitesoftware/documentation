@@ -17,11 +17,11 @@ def fetch_data():
             for v, d in data.items():
                 vmap[v] = d
 
-        return vmap 
+        return vmap
     except Exception as e:
         print(f"Error fetching data: {e}")
         return None
-    
+
 def get_java_resources(data):
     java = {
         "base": [],
@@ -30,7 +30,7 @@ def get_java_resources(data):
     }
 
     resources = data["resources"]
-    
+
     if 'doc' in resources:
         java["base"].append({"name":"Documentation", "url":resources["doc"]["java"]})
     if 'dependencies' in resources:
@@ -41,7 +41,7 @@ def get_java_resources(data):
         mav = resources["maven"]
         java["base"].append({"name":"Maven Site", "url":mav["site"]})
         java["base"].append({"name":"Maven Repo", "url":mav["repository"]})
-    
+
     return java
 
 def get_js_resources(data):
@@ -52,13 +52,13 @@ def get_js_resources(data):
 
     if 'doc' in resources:
         js["base"].append({"name":"Documentation", "url":resources["doc"]["js"]})
-    
+
     if 'dependencies' in resources:
         deps = resources["dependencies"]
         js["base"].append({"name":"Dependencies", "url":deps["js"]})
         js["base"].append({"name":"Licenses", "url":deps["js_licenses"]})
 
-    return js 
+    return js
 
 def get_audit_resources(data):
     audit = {
@@ -107,7 +107,7 @@ def versions_array(versions):
             data['support_type'] = "N/A"
         if data['initial_release_date'] == None:
             data['initial_release_date'] = "N/A"
-            
+
         version_obj = {
             'version': version,
             'maintenance': data['maintenance'],
@@ -116,18 +116,18 @@ def versions_array(versions):
             'latestPatch': data['version'],
             'patchDate': data['date']
         }
-        
+
         # Add maintenance_end_date if it exists
         if 'maintenance_end_date' in data:
             version_obj['endDate'] = data['maintenance_end_date']
         else:
             version_obj['endDate'] = "N/A"
-            
+
         v.append(version_obj)
     return v
 
 def generate_block(version, maintenance, supportType, lastDate, release, firstDate, javaResources, jsResources, auditResources, dockerInfo):
-    """Generate the PlatformBlock component for the given informations"""    
+    """Generate the PlatformBlock component for the given information"""
     return f'<PlatformBlock version="{version}" maintenance="{maintenance}" supportType="{supportType}" lastDate="{lastDate}" release="{release}" firstDate="{firstDate}" javaResources={{{javaResources}}} jsResources={{{jsResources}}} auditResources={{{auditResources}}} dockerInfo={{{dockerInfo}}}/>\n'
 
 def generate_markdown():
@@ -136,7 +136,7 @@ def generate_markdown():
     if not versions:
         print("Failed to fetch versions data.")
         return
-    
+
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
@@ -146,7 +146,7 @@ def generate_markdown():
         f.write("<div>\n\n")
         for version, data in versions.items():
             f.write(f"<div>\n## {prettier_anchor(version, data['maintenance'], data['support_type'])}\n</div>\n\n")
-            
+
             # Format and write the PlatformBlock component
             block = generate_block(
                 version,
@@ -162,9 +162,9 @@ def generate_markdown():
             )
 
             f.write(f"{block}\n\n")
-        
+
         f.write("</div>\n\n")
-        
+
         print(f"Successfully generated {OUTPUT_FILE} with {len(versions)} versions.")
 
 def generate_header():
@@ -174,16 +174,20 @@ def generate_header():
 def prettier_anchor(version, maintenance, supportType):
     """Generate a prettier anchor for the version."""
     anchor = f"{version} {maintenance}-{supportType}"
-    
+
     if maintenance == "alpha":
         anchor = f"🚧 {version} Alpha"
+    elif maintenance == "beta":
+        anchor = f"🚧 {version} Beta"
+    elif maintenance == "current":
+        anchor = f"✅ {version} Current"
     elif maintenance == "active":
         if supportType == "longterm":
             anchor = f"☑️ {version} Long Term Release"
         elif supportType == "shortterm":
-            anchor = f"☑️ {version} Short Term Release" 
+            anchor = f"☑️ {version} Short Term Release"
         else:
-            anchor = f"✅ {version} Current"
+            anchor = f"N/A"
     elif maintenance == "expired":
         anchor = f"❌ {version}"
         if supportType == "longterm":
@@ -191,8 +195,8 @@ def prettier_anchor(version, maintenance, supportType):
         elif supportType == "shortterm":
             anchor += " STS"
         anchor += " Expired"
-            
+
     return anchor
-    
+
 if __name__ == "__main__":
     generate_markdown()

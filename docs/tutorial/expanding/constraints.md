@@ -14,7 +14,7 @@ In Simplicité, constraints allow to enforce business rules by dynamically contr
 ## Adding a Constraint to the Order Business Object
 
 Create a Constraint to implement the following business rule : 
-*The order quantity can only be updated on a rew record and at the "Pending" state*
+*The order quantity can only be updated on a new record and at the "Pending" state*
 
 To do so, follow the steps below : 
 1. In the **Business objects > Business objects** menu, open **TrnOrder**
