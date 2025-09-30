@@ -47,7 +47,7 @@ Then, we add the following code to the object, To make the object **really minim
 - the class name
 - the group / type correspondence in the `postSave`
 
-```java
+```simplicite-java
 package com.simplicite.objects.SimFeatures;
 
 import java.util.*;
