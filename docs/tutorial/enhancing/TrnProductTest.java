@@ -6,10 +6,9 @@ import static org.junit.Assert.fail;
 import org.json.JSONObject;
 import org.junit.Test;
 
-import com.simplicite.bpm.*;
-import com.simplicite.util.*;
-import com.simplicite.util.exceptions.*;
-import com.simplicite.util.tools.*;
+import com.simplicite.util.Grant;
+import com.simplicite.util.ObjectDB;
+import com.simplicite.util.ObjectField;
 
 /**
  * Unit tests for the TrnProduct business object

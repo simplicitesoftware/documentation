@@ -15,7 +15,7 @@ Notifications allow to alert users, via different channels, when an event linked
 
 To create a notification for a Validated Order, follow the steps below :
 
-1. In the **Settings > Notifications** menu, click **Create**
+1. In the **User interaction > Notifications > Notifications** menu, click **Create**
     ![](img/notifications/create.png)
 2. Fill in the **Notification** fields like so :
     - Name : **TrnOrderValidated**

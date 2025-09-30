@@ -65,7 +65,7 @@ Make sure you have downloaded the generated file
 
 Follow the steps in [1.4. Creating a User > Adding designer to TRN_SUPERADMIN](/tutorial/getting-started/user#designer-superadmin) to re-create the Responsibilities for `designer` and `usertest` 
 
-Clear the platform's cache and log in with `deisgner`
+Clear the platform's cache and log in with `designer`
 
 :::tip[Success]
 - Your application configuration is now safely exported and can be imported into another instance

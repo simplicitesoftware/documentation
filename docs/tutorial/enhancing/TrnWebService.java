@@ -1,10 +1,15 @@
 package com.simplicite.extobjects.Training;
 
-import java.util.*;
-import org.json.*;
-import com.simplicite.util.*;
-import com.simplicite.util.exceptions.*;
-import com.simplicite.util.tools.*;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.simplicite.util.AppLog;
+import com.simplicite.util.ObjectDB;
+import com.simplicite.util.exceptions.HTTPException;
+import com.simplicite.util.exceptions.SearchException;
+import com.simplicite.util.tools.Parameters;
 
 /**
  * REST service external object TrnWebService
@@ -32,9 +37,9 @@ public class TrnWebService extends com.simplicite.webapp.services.RESTServiceExt
 	 */
 	@Override
 	public Object get(Parameters params) throws HTTPException {
-		ObjectDB supplier;
+		ObjectDB supplier = new ObjectDB();
 		try {
-			supplier = getGrant().getTmpObject("TrnSupplier"); // Borrow an API object instance from the pool (ZZZ must be returned, see below)
+			supplier = borrowAPIObject("TrnSupplier"); // Borrow an API object instance from the pool (ZZZ must be returned, see below)
 
 			// Initialize response object with empty results
 			JSONObject results = new JSONObject()
