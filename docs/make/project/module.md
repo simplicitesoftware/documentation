@@ -69,6 +69,22 @@ Configuration
 | Prefix   | Prefix (e.g. trigram) used for naming conventions                        |
 | Settings | JSON object used to link to module to a remote URL, see in-app help      |
 
+### Modules types
+
+There are several module types:
+
+- **Simplicité modules** : those are reserved for official Simplicité modules, you should not create nor edit modules of thoses types
+    - System : core modules
+    - Add-On : some are provided by default, others through the AppStore
+- **Multi-module** apps. Modules of this kind offer specific functionality through the [Application object](/make/project/application).
+    - Application 
+- **Standard modules** : interchangeablen types, provided for filtering purposes, with no associated functionality
+    - App component
+    - Common
+    - Toolbox
+    - Services
+    - Data
+
 ## Read more
 
 - [Managing Git repositories](/docs/integration/webservices/git-repositories)
