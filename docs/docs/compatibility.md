@@ -114,7 +114,7 @@ Databases
 
 | ![](https://platform.simplicite.io/logos/logo125.png) | PostgreSQL | MySQL | Oracle   | SQLServer |
 |:-----------------------------------------------------:|------------|-------|----------|-----------|
-| Alpha 7.0                                             | 17+        | 8+    | 23c+     | 2022+     |
+| Alpha 7.0                                             | 18+        | 9+    | 23ai+    | 2025+     |
 | Beta 6.3, current **6.2** and legacy 6.x              | 13+        | 8+    | 19c+     | 2019+     |
 | Maintained **5.3** and legacy 5.x                     | 13+        | 8+    | 19c+     | 2019+     |
 | Legacy 4.0                                            | 10+        | 5.5+  | 12c+     | 2016+     |
@@ -123,9 +123,9 @@ Databases
 | Legacy 3.0                                            | 9+         | 5.1+  | 10g+     | 2008+     |
 
 :::tip
-**Note**: The above versions are not the **recommended** version but the **minimal** versions on which the platform is supposed to run.
-Whichever database server you use, you **SHOULD** use an **up-to-date release version** instead of the above minimal versions.
-Only the specified release versions are tested and supported (older versions than specified may work in some cases but we don't provide support if you use them).
+**Note**: The above versions are the **recommended** minimal versions.
+Only these versions are tested and supported. Older versions may also work but we don't provide support if you use them.
+Whichever database server you use, you **SHOULD** use an **up-to-date release version**.
 :::
 
 Web browsers
@@ -140,7 +140,7 @@ Web browsers
 | Legacy 3.x                                            | _ES2009 (ES5)_  | yes      | yes        | yes        | yes        | yes     |
 
 1. Up to date version only (recent previous versions are not supported but should work, just make sur the version you use is compliant with specified ECMAScript version).
-2. Not recommended, not tested and not supported. You may experience poor performances and/or visual/functional issues, IE11 is officially retired on June 6th 2022.
+2. Not recommended, not tested and not supported. You may experience poor performances and/or visual/functional issues (note that IE11 is officially retired on June 6th 2022).
 
 :::tip
 **Note**: Whichever web browser you use, you **MUST** keep it **up-to-date**.
