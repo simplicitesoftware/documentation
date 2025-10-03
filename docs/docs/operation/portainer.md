@@ -33,13 +33,64 @@ Sizing of the server should be made according to the needs, as always. Any up-to
 
 </details>
 
+## 2) System configuration
+
+### Firewall
+
+Installing a local firewall is **highly recommended**, for instance by issuing the following commands:
+
+```bash
+sudo dnf -y install firewalld && sudo dnf clean all
+sudo systemctl enable firewalld
+sudo systemctl start firewalld
+```
+
+Configuration: here it allows HTTP(S) and SSH traffic from any source:
+
+```bash
+sudo firewall-cmd --add-service=ssh --permanent
+sudo firewall-cmd --add-service=http --permanent
+sudo firewall-cmd --add-service=https --permanent
+sudo firewall-cmd --remove-service=cockpit --permanent
+sudo firewall-cmd --reload
+```
+
+Verify the configuration:
+
+```bash
+sudo firewall-cmd --list-all
+```
+
+### System time
+
+Adjust the system date and timezone to your nee, e.g.
+
+```bash
+sudo timedatectl set-timezone Europe/Paris
+```
+
+### SSH connection method
+
+It is **highly recommended** to allow only SSH connections using SSH keys
+(remember to disable password authentication after having configured the allowed SSH keys)
+
+### System updates
+
+The system **must** be up-to-date **before proceeding**:
+
+```bash
+sudo dnf update -y
+```
+
+:::tip
+The system **must** be kept up-to-date by issuing the above command regularly.
+:::
+
 ## 2) Docker Install
 
 Portainer needs docker as a requirement, so we'll install it after usual upgrades. Based on [docker CentOS install docs](https://docs.docker.com/engine/install/centos/) (adapted)
 
 ```sh
-sudo timedatectl set-timezone Europe/Paris
-sudo dnf update -y
 sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
 sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo systemctl start docker
@@ -47,15 +98,17 @@ sudo systemctl enable docker
 sudo docker run hello-world # check everything is running smoothly
 ```
 
-Portainer also needs SELinux disabled
+Portainer also needs SELinux to be disabled:
 
 ```sh
 sudo sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 sudo reboot
 ```
 
-**Note**: Optionally a firewall should be configured on the host (or among the host) to allow only the relevant traffic.
+:::note
+Optionally a firewall should be configured on the host (or among the host) to allow only the relevant traffic.
 Minimal configuration is to allow the HTTP port `80` and HTTPS port `443` (along with the SSH port `22` from legitimate origins) through this firewall.
+:::
 
 ## 3) Portainer install with lets encrypt and traefik
 
@@ -67,21 +120,15 @@ This is an adaptation of Portainer's doc "[Deploying Portainer behind Traefik Pr
 4. verify that you have access to `traefik.my.domain` and `portainer.my.domain`
 
 :::warning
-
 **Do not** use the following configuration as is, make sure to adapt all lines that are marked `ADAPT` in the configuration.
-
 :::
 
 :::tip
-
 To generate the basic auth user / pwd, you can use the following command line (doubling the `$` is required)
-
 ```
 htpasswd -bn your_user_name your_super_complex_password | sed 's/\$/$$/g'
 ```
-
 :::
-
 
 <details>
 <summary>See config</summary>
@@ -157,9 +204,7 @@ volumes:
 </details>
 
 :::info
-
 The Traefik container and the Simplicité instances have to run in the same docker network, that's why we create a "proxy" network where we'll put all our containers.
-
 :::
 
 ## 4) Configure
