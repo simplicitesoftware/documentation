@@ -76,4 +76,15 @@ They are also the default label given to a View Area when the preset search is u
     ![](img/translations/search-translation.png)
 </details>
 
+## Using the Java API
 
+You can use the `setLabel` method of the Java API to set the translations for an Object, Link, Field, Action, etc.
+
+Example : Customizing an object's label for a specific user group
+
+```simplicite-java
+public void postLoad() {
+	if (getGrant().hasResponsibility("USER_GROUP"))
+		setLabel("My Custom Object Label");
+}
+```
