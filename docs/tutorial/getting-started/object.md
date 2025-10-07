@@ -26,8 +26,9 @@ To create a Business object, follow the steps below :
 	- Prefix : **sup**  
 	![](img/object/object.png)
 3. Click **Next**
-4. Fill in the Translation for your Object :
-	- English : **Supplier|Suppliers** *NB: using "|" allows the use of the plural form (label used for lists)*
+4. Fill in the Translation (label displayed to the end user) for your Object :
+	- English Translation : **Supplier** 
+	- English Plural tranlsation : **Suppliers**
 	![](img/object/translate.png)
 5. Click **Next**
 6. Select a Function for the [previously](/tutorial/getting-started/module) created Group :

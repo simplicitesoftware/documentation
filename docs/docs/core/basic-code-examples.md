@@ -274,13 +274,13 @@ The alias of the related object table is t_logical name technical key.
 ```simplicite-java
 @Override
 public void postLoad() {
-	if (getGrant().hasResponsibility(USER_GROUP))
+	if (getGrant().hasResponsibility("USER_GROUP"))
 		setSearchSpec("t.column1='abc' or t.column2>123");
 }
 
 @Override
 public void postLoad() {
-	if (getGrant().hasResponsibility(USER_GROUP))
+	if (getGrant().hasResponsibility("USER_GROUP"))
 		setSearchSpec(getSearchSpec() + " and exists(select 1 FROM table1 where t_userAssignedId.row_id=" + getGrant().getUserId());
 }
 ```
