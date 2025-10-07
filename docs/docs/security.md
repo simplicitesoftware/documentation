@@ -147,6 +147,12 @@ because everything granted to this user is made available on the public UI compo
 Be sure to configure as _Private_ type all system parameters that holds confidential data that you don't want to be available elsewhere
 than on the server side (e.g. services credentials, passwords, ...)
 
+### Secrets
+
+If you have to manage credentials/secrets in your system parameters (e.g. username/password of your SMTP server in the `MAIL_SERVICE` system parameter) you
+**should**  pass them as environment variables and use the environment variables substitutions `[ENV:<environment variable name>]` in the configured system
+parameters to avoid storing these credentials/secrets in the database.
+
 ### Business object filtering
 
 If you have a business object with dynamic filtering rules (e.g. implemented in the `postLoad` hook based on rules on user's responsibilities and/or business object instance name),
