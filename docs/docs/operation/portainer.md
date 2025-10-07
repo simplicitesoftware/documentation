@@ -82,8 +82,17 @@ The system **must** be up-to-date **before proceeding**:
 sudo dnf update -y
 ```
 
-:::tip
-The system **must** be kept up-to-date by issuing the above command regularly.
+:::info
+
+The system **must** be kept up-to-date by either executing the above command regularly, or by setting up automatic updates. If you activate automatic reboot, make sur you have some kind of VM backup setup.
+
+```bash
+sudo dnf install dnf-automatic -y
+sudo sed -i 's/^reboot=.*/reboot=when-needed/' /etc/dnf/automatic.conf
+sudo systemctl edit --full dnf-automatic.timer
+sudo systemctl enable --now dnf-automatic.timer
+```
+
 :::
 
 ## 2) Docker Install
