@@ -24,7 +24,7 @@ In the example, the server side script just builds the static parts of the dispo
 (including the main div which will be used by the client side script):
 
 **Java**
-```Java
+```java
 import com.simplicite.webapp.HTMLPage;
 import com.simplicite.webapp.web.BootstrapWebPage;
 @Override

@@ -5,77 +5,60 @@ title: Resources
 
 # Resources
 
-## Introduction
+## What's a Resource ?
 
-When creating any [business object](/make/businessobjects/business-objects) or [external object](/make/userinterface/externalobjects/basic) of any type, you have the possibility to give it resources to pass it specific kinds of items. Resources are also used by the [disposition](/) and [business process](/) objects.
+A Resource is a file linked to a Business object, an External object, a Disposition or a Business Process.
 
-Resources has to be associated to an unique object which they'll be only available for. 
+They are a versatile component of the platform and have many use-cases.
 
-> Meaning each resource is available for its given object, and not others.
+## Resource types 
 
-## What is a resource ?
+| Type | Example use-case |
+| ------ | ----------- |
+| Image | Image file that can be used in a publication |
+| Style CSS | CSS stylesheet for customizing the UI |
+| Object icon | Icon set |
+| Javascript | Javascript file for front-end customization |
+| HTML | Used for the content of a publication |
+| Markdown | Store a Markdown file |
+| PDF | Store a PDF file in the application for use in business process|
+| File set | For an external object, it can be used to store a static web site |
+| Font | Font file for customizing the UI |
+| XML | Store an XML file |
+| JSON | Store a JSON file |
+| Other | Any other file type |
 
-A resource is an object that holds a specific item and allows other objects to access it without additional setup.
+## How to create Resources ?
 
-Resources can be of many types:
+### For a Business Object, Disposition or Business Process
+Go to the object's form and click **Create** in the **Resources** tab :
+    ![](img/resources/access-resources.png)
 
-1. Files of certain extensions
-    *Scripts*
-    - HTML
-    - Javascript
-    - CSS
-    - Markdown
-    *Configurations*
-    - JSON
-    - XML
-    *Others*
-    - PDF
+### For an External Object
+Use the **Create Resources** action button in the external object's form :
+    ![](img/resources/external-obj-create.png)
 
-2. Directories
-    - File set (`.zip` preferred)
 
-3. Visual Elements
-    - Object Icon
-    - Image (banners, gifs, illustrations, ...)
-
-4. Others
-
-## Usage
-
-Resources are created & defined at the creation of an object (Business Object, External Object, Disposition), it is done through the *Resources* part of any object's form panel (bottom tab).
-
-![](img/resources/resources_objcreate.png)
-
-1. Click **Create**
-
-2. In the form, specify the informations and values for your new resource:
-    - **Object** is automatically filled with the context object.
-    - Select the type from the **Type** dropdown.
-    - Enter the name of your resource in **Code**.
-    - **Cached?** tells if your object shall be included in the cache or not.
-    - **Module Name** should be automatically filled with the context object's module.
-    - Select the content of your resource through the fields:
-        - **Image** if your resource is of type *Image* or *Object Icon*
-        - **File** otherwise.
-    > Example values:  
-    > ![](img/resources/resources_form.png)
-
-3. Click **Save**.
-
-But you can also want to create one from the *User Interface > Resources* list:
-
-![](img/resources/resources_list.png)
-
-And from here the process is the same but ensure to properly set the **Object** and **Module Name** accordingly to avoid further issues.
-
-> We highly recommend to stick to the first process to create resources, as it ensures the correct association of *Resource* with *Object* and *Module*.
-
-## Configuration
+### Configuration
 
 | Field | Description |
 | ----- | ----------- |
-| Object | Which object is using this resource. |
-| Type | Type of the resource from ([types](#what-is-a-resource-)) |
-| Language | Written language of the resource (_'*'_ by default, otherwise `English` or `French`) |
+| Object | The Business Object, External Object, Disposition or Business Process that uses the resource |
+| Type | Type of the resource from ([types](#resource-types)) |
+| Language | Language of the resource (_'*'_ by default, otherwise `English` or `French`) |
 | Code | Name of the resource |
 | Cached? | Tells if the resource is included in the cache or not (**No** by default) |
+
+## Using the Java API
+
+The main methods used to access a Resource are :
+- `HTMLTool.getResourceHTMLContent(Grant g, String code)`
+- `HTMLTool.getResourceCSSContent(Grant g, String code)`
+- `HTMLTool.getResourceJSContent(Grant g, String code)`
+- See the Javadoc for more details
+
+## Read more
+
+- [Using resources in an External object](/docs/core/externalobject-code-examples)
+- [Custom disposition using resources](/docs/core/disposition-code-examples)
+- [Using a resource in a publication](/docs/integration/publications/pdf)

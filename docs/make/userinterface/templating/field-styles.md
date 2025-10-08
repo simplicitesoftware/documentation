@@ -83,3 +83,4 @@ public String getStyle(ObjectField field, String[] row) {
 ## Read more
 
 - [Style hook in Business object hooks](/docs/core/objects/businessobject-code-hooks#style-hook)
+- [Resources](/make/userinterface/resources)
