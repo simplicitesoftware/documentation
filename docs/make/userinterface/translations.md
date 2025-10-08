@@ -78,7 +78,7 @@ They are also the default label given to a View Area when the preset search is u
 
 ## Using the Java API
 
-You can use the `setLabel` method of the Java API to set the translations for an Object, Link, Field, Action, etc.
+The `setLabel` method of the Java API can be used to set the translations for an Object, Link, Field, Action, etc.
 
 Example : Customizing an object's label for a specific user group
 
