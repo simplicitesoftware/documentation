@@ -4,7 +4,7 @@ title: Compatibility
 ---
 
 Compatibility tables
-=================
+====================
 
 This document gives a non exhaustive list of architectures and infrastructure components the Simplicité platform is compliant with.
 
@@ -30,7 +30,7 @@ etc.
 Custom deployments
 ------------------
 
-It is still possible, although highly **discouraged**, to deploy Simplicité on custom IaaS infrastructures or even on premises servers.
+It is still possible, although **discouraged**, to deploy Simplicité manually without using our Docker images.
 In such a case you need to verify that your technical platform complies with the following recommendations.
 
 ### Introduction
