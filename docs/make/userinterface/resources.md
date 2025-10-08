@@ -62,3 +62,4 @@ The main methods used to access a Resource are :
 - [Using resources in an External object](/docs/core/externalobject-code-examples)
 - [Custom disposition using resources](/docs/core/disposition-code-examples)
 - [Using a resource in a publication](/docs/integration/publications/pdf)
+- [Custom icons](/docs/front/icons)
