@@ -12,11 +12,12 @@ Containers deployments
 ----------------------
 
 The **ideal** / **preferred** deployment model is to deploy Simplicité platform as **Docker&reg; container(s)**
-from our standard Docker images available or from custom images that you build to fit your needs.
+from our standard Docker images available (or from custom images that you build to fit your need).
+
 See [this document](/docs/operation/docker) for details.
 
 :::info
-Our standard Docker images are built using the **most recent** up-to-date versions of the bellow OS, Java VM and application servers
+Our standard Docker images are built using the **most recent** up-to-date versions of the underlying OS, Java VM and Tomcat server
 for considered Simplicité version.
 :::
 
