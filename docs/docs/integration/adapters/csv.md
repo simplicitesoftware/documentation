@@ -83,8 +83,8 @@ public class ExampleCsvAdapter extends CSVLineBasedAdapter {
 		}
 
 		// returned String gets added to a XML subsequently imported.
-		// in this case we do not append anything to XML subsequently imported,
-		// as we directly create the objects instead
+		// In this case, nothing is appended to the subsequently imported XML,
+		// because the objects are created directly.
 		return null; 
 	}
 

@@ -53,7 +53,7 @@ Alternatively you can create the secret directly (without signin in to DockerHub
 Basic Simplicité sandbox example using Kompose&reg;
 ---------------------------------------------------
 
-For this basic example we will be using the [Kompose tool](https:installation.md) tool.
+For this basic example, the [Kompose tool](https:installation.md) will be used.
 
 Provided the following Docker compose file `docker-compose.yml`:
 
@@ -114,7 +114,7 @@ In the above case you can now point your browser to `http://6fvb57vqjk.lb.c4.gra
 Comprehensive example
 ---------------------
 
-In this example we will be using custom manifests for deploying a PostgreSQL database and a Simplicité instance.
+This example demonstrates the use of custom manifests to deploy a PostgreSQL database and a Simplicité instance.
 
 ### Database
 

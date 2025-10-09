@@ -13,8 +13,7 @@ The authentication mechanism will remain the same but, once connected, the user 
 built by a server side script (by implementing the `<Disposition name>.display` function which can
 using associated resources if required).
 
-In the example below we will implement a basic single page Bootstrap&reg;-based custom UI that uses the Ajax API
-within a client-side JavaScript resource. The name of this example disposition is `MyDisp`.
+The following example demonstrates the implementation of a basic single-page custom user interface utilizing Bootstrap and the Ajax API. This interface is delivered through a client-side JavaScript resource. The disposition illustrated in this example is named `MyDisp`.
 
 
 Server side script

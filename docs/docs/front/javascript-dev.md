@@ -10,7 +10,7 @@ Javascript Development
     This lesson is a part of the <b>Frontend Development</b> category, which is meant to guide you through the frontend development within Simplicité. Thus it might be a bit longer and more verbosed than other lessons you will find in the <b>Simplicité Configuration Object</b> category.
 </div>
 
-This document presents the base & guidelines to javascript development within Simplicité. As the main use for it is the implementation of specific interactions for different external objects. Here we will provide an understanding of how javascript codes are handled within Simplicité, giving some guidelines for your developments and tips on how to work with javascript for your external objects.
+This document explains the basics and main rules for using JavaScript in Simplicité. JavaScript is mainly used to add custom interactions to external objects. Here, you will learn how JavaScript works in Simplicité and get simple tips and guidelines to help you use it effectively with your external objects.
 
 > **Quick Tips:**
 > - Always align your customizations with Simplicité's documented best practices to ensure compatibility and upgradability. Keep your JavaScript code modular and maintainable, making it easier for future developers to adapt or debug.
@@ -64,7 +64,7 @@ session.login()
 
 ## Step-by-Step Example
 
-We'll provide a simple example of a *web app front-end* connected to *Simplicité's backend*. The goal is to demonstrate how to use the **NPM library** in a practical scenario, breaking down the process to give a clearer and more comprehensive understanding of its implementation.
+This section presents a straightforward example of connecting a web front-end to a Simplicité back-end using the **NPM library**. The objective is to illustrate the practical implementation of the library in a clear and structured manner.
 
 To get started with building a custom Simplicité front-end using the NPM library, the essential script to keep in mind is as follows:
 
@@ -154,7 +154,7 @@ function headers(res)
 - `res.header('Pragma', 'no-cache');` sets the **Pragma** header to `no-cache`, a legacy HTTP directive to prevent caching.
 </details>
 
-We'll break down the creation of this script and outline all the essential elements to ensure the proper setup and functionality of your Simplicité-powered project.
+This section provides a step-by-step guide to setting up the main script for your Simplicité project, ensuring correct configuration and functionality.
 
 #### Simplicite Setup
 
@@ -172,7 +172,7 @@ const app = simplicite.session({
 <details>
 <summary>Code Details</summary>
 
-- `url` defines the url for your Simplicité session, for most of the demos we use `https://demo.dev2.simplicite.io`.
+- `url` defines the url for your Simplicité session, for most of the demos `https://demo.dev2.simplicite.io` is used.
 - `username` sets the username to access the session, ensure this is a valid one.
 - `password` sets the password to access the session, ensure it's the good one for your user and session.
 - `debug` defines if yes or not your session is used in debug mode.
@@ -239,7 +239,7 @@ const products = app.getBusinessObject('DemoProduct');
 const productList = await products.search(null, { inlineDocuments: ['demoPrdPicture'] });
 ```
 
-> The next code snippet isn't from app.js, but shows how to manipulate and display **Business Object** data dynamically from what we retrieved in the previous script.
+> The following code demonstrates how to display the retrieved **Business Object** data on the front end.
 
 ***index.js;*** this code snippet is associated to your `index.html` file, and is only the display part that adds `li` elements to the `ul.product-list` html balise:
 ```javascript
@@ -301,7 +301,7 @@ server.get('/', async (req, res) => {
 
 #### Passing data to your views
 
-To enable index.html to *access data* retrieved from the *Simplicité backend*, we need to pass this data through app.js. This involves declaring a new `server.get()` route for the relevant data—such as `/products` in this case:
+To allow `index.html` to access data from the Simplicité backend, define a new `server.get()` route in `app.js` for the required data, such as `/products`:
 
 ```javascript
 server.get('/products', async (req, res) => {
@@ -401,7 +401,7 @@ In this case, you can declare all your javascript code within the *SCRIPT* resou
 
 * HTML content of the custom widget:
 ```html
-<!-- Starting with an empty object that we'll fill using Javascript -->
+<!-- Initialize an empty container to be populated dynamically via JavaScript -->
 <div id="mycustomwidget">
   <div id="mycustomwidget-productlist"></div>
 </div>
@@ -522,7 +522,7 @@ public class MyExternalObject extends ExternalObject {
 ***Code Overview:***
 - `ExternalObject` is the class each of your page shall extend in order to be properly instantiated.
 - `display(Parameters params)` method is the one you have to override in order to ensure your object is well rendered.
-- `BootstrapWebPage` is the object we will use in order to create an external "standalone" webpage, it contains all the necessary functions to instantiate our webpage from Simplicité's resources.
+- `BootstrapWebPage` is used to create an external standalone webpage. It provides the necessary methods to build the page using Simplicité resources.
 - `wp.setReady(this.getName() + ".render({});");` this is the line responsible for the actual rendering of our pobject; it calls the `setReady` method sets up the `render()` javascript function to be executed when web page is fully loaded.
 
 ### Javascript Code (client-side)

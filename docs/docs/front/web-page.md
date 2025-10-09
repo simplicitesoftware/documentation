@@ -14,7 +14,7 @@ This document explains how to use Simplicité's **External Objects** to create w
 
 # Native webpages
 
-In this section, we will walk through the process of creating a custom webpage *from scratch*. This page will serve as a custom front-end that communicates with *Simplicité's back-office*. As an illustrative example, we will recreate and analyze the **DemoWebPage** (refer to the screenshots below). This demo page acts as a basic yet fully functional, allowing clients to view the product catalog and place orders, but also access all suppliers' informations and some resources for Simplicité's solution :
+This section describes the process of creating a custom webpage from scratch. The resulting page functions as a dedicated front-end that interacts with Simplicité's back-office. As an example, the **DemoWebPage** will be recreated and analyzed (see screenshots below). This demonstration page provides a simple yet fully functional interface, enabling clients to view the product catalog, place orders, access supplier information, and utilize various resources related to the Simplicité solution.
 
 ![](img/web-page/myexternalpage-home.png)
 
@@ -81,7 +81,7 @@ The *core class* that allows and facilitates the creation and management of cust
 
 The primary methods to utilize are as follows:
 
-- `setDecoration(false)`: Disables embedding the object in a container (such as a panel or card). Since we are constructing a full-page experience, this is set to false.
+- `setDecoration(false)`: Disables embedding the object within a container (such as a panel or card). This option is set to false to enable a full-page layout.
 
 - `appendAjax()`: Integrates Ajax functionality into the page, allowing asynchronous communication with Simplicité's back-office.
 
@@ -382,7 +382,7 @@ Below is a *comprehensive list* of handled parameters and their corresponding fu
 |---------------------|---------------------------|--------------------------------------------------------|
 | context             | number                    | Init context (normally one of Simplicite.Ajax.CONTEXT_LIST/PANELLIST/REFSELECT/DATAMAPSELECT/EXPORT/CROSSTAB/GRAPH/PRINTTMPL constant).  |
 | metadata            | boolean                   | allow to update the metadata in context, and in items with `{meta:{...}, data:{...}}`. |
-| page                | number                    | indicates the index of the page we are searching in. |
+| page                | number                    | indicates the index of the page searched. |
 | inlineDocs          | boolean/string/array      | includes the documents in the search, value can be `true`/`images`/`infos`/array of fields. |
 | inlineThumbs        | boolean/array             | includes the thumbnails of documents (`true` or `array of fields`). |
 | inlineObjs          | boolean                   | includes objects fields items. |
@@ -1169,12 +1169,12 @@ In order to build custom webpages using the **Vue.js** web framework, you have t
 
 The main specificities are to be considered when setting up your *server-side* code first, indeed you have to specify that you are gonna use **Vue.js** components in the rest of your resource files using the `BootstrapWebPage.appendVue()` function.
 
-All code snippets and examples are derived from an external page we created as a hands-on demonstration. The complete code for this page can be found at the end of the document.
+All code snippets and examples are taken from an external demonstration page. The complete source code for this page is provided at the end of the document.
 ![](img/web-page/customvue-page.png)
 
 #### Server-Side
 
-First, for webpages built with only HTML, CSS, and JavaScript, you need to use a slightly modified Java code that sets up a *BootstrapWebPage*. This helps properly initialize your webpage and leads to JavaScript similar to what we covered earlier.
+For webpages developed with HTML, CSS, and JavaScript, a slightly modified Java implementation is required to initialize a *BootstrapWebPage*. This ensures proper webpage setup and generates the necessary JavaScript.
 
 ```java
 public class MyCustomVuePage extends ExternalObject {
@@ -1271,9 +1271,9 @@ It’s also possible to include other tools, as long as they don’t override th
 
 #### Client-Side (setup)
 
-The *JavaScript client-side* script differs from the one used for *native custom webpages*. Since we are creating the equivalent of a Vue *app/component*, it needs to be set up properly. To achieve this, you’ll need to completely overwrite the existing default code. For first-time setup, we recommend replacing it with the code provided below.
+The *JavaScript client-side* script for this setup is distinct from that used in *native custom webpages*. To implement a Vue *app/component*, the existing default code must be entirely replaced. For initial configuration, use the code provided below.
 
-The JS script is indeed very different, even if the overall structure is similar to the one we've previously seen, it is specific to Vue's features:
+The JavaScript script is indeed very different, even if the overall structure is similar to previously seen examples, it is specific to Vue's features:
 ```javascript
 var MyCustomVuePage = MyCustomVuePage || (() => {
 
@@ -1305,12 +1305,12 @@ var MyCustomVuePage = MyCustomVuePage || (() => {
 
 Understanding the differences in the script is crucial to grasp how Vue communicates and integrates with Simplicité:
 
-1) **Declaration of object:** Instead of declaring the object as `var ExtObj = (function($){ ... })(jQuery);`, we now declare it as `var ExtObj = ExtObj || (()=>{ ... })();`. This approach ensures the object is only created if it doesn’t already exist. The `||` operator checks if "ExtObj" exists and reuses it if it does, otherwise, it creates a new one.
+1) **Declaration of object:** Instead of declaring the object as `var ExtObj = (function($){ ... })(jQuery);`, declare it as `var ExtObj = ExtObj || (()=>{ ... })();`. This approach ensures the object is only created if it doesn't already exist. The `||` operator checks if "ExtObj" exists and reuses it if it does, otherwise, it creates a new one.
 
 2) **App declaration:** While app instantiation in native webpages typically looks like
-`app = new Simplicite.Ajax(params.root, "uipublic");`. We add extra precautions with `const app = typeof $ui !== 'undefined' ? $ui.getAjax() : new Simplicite.Ajax(params.root, 'uipublic');`. This checks if `$ui` (the main UI controller) is defined. If it is, we retrieve the existing Ajax session (`$ui.getAjax()`). If not, a new session is created with the "uipublic" parameter.
+`app = new Simplicite.Ajax(params.root, "uipublic");`. Extra precautions are added with `const app = typeof $ui !== 'undefined' ? $ui.getAjax() : new Simplicite.Ajax(params.root, 'uipublic');`. This checks if `$ui` (the main UI controller) is defined. If it is, the existing Ajax session is retrieved (`$ui.getAjax()`). If not, a new session is created with the "uipublic" parameter.
 
-3) **Creating Vue App:** To initialize Vue, we use `createApp()`, passing data and methods as:
+3) **Creating Vue App:** To initialize Vue, use `createApp()`, passing data and methods as:
 ```javascript
 const appInstance = createApp({
   data() { return data; },
@@ -1326,7 +1326,7 @@ This is key because:
 
 #### Specificities
 
-The architecture and workflows are slightly different than in a regular Vue project, and also different than the one of a regular ExternalObject. Below we'll overview the different aspects of Vue and ExternalObjects that are usable or not, or that needs specific ackinledgments:
+The architecture and workflows are slightly different than in a regular Vue project, and also different than the one of a regular ExternalObject. The following sections overview the different aspects of Vue and ExternalObjects that are usable or not, or that need specific acknowledgments:
 
 ***VueJS features***
 Indeed some of the Vue.js features are not accessible:
@@ -1415,7 +1415,7 @@ function render(params) {
 }
 ```
 ```html
-<!-- From the above javascript code, here is how we can access the data elements properly -->
+<!-- From the above JavaScript code, here is how the data elements can be accessed properly -->
 <div class="example-container">
 	<span>{{ string }}: {{ integer }}</span>
 	<h1>Object is {{ singleObject.field }}</h1>

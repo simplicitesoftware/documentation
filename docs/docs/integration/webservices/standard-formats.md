@@ -13,7 +13,7 @@ All standard I/O formats (XML, ZIP and CSV) are rowID-less formats that allows d
 
 Each record in these formats **must** have as a minimum the functional keys fields so as the platform can identifify the record to be processed.
 
-All other fields are non mandatory (except if we are talking of madatory fields in the context of a record creation).
+All other fields are optional, except for mandatory fields required during record creation.
 
 Standard XML format
 -------------------

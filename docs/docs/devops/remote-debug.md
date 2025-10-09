@@ -52,8 +52,7 @@ Alternatively you can add following option to JVM arguments:
 Debugger side <span id="debugger"></span>
 -----------------------------------------
 
-The server listening port must be reachable from the local machine running the debugger. If we are talking about a remode instance,
-this can be done by carefully opening this port thru the server firewall or by configuring a SSH tunner on this port which is a better approach.
+The server's debug port must be accessible from the local machine running the debugger. For remote instances, this can be achieved by either opening the port in the server's firewall or, preferably, by setting up an SSH tunnel to securely forward the port.
 
 For instance:
 

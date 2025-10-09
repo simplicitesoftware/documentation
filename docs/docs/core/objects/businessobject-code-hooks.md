@@ -37,8 +37,7 @@ Object definition and right-related hooks
 The `postLoad` hook is called **once**, when the object definition is loaded.
 It can therefore be used to modify the **static** object definition.
 
-By static we mean the definition settings that will remain the same all along
-the user session (i.e. not the dynamic ones that may be updated in other hooks)
+In this context, "static" refers to definition settings that remain constant throughout the duration of the user session, as opposed to dynamic settings that may be modified by other hooks.
 
 For instance it can be used to:
 
@@ -51,11 +50,12 @@ For instance it can be used to:
 
 **Example:**
 
+In this example, a restrictive search specification is applied to the object (limiting results to validated records only) if the user belongs to a specified group.
+
 ```simplicite-java
 @Override
 public void postLoad() {
-	// In this example we set a restrictive search spec on object (to validated records only) if the user is in a specified group
-	if (getGrant().hasResponsibility("MYGROUP")
+	if (getGrant().hasResponsibility("MYGROUP"))
 		setDefaultSearchSpec(getStatusField().getColumn() + " = 'VALIDATED'");
 }
 ```
@@ -71,27 +71,31 @@ current record for which the hook is called.
 These hooks do not allow to override the granted rights of the users,
 they just allow to **restrict** these rights depending on more complex business rules.
 
-**Example:**
+**Examples:**
+
+In the following example, the status of the parent object is evaluated to determine whether creation is permitted or denied.
 
 ```simplicite-java
 @Override
 public boolean isCreateEnable() {
-	// In this example we check the status of parent object to allow/disallow creation  
 	ObjectDB p = getParentObject();
 	if (p != null && "MyParentObject".equals(p.getName()))
 		return "VALIDATED".equals(p.getStatus());
 	return true;
 }
 
+In this example, updates are permitted only when a specific field's value is true.
+```simplicite-java
 @Override
 public boolean isUpdateEnable(String[] row) {
-	// In this example update is allowed if a specified field has a true value  
 	return Tool.isTrue(row[getFieldIndex("objField1")]);
 }
+```
 
+In this example, delete permissions follow the same rule as update permissions.
+```simplicite-java
 @Override
 public boolean isDeleteEnable(String[] row) {
-	// In this example we apply the same rule as for update
 	return isUpdateEnable(row);
 }
 ```
