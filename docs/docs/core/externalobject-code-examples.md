@@ -130,7 +130,7 @@ $(document).ready(function() { $('#hello').append('Hello world !'); });
 </html>
 ```
 
-In the rest of the document we will speak of **standard** page when web helper classes are not used and of **non standard** pages when used.
+In this document, **standard** pages do not use web helper classes, while **non-standard** pages do.
 
 #### Responsive UI
 

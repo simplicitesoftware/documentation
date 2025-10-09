@@ -108,7 +108,7 @@ Combining all the available customization features in Simplicité allows for *ex
 
 ## Use Case for addon.less
 
-The **addon.less** file should be employed to address highly specific design needs that cannot be achieved through standard Simplicité configurations. For example, *Simplicité's brand identity* incorporates distinctive vertical and horizontal colored lines, which we decided to integrate into one of our custom themes. 
+Use the **addon.less** file only for design requirements that cannot be fulfilled using standard Simplicité configuration options. For instance, it may be necessary to implement unique visual elements, such as custom colored lines, to align with specific branding guidelines.
 
 This serves as a *practical illustration* of how addon.less can introduce unique visual elements to enhance theme aesthetics.
 
@@ -129,7 +129,7 @@ Before applying additional styles, clearly define the visual modifications you w
 
 **Option 2:** If the element lies outside of the Theme Editor, use your *browser's inspector* tool to manually locate the desired element within Simplicité's UI. While slightly more manual, this method still provides accurate identification and contextual insights.
 
-**Example:** In our case, we aimed to style *Panels*, *Sub-Panels*, *Tabs* and *List*. By using the **Theme Editor - Path in DOM**, we identified the following paths:
+**Example:** In this scenario, the objective was to apply custom styles to *Panels*, *Sub-Panels*, *Tabs*, and *Lists*. Utilizing the **Theme Editor - Path in DOM** feature, the following element paths were systematically identified:
 
 - *Panels:* THe primary element for panels is `div.card`, typically organized into 3 parts:
     - `div.card-header`, the *header section* of the panel card, where the name of the panel and all sort of buttons are displayed.
@@ -205,13 +205,13 @@ To mitigate this, carefully document the target element's classes, as well as th
 
 > This part is especially needed when you are going for the second options in the previous step, as classes are shared by many objects, you need to really be careful while adding new styles.
 
-**Example:** For our 3 targeted elements, which are core items of every Simplicité's UI, we had to make sure that the style was applied properly, especially for the differentiation between *Panels* and *Sub-Panels*, that are both referenced as `card` in the HTML.
+**Example:** For the three targeted elements—which are fundamental components of the Simplicité user interface—it was essential to ensure that the styles were applied accurately. Particular attention was given to distinguishing between *Panels* and *Sub-Panels*, both of which are represented by the `card` class in the HTML structure.
 
 ## 3. Implement the style
 
 After identifying the *DOM path* and *context*, proceed to implement the desired styles by writing the appropriate code in the *addon.less* file. This ensures the applied styles are scoped to the correct elements, preventing unwanted side effects in other parts of the interface.
 
-**Example:** within the *addon.less* file, we'll apply the identified path to precisely target our element:
+**Example:** In the *addon.less* file, the following demonstrates how to utilize the identified DOM path to accurately and specifically target the intended element:
 
 ```less
 // Colors variables
@@ -261,7 +261,7 @@ Then make sure to clear your cache to update the styles, and you should see the 
 
 ### (Optional) Make it interactive !
 
-To extend the previous example, let's add a customization for interactive behaviors. Specifically, we will modify the appearance of selected rows in a list element. By default, selecting a row slightly darkens it. Our goal is to enhance this by adding a left-side line to the selected row, preserving the theme's identity.
+To enhance interactive behavior, the appearance of selected rows in a list can be customized. By default, a selected row is slightly darkened. For greater clarity and consistency with the theme, a colored line may be added to the left side of the selected row.
 
 When a row is selected in a list, the associated `tbody.tr.list-clickable` element receives the *selected* class. This triggers the default darkening effect and ticking of box in the .
 

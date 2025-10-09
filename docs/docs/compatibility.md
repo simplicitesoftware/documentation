@@ -100,7 +100,7 @@ Only these up-to-date releases are tested and supported.
 
 1. Web profile is supposed to be used by default but full profile is also possible
 
-The webapp implementation we recommend are:
+The recommended webapp implementations are :
 
 - **Webapp 6.1** (JakartaEE): Apache Tomcat&reg; 11.0.x
 - **Webapp 4.0** (JEE): Apache Tomcat&reg; 9.0.x
@@ -125,8 +125,8 @@ Databases
 
 :::tip
 **Note**: The above versions are the **recommended** minimal versions.
-Only these versions are tested and supported. Older versions may also work but we don't provide support if you use them.
-Whichever database server you use, you **SHOULD** use an **up-to-date release version**.
+Only the versions listed above are officially tested and supported. While earlier versions may function, support is not provided for environments using versions outside of those specified.
+It is **strongly** recommended to use the **most recent release** of your chosen database server.
 :::
 
 Web browsers

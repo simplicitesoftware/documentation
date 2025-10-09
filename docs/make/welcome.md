@@ -21,7 +21,7 @@ This documentation is organized into sections corresponding to the platform's me
 
 ## Getting Started
 
-If you're new to Simplicité, we recommend starting with:
+For those new to Simplicité, begin with:
 
 - [Quick Start Guide](/category/1-getting-started/)
 

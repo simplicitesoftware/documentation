@@ -25,8 +25,7 @@ Process definition and right-related hooks
 The `postInstanciate` hook is called **once** when the process definition is loaded.  
 It can therefore be used to modify the **static** process definition of each instance.
 
-By static we mean the definition settings that will remain the same all along  
-the user session (i.e. not the dynamic ones that may be updated in other hooks)  
+In this context, "static" refers to definition settings that remain constant throughout the duration of the user session, as opposed to dynamic settings that may be modified by other hooks.
 
 For instance it can be used to:  
 

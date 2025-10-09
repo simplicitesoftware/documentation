@@ -41,7 +41,7 @@ In order to use a custom user object, it is necessary to create an **inheritor**
 
 ## Custom code
 
-Then, we add the following code to the object, To make the object **really minimalistic** by hiding most of SimpleUser's fields, and automating group attribution, add and adapt the following code to your use case:
+The following code is added to the object to make it **really minimalistic** by hiding most of SimpleUser's fields and automating group attribution. Add and adapt the following code to your use case:
 
 - the package name
 - the class name
@@ -88,7 +88,7 @@ public class FtCustomUser extends com.simplicite.objects.System.SimpleUser {
         // set some mandatory SimpleUser fields
         setFieldValue("row_module_id", ModuleDB.getModuleId("ApplicationUsers"));
         // following does not work because usr_menu is not part of SimpleUser
-        // we manage it in a postSave query to avoid adding a useless object attribute
+        // This is managed in a postSave query to avoid adding a useless object field
         // setFieldValue("usr_menu", "1");
         setFieldValue("usr_active", Grant.USER_ACTIVE);
 
@@ -144,7 +144,7 @@ public class FtCustomUser extends com.simplicite.objects.System.SimpleUser {
 
 ### Hiding states menu
 
-To hide the states menu, we used `setMenuStates(false);` in the `postLoad` hook.
+To hide the states menu, use `setMenuStates(false);` in the `postLoad` hook.
 
 ![Hide simple user states](img/custom-user/hide-simple-user-states.png)
 

@@ -6,12 +6,12 @@ title: FAQ
 Frequently Asked Question
 =========================
 
-General / installation / operation
-------------------------------
+General / Installation / Operation
+----------------------------------
 
-> Is it possible to use the _foo_ database, the _bar_ application server, the _baz_ JVM version, ...?
+> Is it possible to use the _foo_ database, the _bar_ application server, the _baz_ JVM version, etc.?
 
-Please refer to the [compatibility tables](/docs/compatibility).
+Please consult the [compatibility tables](/docs/compatibility) for supported platforms and configurations.
 
 For details on some specific installation/operation requirements, please refer to the miscellaneous documentation.
 
@@ -20,46 +20,42 @@ Versions
 
 > What is the current maintenance status of version `x.y`?
 
-Please check [this document](/versions/versioning.md) and the latest release notes of considered version.
+Please review [this document](/versions/versioning.md) as well as the latest release notes for the version in question.
 
 Usage
 -----
 
-> Where can I find general usage documentation for the generic web UI?
+> Where can I find general usage documentation for the generic web user interface?
 
-You can find such information the the UI documentation.
+Comprehensive information is available in the user interface documentation.
 
 Design
 ------
 
 ### General
 
-> Where to starts with to build my first business application?
+> Where should I begin when building my first business application?
 
-A good start is the [Getting started](/tutorial/welcome.md)
+It is recommended to start with the [Getting Started guide](/tutorial/welcome.md).
 
-### Business objects
+### Business Objects
 
-> Is it possible to have a business object search page with a default mode using a "starts with" strategy (as in the selection popups) ?
+> Is it possible to have a business object search page with a default "starts with" search mode (as in the selection popups)?
 
-Not yet, this is in the roadmap for next version. At that stage you still need to type an explicit `*` wildcard.
+This feature is not yet available, but it is planned for a future release. Currently, it is necessary to use an explicit `*` wildcard.
 
-> How can we set the number of rows in list ?
+> How can I configure the number of rows displayed in a list?
 
-This is a global setting defined at user level (min and max number of rows per lists) and dynamically configurable at list level.
-For business objects with few rows you can inhibit the pagination, then all rows will be displayed
+This is a global setting defined at the user level (minimum and maximum number of rows per list) and can also be configured dynamically at the list level. For business objects with a small number of rows, pagination can be disabled so that all rows are displayed.
 
-Keep in mind that lists with a high number of rows combined with many fields visible on lists will result in huge page volumes with poor performances (and low useability).
+Please note that displaying lists with a large number of rows and many visible fields may result in significant page sizes, which can negatively impact performance and usability.
 
-> Is it possible to have &quot;combo&quot; fields with a fixed list of values and the ability to type in another value ?
+> Is it possible to have "combo" fields with a fixed list of values and the ability to enter a custom value?
 
-Yes and no.
+Partially. While HTML does not natively support combo box fields, there are two recommended approaches:
 
-There are no combo box fields (this is not a HTML standard anyway). There are at least two approaches:
-
-* You can configure a non mandatory fixed list of values field and an additional text field for the &quot;other&quot; value.
-Then with a constraint you can, for instance, make the text field mandatory if the list field is not set.
-* You can configure a text field with completion: already typed values will display as you type and you can select them or type a new value.
+* Configure a non-mandatory fixed list of values field alongside an additional text field for the "other" value. Using constraints, you can, for example, make the text field mandatory if the list field is not set.
+* Configure a text field with auto-completion: previously entered values will be suggested as you type, allowing you to select an existing value or enter a new one.
 
 <!-- 
 ### Business workflows
@@ -68,29 +64,27 @@ Then with a constraint you can, for instance, make the text field mandatory if t
 Coding
 ------
 
-### Server side scripts
+### Server-Side Scripts
 
-> Where can I find general documentation and code samples on server side scripting?
+> Where can I find general documentation and code samples for server-side scripting?
 
-You can browse the [core documentations](/category/core) for code examples (general, business objects hooks, business workflows hooks, adapters, publications, dispositions, ...).
+You may consult the [core documentation](/category/core) for code examples, including general usage, business object hooks, business workflow hooks, adapters, publications, and dispositions.
 
-> Are there some limitations or usual traps on the server side scripts that I should be aware of?
+> Are there any limitations or common pitfalls in server-side scripts that I should be aware of?
 
-**Yes!** Please refer to [this documentation](/docs/core/basic-code-examples) for details on things to avoid (to avoid headaches). 
+**Yes.** Please refer to [this documentation](/docs/core/basic-code-examples) for important information on best practices and potential issues to avoid.
 
-### Integration/APIs
+### Integration / APIs
 
-> Where can I find general documentation on integration interfaces, APIs, code samples...?
+> Where can I find general documentation on integration interfaces, APIs, and code samples?
 
-* Code samples for core configuration items (business objects, workflows, disposition, adapters, ...) in the [core documentation](/category/core)
-* Integration interfaces usage (CLI, web services, ...) in the [integration documentation](/category/integration)
-* Helper libs (Ajax, ...) in the [APIs documentation](/category/librairies)
+* Code samples for core configuration items (business objects, workflows, dispositions, adapters, etc.) are available in the [core documentation](/category/core).
+* Information on integration interfaces (CLI, web services, etc.) can be found in the [integration documentation](/category/integration).
+* Documentation for helper libraries (Ajax, etc.) is available in the [APIs documentation](/category/librairies).
 
 Configuration
 -------------
 
->
+> How can I configure application logging?
 
-> How can I configure the logging of the application?
-
-Please refer to [this document](/docs/misc/logging.md)
+Please refer to [this document](/docs/misc/logging.md) for details.

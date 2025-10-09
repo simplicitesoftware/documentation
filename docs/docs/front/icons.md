@@ -15,7 +15,7 @@ By default, Simplicité ships with a set of icons composed of:
 
 :::tip
 
-For for accessibility and aesthetics reasons, we ship and recommend to use only `.svg` icons to avoid pixellation when zooming, even though the platform also supports `.png`.
+For accessibility and visual quality, only `.svg` icons are recommended to prevent pixelation when zooming. While `.png` icons are supported, `.svg` is preferred.
 
 :::
 
@@ -47,8 +47,8 @@ To use an icon in your JS code, use the following API:
 
 ```javascript
 // insert image
-$ui.view.icon("img/1min30/myicon", "icon").appendTo(div);
+$ui.view.icon("img/myFileSet/myicon", "icon").appendTo(div);
 // insert icon
-$ui.view.icon("icon/1min30/myicon", "icon").appendTo(div);
+$ui.view.icon("icon/myFileSet/myicon", "icon").appendTo(div);
 ````
 

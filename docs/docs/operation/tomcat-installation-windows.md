@@ -75,7 +75,7 @@ Where `<version>` is one of the available versions, e.g. `4.0`
 > **Note**: as of version 4.0 there are several branches on the instance template,
 > make sure to use **only** the **release** branch in production, see [this document](/versions/versioning.md) for details on versions and branches.
 >
-> We thus recommend that you only clone the **release** branch by adding `--single-branch --branch release` to the `git clone` instruction above.
+> It is recommended to only clone the **release** branch by adding `--single-branch --branch release` to the `git clone` instruction above.
 
 ### Initial database setup
 
@@ -115,9 +115,9 @@ The base components such as the Java JVM and the Tomcat server are also regularl
 The Simplicité platform is **only** validated and tested with up-to-date stable versions of these components (the ones that are shipped in our Docker images).
 Our support is thus only available if you use these recommended up-to-date components.
 
-- We thus highly recommend that you use and keep upgraded our pre-configured Tomcat package described above. We push the up-to-date version of Tomcat on it as soon as it is released.
-- We also recommend that you maintain your JVM up-to-date on a very regular basis (Oracle issues a JVM major version every 6 months).
-- And, of course, we recommend that you keep your Windows platform up-to-date.
+- It is highly recommended to use and keep upgraded the pre-configured Tomcat package described above. The up-to-date version of Tomcat is pushed to it as soon as it is released.
+- It is also recommended to maintain the JVM up-to-date on a very regular basis (Oracle issues a JVM major version every 6 months).
+- And, of course, it is recommended to keep the Windows platform up-to-date.
 
 ### Security guidelines
 

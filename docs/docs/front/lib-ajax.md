@@ -92,7 +92,7 @@ As they are a core feature of Simplicité, it is important to understand some of
 
 > ***Note:*** Getting a new Business Object in your javascript should be done directly using the `Simplicite.Ajax.getBusinessObject()` function instead of the constructor.
 
-Below is also provided the common architecture for the *Business Objects*, for you to better understand how they are conceived we give a quick breakdown of their most useful members:
+The following outlines the standard structure of *Business Objects* and summarizes their key members:
 
 | Attribute | Description                                                                                                                                |
 |-----------|--------------------------------------------------------------------------------------------------------------------------------------------|

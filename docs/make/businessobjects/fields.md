@@ -11,7 +11,7 @@ If the object has a form, the attribute will be a field of this form. The config
 
 Just like a business object, the field has a logical and physical name. The logical name identifies the attribute in the business rules, in the code and will follow the same syntactical conventions as Java variables. The physical name will be used to create a column in the business object's table. A field might not have a physical name, it's the case for non persisted calculated fields.
 
-We will now introduce you to a fundamental aspect of the metamodel: the **object field**. One field can be used on several objects: a "comment" field, for instance, can be used on the 300 objects of the app. If the size of this field needs to be increased, to allow the input of longer comments, it can be done by changing the parameters of one single attribute, instead of changing the 300 comment fields of our 300 business objects. Furthermore, a field doesn't have to be linked to an object (storage field for a planned task, process filed, etc). In the metamodel this concept is represented by a **N/N link between the field and the business object** therefore introducing a link object. In Simplicité, the link object between a business object and a field is called **object field**. The object field object allows to **override** the parameters of the attribute (mandatory, translation, etc).
+A fundamental aspect of the metamodel is the **object field**. One field can be used on several objects: a "comment" field, for instance, can be used on the 300 objects of the app. If the size of this field needs to be increased, to allow the input of longer comments, it can be done by changing the parameters of one single attribute, instead of changing the 300 comment fields of the 300 business objects. Furthermore, a field doesn't have to be linked to an object (storage field for a planned task, process filed, etc). In the metamodel this concept is represented by a **N/N link between the field and the business object** therefore introducing a link object. In Simplicité, the link object between a business object and a field is called **object field**. The object field object allows to **override** the parameters of the attribute (mandatory, translation, etc).
 
 When a field is linked to an object via an object field, Simplicité will create a column in the business object's table.
 
@@ -225,13 +225,13 @@ From the definition of the physical object and attribute names, a table and a co
 |---------|-------------|-------------|-------------|-------------|
 |         |             |             |             |             |
 
-The `row_id` column is what we call the **technical key**. It is generated and managed by the base, **so there is no need to create ID attributes** for your objects.
+The `row_id` column is called the **technical key**. It is generated and managed by the base, **so there is no need to create ID attributes** for your objects.
 
 These 5 columns are not intended to be visible to the user.
 
 ## Functional key
 
-The functional key is a set of fields defining the **functional** uniqueness of the business object. Thus, if we decide that the functional key of the customer is composed of his name and his first name, then we cannot have two customers with the same name + first name. 
+The functional key is a set of fields defining the **functional** uniqueness of the business object. Thus, if it is decided that the functional key of the customer is composed of his name and his first name, then two customers with the same name + first name cannot exist. 
 
 **Every business object must have a functional key**. *If there is no key, Simplicité will only allow the creation of one record, which will have an  "empty" functional key. The second record, also having an "empty" functional key, will trigger an error because the functional key already exists.*
 
@@ -264,7 +264,7 @@ The joined field is defined:
 
 ## Calculated fields
 
-The simplest type of customization is the calculated field. This is a field whose value will depend **on other fields in the same business object**. In some cases, it may be useful to join fields from related objects just to be used for calculated fields. For example, in the exercise, we will calculate the total price of the order by multiplying the product's price by the number of items ordered. So the product's price will need to be *part of the order for the value to be available*.
+The simplest type of customization is the calculated field. This is a field whose value will depend **on other fields in the same business object**. In some cases, it may be useful to join fields from related objects just to be used for calculated fields. For example, in the exercise, the total price of the order will be calculated by multiplying the product's price by the number of items ordered. So the product's price will need to be *part of the order for the value to be available*.
 
 ### Persistence
 

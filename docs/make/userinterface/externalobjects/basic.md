@@ -23,7 +23,7 @@ There are several types of *External Objects*, that all serve a certain use-case
 - GraphQL web service
 - PDF document
 - Excel document
-> We highly recommend you to choose the adapted nature for your external object in order to ensure its proper integration and workflow.
+> It is highly recommend you to choose the adapted nature for your external object in order to ensure its proper integration and workflow.
 
 The most used are:
 - **Basic:** to create all type of elements, but mostly to handle external objects that should be accessible both in **public** & **private** zones (outside or inside of Simplicité's interfaces).

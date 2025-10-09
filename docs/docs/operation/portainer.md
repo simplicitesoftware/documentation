@@ -25,11 +25,11 @@ Sizing of the server should be made according to the needs, as always. Any up-to
 <details>
 <summary>Click to open</summary>
 
-- in this example, we chose a medium-sized server
+- Medium-sized server :
     - 2 vCores
     - 50GiB storage
     - 250Mbps bandwidth
-- for the image, we chose Almalinux 9
+- Almalinux 9 image
 
 </details>
 
@@ -97,7 +97,7 @@ sudo systemctl enable --now dnf-automatic.timer
 
 ## 2) Docker Install
 
-Portainer needs docker as a requirement, so we'll install it after usual upgrades. Based on [docker CentOS install docs](https://docs.docker.com/engine/install/centos/) (adapted)
+Portainer needs Docker as a requirement, so it will be installed after usual upgrades. Based on [docker CentOS install docs](https://docs.docker.com/engine/install/centos/) (adapted)
 
 ```sh
 sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
@@ -213,7 +213,7 @@ volumes:
 </details>
 
 :::info
-The Traefik container and the Simplicité instances have to run in the same docker network, that's why we create a "proxy" network where we'll put all our containers.
+The Traefik container and the Simplicité instances have to run in the same Docker network, that's why a "proxy" network is created where all containers will be placed.
 :::
 
 ## 4) Configure

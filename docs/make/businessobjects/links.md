@@ -7,7 +7,7 @@ title: Links
 
 ## What is a Link ?
 
-The definition of a 1:N relationship allows two business objects to be linked together. If we take the example of the supplier and the product, there is 1 supplier for N products. This section presents what the Simplicité engine does with the configuration of objects, attributes and relationships.
+The definition of a 1:N relationship allows two business objects to be linked together. Taking the example of the supplier and the product, there is 1 supplier for N products. This section presents what the Simplicité engine does with the configuration of objects, attributes and relationships.
 
 ## Technical key of the business object
 
@@ -17,19 +17,19 @@ From the definition of the physical object and attribute names, a table and a co
 select * from trn_supplier;
 ```
 
-We obtain the following columns:
+The following columns are obtained:
 
 | row\_id | created\_dt | created\_by | updated\_dt | updated\_by | trn\_sup\_code |
 |---------|-------------|-------------|-------------|-------------|----------------|
 |         |             |             |             |             |                |
 
-The `row_id` column is what we call the **technical key**. It is generated and managed by the base, **so there is no need to create ID attributes** for your objects.
+The `row_id` column is called the **technical key**. It is generated and managed by the base, **so there is no need to create ID attributes** for your objects.
 
 These 5 columns are not intended to be visible to the user.
 
 ## Functional key of the business object
 
-The functional key is a set of fields defining the **functional** uniqueness of the business object. Thus, if we decide that the functional key of the customer is composed of his name and his first name, then we cannot have two customers with the same name + first name. 
+The functional key is a set of fields defining the **functional** uniqueness of the business object. Thus, if it is decided that the functional key of the customer is composed of his name and his first name, then two customers with the same name + first name cannot exist. 
 
 **Every business object must have a functional key**. *If there is no key, Simplicité will only allow the creation of one record, which will have an  "empty" functional key. The second record, also having an "empty" functional key, will trigger an error because the functional key already exists.*
 

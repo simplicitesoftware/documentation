@@ -10,9 +10,9 @@ UI Component
     This lesson is a part of the <b>Frontend Development</b> category, which is meant to guide you through the frontend development within Simplicité. Thus it might be a bit longer and more verbosed than other lessons you will find in the <b>Simplicité Configuration Object</b> category.
 </div>
 
-This document outlines the process of using **External Objects** to design and implement custom widgets from scratch. It breaks down the important steps to create interactive objects to thoroughly address the *creation*, *integration* and the *implementation* processes.
+This document outlines the process of using **External Objects** to design and implement custom widgets from scratch. It covers the essential steps for creating interactive objects, addressing the *creation*, *integration*, and *implementation* processes.
 
-Following this, it will explore how to make these widgets dynamic by incorporating *interactive behaviors*, and seamless communication with Simplicité's backend and features.
+This guide explores how to make widgets dynamic by incorporating *interactive behaviors* and seamless communication with Simplicité's backend and features.
 
 ## Use Case Scenarios
 
@@ -30,7 +30,7 @@ For instance, a business-oriented platform might feature a professional and mini
 
 ## Implementation (Welcome Card)
 
-The creation process is quite straightforward, as it is a specific type of **External Object**, it is mainly instantiating a new external object with specific values and then implementing the content and styles for the widget we want.
+The creation process is straightforward, as it involves instantiating a new external object with specific values and then implementing the content and styles for the desired widget.
 
 ### External Object Creation
 
@@ -38,32 +38,32 @@ The creation process is quite straightforward, as it is a specific type of **Ext
 
 Start by creating an **External Object**, and make sure it is of nature *UI page or component*, and of class `com.simplicite.webapp.web.widgets.ResponsiveExternalObject`. Also make sure that the *UI widget* field is set to *Yes*.
 
-Another important step is to grant your widget the rights of the module and view you want to embed it in. This way you won't have troubles integrating it to your application. To do so navigate to your object's tab, in the *Permissions* section, and add all the ones you need.
+Another important step is to grant the widget the rights of the module and view where it will be embedded. This prevents integration issues with the application. Navigate to the object's tab, in the *Permissions* section, and add all required permissions.
 
 ![](img/ui-component/welcome-card-permissions.png)
 
 ### Creating Resources
 
-Then use the *Create Resources* action button, and click *Yes*. By doing so, you are adding 3 files to your object's *Resources* (visible in the bottom tab section "Resources"):
+Use the *Create Resources* action button and click *Yes*. This adds 3 files to the object's *Resources* (visible in the bottom tab section "Resources"):
 
-- **HTML**; the *HTML* file in which you can define the content for your object. By default it just contains the `<div id="ext-obj"></div>` in which you can put whatever style you want.
+- **HTML**: The HTML file for defining object content. By default, it contains `<div id="ext-obj"></div>` where custom styles can be applied.
 
-- **STYLES**; the *CSS* file that serves as stylesheet for your object. There are no default style defined, only an empty bracket `#ext-obj { /* Custom styles */ }`.
+- **STYLES**: The CSS file that serves as a stylesheet for the object. No default styles are defined, only an empty bracket `#ext-obj { /* Custom styles */ }`.
 
-- **CLASS**; the *Javascript* script that will be useful for the next sections. 
+- **CLASS**: The JavaScript script used in subsequent sections. 
 
 ![](img/ui-component/welcome-card-resources.png)
 
-> ***Note:*** The ressources are organized as any web element, in order to be easily integrated and created by designers and frontend developers.
+> ***Note:*** Resources are organized as standard web elements to facilitate integration and creation by designers and frontend developers.
 
 For the next steps, there are several ways to conceive your object:
 
 1) **Dynamic Instantiation** *(recommended)*
 
-As at some point you will have to fetch data and dynamically create your html elements (for example if you are retrieving an object and then using its data within a div). Thus it is more relevant to instantiate all of your HTML directly from your *CLASS* resource file using javascript.
-This way is the one recommended by Simplicité when creating your External Objects, as they won't be very large in the DOM and mostly embedded in your existing Simplicité Interfaces, it is preferred to have the lowest loading time possible --through lighter HTML--, and overall the workflow of the *CLASS* and *HTML* resource file together is simpler using this way.
+When fetching data and dynamically creating HTML elements (for example, retrieving an object and using its data within a div), it is more efficient to instantiate all HTML directly from the *CLASS* resource file using JavaScript.
+This approach is recommended by Simplicité for creating External Objects, as they remain lightweight in the DOM and are mostly embedded in existing Simplicité interfaces. This method minimizes loading time through lighter HTML and simplifies the workflow between the *CLASS* and *HTML* resource files.
 
-This way your *HTML* resource file will remain very light and only contain sort of 'anchors' that will help you tell where and how to instantiate your different elements. And your *CLASS* file on the contrary, will be slightly bigger and complex. Below are shown the examples of the basic setup for our *DemoWelcomeCard* using this instantiation type:
+This approach keeps the *HTML* resource file lightweight, containing only 'anchors' that indicate where and how to instantiate different elements. The *CLASS* file, by contrast, will be slightly larger and more complex. The following examples show the basic setup for *DemoWelcomeCard* using this instantiation type:
 
 ```html
 <div id="demowelcomecard">
@@ -82,13 +82,13 @@ Simplicite.UI.ExternalObjects.DemoWelcomeCard = class extends Simplicite.UI.Exte
 }
 ```
 
-* A class with the name of your External Object is declared within the `Simplicite.UI.ExternalObjects` module, extending the `Simplicite.UI.ExternalObject` to properly access any method from it.
-* Only the `render(params, data)` function is declared yet, as it is the one called inside the server-side java code resource `com.simplicite.webapp.web.ResponsiveExternalObject`.
-* We dynamically instantiate an "Hello world!" text simply to test that the connection & basic instantiation is enabled using `$('#demowelcomecard').append(...)`.
+* A class with the name of the External Object is declared within the `Simplicite.UI.ExternalObjects` module, extending the `Simplicite.UI.ExternalObject` to properly access any method from it.
+* Only the `render(params, data)` function is declared, as it is called inside the server-side Java code resource `com.simplicite.webapp.web.ResponsiveExternalObject`.
+* A "Hello world!" text is dynamically instantiated to test that the connection and basic instantiation are enabled using `$('#demowelcomecard').append(...)`.
 
-The *HTML* will remain the same during this lesson (for this instantiation), while the *CLASS* will be modified and furtherly explained later on.
+The *HTML* remains the same during this lesson (for this instantiation), while the *CLASS* will be modified and explained further later.
 
-> ***WARNING:*** The javascript code snippet is the one you'll have from V6.1.19, if you use an outdated version the resource file for javascript might be *SCRIPT* and then you can refer to the code presented at the very end of this document, that uses a more general and fully working setup; `var DemoWelcomeCard = DemoWelcomeCard || (function(){ ... })(jQuery);`.
+> ***WARNING:*** The JavaScript code snippet is available from V6.1.19. If using an outdated version, the JavaScript resource file might be named *SCRIPT*. Refer to the code presented at the end of this document, which uses a more general and fully working setup: `var DemoWelcomeCard = DemoWelcomeCard || (function(){ ... })(jQuery);`.
 <details>
 <summary>V5 Default Javascript</summary>
 
@@ -105,14 +105,14 @@ var CustomWelcomeCard = CustomWelcomeCard || (function($) {
 
 2) **Static Instantation**
 
-There are some use cases where it is easier to work with a static setup (i.e longer HTML), for example if you only fetch few data and have everything doable from HTML or from any "static function". This is thus not recommended compared to the previous version, as it will be slightly less effective while co-existing with/within Simplicité's solution.
-With this method, the setup remains the same for the *CLASS* file, but you'll maybe already setup a more complete structure for your *HTML*:
+Some use cases may require a static setup (i.e., longer HTML), for example, when fetching minimal data and having everything achievable from HTML or static functions. This approach is not recommended compared to the previous version, as it is slightly less effective when coexisting within Simplicité's solution.
+With this method, the setup remains the same for the *CLASS* file, but a more complete structure may be set up for the *HTML*:
 
 ```html
 <div id="customwelcomecard">
 	<span class="welcome-title">Welcome User</span>
     <span class="welcome-text">
-        Welcome to Simplicité's solution! We're excited to have you onboard. Explore, interact, and enjoy your experience with us !
+        Welcome to Simplicité's solution! The team is excited to have you onboard. Explore, interact, and enjoy your experience!
     </span>
     <div class="welcome-buttons">
         <button class="welcome-btn tuto" onclick="goToSimpliciteDoc()">Get Started (Tutorial)</button>
@@ -123,13 +123,13 @@ With this method, the setup remains the same for the *CLASS* file, but you'll ma
 </div>
 ```
 
-Yet we won't actually instantiate the different features and functions, but still we can include them to know how they'll be included. Moreover, the presented scripts are not the final ones and will be modified with explanations later on this lesson.
+The different features and functions are not actually instantiated, but they can be included to demonstrate how they would be integrated. The presented scripts are not final and will be modified with explanations later in this lesson.
 
-> ***Note:*** Both techniques are working fine in Simplicité and it indeed depends on how you prefer to do it. The main presented examples are gonna be for the first one, but at the end we provide a similar code that works with the second technique.
+> ***Note:*** Both techniques work fine in Simplicité and depend on preference. The main examples focus on the first technique, but similar code that works with the second technique is provided at the end.
 
 ## Integration (Welcome Card)
 
-As for the *creation process*, the process of integrating the created widget is very straightforward, everything will be done in the *User Interface > Views > Show All*, select a view that is of type *Home Page*, and click the *Edit View* action button:
+The process of integrating the created widget is straightforward. Navigate to *User Interface > Views > Show All*, select a view of type *Home Page*, and click the *Edit View* action button:
 
 1) Add a new **Sub-View**.
 2) Make it of type **External Page**.
@@ -137,21 +137,21 @@ As for the *creation process*, the process of integrating the created widget is 
 4) Fill the *External Object* field with the name of your widget (for the welcome-card use **CustomWelcomeCard**).
 5) Save it, and you shall see a preview of your object integrated within the view.
 
-> ***Warning:*** Make sure to grant the rights for your external object !
-> - If encountering the *External object ____ not granted*, first try to clear your cache.
-> - If clearing cache wasn't the solution check for your object's rights, and make sure that they matches the ones of your application.
+> ***Warning:*** Ensure that rights are granted for the external object.
+> - If encountering *External object ____ not granted*, first try clearing the cache.
+> - If clearing the cache does not resolve the issue, check the object's rights and ensure they match those of the application.
 
-The creation of an object's behavior and interaction within one Simplicité application sure comes along with the creation of its content & styles. Though it requires a bit more understanding of how Simplicité is organized and how to communicate properly and access the informations.
+Creating an object's behavior and interaction within a Simplicité application involves creating its content and styles. This requires understanding how Simplicité is organized and how to communicate properly and access information.
 
 ## Implementation (Welcome Card)
 
-The first step is to make sure that our object can be aware of the Simplicité's system that he is a part of. To make such things we are gonna use the *javascript* resources of our External Object: **CLASS**.
+The first step is to ensure that the object can be aware of the Simplicité system it is part of. This is achieved using the *JavaScript* resources of the External Object: **CLASS**.
 
-> ***Note:*** The **CLASS** resource file name is automatically assigned at creation from v6.1.19, above it's possible that your javascript resource file is named **SCRIPT**. Thus the inner workflow remains similar.
+> ***Note:*** The **CLASS** resource file name is automatically assigned at creation from v6.1.19. In earlier versions, the JavaScript resource file might be named **SCRIPT**. The internal workflow remains similar.
 
 ### File structure
 
-The default *CLASS* vows to be organized is a certain way while you develop it, this it is important to understand its structure and how to navigate through it:
+The default *CLASS* should be organized in a specific way during development. It is important to understand its structure and how to navigate through it:
 
 ```javascript
 Simplicite.UI.ExternalObjects.DemoWelcomeCard = class extends Simplicite.UI.ExternalObject {
@@ -171,21 +171,21 @@ Simplicite.UI.ExternalObjects.DemoWelcomeCard = class extends Simplicite.UI.Exte
 ```
 
 1) **Dynamically instantiate HTML:**
-As with this way you dynamically create all of your HTML content, the syntax we recommend to use is the illustrated one above; `$(target).append(content)` with content usually being `$(selector)` to add an empty div. Such expression means and does several things:
-- `$()` is a shorthand for `jQuery()`, and allows to both select a target element in the DOM from its 'id', `$('#container')` will select the `<div id="container></div>` element (that may be something else than a div).
-- `.append()` allows to insert a specified content as the last child of the selected element, thus modifying the DOM.
+When dynamically creating all HTML content, the recommended syntax is illustrated above: `$(target).append(content)` with content usually being `$(selector)` to add an empty div. This expression performs several functions:
+- `$()` is a shorthand for `jQuery()`, allowing selection of a target element in the DOM by its 'id'. `$('#container')` will select the `<div id="container></div>` element (which may be something other than a div).
+- `.append()` inserts specified content as the last child of the selected element, thus modifying the DOM.
 
-You then can specify the attributes of your appended elements using several simple methods:
-- `.attr("attr", "name")` to specify any attribute of your element (id, style, ...) as `<div attr="name"></div>`.
-- `.addClass("class0 class1")` to specify the differente classes (may be single) of your element, here `<div class="class0 class1"></div>`.
-- `.text("txt")` to input a given string (possibly not static) to your element, from the example we would have `<div>txt</div>`.
-- `.on("event", function)` allows to define an *eventListener* to your element, giving first a string naming the event, and then specifying the function to call when this event occurs (events can come from several interacting sources such as mouse, forms, keyboard, documents, and even touch).
+Attributes of appended elements can be specified using several simple methods:
+- `.attr("attr", "name")` specifies any attribute of the element (id, style, ...) as `<div attr="name"></div>`.
+- `.addClass("class0 class1")` specifies different classes (may be single) of the element, here `<div class="class0 class1"></div>`.
+- `.text("txt")` inputs a given string (possibly not static) to the element, from the example `<div>txt</div>`.
+- `.on("event", function)` defines an *eventListener* for the element, first providing a string naming the event, then specifying the function to call when this event occurs (events can come from several interacting sources such as mouse, forms, keyboard, documents, and even touch).
 
-With such approach, passing out variables and methods is pretty straighforward and intuitive, as everything happens within your *CLASS* javascript resource file. Indeed you can simply link some elements of your *HTML* content file to specific functions and features implemented in your *CLASS* javascript file. Thus you have nothing to actually implement in the *HTML*, just some anchors to then dynamically instantiate your elements from the *CLASS* file.
+With this approach, passing variables and methods is straightforward and intuitive, as everything happens within the *CLASS* JavaScript resource file. Elements of the *HTML* content file can be linked to specific functions and features implemented in the *CLASS* JavaScript file. Nothing needs to be implemented in the *HTML*, just anchors to dynamically instantiate elements from the *CLASS* file.
 
 2) ***Alternative "Hybrid" Script Structure***
 
-If you still like to have elements with associated features statically instantiated within your *HTML* file, then there is one slightly different way to think your structure; you need a reference or an entry point to your javascript methods, this is done through an actual *instance* of your class that can be declared as follows:
+If elements with associated features need to be statically instantiated within the *HTML* file, there is a slightly different approach to structure the code. A reference or entry point to JavaScript methods is needed, achieved through an actual *instance* of the class that can be declared as follows:
 
 ```javascript
 Simplicite.UI.ExternalObjects.DemoWelcomeCard = class extends Simplicite.UI.ExternalObject {
@@ -215,7 +215,7 @@ Then using function from statically instantiated elements can be done as:
 
 3) ***Previous Script Structure***
 
-For the older *SCRIPT* the structure is thus more straigthforward, as you declare your whole object's script as an *Immediately Invoked Function Expression*, everything is contained in it, and for a proper organisation you can refer to the following script:
+For older *SCRIPT* versions, the structure is more straightforward, as the entire object's script is declared as an *Immediately Invoked Function Expression*. Everything is contained within it, and for proper organization, refer to the following script:
 ```javascript
 var CustomWelcomeCard = CustomWelcomeCard || (function($){
 	let app = $ui.getApp();
@@ -241,9 +241,9 @@ var CustomWelcomeCard = CustomWelcomeCard || (function($){
 })(jQuery);
 ```
 
-With such structure, you don't especially need the `render(params, data)` method to be called, and you can declare your variables as you would in a regular function. The only specificity is to actually return all of your functions and variables in order to access them in your *HTML*.
+With this structure, the `render(params, data)` method does not need to be called, and variables can be declared as in a regular function. The only requirement is to return all functions and variables to access them in the *HTML*.
 
-Then accessing the returned methods in the *HTML* would be done similarly to how it is in the below code snippet:
+Accessing the returned methods in the *HTML* is done similarly to the code snippet below:
 
 ```html
 <div id="customwelcomecard">
@@ -253,13 +253,13 @@ Then accessing the returned methods in the *HTML* would be done similarly to how
 </div>
 ```
 
-> ***Note:*** With this method you can't pass variables or constants statically, so you still need to add the fetched datas dynamically.
+> ***Note:*** With this method, variables or constants cannot be passed statically, so fetched data must still be added dynamically.
 
 ### Manipulating Business Objects
 
-As they are a core element of any Simplicité application, it is important to know how to get and use them properly within any **External Object**. In order to do so you first need to have your app declared above, `let app = $ui.getApp();`, and then the method is `getBusinessObject(string name)`, thanks to which you can fetch all the Business Objects having the wanted `name`. 
+As Business Objects are core elements of any Simplicité application, it is important to know how to retrieve and use them properly within any **External Object**. First, declare the app: `let app = $ui.getApp();`, then use the method `getBusinessObject(string name)` to fetch all Business Objects with the specified `name`. 
 
-By doing so, you are gonna get a variable of type `[object Object]`, that is organized as follows:
+This returns a variable of type `[object Object]`, organized as follows:
 ```json
 {
 	"count": <INT>, // count of BusinessObjects with this name & applied filters
@@ -285,7 +285,7 @@ By doing so, you are gonna get a variable of type `[object Object]`, that is org
 
 > This is the example organization for the **DemoProduct** Business Object, some things might defer from one object to another, but still it is roughly the same for all.
 
-The next step is so to fetch the different instances of our business object, which are stored in the `list` array of our Business Object. But for manipulating our objects this way, you have to use the `search()` method from the BusinessObject class. This methods will start searching through the declared Business Object, and it's within this method that you will declare your related code:
+The next step is to fetch the different instances of the business object, which are stored in the `list` array of the Business Object. To manipulate objects this way, use the `search()` method from the BusinessObject class. This method searches through the declared Business Object, and related code is declared within this method:
 
 ```javascript
 businessObject.search( function() {
@@ -298,15 +298,15 @@ businessObject.search( function() {
 });
 ```
 
-And the final step to access your different objects from here is to know how they are organized, and that you can do within the Simplicité's designer UI, as when declaring your object, each field and attribute of it has followed specific naming rules: 
+The final step to access different objects is to understand how they are organized. This can be done within Simplicité's designer UI, as when declaring an object, each field and attribute follows specific naming rules: 
 - A Business Object from the module *Demo* with the name *Product* and Prefix *prd* will always have its fields start with **demoPrd**.
-- If you have links between your Business Objects, for example if  your *DemoProduct* as several fields from *DemoSupplier* using the key **demoPrdSupId**, these fields will be accessible from javascript by using `demoPrdSupId__*` where `*` is the name of your field (let's take **demoSupName** for example).
+- If there are links between Business Objects, for example, if *DemoProduct* has several fields from *DemoSupplier* using the key **demoPrdSupId**, these fields will be accessible from JavaScript using `demoPrdSupId__*` where `*` is the name of the field (for example, **demoSupName**).
 
-> ***Note:*** If you want to access this without having to think of the possible names you had, or if you are unsure about your fields, you can chekc them from a *designer* scope, by going to **Business Objects > Your Object"* and then in the bottom tabs, select *Object Fields* to have the list of all fields and the possible links (example below).
+> ***Note:*** To access this without having to think of possible names, or if unsure about fields, check them from a *designer* scope by going to **Business Objects > Your Object** and then in the bottom tabs, select *Object Fields* to see the list of all fields and possible links (example below).
 
 ![](img/ui-component/demo-prd-fields-list.png)
 
-Now here is how we implemented a simple product fetching & display function within the **CustomWelcomeCard** External Oject using the previously explained methods, so inside the `BusinessObject.search(function(){ ... })` call we can use the following code snippet:
+The following example shows how to implement a simple product fetching and display function within the **CustomWelcomeCard** External Object using the previously explained methods. Inside the `BusinessObject.search(function(){ ... })` call, use the following code snippet:
 
 ```javascript
 for (let i=0; i<product.count; i++)
@@ -364,7 +364,7 @@ $("#demowelcomecard-productlist").attr("hidden", "true"); // hiding by default
 
 ![](img/ui-component/welcome-product-cards.png)
 
-Additionaly we create the corresponding styles for the product card we are dynamically adding:
+Additionally, create the corresponding styles for the product card being dynamically added:
 
 <details>
 <summary>CSS styles</summary>
@@ -462,11 +462,11 @@ Additionaly we create the corresponding styles for the product card we are dynam
 ```
 </details>
     
-> ***Note:*** The way to input HTML from javascript is your choice, here we did it this way to ease the understanding from an external perspective.
+> ***Note:*** The method for inputting HTML from JavaScript is a matter of choice. This approach was chosen to facilitate understanding from an external perspective.
 
 ### Displaying Content
 
-Another interesting possibility is to implement custom shortcuts from our widgets, basically to redirect to any display Business Object's form, or even redirect to more general parts of the solution.
+Another interesting possibility is to implement custom shortcuts from widgets to redirect to any display Business Object's form, or even redirect to more general parts of the solution.
 
 Such interactions can be done using the `BusinessObject.displayForm()` or `BusinessObject.displayList()` methods. The use case for displaying **Products' Form** is pretty straightforward:
 
@@ -481,7 +481,7 @@ The `display*` methods available for **Business Objects** are all working as fol
 
 ### Getting User Infos
 
-Keeping the idea of redirecting our user, we will implement a slightly different interaction; displaying the current user's form. Such feature will require us to get the currently logged user, and to do so here is a simple script workflow:
+Following the idea of redirecting users, implement a slightly different interaction: displaying the current user's form. This feature requires retrieving the currently logged user. Here is a simple script workflow:
 
 ```javascript
 let grant = $ui.getGrant(); // can be removed if using $grant
@@ -490,7 +490,7 @@ let currentUserLogin = grant.login; // equivalent: $grant.login
 let user = app.getBusinessObject("User");
 ```
 
-Then thanks to the following script, we can easily use the previously fetched informations to properly display the currently logged user's form:
+The following script uses the previously fetched information to properly display the currently logged user's form:
 
 ```javascript
 user.search( function(){
@@ -509,7 +509,7 @@ user.search( function(){
 
 ## Final Welcome-Card (V6.1.19)
 
-After all that we should be done with the implementation of our customized Welcome-Card widget ! We so have 3 resource files that should look like this:
+After completing these steps, the implementation of the customized Welcome-Card widget should be complete. The 3 resource files should look like this:
 
 ***HTML*** resource file:
 ```html
@@ -534,7 +534,7 @@ Simplicite.UI.ExternalObjects.DemoWelcomeCard = class extends Simplicite.UI.Exte
 
         $("#demowelcomecard-header")
             .append($('<h1>').text("Welcome to Simplicité's Demo !"))
-            .append($('<h3>').text("We're excited to have you onboard. Explore, interact, and enjoy your experience with us !"));
+            .append($('<h3>').text("The team is excited to have you onboard. Explore, interact, and enjoy your experience!"));
 
         $("#demowelcomecard-actions")
             .append($('<button/>').text("Check the Tutorial").attr("id", "tutorial").addClass("demowelcomecard-btn").on("click", () => { window.open("https://docs.simplicite.io/", "_blank"); } ))
@@ -822,16 +822,16 @@ Simplicite.UI.ExternalObjects.DemoWelcomeCard = class extends Simplicite.UI.Exte
 
 ## Final Welcome-Card (Alternative Code)
 
-An other way to do, with not specifically recommended techniques and logics (but overall similar and still working), is to have a more complete HTML and work with a namespace & instance of your Javascript object.
+Another approach, using techniques and logic that are not specifically recommended (but overall similar and still working), is to have more complete HTML and work with a namespace and instance of the JavaScript object.
 
-Though this is not the best way to do as it contains some flaws (explained earlier) and isn't an optimized way to proceed within Simplicité's logic and concepts:
+This is not the best approach as it contains some flaws (explained earlier) and is not an optimized way to proceed within Simplicité's logic and concepts:
 
 ***HTML*** resource file:
 ```html
 <div id="customwelcomecard">
 	<span class="welcome-title">Welcome User</span>
     <span class="welcome-text">
-        Welcome to Simplicité's solution! We're excited to have you onboard. Explore, interact, and enjoy your experience with us !
+        Welcome to Simplicité's solution! The team is excited to have you onboard. Explore, interact, and enjoy your experience!
     </span>
     <div class="welcome-buttons">
         <button class="welcome-btn tuto" onclick="CustomWelcomeCard.goToSimpliciteDoc()">Get Started (Tutorial)</button>

@@ -14,7 +14,7 @@ This document introduces Simplicité’s **Theme Editor**, a tool designed for *
 
 ![](img/theme/simplicite-mazette-form.png)
 
-Through this document, we will provide an understanding of how the tool works, its *key features*, and the *extensive customization* options available. We’ll explore how you can leverage it to enhance both *functionality* and *aesthetics*, ensuring an optimized and cohesive user experience.
+This document explains the functionality of the Theme Editor, highlights its key features, and outlines the extensive customization options available. Guidance is provided on utilizing the tool to enhance both functionality and aesthetics, ensuring an optimized and cohesive user experience.
 
 ## Tool Overview
 
