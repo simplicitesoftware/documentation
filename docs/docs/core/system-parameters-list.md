@@ -431,7 +431,7 @@ Credentials to use DocuSign APIs
 
 **Description**
 
-Define the DocuSign librairies to load:
+Define the DocuSign libraries to load:
 
 - relative path of WEB-INF
 - or absolute path on a server shared directory
@@ -451,7 +451,7 @@ Docusign private Key to connect API
 
 **Description**
 
-Domain relaxing (useful when integrating other applications from same domain with JavaScript interactions), settng it to "none" mean no explicit domain relaxing
+Domain relaxing (useful when integrating other applications from same domain with JavaScript interactions), setting it to "none" mean no explicit domain relaxing
 
 ### `EAI designer`
 
@@ -937,7 +937,7 @@ yes/no to trace the fatal level.
 
 **Description**
 
-yes/no to trace common informations. Log4j must be set to INFO or DEBUG level.
+yes/no to trace common information. Log4j must be set to INFO or DEBUG level.
 
 ### `LOG_MEMORY`
 
@@ -1197,7 +1197,7 @@ PostgreSQL only: Language used by full-text search to clean up irrelevant words.
 PostgreSQL only: parser used by the fulltext search.
 
 Supported values:
-- `to_tsquery`: legacy and limited, does not support quoted text and special caracters `&|:*()` in query
+- `to_tsquery`: legacy and limited, does not support quoted text and special characters `&|:*()` in query
 - `websearch_to_tsquery`: needs PGSQL v11+, it supports more user friendly syntax (quoted text and +/-/or operators)
 
 ### `PROCESS_CACHE_SIZE`
@@ -1967,7 +1967,7 @@ Use business object pool for the API endpoint?
 
 **Description**
 
-Use websocket logs (only usefull with websocket enabled servers)?
+Use websocket logs (only useful with websocket enabled servers)?
 
 ### `USE_ZOOM`
 

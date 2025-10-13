@@ -386,7 +386,7 @@ The unsigned APK is generated in your android directory `myproject/platforms/and
 
 ### Sign your APK file
 
-Create a keystore with your company informations:
+Create a keystore with your company information:
 - with Android studio: https://developer.android.com/studio/publish/app-signing
 - with CLI keytool: https://www.linkedin.com/pulse/how-create-signed-android-apk-apache-cordovausing-cordova-ghatul/
 

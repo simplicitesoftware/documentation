@@ -134,7 +134,7 @@ pdf.add(PDFTool.getImageFromResource(obj.getGrant(), "MYIMAGERESOURCECODE"));
 Excel(R) sheet using Apache POI&reg;
 ------------------------------------
 
-### Create sheet fron scratch
+### Create sheet from scratch
 
 **Java**
 

@@ -83,7 +83,7 @@ public Grant getGrant() {
 }
 ```
 
-You should also use dedicated datasets to get reproductible tests.
+Using dedicated datasets ensures reproducible test results.
 
 > **Note**: For some very "low level" unit tests it is still possible to run the tests outside of Simplicité.
 > 
@@ -154,7 +154,7 @@ public String unitTests() {
 Run from UI
 -----------
 
-To invoke the unit tests from the UI, open the definition of your unit tests shared code, business object, business worflow, external object, etc.
+To invoke the unit tests from the UI, open the definition of your unit tests shared code, business object, business workflow, external object, etc.
 and click on the _Unit tests_ action button.
 
 The result is displayed in a popup.

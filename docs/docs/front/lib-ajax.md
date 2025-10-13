@@ -7,7 +7,7 @@ Ajax Library
 ============
 
 <div class="warning">
-    This lesson is a part of the <b>Frontend Development</b> category, which is meant to guide you through the frontend development within Simplicité. Thus it might be a bit longer and more verbosed than other lessons you will find in the <b>Simplicité Configuration Object</b> category.
+    This lesson is a part of the <b>Frontend Development</b> category, which is meant to guide you through the frontend development within Simplicité. Thus it might be a bit longer and more verbose than other lessons you will find in the <b>Simplicité Configuration Object</b> category.
 </div>
 
 This document provides an overview of the Ajax Library, detailing its core methods and functions, while also explaining how the Simplicité solution is structured and operates within the Model-View-Controller (MVC) architecture.
@@ -88,7 +88,7 @@ As they are a core feature of Simplicité, it is important to understand some of
 | getField(name, id)                  | Simplicite.Ajax.ObjectField          | Returns the field with **name** and **id** from the *fields array* in the *meta-data*.                     |
 | getCount(cbk, filters, params)      | integer                              | Returns the count of *rows* with the **filters** to be applied (current ones if absent).                   |
 | crosstab(cbk, cbt, filters, params) | void                                 | Loads cross table data from the **cbt** crosstab, for the given **filters**.                               |
-| getForCreate(cbk, params)           | void                                 | Loads default item (`BusinessObject.item`) for creation with optional **params** to adress specific needs. |
+| getForCreate(cbk, params)           | void                                 | Loads default item (`BusinessObject.item`) for creation with optional **params** to address specific needs. |
 
 > ***Note:*** Getting a new Business Object in your javascript should be done directly using the `Simplicite.Ajax.getBusinessObject()` function instead of the constructor.
 
@@ -102,13 +102,13 @@ The following outlines the standard structure of *Business Objects* and summariz
 | list      | Current search result array of items, usually contains all the instances of your object.                                                   |
 | metadata  | Current meta data: *name* is the object name, *instance* is the object instance name, *fields* is the fields' definition array, ...        |
 
-> ***Reminder:*** Always perform manipulations of your *Business Objects* within a `search()` method in order to ensure you correctyl are accessing and manipulating your objects with all the needed data.
+> ***Reminder:*** Always perform manipulations of your *Business Objects* within a `search()` method in order to ensure you correctly are accessing and manipulating your objects with all the needed data.
 
-When using any instance of your Business Object, note that you can access the value of any field simply calling the name of it, indeed as instances are typed as `[object Object]`, if you want to access a field labeled `fieldName` from your *Business Object instance* named `obj`, then you just have to use `let objfField = obj.fieldName` and thus objField won't be of type `ObjectField` but of the actual value type (`string`, `int`, ...).
+When using any instance of your Business Object, note that you can access the value of any field simply calling the name of it, indeed as instances are typed as `[object Object]`, if you want to access a field labeled `fieldName` from your *Business Object instance* named `obj`, then you just have to use `let objField = obj.fieldName` and thus objField won't be of type `ObjectField` but of the actual value type (`string`, `int`, ...).
 
 # Displaying Specific Elements
 
-Within the `WORK` part of SImplicité's UI are displayable mutliple items when navigating the solution, below is a list of functions that can be used to display specific elements in the area
+Within the `WORK` part of SImplicité's UI are displayable multiple items when navigating the solution, below is a list of functions that can be used to display specific elements in the area
 
 | Command                             | Returns                      | Description                                                                                                              |
 |-------------------------------------|------------------------------|--------------------------------------------------------------------------------------------------------------------------|

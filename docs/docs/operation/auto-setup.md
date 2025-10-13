@@ -8,7 +8,7 @@ Automated setup
 
 The most classic way of installing an app on an instance is to deploy an empty instance and import modules as the designer user, usually through the UI, the I/O endpoint or using Git pushes/pulls.
 
-However, there are many contexts that call for mechanisms to install or update a fully-functionning app without ever having to connect to it.
+However, there are many contexts that call for mechanisms to install or update a fully-functioning app without ever having to connect to it.
 
 This document presents two features that aim at accomplishing just that:
 - licence packaging

@@ -121,7 +121,7 @@ Case 1: Business object hooks
 
 ModelBusinessObject is a template to edit the internal objects in a diagram (as a class diagram), and has been scripted to: 
 - Add icons and datatypes on attributes
-- Change link aspect: reference arrow, agregation, inheritance...
+- Change link aspect: reference arrow, aggregation, inheritance...
 - Launch the wizards to create objects and fields
 - Add a contextual menu to edit the object script directly
 
@@ -143,7 +143,7 @@ onLoadNode: function(node) {
 			item.text = item.rel.obf_field_id__fld_name + " @" + item.rel.obf_ref_object_id__obo_name;
 		// main field
 		else item.text = item.rel.obf_field_id__fld_name;
-		// addd specific input name
+		// add specific input name
 		if (item.rel.obf_input)	item.text += " ("+item.rel.obf_input+")";
 
 		// Prefix
@@ -489,7 +489,7 @@ _drawUserImage: function(c,img,x,y) {
 Case 4: Use case diagram
 ------------------------
 
-- Draw directly on canvas to render the Actors nodes (system or human), but keep the defaut rendering of Activities
+- Draw directly on canvas to render the Actors nodes (system or human), but keep the default rendering of Activities
 - Resize and rename the labels
 
 

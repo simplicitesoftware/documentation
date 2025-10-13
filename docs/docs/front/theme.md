@@ -7,7 +7,7 @@ Theme Editor: Presentation and Overview
 ======================================
 
 <div class="warning">
-    This lesson is a part of the <b>Frontend Development</b> category, which is meant to guide you through the frontend development within Simplicité. Thus it might be a bit longer and more verbosed than other lessons you will find in the <b>Simplicité Configuration Object</b> category.
+    This lesson is a part of the <b>Frontend Development</b> category, which is meant to guide you through the frontend development within Simplicité. Thus it might be a bit longer and more verbose than other lessons you will find in the <b>Simplicité Configuration Object</b> category.
 </div>
 
 This document introduces Simplicité’s **Theme Editor**, a tool designed for *customizing the visual identity of your instance*, whether for the designer interface or the user interface. The Theme Editor provides the *flexibility* to align your instance’s appearance with personal preferences, organizational branding guidelines, or specific design requirements.
@@ -163,7 +163,7 @@ Adjust style variables accorss elements and contexts:
 4) ***Hover:*** Modify the appearance of some interactive elements when hovered, including `background-color` and `text-color`.
 
 
-Here is a detailled list of the menu's sub-section and the specific elements they cover:
+Here is a detailed list of the menu's sub-section and the specific elements they cover:
 
 
 **Base**: defines fundamental styles such as the main background color, global font, and shared spacing parameters, ensuring consistency across all elements.
@@ -331,7 +331,7 @@ Here is a detailled list of the menu's sub-section and the specific elements the
 
 
 
-**Dialog**: syles `modal` dialogs that appear over the UI (with a `z-index = 1055`). These overlays dim the rest of the interface for focus and clarity.
+**Dialog**: styles `modal` dialogs that appear over the UI (with a `z-index = 1055`). These overlays dim the rest of the interface for focus and clarity.
 
 ![](img/theme/theme-editor-style-dialog.png)
 

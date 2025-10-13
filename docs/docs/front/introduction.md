@@ -73,7 +73,7 @@ In order to properly manipulate and customize your Simplicité applications, it 
 
 * **MENU -** contains all your application's sections, with sub-menus and categories, it helps you to intuitively navigate through your applications. You can also embed specific features and categories (trays, typed items, ...).
 
-* **WORK -** this represents the main area of interest, where all dynamic content is displayed, indeed it is the biggest one. That's where any of your search or navigation result will appear and be interactible with.
+* **WORK -** the main content area where dynamic content is displayed and where search results and navigation content appears. This is the largest section of the interface where users interact with data and functionality.
 
 * **FOOTER -** this last parts serves to add some specific links that less users would access but that are still mandatory, like Legal Mentions and Accessibility features.
 

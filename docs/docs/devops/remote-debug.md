@@ -23,7 +23,7 @@ See [this document](/docs/operation/docker) for details.
 
 When using a SIM server, to restart an instance in debug mode you have to stop Tomcat `sim tomcat-stop` and restart it in JPDA mode `sim tomcat-debug`.
 
-The exposed JPDA port is specific to each instance (it is only openned when the instance is running in debug mode) and is available in the `JPDA_ADDRESS` environment variable.
+The exposed JPDA port is specific to each instance (it is only opened when the instance is running in debug mode) and is available in the `JPDA_ADDRESS` environment variable.
  
 ### Tomcat <span id="tomcat"></span>
 

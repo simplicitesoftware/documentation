@@ -34,17 +34,17 @@ Your application's URL **must** be exposed over HTTPS, SSL encryption is **manda
 <details>
 <summary>Skip this if you are using a standard Simplicité Docker image</summary>
 
-If you are using our standard Docker images or our instance tempates these changes are already done.
+If you are using our standard Docker images or our instance templates these changes are already done.
 
 In other case, it might be necessary to :
 - Remove all realm-related settings in `WEB-INF/web.xml` (security-constraint, login-config and security-role tags)
-- Optionaly remove also the realm definition in `META-INF/context.xml`
+- Optionally remove also the realm definition in `META-INF/context.xml`
 
 > **Warning**: Before doing these changes, **make sure** that you will still be able to login with a user having at least a responsibility on the `ADMIN` group.
 
 </details>
 
-### In the Indentity Provider
+### In the Identity Provider
 
 The callback URL (redirect URI) to configure **in your OAuth2/OpenIDConnect identity provider** for your instance is `<base URL>/oauth2callback`.
 
@@ -176,7 +176,7 @@ Beyond the common OAuth2 settings, there are some additional system parameters t
 | `userinfo_mappings` | optional | user info fields to use as instead of standard fields defined by the OIDC standards, the value is a JSON object (e.g. `{ "login": "uid", "firstname": "first_name", "lastname": "last_name", "email": "email_address", "phone": "mobile_phone, "lang": "preferred_language"}` to map the defaults which are respectively `sub`, `given_name`, `family_name`, `email`, `phone_number` and `locale`) | v4.0 |
 | `pkce_challenge_method` | optional | to enable PKCE flow, possible values are `S256` or `plain` (if absent PKCE is disabled) | v5.2.30 |
 | `pkce_code_verifier_length` | optional | to define the length of the PKCE code verifier, defaults to `64` | v5.2.30 |
-| `non_ssl_urls_allowed` | optional | to allow using non SSL URLs (Note that this does not comply with OAuth2/OpenIDConnect standards, it should never be used unless you absolutly need it) | v5.2.32 |
+| `non_ssl_urls_allowed` | optional | to allow using non SSL URLs (Note that this does not comply with OAuth2/OpenIDConnect standards, it should never be used unless absolutely required) | v5.2.32 |
 
 ### Default scopes
 

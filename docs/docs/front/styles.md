@@ -7,7 +7,7 @@ Complementary Theme Styles
 ==========================
 
 <div class="warning">
-    This lesson is a part of the <b>Frontend Development</b> category, which is meant to guide you through the frontend development within Simplicité. Thus it might be a bit longer and more verbosed than other lessons you will find in the <b>Simplicité Configuration Object</b> category.
+    This lesson is a part of the <b>Frontend Development</b> category, which is meant to guide you through the frontend development within Simplicité. Thus it might be a bit longer and more verbose than other lessons you will find in the <b>Simplicité Configuration Object</b> category.
 </div>
 
 This document outlines how to enhance and refine your custom or the pre-existing themes using the *addon.less* file.
@@ -55,7 +55,7 @@ body {
 ```
 </details>
 
-*Interactions Nesting:* Same way as nesting works for children elements or contexts, yo ucan use it to dynamically handle different type of interactions for your elements:
+*Interactions Nesting:* Nesting can also be used to define styles for different interaction states of elements, such as hover and active states:
 <details>
 <summary>Code Snippet</summary>
 
@@ -141,10 +141,10 @@ Before applying additional styles, clearly define the visual modifications you w
 - *Tabs:* Those are implemented through the `div.tabs` element. Their layout can be further specified using additional classes specifying how the `li.nav-item` (tab headers within `ul.nav.nav-tabs`) are displayed compared to the `div.tab-pane.active` (tab content contained in `div.tab-content`).:
     - `div.tabs.tabs-top`, where they are displayed *vertically on top*.
     - `div.tabs-bottom`, where they are displayed *vertically below*.
-    - `div.tabs-left`, where they are displayed *horizontaly before*.
-    - `div.tabs-right`, where they are displayed *horizontaly after*.
+    - `div.tabs-left`, where they are displayed *horizontally before*.
+    - `div.tabs-right`, where they are displayed *horizontally after*.
 
-To provide a better understanding, here is the organizarion of tabs as it is visible in a *.less* file:
+To provide a better understanding, here is the organization of tabs as it is visible in a *.less* file:
 ```less
 div.tabs.tabs-top {
     ul.nav.nav-tabs {
@@ -220,7 +220,7 @@ After identifying the *DOM path* and *context*, proceed to implement the desired
 @border-green: #58EC9B;
 @border-red: #FB3640;
 
-// Targetting Panels and Sub-Panels
+// Targeting Panels and Sub-Panels
 div.card {
     div.card-header { //this is the header of PANELS
         border-left: solid 0.2rem @border-pink;
@@ -232,7 +232,7 @@ div.card {
     }
 }
 
-// Targetting Tabs (top layout)
+// Targeting Tabs (top layout)
 div.tabs-top {
     div.nav-tabs > div.nav-link.active {
         border-left: solid 0.2rem @border-green;
@@ -242,7 +242,7 @@ div.tabs-top {
     }
 }
 
-// Targetting Lists
+// Targeting Lists
 div.container-table > table {
     thead {
     	border-left: solid 0.2rem @border-red;

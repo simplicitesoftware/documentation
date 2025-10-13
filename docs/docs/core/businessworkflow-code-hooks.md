@@ -20,9 +20,9 @@ The choice depends on the nature of the considered business logic.
 Process definition and right-related hooks
 -----------------------------------------
 
-### Post instanciate hook
+### Post instantiate hook
 
-The `postInstanciate` hook is called **once** when the process definition is loaded.  
+The `postInstantiate` hook is called **once** when the process definition is loaded.  
 It can therefore be used to modify the **static** process definition of each instance.
 
 In this context, "static" refers to definition settings that remain constant throughout the duration of the user session, as opposed to dynamic settings that may be modified by other hooks.
@@ -140,8 +140,8 @@ public Message preValidate(ActivityFile context) {
 			return m;
 		}
 		// Change the activity result if the address is empty
-		String adresseId = context.getDataValue("Field", "cliAdresseFK");  
-		if (Tool.isEmpty(adresseId)) {  
+		String addressId = context.getDataValue("Field", "cliAddressFK");  
+		if (Tool.isEmpty(addressId)) {  
 			AppLog.info("empty address", getGrant());
 			// EmptyAddress is set in a transition condition
 			context.setDataFile("Return", "Code", "EmptyAddress");  

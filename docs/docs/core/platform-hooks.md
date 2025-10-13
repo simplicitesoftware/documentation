@@ -213,7 +213,7 @@ Other hooks
 
 ### `validatePassword`
 
-This platform hook is called when a password change is attempted, it can be used to implement custom rules for password fomat validation:
+This platform hook is called when a password change is attempted, it can be used to implement custom rules for password format validation:
 
 
 **Java**

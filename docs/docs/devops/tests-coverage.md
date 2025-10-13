@@ -24,7 +24,7 @@ This is also useful for report generation as this default folder is also the def
 To be able to generate a human-readable report (see bellow) you must also mount the `src` and `bin` folders
 located in the `/usr/local/tomcat/webapps/ROOT/WEB-INF` folder because both of them are used by the report generation process.
 
-By default, the exec file is appended when restarting the container, but you can change this by setting the `JACOCO_DESTFILE_APPEND` environment viariable to `false`
+By default, the exec file is appended when restarting the container, but you can change this by setting the `JACOCO_DESTFILE_APPEND` environment variable to `false`
 (e.g. `-e JACOCO_DESTFILE_APPEND="false"`), in this case the exec file is reset each time the container is restarted.
 
 > **Note**: you can use the import specification mechanism to automate the modules import and unit tests execution.
@@ -33,7 +33,7 @@ By default, the exec file is appended when restarting the container, but you can
 
 You can do the same manually for "traditional" Tomcat deployments.
 
-Download the [JaCoCo tool](https://repo1.maven.org/maven2/org/jacoco/jacoco/0.8.12/jacoco-0.8.12.zip) and unzip it somewhere acessible to Tomcat (noted `<path>` bellow).
+Download the [JaCoCo tool](https://repo1.maven.org/maven2/org/jacoco/jacoco/0.8.12/jacoco-0.8.12.zip) and unzip it somewhere accessible to Tomcat (noted `<path>` bellow).
 
 Add following option to JVM arguments when starting Tomcat (in the example bellow only one module is monitored noted `<module>`):
 

@@ -45,11 +45,11 @@ Then the services are to be restarted in the following order:
 Logs reviewing
 --------------
 
-To help with diagnostics, several kind of logs can be usefull:
+To help with diagnostics, several kind of logs can be useful:
 
 ### Web console logs
 
-In some cases, the web console logs can be usefull. Check your browser's documentation to figure out how to open the web console. Make sure the logs are persisted when you change page, and reproduce the issue. When connected as designer, the Simplicité logs will be displayed in the web console as well.
+In some cases, the web console logs can be useful. Check your browser's documentation to figure out how to open the web console. Make sure the logs are persisted when you change page, and reproduce the issue. When connected as designer, the Simplicité logs will be displayed in the web console as well.
 
 ### HTTP Archive Logs
 

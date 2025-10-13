@@ -1217,7 +1217,7 @@ Stand-alone usage
 
 The engine can be loaded in a stand-alone page:
 
-* The Ajax services must be instanciated as usual before loading the UI engine
+* The Ajax services must be instantiated as usual before loading the UI engine
 * The platform must use the CORS configuration to allow cross-domain access
 	* server-side: when deploying the webapp, make sure `cors.filter` property is set to `true` in `build.properties` (this is useless if CORS is handled by an Apache/NGINX reverse proxy)
 	* client-side: `Simplicite.UI.Globls.ajaxSetup.crossDomain = true`

@@ -246,10 +246,10 @@ private String getKey() {
 /**
  * Encrypt or decrypt the field value
  * @param f    Object Field
- * @param value Field value (crypted or decrypted)
+ * @param value Field value (encrypted or decrypted)
  * @param encrypt true to encrypt the value, false to decrypt
  * @param context create/update to encrypt, select/redolog to decrypt
- * @return crypted or decrypted value
+ * @return encrypted or decrypted value
  */
 public String fieldEncryptDB(ObjectField f, String value, boolean encrypt, String context) {
 	if (f.getName().equals("mySensitiveField")) {
@@ -267,7 +267,7 @@ Call remote URL with client certificate
 In this example the object is storing the client certificate JKS file as a document field
 and the certificate password as a password field.
 
-It can be easily transposed with the JKS avialable as a static local file or as a (protected) resource
+It can be easily transposed with the JKS available as a static local file or as a (protected) resource
 and with the password stored as a system parameter or a environment variable etc.
   
 **Java**
@@ -289,13 +289,13 @@ public String callAPI() {
 > **Note**: the client certificate **must** be a JKS file, if you have a PEM certificate you can convert
 > it to JKS format converting it first as PKCS12 using `openssl pkcs12 -export -inkey mycert.key -in mycert.pem -out mycert.p12`
 > and then importing it in a JKS file using `keytool -importkeystore -destkeystore mycert.jks -srckeystore mycert.p12 -srcstoretype PKCS12`
-> (you will be prompted to enter the passwords for the certficates)
+> (you will be prompted to enter the passwords for the certificates)
 
 
 Asynchronous code
 -----------------
 
-This exemple to implement a monitoring of CSV exports launched in parallel. 
+This example to implement a monitoring of CSV exports launched in parallel. 
 
 
 ```Java

@@ -7,7 +7,7 @@ UI Component
 ============
 
 <div class="warning">
-    This lesson is a part of the <b>Frontend Development</b> category, which is meant to guide you through the frontend development within Simplicité. Thus it might be a bit longer and more verbosed than other lessons you will find in the <b>Simplicité Configuration Object</b> category.
+    This lesson is a part of the <b>Frontend Development</b> category, which is meant to guide you through the frontend development within Simplicité. Thus it might be a bit longer and more verbose than other lessons you will find in the <b>Simplicité Configuration Object</b> category.
 </div>
 
 This document outlines the process of using **External Objects** to design and implement custom widgets from scratch. It covers the essential steps for creating interactive objects, addressing the *creation*, *integration*, and *implementation* processes.
@@ -103,7 +103,7 @@ var CustomWelcomeCard = CustomWelcomeCard || (function($) {
 ```
 </details>
 
-2) **Static Instantation**
+2) **Static Instantiation**
 
 Some use cases may require a static setup (i.e., longer HTML), for example, when fetching minimal data and having everything achievable from HTML or static functions. This approach is not recommended compared to the previous version, as it is slightly less effective when coexisting within Simplicité's solution.
 With this method, the setup remains the same for the *CLASS* file, but a more complete structure may be set up for the *HTML*:
@@ -117,7 +117,7 @@ With this method, the setup remains the same for the *CLASS* file, but a more co
     <div class="welcome-buttons">
         <button class="welcome-btn tuto" onclick="goToSimpliciteDoc()">Get Started (Tutorial)</button>
         <button class="welcome-btn prd-nav" onclick="displayProductsWithin()">Products List</button>
-        <button class="welcome-btn info" onclick="goToUserInfos()">My Informations</button>
+        <button class="welcome-btn info" onclick="goToUserInfos()">My information</button>
     </div>
     <div id="welcome-list" hidden></div>
 </div>
@@ -836,7 +836,7 @@ This is not the best approach as it contains some flaws (explained earlier) and 
     <div class="welcome-buttons">
         <button class="welcome-btn tuto" onclick="CustomWelcomeCard.goToSimpliciteDoc()">Get Started (Tutorial)</button>
         <button class="welcome-btn prd-nav" onclick="CustomWelcomeCard.displayProductsWithin()">Products List</button>
-        <button class="welcome-btn info" onclick="CustomWelcomeCard.goToUserInfos()">My Informations</button>
+        <button class="welcome-btn info" onclick="CustomWelcomeCard.goToUserInfos()">My information</button>
     </div>
     <div id="welcome-list" hidden></div>
 </div>

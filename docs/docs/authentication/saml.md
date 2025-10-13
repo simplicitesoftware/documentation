@@ -17,9 +17,9 @@ Webapp settings
 The changes to be done are :
 
 - Remove all realm-related settings in `WEB-INF/web.xml` (security-constraint, login-config and security-role tags)
-- Optionaly remove also the realm definition in `META-INF/context.xml`
+- Optionally remove also the realm definition in `META-INF/context.xml`
 
-> **Note**: If you are using our standard Docker images or our instance tempates these changes are already done
+> **Note**: If you are using our standard Docker images or our instance templates these changes are already done
 
 Then declare your SAML authentication provider in the `AUTH_PROVIDERS` system parameter, e.g.:
 

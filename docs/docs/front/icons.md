@@ -37,9 +37,9 @@ To add your own icons :
 
 ## Theme icons
 
-It is possible to override the default icon sets, which can be usefull if you are building a specific designer theme for example.
+It is possible to override the default icon sets, which can be useful if you are building a specific designer theme for example.
 
-In this case, use the **Icons set** field of the Theme to specify your recource. Call it `IMAGES_COLOR` if you want to override the color set.
+In this case, use the **Icons set** field of the Theme to specify your resource. Call it `IMAGES_COLOR` if you want to override the color set.
 
 ## Javascript API
 

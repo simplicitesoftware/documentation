@@ -44,8 +44,8 @@ The `header` region contains several permanent actions:
 
 ### Footer
 
-The `footer` region contains legal informations and news by default.
-- without action accept opening dialogs with informations
+The `footer` region contains legal information and news by default.
+- without action accept opening dialogs with information
 - hidden on small device (mobile)
 
 ### Main menu

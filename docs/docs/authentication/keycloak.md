@@ -15,7 +15,7 @@ This install section is provided for testing purposes only, and is **not suitabl
 
 :::
 
-This is an example of docker compose + Traefik deployement (ideal for a [Portainer server](/docs/operation/portainer) or similar)
+This is an example of docker compose + Traefik deployment (ideal for a [Portainer server](/docs/operation/portainer) or similar)
 
 ```yaml
 services:

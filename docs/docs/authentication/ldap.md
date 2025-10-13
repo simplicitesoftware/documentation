@@ -17,7 +17,7 @@ Webapp settings
 The changes to be done are :
 
 - Remove all realm-related settings in `WEB-INF/web.xml` (security-constraint, login-config and security-role tags)
-- Optionaly remove also the realm definition in `META-INF/context.xml`
+- Optionally remove also the realm definition in `META-INF/context.xml`
 - Remove all other authentication's mechanisms system parameters if present (e.g. `OAUTH2_*`, `SAML_*`, ...)
 
 LDAP settings
@@ -51,7 +51,7 @@ Example 2 (if you want first to search for DN to use for binding in the subtree 
 }
 ```
 
-After successful bind to LDAP, the user's entry is retreived from the LDAP using anonymous access.
+After successful bind to LDAP, the user's entry is retrieved from the LDAP using anonymous access.
 If authenticated requests are required for this, you need to add both `userdn` and `userpassword` in your `LDAP_AUTH_CONFIG`.
 
 The following default LDAP attribute are used:

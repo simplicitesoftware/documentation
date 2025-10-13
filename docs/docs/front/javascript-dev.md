@@ -7,7 +7,7 @@ Javascript Development
 ======================
 
 <div class="warning">
-    This lesson is a part of the <b>Frontend Development</b> category, which is meant to guide you through the frontend development within Simplicité. Thus it might be a bit longer and more verbosed than other lessons you will find in the <b>Simplicité Configuration Object</b> category.
+    This lesson is a part of the <b>Frontend Development</b> category, which is meant to guide you through the frontend development within Simplicité. Thus it might be a bit longer and more verbose than other lessons you will find in the <b>Simplicité Configuration Object</b> category.
 </div>
 
 This document explains the basics and main rules for using JavaScript in Simplicité. JavaScript is mainly used to add custom interactions to external objects. Here, you will learn how JavaScript works in Simplicité and get simple tips and guidelines to help you use it effectively with your external objects.
@@ -49,7 +49,7 @@ It provides several APIs for:
 - **Authentication** to manage user session programmatically.
 - **Object Handling**, performing *CRUD* operations (or other manipulations) on Business Objects.
 - **Ajax Call** to communicate with Simplicité's back-end in order to fetch data or invoke specific logic.
-- **Utilities** in order to acess helper methods for logging, debugging, etc.
+- **Utilities** in order to access helper methods for logging, debugging, etc.
 
 ***Example:*** Fetching a Business Object
 ```javascript
@@ -217,9 +217,9 @@ server.use(express.static(dir + '/public'));
 <details>
 <summary>Code Details</summary>
 
-- `serverHost` and `serverPort` are instanciated either from your **.env** file, **command line arguments**, or **hardcoded values**, and defines the host *IP address* and *Port* where your app should run.
+- `serverHost` and `serverPort` are instantiated either from your **.env** file, **command line arguments**, or **hardcoded values**, and defines the host *IP address* and *Port* where your app should run.
 - `const server = express()` creates an express application instance, that will handle incoming HTTP requests and also manage routes & responses.
-- `server.disable('x-powered-by');` disables the specified header in HTTP responses, included for security reasons as it prevents revealing that app is runing on express (supposed to make it less vulnerable).
+- `server.disable('x-powered-by');` disables the specified header in HTTP responses, included for security reasons as it prevents revealing that app is running on express (supposed to make it less vulnerable).
 - `const dir` stores the directory path for current module/file, converting the `import.meta.url` into a regular file path with `fileURLToPath()`, and extracting the directory part for this part using `dirname()`. It ensures the proper referencing of files relative to current **app.js** script.
 - `server.use()` serves static files from `/public` directory, and can be accessed by visiting `/filename` in browser. It enables frontend assets (images, stylesheets, additional scripts, ...).
 </details>
@@ -547,4 +547,4 @@ var MyExternalObject = (function($) {
 - `new Simplicite.Ajax()` declares a new instance for the Simplicité session, with parameters `approot = ""` and `gateway = "uipublic"`. To make sure you are applying the right parameters, refer to [this part](https://platform.simplicite.io/current/jsdoc/Simplicite.Ajax.html) of the documentation.
 - `function render(params) {...}` is the method called in the **Java code** to be executed when DOM is fully loaded (by `setReady()` method).
 
-To keep on going with your javascript development with this setup, you just have to declare your functions in the encapsulated function, and make sure to call the functions using the correct namespace in your `.html` resource file. In our case if you declare a *sayHello* function in yoir javascript code, then you must call `MyExternalPage.sayHello` inside of your html file.
+For continued JavaScript development with this setup, functions must be declared within the encapsulated function and called using the correct namespace in the `.html` resource file. For example, if a *sayHello* function is declared in the JavaScript code, it must be called as `MyExternalPage.sayHello` inside the HTML file.

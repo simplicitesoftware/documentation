@@ -140,7 +140,7 @@ Case 1: Business object hooks
 
 ModelBusinessObject is a template to edit the internal objects in a diagram (as a class diagram), and has been scripted to: 
 - Add icons and datatypes on attributes
-- Change link aspect: reference arrow, agregation, inheritance...
+- Change link aspect: reference arrow, aggregation, inheritance...
 - Launch the wizards to create objects and fields
 - Add a contextual menu to edit the object script directly
 
@@ -517,7 +517,7 @@ onLoadNode: function(node, cbk) {
 		node.icon = node.data.grp_parent_id ? "group" : "building";
 	}
 	else if (node.object=="User") {
-		// Remove previous cached image in SVG definitons
+		// Remove previous cached image in SVG definitions
 		var imgId = node.data.usr_image_id,
 			imgName = "pict_user_"+node.id;
 		self.desktop.removeDefImage(imgName, 50, 0);

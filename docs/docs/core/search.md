@@ -8,7 +8,7 @@ Search
 
 ## Searching with the UI
 
-There are differend kind of searches in Simplicité : 
+There are different kind of searches in Simplicité : 
 - Global Search
 - Advanced Search
 - Object Search
@@ -56,7 +56,7 @@ Basically, each filter is translated to a SQL `WHERE` clause, allowing filtering
 
 ### Object Search
 
-The Object Search is just the Global Search functionnality (using the same index and specificities) but applied to one object only.
+The Object Search is just the Global Search functionality (using the same index and specificities) but applied to one object only.
 
 ### Menu Search
 

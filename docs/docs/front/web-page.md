@@ -7,7 +7,7 @@ External Custom Web Pages
 =========================
 
 <div class="warning">
-    This lesson is a part of the <b>Frontend Development</b> category, which is meant to guide you through the frontend development within Simplicité. Thus it might be a bit longer and more verbosed than other lessons you will find in the <b>Simplicité Configuration Object</b> category.
+    This lesson is a part of the <b>Frontend Development</b> category, which is meant to guide you through the frontend development within Simplicité. Thus it might be a bit longer and more verbose than other lessons you will find in the <b>Simplicité Configuration Object</b> category.
 </div>
 
 This document explains how to use Simplicité's **External Objects** to create web pages that operate independently from the Simplicité application interface. Thus, these objects are rendered as custom web pages rather than being embedded within Simplicité's standard UI.
@@ -297,9 +297,9 @@ To ensure the *proper creation* of a Business Object, you must first gather all 
 - `demoOrdPrdId__demoPrdUnitPrice`: the specific 'price' field from the *DemoProduct* referenced by given `row_id`, accessible through `demo_product.demoPrdUnitPrice`.
 - `demoOrdPrdId__demoPrdStock`: the specific 'stock' field from the *DemoProduct* referenced by given `row_id`, accessible through `demo_product.demoPrdStock`.
 
-> **Note:** The structured use of `BusinessObject.item` helps maintain *data integrity*, preventing errors during object instantiation and ensuring a smooth workflow in managing creation (and thus other actions) of BusinessObject's intances.
+> **Note:** The structured use of `BusinessObject.item` helps maintain *data integrity*, preventing errors during object instantiation and ensuring a smooth workflow in managing creation (and thus other actions) of BusinessObject's instances.
 
-Below a basic code example to create a new order with the mentionned fields:
+Below a basic code example to create a new order with the mentioned fields:
 ```javascript
 let order = app.getBusinessObject("DemoOrder");
 let cli, prd; // dynamically fetch the DemoClient and DemoProduct you wanna associate to order
@@ -407,7 +407,7 @@ Most of the functions you'll interact with in Simplicité's system are based on 
 Here’s a brief refresher on how to use `async` and `await`, as well as how to *encapsulate calls* within `new Promise((resolve, reject) => {...})` for greater control over *asynchronous operations*.
 
 ```javascript
-let product = app.getBusinesssObject("DemoProduct");
+let product = app.getBusinessObject("DemoProduct");
 
 let productNames = await getProductNames();
 
@@ -1163,7 +1163,7 @@ body::-webkit-scrollbar {
 
 In order to build custom webpages using the **Vue.js** web framework, you have two possible ways that are slightly different, you can either work with the **resource files** of your external object --with a subtle change in the architecture of those files-- or you can directly create a Vue.js project that you build and then use as a resource within your external object.
 
-> ***Note:*** The two methods are working well but still aren't quite the same when it comes to your mindset and vision while developping them.
+> ***Note:*** The two methods are working well but still aren't quite the same when it comes to your mindset and vision while developing them.
 
 ### Using resource files
 
@@ -1258,7 +1258,7 @@ The available web-tools with this method are:
 It’s also possible to include other tools, as long as they don’t override the structure of your object or page.
 | Tool Name     | Method                 | Tool documentation (official) |
 |---------------|------------------------|-------------------------------|
-| JQuery        | `appendJQuery()`       | JQuery [offical page](https://api.jquery.com/) |
+| JQuery        | `appendJQuery()`       | JQuery [official page](https://api.jquery.com/) |
 | JQPlot        | `appendJQPlot()`       | JQPlot [documentation](http://www.jqplot.com/files/usage-txt.html) |
 | Bootbox®      | `appendBootbox()`      | Bootbox [documentation](https://bootboxjs.com/docs.html) |
 | Bootstrap®    | `appendBootstrap()`     | Bootstrap latest [documentation](https://getbootstrap.com/5.3/getting-started/introduction/) |
@@ -1433,21 +1433,21 @@ function render(params) {
 			fooInner(){
 				console.log("foo from inside !");
 			},
-			fooOutter
+			fooOuter
 		}
 	});
 
 	// next part of code
 }
 
-function fooOutter(){
+function fooOuter(){
 	console.log("foo from outside !");
 }
 ```
 ```html
 <!-- The ways to use the declared functions are similar but still different -->
 <button v-on:click="fooInner()">Inner Foo</button> <!-- '()' are mandatory if you want the function to actually be executed -->
-<button v-on:click="fooOutter">Outter Foo</button> <!-- don't need the parenthesis if there are no argument (still not recommended) -->
+<button v-on:click="fooOuter">Outer Foo</button> <!-- don't need the parenthesis if there are no argument (still not recommended) -->
 ```
 
 If you want to explore these concepts further and understand how they coexist, here is the full code for the Custom Vue webpage that serves as an example:
@@ -1838,11 +1838,11 @@ var DemoVueJSFrontendCopy = DemoVueJSFrontendCopy || (() => {
 
 ### Building project
 
-Simplicité also allows you to direclty import projects created under a chosen framework as `.zip` file, and then loading those from the *java server-side* script.
+Simplicité also allows you to directly import projects created under a chosen framework as `.zip` file, and then loading those from the *java server-side* script.
 
 This technique allows you to use frameworks not included in the `com.simplicite.web.webapp.BootstrapWebPage` class, by creating projects as you would for any of the associated frameworks' project using NodeJS. To import it you simply have to run `npm run build` to create a `dist/` folder.
 Then the last preparation step is to compress the `dist/` folder into a `.zip`, and add it as a resource in your ExternalObject's form.
 
 > ***Note:*** You can also do that for a Vue project in order to access multi-component projects and a wider range of Vue features.
 
-Next step is to write a proper and functionning *java server-side* code in order to load the compressed as a valid resource in order to reference, load, and render it as any other ExternalObject.
+Next step is to write a proper and functioning *java server-side* code in order to load the compressed as a valid resource in order to reference, load, and render it as any other ExternalObject.

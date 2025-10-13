@@ -21,11 +21,11 @@ Typically, you would:
 VS Code
 -------
 
-To work with VSCode (and affiliates), it is usefull to add the [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) to get IntelliSense and Java debugging tools. Given that Simplicité modules are in fact exported as Maven projects, the extension will do all the necessary work when opening the project, for example to provide the necessary JavaDocs to get usefull autocompletion.
+To work with VSCode (and affiliates), it is useful to add the [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) to get IntelliSense and Java debugging tools. Given that Simplicité modules are in fact exported as Maven projects, the extension will do all the necessary work when opening the project, for example to provide the necessary JavaDocs to get useful autocompletion.
 
 ### Simplicité Extension
 
-The [Simplicite VSCode tools extesion](https://marketplace.visualstudio.com/items?itemName=SimpliciteSoftware.simplicite-vscode-tools) is **optional**. It requires signing in to the app in the extesion, but is usefull to avoid "technical" git commits, as its main usage is to
+The [Simplicite VSCode tools extension](https://marketplace.visualstudio.com/items?itemName=SimpliciteSoftware.simplicite-vscode-tools) is **optional**. It requires signing in to the app in the extension, but is useful to avoid "technical" git commits, as its main usage is to
 push code directly to the instance. Detailed documentation is available in the marketplace's README.
 
 :::warning
