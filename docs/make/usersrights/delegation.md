@@ -21,6 +21,6 @@ To create a delegation, follow the steps below:
     - Grant delegated to Login : The login of the user to whom you wish to delegate rights.  
     - Start date - Beginning date of the delegation. 
     - End date (optional) – End date of the delegation.
-    - Responsability User Login - One of the responsibilities of the connected user.  
+    - Responsibility User Login - One of the responsibilities of the connected user.  
 
 A user can have several rights delegations.  

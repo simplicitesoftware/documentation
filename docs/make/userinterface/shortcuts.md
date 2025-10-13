@@ -7,7 +7,7 @@ title: Shortcuts
 
 ## Introduction 
 
-Shorcuts in Simplicité are quick access points to functionalities available by clicking on the Plus menu (3 small dots next to the user name in the page header) or on a button in the header or on a home page. They can be used to link to commonly used lists, actions, allowing users to perform tasks with fewer steps.  
+Shortcuts in Simplicité are quick access points to functionalities available by clicking on the Plus menu (3 small dots next to the user name in the page header) or on a button in the header or on a home page. They can be used to link to commonly used lists, actions, allowing users to perform tasks with fewer steps.  
 
 ## Configuration
 

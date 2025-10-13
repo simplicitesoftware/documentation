@@ -16,7 +16,7 @@ A dashboard is a visual interface that provides an overview of key data, metrics
 
 - Dynamic updates : Data is often connected to databases in real time.
 
-- Customisation : Simplicité allows users to change the display, rearrange widgets and create their own reports.
+- Customization : Simplicité allows users to change the display, rearrange widgets and create their own reports.
 
 - Sharing : Simplicité allows users to share their dashboards.   
 
@@ -29,10 +29,10 @@ It allows you to create your dashboard. Click on create.
 ![](img/dashboard/dashboard1.png)
 2. Give a label. The dashboard editor is open.  
 ![](img/dashboard/dashboard2.png)  
-You have differents choices :  
-   - Pivot : this will give you access to all the crosstables available to you  
+You have different choices :  
+   - Pivot : this will give you access to all the pivot tables available to you  
     ![](img/dashboard/dashboard3.png)
-   - Chart : this will give you access to all the crosstables available to you with chart display.  
+   - Chart : this will give you access to all the pivot tables available to you with chart display.  
      Choose your chart and click on Apply.   
    ![](img/dashboard/dashboard4.png)
    - Widget : this will give you access to all the widgets (specific external objects) available to you.    

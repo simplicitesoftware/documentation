@@ -46,7 +46,7 @@ Similarly to creating any type of *External Object*, go to *User Interface > Ext
 4. Finally, add your object to an existing **View** of any type.
     - Go to *User Interface > Views > Show all*, and select the view you'd like to include your component in.
     ![](img/uicomponent/uicomp_view_form.png)
-    - Click **Edit View** in the headbar of the form.
+    - Click **Edit View** in the header of the form.
     - You are now in the **Template Editor**, move your mouse around and click on the **+** button at any position.
     ![](img/uicomponent/uicomp_templateeditor_add.png)
     - In the popup menu, select **Sub-View** or **Extern**.
@@ -96,7 +96,7 @@ There are 2 different categories for your external object's implementation:
 
 ### Java instantiation
 
-By default your component is just of Java class `com.simplicite.webapp.web.ResponsiveExternalObject`, but in case you need additional methods, you can create your own *Java class* for your component, that will extend the mentionned one.
+By default your component is just of Java class `com.simplicite.webapp.web.ResponsiveExternalObject`, but in case you need additional methods, you can create your own *Java class* for your component, that will extend the mentioned one.
 
 1. In your external object's form, click **Edit Code**, then **Confirm**.
 
@@ -361,7 +361,7 @@ There are several keypoints to understand and keep in mind while developing in t
 
 ### JS behavior
 
-In the **CLASS** resource, you will write the JS script for your component's behavior. Here you will have the possibility to use both the [JSDoc](https://platform.simplicite.io/current/jsdoc/) for frontend operations direclty in the **CLASS** resource's script, and to make few calls to the *Java* code of your component to add custom server-side operations.
+In the **CLASS** resource, you will write the JS script for your component's behavior. Here you will have the possibility to use both the [JSDoc](https://platform.simplicite.io/current/jsdoc/) for frontend operations directly in the **CLASS** resource's script, and to make few calls to the *Java* code of your component to add custom server-side operations.
 
 > By default the only call from **CLASS** to **Java** is through `render()` that allows for your component's correct display and instantiation. But later on we'll see another method that allow for more custom calls: `service()`.
 
@@ -379,15 +379,15 @@ The key concepts and understanding that you need are:
 - You can work with Simplicité's API and core library using several entry points such as `$ui`, `$app` or `$grant` (documented in the [Ajax library](https://platform.simplicite.io/current/jsdoc/global.html)).
 - You can manipulate most of the *BusinessObjects* and elements through the `BusinessObject.search( function() {...} )` method.
 
-You may need to implement some behaviors and features specifically on the *server-side* (though in the java code). Such workflow is required when you don't want to share informations with the front (public) or you just want the calculations to be done by the backend.
+You may need to implement some behaviors and features specifically on the *server-side* (though in the java code). Such workflow is required when you don't want to share information with the front (public) or you just want the calculations to be done by the backend.
 
-1. **Javascript:** make a call to the [service](https://platform.simplicite.io/current/jsdoc/Simplicite.UI.ExternalObject.html#service) hook, and pass the informations and data you need as arguments.
+1. **Javascript:** make a call to the [service](https://platform.simplicite.io/current/jsdoc/Simplicite.UI.ExternalObject.html#service) hook, and pass the  and data needed as arguments.
 ```javascript
 const res = await this.service(data, 'json');
 console.log(res.result);
 ```
 
-2. **Java:** declare the logic for your object's [service](https://platform.simplicite.io/current/javadoc/com/simplicite/webapp/web/ResponsiveExternalObject.html#service(com.simplicite.util.tools.Parameters)) hook:
+2. **Java:** declare the logic for the object's [service](https://platform.simplicite.io/current/javadoc/com/simplicite/webapp/web/ResponsiveExternalObject.html#service(com.simplicite.util.tools.Parameters)) hook:
 ```java
 public class _ extends com.simplicite.webapp.web.ResponsiveExternalObject {
     // ...

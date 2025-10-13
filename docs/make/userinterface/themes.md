@@ -23,7 +23,7 @@ The tool is composed of 3 parts, each representing a core feature:
     ![](img/themes/themes_preview_area.png)  
 
 - **(2) Theme Palette:** where you will make all of your changes through color pickers and sliders, triggering the live-preview on the *Editing Area*.
-    - It is organized by groups of styles, either that appears in same configurations, or that are appart of the same element.
+    - It is organized by groups of styles, either that appears in same configurations, or that are a part of the same element.
     - The *Buttons* are the only elements that you can't style here, you can go to *Editing Area > Buttons* in order to specify their styles.  
     ![](img/themes/themes_preview_palette.png)  
 
@@ -32,7 +32,7 @@ The tool is composed of 3 parts, each representing a core feature:
 
 ## Creating a Theme 
 
-Start by creating the theme object by going to *User Interface > Themes* and clicking on **Create** in the workspace's headbar.
+Start by creating the theme object by going to *User Interface > Themes* and clicking on **Create** in the workspace's header.
 
 ![](img/themes/themes_create.png)  
 
@@ -116,7 +116,7 @@ body {
 
 > **Warning:** the nesting `.parent > .child` and `.parent .child` have different meanings: **">"** targets only the *direct .child*, otherwise *all .child* are targeted.
 
-*Interactions Nesting:* Same way as nesting works for children elements or contexts, yo ucan use it to dynamically handle different type of interactions for your elements:
+*Interactions Nesting:* Similar to element and context nesting, this feature allows dynamic handling of interaction states for elements:
 <details>
 <summary>Code Snippet</summary>
 

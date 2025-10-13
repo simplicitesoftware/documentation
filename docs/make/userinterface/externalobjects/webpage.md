@@ -11,7 +11,7 @@ A **Web Page** in Simplicité, is a type of [External Object](/make/userinterfac
 
 The specificity (which differentiates it from a [Static Web Site](/make/userinterface/externalobjects/staticsite)) is that such object is allowed and meant to interact with Simplicité's backend.
 
-External objects of this type are exclusively rendered in the *public zone*, which means they can't be embedded within Simplicité's interfaces and are thus meant to be rendered at `https://<your-instance-name>/ext/<object-name>`, defaulty accessible to any user.
+External objects of this type are exclusively rendered in the *public zone*, which means they can't be embedded within Simplicité's interfaces and are thus meant to be rendered at `https://<your-instance-name>/ext/<object-name>`, by default accessible to any user.
 > If you want objects that can also be rendered in the *private zone*, you should use the [Basic](/make/userinterface/externalobjects/basic) nature for you *External Object*, and ensure to adapt the *Java Code* in adequation.
 
 ## How to create
