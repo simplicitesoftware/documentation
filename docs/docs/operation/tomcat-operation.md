@@ -140,7 +140,7 @@ Removed attached document are not physically deleted, they are simply moved to a
 
 ### Out of sync documents
 
-Some document processing in your code may result in inconsitencies between the document table and the actual documents stored.
+Some document processing in your code may result in inconsistencies between the document table and the actual documents stored.
 
 **Make sure to resynchronise documents on a regular basis:**
 
@@ -249,7 +249,7 @@ DriverName=HSQL Database Engine Driver
 DriverVersion=2.6.1
 DBDate=2022-10-17 12:12:31.224000+2:00
 DBDateOffset=0
-DBPatchLevel=<database Simplicité pach level, e.g. 5;P02;12f7b8670b5a2e056e5d3f191a3b73f3>
+DBPatchLevel=<database Simplicité patch level, e.g. 5;P02;12f7b8670b5a2e056e5d3f191a3b73f3>
 UsingBLOBs=false
 
 [Healthcheck]
@@ -294,12 +294,11 @@ Tomcat updates
 
 > **Note**: this chapter is not applicable when using our Docker images. When using such images Tomcat is always up-to-date in the latest images.
 
-The Tomcat server **must** be updated regularly, depending on the way it has been installed the processus may vary.
+The Tomcat server **must** be updated regularly, depending on the way it has been installed the process may vary.
 
 Platform updates
 ----------------
 
 > **Note**: this chapter is not applicable when using our Docker images. When using such images the Simplicité platform is always up-to-date in the latest images.
 
-The Simplicité&reg; platform **must** be updated regularly, at least on its maintenance branch (see [versions](/versions/versioning.md)),
-depending on the way it has been installed the processus may vary.
+The Simplicité&reg; platform **must** be updated regularly, at least on its maintenance branch (see [versions](/versions/versioning.md)), depending on the way it has been installed the process may vary.

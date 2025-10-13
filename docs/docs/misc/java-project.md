@@ -36,7 +36,7 @@ Main ANT tasks
 
 The main ANT tasks provided by the `build.xml` build file are the following:
 
-- `baseinstall`: platorm installation only (no business application)
+- `baseinstall`: platform installation only (no business application)
 - `fullinstall`: Global installation (platform + business application) for production (no test data)
 - `fullinstalldev`: Global installation (platform + business application) for development (including test data)
 - `compile`: Specific Java code compilation (`clean` task removes all previously compiled files and `javadoc`generates Java documentation)
@@ -58,7 +58,7 @@ At each maintenance release you must synchronize your project with the setup pac
 After this synchronization is done, the typical sequence for upgrading your instance is:
 
 1. Make a **full backup** of your instance and of its data (database and documents)
-2. Update the technical platform components (JVM, application server, RDBMS, ...) to their appropriate **up-to-date** versions (please refer to [this document](/docs/compatibility) for details on approriate components versions for your Simplicité version
+2. Update the technical platform components (JVM, application server, RDBMS, ...) to their appropriate **up-to-date** versions (please refer to [this document](/docs/compatibility) for details on appropriate components versions for your Simplicité version
 3. Start your application server and apply system patches using `ant apply[current]systempatches`
 4. Stop your application server and upgrade the application package using `ant deploy`
 5. Restart your application server

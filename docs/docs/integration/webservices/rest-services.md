@@ -13,8 +13,8 @@ This document describes how the generic REST API services are working.
 
 > **Warning**: before considering using these **low level** generic REST services directly,
 > please consider using the various **wrappers** provided on top of these services:
-> - The [standard Ajax API](/docs/integration/librairies/ajax-api) for use within the generic web UI and/or using the generic UI's libs as custom UI framework
-> - The [Node.js and browser JavaScript API](/docs/integration/librairies/nodejs-api) for any external used based on the JavaScript language
+> - The [standard Ajax API](/docs/integration/libraries/ajax-api) for use within the generic web UI and/or using the generic UI's libs as custom UI framework
+> - The [Node.js and browser JavaScript API](/docs/integration/libraries/nodejs-api) for any external used based on the JavaScript language
 >   or any JavaScript-based frameworks (Angular, React, Vue, ...)
 > - Etc.
 
@@ -24,8 +24,8 @@ The authentication mechanisms available on the API endpoint are described in [th
 the credentials that needs to be passed to the calls are noted `<credentials>`.
 
 > **Warning**: never use the **public UI endpoint** instead of the API endpoint: the public UI endpoint
-> is a statefull UI endpoint that is **only** supposed to be used by the non authenticated pages of the generic UI.
-> It does not have the scalability and performance of the API enpoint.
+> is a stateful UI endpoint that is **only** supposed to be used by the non authenticated pages of the generic UI.
+> It does not have the scalability and performance of the API endpoint.
 > In other word using the public UI endpoint for services purposes is an **absolute anti-pattern**.
 
 The calls examples are given using the `curl` command line tool

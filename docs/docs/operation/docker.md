@@ -248,13 +248,13 @@ It is possible to enable a SSL connector at Tomcat level (e.g. useful if you don
 
 - Enable/disable the SSL connector: `-e SSL=<true|false, defaults to false>`
 - Expose the SSL port: `-p <SSL port, e.g. 8444>:8444>`
-- Optionaly mount a custom JKS : `-v <host folder in which is myserver.jks>:/usr/local/tomcat/cert`
+- optionally mount a custom JKS : `-v <host folder in which is myserver.jks>:/usr/local/tomcat/cert`
   - Indicate the mounted JKS path: ` -e KEYSTORE_FILE=/usr/local/tomcat/cert/myserver.jks`
   - Provide JKS password `-e KEYSTORE_PASSWORD=<my keystore password, defaults to "password">`
 
 ### Enable Tomcat AJP connector <span id="ajp"></span>
 
-It is possible to enable/disable an AJP conector at Tomcat level (e.g. useful if you use an Apache reverse proxy):
+It is possible to enable/disable an AJP connector at Tomcat level (e.g. useful if you use an Apache reverse proxy):
 
 - Enable/disable the AJP connector: `-e AJP=<true|false, defaults to false>`
 - Expose the AJP port: `-p [127.0.0.1:]<AJP port, e.g. 8009>:8009]`
@@ -295,7 +295,7 @@ You can enable or disable the health check endpoint (`/health`) and you can add 
 - Enable/disable: `-e SYSPARAM_USE_HEALTH=<true|false, defaults to the configured value of the system parameter>`
 - Define a white list: `-e HEALTH_WHITELIST="<comma-separated list of IP address / IP ranges regex patterns, e.g. 127.0.0.1, ::1, 172.17.0.0/24>"`
 
-#### Enable/disable or define an IP address(es) white list on the I/O enpoint <span id="iowhitelist"></span>
+#### Enable/disable or define an IP address(es) white list on the I/O endpoint <span id="iowhitelist"></span>
 
 You can enable or disable the I/O endpoint (`/io`) and you can define an IP address(es) white list at Tomcat level for this endpoint:
 
@@ -306,28 +306,28 @@ You can enable or disable the I/O endpoint (`/io`) and you can define an IP addr
 > these nodes to communicate with each other (e.g. for propagating a clear cache).
 > This can be achieved by adding the dedicated environment variable `-e IO_PASSWORD=<a very complex password, can be plain text (not recommended) or hashed using configured algorithm (without salting)>`
 
-#### Enable/disable or define an IP address(es) white list on the Git enpoint <span id="gitwhitelist"></span>
+#### Enable/disable or define an IP address(es) white list on the Git endpoint <span id="gitwhitelist"></span>
 
 You can enable or disable the Git endpoint (`/git`) and you can define an IP address(es) white list at Tomcat level for this endpoint:
 
 - Enable/disable: `-e SYSPARAM_USE_GIT=<yes|no, defaults to the configured value of the system parameter>`
 - Define a white list: `-e GIT_WHITELIST="<comma-separated list of IP address / IP ranges regex patterns, e.g. 127.0.0.1, ::1, 172.17.0.0/24>"`
 
-#### Enable/disable or define an IP address(es) white list on the Maven repository enpoint <span id="mavenwhitelist"></span>
+#### Enable/disable or define an IP address(es) white list on the Maven repository endpoint <span id="mavenwhitelist"></span>
 
 You can enable or disable the Maven repository endpoint (`/maven`) and you can define an IP address(es) white list at Tomcat level for this endpoint:
 
 - Enable/disable: `-e SYSPARAM_USE_MAVEN=<yes|no, defaults to the configured value of the system parameter>`
 - Define a white list: `-e MAVEN_WHITELIST="<comma-separated list of IP address / IP ranges regex patterns, e.g. 127.0.0.1, ::1, 172.17.0.0/24>"`
 
-#### Enable/disable or define an IP address(es) white list on the API enpoint <span id="apiwhitelist"></span>
+#### Enable/disable or define an IP address(es) white list on the API endpoint <span id="apiwhitelist"></span>
 
 You can enable or disable the API endpoint (`/api`) and you can define an IP address(es) white list at Tomcat level for this endpoint:
 
 - Enable/disable: `-e SYSPARAM_USER_API=<yes|no, defaults to the configured value of the system parameter>`
 - Define a white list: `-e API_WHITELIST="<comma-separated list of IP address / IP ranges regex patterns, e.g. 127.0.0.1, ::1, 172.17.0.0/24>"`
 
-#### Enable/disable or define an IP address(es) white list on the UI enpoint <span id="uiwhitelist"></span>
+#### Enable/disable or define an IP address(es) white list on the UI endpoint <span id="uiwhitelist"></span>
 
 You can enable or disable the UI endpoint (`/ui`) and you can define an IP address(es) white list at Tomcat level for this endpoint:
 
@@ -423,7 +423,7 @@ sudo docker run (...) -name <myapp>\
 
 If you use a remote Git repositories managements platform such as GitHub or GitLab you can use remote SSH URIs and provide credentials as SSH keys, see bellow.
 
-If you prefer HTTP(S) remote URIs you can pass a username and password using `-e REMOTE_GIT_USERNAME=<username> -e REMOTE_GIT_PASSWORD=<pasword>`.
+If you prefer HTTP(S) remote URIs you can pass a username and password using `-e REMOTE_GIT_USERNAME=<username> -e REMOTE_GIT_PASSWORD=<password>`.
 
 ### Add an SSH key <span id="sshkey"></span>
 
@@ -433,7 +433,7 @@ It is possible to mount your local `.ssh` directory (that contains your SSH key,
 It is also possible to provide a list of IP addresses or hostnames to be added to the known hosts file by passing this environment variable:
 `-e SSH_KNOWN_HOSTS="github.com gitlab.com"`
 
-> **Note**: it may be better to mount the `.ssh` dir in **read only** mode by adding `:ro` but in this case the `SSH_KNOWN_HOSTS` is inefficent
+> **Note**: it may be better to mount the `.ssh` dir in **read only** mode by adding `:ro` but in this case the `SSH_KNOWN_HOSTS` is inefficient
 > as it can't write the `.ssh/known_hosts` file. In this case you must reference your known hosts **prior** to mounting the volume in read only.
 
 ### Run on a specific time zone <span id="timezone"></span>
@@ -477,7 +477,7 @@ It is possible to adjust the logging levels:
 
 ### Cleaning work/log dirs <span id="tomcatcleaning"></span>
 
-It is possible to enable/disable cleanning the work and/or log dirs at startup:
+It is possible to enable/disable cleaning the work and/or log dirs at startup:
 
 - Clean work dirs: `-e TOMCAT_CLEAN_WORK_DIRS=<true|false, defaults to true>`
 - Clean log dirs: `-e TOMCAT_CLEAN_LOG_DIRS=<true|false, defaults to false>`
@@ -641,7 +641,7 @@ And the following build command:
 sudo docker build -t <image tag> --build-arg tag=<the tag of the base image> --build-arg ctx=<a non root context, e.g. myapp> .
 ```
 
-### Add a local email server (for developement only) <span id="smtpserver"></span>
+### Add a local email server (for development only) <span id="smtpserver"></span>
 
 If required **in development**, you can start a local Postfix SMTP server within the container by using `-e LOCAL_SMTP_SERVER=true`.
 
@@ -666,10 +666,10 @@ RUN apk add --update postfix && rm -rf /var/cache/apk/*
 
 ### Add custom Maven dependencies <span id="adddependencies"></span>
 
-If you need addtional libraries that are not -yet - integrated in Simplicité you can build a custom images with addtional Maven dependencies
+If you need additional libraries that are not -yet - integrated in Simplicité you can build a custom images with additional Maven dependencies
 using the embedded `adddeps.sh` script.
 
-For instance, given the folowing Dockerfile:
+For instance, given the following Dockerfile:
 
 ```
 FROM registry.simplicite.io/platform:<tag>
@@ -688,7 +688,7 @@ you can add the dependencies like this:
 docker build  (...) --build-arg deps="<group ID 1>:<artifact ID 1>:<version 1> (...) <group ID 1>:<artifact ID 1>:<version 1>" .
 ```
 
-> Note that only the **non conflicting** JAR librairies denoted by the dependencies will be added to the platform's JAR librairies.
+> Note that only the **non conflicting** JAR libraries denoted by the dependencies will be added to the platform's JAR libraries.
 You need to check carefully the build logs to see which libraries were ignored.
 
 Run with Docker Compose tool <span id="dockercompose"></span>

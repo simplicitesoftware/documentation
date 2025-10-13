@@ -101,5 +101,5 @@ Don't hesitate to also check on other lessons that are relevant for the presente
 * [*Core Javascript (Documentation)*](/docs/core/javascript-code-examples)
 * [*Interface tool `$ui` (Documentation)*](/docs/core/ui-tools-code-examples)
 * [*Custom Services through External Objects (Documentation)*](/docs/integration/webservices/custom-services)
-* [*Ajax API (Documentation)*](/docs/integration/librairies/ajax-api)
+* [*Ajax API (Documentation)*](/docs/integration/libraries/ajax-api)
 * [*Simplicité NPM Javascript API Doc*](https://simplicitesoftware.github.io/javascript-api/)

@@ -6,7 +6,7 @@ title: Tomcat installation on Linux
 Tomcat installation on Linux server
 ===================================
 
-> **Warning**: before choosing this "traditional" installation procedure you should consider other approches such as using [Docker containers](/docs/operation/docker). 
+> **Warning**: before choosing this "traditional" installation procedure you should consider other approaches such as using [Docker containers](/docs/operation/docker). 
 
 This document corresponds to a manual step-by-step installation on an out of the box **Linux CentOS 7**.
 

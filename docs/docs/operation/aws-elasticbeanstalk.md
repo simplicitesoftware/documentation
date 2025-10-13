@@ -11,7 +11,7 @@ Simplicité instances can easily be deployed on the AWS Elastic Beanstalk&reg; p
 This document consider you are using a standard **Simplicité cloud instance template** cloned from Git.
 
 > **Warning**: this document may be **outdated** and incomplete.
-> Docker-based deployments (see [this document](/docs/operation/docker)) are to be preferred over deployement on a proprietary PaaS.
+> Docker-based deployments (see [this document](/docs/operation/docker)) are to be preferred over deployment on a proprietary PaaS.
 > Our support capabilities on this PaaS is very limited so before choosing this option make sure you have required up-to-date expertise.
 
 
@@ -20,7 +20,7 @@ Provision a database
 
 It is required that you provision an external database as a service such as a AWS RDS&reg; database instance.
 
-Once provisionned, load the appropriate template database dump into the database.
+Once provisioned, load the appropriate template database dump into the database.
 
 Then use the configuration items (host, port, database name, username, password) of the database instance to configure the datasource descriptor `META-INF/context.xml` file.
 

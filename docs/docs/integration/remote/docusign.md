@@ -11,7 +11,7 @@ This document applies to version 5.0 MAINTENANCE and above.
 It describes how to configure [DocuSign](https://www.docusign.com/) in your business application.
 
 
-Configuring credentials and librairies 
+Configuring credentials and libraries  
 ----------------------------------------
 
 4 system parameters must be configured to enable API calls to the DocuSign service.  
@@ -42,7 +42,7 @@ Configuring credentials and librairies
 	}
 }
 ```
-- DOCUSIGN_LIBS : Define the DocuSign librairies to load if you want to change the default version.  
+- DOCUSIGN_LIBS : Define the DocuSign libraries to load if you want to change the default version.  
 To find out which version Simplicité uses please refer to [this](https://platform.simplicite.io/6.0/site/dependencies.html)
 
 - DOCUSIGN_PRIVATE_KEY : Docusign private Key to connect API.  

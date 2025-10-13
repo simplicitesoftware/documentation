@@ -21,7 +21,7 @@ The responsive UI is based on the disposition `responsive` with a simple startup
 - CSS stylesheet `STYLES`: optional styles
 - JavaScript `SCRIPT`: optional javascript
 
-The engine is a common MVC (Model-View-Contoller) interface:
+The engine is a common MVC (Model-View-Controller) interface:
 
 ### Model
 
@@ -523,7 +523,7 @@ Almost similar as desktop, except :
 * Menu is hidden by default
 * The header is simplified with icons
 * The footer is hidden
-* All panels/fields/tabs/charts are displayed/splitted in one column
+* All panels/fields/tabs/charts are displayed/split in one column
 * List are displayed as object summaries
 * Search are available in dialog box only
 * Most actions are deported in "plus" button
@@ -635,7 +635,7 @@ or the disposition `SCRIPT` to override properties or functions, for example:
 	// Bind ui.ready = UI is ready (after home page)
 	$(document).on("ui.ready", function() {
 		// Remove some Admin menu to GUEST users
-		if (ui.grant.hasReponsibility("GUEST"))
+		if (ui.grant.hasResponsibility("GUEST"))
 			$(".main-menu [data-obj='myAdminObject']").remove();
 		// Customize footer infos...
 	});
@@ -739,7 +739,7 @@ The hook will be called once by each object instance (the_ajax, panel_ajax...).
 
 1) In the object definition, designer can use the action **Add resources** to generate a `CLASS` skeleton and one empty `STYLES`.
 
-2) When objects are inherited, the classes can also be inherrited and super methods can be invoked.
+2) When objects are inherited, the classes can also be inherited and super methods can be invoked.
 
 `Simplicite.UI.BusinessObjects.myObject2 = class extends Simplicite.UI.MyCommonObject { ... }`
 
@@ -1134,7 +1134,7 @@ function setImage(data) {
 }
 ```
 
-#### Exemple: add a crosstab after a panel of object
+#### Example: add a crosstab after a panel of object
 
 ```javascript
 (function(ui) {
@@ -1604,7 +1604,7 @@ var MyExternalPage = (function() {
 })();
 ```
 
-> **Note**: Make sure - as in the exemple above - to isolate your JavaScript code in a dedicated namespace
+> **Note**: Make sure - as in the example above - to isolate your JavaScript code in a dedicated namespace
 > (e.g. the same name as the external object name), as a matter of fact the responsive UI is one-page
 > so any JavaScript name **must be unique** application-wide
 
@@ -1623,6 +1623,6 @@ Put your specific styles in the external object's `STYLES` resource, for example
 }
 ```
 
-> **Note**: Make sure - as in the exemple above - to give a unique name to your CSS classes for instance with a dedicated name prefix
+> **Note**: Make sure - as in the example above - to give a unique name to your CSS classes for instance with a dedicated name prefix
 > (e.g. the lowercase version of the external object name),
 > as a matter of fact the responsive UI is one-page so any CSS class name **must be unique** application-wide

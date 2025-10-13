@@ -61,7 +61,7 @@ As explained in the introduction you **must** at least put the functional keys o
 
 In XML format the document fields are inlined in the XML, the content of the document being set in a `CDATA` bloc, either as plain text or as base 64 encoded string (depending on MIME type).
 
-A same XML file can have several `object` blocs correspoding to several different business objects, however to respect relational links these blocs must be put in an appropriat order.
+A same XML file can have several `object` blocs corresponding to several different business objects, however to respect relational links these blocs must be put in an appropriate order.
 
 Standard ZIP format
 -------------------

@@ -52,7 +52,7 @@ This `dataDir` environment entry can also be defined in the `META-INF/context.xm
 	override="true"/>
 ```
 
-Note: Alternatively the root data dir can be defined by a JVM argument `-Ddata.dir=...` when lauching Tomcat or by setting a `DATA_DIR`environment variable.
+Note: Alternatively the root data dir can be defined by a JVM argument `-Ddata.dir=...` when launching Tomcat or by setting a `DATA_DIR`environment variable.
  
 And the log file location defined in the `WEB-INF/classes/log4j2.xml` file must also be changed to:
 

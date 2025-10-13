@@ -80,7 +80,7 @@ The [core documentation](/category/core) provides code examples covering general
 
 * Code samples for core configuration items (business objects, workflows, dispositions, adapters, etc.) are available in the [core documentation](/category/core).
 * Information on integration interfaces (CLI, web services, etc.) can be found in the [integration documentation](/category/integration).
-* Documentation for helper libraries (Ajax, etc.) is available in the [APIs documentation](/category/librairies).
+* Documentation for helper libraries (Ajax, etc.) is available in the [APIs documentation](/category/libraries).
 
 Configuration
 -------------

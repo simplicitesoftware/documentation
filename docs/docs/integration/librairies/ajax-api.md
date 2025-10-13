@@ -57,7 +57,7 @@ generic Simplicité API (in that case a user and password **must** be provided)
 webservices gateway (in that case a user and password **must** be provided, and if the `<root>` parameter is a simple
 application root, a trailing `"ws"`is appended to it to build the base URL)
 
-> **Note**: Instanciating a `Simplicite.Ajax` does not actually connect to the application (it does not initiate a user session).
+> **Note**: Instantiating a `Simplicite.Ajax` does not actually connect to the application (it does not initiate a user session).
 > The connection actually occurs when calling a first service.
 
 ### General principles
@@ -122,7 +122,7 @@ app.setDebugHandlerActive(true or false);
 
 Note that the debug handler is inactive by default.
 
-You can explicitely call handlers in your code by:
+Explicitly calling handlers in your code by:
 
 ```javascript
 app.error("Error message");
@@ -146,7 +146,7 @@ Sample usage is:
 app.login(function(sessionId) {
 	console.log("Your session ID is " + sessionId);
 }, function(err) {
-	// Do something with error, calling app.error as above is what happens if this callback is ommitted
+	// Do something with error, calling app.error as above is what happens if this callback is omitted
 	app.error(err);
 });
 ```
@@ -163,7 +163,7 @@ Sample usage is:
 app.logout(function() {
 	console.log("Your session is terminated";
 }, function(err) {
-	// Do something with error, calling app.error as above is what happens if this callback is ommitted
+	// Do something with error, calling app.error as above is what happens if this callback is omitted
 	app.error(err);
 });
 ```
@@ -264,7 +264,7 @@ app.getSysParam(function(value) {
 
 > **Note**: As of **version 4.0** `app.grant.getParameter` is an alias to `app.getSysParam`.
 
-The `setSysParam` service sets a single system parameter (and optionaly saves it as a user-overridden system parameter for current
+The `setSysParam` service sets a single system parameter (and optionally saves it as a user-overridden system parameter for current
 user when setting the last argument to `true`, note that this only applies if a corresponding global system parameter exists).
 
 Sample usage is:
@@ -353,7 +353,7 @@ var obj = app.getBusinessObject("<object name>"[, "<object instance name>"[, <au
 
 The instance name is optional, by default the instance name is `ajax_<object name>`.
 
-The `autoRefreshMetaData` parameter forces a meta data refresh afetr every service call. It defaults to `false`.
+The `autoRefreshMetaData` parameter forces a meta data refresh after every service call. It defaults to `false`.
 
 ### Get meta data
 
@@ -385,13 +385,13 @@ and the current filters remains available in the `obj.filters` variable.
 The `obj.count` returns the total number of records that matches the search filters
 (if no pagination is applied this equals the `obj.list.length`).
 
-You can specifiy a `page` parameter to activate pagination on search, the `obj.maxpage`
+You can specify a `page` parameter to activate pagination on search, the `obj.maxpage`
 gives you the number of pages (that are between `0` and `obj.maxpage - 1`) e.g.:
 
 ```javascript
 obj.search(function(list) {
 	console.log(list);
-	$("body").append($("<div/>").text("Found " + obj.count + " records, out of which " + obj.list.length + " have been returned for parge " + obj.page + "/" + obj.maxpage));
+	$("body").append($("<div/>").text("Found " + obj.count + " records, out of which " + obj.list.length + " have been returned for page " + obj.page + "/" + obj.maxpage));
 }, undefined, { page: 0 });
 ```
 
@@ -499,13 +499,13 @@ If the document/image field is not inlined you can get the download URL of the d
 app.documentURL(obj.metadata.name, "<field name>", obj.item[obj.getRowIdFieldName()], obj.item.<field name>);
 ```
 
-There are variants of the `get` service for getting a reccord in particular cases:
+There are variants of the `get` service for getting a record in particular cases:
 
 - `getForCreate` which initialize a record for creation (with default values processed),
 this is the equivalent as calling the `get` service with `"0"` as row ID
 - `getForUpdate` which initialize a record for update
 - `getForCopy` which initialize a record for copy (the row ID used for getting the record
-is set to `"0"` in the returened record)
+is set to `"0"` in the returned record)
 - `getForDelete` which initialize a record for deletion
 
 ### Create record
@@ -698,11 +698,11 @@ obj.crosstab(function(table) {
 ### Thread safe considerations
 
 Due to the way Simplicité handles its business object instances,
-calling several APIs in paralel on the same business object instance is not thread safe.
+calling several APIs in parallel on the same business object instance is not thread safe.
 
-For instance, if you need to iterate on API calls, dont do it inside a `for` or a `while` loop
-(except if you set the `async` parameter to `false` which is not always a good approach),
-but (for instance) do it like this:
+When iterating over API calls, using `for` or `while` loops should be avoided
+(setting `async: false` is possible but not recommended).
+The following pattern is preferred instead:
  
 ```javascript
 function myloop(i, n, callback) {

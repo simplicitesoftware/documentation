@@ -355,7 +355,7 @@ Kubernetes dashboard
 
 If you have configured the Kubernetes Dashboard you can access it like this:
 
-Genereate an access token:
+Generate an access token:
 ```shell
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
 ```

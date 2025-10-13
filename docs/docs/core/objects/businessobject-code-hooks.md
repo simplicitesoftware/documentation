@@ -326,7 +326,7 @@ The `initDataMapSelect` hook has the same behavior to get referenced data by val
 
 When action has confirm fields this hook allows to prepare them before rendering.
 
-**Exemple:**
+**Example:**
 
 ```simplicite-java
 @Override

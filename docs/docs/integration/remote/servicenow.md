@@ -37,7 +37,7 @@ The `credentials` value above refers to a dedicated JSON system parameter, e.g. 
 }
 ```
 
-The `debug` flag enable/disable detailled logging, this is only useful in development mode, **NEVER** leave this flag to `true` in production.
+The `debug` flag enable/disable detailed logging, this is only useful in development mode, **NEVER** leave this flag to `true` in production.
 
 ### Service object fields configuration
 

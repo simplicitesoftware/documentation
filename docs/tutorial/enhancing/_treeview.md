@@ -18,7 +18,7 @@ There are 3 ways of configuring the nodes:
 
 | **Manual** | **Automatic (links only)** | **Automatic (all)** |
 |---|---|---|
-| The possible nodes and how they connect (through direct 1/N, N/N, **or indirect** relationships), is explicitely configured | The only configured node type is the root type. The platform will calculate connected nodes based on the data model relationships (1/N, N/N) | This mode operates like the previous one, but it additionally shows available actions, external objects, shortcuts, processes, and subtrees |
+| The possible nodes and how they connect (through direct 1/N, N/N, **or indirect** relationships), is explicitly configured | The only configured node type is the root type. The platform will calculate connected nodes based on the data model relationships (1/N, N/N) | This mode operates like the previous one, but it additionally shows available actions, external objects, shortcuts, processes, and subtrees |
 
 <div class="warning">Reflexive relationships are also traversed, but it is sometimes advisable to create objects dedicated to a given level: objects without a parent first, then their children, otherwise all objects end up on the top object. Recursive traversal can be expensive in performance when there are many levels and many branches (if the lists are paginated or not).</div>
 
@@ -71,7 +71,7 @@ Create a **Manual** tree allowing to see the following:
 
 - The root being a determinate order
     - the client being a child
-        - all the client's orders being grand-childs
+        - all the client's orders being grand-children
     - the product being a child
         - the supplier being a grand-child
-        - all the product's orders being grand-childs
+        - all the product's orders being grand-children

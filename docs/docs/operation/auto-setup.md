@@ -11,12 +11,12 @@ The most classic way of installing an app on an instance is to deploy an empty i
 However, there are many contexts that call for mechanisms to install or update a fully-functioning app without ever having to connect to it.
 
 This document presents two features that aim at accomplishing just that:
-- licence packaging
+- license packaging
 - import spec (module packaging)
 
-Basically, after its usual startup operations, Simplicité will check some special folders that, if containing the appropriate data, will trigger the associated functionnality.
+Basically, after its usual startup operations, Simplicité will check some special folders that, if containing the appropriate data, will trigger the associated functionality.
 
-## Licence packaging
+## License packaging
 
 As of version 5.2.19 it is possible to add a license key file (XML, JSON or YAML) in the `webapps/ROOT/WEB-INF/licenses`, the name of the file must be `license.<xml|json|yaml>`.
 This file will be imported at startup.
@@ -157,4 +157,4 @@ services:
 E.g. 3: Provided that you have made available both the specification file and the modules' ZIP files somewhere accessible over HTTP you can
 pass this environment variable as an URL: `-e MODULES_IMPORT_SPEC="https://somewhere.com/my-importspec.json"` in which the
 modules location are also specified as URLs. This approach allows you to deliver subsequent versions of your modules without changing deployment
-configiguration.
+configuration.

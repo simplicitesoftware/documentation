@@ -27,7 +27,7 @@ jdbc:mysql://<username>:<password>@<host>:<port>/<database>?autoReconnect=true&v
 ```
 ### Maximum packet size
 
-You need to check and increase if needed the `max_allowed_packet` settings to be compliant with your requirement, a good minmal value is `16M`.
+You need to check and increase if needed the `max_allowed_packet` settings to be compliant with your requirement, a good minimal value is `16M`.
 If you are using BLOBs for files you should set it accordingly to the maximum size of files you are supposed to handle.
 
 ### Limitations
@@ -134,14 +134,14 @@ Oracle
 ### Limitations
 
 - Varchars are limited to 4000, over 4000 Simplicité generates CLOBs columns (that are, thus, not indexable)
-- Tables, aliases and columns names are limited to 30 caracters
+- Tables, aliases and columns names are limited to 30 characters
 
 Oracle XE (express) 18c server installation
 -------------------------------------------
 
 All following activities must be done as `root`.
 
-### Instalation and configuration
+### Installation and configuration
 
 Download the RPMs from [Oracle XE download site](https://www.oracle.com/database/technologies/xe-downloads.html)
 

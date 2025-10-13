@@ -17,7 +17,7 @@ CA certificate:
 
 	openssl req -x509 -new -nodes -key CA.key -sha256 -days 365 -out CA.crt
 
-Optionaly you can exported the certificate in PKCS#12 format:
+optionally you can exported the certificate in PKCS#12 format:
 
 	openssl pkcs12 -export -inkey CA.key -in CA.crt -out CA.p12
 
@@ -38,7 +38,7 @@ Or self-signed:
 	
 You can use this procedure to create either single host or wildcard certificate.
 
-> **Note**: It is also possible to create a certificate for **both** host and wilcard by appending an appropriate "SAN" (`subjectAltName`) configuration to your `openssl.cnf` file, see [this document](http://wiki.cacert.org/FAQ/subjectAltName))
+> **Note**: It is also possible to create a certificate for **both** host and wildcard by appending an appropriate "SAN" (`subjectAltName`) configuration to your `openssl.cnf` file, see [this document](http://wiki.cacert.org/FAQ/subjectAltName))
 
 Client
 ------
@@ -128,7 +128,7 @@ Install the **CertBot** tool:
 	yum install epel-release
 	yum install certbot
 
-Generate initial certficates:
+Generate initial certificates:
 ```shell
 sudo certbot certonly --webroot -w <document root, e.g. /var/www/html> -d <server name, e.g. www.example.com>
 ```

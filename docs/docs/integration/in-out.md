@@ -103,7 +103,7 @@ As there are limited built-in service objects, developers are often required imp
 
 #### Select Objects (secondary database)
 
-It is possible to declare secondary datasources, and then configure objects that will make requests on those datasources instead of the main one. This will give you full functionnality, except that obviously it will be impossible to make relationships between those objects as the platform will be unable to make `JOIN` requests between the datasources.
+It is possible to declare secondary datasources, and then configure objects that will make requests on those datasources instead of the main one. This will give you full functionality, except that obviously it will be impossible to make relationships between those objects as the platform will be unable to make `JOIN` requests between the datasources.
 
 Data out
 ---------------------------

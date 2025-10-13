@@ -6,7 +6,7 @@ title: Install license key
 License key installation
 ========================
 
-Licence keys are delivered to you as XML files that must be imported in your instance. The import can be done :
+License keys are delivered to you as XML files that must be imported in your instance. The import can be done :
 - through the UI, 
 - by calling a webservice
 
@@ -22,7 +22,7 @@ You should connect as the `designer` super-user (*or any user that has rights on
 ### 2) Use the right scope 
 
 Check the you are on the **“Simplicité Administrator”** scope
-> Sometimes, **if the licence is expired, the scope selector might not be accessible!!!** In this case, the trick is to use the adress bar to change scope, by adding `/ui?scope=Home` to your app’s URL.
+> Sometimes, **if the license is expired, the scope selector might not be accessible!!!** In this case, the trick is to use the address bar to change scope, by adding `/ui?scope=Home` to your app’s URL.
 
 <details>
 <summary>See image</summary>
@@ -32,7 +32,7 @@ Check the you are on the **“Simplicité Administrator”** scope
 </details>
 
 
-### 3) Access the **Licence Key** Object
+### 3) Access the **License Key** Object
 
 - Go to Operations > License key
 

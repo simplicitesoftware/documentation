@@ -17,7 +17,7 @@ JVM
 
 It is **required** to set the JVM default encoding to UTF-8.
 
-The **most reliable way** to do it is by adding an explict `-Dfile.encoding=UTF-8` to the JVM options.
+The **most reliable way** to do it is by adding an explicit `-Dfile.encoding=UTF-8` to the JVM options.
 
 > **Note**: on Linux it is also possible to set the `LANG` environment variable (e.g. `en_US.UTF-8`) either for the account running Tomcat level or, preferably, globally.
 

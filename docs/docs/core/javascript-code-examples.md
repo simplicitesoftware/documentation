@@ -15,7 +15,7 @@ It applies to either:
 
 Note that you can use in either case the other JavaScript APIs such as:
 
-- The [Ajax API](/docs/integration/librairies/ajax-api) using the `Simplicite.Application` singleton which is available in all standard pages.
+- The [Ajax API](/docs/integration/libraries/ajax-api) using the `Simplicite.Application` singleton which is available in all standard pages.
 - The [JavaScript UI tools](/docs/core/ui-tools-code-examples)
 
 Page events

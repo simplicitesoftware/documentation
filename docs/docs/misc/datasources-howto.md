@@ -6,7 +6,7 @@ title: Datasources howto
 Additional datasources howto
 ============================
 
-This document shows how to configure additional datasources that can be used to configure Simplicité business objets that points to remote databases.
+This document shows how to configure additional datasources that can be used to configure Simplicité business objects that points to remote databases.
 
 Context-level configuration for Tomcat
 --------------------------------------

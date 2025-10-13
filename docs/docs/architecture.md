@@ -11,9 +11,9 @@ Introduction
 
 ![Concept](img/architecture/concept.png)
 
-Simplicité is a low-code platform running on Java. It interprets your business application modelisation (app configuration, data schema, processes, code) to serve a number of APIs and a default back-office UI. It is extendable with external librairies, and puts an emfasis on giving a lot of control to the developer.
+Simplicité is a low-code platform running on Java. It interprets your business application modelisation (app configuration, data schema, processes, code) to serve a number of APIs and a default back-office UI. It is extendable with external libraries, and puts an emfasis on giving a lot of control to the developer.
 
-Although **many other deployement configurations are possible**, it is usually run on the Docker image delivered through our private docker registry. That default Docker image is Kubernetes compatible and contains a JDK, a Tomcat Java Webapp server, and our proprietary platform.
+Although **many other deployment configurations are possible**, it is usually run on the Docker image delivered through our private docker registry. That default Docker image is Kubernetes compatible and contains a JDK, a Tomcat Java Webapp server, and our proprietary platform.
 
 
 Architecture Overview

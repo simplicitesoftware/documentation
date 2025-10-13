@@ -286,7 +286,7 @@ As indicated above, the Ajax APIs JavaScripts are included by default in the **s
 * using dedicated APIs of the web helper classes in **non standard** pages, e.g. using `wp.appendAjax()`
 where `wp` is an instance of a sub class of `com.simplicite.webapp.web.WebPage`
 
-The usage of the Ajax APIs itself is described in details in another [document](/docs/integration/librairies/ajax-api). Here is just a simple **standard** page example:
+The usage of the Ajax APIs itself is described in details in another [document](/docs/integration/libraries/ajax-api). Here is just a simple **standard** page example:
 
 **Java**
 

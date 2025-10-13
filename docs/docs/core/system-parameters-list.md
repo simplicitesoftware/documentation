@@ -1936,7 +1936,7 @@ Use persistent user tokens?
 
 - no: for none of the endpoints
 - api (or yes): for the API endpoint only
-- ui: for the UI enpoint only
+- ui: for the UI endpoint only
 - all: for both API and UI endpoints
 
 ### `USE_WEBSERVICES_DATACACHE`

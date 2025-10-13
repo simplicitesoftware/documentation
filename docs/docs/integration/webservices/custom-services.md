@@ -15,8 +15,8 @@ The authentication mechanisms available on the API endpoint are described in [th
 the credentials that needs to be passed to the calls are noted `<credentials>`.
 
 > **Warning**: never use the **public UI endpoint** instead of the API endpoint: the public UI endpoint
-> is a statefull UI endpoint that is **only** supposed to be used by the non authenticated pages of the generic UI.
-> It does not have the scalability and performance of the API enpoint.
+> is a stateful UI endpoint that is **only** supposed to be used by the non authenticated pages of the generic UI.
+> It does not have the scalability and performance of the API endpoint.
 > In other word using the public UI endpoint for services purposes is an **absolute anti-pattern**.
 
 The calls examples are given using the `curl` command line tool

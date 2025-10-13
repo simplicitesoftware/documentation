@@ -37,7 +37,7 @@ Finally click on the "Close & load" button in the "Home" tab, et voilà:
 
 ![](img/excel/excel-4.png)
 
-Note that you can optionaly create a named parameter table in your spreadsheet (named `Params` in the example below) and use the values
+Note that you can optionally create a named parameter table in your spreadsheet (named `Params` in the example below) and use the values
 when building the REST URL. To do so you have to change the query code using the "Advanced editor".
 
 Example:

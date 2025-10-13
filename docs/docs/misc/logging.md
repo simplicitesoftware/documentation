@@ -62,7 +62,7 @@ The log events can be filtered based on their log level, the threshold level can
 Business logging
 ----------------
 
-The logs associated to a log event marked as recorded in the database are available as buisness data using the `AppLog` business object.
+The logs associated to a log event marked as recorded in the database are available as business data using the `AppLog` business object.
 
 Such log events correspond to something worth auditing from a business point of view (login/logout, business events, ...). The associated log records
 are to be considered as business data more than pure logging. Typical business usage is for audit trails.
