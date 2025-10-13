@@ -11,8 +11,8 @@ This document gives a non exhaustive list of architectures and infrastructure co
 Containers deployments
 ----------------------
 
-The **ideal** / **preferred** deployment model is to deploy Simplicité platform as **Docker&reg; container(s)**
-from our standard Docker images available (or from custom images that you build to fit your need).
+The **recommended** deployment model for the Simplicité platform is using **Docker&reg; container(s)**
+based on standard Docker images or custom-built images for specific requirements.
 
 See [this document](/docs/operation/docker) for details.
 
@@ -31,17 +31,17 @@ etc.
 Custom deployments
 ------------------
 
-It is still possible, although **discouraged**, to deploy Simplicité manually without using our Docker images.
-In such a case you need to verify that your technical platform complies with the following recommendations.
+Manual deployment of Simplicité without Docker images remains possible but is **discouraged**.
+Such deployments require verification that the technical platform meets the following recommendations.
 
 ### Introduction
 
-By default, our **recommendation** is that you use only the current **up to date** versions of **all technical components**
+The **recommended** approach is to use the current **up to date** versions of **all technical components**
 (OS, JVM, application server, database server, web servers) unless explicitly stated otherwise.
 
 The versions indicated below are to be considered as **minimal** versions on which Simplicité platform should run.
 Some of them are now outdated and **should not** be considered as recommended versions.
-Using such old versions is likely to be a source of potentially tricky problems that you would not have with up-to-date components.
+Using outdated versions may lead to technical issues that are not present with up-to-date components.
 
 The minor version in **bold** are the current and maintained Simplicité minor versions.
 
@@ -57,7 +57,7 @@ Any OS on which a suitable Java JVM is officially available. This includes:
 Our **recommended** OS family for production is Linux.
 
 :::tip
-**Note**: Whichever OS you use, you **MUST** use keep it **up-to-date**.
+**Note**: All operating systems **MUST** be maintained with current updates.
 :::
 
 The OS can run either on **physical** or **virtual** servers or in Docker&reg; **containers**.
@@ -82,7 +82,7 @@ The following table only indicates the **LTS (Long Term Support)** JVM versions.
 The "yes" in **bold** also denotes the JVM version included in our default Docker images.
 
 :::tip
-**Note**: Whichever JVM version you use, you **MUST** always use its **up-to-date release**.
+**Note**: The selected JVM version **MUST** be used with its **up-to-date release**.
 Only these up-to-date releases are tested and supported.
 :::
 
@@ -106,7 +106,7 @@ The recommended webapp implementations are :
 - **Webapp 4.0** (JEE): Apache Tomcat&reg; 9.0.x
 
 :::tip
-**Note**: Whichever application server version you use, you **MUST** use its  **up-to-date maintenance release**.
+**Note**: Application servers **MUST** be used with their **up-to-date maintenance releases**.
 Only these up-to-date releases are tested and supported.
 :::
 
@@ -126,7 +126,7 @@ Databases
 :::tip
 **Note**: The above versions are the **recommended** minimal versions.
 Only the versions listed above are officially tested and supported. While earlier versions may function, support is not provided for environments using versions outside of those specified.
-It is **strongly** recommended to use the **most recent release** of your chosen database server.
+It is **strongly** recommended to use the **most recent release** of the selected database server.
 :::
 
 Web browsers
@@ -140,9 +140,9 @@ Web browsers
 | Legacy 4.0                                            | _ES2015 (ES6)_  | yes      | yes        | yes        | yes        | yes (2) |
 | Legacy 3.x                                            | _ES2009 (ES5)_  | yes      | yes        | yes        | yes        | yes     |
 
-1. Up to date version only (recent previous versions are not supported but should work, just make sur the version you use is compliant with specified ECMAScript version).
-2. Not recommended, not tested and not supported. You may experience poor performances and/or visual/functional issues (note that IE11 is officially retired on June 6th 2022).
+1. Only latest versions are officially supported. Previous versions may work but must be compliant with the specified ECMAScript version.
+2. Not recommended, not tested and not supported. Performance degradation and visual/functional issues may occur (note that IE11 is officially retired on June 6th 2022).
 
 :::tip
-**Note**: Whichever web browser you use, you **MUST** keep it **up-to-date**.
+**Note**: Web browsers **MUST** be maintained with the latest updates.
 :::

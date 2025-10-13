@@ -54,8 +54,8 @@ Please note that displaying lists with a large number of rows and many visible f
 
 Partially. While HTML does not natively support combo box fields, there are two recommended approaches:
 
-* Configure a non-mandatory fixed list of values field alongside an additional text field for the "other" value. Using constraints, you can, for example, make the text field mandatory if the list field is not set.
-* Configure a text field with auto-completion: previously entered values will be suggested as you type, allowing you to select an existing value or enter a new one.
+* Configure a non-mandatory fixed list of values field with an additional text field for custom values. Using constraints, the text field can be set as mandatory when no list value is selected.
+* Configure a text field with auto-completion: the field will suggest previously entered values and allow selection of existing values or entry of new values.
 
 <!-- 
 ### Business workflows
@@ -68,7 +68,7 @@ Coding
 
 > Where can I find general documentation and code samples for server-side scripting?
 
-You may consult the [core documentation](/category/core) for code examples, including general usage, business object hooks, business workflow hooks, adapters, publications, and dispositions.
+The [core documentation](/category/core) provides code examples covering general usage, business object hooks, business workflow hooks, adapters, publications, and dispositions.
 
 > Are there any limitations or common pitfalls in server-side scripts that I should be aware of?
 
