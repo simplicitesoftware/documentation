@@ -19,7 +19,7 @@ Configurable 2FA options are:
 ![](img/internal-auth/mfa-config.png)
 
 - Email OTP: a one time code is sent on the user's email address (this requires that a SMTP service is configured on your instance)
-- SMS OTP: a one time code is sent by text message on the user's mobile phone number (this require thta a SMS service is configured on your instance)
+- SMS OTP: a one time code is sent by text message on the user's mobile phone number (this require that a SMS service is configured on your instance)
 - TOTP: a time-based one time password is provided by an authentication application. The QR-code to configure the authentication application can be displayed from the user's form.
 
 ![](img/internal-auth/mfa-qrcode.png)
@@ -37,7 +37,7 @@ Anti brute-force attacks
 As of **version 5.1** it is possible to implement a logic for blocking/limiting "brute force" attacks
 or any abusive number of attempts to log in using the internal authentication.
 
-A typical implémentation relies on the `preAuth` and `postAuth` platform hooks.
+A typical implementation relies on the `preAuth` and `postAuth` platform hooks.
 
 The simple example bellow quarantines a login for a configurable number of minutes after
 a configurable number of failed login:
@@ -86,7 +86,7 @@ public class PlatformHooks extends com.simplicite.util.engine.PlatformHooksInter
 
 	private void setQuarantine(Grant sys, String login, Quarantine quarantine) {
 		// Store as a private system parameter
-		sys.setParameter(QUARANTINE + login, quarantine.toString()); // non persitent
+		sys.setParameter(QUARANTINE + login, quarantine.toString()); // non persistent
 		//sys.setSystemParam(QUARANTINE + login, quarantine.toString(), true, false, false); // persistent
 	}
 
@@ -98,7 +98,7 @@ public class PlatformHooks extends com.simplicite.util.engine.PlatformHooksInter
 	@Override
 	public String preAuth(Grant sys, String provider, String login, String password) {
 		Quarantine q = getQuarantine(sys, login);
-		// If the number of failures hass reached the limit...
+		// If the number of failures has reached the limit...
 		if (q != null && q.count >= sys.getIntParameter("LOGIN_QUARANTINE_NB_FAILURES", NB_FAILURES)) {
 			// ...and the quarantine delay is not expired...
 			int nbMin = sys.getIntParameter("LOGIN_QUARANTINE_NB_MINUTES", NB_MINUTES);

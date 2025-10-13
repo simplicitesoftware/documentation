@@ -22,7 +22,7 @@ Choose **Apply to : Object property**
 - **Copy** – Allow or prevent record duplication
 - **Export** – Allow or prevent record export
 - **Update all** – Allow or prevent bulk updates
-- **Pagine** – Allow or prevent pagination in lists
+- **Paginated** – Allow or prevent pagination in lists
 - **Preset search** – Allow or prevent the use of preset searches
 - **Use data form** – Allow or prevent form display.
 - **Create** – Allow or prevent record creation.

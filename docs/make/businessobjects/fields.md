@@ -285,6 +285,6 @@ Prior to execution by Rhino, Simplicité also pre-processes the executed fields 
 Some expressions are available in all executed fields, others are only available in specific executed fields.
 
 Be careful to differentiate the following elements:
-- **exectured field:** field of some configuration objects that results in a Rhino execution and gives access to the whole Simplicité API
+- **executed field:** field of some configuration objects that results in a Rhino execution and gives access to the whole Simplicité API
 - **expression Simplicité:** Simplicité syntax transformed into javascript code to simplify the content of the executed fields
-- **expression calculée:** this is an *executed field* of the "Attribute" configuration object that automatically calculates the value of the field
+- **calculated expression:** this is an *executed field* of the "Attribute" configuration object that automatically calculates the value of the field

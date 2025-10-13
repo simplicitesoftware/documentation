@@ -52,7 +52,7 @@ Here are some standard field types available in Simplicité:
 1. When defining a field in a business object, select the **Type** that matches the expected input format.
 2. The system automatically applies the associated validation (method or regex).
 3. Custom Field Types can be created for specific validation needs.  
-   Select the **Type=Valdated text** and choose your custom field type in **Validation type** for the field.  
+   Select the **Type=Validated text** and choose your custom field type in **Validation type** for the field.  
 
 
 

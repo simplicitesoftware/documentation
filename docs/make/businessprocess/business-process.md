@@ -115,7 +115,7 @@ Explanation of others data in a "Select single" type:
 - Search.Spec: Allows to add a SQL filter to the list
 
 Specific data for "Service call" activity: 
-- Service.Mode = Synch or Asynch
+- Service.Mode = Sync or Async
 - Service.Name = name of the service to call (java method of the process)
 
 ### Activity link

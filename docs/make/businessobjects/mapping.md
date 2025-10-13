@@ -40,7 +40,7 @@ There are three kinds of mappings depending on the direction of the data flow:
 
 ## How to configure a Mapping?
 
-1. Go to **Business objects > Mapping** or access the Mapping section in the objectfield configuration.
+1. Go to **Business objects > Mapping** or access the Mapping section in the object field configuration.
 2. Click **Create** to define a new mapping.
 3. Fill in the fields:
    - **Name** – logical name of the mapping.

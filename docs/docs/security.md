@@ -324,4 +324,3 @@ When connecting over SSH, only secured SSH keys should be used.
 #### Web-based terminal access
 
 The web-based terminal access (ShellInABox) should not be enabled unless it is **absolutely** needed (keep in mind it is a rather insecure feature that only makes sense on a non-production, highly secured infrastructure).
-

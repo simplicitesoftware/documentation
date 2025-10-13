@@ -73,12 +73,12 @@ Configuration
 
 There are several module types:
 
-- **Simplicité modules** : those are reserved for official Simplicité modules, you should not create nor edit modules of thoses types
+- **Simplicité modules** : those are reserved for official Simplicité modules, you should not create nor edit modules of the following types :
     - System : core modules
     - Add-On : some are provided by default, others through the AppStore
 - **Multi-module** apps. Modules of this kind offer specific functionality through the [Application object](/make/project/application).
     - Application 
-- **Standard modules** : interchangeablen types, provided for filtering purposes, with no associated functionality
+- **Standard modules** : interchangeable types, provided for filtering purposes, with no associated functionality
     - App component
     - Common
     - Toolbox

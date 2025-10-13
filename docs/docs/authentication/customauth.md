@@ -14,7 +14,7 @@ Webapp configuration
 As for OAuth2, SAML, LDAP or Crowd authentication, you must remove all realm-related configuration from you web application descriptors:
 
 - Remove all realm-related settings in `WEB-INF/web.xml` (security-constraint, login-config and security-role tags)
-- Optionaly remove also the realm definition in `META-INF/context.xml`
+- Optionally remove also the realm definition in `META-INF/context.xml`
 - Remove all other authentication's mechanisms system parameters if present (e.g. `OAUTH2_*`, `SAML_*`, `LDAP_*`, ...)
 
 Custom authentication
@@ -43,7 +43,7 @@ in the `AUTH_HEADER` system parameter.
 
 If this returned header values does not contain a simple plain text login you can use it to determine the appropriate login by using the `parseAuth` hook.
 
-Optionaly -typically when request/responses goes thru a SSO reverse proxy - this default implementation checks the origin of the request against a
+Optionally -typically when request/responses goes thru a SSO reverse proxy - this default implementation checks the origin of the request against a
 comma-separated list of IP addresses stored in the `AUTH_ORIGIN` system parameter.
 
 Client certificate authentication

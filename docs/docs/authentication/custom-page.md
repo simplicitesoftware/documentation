@@ -102,7 +102,7 @@ Example of **XXX_CUSTOM_LOG**:
 <body spellcheck="true" cz-shortcut-listen="true">
 	<div id="auth-main" class="auth-signin" style="text-align: center;">
 	<div class="cadre">
-	{{#isError}}<p><strong>Erreur: {{{error}}}</strong></p>{{/isError}}
+	{{#isError}}<p><strong>Error: {{{error}}}</strong></p>{{/isError}}
 		<form class="auth-signin" id="auth-signin-form" method="post" action="{{path}}?_provider={{provider}}">
 			<input type="text" name="login" id="auth-signin-login" placeholder="login" value="">
 			<input type="password" name="password" id="auth-signin-password" placeholder="password" value="">

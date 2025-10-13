@@ -75,13 +75,13 @@ Extra mandatory settings might exist depending on the provider's type, please re
 
 ### Deprecated syntax
 
-Before Simplicité v4, providers were configured in individual system parameters instead of one single JSON. PEM certificates are embedable in the JSON as base64 starting of v5.3.39.
+Before Simplicité v4, providers were configured in individual system parameters instead of one single JSON. PEM certificates are embeddable in the JSON as base64 starting of v5.3.39.
 
 |                                                                     | Setting specification                                             | Example                   |
 |---------------------------------------------------------------------|-------------------------------------------------------------------|---------------------------|
 | In `AUTH_PROVIDERS` as JSON                                         | `<setting (lowercase)>`                                           | `"client_id"`             |
 | ⚠️ Deprecated in v4 ⚠️ Individual system parameters                 | `<type (uppercase)>_<setting (uppercase)> <provider (lowercase)>` | `OAUTH2_CLIENT_ID google` |
-| ⚠️ Deprecated in v5 ⚠️ Image as implicitely specified resource name | `<type (uppercase)>_SIGNIN_<provider (uppercase)>`                | `LDAP_SIGNIN_MYOPENLDAP`  |
+| ⚠️ Deprecated in v5 ⚠️ Image as implicitly specified resource name | `<type (uppercase)>_SIGNIN_<provider (uppercase)>`                | `LDAP_SIGNIN_MYOPENLDAP`  |
 
 
 :::warning
@@ -90,7 +90,7 @@ You might still find some provider settings documented with the deprecated synta
 
 ## Troubleshooting
 
-To investigate authentication issues you can **temporarly** activate the `DAUTHCS001` log event.
+To investigate authentication issues you can **temporarily** activate the `DAUTHCS001` log event.
 
 ![dauthcs001.png](img/auth-providers/dauthcs001.png)
 

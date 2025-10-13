@@ -38,7 +38,7 @@ It is **highly** recommended to use the business object **creation assistant** t
 1. Open the modeler :  
 ![](img/business-objects/open-modeler.png)
 
-2. Create or select a previsouly created *ModelBusinessObject* model :
+2. Create or select a previously created *ModelBusinessObject* model :
     - For creation, fill in the header of the pop-up and click **Create** : 
         > Example values :   
         ![](img/business-objects/modeler-values.png)
@@ -87,7 +87,7 @@ For example, if an attribute is mandatory:
 - when preparing the form, it will be taken into account by the platform to transmit the information to the front-end
 - when saving the object, a validation step checks the presence of a value for this attribute, returns an error and cancels the saving if there is none
 
-It is conceivable that a webservice call is needed to find out whether the attribute is mandatory, in which case a constraint is no longer really appropriate as the code becomes too complex for an executed field.
+It is conceivable that a web service call is needed to find out whether the attribute is mandatory, in which case a constraint is no longer really appropriate as the code becomes too complex for an executed field.
 
 It is for these cases that it is possible to extend the default behavior of business objects. The default behavior is coded in a Simplicité Java class called `ObjectDB`. All business objects inherit from this class, which provides a number of hooks that are executed at different points in the business object's lifecycle. By inheriting from this class and overriding the hooks, it becomes possible to modify the behavior of the business object. The exhaustive list of hooks can be found in the [JavaDoc](https://platform.simplicite.io/current/javadoc/), and here we present only the more common ones. *The possibilities are endless, and a thorough understanding of the hooks and the Java Simplicité API is an important part of success*.
 
@@ -118,6 +118,6 @@ There are many instance names used by the platform, we won't list them all, but 
 
 Therefore, when using an instance in scripts, it should be kept in mind:
 - that it may be necessary to flush loaded filters and values (via `ObjectDB.resetFilters()` and `ObjectDB.resetValues()`)
-- to avoid concurrent use of the same instance by several threads, it is essential to use a synchronisation block (see commented example below) 
+- to avoid concurrent use of the same instance by several threads, it is essential to use a synchronization block (see commented example below) 
 SYNC TEST 3
 -->

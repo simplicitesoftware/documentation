@@ -30,7 +30,7 @@ The type of action and the type of action execution allow to distinguish various
         <td>Back-end</td>
         <td>Execute a script on a set of elements (e.g. have the platform send an email to a set of users)</td>
         <td>Execute a script on a single element (e.g. have the platform send an email to the user)</td>
-        <td>Provide an action accessible via webservice or via code without displaying a button</td>
+        <td>Provide an action accessible via web service or via code without displaying a button</td>
     </tr>
     <tr>
         <td>None</td>
@@ -55,6 +55,6 @@ Back-end actions
 
 Back actions execute a service call to the back end, which will execute a script: either a Simplicité expression or a business object function, as discussed in the "Back End Development" section.
 
-Some actions may not be visible to users because they are only used by webservices or other business objects.
+Some actions may not be visible to users because they are only used by web services or other business objects.
 
 A back action can be executed synchronously (the user waits for the end of the execution), asynchronously (executes on the calling object instance in an independent thread, without blocking the interface) or asynchronously independently (executes on an independent object instance in an independent thread, without blocking the interface).

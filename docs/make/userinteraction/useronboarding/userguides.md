@@ -10,7 +10,7 @@ In Simplicité [version 6.3](/versions/release-notes/v6-3), a **User Guide** is 
 A guide can walk the user through various parts of the UI, highlighting steps, actions, and interactions.
 
 User Guides can be:
-- Launched from any **view**, **home page**, **business object**, **dahboard**, **Domain home** or **external object**.  
+- Launched from any **view**, **home page**, **business object**, **dashboard**, **Domain home** or **external object**.  
 - Restricted to a **limited period of availability**.  
 - Made visible only to **specific user groups**.  
 - Composed of multiple **steps**:

@@ -8,7 +8,7 @@ License key installation
 
 Licence keys are delivered to you as XML files that must be imported in your instance. The import can be done :
 - through the UI, 
-- by calling a webservice
+- by calling a web service
 
 Using the generic web UI
 ------------------------
