@@ -20,7 +20,7 @@ the platform will look for the server-side **Java** method called `MyObject.myCu
 
 **Java**
 
-```java
+```simplicite-java
 public String myCustomAction() {
 	String rowId = getRowId();
 	return Message.formatSimpleInfo("Using instance " + getInstanceName() + (!Tool.isEmpty(rowId) ? " and row ID " + rowId : ""));
@@ -148,7 +148,7 @@ public String postSave() {
 
 The Action fields can also been accessed in the callback `method` of transition with this syntax:
 
-```java
+```simplicite-java
 public String myTransitionCallback(Action action) {
 	if (action!=null) {
 		String param = action.getConfirmField("myField").getValue();
