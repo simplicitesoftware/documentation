@@ -11,7 +11,7 @@ This document applies to version **3.2 MAINTENANCE 05** and above.
 Webapp configuration
 --------------------
 
-As for OAuth2, SAML, LDAP or Crowd authentication, you must remove all realm-related configuration from you web application descriptors:
+As for OAuth2, SAML, LDAP or Crowd authentication, all realm-related configuration must be removed from the web application descriptors:
 
 - Remove all realm-related settings in `WEB-INF/web.xml` (security-constraint, login-config and security-role tags)
 - Optionally remove also the realm definition in `META-INF/context.xml`
@@ -38,10 +38,9 @@ In real life, the implementation of this custom authentication will certainly be
 Default custom authentication
 -----------------------------
 
-The platform includes a default custom authentication that returns the value of an HTTP header whose name is configured
-in the `AUTH_HEADER` system parameter.
+The platform provides a default custom authentication that returns the value of an HTTP header, with the header name specified in the `AUTH_HEADER` system parameter.
 
-If this returned header values does not contain a simple plain text login you can use it to determine the appropriate login by using the `parseAuth` hook.
+If the value of this header does not contain a simple plain text login, the appropriate login can be determined using the `parseAuth` hook.
 
 Optionally -typically when request/responses goes thru a SSO reverse proxy - this default implementation checks the origin of the request against a
 comma-separated list of IP addresses stored in the `AUTH_ORIGIN` system parameter.
@@ -49,7 +48,7 @@ comma-separated list of IP addresses stored in the `AUTH_ORIGIN` system paramete
 Client certificate authentication
 ---------------------------------
 
-When using an Apache or NGINX webserver as reverse proxy you can configure it to enforce client certificate authentication (see [this document](/docs/misc/webserver-ssl) for details).
+When using an Apache or NGINX webserver as reverse proxy it can enforce client certificate authentication (see [this document](/docs/misc/webserver-ssl) for details).
 
 They typically can be configured to propagate the verified client certificate's DN as the `X-SSL-Client-S-DN` HTTP header.
 Then the authentication on Simplicité side is easy as it is just a matter of parsing this DN, e.g. extracting the `CN` field as login:
@@ -85,8 +84,6 @@ public String customAuth(HttpServletRequest request, HttpServletResponse respons
 Compatibility with OAuth2/SAML/LDAP/Crowd
 -----------------------------------------
 
-It is possible to have custom authentication along with OAuth2, SAML, LDAP or Crowd authentications (each of the being mutually exclusive).
-You just have to be careful in the way you implement your `customAuth` and `parseAuth` hooks so as you take into account the different cases.
+Custom authentication can be used in conjunction with OAuth2, SAML, LDAP, or Crowd authentication providers (each being mutually exclusive). When implementing the `customAuth` and `parseAuth` hooks, ensure that all relevant authentication cases are properly managed.
 
-Among the provided OAuth2 authentication providers, the `simplicite` provider acts like the traditional database realm authentication mechanism.
-You can thus have a custom authentication co-existing with the usual password-based authentication. 
+The `simplicite` OAuth2 authentication provider functions as the traditional database realm authentication mechanism. This allows custom authentication to coexist with standard password-based authentication.

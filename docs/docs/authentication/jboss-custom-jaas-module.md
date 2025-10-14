@@ -38,17 +38,11 @@ The default descriptor is as follows:
 </policy>
 ```
 
-It relies on a standard JAAS module provided by JBoss (optionally it can be
-altered to use MD5 encryption for passwords), alternatively you can also use
-any other standard JAAS module provided by JBoss.
+The standard JAAS module provided by JBoss is used (optionally modifiable to support MD5 encryption for passwords), or any other standard JAAS module from JBoss may be used.
 
-But you may need to have a very specific authentication procedure,
-is such a case you must write your own JAAS module. The rest of this article does
-not aim at being a JAAS tutorial but only gives a simple example of
-an alternative JAAS module.
+For cases requiring a more specific authentication process, a custom JAAS module must be implemented. The following example is not a comprehensive JAAS tutorial but simply demonstrates an alternative JAAS module.
 
-This one authenticate a user against a corporate LDAP and then
-checks that the user actually exists in the m_user table with an active status:
+This example authenticates a user against a corporate LDAP and then verifies that the user exists in the m_user table with an active status:
 
 ```java
 package com.simplicite.auth;

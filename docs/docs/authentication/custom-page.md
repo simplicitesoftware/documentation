@@ -8,7 +8,7 @@ Custom authentication page or redirect
 =======================================
 > **Note**: This document only applies to **version 5.3** and above.
 
-> **Warning**: This auth bypasses some of the simplicité security. You are responsible for the security of this page. You should pay attention to the various vulnerabilities of a login page (such as sql injection, XSS, Brute Force Attack, Inappropriate Error Handling ...) and password security.
+> **Warning**: This authentication method bypasses some of the Simplicité security measures. Ensuring the security of the custom page is the responsibility of the implementer. Particular care must be taken to address common vulnerabilities associated with login pages (such as SQL injection, XSS, brute force attacks, inappropriate error handling, and password security).
 
 Webapp settings
 ---------------
@@ -27,11 +27,11 @@ Declare your custom authentication provider in the `AUTH_PROVIDERS` system param
 ```
 
 See [this document](/docs/authentication/auth-providers) for details on how to configure authentication providers.
-> **Warning**: Before making these changes, make sure that you will still be able to login with a user having at least a responsibility on the ADMIN group.
+> **Warning**: Before making these changes, ensure that access will remain possible with at least one user the ADMIN responsibility.
 
 ### Grant hooks
 
-Then you can implement `PlatformHooks`'s `customAuthPage method` to redirect to external login page or to return custom html page, and `customAuth method` to interpret the return of the custom auth page.
+The `PlatformHooks`'s `customAuthPage method` can be implemented to redirect to external login page or to return custom html page, and `customAuth method` to interpret the return of the custom auth page.
 The **example** below uses the mustache template of `XXX_CUSTOM_LOG` resource for the auth page. 
 
 ```Java
