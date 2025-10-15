@@ -37,7 +37,7 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.8.1",
     "@docusaurus/types": "3.8.1",
-    "npm-check-updates": "19.0.0"
+    "npm-check-updates": "19.1.0"
   },
   "browserslist": {
     "production": [
