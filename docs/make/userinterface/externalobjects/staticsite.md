@@ -37,7 +37,7 @@ The creation process is similar to the one for any *External Object*:
 
 As a *Static Web Page* isn't interacting with Simplicité's API or backend, you only have the 3 resources to worry about. For the development specific to Simplicité refer to the [JSdoc](https://platform.simplicite.io/current/jsdoc/global.html).
 
-> Specific use case and code examples can be found in the following lessons: [WebPage](/make/userinterface/externalobjects/webpage), [UI Component](/make/userinterface/externalobjects/uicomponent), [External Objects](/make/userinterface/externalobjects/basic).
+> Specific use case and code examples can be found in the following pages: [WebPage](/make/userinterface/externalobjects/webpage), [UI Component](/make/userinterface/externalobjects/uicomponent), [External Objects](/make/userinterface/externalobjects/basic).
 
 **HTML:**
 - Content of your page, declared in a `.html` file.

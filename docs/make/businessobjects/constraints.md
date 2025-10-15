@@ -13,7 +13,7 @@ Configuration
 The conditions of execution can be of several types:
 - **field:** a field of the business object __of boolean type__ must be true
 - **expression:** an executed field "expression" of the constraint must return "true"
-- **method:** a method in the business object script must return "true" (object scripts are covered in the next lesson)
+- **method:** a method in the business object script must return "true"
 
 In addition to the execution condition, a constraint can also be granted to be executed only for certain user groups.
 

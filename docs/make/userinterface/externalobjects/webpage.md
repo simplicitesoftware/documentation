@@ -136,7 +136,7 @@ public Object display(Parameters params) {
 - [BootstrapWebPage](https://platform.simplicite.io/current/javadoc/com/simplicite/webapp/web/BootstrapWebPage.html)
 - [WebPageExternalObject](https://platform.simplicite.io/current/javadoc/com/simplicite/webapp/web/WebPageExternalObject.html)
 
-**Other Lessons**
+**Other documentation**
 - [Resources](/make/userinterface/resources)
 - [Static Web Sites](/make/userinterface/externalobjects/staticsite)
 

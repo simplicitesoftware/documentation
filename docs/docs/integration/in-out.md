@@ -114,7 +114,7 @@ Data out
 
 Publications offer a standardized way to export data in any format. 
 
-Please refer to the [publication tutorial lesson]/lesson/tutorial/development/publication) and the publication examples in the [Tips and Tricks category in the forum](https://community.simplicite.io/t/tips-and-tricks-list/2112#integration-adapters-importing-data-publications-exporting-data-webservices-exposing-data-4)
+Please refer to the [publication tutorial](/tutorial/expanding/publication) and the publication examples in the [Tips and Tricks category in the forum](https://community.simplicite.io/t/tips-and-tricks-list/2112#integration-adapters-importing-data-publications-exporting-data-webservices-exposing-data-4)
 
 ### Exposing data
 
