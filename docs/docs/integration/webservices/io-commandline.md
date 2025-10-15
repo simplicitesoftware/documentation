@@ -141,7 +141,7 @@ Where `<purge command>` is one of:
 
 As of version 5.2 for `purgelogs`, `purgejobs`and `purgesupervisions` an additional parameter `depth` allows to preserve the latest records:
 
-- If `depth` is **negative** it gives the number of days of records to keep (e.g. `depth=-7`: delete all except last week's reords)
+- If `depth` is **negative** it gives the number of days of records to keep (e.g. `depth=-7`: delete all except last week's records)
 - If `depth` is **positive** it gives the number of records to keep (e.g. `depth=100`: delete all except the last 100 records)
 
 ### Indexation <span id="indexation"></span>
