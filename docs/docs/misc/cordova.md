@@ -27,8 +27,7 @@ Cordova
 - `JAVA_HOME` : JVM root (ex `C:\dev\java\jdk1.8`)
 - `ANDROID_HOME` and `ANDROID_SDK_ROOT` : root of your android SDK (ex `C:\dev\android\sdk`)
 - `GRADLE_USER_HOME` : change the gradle home repository without special characters in path (ex `C:\dev\.gradle`)
-- Add to `PATH` 
-
+- Add to `PATH`
 	- the studio gradle (ex `C:\dev\android\studio\gradle\gradle-4.6\bin`)
 	- the JVM bin directory (ex `C:\dev\java\jdk1.8\bin`)
 
@@ -98,7 +97,7 @@ Open your project directory and customize your application:
 ```javascript
 (function() {
 
-	var url = 'https://myproject.dev.simplicite.io';
+	var url = 'https://myproject.myserver.simplicite.io';
 	var fireBaseToken, win, winReady;
 
 	// Call the UI firebase handler
@@ -156,7 +155,7 @@ Open your project directory and customize your application:
 	function ready() {
 		init();
 		firebase();
-		open();        
+		open();
 	}
 	document.addEventListener("deviceready", ready, false);
 })();
@@ -224,7 +223,7 @@ The platform will use several system parameters:
 1) Create your Firebase account https://firebase.google.com
 2) Access to the console to add your project, ex `SimpliciteMobileMyProject`
 
-### Add to project the application for Androïd 
+### Add to project the application for Androïd
 
 - with your cordova package name (ex `com.simplicite.mobile.myproject`)
 - generate and download the `google-services.json` in your local project root, it is required to compile the firebase plugin
@@ -239,7 +238,7 @@ cordova plugin add cordova-plugin-firebase
 cordova run android
 ```
 
-In case of build error on android platform (invalid google play version), 
+In case of build error on android platform (invalid google play version),
 uninstall this plugin and use this compatible fork: `cordova-plugin-firebasex`
 
 ### Send a message with the console
@@ -294,7 +293,7 @@ To receive message on webapp, the browser needs 2 parameters:
 
 2) Add a **public** system param `FIREBASE_CONFIG` to init firebase on client-side:
 
-- see https://firebase.google.com/web/setup 
+- see https://firebase.google.com/web/setup
 - or access to console / Project / Setup / Add Firebase to your Web application
 
 ```
@@ -334,7 +333,7 @@ JSON message:
 	"priority": "high | normal | low",
 	"icon": "notification_icon"
 }
-  
+
 ```
 
 To send one notification to a device:
@@ -415,7 +414,7 @@ Process is quite long at the very first time:
 Congrats if you are still alive at this stage!
 
 
-Deploy on Apple Store 
+Deploy on Apple Store
 ---------------------
 
 ### Install the iOS platform
@@ -453,7 +452,7 @@ If the build is successful, launch all emulators (iPhone, iPad) to test the app 
 
 ### iOS icons
 
-The application needs many icons to target all iOS versions. 
+The application needs many icons to target all iOS versions.
 
 - Open the project `platforms/ios/myproject.xcworkspace` in Xcode
 - Select the icon overview `/Resources/Images.xcassets`
@@ -505,12 +504,12 @@ The application needs many icons to target all iOS versions.
 
 	- Edit the App ID to create the notification certificates
 	- In Push notification section / developer
-	- Upload the CSR file 
+	- Upload the CSR file
 	- Download the generated certificate `aps_development.cer`
 	- Add it to your session certificates in Keychain access
 	- With keychain, open the certificate `Apple Development Push Services`
 	- And export your private key into a `p12` file
-	
+
 - Configure firebase
 
 	- In the firebase console, open the project setup

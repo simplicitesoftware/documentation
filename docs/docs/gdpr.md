@@ -91,7 +91,7 @@ In the log business object `AppLogger` records there is a text field that holds 
 In the technical logs the login is present as plain text on each line. Ex (in this example the login is `designer`)
 
 ```plaintext
-2018-08-28 15:35:00,479 INFO [com.simplicite.util.CronJob] SIMPLICITE|http://dev.simplicite.io:10278||ICORECM005|designer|com.simplicite.util.CronJob|run||Job processed
+2018-08-28 15:35:00,479 INFO [com.simplicite.util.CronJob] SIMPLICITE|https://myapp.mysdomain.com||ICORECM005|designer|com.simplicite.util.CronJob|run||Job processed
 ```
 
 It is possible to configure the default `log4j2.xml` file to change this behavior.

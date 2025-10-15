@@ -6,7 +6,8 @@ title: Portainer
 Simplicité with Portainer & Traefik
 ====================================
 
-Portainer is a professional Docker cluster management tool that facilitates installation and operation of Docker containers. This lesson leverages its power to rapidly install Simplicité instances on a server, with the following objectives:
+Portainer is a container management platform that enables efficient deployment and operation of Docker containers. 
+This document demonstrates how to use Portainer to deploy Simplicité instances with automated configuration and management.
 
 - **minimal manual configuration**
 - SSL certificates auto-setup with Let's Encrypt

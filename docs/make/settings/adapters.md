@@ -101,8 +101,7 @@ To create a new adapter, go to Operation > Adapter > Create. Once created (and t
      * the native XML reader logs
   * an error file, if the XML import fails
 
-The canonical example is this lesson: [basic CSV->XML Adapter](/docs/integration/adapters/csv-to-xml)
-
+The canonical example is available in: [basic CSV->XML Adapter](/docs/integration/adapters/csv-to-xml)
 
 ## Direct Adapters
 
@@ -112,7 +111,7 @@ There are cases where you don't want to generate the intermediate XML. Think abo
 
 These adapters can leverage the same helper classes mentioned before.
 
-The canonical example is this lesson: [direct CSV->DB Adapter](/docs/integration/adapters/csv)
+The canonical example is available in: [direct CSV->DB Adapter](/docs/integration/adapters/csv)
 
 ## Stock CSV Adapter
 

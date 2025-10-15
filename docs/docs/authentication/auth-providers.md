@@ -85,16 +85,16 @@ Before Simplicité v4, providers were configured in individual system parameters
 
 
 :::warning
-You might still find some provider settings documented with the deprecated syntax.
+Some of the provider settings are still documented with the deprecated syntax.
 :::
 
 ## Troubleshooting
 
-To investigate authentication issues you can **temporarily** activate the `DAUTHCS001` log event.
+To investigate authentication issues, the `DAUTHCS001` log event can be **temporarily** activated.
 
 ![dauthcs001.png](img/auth-providers/dauthcs001.png)
 
-If you can't change the value, it's probably because your user does not have the `ADMIN_SYSTEM` user parameter that allows for system modification.
+The value is only updatable by users with the `ADMIN_SYSTEM` user parameter set to `yes`.
 
 :::warning
 Make sure to deactivate it as it produces **very verbose** output.

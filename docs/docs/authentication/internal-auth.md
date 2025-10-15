@@ -28,8 +28,8 @@ Configurable 2FA options are:
 
 A custom 2FA mode is implementable using the dedicated `initMFA` and `checkMFA` platform hooks.
 
-- `initMFA` allow you to initialize a second factor (e.g.: generate a one time code for the entered login and send it by an appropriate canal)
-- `checkMFA` allow you to check the second factor against what has been generated
+- `initMFA` initializes a second factor (e.g.: generate a one time code for the entered login and send it by an appropriate canal)
+- `checkMFA` checks the second factor against what has been generated
 
 Anti brute-force attacks
 ------------------------

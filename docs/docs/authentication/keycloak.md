@@ -140,11 +140,9 @@ The client `admin-cli` must be enabled and with the protocol `openid-connect` as
 
 ![](img/keycloak/kc_admincli_client.png)
 
-If the `access type` is set to `confidential`, you will have to add the `client_secret` in the parameters of `KEYCLOAK_API`.
-This parameter is not used by `public` access.
+If the `access type` is set to `confidential`, the `client_secret` must be added to the parameters of `KEYCLOAK_API`. This parameter is not used for `public` access.
 
-
-You can test the API with `curl` before testing the connection through Simplicite (see the [Keycloak REST API docs](https://www.keycloak.org/docs-api/latest/rest-api/index.html)):
+The API can be tested with `curl` before connecting through Simplicite (see the [Keycloak REST API docs](https://www.keycloak.org/docs-api/latest/rest-api/index.html)):
 
 - Get an access_token:
 
@@ -176,7 +174,7 @@ The `KeycloakTool` requires the system parameter `KEYCLOAK_API` to connect the K
 }
 ```
 
-- You must clear the cache to reset the parameters into memory
+- Clearing the cache is required to reset the stored parameters.
 - Turn `debug` to `true` to see in logs during your integration tests:
 	- all requests and responses: token, user, group search...
 	- re-connection with the refresh_token when the API session has expired
@@ -268,7 +266,7 @@ Available starting Simplicité v5.3
 
 :::
 
-If you have to configure multiple Keycloak providers, use the following adaptations:
+If multiple Keycloak providers are required, use the following adaptations:
 1. in the `AUTH_PROVIDERS`, configure multiple providers that start with the word `keycloak` (eg `keycloak-internal` & `keycloak-external`)
 2. decline `KEYCLOAK_API` into multiple `KEYCLOAK_API <provider name>`  (eg `KEYCLOAK_API keycloak-internal` & `KEYCLOAK_API keycloak-external`)
 3. decline `KEYCLOAK_SYNC` into multiple `KEYCLOAK_SYNC <provider name>` (eg `KEYCLOAK_SYNC keycloak-internal` & `KEYCLOAK_SYNC keycloak-external`)
