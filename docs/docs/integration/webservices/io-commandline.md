@@ -19,7 +19,7 @@ As of **version 4.0.P22**, the I/O endpoint does not any longer support API auth
 
 As of **version 5**, the I/O endpoint allows passing a dedicated password as the `io.password` JVM argument or the `IO_PASSWORD` environment parameter
 (which can contain either a plain text password - not recommended - or a non salted hashed password using the configured hashing algorithm)
-instead of the legacy (and rather unsecure) `EAI *` system parameters. 
+instead of the legacy (and rather unsecure) `EAI *` system parameters.
 
 > **Warning**: In production the I/O endpoint should be restricted only to allowed origins (e.g. using filtering on request's origin IP address or similar approaches).
 
@@ -48,9 +48,11 @@ Imports <span id="imports"></span>
 ----------------------------------
 
 To import a file `<file>` the command is:
-```shell
+
+```text
 curl <credentials> --form service=<import command> --form file=@<file> [<extra parameters>] <I/O URL>
 ```
+
 Where `<import command>` is one of :
 
 - `xmlimport` : import a **standard XML** file (no extra parameter required)
@@ -74,9 +76,11 @@ Exports <span id="exports"></span>
 ----------------------------------
 
 To export data in a file `<file>` the command is:
-```shell
-	curl <credentials> --form service=<export command> -o <file> [<extra parameters>] <I/O URL>
+
+```text
+curl <credentials> --form service=<export command> -o <file> [<extra parameters>] <I/O URL>
 ```
+
 Where `<export command>` is one of :
 
 - `xmlexport`: export an object data to a **standard XML** file with `<extra parameters>` = `--form object=<object name>`
@@ -101,24 +105,30 @@ Git <span id="git"></span>
 --------------------------
 
 As of **version 3.2**, to do a Git commit on a module, the command is:
+
+```text
+curl <credentials> --form service=modulecommit --form module=<module name> --form message="<commit message>" <I/O URL>
 ```
-	curl <credentials> --form service=modulecommit --form module=<module name> --form message="<commit message>" <I/O URL>
-```
+
 Others <span id="others"></span>
 --------------------------------
 
 ### Clear cache <span id="clearcache"></span>
 
 To flush server-side cache, the command is:
+
+```text
+curl <credentials> --form service=clearcache <I/O URL>
 ```
-	curl <credentials> --form service=clearcache <I/O URL>
-```
+
 ### Purge tasks <span id="purge"></span>
 
 Various purge tasks can be processed using following commands:
+
+```text
+curl <credentials> --form service=<purge command> <I/O URL>
 ```
-	curl <credentials> --form service=<purge command> <I/O URL>
-```
+
 Where `<purge command>` is one of:
 
 - `purgelogs` : purge logs
@@ -127,8 +137,9 @@ Where `<purge command>` is one of:
 - `purgerecyclebin` : purge documents recycle bin
 - `purgeexports` : purge exports
 - `purgetempfiles` : purge temporary files
+- `purgenodes` : purge nodes (as of version 6.3)
 
-As of version 5.2 for `purgelogs`, `purgejobs`and `purgesuversions` an additional parameter `depth` allows to preserve the latest records:
+As of version 5.2 for `purgelogs`, `purgejobs`and `purgesupervisions` an additional parameter `depth` allows to preserve the latest records:
 
 - If `depth` is **negative** it gives the number of days of records to keep (e.g. `depth=-7`: delete all except last week's reords)
 - If `depth` is **positive** it gives the number of records to keep (e.g. `depth=100`: delete all except the last 100 records)
@@ -136,35 +147,49 @@ As of version 5.2 for `purgelogs`, `purgejobs`and `purgesuversions` an additiona
 ### Indexation <span id="indexation"></span>
 
 To force indexation to be (re)built, the command is:
+
+```text
+curl <credentials> --form service=buildindex <I/O URL>
 ```
-	curl <credentials> --form service=buildindex <I/O URL>
-```
+
 ### Unit tests <span id="unittests"></span>
 
 To run a **business object**'s unit tests, the command is:
+
+```text
+curl <credentials> --form service=unittests --form object=<business object name> <I/O URL>
 ```
-	curl <credentials> --form service=unittests --form object=<business object name> <I/O URL>
-```
+
 To run an **external object**'s unit tests, the command is:
+
+```text
+curl <credentials> --form service=unittests --form extobject=<external object name> <I/O URL>
 ```
-	curl <credentials> --form service=unittests --form extobject=<external object name> <I/O URL>
-```
+
 To run a **business process**'s unit tests, the command is:
+
+```text
+curl <credentials> --form service=unittests --form process=<business process name> <I/O URL>
 ```
-	curl <credentials> --form service=unittests --form process=<business process name> <I/O URL>
-```
+
 As of **version 5.1**, to run all tests from a **test shared code**, the command is:
+
+```text
+curl <credentials> --form service=unittests --form test=<test shared code name> <I/O URL>
 ```
-	curl <credentials> --form service=unittests --form test=<test shared code name> <I/O URL>
-```
+
 As of **version 5.3**, to run all unit tests shared codes of a **module**, the command is:
+
+```text
+curl <credentials> --form service=unittests --form module=<module name> <I/O URL>
 ```
-	curl <credentials> --form service=unittests --form module=<module name> <I/O URL>
-```
+
 As of **version 5.3**, the importspec syntax can also be used, the command is:
+
+```text
+curl <credentials> --form service=unittests --form file=@<file> <I/O URL>
 ```
-	curl <credentials> --form service=unittests --form file=@<file> <I/O URL>
-```
+
 Where the content of `<file>` is a JSON importspec (or its YAML equivalent) like:
 
 ```json
@@ -184,6 +209,7 @@ Where the content of `<file>` is a JSON importspec (or its YAML equivalent) like
 ### Logs <span id="logs"></span>
 
 To retrieve the server logs, the command is:
-```
-	curl <credentials> --form service=logs <I/O URL>
+
+```text
+curl <credentials> --form service=logs <I/O URL>
 ```
