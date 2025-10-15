@@ -7,7 +7,7 @@ Ajax Library
 ============
 
 :::warning
-This lesson is part of the **Frontend Development** category, designed to guide you through frontend customization within Simplicité.
+This documentation is part of the **Frontend Development** category, designed to guide you through frontend customization within Simplicité.
 :::
 
 This guide covers the Ajax Library's core methods and Simplicité's MVC architecture.

@@ -32,7 +32,7 @@ Similarly to creating any type of *External Object*, go to *User Interface > Ext
         - **STYLES** that is your object's stylesheet.
         - **CLASS** where the component's behavior will happen.
         ![](img/uicomponent/uicomp_resources.png)
-    - How to work with those is explored in the [implementation](#how-to-implement) section of this lesson.
+    - See the [implementation](#how-to-implement) section below for how to use these resources.
 
 3. **Save** your object, and now ensure that it has the correct rights & permissions.
     - At the bottom of your *object's form*, click the tab-item **Permissions**, and click **Create**.

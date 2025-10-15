@@ -7,7 +7,7 @@ Introduction to Frontend Dev
 ============================
 
 :::warning
-This lesson is part of the **Frontend Development** category, designed to guide you through frontend customization within Simplicité.
+This documentation is part of the **Frontend Development** category, designed to guide you through frontend customization within Simplicité.
 :::
 
 This guide covers Simplicité's tools for customizing UIs and implementing custom designs while maintaining access to all back-office features.

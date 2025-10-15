@@ -51,9 +51,9 @@ Once you've built the basic structure, learn how to enhance your application wit
 
 ## How to Use This Tutorial
 
-Follow these steps for each lesson:
+Follow these steps for each tutorial:
 
-1. **Read the Lesson Content**
+1. **Read the Tutorial Content**
    - Take your time with the concepts
    - Ensure you understand the explanations thoroughly
 

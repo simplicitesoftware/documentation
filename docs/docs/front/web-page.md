@@ -7,7 +7,7 @@ External Custom Web Pages
 =========================
 
 :::warning
-This lesson is part of the **Frontend Development** category, designed to guide you through frontend customization within Simplicité.
+This documentation is part of the **Frontend Development** category, designed to guide you through frontend customization within Simplicité.
 :::
 
 This guide covers creating standalone web pages using **External Objects** that operate independently from Simplicité's standard UI.

@@ -7,7 +7,7 @@ Complementary Theme Styles
 ==========================
 
 :::warning
-This lesson is part of the **Frontend Development** category, designed to guide you through frontend customization within Simplicité.
+This documentation is part of the **Frontend Development** category, designed to guide you through frontend customization within Simplicité.
 :::
 
 This guide covers advanced theme customization using the **addon.less** file to extend or override styles defined in **constants.less** and **theme_gen.css**.

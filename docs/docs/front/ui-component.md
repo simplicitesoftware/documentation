@@ -7,7 +7,7 @@ UI Component
 ============
 
 :::warning
-This lesson is part of the **Frontend Development** category, designed to guide you through frontend customization within Simplicité.
+This documentation is part of the **Frontend Development** category, designed to guide you through frontend customization within Simplicité.
 :::
 
 This guide covers creating custom widgets using **External Objects** for interactive, embedded components.

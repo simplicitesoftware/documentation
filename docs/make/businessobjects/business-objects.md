@@ -102,7 +102,7 @@ To determine the behavior of an object, unlike a traditional Java application wh
 
 Each time a user manipulates an object, he will need to instantiate it, and load the necessary information into it, in the same way that a java class is loaded with specific data. To do this, a clone of the object loaded in the core cache is positioned in the user's session, this is called an instance of the object. The instance is persistent in the user's session, which is why, for example, if you do a search on an object, navigate elsewhere in the application and return to the list, the search is still active. **The session therefore stores instances of the object's definition, cloned, and the dynamic part of the object (data, search, current parameters, etc.).**
 
-When the object, inheriting from `ObjectDB` is manipulated in the code as in the previous lesson, one of these instances is used. Beware, if only one instance of the object was used, this would mean that when searching for the object in the code (see below) to programmatically modify a set of objects, the user browsing the object would see this search positioned without having done it himself!
+When the object, inheriting from `ObjectDB` is manipulated in the code as in the previous document, one of these instances is used. Beware, if only one instance of the object was used, this would mean that when searching for the object in the code (see below) to programmatically modify a set of objects, the user browsing the object would see this search positioned without having done it himself!
 
 To avoid this problem, the session loads not one, but many instances of the object, each with a name relevant to its use:
 - **the_ajax_ObjectName:** main instance, used for the main list

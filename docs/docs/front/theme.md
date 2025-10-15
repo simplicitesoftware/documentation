@@ -7,7 +7,7 @@ Theme Editor Overview
 ===================
 
 :::warning
-This lesson is part of the **Frontend Development** category, designed to guide you through frontend customization within Simplicité.
+This documentation is part of the **Frontend Development** category, designed to guide you through frontend customization within Simplicité.
 :::
 
 The **Theme Editor** enables visual customization of your Simplicité instance for both designer and user interfaces.
