@@ -148,6 +148,7 @@ services:
   traefik:
     container_name: traefik
     image: "traefik:latest"
+    restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
@@ -184,7 +185,7 @@ services:
   portainer:
     image: portainer/portainer-ce:latest
     command: -H unix:///var/run/docker.sock
-    restart: always
+    restart: unless-stopped
     networks:
       - proxy
     volumes:
