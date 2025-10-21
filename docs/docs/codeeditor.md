@@ -16,7 +16,7 @@ Such editor contains many features that allow you to not go back & forth between
 
 :::info
 
-If you are using VS Code, you can refer to [this lesson](docs/docs/devops/external-editor.md) in order to seamlessly interact with Simplicité's development environment.
+If you are using VS Code, you can refer to [this doc](docs/docs/devops/external-editor.md) in order to seamlessly interact with Simplicité's development environment.
 :::
 
 ## Features list
