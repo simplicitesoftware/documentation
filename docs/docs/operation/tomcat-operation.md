@@ -10,7 +10,7 @@ This document applies to a legacy deployment on a Linux OS of the RedHat family 
 It can easily be transposed to other technical platforms.
 
 > **Note**: Some pieces of information are also applicable - unless otherwise specified - when using our **Docker images**.
-> For more details on Docker images-based deployments please refer to [this document](/docs/operation/docker) 
+> For more details on Docker images-based deployments please refer to [this document](/docs/operation/docker)
 
 Services restarting
 -------------------
@@ -302,3 +302,30 @@ Platform updates
 > **Note**: this chapter is not applicable when using our Docker images. When using such images the Simplicité platform is always up-to-date in the latest images.
 
 The Simplicité&reg; platform **must** be updated regularly, at least on its maintenance branch (see [versions](/versions/versioning.md)), depending on the way it has been installed the process may vary.
+
+Troubleshooting
+---------------
+
+Modern browsers require HTTPS for secure cookies.
+
+**By default** the Simplicité webapp is configured:
+
+- to set the session cookie (`JSESSIONID`) as secure.
+- to set the "same site cookie" constraint to `lax`.
+  (the `lax` value allows external authentication flows like SAML or OpenIDConnect, `strict` would be only suitable for the internal authentication)
+
+With this default configuration if you try to sign in to the UI over plain HTTP (e.g. using the `8080` port of the Tomcat server)
+you will get a `Unknown Simplicite OAuth2 code` message.
+
+The **right approach** is to access the UI only over HTTPS, but if for some reason you can't or still want to access the UI over plain HTTP
+(which is **strongly discouraged**) you have start Tomcat with the following JVM properties:
+
+- `-tomcat.securecookies=false` to alow unsecure session cookies
+- `-Dtomcat.samesitecookies=unset` to disable the "same site cookie" constraint
+
+Notes:
+
+- Accessing the UI over plain HTTP will prevent you from using any external modern authentication protocol such as
+  OpenIDConnect which specification **explicitly** requires HTTPS.
+- If you plan to use **only** the internal authentication over HTTPS you can start Tomcat with the JVM property `-Dtomcat.samesitecookies=strict`
+  to make it even more secure.
