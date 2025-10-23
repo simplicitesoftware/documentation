@@ -320,7 +320,7 @@ you will get a `Unknown Simplicite OAuth2 code` message.
 The **right approach** is to access the UI only over HTTPS, but if for some reason you can't or still want to access the UI over plain HTTP
 (which is **strongly discouraged**) you have start Tomcat with the following JVM properties:
 
-- `-tomcat.securecookies=false` to alow unsecure session cookies
+- `-Dtomcat.securecookies=false` to alow unsecure session cookies
 - `-Dtomcat.samesitecookies=unset` to disable the "same site cookies" policy
 
 Notes:
