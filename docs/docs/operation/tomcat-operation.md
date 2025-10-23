@@ -321,7 +321,7 @@ The **right approach** is to access the UI only over HTTPS, but if for some reas
 (which is **strongly discouraged**) you have start Tomcat with the following JVM properties:
 
 - `-Dtomcat.securecookies=false` to alow unsecure session cookies
-- `-Dtomcat.samesitecookies=unset` to disable the "same site cookies" policy
+- `-Dtomcat.samesitecookies=unset` to disable the same site cookies policy
 
 Notes:
 
