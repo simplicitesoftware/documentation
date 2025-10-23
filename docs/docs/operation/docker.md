@@ -925,7 +925,7 @@ See [this document](/docs/operation/tomcat-operation#troubleshooting) for detail
 and how to override it in some particular cases (e.g. in case of `Unknown Simplicite OAuth2 code`
 message when accessing the UI over plain HTTP).
 
-See [above](#tomcatadvancedsettings) for details on how to fine tune this using environment variables.
+See above for details on how to fine tune this using environment variables.
 
 ### Upgrade issues
 
