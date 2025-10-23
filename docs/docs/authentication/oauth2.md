@@ -130,11 +130,13 @@ Example `AUTH_PRODIDERS` configuration (refer to the [auth providers doc](auth-p
 			"title":     { "field": "usr_title", "transform": { "M.":"MR", "Mme":"MRS", "Mlle":"MS" } },
 			"unit":      { "field": "myUserUnit", "param": "APP_USER_UNIT" }
 		},
+		/* OR
+		"jwt_claims_mappings": {
+			"login": "username"
+			(...)
+		},*/
 		"jwt_issuer": "<url>",
 		"jwt_secret": "",
-		"jwt_claims_mappings": {
-			"login": "preferred_username"
-		},
 		"jwt_check_nonce": true
 	}
 	(...)
