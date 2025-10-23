@@ -94,6 +94,8 @@ sudo systemctl edit --full dnf-automatic.timer
 sudo systemctl enable --now dnf-automatic.timer
 ```
 
+If there are any problems with automatic updates, logs should be available through `sudo journalctl -u dnf-automatic.service`
+
 :::
 
 ## 2) Docker Install
@@ -105,7 +107,9 @@ sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/dock
 sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo systemctl start docker
 sudo systemctl enable docker
-sudo docker run hello-world # check everything is running smoothly
+sudo usermod -aG docker almalinux # add your current user to docker group
+exit # we need to exit and log back in for the docker group to take effect
+docker run hello-world # check everything is running smoothly
 ```
 
 Portainer also needs SELinux to be disabled:
@@ -148,6 +152,7 @@ services:
   traefik:
     container_name: traefik
     image: "traefik:latest"
+    restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
@@ -184,7 +189,7 @@ services:
   portainer:
     image: portainer/portainer-ce:latest
     command: -H unix:///var/run/docker.sock
-    restart: always
+    restart: unless-stopped
     networks:
       - proxy
     volumes:
