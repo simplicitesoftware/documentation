@@ -311,7 +311,7 @@ Modern browsers require HTTPS for secure cookies.
 **By default** the Simplicité webapp is configured:
 
 - to set the session cookie (`JSESSIONID`) as secure.
-- to set the "same site cookie" constraint to `lax`.
+- to set the same site cookies policy to `lax`.
   (the `lax` value allows external authentication flows like SAML or OpenIDConnect, `strict` would be only suitable for the internal authentication)
 
 With this default configuration if you try to sign in to the UI over plain HTTP (e.g. using the `8080` port of the Tomcat server)
@@ -321,11 +321,11 @@ The **right approach** is to access the UI only over HTTPS, but if for some reas
 (which is **strongly discouraged**) you have start Tomcat with the following JVM properties:
 
 - `-tomcat.securecookies=false` to alow unsecure session cookies
-- `-Dtomcat.samesitecookies=unset` to disable the "same site cookie" constraint
+- `-Dtomcat.samesitecookies=unset` to disable the "same site cookies" policy
 
 Notes:
 
 - Accessing the UI over plain HTTP will prevent you from using any external modern authentication protocol such as
   OpenIDConnect which specification **explicitly** requires HTTPS.
-- If you plan to use **only** the internal authentication over HTTPS you can start Tomcat with the JVM property `-Dtomcat.samesitecookies=strict`
+- If you plan to use **only** the internal authentication over HTTPS you can start Tomcat with the `strict` same site cookies policy
   to make it even more secure.

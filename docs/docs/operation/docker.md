@@ -490,6 +490,8 @@ It is possible to adjust some advanced Tomcat settings:
 - Maximum POST request body size: `-e TOMCAT_MAXPOSTSIZE=<max POST request body size, defaults to -1 which means no limit>`
 - Maximum threads: `-e TOMCAT_MAXTHREADS=<max number of threads, defaults to 200>`
 - Maximum connections: `-e TOMCAT_MAXCONNECTIONS=<max number of connections, defaults to 8192>`
+- Same site cookies policy: `-e TOMCAT_SAME_SITE_COOKIES=<unset|lax|strict, defaults to strict>`
+- Use secure cookies: `-e TOMCAT_SECURE_COOKIES=<true|false, defaults to true, note that false is needed for same site cookies policy = unset>`
 
 ### Set custom JVM options <span id="jvmoptions"></span>
 
@@ -914,13 +916,16 @@ Run on a Kubernetes cluster <span id="kubernetes"></span>
 
 See [this document](/docs/operation/kubernetes).
 
-Troubleshooting <span id="troubleshooting"></span>
---------------------------------------------------
+Troubleshooting
+---------------
 
 ### Cookies-related issues
 
-See [this document](/docs/operation/tomcat-operation#troubleshooting) for details on the cookies-related default configuration and how to override it in some particular cases
-(e.g. in case of `Unknown Simplicite OAuth2 code` message when accessing the UI over plain HTTP)
+See [this document](/docs/operation/tomcat-operation#troubleshooting) for details on the cookies-related default configuration
+and how to override it in some particular cases (e.g. in case of `Unknown Simplicite OAuth2 code`
+message when accessing the UI over plain HTTP).
+
+See [above](#tomcatadvancedsettings) for details on how to fine tune this using environment variables.
 
 ### Upgrade issues
 
