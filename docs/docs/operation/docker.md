@@ -490,7 +490,7 @@ It is possible to adjust some advanced Tomcat settings:
 - Maximum POST request body size: `-e TOMCAT_MAXPOSTSIZE=<max POST request body size, defaults to -1 which means no limit>`
 - Maximum threads: `-e TOMCAT_MAXTHREADS=<max number of threads, defaults to 200>`
 - Maximum connections: `-e TOMCAT_MAXCONNECTIONS=<max number of connections, defaults to 8192>`
-- Same site cookies policy: `-e TOMCAT_SAME_SITE_COOKIES=<unset|lax|strict, defaults to strict>`
+- Same site cookies policy: `-e TOMCAT_SAME_SITE_COOKIES=<unset|lax|strict, defaults to lax>`
 - Use secure cookies: `-e TOMCAT_SECURE_COOKIES=<true|false, defaults to true, note that false is needed for same site cookies policy = unset>`
 
 ### Set custom JVM options <span id="jvmoptions"></span>
