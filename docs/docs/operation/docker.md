@@ -917,6 +917,11 @@ See [this document](/docs/operation/kubernetes).
 Troubleshooting <span id="troubleshooting"></span>
 --------------------------------------------------
 
+### Cookies-related issues
+
+See [this document](/docs/operation/tomcat-operation#troubleshooting) for details on the cookies-related default configuration and how to override it in some particular cases
+(e.g. in case of `Unknown Simplicite OAuth2 code` message when accessing the UI over plain HTTP)
+
 ### Upgrade issues
 
 If after an upgrade of Docker-ce on your host machine it refuses to start with the following message:
