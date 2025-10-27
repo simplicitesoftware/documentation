@@ -10,7 +10,7 @@ Code Editor
 
 ![Code editor interface](img/codeeditor/ui.png)
 
-In simplicité, you have access to an integrated code editor, through which you can modify the default code of your objects (java, web, sql, ...).
+In Simplicité, you have access to an integrated code editor, through which you can modify the default code of your objects (java, web, sql, ...).
 
 Such editor contains many features that allow you to not go back & forth between your instance and an external IDE, although **it is completely possible to use your favorite IDE** the use of this integrated one offers a quicker & simpler development process for your applications !
 
@@ -25,19 +25,19 @@ If you are using VS Code, you can refer to [this doc](docs/docs/devops/external-
 2. **Smart features :** several smart-editing features, adapted for Simplicité-specific programming.
 3. **Code snippets :** large amount of good-to-go snippets to either discover how to program common behaviors, or understand what are Simplicité's good practices.
 4. **Git compare :** allows you to compare the code you have with the remote one in case of git issues.
-5. **Accessible doc:** context-accurate documentation if you need to easily access a wider spectrum of informations about Simplicité's programming libs.
+5. **Accessible doc:** context-accurate documentation if you need to easily access a wider spectrum of information about Simplicité's programming libs.
 
 ![Features location](img/codeeditor/features.png)
 
 ## Environment features
 
-Those feature aren't directly related to the core programming experience, but they help you in your developping journey within Simplicité's environment. 
+Those feature aren't directly related to the core programming experience, but they help you in your developing journey within Simplicité's environment. 
 
 ### File search
 
-Inside the files' treeview, you can by default see all types of scripts (java, javascript, html, css, sql, ...) from many types of objects (business objects, external objects, dispositions, ressources, ...), and when dealing with many modules & objects, you might need to narrow down the amount of objects to only a few, or maybe you just need to find one specific file.
+Inside the files' treeview, you can by default see all types of scripts (java, javascript, html, css, sql, ...) from many types of objects (business objects, external objects, dispositions, resources, ...), and when dealing with many modules & objects, you might need to narrow down the amount of objects to only a few, or maybe you just need to find one specific file.
 
-In such case, you can use the treeview's searchbar in few ways in order to find what you need:
+In such case, you can use the treeview's search bar in few ways in order to find what you need:
 
 - Search by file/folder name
 - Search by file extension
@@ -59,7 +59,7 @@ Furthermore, the opened documentations will be up-to-date with your instance's v
 
 ## Coding experience
 
-The following features are meant to be used/seen while writting your code, matter of fact they will both fasten & ease your programming experience.
+The following features are meant to be used/seen while writing your code, matter of fact they will both fasten & ease your programming experience.
 
 ### Code snippets
 
