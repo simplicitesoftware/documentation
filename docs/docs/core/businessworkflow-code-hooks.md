@@ -170,7 +170,7 @@ Example:
 @Override
 public Message preAbandon() {
 	// Rewrite the Forward of the last activity
-	String url = HTMLTool.getListURL("objDemand", "the_objDemand", null);
+	String url = HTMLTool.getListURL("objDemand", "the_ajax_objDemand", null);
 	ActivityFile end = getContext(getEnd());
 	if (!Tool.isEmpty(end)) end.setDataFile("Forward", "Page", url);
 	// Delete the created object during the workflow
