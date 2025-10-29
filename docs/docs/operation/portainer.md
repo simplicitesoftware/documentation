@@ -309,42 +309,147 @@ Or manually configure custom templates using the `*.yml` present at [this locati
 
 This script makes the assumption that you have deployed with portainer a stack that with an app service (Simplicité) and a database service (PostgreSQL). You can call it daily and setup rotating backups.
 
+Each backed up project uses a variables-definitions `backup-myproject.sh` script that call a unified `backup.sh` script. `backup-myproject.sh` should be called by cron (`crontab -e`).
+
 <details>
-<summary>Click to see backup script example</summary>
+<summary>Click to see scripts</summary>
+
+`backup-myproject.sh` script: 
 
 ```bash
-# stop stack
-BACKUPDIR=$(date +"backup-%Y-%m-%d-%H%M")
-COMPOSE_PROJECT="XXXX" # the name of the stack
+#!/bin/bash
+set -euo pipefail
 
-APP_SERVICE="XXXX" # name of the service (not the container)
-APP_DBDOC_VOLUME="XXXX" # name of the volume (careful, docker compose prefixes it with the stack name)
+### PROJECT VARIABLES
 
-PSQL_SERVICE=""
-PSQL_DBNAME="simplicite"
-PSQL_DBUSER="simplicite"
+BACKUP_ROOT="/home/almalinux/backups"
 
-mkdir $BACKUPDIR
+# --- portainer stack info
+COMPOSE_PROJECT="xxx"
+APP_SERVICE="xxx"
+APP_DBDOC_VOLUME="xxx"
+PSQL_SERVICE="xxx"
+PSQL_DBNAME="xxx"
+PSQL_DBUSER="xxx"
 
-# stop Simplicité service
-sudo docker compose -p $COMPOSE_PROJECT stop $APP_SERVICE
+# --- Minimum free space required
+THRESHOLD_GB=20
+MOUNTPOINT="/"
+MAIL_TO="xxx"
 
-# save database dump
-sudo docker compose -p $COMPOSE_PROJECT exec $PSQL_SERVICE sh -c "rm -f /var/lib/backup/database.dump"
-sudo docker compose -p $COMPOSE_PROJECT exec $PSQL_SERVICE sh -c "pg_dump -U $PSQL_DBUSER $PSQL_DBNAME > /var/lib/backup/database.dump"
-sudo docker compose -p $COMPOSE_PROJECT cp $PSQL_SERVICE:/var/lib/backup/database.dump $BACKUPDIR/database.dump
+{
+    echo "===== Backup run $(date) ====="
+    source "$(dirname "$0")/backup.sh"
+    # optionally, send $TGZ to an object storage
+    echo "===== Done ====="
+} 2>&1 | tee -a "$BACKUP_ROOT/backup-$COMPOSE_PROJECT.log"
+```
 
-# save dbdoc
-sudo docker run -v $APP_DBDOC_VOLUME:/data --name helper busybox true
-sudo docker cp helper:/data $BACKUPDIR/dbdoc
-sudo docker rm helper
+`backup.sh` script:
 
-# restart Simplicité service
-sudo docker compose -p $COMPOSE_PROJECT start $APP_SERVICE
+```bash
+#!/bin/bash
 
-# create archive & clean
-tar -czvf $BACKUPDIR.tgz $BACKUPDIR
-rm -rf $BACKUPDIR
+set -euo pipefail
+
+echo "🤖 Running backup.sh"
+
+# --- Required variables ---
+REQUIRED_VARS=(
+    BACKUP_ROOT
+    COMPOSE_PROJECT
+    APP_SERVICE
+    APP_DBDOC_VOLUME
+    PSQL_SERVICE
+    PSQL_DBNAME
+    PSQL_DBUSER
+    THRESHOLD_GB
+    MOUNTPOINT
+    MAIL_TO
+)
+
+MISSING=()
+for VAR in "${REQUIRED_VARS[@]}"; do
+    # The “-” avoids unbound variable errors under `set -u`
+    if [[ -z "${!VAR-}" ]]; then
+        MISSING+=("$VAR")
+    fi
+done
+
+if (( ${#MISSING[@]} > 0 )); then
+    echo "❌ Error: the following required variables are not set or empty:"
+    for VAR in "${MISSING[@]}"; do
+        echo "  - $VAR"
+    done
+    echo "Please check your configuration script before running backup.sh."
+    exit 1
+fi
+
+echo "ℹ️  All required variables are defined."
+
+
+# --- Get available space in GB (integer) ---
+AVAILABLE_GB=$(df -BG --output=avail "$MOUNTPOINT" | tail -1 | tr -dc '0-9')
+
+# --- Check threshold ---
+if (( AVAILABLE_GB < THRESHOLD_GB )); then
+    {
+        echo "⚠️  Low disk space alert on $(hostname)"
+        echo "Mount point: $MOUNTPOINT"
+        echo "Available: ${AVAILABLE_GB}GB"
+        echo "Required:  ${THRESHOLD_GB}GB minimum"
+        echo "Date: $(date)"
+    } > "$TMP_LOG"
+
+    # Send email (requires mailutils / postfix / sendmail configured)
+    mail -s "[ALERT] Low disk space on $(hostname)" "$MAIL_TO" < "/tmp/disk_space_check.log"
+
+    echo "ℹ️  ALERT sent: only ${AVAILABLE_GB}GB left on $MOUNTPOINT"
+    exit 1
+else
+    echo "ℹ️  Disk space OK: ${AVAILABLE_GB}GB available on $MOUNTPOINT"
+fi
+
+
+# === CONFIG & PREP ===
+BACKUPNAME="${COMPOSE_PROJECT}-$(date +%Y-%m-%d_%H-%M).bak"
+BACKUPDIR="${BACKUP_ROOT}/${BACKUPNAME}"
+TGZ="${BACKUPNAME}.tgz"
+
+mkdir -p "$BACKUPDIR"
+
+echo "ℹ️  Starting backup for project: $COMPOSE_PROJECT"
+
+# === STOP SERVICE ===
+echo "ℹ️  Stopping service: $APP_SERVICE"
+sudo docker compose -p "$COMPOSE_PROJECT" stop "$APP_SERVICE"
+
+# === DATABASE DUMP ===
+echo "ℹ️  Creating database dump..."
+sudo docker compose -p "$COMPOSE_PROJECT" exec -T "$PSQL_SERVICE" \
+  sh -c "pg_dump -U \"$PSQL_DBUSER\" \"$PSQL_DBNAME\" > /var/lib/backup/database.dump"
+
+sudo docker compose -p "$COMPOSE_PROJECT" cp \
+  "$PSQL_SERVICE:/var/lib/backup/database.dump" "$BACKUPDIR/database.dump"
+
+# === DBDOC VOLUME COPY ===
+echo "ℹ️  Backing up dbdoc volume..."
+sudo docker run -v "$APP_DBDOC_VOLUME:/data" --name helper busybox true
+sudo docker cp helper:/data "$BACKUPDIR/dbdoc" || true
+sudo docker rm -f helper 2>/dev/null || true
+sudo chown -R $USER:$USER "$BACKUPDIR"
+
+# === RESTART SERVICE ===
+echo "ℹ️  Restarting service: $APP_SERVICE"
+sudo docker compose -p "$COMPOSE_PROJECT" start "$APP_SERVICE"
+
+# === CREATE ARCHIVE ===
+echo "ℹ️  Creating archive..."
+cd "$BACKUP_ROOT"
+tar -czf "$TGZ" "$BACKUPNAME"
+rm -rf "$BACKUPNAME"
+
+echo "✅ Backup completed successfully: $TGZ"
 ```
 
 </details>
