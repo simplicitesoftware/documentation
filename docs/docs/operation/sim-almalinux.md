@@ -8,7 +8,7 @@ Simplicité Instances Manager for AlmaLinux
 
 :::info
 This document applies to the Simplicité Instances Manager (SIM) software for **AlmaLinux 8, 9 or 10**.
-::::
+:::
 
 Introduction
 ------------
@@ -18,7 +18,7 @@ Introduction
 The SIM offers a command line interface (CLI), a web services interface (API) - built on top of the CLI - and a web user interface (UI) - built on top of the API -
 to manage several Simplicité instances on a server:
 
-![Instances manager](img/sim-almalinux.png)
+![Architecture](img/sim-almalinux.png)
 
 Using the CLI offers the full features of the SIM, the API and the UI offers only a subset of the CLI features.
 
@@ -129,7 +129,7 @@ The parameters are:
 
 - `name` (optional) the name of the instance to create, **must** be strictly alphanumerical and of length 3 to 20.
    If you don't provide an explicit name, a random name (10 alphanumerical characters) is generated and used.
-- `param` (optional) the version of the instance (e.g. `6.2`) or the name of an existing instance to clone (e.g. `sft65drt7y`).
+- `param` (optional) the version of the instance (e.g. `6`) or the name of an existing instance to clone (e.g. `sft65drt7y`).
    If you don't provide an explicit version, the configured default version is used.
 - `options[]` (optional) the options array for instance creation:
 	- `options[database]` overrides default database (`hsqldb`, `mysql`, `postgresql` depends on which databases engine are available on the server)
@@ -200,7 +200,7 @@ The parameters are:
 
 #### Get access logs report
 
-```bash
+```text
 curl -k -s <credentials> <base URL>/api?action=accesslogs&name=<instance name>
 ```
 
@@ -234,7 +234,9 @@ The parameters are:
 
 - `name` (**required**) the name of the instance to reset.
 
-> **Warning**: a reset will erase all existing configuration and data.
+:::warning
+A reset will erase all existing configuration and data.
+:::
 
 #### Delete instance
 
@@ -380,8 +382,20 @@ The `sim` CLI offers the following actions:
 #### Usage:
 
 ```text
+sim
+```
+
+or
+
+```text
 sim --help
 ```
+
+#### Actions options
+
+All actions take the `--json` option to get the output as JSON.
+
+When omitted, the output is a human-readable plain text.
 
 #### Get configuration
 
@@ -403,19 +417,22 @@ sim refresh
 
 On a standard SIM deployment, this is done automatically on a regular basis using a dedicated cron task (by default every day during the night).
 
-#### List all instances
+#### List instances
 
 ```text
-sim list [<version|single keyword> or SQL:<sql where clause>]
+sim list [<options>] [<name pattern>]
 ```
 
-Example of SQL where clause (`i` is the table alias for `instances`, `v` the table alias for `versions` and `r` the table alias for `requests`):
+Where options are:
 
-```text
-sim list "SQL:i.version in ('4.0', '5') and i.status = 'started' and i.version_date < v.date"
-```
+- `--version` or `-v` followed by the version number (e.g. `-v 6.2`)
+- `--status` or `-s` followed by the status (e.g. `-s started`)
+- `--where` or `-w` followed by a SQL where clause (e.g. `-w "i.name like '%abc%' and i.created > '2025-01-01'"`, `i` is the table alias for `instances` and `v` the table alias for `versions`)
+- `--order` or `-o` followed by the order strategy (e.g. `-o created`), the order default to name
 
-#### List one single instance
+The name pattern can be an exact name or can use `*` wildcards (or SQL wildcards `%` or `_`)
+
+#### Get one single instance information
 
 ```text
 sim get <name>
@@ -424,8 +441,12 @@ sim get <name>
 #### Add an instance
 
 ```text
-sim add <name> <version (or instance name to clone)>
+sim add <name> [<version> [<database>]]
 ```
+
+If version is omitted the default version is used
+
+If database is omitted the default database is used (note that if you want to specify a database you **must** specify the version)
 
 #### Save an instance
 
@@ -433,7 +454,9 @@ sim add <name> <version (or instance name to clone)>
 sim save <name>
 ```
 
-> **Note**: during the save action the Tomcat process, if running, is suspended to ensure saved data consistency.
+:::note
+During the save action the Tomcat process, if running, is suspended to ensure saved data consistency.
+:::
 
 #### Reset an instance
 
@@ -441,8 +464,9 @@ sim save <name>
 sim reset <name> <version>
 ```
 
-> **Warning**: a reset will erase all existing configuration and data.
-
+:::warning
+A reset action will erase all existing configuration and business data.
+:::
 
 #### Delete an instance
 
@@ -453,7 +477,7 @@ sim delete|rm <name>
 #### Clone an instance
 
 ```text
-sim clone|cp <name> <cloned name>
+sim clone|cp <name to clone> <cloned name>
 ```
 
 #### Rename an instance
@@ -503,8 +527,10 @@ Using `debug` is similar to `start` except that the Tomcat server is then starte
 The JPDA port is available in the `JPDA_ADDRESS` environment variable.
 This port is temporary allowed thru the firewall.
 
-> **Warning**: starting Tomcat in debug mode must only be done when required, it slows down your instance and makes it vulnerable.
-> It is only suitable for punctual debugging.
+:::warning
+Starting Tomcat in debug mode must only be done when required, it slows down your instance and makes it vulnerable.
+It is only suitable for punctual debugging.
+:::
 
 #### Run ant task for an instance
 
@@ -545,22 +571,26 @@ sim reseturl <name>
 ```text
 sim setversion <name> <version>
 ```
-**Warning**: Only a higher version than current instance version is possible. If set to lower version, the instance will not start anymore.
+
+:::warning
+Only a higher version than current instance version is possible. If set to lower version, the instance will not start anymore.
+:::
 
 #### Set status of an instance
 
 ```text
 sim setstatus <name> <started|stopped>
 ```
-**Warning**: the status is set by start/stop actions, use this **only** if there was an unexpected issue and the status is incorrect vs actual instance's status.
+:::warning
+The status is set by start/stop actions, use this **only** if there was an unexpected issue and the status is incorrect vs actual instance's status.
+:::
 
 #### Get health check of an instance
 
 Only to get a return code:
 
 ```text
-sim health <name>
-sim healthcheck <name>
+sim health|healthcheck <name>
 ```
 
 Or get full health check data:
@@ -595,7 +625,9 @@ sim database|db <name> [<input file>]
 
 The client tool used to connect to database depends on the database vendor (e.g. `mysql` client is used for MySQL/MariaDB, `psql` for PostgreSQL, ...)
 
-> **Note**: with embedded HSQLDB the instance must be stopped before connecting to database
+:::note
+With embedded HSQLDB the instance must be stopped before connecting to database.
+:::
 
 #### Instance monitoring
 
@@ -612,7 +644,7 @@ with a reason argument.
 sim unitttests <name> <unit test shared code name>
 ```
 
-#### SonarQube&reg; analysis for instance's module(s)
+#### SonarQube analysis for instance's module(s)
 
 ```text
 sim sonar <name> [<module 1> [<modules 2> ...]]
@@ -620,26 +652,28 @@ sim sonar <name> [<module 1> [<modules 2> ...]]
 
 If no module is specified all modules are analysed.
 
-> **Note**: SonarQube&reg; must be installed and configured
+:::note
+A SonarQube server must be installed and configured.
+:::
 
 #### Advanced CLI usage examples
 
 This example gets status of all instances of a given version:
 
 ```text
-for NAME in `sim ls 5 | awk '{print $1}'`; do sim health $NAME | grep status; done
+for NAME in `sim ls -v 5 | awk '{print $1}'`; do sim health $NAME | grep status; done
 ```
 
 This example stops all instances with matching names:
 
 ```text
-sim ls myinstances\* | awk '{print $1}' | xargs -L 1 sim stop
+sim ls myinstances* | awk '{print $1}' | xargs -L 1 sim stop
 ```
 
-This more advanced example upgrades all started instances of version `4.0`or `5` that needs upgrade:
+This more advanced example upgrades all started instances of version `5`or `6` that needs upgrade:
 
 ```text
-sim list "SQL:i.version in ('4.0', '5') and i.status = 'started' and i.version_date < v.date" | awk '{print $1}' | xargs -L 1 sim upgrade
+sim list -w "i.version in ('5', '6') and i.status = 'started' and i.version_date < v.date" | awk '{print $1}' | xargs -L 1 sim upgrade
 ```
 
 Etc.
@@ -669,9 +703,11 @@ monitoring.sh
 
 All hooks receive as argument their caller script's arguments (e.g. instance name, version and options for `pre/post-add.sh`).
 
-> **Note**: if your usage of the hooks is to add/alter elements to instances' Tomcat (configuration files, additional Java JARs or static web components, ...)
-> you need to do it in the `pre/post-add.sh` but also in the `pre/post-upgrade.sh` (and maybe also in the `pre/post-reset.sh`) as upgrade (and reset)
-> actions reinstall Tomcat.
+:::note
+If your usage of the hooks is to add/alter elements to instances' Tomcat (configuration files, additional Java JARs or static web components, ...)
+you need to do it in the `pre/post-add.sh` but also in the `pre/post-upgrade.sh` (and maybe also in the `pre/post-reset.sh`) as upgrade (and reset)
+actions reinstall Tomcat.
+:::
 
 #### Examples:
 
@@ -700,7 +736,9 @@ else
 fi
 ```
 
-> **Note**: this license key example can easily be transposed to any data import on the I/O endpoint
+:::note
+This license key example can easily be transposed to any data import on the I/O endpoint.
+:::
 
 Configuration
 -------------
@@ -731,7 +769,9 @@ The global settings are set as environment variables in the `<manager home>/conf
 
 ##### System settings
 
-> **Warning**: these system settings **SHOULD NOT** be changed unless you know precisely what you are doing.
+:::warning
+These system settings **SHOULD NOT** be changed unless you know precisely what you are doing.
+:::
 
 - `APPS_USER` Linux user used by the manager (defaults to `simplicite`)
 - `APPS_GROUP` Linux group used by the manager (defaults to `simplicite`)
@@ -873,7 +913,9 @@ The version-level settings are set as environment variables in the `<manager hom
 - `APPS_AUTOUPGRADE` (optional) use built-in system patches application at instance's startup instead of legacy patches import
 (defaults to `true` for versions 4.0 and more recent and to `false` for versions lower than 4.0)
 
-> **Note**: this feature is different from the fact that the instance is marked as nightly updated.
+:::note
+This feature is different from the fact that the instance is marked as nightly updated.
+:::
 
 This `APPS_AUTOUPGRADE` setting just refers to the way an instance is being updated by the SIM:
 
@@ -884,12 +926,14 @@ This `APPS_AUTOUPGRADE` setting just refers to the way an instance is being upda
 
 The instance-level settings are set as environment variables in the `<instance home>/.simplicite` file.
 
-> **Warning**: these variables are set upon creation of the instance based on the global configuration.
-> In general they should not be changed manually unless you know what you are doing.
+:::warning
+These variables are set upon creation of the instance based on the global configuration.
+In general they should not be changed manually unless you know what you are doing.
+:::
 
 Example:
 
-```
+```text
 SERVICE_CONTEXT=
 SERVICE_TOMCATMINMEM=256
 SERVICE_TOMCATMAXMEM=1024
