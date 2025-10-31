@@ -107,7 +107,7 @@ It is possible to track hook's duration : log a warning after 2s by default (onl
 
 ```java
 @Override
-protected void hookBegin(String hook, int maxTime, int maxStack, Object... args) throws HookException
+protected void hookBegin(String hook, int maxTime, int maxStack, Object... args) throws HookException {
 	// postUpdate may be long because of ...
 	if ("postUpdate".equals(hook))
 		maxTime = 10000; // warning after 10s in ms
