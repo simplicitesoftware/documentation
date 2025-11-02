@@ -426,8 +426,10 @@ sim list [<options>] [<name pattern>]
 Where options are:
 
 - `--version` or `-v` followed by the version number (e.g. `-v 6.2`)
+- `--database` or `-d` followed by the database vendor name (e.g. `-d postgresql`)
 - `--status` or `-s` followed by the status (e.g. `-s started`)
-- `--where` or `-w` followed by a SQL where clause (e.g. `-w "i.name like '%abc%' and i.created > '2025-01-01'"`, `i` is the table alias for `instances` and `v` the table alias for `versions`)
+- `--where` or `-w` followed by a SQL where clause (e.g. `-w "i.name like '%abc%' and i.created > '2025-01-01'"`,
+  `i` is the table alias for `instances` and `v` the table alias for `versions`)
 - `--order` or `-o` followed by the order strategy (e.g. `-o created`), the order default to name
 
 The name pattern can be an exact name or can use `*` wildcards (or SQL wildcards `%` or `_`)

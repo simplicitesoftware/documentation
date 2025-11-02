@@ -6,7 +6,7 @@ title: Basic code examples
 Basic code examples
 ===================
 
-These basic guidelines and examples show how to implement business logic within business objects, workflows, or external objects using Java.  
+These basic guidelines and examples show how to implement business logic within business objects, workflows, or external objects using Java.
 Rhino-based scripting is deprecated. Business logic must now be written in Java, which ensures strong typing, compilation, and compatibility with development tools such as IDEs, debuggers, and SonarQube®.
 
 Naming conventions
@@ -107,7 +107,7 @@ It is possible to track hook's duration : log a warning after 2s by default (onl
 
 ```java
 @Override
-protected void hookBegin(String hook, int maxTime, int maxStack) throws HookException {
+protected void hookBegin(String hook, int maxTime, int maxStack, Object... args) throws HookException {
 	// postUpdate may be long because of ...
 	if ("postUpdate".equals(hook))
 		maxTime = 10000; // warning after 10s in ms
