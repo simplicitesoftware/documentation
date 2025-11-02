@@ -92,31 +92,55 @@ This last step of the wizard allows you to define properties for this activity:
 Those who are checked will be kept, others are optional and can be removed
 If you do not use the wizard, click on build activities button to generate optional and mandatory activity data.
 
-Everything between "_" must be changed. 
-Everything between _required_ must be entered.
+- Everything between "_" must be changed. 
+- Everything between _required_ must be entered.
 
-- Check and enter the line: Object | Name | MyObject
-Other data will not be used and can stay unchecked
+- Check and enter the line: `Object.Name` = `MyObject`
+
+Other data will not be used and can stay unchecked.
+
 > **Note**:
 >
 > a "New" type activity, "update", "search" … still needs to know which object you are working on
 
-- Object.Name: name of business object For information, other parameters are:
-- Next.Step: the following activity name to force the routing
-- Return.Code: return value of the activity in case of routing between different transitions.
-- Field : value of the object field
-Activity data are accessible by code or syntax [Step.Group.Data]
+Activity data are defined inside a **group** with a **name**: `<GroupName>.<DataName>`
 
-Explanation of others data in a "Select single" type:
+Each is defined with a **single value** by activity: 
 
-- Constraint | Mandatory | false. If we want to force the user to select at least one value must be “true”
-- Field.row_id: contains the list of row_id that have been selected by the user.
-- Filter.`<objfield>`. This allows you to filter a displayed selection list
-- Search.Spec: Allows to add a SQL filter to the list
+- a fixed value: the object name, a filter value...
+- or dynamically set from a previous activity with the syntax `[StepName.GroupName.DataName]`
+- value order: set to `1` when only one value is required, or define several values with distinct orders
 
-Specific data for "Service call" activity: 
-- Service.Mode = Sync or Async
-- Service.Name = name of the service to call (java method of the process)
+Activity New, Update, Delete, Row(s) selection, Search:
+
+- `Object.Name`: to define the name of the business object
+- `Field.<Fieldname`: to set the value of the object field 
+- Activity data are accessible by code or syntax `[<MyStepName>.Field.<myFieldname>]`
+
+Select single/multiple:
+
+- `Constraint.Mandatory`: must be `true` to force the user to select at least one value
+- `Filter.<fieldname>`: optional to force a field filter on list
+- `Search.Spec`: optional to specify one SQL filter on list
+- `[<MyStepName>.Field.row_id]`: at runtime will contain the list of `row_id` = rows selected by the user
+
+Service activity:
+
+- `Service.Mode`: `Sync` or `Async` call
+- `Service.Name`: java method name to be called in the process implementation
+
+Other common data:
+
+- `Next.Step`: optional, the following activity name to force the process routing (no declared transition needed)
+- `Return.Code`: optional, the return value of the activity in case of routing between different transitions with conditionnal value
+
+End activity optional parameters:
+
+- `Forward.Page`: final URL to redirect the end of the process
+- `PARAM.<index>`: URL parameter
+- Example to forward to a created object during the process:
+    - `Forward.Page` = `[EXPR:HTMLTool.getFormURL("MyBusinessObject", null, "[PARAM:1]", null)]`
+    - `PARAM.1` = `[MyStepNew.Field.row_id]`
 
 ### Activity link
 
