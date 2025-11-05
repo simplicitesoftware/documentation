@@ -54,20 +54,24 @@ Users with the `GUIDE_MAKER` responsibility gain access to the **Guides** menu, 
 A **Tour** is a structured JSON object that defines a guide with **steps**, **conditions**, and **exit behavior**.
 
 #### Structure of a Tour
+
 ```js
 {
     name: "GuideName",
     condition: { ... },       // Launch conditions and access rules
-    steps: [ { ... }, ... ],  // List of guide steps
+    steps: [ { ... }, { ... } ],  // List of guide steps
     exitToast: { ... }        // Optional message at the end of the tour
 }
 ```
+
 #### Launch Conditions
+
 The condition defines when and how the tour can be launched:
-- context - location in which the tour is launched.  
-- inst - instance name of the target object/view.  
-- access - function to check user permissions.  
-- init - optional logic to verify the page or elements are ready.  
+- `context` - location in which the tour is launched.  
+- `inst` - instance name of the target object/view.  
+- `access` - function to check user permissions.  
+- `init` - optional logic to verify the page or elements are ready. 
+
 ```js
 condition: {
     context: "list",            // Launch context: "list", "form", etc.
@@ -83,13 +87,21 @@ condition: {
     }
 }
 ```
+
 #### Defining Steps
+
 Each step guides the user through an action or element:  
-- step - identifier for the step.  
-- title - multilingual step title.  
-- info - optional description text.  
-- attach - tooltip positioning and target element.  
-- next - how to proceed to the next step (event or condition).
+- `step` - identifier for the step.  
+- `title` - multilingual step title.  
+- `info` - optional description text.  
+- `attach` - tooltip positioning and target element.
+    - `sel` : CSS selector
+    - `pos` : `"bottom" | "top" | "left" | "right"`
+    - `align` : `"left" | "center" | "right" | "top" | "middle" | "bottom"`
+- `next` - how to proceed to the next step 
+    - `event` : `"click" | "onload" | "toggle" | "change"`
+    - `condition` : `(ctn,obj,tour)->true`
+
 ```js
 {
     step: "step-id",
@@ -100,14 +112,17 @@ Each step guides the user through an action or element:
 }
 ```
 #### Exit Message
+
 At the end of a tour, you can display an optional message:
+
 ```js
 {
-exitToast: { FRA: "Merci et à bientôt !", ENU: "Thank you and see you soon!" }
+    exitToast: { FRA: "Merci et à bientôt !", ENU: "Thank you and see you soon!" }
 }
 ```
 
 ### Using the Guide Recorder
+
 The **Guide Recorder** (experimental feature) helps create a guide quickly:
 1. Run through the desired journey in the UI.  
 2. Right-click on elements you want to include as guide steps.  
