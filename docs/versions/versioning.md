@@ -44,8 +44,8 @@ Fixes associated to security risks are landed on **all maintained versions as so
 backportable and backward-compatible features are sometimes included.
 :::
 
-Upgrade requirements {#upgrade}
--------------------------------
+Upgrade requirements
+--------------------
 
 Maintainers of a Simplicité application have the duty of keeping the platform up-to-date which
 is **at the very least on the last revision of a maintained version**.
