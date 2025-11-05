@@ -4,7 +4,7 @@
     "no-hard-tabs": { "code_blocks": false },
     "line-length": { "line_length": 150, "code_block_line_length": 200 },
     "no-alt-text": false,
-    "no-inline-html": { "allowed_elements": [ "kbd" ] },
+    "no-inline-html": { "allowed_elements": [ "abbr", "kbd", "Roadmap"] },
     "no-duplicate-heading": { "siblings_only": true },
     "emphasis-style": { "style": "underscore" }
 }

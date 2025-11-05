@@ -46,18 +46,22 @@ This feature is not yet available, but it is planned for a future release. Curre
 
 > How can I configure the number of rows displayed in a list?
 
-This is a global setting defined at the user level (minimum and maximum number of rows per list) and can also be configured dynamically at the list level. For business objects with a small number of rows, pagination can be disabled so that all rows are displayed.
+This is a global setting defined at the user level (minimum and maximum number of rows per list) and can also be configured dynamically at the list level.
+For business objects with a small number of rows, pagination can be disabled so that all rows are displayed.
 
-Please note that displaying lists with a large number of rows and many visible fields may result in significant page sizes, which can negatively impact performance and usability.
+Please note that displaying lists with a large number of rows and many visible fields may result in significant page sizes, which can
+negatively impact performance and usability.
 
 > Is it possible to have "combo" fields with a fixed list of values and the ability to enter a custom value?
 
 Partially. While HTML does not natively support combo box fields, there are two recommended approaches:
 
-* Configure a non-mandatory fixed list of values field with an additional text field for custom values. Using constraints, the text field can be set as mandatory when no list value is selected.
-* Configure a text field with auto-completion: the field will suggest previously entered values and allow selection of existing values or entry of new values.
+- Configure a non-mandatory fixed list of values field with an additional text field for custom values. Using constraints,
+  the text field can be set as mandatory when no list value is selected.
+- Configure a text field with auto-completion: the field will suggest previously entered values and allow selection
+  of existing values or entry of new values.
 
-<!-- 
+<!--
 ### Business workflows
 -->
 
@@ -68,7 +72,8 @@ Coding
 
 > Where can I find general documentation and code samples for server-side scripting?
 
-The [core documentation](/category/core) provides code examples covering general usage, business object hooks, business workflow hooks, adapters, publications, and dispositions.
+The [core documentation](/category/core) provides code examples covering general usage, business object hooks,
+business workflow hooks, adapters, publications, and dispositions.
 
 > Are there any limitations or common pitfalls in server-side scripts that I should be aware of?
 
@@ -78,9 +83,9 @@ The [core documentation](/category/core) provides code examples covering general
 
 > Where can I find general documentation on integration interfaces, APIs, and code samples?
 
-* Code samples for core configuration items (business objects, workflows, dispositions, adapters, etc.) are available in the [core documentation](/category/core).
-* Information on integration interfaces (CLI, web services, etc.) can be found in the [integration documentation](/category/integration).
-* Documentation for helper libraries (Ajax, etc.) is available in the [APIs documentation](/category/libraries).
+- Code samples for core configuration items (business objects, workflows, dispositions, adapters, etc.) are available in the [core documentation](/category/core).
+- Information on integration interfaces (CLI, web services, etc.) can be found in the [integration documentation](/category/integration).
+- Documentation for helper libraries (Ajax, etc.) is available in the [APIs documentation](/category/libraries).
 
 Configuration
 -------------
