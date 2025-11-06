@@ -67,7 +67,7 @@ A **Tour** is a structured JSON object that defines a guide with **steps**, **co
 #### Launch Conditions
 
 The condition defines when and how the tour can be launched:
-- `context` - location in which the tour is launched.  
+- `context` - location in which the tour is launched. (`view`, `list`, `external`, `create`, `update`) 
 - `inst` - instance name of the target object/view.  
 - `access` - function to check user permissions.  
 - `init` - optional logic to verify the page or elements are ready. 
