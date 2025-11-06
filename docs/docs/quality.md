@@ -6,7 +6,8 @@ title: Quality
 Quality
 =======
 
-See [this document](/versions/versioning) for details on the platform's versioning strategies and the the [security guidelines](/docs/security) for more details on how to secure your deployments.
+See [this document](/versions/versioning) for details on the platform's versioning strategies and the the [security guidelines](/docs/security)
+for more details on how to secure your deployments.
 
 Dependencies
 ------------
@@ -65,7 +66,7 @@ Any issue is fixed as soon as detected by the above tools.
 The whole code (Java, JavaScript and styles) is regularly checked using the [SonarQube](https://www.sonarqube.org/) code analysis and code security tool.
 
 - Any new issues classified "bug" are resolved as soon as detected.
-- Any new "security hotspot" are reviewed as soon as they are raised. 
+- Any new "security hotspot" are reviewed as soon as they are raised.
 - All issues classified as "blocker, critical or major vulnerability" are resolved as soon as possible.
 - All other issues (classified "minor or info vulnerability" or "code smell") are looked after with lower priority.
 
@@ -90,9 +91,11 @@ All fixes are transposed to all branches, including the long term maintenance br
 Docker images
 -------------
 
-The "server" images `registry.simplicite.io/server`, from which the "platform" images `registry.simplicite.io/platform` are built, are rebuilt on a regular basis,
-in general for each new platform revision, using the up-to-date official base images of various OS flavors (CentOS, AlmaLinux, Alpine Linux, ...).
+The "server" images `registry.simplicite.io/server`, from which the "platform" images `registry.simplicite.io/platform` are built,
+are rebuilt on a regular basis, in general for each new platform revision, using the up-to-date official base images
+of various OS flavors (CentOS, AlmaLinux, Alpine Linux, ...).
 
-The "platform" images `registry.simplicite.io/platform` are rebuilt each time a platform upgrade (revision, minor or major version) is made available on the considered branch.
+The "platform" images `registry.simplicite.io/platform` are rebuilt each time a platform upgrade (revision, minor or major version)
+is made available on the considered branch.
 
 See this [GitHub repository](https://github.com/simplicitesoftware/docker) for more details on the way the various variants of images are built.

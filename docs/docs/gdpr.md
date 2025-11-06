@@ -11,9 +11,13 @@ Introduction
 
 Out of the box, the Simplicité platform **software** (referred as "the platform" in the rest of this document) does not manage any private data.
 
-The only out of the box business object which has some potentially private data fields is the `User` business object level (see below), but out of the box the platform is only configured with anonymous technical users.
+The only out of the box business object which has some potentially private data fields is the `User` business object level (see below),
+but out of the box the platform is only configured with anonymous technical users.
 
-The platform is designed to process configured data which may include private information. Compliance with <abbr title="General Data Protection Regulation ">GDPR</abbr> (<abbr title="Règlement Général sur la Protection des Données">RGPD</abbr> in French) regarding any private data managed within Simplicité is the responsibility of the data controller. The following guidelines provide assistance for GDPR compliance.
+The platform is designed to process configured data which may include private information. Compliance with
+<abbr title="General Data Protection Regulation ">GDPR</abbr> (<abbr title="Règlement Général sur la Protection des Données">RGPD</abbr> in French)
+regarding any private data managed within Simplicité is the responsibility of the data controller. The following guidelines
+provide assistance for GDPR compliance.
 
 > **Note**: all data configured in the platform is physically stored in the configured database(s).
 > These databases are **external software components** from the point of view of the the platform.
@@ -22,7 +26,8 @@ The platform is designed to process configured data which may include private in
 Business data
 -------------
 
-When configuring business data (business objects and associated business fields), it is important to track and document whether the data is private. This can be done by explicitly indicating the privacy status in the description of the business object, business process, field or other relevant components.
+When configuring business data (business objects and associated business fields), it is important to track and document whether the data is private.
+This can be done by explicitly indicating the privacy status in the description of the business object, business process, field or other relevant components.
 
 Another approach is to extend the configuration of the system objects (e.g. the `Field` business object) to add some
 structured information to classify the type of managed data (e.g. mark each field as `Personal`, `Private` or `Intimate`).

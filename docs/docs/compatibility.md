@@ -125,7 +125,8 @@ Databases
 
 :::tip
 **Note**: The above versions are the **recommended** minimal versions.
-Only the versions listed above are officially tested and supported. While earlier versions may function, support is not provided for environments using versions outside of those specified.
+Only the versions listed above are officially tested and supported. While earlier versions may function,
+support is not provided for environments using versions outside of those specified.
 It is **strongly** recommended to use the **most recent release** of the selected database server.
 :::
 
@@ -141,7 +142,8 @@ Web browsers
 | Legacy 3.x                                            | _ES2009 (ES5)_  | yes      | yes        | yes        | yes        | yes     |
 
 1. Only latest versions are officially supported. Previous versions may work but must be compliant with the specified ECMAScript version.
-2. Not recommended, not tested and not supported. Performance degradation and visual/functional issues may occur (note that IE11 is officially retired on June 6th 2022).
+2. Not recommended, not tested and not supported. Performance degradation and visual/functional issues may occur
+   (note that IE11 is officially retired on June 6th 2022).
 
 :::tip
 **Note**: Web browsers **MUST** be maintained with the latest updates.
