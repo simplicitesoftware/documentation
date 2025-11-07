@@ -9,15 +9,17 @@ Authentication providers
 > This document applies to version **4.0 P23** and above.
 
 Simplicité offers a wide array of authentication solutions with the following ones working out-of-the-box, with no coding involved:
+
 - **internal:** this is the default classic Simplicité mechanism that store user's passwords in the database
 - **OAuth2**
 - **SAML**
 - **LDAP**
-- **Crowd** *(external Atlassian Crowd authentication)*
+- **Crowd** _(external Atlassian Crowd authentication)_
 
 There can be as many providers as necessary.
 
-## Configuration
+Configuration
+-------------
 
 The authentication providers are to be configured with the `AUTH_PROVIDERS` system parameter, e.g.
 
@@ -67,7 +69,8 @@ The JSON settings include the common attributes:
 For historical reasons the names `google`, `microsoft`, `linkedin` and `franceconnect` are **reserved** as they correspond to dedicated connectors.
 :::
 
-If the provider is configured as **not visible**, it is still accessible by appending `?_provider=<type>:<name>` (e.g.: `?_provider=internal:simplicite`) to the base URL.
+If the provider is configured as **not visible**, it is still accessible by appending `?_provider=<type>:<name>`
+(e.g.: `?_provider=internal:simplicite`) to the base URL.
 
 ### Specific settings
 
@@ -75,20 +78,21 @@ Extra mandatory settings might exist depending on the provider's type, please re
 
 ### Deprecated syntax
 
-Before Simplicité v4, providers were configured in individual system parameters instead of one single JSON. PEM certificates are embeddable in the JSON as base64 starting of v5.3.39.
+Before Simplicité v4, providers were configured in individual system parameters instead of one single JSON. PEM certificates
+are embeddable in the JSON as base64 starting of v5.3.39.
 
 |                                                                     | Setting specification                                             | Example                   |
 |---------------------------------------------------------------------|-------------------------------------------------------------------|---------------------------|
 | In `AUTH_PROVIDERS` as JSON                                         | `<setting (lowercase)>`                                           | `"client_id"`             |
-| ⚠️ Deprecated in v4 ⚠️ Individual system parameters                 | `<type (uppercase)>_<setting (uppercase)> <provider (lowercase)>` | `OAUTH2_CLIENT_ID google` |
+| ⚠️ Deprecated in v4 ⚠️ Individual system parameters                | `<type (uppercase)>_<setting (uppercase)> <provider (lowercase)>` | `OAUTH2_CLIENT_ID google` |
 | ⚠️ Deprecated in v5 ⚠️ Image as implicitly specified resource name | `<type (uppercase)>_SIGNIN_<provider (uppercase)>`                | `LDAP_SIGNIN_MYOPENLDAP`  |
-
 
 :::warning
 Some of the provider settings are still documented with the deprecated syntax.
 :::
 
-## Troubleshooting
+Troubleshooting
+---------------
 
 To investigate authentication issues, the `DAUTHCS001` log event can be **temporarily** activated.
 

@@ -36,11 +36,14 @@ Your application's URL **must** be exposed over HTTPS, SSL encryption is **manda
 
 If you are using our standard Docker images or our instance templates these changes are already done.
 
-In other case, it might be necessary to :
+In other case, it might be necessary to:
+
 - Remove all realm-related settings in `WEB-INF/web.xml` (security-constraint, login-config and security-role tags)
 - Optionally remove also the realm definition in `META-INF/context.xml`
 
-> **Warning**: Before doing these changes, **make sure** that you will still be able to login with a user having at least a responsibility on the `ADMIN` group.
+:::warning
+Before doing these changes, **make sure** that you will still be able to login with a user having at least a responsibility on the `ADMIN` group.
+:::
 
 </details>
 
@@ -144,24 +147,19 @@ Example `AUTH_PRODIDERS` configuration (refer to the [auth providers doc](auth-p
 ```
 
 :::warning
-
 For historical reasons the names `google`, `microsoft` and `linkedin` are **reserved** as they correspond to dedicated connectors.
 To use the **generic** OpenIDConnect connector you must use another name (such as the `myoidc` of the above example).
 
 The FranceConnect provider is a OIDC-compliant provider, its management as a dedicated provider has been kept till version 5
 for backward compatibility but it **should** now be rather configured as a generic OIDC provider. It has been removed in version 6.
-
 :::
 
 OpenIDConnect
 -------------
 
 :::info
-
 To learn more about OpenIDConnect (and its relationship with OAuth2), pleaser refer [its documentation](https://openid.net/developers/how-connect-works/).
-
 :::
-
 
 ### Settings
 
@@ -188,13 +186,16 @@ By default the OIDC OAuth2 implementation uses by default the `openid` and `prof
 
 Only **additional** scopes need to be configured using the `OAUTH2_SCOPES` system parameter or`scopes` attribute in `AUTH_PROVIDERS`if needed.
 
-If for some **very specific** reasons you need other default scopes, you can use the `OAUTH2_DEFAULT_SCOPES` system parameter  or `default_scopes` attribute in `AUTH_PROVIDERS`.
+If for some **very specific** reasons you need other default scopes, you can use the `OAUTH2_DEFAULT_SCOPES` system parameter
+or `default_scopes` attribute in `AUTH_PROVIDERS`.
 
 In both cases the syntax for multiple scopes is space-separated.
 
 ### User info mappings
 
-By default, the relevant user info fields defined by the OIDC standards are used to update corresponding user field (e.g. `given_name` for first name, `family_name`, etc.).
+By default, the relevant user info fields defined by the OIDC standards are used to update corresponding user field
+(e.g. `given_name` for first name, `family_name`, etc.).
+
 As for any OAuth2 provider it is possible to do a custom parsing of user info response in the `postLoadGrant` grant hook as described above.
 
 For instance here is a _Keycloak_ integration configuration for `AUTH_PROVIDERS`:
@@ -249,8 +250,8 @@ As of version 5, it is possible to proceed with additional JWT token processing 
 Token validation
 -----------------
 
-As of version 5, it is possible to use external authentication tokens on the API endpoint. Some additional configuration is required in the `AUTH_PROVIDERS` system parameter
-depending on the (exclusive) validation method of the token:
+As of version 5, it is possible to use external authentication tokens on the API endpoint. Some additional configuration
+is required in the `AUTH_PROVIDERS` system parameter depending on the (exclusive) validation method of the token:
 
 ### JWT validation
 
@@ -327,7 +328,8 @@ Register a new client ID on the [Google Developers Console](https://console.deve
 
 ![Client ID](img/oauth2/tomcat-oauth2-google.jpg)
 
-Activate the **required** _Google+ API_ on Google Developers Console and, optionally, activate any other Google API that you would like to call with the auth token your users get from Google authentication.
+Activate the **required** _Google+ API_ on Google Developers Console and, optionally, activate any other Google API
+that you would like to call with the auth token your users get from Google authentication.
 
 Optionally set `OAUTH2_SCOPES <Google provider name>` with additional OAuth2 scopes you may need (e.g. drive scopes, calendar scopes, ...)
 see Google documentation for the values of the possible scopes, if you have several scopes use space as separator.
@@ -347,18 +349,22 @@ In `AUTH_PROVIDERS` just add Google settings as follow, for example to add conse
 }
 ```
 
-> **Notes**:
-> - By default the Google OAuth2 implementation uses the `profile` and `email` scopes when calling the user info endpoint.
->   Only additional scopes needs to be configured.
-> - In 3.x versions you have a unique provider so the `<Google provider name>` suffix must not be set
+:::note
+By default the Google OAuth2 implementation uses the `profile` and `email` scopes when calling the user info endpoint.
+Only additional scopes needs to be configured.
+
+In 3.x versions you have a unique provider so the `<Google provider name>` suffix must not be set
+:::
 
 ### Microsoft LiveID
 
-Register a new client ID on the [Microsoft LiveID application portal](https://apps.dev.microsoft.com) for the application (the OAuth2 callback URL will be `<url>/oauth2callback`):
+Register a new client ID on the [Microsoft LiveID application portal](https://apps.dev.microsoft.com) for the application
+(the OAuth2 callback URL will be `<url>/oauth2callback`):
 
 ![Client ID](img/oauth2/tomcat-oauth2-microsoft.jpg)
 
-Activate the **required** _User.Read_ on the portal and, optionally, activate any other Microsoft API that you would like to call with the auth token your users get from Microsoft authentication.
+Activate the **required** _User.Read_ on the portal and, optionally, activate any other Microsoft API that you would like
+to call with the auth token your users get from Microsoft authentication.
 
 Optionally set `OAUTH2_SCOPES <Microsoft LiveID provider name>` with additional OAuth2 scopes you may need
 see Microsoft LiveID documentation for the values of the possible scopes, if you have several scopes use space as separator.
@@ -383,7 +389,8 @@ see Microsoft LiveID documentation for the values of the possible scopes, if you
 }
 ```
 
-The name of KeyCloak does not necessary have to be `keycloak`, it just has to **start** with that string. This is so there can be multiple keycloak providers.
+The name of KeyCloak does not necessary have to be `keycloak`, it just has to **start** with that string.
+This is so there can be multiple keycloak providers.
 
 This provider adds specific KeyCloak functionality like user info group mapping,  users/roles/groups synchronization, etc.
 

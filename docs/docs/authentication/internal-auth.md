@@ -20,7 +20,8 @@ Configurable 2FA options are:
 
 - Email OTP: a one time code is sent on the user's email address (this requires that a SMTP service is configured on your instance)
 - SMS OTP: a one time code is sent by text message on the user's mobile phone number (this require that a SMS service is configured on your instance)
-- TOTP: a time-based one time password is provided by an authentication application. The QR-code to configure the authentication application can be displayed from the user's form.
+- TOTP: a time-based one time password is provided by an authentication application.
+  The QR-code to configure the authentication application can be displayed from the user's form.
 
 ![](img/internal-auth/mfa-qrcode.png)
 
@@ -54,7 +55,7 @@ import com.simplicite.util.Tool;
 public class PlatformHooks extends com.simplicite.util.engine.PlatformHooksInterface {
 	private static final int NB_FAILURES = 3;
 	private static final int NB_MINUTES = 5;
-	
+
 	private class Quarantine {
 		public int count;
 		public long date;
@@ -63,13 +64,13 @@ public class PlatformHooks extends com.simplicite.util.engine.PlatformHooksInter
 			this.count = count;
 			this.date = new Date().getTime();
 		}
-		
+
 		public Quarantine(String q) {
 			String[] qs = q.split(";");
 			count = Tool.parseInt(qs[0]);
 			date = Tool.parseLong(qs[1]);
 		}
-		
+
 		@Override
 		public String toString() {
 			return count + ";" + date;
@@ -108,7 +109,7 @@ public class PlatformHooks extends com.simplicite.util.engine.PlatformHooksInter
 			else
 				// ...de-quarantine
 				delQuarantine(sys, login);
-		}	
+		}
 		return null;
 	}
 

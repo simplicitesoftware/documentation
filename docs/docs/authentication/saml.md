@@ -34,7 +34,8 @@ You can get the resulting SAML SP meta data by calling `<base URL>/saml?_provide
 
 See [this document](/docs/authentication/auth-providers) for details on how to configure authentication providers.
 
-> **Warning**: Before doing these changes, **make sure** that you will still be able to login with a user having at least a responsibility on the `ADMIN` group.
+> **Warning**: Before doing these changes, **make sure** that you will still be able to login with a user having
+at least a responsibility on the `ADMIN` group.
 
 Google settings
 ---------------
@@ -49,8 +50,10 @@ If you configure several SAML apps you **must** choose a unique entity ID for ea
 Application settings
 --------------------
 
-> Note: this section is **depprecated** as of version 4.0.P23 for which the authentication providers configuration is done using the `AUTH_PROVIDERS` JSON system parameters.
-> See [this document](/docs/authentication/auth-providers) for details.
+:::note
+This section is **depprecated** as of version 4.0.P23 for which the authentication providers configuration
+is done using the `AUTH_PROVIDERS` JSON system parameters. See [this document](/docs/authentication/auth-providers) for details.
+:::
 
 Add the IDP settings of your Google SAML app as system parameters:
 
@@ -86,18 +89,19 @@ Add the IDP settings of your Google SAML app as system parameters:
 </object>
 </simplicite>
 ```
+
 ### Other optional settings
-   
-Depending on the SSO strategies others configurations are possible :  
+
+Depending on the SSO strategies others configurations are possible :
 
 | System parameter           | Value                                                        | Description                                                                                   |
 |----------------------------|--------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
 | SAML_ASSERTIONS_ENCRYPTED  | true/false                                                   | Indicates a requirement for the Assertions received by this SP to be encrypted                |
-| SAML_ASSERTIONS_SIGNED     | true/false                                                   | Indicates a requirement for the `<saml:Assertion>` elements received by this SP to be signed.   |
-| SAML_AUTHNREQUEST_SIGNED   | true/false                                                   | Indicates whether the `<samlp:AuthnRequest>` messages sent by this SP will be signed.           |
+| SAML_ASSERTIONS_SIGNED     | true/false                                                   | Indicates a requirement for the `<saml:Assertion>` elements received by this SP to be signed. |
+| SAML_AUTHNREQUEST_SIGNED   | true/false                                                   | Indicates whether the `<samlp:AuthnRequest>` messages sent by this SP will be signed.         |
 | SAML_IDP_SLO_URL           | Logout IDP URL                                               | SLO endpoint info of the IdP.  URL Location of the IdP where the SP will send the SLO Request |
-| SAML_LOGOUTREQUEST_SIGNED  | true/false                                                   | Indicates whether the `<samlp:logoutRequest>` messages sent by this SP will be signed.          |
-| SAML_LOGOUTRESPONSE_SIGNED | true/false                                                   | Indicates whether the `<samlp:logoutResponse>` messages sent by this SP will be signed.         |
+| SAML_LOGOUTREQUEST_SIGNED  | true/false                                                   | Indicates whether the `<samlp:logoutRequest>` messages sent by this SP will be signed.        |
+| SAML_LOGOUTRESPONSE_SIGNED | true/false                                                   | Indicates whether the `<samlp:logoutResponse>` messages sent by this SP will be signed.       |
 | SAML_SP_CERTIFICATE        | -----BEGIN CERTIFICATE-----(...)-----END CERTIFICATE         | Certificate of the SP                                                                         |
 | SAML_SP_PRIVATEKEY         | -----BEGIN RSA PRIVATE KEY-----(...)-----END RSA PRIVATE KEY | Private key of the SP.                                                                        |
 | SAML_USERINFO_MAPPINGS     | JSON data                                                    | User info fields mappings for synchronization (firstname, lastname, email and phone)          |
@@ -107,9 +111,7 @@ Depending on the SSO strategies others configurations are possible :
 Then you can implement `GrantHooks`'s `parseAuth` method to handle the returned
 Google account identifier if required.
 
-The **example** below checks and removes the domain part of the account name in `parseAuth`
-.
-
+The **example** below checks and removes the domain part of the account name in `parseAuth`.
 
 ```Java
 @Override
@@ -130,25 +132,3 @@ public String parseAuth(Grant sys, SessionInfo info) {
 	return auth.replaceFirst("@" + domain, "");
 }
 ```
-
-<details>
-<summary>Rhino Javascript equivalent</summary>
-```javascript
-GrantHooks.parseAuth = function(sys, info) {
-	// Check if the account is in authorized domain
-	var domain = sys.getParameter("MY_GOOGLE_DOMAIN", "simplicite.fr");
-
-	// Auth string from session info after SAML authentication (e.g. username@simplicite.fr)
-	var auth = info.getLogin();
-
-	// Reject auth string not on domain
-	if (!auth.matches("^.*@" + domain + "$")) {
-		console.error("Invalid domain for account = " + auth);
-		return null;
-	}
-
-	// Remove domain part from the auth string to get a plain username login
-	return auth.replaceFirst("@" + domain, "");
-};
-```
-</details>
