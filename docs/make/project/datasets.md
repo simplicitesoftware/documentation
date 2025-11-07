@@ -22,9 +22,37 @@ An export per object is available on the lists as a designer (menu plus > export
 
 To create a dataset, follow the steps below: 
 
+1. Go to the module you want to create a Dataset for, and navigate to the **Datasets** tab. Then click **Create**
+![](img/datasets/dataset0.png)
+
+1. Select a name for your dataset, and click **Save**
+![](img/datasets/dataset1.png)
+
+1. Now you can add your *Data Export Specifications*
+   - Use the **From/To** fields to restrict your data export to a specific time-frame (created date of the records)
+   - Use the **Objects (export order)** list to specify what objects you wanna export, and specify their order
+    ![](img/datasets/dataset2.png)
+
+     - Click the **Create on list** button
+     - Select the object.s you want to export records from
+     - Reorder them using either the handles or the **Reorder rows** option.
+    ![](img/datasets/dataset3.png)
+    
+2. Now you can generate your dataset's file (using the export specifications) by clicking the **Generate Data** action.
+
+### Using 6.2 or earlier
+
+:::warning
+From v6.3.0, datasets have been reworked to contain their declaration (not on objects anymore), if your dataset existed before, you can migrate the declared order by using the **Migrate export Order** action.
+:::
+
+![](img/datasets/dataset4.png)
+
+Below is the way to declare your dataset if you have a version that preceeds the v6.3 (although we strongly advise you to stay up-to-date):
+
 1. Add the order of export of each objects of your module.  
 In case your application depends on different modules make sure that the global export order is consistent, as datasets relate to one module only.   
-![](img/datasets/dataset1.png)   
-2. Once all the export orders have been completed, you can generate your dataset.   
+![](img/datasets/dataset5.png)   
+1. Once all the export orders have been completed, you can generate your dataset.   
 Go to the Project menu and click on Modules (you can use the menu's search bar), open your module and click on Export data.   
-![](img/datasets/dataset2.png)   
+![](img/datasets/dataset6.png)   
