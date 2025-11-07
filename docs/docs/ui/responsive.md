@@ -27,52 +27,53 @@ The engine is a common MVC (Model-View-Controller) interface:
 
 The main site is loaded once with its disposition resources, then the UI exchanges metadata and data with the back-end.
 
-* `Simplicite.Ajax`: the model uses the Ajax services and IO interfaces to dialog with the back-end.
+- `Simplicite.Ajax`: the model uses the Ajax services and IO interfaces to dialog with the back-end.
 
 ### View
 
 The view layer provides the rendering with several functions:
 
-* `Simplicite.UI.View.Main`: view initialization, global tools
-* `Simplicite.UI.View.Form`: displays the object form
-* `Simplicite.UI.View.List`: displays the object list, rows or summaries
-* `Simplicite.UI.View.Search`: displays the search dialog
-* `Simplicite.UI.View.Index`: displays the index searches
-* `Simplicite.UI.View.Board`: display the navigation, home page, view of items and metrics
-* `Simplicite.UI.View.Menu`: displays the menu
-* `Simplicite.UI.View.Social`: displays the social posts and the followers
-* `Simplicite.UI.View.Tray`: displays the trays view
-* `Simplicite.UI.View.Update`: displays the bulk-update screen
-* `Simplicite.UI.View.Workflow`: displays the screen flows with activities
-* `Simplicite.UI.View.Prefs`: displays the object preferences
-* `Simplicite.UI.View.Widget`: displays some simple widget (i.e. badge, avatar, loader, switch, completion...)
-* `Simplicite.UI.View.ZIP`: simple ZIP editor to remove/add file in folders
+- `Simplicite.UI.View.Main`: view initialization, global tools
+- `Simplicite.UI.View.Form`: displays the object form
+- `Simplicite.UI.View.List`: displays the object list, rows or summaries
+- `Simplicite.UI.View.Search`: displays the search dialog
+- `Simplicite.UI.View.Index`: displays the index searches
+- `Simplicite.UI.View.Board`: display the navigation, home page, view of items and metrics
+- `Simplicite.UI.View.Menu`: displays the menu
+- `Simplicite.UI.View.Social`: displays the social posts and the followers
+- `Simplicite.UI.View.Tray`: displays the trays view
+- `Simplicite.UI.View.Update`: displays the bulk-update screen
+- `Simplicite.UI.View.Workflow`: displays the screen flows with activities
+- `Simplicite.UI.View.Prefs`: displays the object preferences
+- `Simplicite.UI.View.Widget`: displays some simple widget (i.e. badge, avatar, loader, switch, completion...)
+- `Simplicite.UI.View.ZIP`: simple ZIP editor to remove/add file in folders
 
 **Extension**: the engine needs a renderer tool, only one component have been yet released:
 
-* `Simplicite.UI.View.bootstrap`: contains widgets based on bootstrap (i.e. field rendering, dialog box, panels, tabs, buttons...)
+- `Simplicite.UI.View.bootstrap`: contains widgets based on bootstrap (i.e. field rendering, dialog box, panels, tabs, buttons...)
 
 **Styles**: the engine loads also the user's theme:
 
-* `default`: Simplicité default theme (grey, blue and green)
-* `dark`: black & white theme
-* `light`: neutral white & grey theme to customize
+- `default`: Simplicité default theme (grey, blue and green)
+- `dark`: black & white theme
+- `light`: neutral white & grey theme to customize
 
 ### Controller
 
 The controller provides the business logic between the model and the view:
 
-* `Simplicite.UI.Engine`: the main UI controller which loads components, call the Ajax services and manages the View rendering
-* `Simplicite.UI.Globals`: global options (see table below)
-* `Simplicite.UI.Navigator`: main navigation
-* `Simplicite.UI.PlaceMap`: controls the Google Maps rendering
-* `Simplicite.UI.Tray`: controls the Tray rendering of state models
-* `Simplicite.UI.Charts`: controls the chart rendering provided by ChartJS
-* `Simplicite.UI.Workflow`: controls the workflow rendering
-* `Simplicite.UI.Calendar`: controls the fullcalendar rendering
+- `Simplicite.UI.Engine`: the main UI controller which loads components, call the Ajax services and manages the View rendering
+- `Simplicite.UI.Globals`: global options (see table below)
+- `Simplicite.UI.Navigator`: main navigation
+- `Simplicite.UI.PlaceMap`: controls the Google Maps rendering
+- `Simplicite.UI.Tray`: controls the Tray rendering of state models
+- `Simplicite.UI.Charts`: controls the chart rendering provided by ChartJS
+- `Simplicite.UI.Workflow`: controls the workflow rendering
+- `Simplicite.UI.Calendar`: controls the fullcalendar rendering
 
 All the rendering will be made by the browser in one-page based on JQuery and Bootstrap.
-Most functions have been implemented on responsive UI, other functions are only wrapped in an iframe with the backend rendering (i.e. crosstab, script editor).
+Most functions have been implemented on responsive UI, other functions are only wrapped in an iframe with the backend rendering
+(i.e. crosstab, script editor).
 
 External libs
 -------------
@@ -82,7 +83,7 @@ This engine integrates some popular third party libraries:
 - JQuery
 - Bootstrap
 - Ace editor for code edit
-- TinyMCE for rich text edit 
+- TinyMCE for rich text edit
 - ChartJS for charting
 - Etc.
 
@@ -94,8 +95,8 @@ Each UI object gets a copy in `obj.locals.ui` to override the default behaviors.
 
 Options can be changed in :
 
-* Globals: `$ui.options` or `obj.ui.options`
-* Locals: globals are copied in `obj.locals.ui`
+- Globals: `$ui.options` or `obj.ui.options`
+- Locals: globals are copied in `obj.locals.ui`
 
 ### Simplicite.UI.Globals
 
@@ -119,50 +120,47 @@ Options can be changed in :
 | socialShare                  | Sharing options                                                         | SOCIAL_SHARE parameter                     |
 | useCopyLink                  | Allows to copy deeplink to objects                                      | true                                       |
 | useUndoRedo                  | Allows undo/redo: true, false or "keys" for CTRL-Y/Z only               | true                                       |
-| shortcuts                    | true/false or list of shortcuts `{name, label, url, target, icon}`        | true                                       |
-| slideNav                     | Slide screen on push/pull navigation ?                                  	| true                                       |
+| shortcuts                    | true/false or list of shortcuts `{name, label, url, target, icon}`      | true                                       |
+| slideNav                     | Slide screen on push/pull navigation ?                                  | true                                       |
 | tinymceOptions               | tinymce default options                                                 |                                            |
 | ajaxSetup                    | Ajax global options                                                     | see below                                  |
 | scope                        | Multi-apps options                                                      | see below                                  |
-| exports                      | Export default options `{ CSV, XLS, PDF, ARC, XML, ZIP }`                 | see below                                  |
+| exports                      | Export default options `{ CSV, XLS, PDF, ARC, XML, ZIP }`               | see below                                  |
 | list                         | Object list default options                                             | see below                                  |
 | form                         | Object form default options                                             | see below                                  |
 | search                       | Object search default options                                           | see below                                  |
 | summary                      | Object summary default options                                          | see below                                  |
-
 
 ### Simplicite.UI.Globals.ajaxSetup
 
 | Name                         | Description                                                             | Default value                              |
 |------------------------------|-------------------------------------------------------------------------|--------------------------------------------|
 | crossDomain                  | Use CORS HTTP access ?                                                  | true                                       |
-| xhrFields                    | Force some xhr values                                                   | `{ withCredentials: true }`                  |
-
+| xhrFields                    | Force some xhr values                                                   | `{ withCredentials: true }`                |
 
 ### Simplicite.UI.Globals.scope
 
-| Name                         | Description                                                             | Default value                              |
-|------------------------------|-------------------------------------------------------------------------|--------------------------------------------|
+| Name                         | Description                                                              | Default value                              |
+|------------------------------|--------------------------------------------------------------------------|--------------------------------------------|
 | enabled                      | true/false or array of authorized scopes `{home, url, icon, label, help}`| true                                       |
-| backend                      | allows to return to backend ?                                           | true                                       |
-
+| backend                      | allows to return to backend ?                                            | true                                       |
 
 ### Simplicite.UI.Globals.exports
 
 | Name                         | Description                                                             | Default value                              |
 |------------------------------|-------------------------------------------------------------------------|--------------------------------------------|
-| CVS                          | CVS export options                                                      | `{ enabled:true, sep:';' }`                  |
+| CVS                          | CVS export options                                                      | `{ enabled:true, sep:';' }`                |
 | XLS                          | Excel export options                                                    | `{ enabled:true, formats: { poi: "Excel", html: "HTML" }}` |
-| PDF                          | PDF export options                                                      | `{ enabled:true }`                           |
-| ARC                          | Archive export options                                                  | `{ enabled:true }`                           |
+| PDF                          | PDF export options                                                      | `{ enabled:true }`                         |
+| ARC                          | Archive export options                                                  | `{ enabled:true }`                         |
 | XML                          | Simplicite XML export options                                           | `{ enabled:true, inline:true, timestamp:false }` |
-| ZIP                          | Simplicite ZIP export options                                           | `{ enabled:true }`                           |
+| ZIP                          | Simplicite ZIP export options                                           | `{ enabled:true }`                         |
 
 ### Simplicite.UI.Globals.list
 
 | Name                         | Description                                                             | Default value                              |
 |------------------------------|-------------------------------------------------------------------------|--------------------------------------------|
-| container                    | target container for the list                                           | '#work' if undefined                         |
+| container                    | target container for the list                                           | '#work' if undefined                       |
 | beforeload\(ctn,obj\)        | optional trigger before loading the list data                           |                                            |
 | preload\(ctn,obj,params\)    | optional trigger before rendering the list (data loaded)                |                                            |
 | onload\(ctn,obj,params\)     | optional trigger when list is displayed                                 |                                            |
@@ -188,7 +186,7 @@ Options can be changed in :
 | showIndex                    | show the fulltext search                                                | metadata.indexable                         |
 | indexRequest                 | current index search request                                            |                                            |
 | oncreate                     | create handler, null or false: no creation                              | bind create action if granted              |
-| actions                      | arrays `{ list, listPlus, row, rowPlus }` of actions `{name, label, confirm, callback, showLabel, ...}`<br />null:no action | metadata.actions |
+| actions                      | arrays `{ list, listPlus, row, rowPlus }` of actions `{name, label, confirm, callback, showLabel, ...}`<br/>null:no action | metadata.actions |
 | floating                     | ensure some actions to stay visible during vertical scrolling           | true                                       |
 | sticky                       | ensure table header to stay visible during vertical scrolling (V5)      | true                                       |
 | onopen\(ctn,obj,rowId\)      | handler when record is opened/clicked                                   | engine.openObject                          |
@@ -202,15 +200,15 @@ Options can be changed in :
 | rowOpenDocs                  | add links to open documents and images                                  | true                                       |
 | isExtended                   | show/hide extended fields on list, except creation                      | false                                      |
 | msg                          | array of messages to display on list                                    |                                            |
-| msgRow                       | array of row messages `{rowId:[msg]}` to display per rowId                |                                            |
+| msgRow                       | array of row messages `{rowId:[msg]}` to display per rowId              |                                            |
 | help                         | contextual help                                                         |                                            |
 | nav                          | optional navigation 'new' or 'add'                                      |                                            |
 | showNav                      | displays the navigation bar                                             | true                                       |
 | showTotals                   | displays the total row if any                                           | true                                       |
 | context                      | list context LIST, PANEL, UPDATE                                        | Simplicite.CONTEXT_LIST                    |
-| inst                         | optional instance name                                                  | `the\_ajax\_<name>`                          |
+| inst                         | optional instance name                                                  | `the\_ajax\_<name>`                        |
 | parent                       | optional parent object for panel                                        |                                            |
-| view                         | optional view container `{ name, item, home }`                            |                                            |
+| view                         | optional view container `{ name, item, home }`                          |                                            |
 | edit                         | edit list current mode = 'newline' or 'rows'                            |                                            |
 | listEdit                     | allows to edit cells ?                                                  | from metadata                              |
 | addEdit                      | allows to add row on list ?                                             | from metadata                              |
@@ -256,12 +254,15 @@ Options can be changed in :
 	</div>
 </div>
 ```
-_nota_
 
-* if the global template is changed, all lists will be impacted
-* elements can be moved or added for specific rendering
-* classes are used to map the dynamic contents (icon-title...)
-* add classes / media queries to hide sections on XS device (e.g. `hidden-xs` to hide the icon)
+:::note
+
+- if the global template is changed, all lists will be impacted
+- elements can be moved or added for specific rendering
+- classes are used to map the dynamic contents (icon-title...)
+- add classes / media queries to hide sections on XS device (e.g. `hidden-xs` to hide the icon)
+
+:::
 
 ### Simplicite.UI.Globals.form
 
@@ -272,13 +273,13 @@ _nota_
 | preload\(ctn,obj,params\)    | optional trigger before rendering the form (data loaded)                |                                            |
 | onload\(ctn,obj,params\)     | optional trigger when form is displayed                                 |                                            |
 | onunload\(ctn,obj,params\)   | optional trigger before unloading the form                              |                                            |
-| noRowFound\(ctn,obj,id\)     | optional hook if the requested record is not found                      | alert `NO_ROW_FOUND` + redirect to the list  |
+| noRowFound\(ctn,obj,id\)     | optional hook if the requested record is not found                      | alert `NO_ROW_FOUND` + redirect to the list|
 | display\(ctn,obj,params,cbk\)| optional function to override default rendering                         |                                            |
 | title                        | form title                                                              | userkey label                              |
 | titleMax                     | form title max length (ellipsis)                                        | 120                                        |
 | values                       | fields values                                                           | result of get service                      |
-| beforesave\(ctn,obj,index,cbk\) | handler before save the form, cbk(true|false) to continue|stop save  |                                            |
-| aftersave\(ctn,obj,index,msgs\) | handler after save the form, cbk(true|false) to continue|stop        |                                            |
+| beforesave\(ctn,obj,index,cbk\) | handler before save the form, cbk(true/false) to continue, stop save |                                            |
+| aftersave\(ctn,obj,index,msgs\) | handler after save the form, cbk(true/false) to continue, stop       |                                            |
 | onsave\(ctn,obj,cbk\)        | handler to save the form                                                | engine.saveForm                            |
 | onsaveclose\(ctn,obj,cbk\)   | handler to save and close the form                                      | engine.saveForm + closeForm                |
 | onsavenew\(ctn,obj,cbk\)     | handler to save and create                                              | engine.saveForm + create                   |
@@ -288,10 +289,10 @@ _nota_
 | actionAutoSave               | auto-save form on custom action                                         | true                                       |
 | onhelp\(ctn,obj\)            | handler to display the long help                                        | engine.displayHelp                         |
 | onsocial\(ctn,obj\)          | handler to display the social posts                                     | engine.displaySocial                       |
-| actions                      | `{ form, formPlus }` arrays of actions `{name, label, confirm, callback...}`<br />null:no action | metadata.actions      |
-| transitions                  | arrays of transition actions `{name, label, confirm, callback...}`<br />null: no transition    |                       |
+| actions                      | `{ form, formPlus }` arrays of actions `{name, label, confirm, callback...}`<br />null:no action | metadata.actions  |
+| transitions                  | arrays of transition actions `{name, label, confirm, callback...}`<br />null: no transition |                        |
 | floating                     | ensure some actions to stay visible during vertical scrolling           | true                                       |
-| readonly                     | read only applies on fields<br />use onsave/onclose/actions/transitions to disable buttons  |                        |
+| readonly                     | read only applies on fields<br />use onsave/onclose/actions/transitions to disable buttons |                         |
 | isExtended                   | show/Hide extended fields on form                                       | false                                      |
 | msg                          | optional array of messages                                              |                                            |
 | help                         | contextual help                                                         |                                            |
@@ -304,10 +305,10 @@ _nota_
 | createLinks                  | allows references creation                                              | true                                       |
 | formTab                      | selected tab index per tab area                                         |                                            |
 | viewTab                      | selected view                                                           | metadata.defaultView                       |
-| inst                         | optional instance name                                                  | `the\_ajax\_<name>`                          |
+| inst                         | optional instance name                                                  | `the\_ajax\_<name>`                        |
 | copy                         | gets the item for copy                                                  | false                                      |
 | workflow                     | displays the form within a workflow                                     | false                                      |
-| parent                       | optional parent object `{ name, inst, field, rowId }`                     |                                            |
+| parent                       | optional parent object `{ name, inst, field, rowId }`                     |                                          |
 | constraints                  | applies object constraints                                              | true                                       |
 | areaColumn                   | default columns per area without UI template                            | 2                                          |
 | template                     | form template                                                           | see below                                  |
@@ -335,26 +336,28 @@ _nota_
 </div>
 ```
 
-_nota_
+:::note
 
-* if the global template is changed, all forms will be impacted
-* classes are used to map the dynamic contents (icon-title...)
-* add classes / media queries to hide sections on XS device (ex: `hidden-xs` to hide the icon)
-* elements can be moved or added for specific rendering :
+- if the global template is changed, all forms will be impacted
+- classes are used to map the dynamic contents (icon-title...)
+- add classes / media queries to hide sections on XS device (ex: `hidden-xs` to hide the icon)
+- elements can be moved or added for specific rendering :
+
+:::
 
 | Type      | Element                                                                   |
 |-----------|---------------------------------------------------------------------------|
-| AREA      | `<div class="area" data-area="2,3,4,view,obj;ref:="/>`		|
-| EXTERN    | `<div class="extern" data-extern="extobjname"/>`				|
-| ACTION    | `<div class="action" data-action="name"/>`					|
-| FIELD     | `<div class="field" data-field="fullinput"></div>`			|
-| LABEL     | `<div\|span class="field" data-field="fullinput" data-display="label"/>`	|
-| VALUE     | `<div\|span class="field" data-field="fullinput" data-display="value"/>`	|
-| INPUT     | `<div class="field" data-field="fullinput" data-display="input"/>`			|
-| IMAGE     | `<div class="field" data-field="fullinput" data-display="image"/>`			|
-| DOC       | `<div class="field" data-field="fullinput" data-display="preview"/>`		|
-| TEXT      | `<span\|div\|h1... class="text" data-text="code"/>`			|
-| BUTTON    | `<button\|div class="btn" data-obj="" data-rowid=""/>`		|
+| AREA      | `<div class="area" data-area="2,3,4,view,obj;ref:="/>`                    |
+| EXTERN    | `<div class="extern" data-extern="extobjname"/>`                          |
+| ACTION    | `<div class="action" data-action="name"/>`                                |
+| FIELD     | `<div class="field" data-field="fullinput"></div>`                        |
+| LABEL     | `<div\|span class="field" data-field="fullinput" data-display="label"/>`  |
+| VALUE     | `<div\|span class="field" data-field="fullinput" data-display="value"/>`  |
+| INPUT     | `<div class="field" data-field="fullinput" data-display="input"/>`        |
+| IMAGE     | `<div class="field" data-field="fullinput" data-display="image"/>`        |
+| DOC       | `<div class="field" data-field="fullinput" data-display="preview"/>`      |
+| TEXT      | `<span\|div\|h1... class="text" data-text="code"/>`                       |
+| BUTTON    | `<button\|div class="btn" data-obj="" data-rowid=""/>`                    |
 
 ### Simplicite.UI.Globals.search
 
@@ -384,7 +387,7 @@ _nota_
 |------------------------------|-------------------------------------------------------------------------|--------------------------------------------|
 | beforeload\(ctn,obj\)        | optional trigger before loading the summary                             |                                            |
 | onload\(ctn,obj\)            | optional trigger when summary is displayed                              |                                            |
-| actions                      | `{ row, rowPlus }` of actions `{name, label, confirm, callback...}`<br />null: no action | from metadata                 |
+| actions                      | `{ row, rowPlus }` of actions `{name, label, confirm, callback...}`<br />null: no action | from metadata             |
 | icon                         | show the object icon                                                    | true                                       |
 | image                        | show the object first image                                             | true                                       |
 | fields                       | list of fields, null: no field                                          | visible on list and not empty              |
@@ -412,9 +415,11 @@ _nota_
 </div>
 ```
 
-_nota_
+:::note
 
-* elements can be moved or added for specific rendering :
+- elements can be moved or added for specific rendering :
+
+:::
 
 | Type      | Element                                                 |
 |-----------|---------------------------------------------------------|
@@ -422,7 +427,6 @@ _nota_
 | FIELD     | `<span\|div\|img class="field" data-field="fullinput"/>`  |
 | TEXT      | `<span\|div class="text" data-text="code"/>`             |
 | BUTTON    | `<button\|div class="btn" data-obj="" data-rowid=""/>`   |
-
 
 ### Simplicite.UI.Globals.agenda
 
@@ -490,48 +494,48 @@ Devices
 
 Default behaviors on large desktop :
 
-* Header with logo, global search, scope label and logged user
-* Plain accordion menu on the left side
-* Home page and Domain home page
-* Global search
-	* Last session accesses
-	* Fulltext search in indexed fields
-	* Domain search for last updated object
-	* Document search in indexed documents
-	* Masonry layout
-* Lists are displayed in table
-* Search form can be docked beside the list or under the columns
-* Object form uses the UI template if defined, otherwise it converts only the back-end AREAs into simple interface (panel+tabs)
-* State models are displayed in trays with drag&drop abilities
-* Object history can be displayed in 4 charts: 
-	* count per status
-	* duration per state
-	* count per period and per status
-	* global duration of processes
+- Header with logo, global search, scope label and logged user
+- Plain accordion menu on the left side
+- Home page and Domain home page
+- Global search
+  - Last session accesses
+  - Fulltext search in indexed fields
+  - Domain search for last updated object
+  - Document search in indexed documents
+  - Masonry layout
+- Lists are displayed in table
+- Search form can be docked beside the list or under the columns
+- Object form uses the UI template if defined, otherwise it converts only the back-end AREAs into simple interface (panel+tabs)
+- State models are displayed in trays with drag&drop abilities
+- Object history can be displayed in 4 charts:
+  - count per status
+  - duration per state
+  - count per period and per status
+  - global duration of processes
 
 ### Tablet
 
 Almost similar as desktop, except :
 
-* Menu is minified by default and displays only domain icons
-* Plain button can be simplified into icon+tooltip, or deported in "Plus" button
-* List can be switched into summaries of rows
-* gesture (swipe event) can close dialog boxes
+- Menu is minified by default and displays only domain icons
+- Plain button can be simplified into icon+tooltip, or deported in "Plus" button
+- List can be switched into summaries of rows
+- gesture (swipe event) can close dialog boxes
 
 ### Mobile
 
-* Menu is hidden by default
-* The header is simplified with icons
-* The footer is hidden
-* All panels/fields/tabs/charts are displayed/split in one column
-* List are displayed as object summaries
-* Search are available in dialog box only
-* Most actions are deported in "plus" button
+- Menu is hidden by default
+- The header is simplified with icons
+- The footer is hidden
+- All panels/fields/tabs/charts are displayed/split in one column
+- List are displayed as object summaries
+- Search are available in dialog box only
+- Most actions are deported in "plus" button
 
 Global events
 -------------
 
-Some common events are triggered by the UI to predefined classes. 
+Some common events are triggered by the UI to predefined classes.
 A specific component can implement some of then to add dynamic behaviors.
 
 | Class name                   | Trigger name                        | Occurs when                                  | Arguments                                        |
@@ -555,54 +559,53 @@ Usage samples:
 
 1) to update UI elements when one object has been deleted:
 
-```javascript
-var table = $(myTable).addClass("js-notify").on("ui.notify", function(e, notif) {
-	if (notif.type=="delete" && notif.object.getName()=="MyObject")
-		$("tr[data-rowid='" + notif.rowId + "']", table).remove();
-});
-```
+   ```javascript
+   var table = $(myTable).addClass("js-notify").on("ui.notify", function(e, notif) {
+     if (notif.type=="delete" && notif.object.getName()=="MyObject")
+       $("tr[data-rowid='" + notif.rowId + "']", table).remove();
+   });
+   ```
 
 2) to resize elements when screen size has changed
 
-```javascript
-var div = $(myDiv).addClass("js-resizable").on("ui.resize", function(e, width, height, reload) {
-	if (reload) { /* ... force a full reload of div ... */ }
-	else if (width<1000) { /* ... hide something ... */ }
-	else { /* ... show something ... */ }
-});
-```
+   ```javascript
+   var div = $(myDiv).addClass("js-resizable").on("ui.resize", function(e, width, height, reload) {
+     if (reload) { /* ... force a full reload of div ... */ }
+     else if (width<1000) { /* ... hide something ... */ }
+     else { /* ... show something ... */ }
+   });
+   ```
 
 3) to prepare/destroy one specific widget when content is loaded/unloaded
 
-```javascript
-var div = $(myDiv).addClass("js-content-load").on("ui.content.load", function(e) {
-	someWidget.create(div, options);
-});
-div.addClass("js-content-unload").on("ui.content.unload", function(e) {
-	someWidget.destroy(div);
-});
-```
+   ```javascript
+   var div = $(myDiv).addClass("js-content-load").on("ui.content.load", function(e) {
+     someWidget.create(div, options);
+   });
+   div.addClass("js-content-unload").on("ui.content.unload", function(e) {
+     someWidget.destroy(div);
+   });
+   ```
 
 4) to catch the `ctrl-s` on the UI:
 
-```javascript
-$(myDiv).addClass("js-ctrl-s").on("ui.key.ctrls", function(e) {
-	// read div and save...
-});
-```
+   ```javascript
+   $(myDiv).addClass("js-ctrl-s").on("ui.key.ctrls", function(e) {
+      // read div and save...
+   });
+   ```
 
 5) to add a specific "can close before quit?" to stop a closing request:
 
-```javascript
-$(myDiv).attr("data-event-close", "mycanclose").on("mycanclose", function(e, cbk) {
-	if (/* can close... */)
-		cbk(); // ok this div can close
-	else 
-		// Stay here with message
-		$ui.alert("Do something before close");
-});
-```
-
+   ```javascript
+   $(myDiv).attr("data-event-close", "mycanclose").on("mycanclose", function(e, cbk) {
+     if (/* can close... */)
+       cbk(); // ok this div can close
+     else
+       // Stay here with message
+       $ui.alert("Do something before close");
+   });
+   ```
 
 Client side hooks
 -----------------
@@ -613,9 +616,9 @@ The UI engine is a singleton named `$ui`.
 
 Use system parameters :
 
-* `THEME`: CSS theme (default, light, dark...)
-* `GOOGLE_FONT`: optional font to use
-* `SHOW_MOBILE` (V3 only): `true` (or `yes`), `false` (or `no`) or `always`
+- `THEME`: CSS theme (default, light, dark...)
+- `GOOGLE_FONT`: optional font to use
+- `SHOW_MOBILE` (V3 only): `true` (or `yes`), `false` (or `no`) or `always`
 
 or the disposition `SCRIPT` to override properties or functions, for example:
 
@@ -623,7 +626,7 @@ or the disposition `SCRIPT` to override properties or functions, for example:
 (function(ui,$) {
 	// Bind ui.loaded = engine is loaded (before home page)
 	$(document).on("ui.loaded", function() {
-		// customize UI here	
+		// customize UI here
 		// UI options = Globals merged with disposition script
 		var opt = ui.options;
 		// Disable links on forms
@@ -631,7 +634,7 @@ or the disposition `SCRIPT` to override properties or functions, for example:
 		// Export to Excel with POI only
 		opt.exports.XLS.formats = { poi: "Excel" };
 	});
-	
+
 	// Bind ui.ready = UI is ready (after home page)
 	$(document).on("ui.ready", function() {
 		// Remove some Admin menu to GUEST users
@@ -639,7 +642,7 @@ or the disposition `SCRIPT` to override properties or functions, for example:
 			$(".main-menu [data-obj='myAdminObject']").remove();
 		// Customize footer infos...
 	});
-	
+
 	// Bind ui.beforeunload to document = UI and Ajax are still available
 	$(document).on("ui.beforeunload", function() {
 		// window will be unloaded
@@ -647,9 +650,9 @@ or the disposition `SCRIPT` to override properties or functions, for example:
 		ui.alert({
 			title: app.T("INFO"),
 			content: "bye " + ui.grant.getFullName()
-		});		
+		});
 	});
-	
+
 	// Bind ui.unload to document = last call
 	$(document).on("ui.unload", function() {
 		// window is unloaded
@@ -659,13 +662,14 @@ or the disposition `SCRIPT` to override properties or functions, for example:
 
 ### Business object hooks
 
-To add specific behaviors, the designer must add a JS resource 
-- From version 6.0: named `CLASS` to override the default implementation
+To add specific behaviors, the designer must add a JS resource:
+
+- from version 6.0: named `CLASS` to override the default implementation
 - or named `SCRIPT` to register the object in the global `Simplicite.UI.hooks`.
 
 The hook will be called once by each object instance (the_ajax, panel_ajax...).
 
-#### `SCRIPT` example:
+#### `SCRIPT` example
 
 ```javascript
 (function(ui) {
@@ -682,7 +686,7 @@ The hook will be called once by each object instance (the_ajax, panel_ajax...).
 				console.log("myObject hook loading...");
 				// object UI parameters = clone of the globals properties
 				var p = o.locals.ui;
-				
+
 				// When object form is loaded in the container ctn
 				p.form.onload = function(ctn, obj, params) {
 					// Alert on big amount
@@ -720,7 +724,7 @@ The hook will be called once by each object instance (the_ajax, panel_ajax...).
 						f.ui.visible(v ? Simplicite.VIS_HIDDEN: Simplicite.VIS_BOTH);
 						f.ui.updatable(f.required && v=="123");
 					});
-				};		
+				};
 			}
 		}
 		catch(e) {
@@ -741,11 +745,11 @@ The hook will be called once by each object instance (the_ajax, panel_ajax...).
 
 2) When objects are inherited, the classes can also be inherited and super methods can be invoked.
 
-`Simplicite.UI.BusinessObjects.myObject2 = class extends Simplicite.UI.MyCommonObject { ... }`
+   `Simplicite.UI.BusinessObjects.myObject2 = class extends Simplicite.UI.MyCommonObject { ... }`
 
 3) the hooks are inherited from the ajax object
 
-`Simplicite.UI.BusinessObject extends Simplicite.Ajax.BusinessObject`
+   `Simplicite.UI.BusinessObject extends Simplicite.Ajax.BusinessObject`
 
 It means that it is now possible to override not only UI hooks but also the core object (ajax calls) to do specific actions.
 
@@ -1114,7 +1118,7 @@ onUnloadTimesheet(ctn, obj, ts) {
 #### Example: Set image to field
 
 ```javascript
-/** 
+/**
  * Sample method to change the image
  * @param data Base64 encoded image "data:image/png;base64,..."
  * @function
@@ -1186,19 +1190,18 @@ function setImage(data) {
 Result:
 ![](img/responsive/panel_ct.png)
 
-
 Styles
 ------
 
-* Global CSS can be changed in the Disposition `STYLES`
-* or create a CSS resource named STYLES per object and add specific styles
+- Global CSS can be changed in the Disposition `STYLES`
+- or create a CSS resource named STYLES per object and add specific styles
 
 For example:
 
 ```css
 /* Change the border of a form group of field */
 .objform.object-myObject .form-group[data-group='myField'] {
-	border: solid 3px #FF6;
+  border: solid 3px #FF6;
 }
 /* Hide the minifiable button on list */
 .objlist.object-myObject .btn-minifiable {
@@ -1206,9 +1209,9 @@ For example:
 }
 /* Hide area 3 on mobile XS screen */
 @media screen and (max-width: 767px) {
-	.objform.object-myObject .area[data-area='3:='] {
-		display: none!important;
-	}
+  .objform.object-myObject .area[data-area='3:='] {
+    display: none!important;
+  }
 }
 ```
 
@@ -1217,15 +1220,16 @@ Stand-alone usage
 
 The engine can be loaded in a stand-alone page:
 
-* The Ajax services must be instantiated as usual before loading the UI engine
-* The platform must use the CORS configuration to allow cross-domain access
-	* server-side: when deploying the webapp, make sure `cors.filter` property is set to `true` in `build.properties` (this is useless if CORS is handled by an Apache/NGINX reverse proxy)
-	* client-side: `Simplicite.UI.Globls.ajaxSetup.crossDomain = true`
+- The Ajax services must be instantiated as usual before loading the UI engine
+- The platform must use the CORS configuration to allow cross-domain access
+  - server-side: when deploying the webapp, make sure `cors.filter` property is set to `true` in `build.properties`
+    (this is useless if CORS is handled by an Apache/NGINX reverse proxy)
+  - client-side: `Simplicite.UI.Globls.ajaxSetup.crossDomain = true`
 
 Example:
 
-* `index.html`: simple HTML page
-* `scripts.js`: page script
+- `index.html`: simple HTML page
+- `scripts.js`: page script
 
 ```html
 <!DOCTYPE html>
@@ -1234,7 +1238,7 @@ Example:
 	<title>Simplicite custom web front-end demo</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
-	<script type="text/javascript" src="http(s)://<base URL>/scripts/jquery/jquery.js"></script>	
+	<script type="text/javascript" src="http(s)://<base URL>/scripts/jquery/jquery.js"></script>
 	<script type="text/javascript" src="http(s)://<base URL>/scripts/ui/ui-bundle.js" charset="UTF-8"></script>
 	<script type="text/javascript" src="scripts.js"></script>
 </head>
@@ -1308,7 +1312,7 @@ Script:
 		}
 		else $ui.alert("Please enter your client code.")
 	}
-	
+
 	// Order button callback
 	function order(a, prd, id) {
 		if (!client) {
@@ -1386,7 +1390,7 @@ Script:
 	function init() {
 		// Additive styles
 		$('head').append('<link rel="stylesheet" href="css/styles.min.css" type="text/css"/>');
-		
+
 		// Login
 		$(".btn-login").click(login);
 		$(".input-login").keyup(function(e) {
@@ -1395,7 +1399,7 @@ Script:
 		// Menu
 		$(".menu-orders > a").click(myOrders);
 		$(".menu-catalog > a").click(catalog).click();
-		
+
 		// Show UI
 		$(".main").fadeIn();
 	}
@@ -1407,24 +1411,24 @@ Script:
 })(jQuery);
 ```
 
-**Screenshots**
+### Screenshots
 
-_Catalog_
+#### Catalog
 
 ![Demo catalog of products](img/responsive/uidemo1.png)
 
-_List_
+#### List
 
 ![Demo orders list](img/responsive/uidemo2.png)
 
-_Form_
+#### Form
 
 ![Demo order form](img/responsive/uidemo3.png)
 
 JSDoc for responsive UI
 -----------------------
 
-The JSDoc is available [here](https://platform.simplicite.io/current/jsdoc/)
+See [the JSDoc](https://platform.simplicite.io/current/jsdoc/)
 
 Examples of third party client-side APIs integration
 ----------------------------------------------------
@@ -1518,11 +1522,11 @@ Example of responsive external object
 
 ### External object configuration
 
-- Create as usual an external object named `MyExternalPage` 
+- Create as usual an external object named `MyExternalPage`
 - Granted to ADMIN and accessible thru Menu
-- Attach 2 resources: 
-	- `SCRIPT` as JavaScript 
-	- `STYLES` as CSS
+- Attach 2 resources:
+  - `SCRIPT` as JavaScript
+  - `STYLES` as CSS
 
 ### Server side code
 
@@ -1540,7 +1544,7 @@ import com.simplicite.util.tools.*;
  */
 public class MyExternalPage extends ExternalObject {
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * Display method
 	 * @param params Request parameters
@@ -1589,11 +1593,11 @@ var MyExternalPage = (function() {
 			title = $('<h1 class="myexternalpage"/>')
 				.append(view.icon('far/user'))
 				.append($('<span/>').text(app.T("MY_TITLE")));
-	
+
 		// Load the lists
 		$ui.displayList(users, "User");
 		$ui.displayList(groups, "Group");
-	
+
 		// Replace container content
 		view.getContent(ctn)
 			.html(title)
