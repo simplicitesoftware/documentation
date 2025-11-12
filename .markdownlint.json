@@ -2,9 +2,9 @@
     "single-title": false,
     "heading-style": { "style": "setext_with_atx" },
     "no-hard-tabs": { "code_blocks": false },
-    "line-length": { "line_length": 150, "code_block_line_length": 200 },
+    "line-length": { "line_length": 150, "code_block_line_length": 200, "tables": false },
     "no-alt-text": false,
-    "no-inline-html": { "allowed_elements": [ "abbr", "kbd", "Roadmap"] },
+    "no-inline-html": { "allowed_elements": [ "br", "abbr", "kbd", "details", "summary", "Roadmap"] },
     "no-duplicate-heading": { "siblings_only": true },
     "emphasis-style": { "style": "underscore" }
 }

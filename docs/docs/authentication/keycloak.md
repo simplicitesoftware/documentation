@@ -10,9 +10,8 @@ Keycloak server installation
 ----------------------------
 
 :::warning
-
-This install section is provided for testing purposes only, and is **not suitable for production**. To install properly please refer to the [Official Keycloak docs](https://www.keycloak.org)
-
+This install section is provided for testing purposes only, and is **not suitable for production**.
+To install properly please refer to the [Official Keycloak docs](https://www.keycloak.org)
 :::
 
 This is an example of docker compose + Traefik deployment (ideal for a [Portainer server](/docs/operation/portainer) or similar)
@@ -42,32 +41,37 @@ networks:
 ```
 
 Then follow the basic setup steps:
+
 1. create a `simplicite-test-realm` realm
 2. create a `simplicite-app` client in that realm (see [oidc idp docs](/docs/authentication/oauth2#idp))
-	- redirect URIs : `https://<instance_url>/oauth2callback`
-	- post logour URIs : `https://<instance_url>/logoutconfirm`
-	- other access URIs : `https://<instance_url>`
-	- client authentication **ON** (standard flow)
-	- the rest as is...
+   - redirect URIs : `https://<instance_url>/oauth2callback`
+   - post logour URIs : `https://<instance_url>/logoutconfirm`
+   - other access URIs : `https://<instance_url>`
+   - client authentication **ON** (standard flow)
+   - the rest as is...
 3. copy the client secret from the credentials tab
 4. access `https://<keycloak_url>/realms/master/.well-known/openid-configuration` to get configuration urls
 
 OpenIDConnect configuration
 ---------------------------
 
-The authentication providers are to be configured in the `AUTH_PROVIDERS` system parameter as defined in the [OIDC doc](/docs/authentication/oauth2#in-simplicité).
+The authentication providers are to be configured in the `AUTH_PROVIDERS` system parameter as defined
+in the [OIDC doc](/docs/authentication/oauth2#in-simplicité).
 
-In addition of the common `AUTH_PROVIDERS` OIDC settings, **Keycloak Authentication supports two extra `userinfo_mappings`** :
+In addition of the common `AUTH_PROVIDERS` OIDC settings, **Keycloak Authentication supports two extra `userinfo_mappings`**:
+
 - `groups`: optional list of paths to specify where the user's responsibilities are listed
 - `whitelist`: optional list of allowed groups (to exclude all other groups from user-info), syntax supports the wildcard `*`
 
 For instance, `"groups": [ "realm.roles", "groups", "group.name" ]` means that userinfo contains:
+
 - path within objects: `"realms": { "roles": [ "PROFILE1", "PROFILE2" ] }`
 - array of groups `"groups": [ "GROUP1", "GROUP2" ]`
 - or a single name `"group": { name: "GROUP3" }`
 
 The `groups` mapping rulse indicates a list of path in the userinfo containing a group or a list of groups to add to user's responsibilities.
-When this `groups` rule is specified, the user synchronization through API will not be used, so the userinfo must contains all the granted groups on each logon.
+When this `groups` rule is specified, the user synchronization through API will not be used, so the userinfo must contains
+all the granted groups on each logon.
 
 **`AUTH_PROVIDERS` example:**
 
@@ -111,7 +115,8 @@ Roles and groups synchronization
 
 A cron job can synchronize periodically through the Keycloak REST API the users/roles/groups from Keycloak to local users/responsibilities/groups.
 
-It is done by :
+It is done by:
+
 1. configuring the REST API access in Keycloak and Simplicité
 2. configuring the synchronization options through a `KEYCLOAK_SYNC` system param
 3. configuring the periodical synchronization task through a CRON in Simplicité
@@ -124,11 +129,11 @@ Keycloak must define a user with credential to access the API:
 
 - The API user needs at least the right to read users, groups, roles, clients and realm.
 - In `role mapping` section ensure that the client roles `realm-management` has the following records:
-    - query-clients
-    - query-realms
-    - view-clients
-    - view-realm
-    - view-users
+  - query-clients
+  - query-realms
+  - view-clients
+  - view-realm
+  - view-users
 
 ![kc_userapi_rolemappings](img/keycloak/kc_userapi_rolemappings.png)
 
@@ -140,20 +145,28 @@ The client `admin-cli` must be enabled and with the protocol `openid-connect` as
 
 ![](img/keycloak/kc_admincli_client.png)
 
-If the `access type` is set to `confidential`, the `client_secret` must be added to the parameters of `KEYCLOAK_API`. This parameter is not used for `public` access.
+If the `access type` is set to `confidential`, the `client_secret` must be added to the parameters of `KEYCLOAK_API`.
+This parameter is not used for `public` access.
 
-The API can be tested with `curl` before connecting through Simplicite (see the [Keycloak REST API docs](https://www.keycloak.org/docs-api/latest/rest-api/index.html)):
+The API can be tested with `curl` before connecting through Simplicite
+(see the [Keycloak REST API docs](https://www.keycloak.org/docs-api/latest/rest-api/index.html)):
 
 - Get an access_token:
 
-```
-curl -d 'grant_type=password' -d 'client_id=admin-cli' -d 'username=userapi' -d 'password=userapi' https://<keycloak_url>/realms/<myrealm>/protocol/openid-connect/token
+```text
+curl \
+	-d 'grant_type=password' \
+	-d 'client_id=admin-cli' \
+	-d 'username=userapi' \
+	-d 'password=userapi' \
+	https://<keycloak_url>/realms/<myrealm>/protocol/openid-connect/token
 ```
 
 - List users (note the `/admin` in the URL):
 
-```
-curl -X GET https://<keycloak_url>/admin/realms/<myrealm>/users \
+```text
+curl \
+	-X GET https://<keycloak_url>/admin/realms/<myrealm>/users \
 	-H "Accept: application/json" \
 	-H "Authorization: Bearer <token>"
 ```
@@ -176,8 +189,8 @@ The `KeycloakTool` requires the system parameter `KEYCLOAK_API` to connect the K
 
 - Clearing the cache is required to reset the stored parameters.
 - Turn `debug` to `true` to see in logs during your integration tests:
-	- all requests and responses: token, user, group search...
-	- re-connection with the refresh_token when the API session has expired
+  - all requests and responses: token, user, group search...
+  - re-connection with the refresh_token when the API session has expired
 
 :::warning
 
@@ -192,14 +205,14 @@ The API does not support special characters, spaces or accents in name of groups
 Create a system parameter `KEYCLOAK_SYNC` that specifies the list of Keycloak roles and groups to synchronize:
 
 - search: define the users to search in groups, roles and/or clients names
-	- groups: optional list of groups
-	- roles: optional list of realm roles
-	- clients: optional list of clients
+  - groups: optional list of groups
+  - roles: optional list of realm roles
+  - clients: optional list of clients
 - import:
-	- `groups`: true to synchronize users's groups
-	- `realmRoles`: true to synchronize users's realm roles
-	- `clientRoles`: true to synchronize users's client roles
-	- `prefix` will be added to the synchronized group or role to be identified against local group names
+  - `groups`: true to synchronize users's groups
+  - `realmRoles`: true to synchronize users's realm roles
+  - `clientRoles`: true to synchronize users's client roles
+  - `prefix` will be added to the synchronized group or role to be identified against local group names
 
 ```json
 {
@@ -261,12 +274,11 @@ Multiple Keycloak provider configuration
 ----------------------------------------
 
 :::note
-
 Available starting Simplicité v5.3
-
 :::
 
 If multiple Keycloak providers are required, use the following adaptations:
+
 1. in the `AUTH_PROVIDERS`, configure multiple providers that start with the word `keycloak` (eg `keycloak-internal` & `keycloak-external`)
 2. decline `KEYCLOAK_API` into multiple `KEYCLOAK_API <provider name>`  (eg `KEYCLOAK_API keycloak-internal` & `KEYCLOAK_API keycloak-external`)
 3. decline `KEYCLOAK_SYNC` into multiple `KEYCLOAK_SYNC <provider name>` (eg `KEYCLOAK_SYNC keycloak-internal` & `KEYCLOAK_SYNC keycloak-external`)

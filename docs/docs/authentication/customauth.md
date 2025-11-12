@@ -22,14 +22,17 @@ Custom authentication
 
 The custom authentication can be implemented using the `customAuth` grant hook (which takes the HTTP request/response as argument). E.g.
 
-```javascript
-GrantHooks.customAuth = function(req, res) {
-	var l = req.getHeader("X-Simplicite-Login");
-	if (l) {
-		console.log("Login from HTTP header: " + l);
+```java
+@Override
+public String customAuth(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	String l = req.getHeader("X-Simplicite-Login");
+	if (!Tool.isEmpty(l))
+	{
+		AppLog.info("HTTP header login: = " + l,null);
 		return l;
 	}
-};
+	return super.customAuth(request, response);
+}
 ```
 
 In the basic above example the content of a custom `X-Simplicite-Login` is directly returned and used as the user's login.
@@ -38,7 +41,8 @@ In real life, the implementation of this custom authentication will certainly be
 Default custom authentication
 -----------------------------
 
-The platform provides a default custom authentication that returns the value of an HTTP header, with the header name specified in the `AUTH_HEADER` system parameter.
+The platform provides a default custom authentication that returns the value of an HTTP header, with the header name
+specified in the `AUTH_HEADER` system parameter.
 
 If the value of this header does not contain a simple plain text login, the appropriate login can be determined using the `parseAuth` hook.
 
@@ -48,25 +52,13 @@ comma-separated list of IP addresses stored in the `AUTH_ORIGIN` system paramete
 Client certificate authentication
 ---------------------------------
 
-When using an Apache or NGINX webserver as reverse proxy it can enforce client certificate authentication (see [this document](/docs/misc/webserver-ssl) for details).
+When using an Apache or NGINX webserver as reverse proxy it can enforce client certificate authentication
+(see [this document](/docs/misc/webserver-ssl) for details).
 
 They typically can be configured to propagate the verified client certificate's DN as the `X-SSL-Client-S-DN` HTTP header.
 Then the authentication on Simplicité side is easy as it is just a matter of parsing this DN, e.g. extracting the `CN` field as login:
 
-```javascript
-GrantHooks.customAuth = function(req, res) {
-	var dn = req.getHeader("X-SSL-Client-S-DN");
-	if (dn)
-	{
-		console.log("Client certificate DN = " + dn);
-		var cn = Tool.extractItemFromDN(dn, "cn", null);
-		console.log("Client certificate CN = " + cn);
-		return cn;
-	}
-}
-```
-**Java**
-```Java
+```java
 @Override
 public String customAuth(HttpServletRequest request, HttpServletResponse response) throws Exception {
 	String dn = request.getHeader("X-SSL-Client-S-DN");
@@ -84,6 +76,8 @@ public String customAuth(HttpServletRequest request, HttpServletResponse respons
 Compatibility with OAuth2/SAML/LDAP/Crowd
 -----------------------------------------
 
-Custom authentication can be used in conjunction with OAuth2, SAML, LDAP, or Crowd authentication providers (each being mutually exclusive). When implementing the `customAuth` and `parseAuth` hooks, ensure that all relevant authentication cases are properly managed.
+Custom authentication can be used in conjunction with OAuth2, SAML, LDAP, or Crowd authentication providers (each being mutually exclusive).
+When implementing the `customAuth` and `parseAuth` hooks, ensure that all relevant authentication cases are properly managed.
 
-The `simplicite` OAuth2 authentication provider functions as the traditional database realm authentication mechanism. This allows custom authentication to coexist with standard password-based authentication.
+The `simplicite` OAuth2 authentication provider functions as the traditional database realm authentication mechanism.
+This allows custom authentication to coexist with standard password-based authentication.

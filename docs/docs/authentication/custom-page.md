@@ -3,15 +3,23 @@ sidebar_position: 100
 title: custom page or redirect
 ---
 
-
 Custom authentication page or redirect
 =======================================
-> **Note**: This document only applies to **version 5.3** and above.
 
-> **Warning**: This authentication method bypasses some of the Simplicité security measures. Ensuring the security of the custom page is the responsibility of the implementer. Particular care must be taken to address common vulnerabilities associated with login pages (such as SQL injection, XSS, brute force attacks, inappropriate error handling, and password security).
+:::note
+This document only applies to **version 5.3** and above.
+:::
+
+:::warning
+This authentication method bypasses some of the Simplicité security measures.
+Ensuring the security of the custom page is the responsibility of the implementer. Particular
+care must be taken to address common vulnerabilities associated with login pages
+(such as SQL injection, XSS, brute force attacks, inappropriate error handling, and password security).
+:::
 
 Webapp settings
 ---------------
+
 Declare your custom authentication provider in the `AUTH_PROVIDERS` system parameter, e.g.:
 
 ```json
@@ -27,12 +35,17 @@ Declare your custom authentication provider in the `AUTH_PROVIDERS` system param
 ```
 
 See [this document](/docs/authentication/auth-providers) for details on how to configure authentication providers.
-> **Warning**: Before making these changes, ensure that access will remain possible with at least one user the ADMIN responsibility.
+
+:::warning
+Before making these changes, ensure that access will remain possible with at least one user the ADMIN responsibility.
+:::
 
 ### Grant hooks
 
-The `PlatformHooks`'s `customAuthPage method` can be implemented to redirect to external login page or to return custom html page, and `customAuth method` to interpret the return of the custom auth page.
-The **example** below uses the mustache template of `XXX_CUSTOM_LOG` resource for the auth page. 
+The `PlatformHooks`'s `customAuthPage method` can be implemented to redirect to external login page or to return custom html page,
+and `customAuth method` to interpret the return of the custom auth page.
+
+The **example** below uses the mustache template of `XXX_CUSTOM_LOG` resource for the auth page.
 
 ```Java
 	@Override
@@ -40,7 +53,7 @@ The **example** below uses the mustache template of `XXX_CUSTOM_LOG` resource fo
 		Grant g=Grant.getSystemAdmin();
 		// Get the authentication provider of the request.
 		JSONObject provider = AuthTool.getAuthProvider(request);
-		
+
 		if (provider != null && "XXX_external_auth".equals(provider.getString("name"))) {
 			// If the provider is our custom auth "XXX_external_auth"...
 
@@ -52,7 +65,7 @@ The **example** below uses the mustache template of `XXX_CUSTOM_LOG` resource fo
 				.put("error",Grant.getPublic().T(Tool.toHTML(error)))
 				.put("path",Globals.WEB_CUSTOMAUTH_PATH )
 				.put("provider",provider.getString("name") );
-			
+
 			try (PrintWriter out = response.getWriter()) {
 				// Use MustacheTool to apply a custom HTML template
 				// and write the result to the response.
@@ -81,7 +94,7 @@ The **example** below uses the mustache template of `XXX_CUSTOM_LOG` resource fo
 				//prohibits the use of custom authentication for admin users
 				return  "ERROR: Admin can't use this auth page";
 			}
-			
+
 			if(!yourCustomAuth(login,password))//check user with your custom function
 				return  "ERROR: invalid login or password ";
 			//if auth is valid, return the user login
@@ -91,7 +104,9 @@ The **example** below uses the mustache template of `XXX_CUSTOM_LOG` resource fo
 		}
 	}
 ```
+
 Example of **XXX_CUSTOM_LOG**:
+
 ```html
 <head>
 	<title>{{Title}}</title>
@@ -112,4 +127,3 @@ Example of **XXX_CUSTOM_LOG**:
 	</div>
 </body>
 ```
-

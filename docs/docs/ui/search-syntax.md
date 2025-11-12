@@ -46,7 +46,6 @@ simple quotes to enclose all textual values (not required for number values)
 - `not in ('a','b','c')`: not exists in a list of values
 - `not in`: does not exists in the ENUM field definition (since 6.2)
 
-
 Comparators can be combined with logical operators:
 
 - `or`: inclusive or operator
@@ -55,7 +54,8 @@ Comparators can be combined with logical operators:
 
 Parenthesis can be used for complex combinations.
 
-Examples: 
+Examples:
+
 - `>50 and <=100`
 - `='value1' or ='value2'`
 - `not like 'value%'`
@@ -78,11 +78,12 @@ Syntax with today's date:
 With offset = `<+|-><number><unit>`, the `+` sign is optional
 
 Time units:
+
 - `ms` for milliseconds
 - `s`econds
 - `mi`inutes
 - `h`ours
-- `d`ays 
+- `d`ays
 - `dw` days without week-ends
 - `w`eeks
 - `m`onths
@@ -109,9 +110,9 @@ For simple interval (min/max) you can use search filters named `nmin__<field nam
 
 ### Geographical search
 
-As of version 5.3, geographical **coordinates fields** allows proximity search using syntax: 
+As of version 5.3, geographical **coordinates fields** allows proximity search using syntax:
 
-```
+```text
 <latitude>;<longitude>~<distance with unit, e.g. 100mi, 10km, ...>
 ```
 

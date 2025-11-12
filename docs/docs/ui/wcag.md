@@ -12,6 +12,7 @@ UI Regions
 ----------
 
 The core UI supports common accessibility with 4 regions:
+
 - Header and Footer
 - One main menu on the left side
 - One main area (work zone)
@@ -19,6 +20,7 @@ The core UI supports common accessibility with 4 regions:
 ### One-page site
 
 Global page settings:
+
 - user's language to choose the related voice of page reader
 - `viewport` can scale to 500%: zoom the full window with finger pinch
 - `font-size` style can scale all `rem` components: inbound zoom from 50% to 200%
@@ -33,6 +35,7 @@ Global page settings:
 ### Header
 
 The `header` region contains several permanent actions:
+
 - The menu toggle to reduce the main menu on the left side and give 100% width to the main area
 - The application logo to return to the home page
 - The fulltext search bar, with buttons access to search page and users's bookmarks
@@ -44,25 +47,29 @@ The `header` region contains several permanent actions:
 
 ### Footer
 
-The `footer` region contains legal information and news by default.
+The `footer` region contains legal information and news by default:
+
 - without action accept opening dialogs with information
 - hidden on small device (mobile)
 
 ### Main menu
 
-The main menu allows the user to access application entities: 
+The main menu allows the user to access application entities:
+
 - domain, objects, process, status, metrics, kanban...
 - with accordion style: only one top domain is opened at a time, the current selected item is highlighted
 - Role `menu` is displayed with closable sub-menu with children roles `menuitem`.
 
 ### Work area
 
-The main region contains the current activity (list, form, pivot table, screen-flows...)
+The main region contains the current activity (list, form, pivot table, screen-flows...):
+
 - can be splitted in sub-regions to display a treeview, a search panel docked on list, a diagram editor...
 
 ### Excluded regions
 
-Complex widgets are not accessible because of massive mouse usage thru drag&drop.
+Complex widgets are not accessible because of massive mouse usage thru drag&drop:
+
 - the SVG diagram to edit business models
 - the template editor to design object form/area/fields
 
@@ -74,6 +81,7 @@ Basics
 ### Aria-label, title and tooltip
 
 Each unreadable action or feature (icon, image, div...) have an explicit description:
+
 - in a simple `title` (ex: "home" on the logo image)
 - or a bootstrap `tooltip` for rich HTML help (ex: field help)
 - or a `aria-label` (ex: close icon without explicit title)
@@ -81,10 +89,11 @@ Each unreadable action or feature (icon, image, div...) have an explicit descrip
 ### Clickable and focusable elements
 
 Elements with user interaction are mostly:
-- focusable by design: `<a href>` and `<button type="button">`: for use in all component designs 
+
+- focusable by design: `<a href>` and `<button type="button">`: for use in all component designs
 - or with an explicit `tabindex="0"` and a handler on the keydown `ENTER` (ex: to open the `<tr>` in a `<table>`)
 
-Example: 
+Example:
 
 ```javascript
 $('.my-element-class').attr({
@@ -105,10 +114,12 @@ $('.my-element-class').attr({
 ```
 
 Primary focusable elements are identified with the class `.js-focusable`, the first visible one is focused by default on page landing:
+
 - form-control such as input, select, textarea...
 - list rows and search-by filters
 
 CSS styles by default:
+
 - `:focus`: outline the element when focused, not required for all elements (ex: button prefers `:hover` to be highlighted)
 - `:focus-visible`: outline the element when focused thru keyboard, required for accessibility to identify the focus (no hover, no pointer)
 
@@ -138,15 +149,15 @@ Keyboard accessibility
 - `TAB` focus the next element in the DOM order
 - `SHIFT` + `TAB` focus the previous element in the DOM order
 - `ESC` to close by priority:
-	- focused field or rich editor
-	- all modal dialogs 
-	- the current form
-	- and go back in navigation when nothing is focused
+  - focused field or rich editor
+  - all modal dialogs
+  - the current form
+  - and go back in navigation when nothing is focused
 
 - `ALT-H` : displays the **Home** page
 - `ALT-M` : focus the main **Menu** last selection or first item
-- `ALT-W` : **Wide** screen by toggling the menu 
-- `ALT-B` : opens the **Bookmarks** dialog 
+- `ALT-W` : **Wide** screen by toggling the menu
+- `ALT-B` : opens the **Bookmarks** dialog
 - `ALT-F` : focus the **Finder**, global search in header
 - `ALT-L` : focus the first visible **List**
 - `ALT-N` : focus the **Next** visible area/list (first `.js-focusable` of area)
@@ -161,22 +172,25 @@ Keyboard accessibility
 #### Lists and forms
 
 Horizontal navigation after a search:
+
 - `SHIFT-LEFT` : goto previous record (on object form) or page (on object list)
 - `SHIFT-RIGHT` : goto next record (on object form) or page (on object list)
 - `CTRL-SHIFT-LEFT` : goto first record (on object form) or page (on object list)
 - `CTRL-SHIFT-RIGHT` : goto last record (on object form) or page (on object list)
 
 Vertical navigation in a page of list:
+
 - `UP` / `DOWN` on list: focus table rows
-	- header to focus columns and sort fields
-	- search by column to change list filtering
-	- records of current page
+  - header to focus columns and sort fields
+  - search by column to change list filtering
+  - records of current page
 - `TAB` to visit focusable cells of rows: long text, markdown content, textarea... are focusable to be scrollable with arrow keys
 - `ENTER` : to open the record (only if the form access is permitted for this line)
 
 ### Widgets
 
-`select2`
+`select2`:
+
 - extends the common `<select>` with icons and colored contents
 - uses common `TAB` `ENTER` and `UP` `DOWN` to choose a value
 - uses `DEL` to clean the value, also improved with `ENTER` on the remove icon
@@ -186,10 +200,10 @@ Vertical navigation in a page of list:
 Shortcuts can define more access-keys.
 
 Some designer access:
+
 - `ALT-I` : XML import page
 - `ALT-C` + `C` : clear all caches
 - `ALT-X` : open the script/code editor
-
 
 Documentation
 -------------
@@ -213,4 +227,3 @@ Web accessibility testing
 
 - ARA checks from 25 to 106 rules
   [ARA testing](https://ara.numerique.gouv.fr)
-

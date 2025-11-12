@@ -20,15 +20,15 @@ For instance:
 
 ```html
 <div>
-  <div class="row">  
-	<div class="area col-sm-8" data-area="2,3,4"></div>  
-	<div class="area col-sm-4" data-area="1:="></div>  
-  </div>  
-  <div class="area" data-area="5,6"></div>  
-</div>  
+  <div class="row">
+	<div class="area col-sm-8" data-area="2,3,4"></div>
+	<div class="area col-sm-4" data-area="1:="></div>
+  </div>
+  <div class="area" data-area="5,6"></div>
+</div>
 ```
 
-<!-- 
+<!--
 ### Panels lists
 
 **TO BE COMPLETED**
@@ -45,10 +45,9 @@ Advanced
 
 It is possible to embed template fragments within templates:
 
-<!-- 
+<!--
 **TO BE COMPLETED**
 -->
-
 
 ### External components
 
@@ -81,9 +80,8 @@ Other resources needs to be explicitly included using HTML include tags like:
 <script type="text/javascript" src="[JSRESOURCEURL:<JS resource code>]"></script>
 ```
 
-or 
+or
 
 ```html
 <link  type="text/css" rel="stylesheet" href="[CSSRESOURCEURL:<CSS resource code>]"/>
 ```
-
