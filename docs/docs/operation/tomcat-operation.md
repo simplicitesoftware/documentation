@@ -6,8 +6,8 @@ title: Tomcat operation
 Operation guidelines
 ====================
 
-This document applies to a legacy deployment on a Linux OS of the RedHat family Linux distributions (RedHat, CentOS, Fedora, RockyLinux, AlmaLinux, ...) using the Tomcat&reg; application server.
-It can easily be transposed to other technical platforms.
+This document applies to a legacy deployment on a Linux OS of the RedHat family Linux distributions (RedHat, CentOS, Fedora, RockyLinux, AlmaLinux, ...)
+using the Tomcat&reg; application server. It can easily be transposed to other technical platforms.
 
 > **Note**: Some pieces of information are also applicable - unless otherwise specified - when using our **Docker images**.
 > For more details on Docker images-based deployments please refer to [this document](/docs/operation/docker)
@@ -21,11 +21,11 @@ When required the involved services may need to be stopped in the following orde
 
 - Stop the **Tomcat** service: `/etc/init.d/tomcat stop`
 - Stop the **web server** service (if any used as reverse-proxy):
-	* Apache: `systemctl stop httpd.service`
-	* NGINX: `systemctl stop nginx.service`
+  - Apache: `systemctl stop httpd.service`
+  - NGINX: `systemctl stop nginx.service`
 - Stop the database service (not always required, never required when using HSQLDB):
-	- **MySQL**: `systemctl stop mysqld.service`
-	- **PostgreSQL**: `systemctl stop postgresql.service`
+  - **MySQL**: `systemctl stop mysqld.service`
+  - **PostgreSQL**: `systemctl stop postgresql.service`
 
 Then clean up the Tomcat work folders (and optionally the technical logs folder):
 
@@ -35,11 +35,11 @@ Then clean up the Tomcat work folders (and optionally the technical logs folder)
 Then the services are to be restarted in the following order:
 
 - Start the database service (if stopped):
-	- **MySQL**: `systemctl start mysqld.service`
-	- **PostgreSQL**: `systemctl start mysqld.service`
+  - **MySQL**: `systemctl start mysqld.service`
+  - **PostgreSQL**: `systemctl start mysqld.service`
 - Start the **web server** service (if any used as reverse-proxy):
-	* Apache : `systemctl start httpd.service`
-	* NGINX: `systemctl start nginx.service`
+  - Apache : `systemctl start httpd.service`
+  - NGINX: `systemctl start nginx.service`
 - Start the **Tomcat** service: `/etc/init.d/tomcat start`
 
 Logs reviewing
@@ -49,25 +49,32 @@ To help with diagnostics, several kind of logs can be useful:
 
 ### Web console logs
 
-In some cases, the web console logs can be useful. Check your browser's documentation to figure out how to open the web console. Make sure the logs are persisted when you change page, and reproduce the issue. When connected as designer, the Simplicité logs will be displayed in the web console as well.
+In some cases, the web console logs can be useful. Check your browser's documentation to figure out how to open the web console.
+Make sure the logs are persisted when you change page, and reproduce the issue. When connected as designer,
+the Simplicité logs will be displayed in the web console as well.
 
 ### HTTP Archive Logs
 
-The http archive file (.har) contains all the HTTP requests made by the application and their results. Check your browser's documentation to figure out how to generate a .har file. Make sure the logs are persisted when you change page, and reproduce the issue.
+The http archive file (.har) contains all the HTTP requests made by the application and their results.
+Check your browser's documentation to figure out how to generate a .har file. Make sure the logs are persisted
+when you change page, and reproduce the issue.
 
 ### Tomcat logs
 
 The Tomcat server technical logs are located in `$TOMCAT_ROOT/logs`.
 
-The content of these logs is managed at Tomcat configuration level, please refer to Tomcat documentation for details (e.g. [this document](https://tomcat.apache.org/tomcat-9.0-doc/logging.html) for Tomcat 9)
+The content of these logs is managed at Tomcat configuration level, please refer to Tomcat documentation for details
+(e.g. [this document](https://tomcat.apache.org/tomcat-9.0-doc/logging.html) for Tomcat 9)
 
 ### Simplicité logs
 
-The application-specific technical logs are located in `$TOMCAT_ROOT/webapps/ROOT/WEB-INF/log` (template-based packaging) or in custom location depending on your installation.
+The application-specific technical logs are located in `$TOMCAT_ROOT/webapps/ROOT/WEB-INF/log`
+(template-based packaging) or in custom location depending on your installation.
 
 The content of these logs is managed by **Log4J** and can be customized by overriding the default `log4j2.xml` file provided in `$TOMCAT_ROOT/webapps/ROOT/WEB-INF/classes`.
 
 For each logging event, an event **code** is associated, and depending on the configuration in Operation / Events, the message will be either:
+
 - logged via the Log4J logger
 - logged in the database (`m_log` table), and visible in _Operation > Logs_
 - logged in both the logger and the  database
@@ -153,23 +160,29 @@ Save and restore
 For a given application a comprehensive save consist in:
 
 - Saving the database content using an usual database dump tool: `mysqldump`for MySQL or `pgdump`for postgreSQL
-- Saving the documents data directory content located in `$TOMCAT_ROOT/data/simplicite/<my application>/dbdoc` (classical packaging) or `$TOMCAT_ROOT/webapps/ROOT/WEB-INF/dbdoc` (instances packaging) or in a custom location depending on your installation) using an usual archive tool: `zip` or `tar`
+- Saving the documents data directory content located in `$TOMCAT_ROOT/data/simplicite/<my application>/dbdoc`
+  (classical packaging) or `$TOMCAT_ROOT/webapps/ROOT/WEB-INF/dbdoc` (instances packaging) or in a custom location depending on your installation)
+using an usual archive tool: `zip` or `tar`
 
 These two operations needs to be done exactly **at the same time** to avoid any data inconsistencies.
 
 To restore the application, the database dump and the archive must be restored in their initial locations.
 
-> **Note**: as of version 3.2 the documents can be stored in the database as BLOBs, in this case saving the database is sufficient (no need to save the document data directory)
+> **Note**: as of version 3.2 the documents can be stored in the database as BLOBs, in this case saving
+> the database is sufficient (no need to save the document data directory)
 
 Monitoring
 ----------
 
 All technical components may need to be monitored (especially Tomcat and the database engine) using any convenient tool.
 
-Application-level tools are available (from the UI with an operator profile or from command line) to do basic technical and applicative monitoring. Typically the health check or ping page/service can be called and parsed on a regular basis:
-```shell
-curl [-b cookies.txt -c cookies.txt] "<base URL>/<health[?format=json]|ping>"
+Application-level tools are available (from the UI with an operator profile or from command line) to do basic technical
+and applicative monitoring. Typically the health check or ping page/service can be called and parsed on a regular basis:
+
+```text
+curl "<base URL>/<health[?format=json]|ping>"
 ```
+
 > **Note**: the `-b` and `-c` argument are used to reuse the same Tomcat session if possible, especially for version 3.x
 
 The typical output for the ping is:

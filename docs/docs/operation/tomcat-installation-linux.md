@@ -6,14 +6,16 @@ title: Tomcat installation on Linux
 Tomcat installation on Linux server
 ===================================
 
-> **Warning**: before choosing this "traditional" installation procedure you should consider other approaches such as using [Docker containers](/docs/operation/docker). 
+> **Warning**: before choosing this "traditional" installation procedure you should consider other approaches
+such as using [Docker containers](/docs/operation/docker).
 
 This document corresponds to a manual step-by-step installation on an out of the box **Linux CentOS 7**.
 
 However the procedure should be rather similar with other modern Linux distributions of the RedHat family (RedHat ES, Fedora, ...).
 It should also be easily transposable to Debian flavored Linux distribution.
 
-If you are looking for installation guideline for a Windows server installation, please refer to [this document](/docs/operation/tomcat-installation-windows).
+If you are looking for installation guideline for a Windows server installation, please refer
+to [this document](/docs/operation/tomcat-installation-windows).
 
 Prerequisites
 -------------
@@ -28,55 +30,73 @@ Adjust `LANG` environment variable to appropriate value (e.g. `en_US.UTF8` for U
 
 Set appropriate timezone (change `Europe/Paris` to your timezone):
 
-	rm /etc/localtime
-	ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime
+```bash
+rm /etc/localtime
+ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime
+```
 
 ### Network time
 
 Install the NTP daemon:
 
-	yum install ntp
+```bash
+yum install ntp
+```
 
 Enable and start it:
 
-	systemctl enable ntpd.service
-	systemctl start ntpd.service
+```bash
+systemctl enable ntpd.service
+systemctl start ntpd.service
+```
 
 ### Random entropy generator
 
 Install a entropy generator (useful for all random-related stuff including SSL and Tomcat's sessions)
 
-	yum install epel-release
-	yum install haveged
+```bash
+yum install epel-release
+yum install haveged
+```
 
 Enable it and start it:
 
-	systemctl enable haveged
-	systemctl start haveged
+```bash
+systemctl enable haveged
+systemctl start haveged
+```
 
 ### OpenJDK
 
-	yum install java-latest-openjdk [java-latest-openjdk-devel]
+```bash
+yum install java-latest-openjdk [java-latest-openjdk-devel]
+```
 
 Check (or change) the Java version used by the server:
 
-	alternatives --config java
-	
+```bash
+alternatives --config java
+```
+
 ### Apache Ant
 
 Install Ant from Apache website as distribution's version is quite old and has too many dependencies
 
-	wget http://www-eu.apache.org/dist/ant/binaries/apache-ant-1.10.1-bin.tar.gz
-	sudo mv apache-ant-1.10.1 /opt/
-	tar xvfz apache-ant-1.10.1-bin.tar.gz
-	sudo ln -s /opt/apache-ant-1.10.1 /opt/ant
-	sudo sh -c 'echo ANT_HOME=/opt/ant >> /etc/environment'
-	sudo ln -s /opt/ant/bin/ant /usr/bin/ant
+```bash
+wget http://www-eu.apache.org/dist/ant/binaries/apache-ant-1.10.1-bin.tar.gz
+sudo mv apache-ant-1.10.1 /opt/
+tar xvfz apache-ant-1.10.1-bin.tar.gz
+sudo ln -s /opt/apache-ant-1.10.1 /opt/ant
+sudo sh -c 'echo ANT_HOME=/opt/ant >> /etc/environment'
+sudo ln -s /opt/ant/bin/ant /usr/bin/ant
+```
 
 Log out and log back in, to reload the environment variables defined in /etc/environment.
 Check ant version
 
-	ant -version
+```text
+ant -version
+```
 
 ### Databases
 
@@ -90,36 +110,50 @@ Nothing to do (HSQLDB JAR is part of the application's libraries)
 
 Install the server and the JDBC driver:
 
-	yum install mariadb-server mysql-connector-java
+```bash
+yum install mariadb-server mysql-connector-java
+```
 
 Or on older distributions providing MySQL instead of MariaDB:
 
-	yum install mysql-server mysql-connector-java
+```bash
+yum install mysql-server mysql-connector-java
+```
 
-Check and adjust if needed the maximum packet size, e.g. set `max_allowed_packet = <n>M` (where `<n>` is `16` or `32` or above) in `/etc/my.cnf` (in section `[mysqld]`)
+Check and adjust if needed the maximum packet size, e.g. set `max_allowed_packet = <n>M` (where `<n>` is `16` or `32` or above)
+in `/etc/my.cnf` (in section `[mysqld]`)
 
 #### PostgreSQL
 
 Install the server and the JDBC driver:
 
-	yum install postgresql-server postgresql-jdbc
+```bash
+yum install postgresql-server postgresql-jdbc
+```
 
 ### Application account
 
 Create a dedicated account:
 
-	useradd simplicite
+```bash
+useradd simplicite
+```
 
 Connect this account:
 
-	su - simplicite
+```bash
+su - simplicite
+```
 
 ### Tomcat
 
-Clone the **preconfigured** Tomcat package (which is just an out of the box Tomcat package with administration webapps removed, with some settings fine-tuned and with some additional jars in the `lib` folder) with appropriate credentials:
-```shell
+Clone the **preconfigured** Tomcat package (which is just an out of the box Tomcat package with administration webapps removed,
+with some settings fine-tuned and with some additional jars in the `lib` folder) with appropriate credentials:
+
+```text
 git clone https://<username>[:<password>]@platform.git.simplicite.io/tomcat.git
 ```
+
 Make sure the `tomcat/temp` folder is present and writeable, this is **mandatory** for images thumbnails generation.
 
 Then, make sure the `tomcat/logs` folder is present and writeable, this is **mandatory** for logging.
@@ -342,11 +376,13 @@ In this case Apache and/or NGINX **must** be inhibited.
 
 As `root`, install xinetd :
 
-	yum istall xinetd
+```bash
+yum istall xinetd
+```
 
 Create `/etc/xinetd.d/tomcat-http` as follows:
 
-```
+```text
 service http
 {
 	disable = no
@@ -359,7 +395,7 @@ service http
 
 Create `/etc/xinetd.d/tomcat-https` as follows:
 
-```
+```text
 service https
 {
 	disable = no
@@ -376,8 +412,10 @@ This corresponds to the following configuration:
 
 Enable and start xinetd:
 
-	systemctl enable xinetd
-	systemctl start xinted
+```bash
+systemctl enable xinetd
+systemctl start xinted
+```
 
 The `/etc/init.d/tomcat` script (and associated commands) is the same as when using above Apache reverse proxy option.
 
@@ -390,20 +428,24 @@ In this case Apache and/or NGINX **must** be inhibited.
 
 As `root`, install the gcc compiler:
 
-	yum install gcc make
+```bash
+yum install gcc make
+```
 
 Compile `jsvc`:
 
-	cd tomcat/bin
-	tar xvfz commons-daemon-native.tar.gz
-	cd commons-daemon-x.y.z-native-src/unix
-	./configure --with-java=/usr/lib/jvm/java
-	gmake
-	mv jsvc ../..
+```bash
+cd tomcat/bin
+tar xvfz commons-daemon-native.tar.gz
+cd commons-daemon-x.y.z-native-src/unix
+./configure --with-java=/usr/lib/jvm/java
+gmake
+mv jsvc ../..
+```
 
 Add this to `tomcat/bin/daemon.sh` if not present in the options section:
 
-```
+```text
 	--catalina-out )
 		CATALINA_OUT="$2"
 		shift; shift;
@@ -466,12 +508,16 @@ Adjust `JAVA_OPTS` to suitable settings for your environment.
 
 Make this script executable:
 
-	chmod +x /etc/init.d/tomcat
+```bash
+chmod +x /etc/init.d/tomcat
+```
 
 Enable and start Tomcat:
 
-	chkconfig tomcat on
-	/etc/init.d/tomcat start
+```bash
+chkconfig tomcat on
+/etc/init.d/tomcat start
+```
 
 Notes
 -----
@@ -485,11 +531,14 @@ If you are using NGINX as reverse proxy you must also add `client_max_body_size 
 
 ### GZip compression
 
-By default, the GZip compression is **not** activated on Tomcat HTTP(S) connector(s). You can activate it by adding `compression="on" compressableMimeType="text/html,text/plain,text/xml,text/json,text/css,text/javascript,application/javascript,application/json"` to your connector(s).
+By default, the GZip compression is **not** activated on Tomcat HTTP(S) connector(s). You can activate it
+by adding `compression="on" compressableMimeType="text/html,text/plain,text/xml,text/json,text/css,text/javascript,application/javascript,application/json"`
+to your connector(s).
 
 Add this only on HTTP(S) connector(s), not on the AJP connector.
 
-Don't add this if your connectors are accessed by a web server configured as a reverse proxy, in this case the GZip compression **must** be configured at the web server (Apache or NGINX) level.
+Don't add this if your connectors are accessed by a web server configured as a reverse proxy, in this case the GZip compression
+**must** be configured at the web server (Apache or NGINX) level.
 
 For Apache acting as AJP reverse proxy add this to `/etc/httpd/conf/httpd.conf` to enable compression:
 

@@ -21,17 +21,23 @@ Preflight checks
 
 Verify the configuration:
 
-	kubectl config view
-	kubectl config get-contexts
+```text
+kubectl config view
+kubectl config get-contexts
+```
 
 If you have several clusters:
+
+```text
+kubectl config use-context <cluster name>
 ```
-	kubectl config use-context <cluster name>
-```
+
 Verify the cluster:
 
-	kubectl cluster-info
-	kubectl cluster-info dump
+```text
+kubectl cluster-info
+kubectl cluster-info dump
+```
 
 Allow use of private images
 ---------------------------
@@ -39,17 +45,23 @@ Allow use of private images
 The Simplicité images needs appropriate credentials on DockerHub.
 
 First sign in to DockerHub with your DockerHub account:
+
+```text
+docker login
 ```
-	docker login
-```
+
 Then create a secret from the created `$HOME/.docker/config.json` file by:
+
+```text
+kubectl create secret generic regcred --from-file=.dockerconfigjson=$HOME/.docker/config.json --type=kubernetes.io/dockerconfigjson
 ```
-	kubectl create secret generic regcred --from-file=.dockerconfigjson=$HOME/.docker/config.json --type=kubernetes.io/dockerconfigjson
-```
+
 Alternatively you can create the secret directly (without signin in to DockerHub) by:
+
+```text
+kubectl create secret docker-registry regcred --docker-server=https://index.docker.io/v1/ --docker-username=<your username> --docker-password=<your password> --docker-email=<your email address>
 ```
-	kubectl create secret docker-registry regcred --docker-server=https://index.docker.io/v1/ --docker-username=<your username> --docker-password=<your password> --docker-email=<your email address>
-```
+
 Basic Simplicité sandbox example using Kompose&reg;
 ---------------------------------------------------
 
@@ -71,11 +83,13 @@ services:
 
 Convert it using the Kompose tool:
 
-	kompose convert -f docker-compose.yml
+```text
+kompose convert -f docker-compose.yml
+```
 
 This creates 2 Kubernetes YAML files:
 
-```
+```text
 simplicite-deployment.yaml
 simplicite-service.yaml
 ```
@@ -90,19 +104,23 @@ In the `simplicite-deployment.yaml` add:
 At the same level as the `containers` statement.
 
 Deploy to cluster:
+
+```text
+kubectl apply -f simplicite-deployment.yaml -f simplicite-service.yaml
 ```
-	kubectl apply -f simplicite-deployment.yaml -f simplicite-service.yaml
-```
+
 > **Note**: A simple `kompose up` does not work because of DockerHub credentials that needs to be added manually.
 > This may change in the future...
 
 Get the service information:
+
+```text
+kubectl get service simplicite
 ```
-	kubectl get service simplicite
-```
+
 Which produces:
 
-```plaintext
+```text
 NAME         TYPE           CLUSTER-IP     EXTERNAL-IP                        PORT(S)        AGE
 simplicite   LoadBalancer   10.3.119.175   6fvb57vqjk.lb.c4.gra.k8s.ovh.net   80:31083/TCP   17m
 ```
@@ -210,11 +228,15 @@ spec:
 
 To create it:
 
-	kubectl create -f postgres.yml
+```text
+kubectl create -f postgres.yml
+```
 
 Check service:
 
-	kubectl get service postgres
+```text
+kubectl get service postgres
+```
 
 Which produces something like:
 
@@ -331,15 +353,19 @@ status:
 
 To create it:
 
-	kubectl create -f simplicite.yml
+```text
+kubectl create -f simplicite.yml
+```
 
 Check service:
 
-	kubectl get service simplicite
+```text
+kubectl get service simplicite
+```
 
 Which produces something like:
 
-```plaintext
+```text
 NAME         TYPE           CLUSTER-IP    EXTERNAL-IP                        PORT(S)        AGE
 simplicite   LoadBalancer   10.3.77.200   6d9lguc0l0.lb.c4.gra.k8s.ovh.net   80:31816/TCP   17m
 ```
@@ -347,7 +373,8 @@ simplicite   LoadBalancer   10.3.77.200   6d9lguc0l0.lb.c4.gra.k8s.ovh.net   80:
 In the above case you can now point your browser to `http://6d9lguc0l0.lb.c4.gra.k8s.ovh.net`
 
 > **Note**: in the above example there is only one replica for the Simplicité deployment, you can set it to more that one but note that
-> the load balancing is done based on client IP address. If you need a better load balancing strategy (e.g. a session cookie-based sticky session load balancing)
+> the load balancing is done based on client IP address. If you need a better load balancing strategy
+> (e.g. a session cookie-based sticky session load balancing)
 > you need to configure an appropriate ingress (the configuration of such ingress is not specific to Simplicité, thus not described here)
 
 Kubernetes dashboard
@@ -356,11 +383,15 @@ Kubernetes dashboard
 If you have configured the Kubernetes Dashboard you can access it like this:
 
 Generate an access token:
-```shell
+
+```text
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
 ```
+
 Start proxy to expose the dashboard on `http://localhost:8001`.
 
-	kubectl proxy
+```text
+kubectl proxy
+```
 
 Point your browser to [](http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/) and sign in using the above token.

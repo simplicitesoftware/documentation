@@ -6,24 +6,30 @@ title: Auto Setup
 Automated setup
 ================
 
-The most classic way of installing an app on an instance is to deploy an empty instance and import modules as the designer user, usually through the UI, the I/O endpoint or using Git pushes/pulls.
+The most classic way of installing an app on an instance is to deploy an empty instance and import modules as the designer user,
+usually through the UI, the I/O endpoint or using Git pushes/pulls.
 
 However, there are many contexts that call for mechanisms to install or update a fully-functioning app without ever having to connect to it.
 
 This document presents two features that aim at accomplishing just that:
+
 - license packaging
 - import spec (module packaging)
 
-Basically, after its usual startup operations, Simplicité will check some special folders that, if containing the appropriate data, will trigger the associated functionality.
+Basically, after its usual startup operations, Simplicité will check some special folders that, if containing the appropriate data,
+will trigger the associated functionality.
 
-## License packaging
+License packaging
+-----------------
 
-As of version 5.2.19 it is possible to add a license key file (XML, JSON or YAML) in the `webapps/ROOT/WEB-INF/licenses`, the name of the file must be `license.<xml|json|yaml>`.
+As of version 5.2.19 it is possible to add a license key file (XML, JSON or YAML) in the `webapps/ROOT/WEB-INF/licenses`,
+the name of the file must be `license.<xml|json|yaml>`.
 This file will be imported at startup.
 
 Alternatively you can pass the content of the license key (in either XML, JSON or YAML format) in the `LICENSE_KEY` environment variable.
 
-## Import spec
+Import spec
+-----------
 
 As of version 5.1.6 it is possible to add business modules' ZIP files in the `webapps/ROOT/WEB-INF/modules` folder.
 These ZIP files will be imported **if required** at startup following an import specification JSON/YAML file located at the same place.
@@ -130,7 +136,8 @@ modules:
 And the import specification can also be passed as an environment variable `MODULES_IMPORT_SPEC`, containing either the
 import specification itself as JSON or YAML or a URL to this specification file.
 
-E.g. 1: Passing `MODULES_IMPORT_SPEC` to a `docker` CLI command line: `-e MODULES_IMPORT_SPEC='{ "modules": [ { "name": "MyModule", "version": "1.2.3", "git": "https://github.com/myorg/mymodule.git" } ] }'`
+E.g. 1: Passing `MODULES_IMPORT_SPEC` to a `docker` CLI command line:
+`-e MODULES_IMPORT_SPEC='{ "modules": [ { "name": "MyModule", "version": "1.2.3", "git": "https://github.com/myorg/mymodule.git" } ] }'`
 
 E.g. 2: Setting `MODULES_IMPORT_SPEC` in a `docker-compose.yml` file:
 

@@ -15,8 +15,8 @@ Introduction
 
 ### Architecture
 
-The SIM offers a command line interface (CLI), a web services interface (API) - built on top of the CLI - and a web user interface (UI) - built on top of the API -
-to manage several Simplicité instances on a server:
+The SIM offers a command line interface (CLI), a web services interface (API), built on top of the CLI,
+and a web user interface (UI), built on top of the API to manage several Simplicité instances on a server:
 
 ![Architecture](img/sim-almalinux.png)
 
@@ -132,10 +132,10 @@ The parameters are:
 - `param` (optional) the version of the instance (e.g. `6`) or the name of an existing instance to clone (e.g. `sft65drt7y`).
    If you don't provide an explicit version, the configured default version is used.
 - `options[]` (optional) the options array for instance creation:
-	- `options[database]` overrides default database (`hsqldb`, `mysql`, `postgresql` depends on which databases engine are available on the server)
-	- `options[protected]` overrides default protected flag (`yes` or `no`)
-	- `options[auto_save]` overrides default automatic save flag (`yes`or `no`)
-	- `options[auto_update]` overrides default automatic update flag (`yes`or `no`)
+  - `options[database]` overrides default database (`hsqldb`, `mysql`, `postgresql` depends on which databases engine are available on the server)
+  - `options[protected]` overrides default protected flag (`yes` or `no`)
+  - `options[auto_save]` overrides default automatic save flag (`yes`or `no`)
+  - `options[auto_update]` overrides default automatic update flag (`yes`or `no`)
 
 #### Stop instance
 
@@ -332,7 +332,8 @@ set TOMCAT_ADMIN_PORT=8005
 set TOMCAT_HTTP_PORT=8080
 set TOMCAT_HTTPS_PORT=8443
 
-set JAVA_OPTS=%JAVA_OPTS% -server -Dserver.vendor=tomcat -Dserver.version=9 -Dfile.encoding=UTF-8 -Dgit.basedir=%TOMCAT_ROOT%\webapps\ROOT\WEB-INF\git -Dtomcat.adminport=%TOMCAT_ADMIN_PORT% -Dtomcat.httpport=%TOMCAT_HTTP_PORT% -Dtomcat.httpsport=%TOMCAT_HTTPS_PORT%
+set JAVA_OPTS=%JAVA_OPTS% -server -Dserver.vendor=tomcat -Dserver.version=9 -Dfile.encoding=UTF-8 -Dgit.basedir=%TOMCAT_ROOT%\webapps\ROOT\WEB-INF\git
+set JAVA_OPTS=%JAVA_OPTS% -Dtomcat.adminport=%TOMCAT_ADMIN_PORT% -Dtomcat.httpport=%TOMCAT_HTTP_PORT% -Dtomcat.httpsport=%TOMCAT_HTTPS_PORT%
 if not exist %TOMCAT_ROOT%\work mkdir %TOMCAT_ROOT%\work
 if not exist %TOMCAT_ROOT%\temp mkdir %TOMCAT_ROOT%\temp
 if not exist %TOMCAT_ROOT%\logs mkdir %TOMCAT_ROOT%\logs
@@ -354,7 +355,8 @@ export TOMCAT_ADMIN_PORT=8005
 export TOMCAT_HTTP_PORT=8080
 export TOMCAT_HTTPS_PORT=8443
 
-export JAVA_OPTS="$JAVA_OPTS -server -Dserver.vendor=tomcat -Dserver.version=9 -Dfile.encoding=UTF-8 -Dgit.basedir=$TOMCAT_ROOT/webapps/<instance|'ROOT'>/WEB-INF/git -Dtomcat.adminport=$TOMCAT_ADMIN_PORT -Dtomcat.httpport=$TOMCAT_HTTP_PORT -Dtomcat.httpsport=$TOMCAT_HTTPS_PORT"
+export JAVA_OPTS="$JAVA_OPTS -server -Dserver.vendor=tomcat -Dserver.version=9 -Dfile.encoding=UTF-8 -Dgit.basedir=$TOMCAT_ROOT/webapps/<instance|'ROOT'>/WEB-INF/git"
+export JAVA_OPTS="$JAVA_OPTS -Dtomcat.adminport=$TOMCAT_ADMIN_PORT -Dtomcat.httpport=$TOMCAT_HTTP_PORT -Dtomcat.httpsport=$TOMCAT_HTTPS_PORT"
 [ ! -d $TOMCAT_ROOT/work ] && mkdir $TOMCAT_ROOT/work
 [ ! -d $TOMCAT_ROOT/temp ] && mkdir $TOMCAT_ROOT/temp
 [ ! -d $TOMCAT_ROOT/logs ] && mkdir $TOMCAT_ROOT/logs
@@ -379,7 +381,7 @@ The `sim` CLI offers the following actions:
 
 ### CLI actions
 
-#### Usage:
+#### Usage
 
 ```text
 sim
@@ -583,6 +585,7 @@ Only a higher version than current instance version is possible. If set to lower
 ```text
 sim setstatus <name> <started|stopped>
 ```
+
 :::warning
 The status is set by start/stop actions, use this **only** if there was an unexpected issue and the status is incorrect vs actual instance's status.
 :::
@@ -637,8 +640,8 @@ With embedded HSQLDB the instance must be stopped before connecting to database.
 sim monitor <name> [<interval in seconds, defaults to 60>]
 ```
 
-Monitoring is done by calling instance's `/health` endpoint. Each time a monitoring error/warning is detected a call to the optional hook `monitoring.sh` is done
-with a reason argument.
+Monitoring is done by calling instance's `/health` endpoint. Each time a monitoring error/warning is detected
+a call to the optional hook `monitoring.sh` is done with a reason argument.
 
 #### Run a unit tests shared code on an instance
 
@@ -711,7 +714,7 @@ you need to do it in the `pre/post-add.sh` but also in the `pre/post-upgrade.sh`
 actions reinstall Tomcat.
 :::
 
-#### Examples:
+### Examples
 
 This `post-start.sh` hook looks for a license XML key named `license-<instance-name>.xml`
 in the `licensekeys` folder located in the base `$APPS_HOME` folder,
@@ -906,7 +909,8 @@ The version-level settings are set as environment variables in the `<manager hom
 #### JVM settings
 
 - `APPS_JDK` (**mandatory**) JDK to use (must point to a JDK root folder such as `/usr/lib/jvm/java-1.8.0`)
-- `APPS_ENCODING` (**mandatory**) encoding to use with considered version (should be `UTF-8` unless your version's template is specifically packaged for another encoding)
+- `APPS_ENCODING` (**mandatory**) encoding to use with considered version (should be `UTF-8` unless your version's
+  template is specifically packaged for another encoding)
 - `APPS_TOMCATMINMEM` (optional) minimum JVM memory in Mb (defaults to `128`)
 - `APPS_TOMCATMAXMEM` (optional) maximum JVM memory in Mb (defaults to `512`)
 
@@ -969,4 +973,5 @@ If you are not using SSH keys and SSH URIs for your remote Git repositories, you
 - `SERVICE_REMOTE_GIT_USERNAME` remote Git username
 - `SERVICE_REMOTE_GIT_PASSWORD` remote Git password
 
-Note that you can also define a username and a password in each configuration of your modules, these global variables are only used as fallback if no explicit username and password are defined.
+Note that you can also define a username and a password in each configuration of your modules,
+these global variables are only used as fallback if no explicit username and password are defined.

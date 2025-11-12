@@ -28,18 +28,23 @@ There is nothing to do if you use an embedded HSQLDB.
 JVM
 ---
 
-Download and install an up to date Java VM Development Kit (or a Runtime Environment if you don't plan to do debugging) in the appropriate version
-for your target Simplicité platform version and suitable for your version of Windows (see [this document](/docs/compatibility#java-vm) for JVM compliance details).
+Download and install an up to date Java VM Development Kit (or a Runtime Environment
+if you don't plan to do debugging) in the appropriate version for your target Simplicité platform version
+and suitable for your version of Windows (see [this document](/docs/compatibility#java-vm) for JVM compliance details).
 
-Register the `JAVA_HOME` environment variable as the path of your JVM Installation (e.g. `C:\Program Files\Java\jdk-x.y.z`) and add `%JAVA_HOME%\bin` to the system `PATH`.
+Register the `JAVA_HOME` environment variable as the path of your JVM Installation
+(e.g. `C:\Program Files\Java\jdk-x.y.z`) and add `%JAVA_HOME%\bin` to the system `PATH`.
 
 Tomcat
 ------
 
-Clone the pre-configured Tomcat package (which is just an out of the box Tomcat package with administration webapps removed, with some settings fine-tuned and with some additional jars in the `lib` folder) with appropriate credentials:
-```shell
+Clone the pre-configured Tomcat package (which is just an out of the box Tomcat package with administration webapps removed,
+with some settings fine-tuned and with some additional jars in the `lib` folder) with appropriate credentials:
+
+```text
 git clone https://<username>[:<password>]@platform.git.simplicite.io/tomcat.git
 ```
+
 Make sure the `tomcat\temp` folder is present and writeable, this is **mandatory** for images thumbnails generation.
 
 Then, make sure the `tomcat\logs` folder is present and writeable, this is **mandatory** for logging.
@@ -51,11 +56,13 @@ To start with, just change the plain HTTP Tomcat connector port number in `conf/
 These cases requires additional installation/preparation/configuration steps that are not described here).
 
 Install Tomcat as a service:
+
+```bash
+cd tomcat\bin
+.\service.bat install
+.\tomcat9.exe //US//Tomcat9 ++JvmOptions -server;-Dserver.vendor=tomcat;-Dserver.version=9;-Dfile.encoding=UTF-8;-Dgit.basedir=C:\Users\Administrator\git;-Dplatform.autoupgrade=true --JvmMs 256 --JvmMx 1024 --Startup auto
 ```
-	cd tomcat\bin
-	.\service.bat install
-	.\tomcat9.exe //US//Tomcat9 ++JvmOptions -server;-Dserver.vendor=tomcat;-Dserver.version=9;-Dfile.encoding=UTF-8;-Dgit.basedir=C:\Users\Administrator\git;-Dplatform.autoupgrade=true --JvmMs 256 --JvmMx 1024 --Startup auto
-```
+
 Note that the `C:\Users\Administrator` base folder, and the above `256` / `1024` Mb values for allocated memory are just given as examples.
 Adjust these to match your configuration.
 
@@ -67,9 +74,11 @@ Simplicité
 ----------
 
 Clone the Simplicité webapp instance template of your target platform version:
+
+```text
+git clone https://<username>[:<password>]@platform.git.simplicite.io/template-<version>.git
 ```
-	git clone https://<username>[:<password>]@platform.git.simplicite.io/template-<version>.git
-```
+
 Where `<version>` is one of the available versions, e.g. `4.0`
 
 > **Note**: as of version 4.0 there are several branches on the instance template,
@@ -115,7 +124,8 @@ The base components such as the Java JVM and the Tomcat server are also regularl
 The Simplicité platform is **only** validated and tested with up-to-date stable versions of these components (the ones that are shipped in our Docker images).
 Our support is thus only available if you use these recommended up-to-date components.
 
-- It is highly recommended to use and keep upgraded the pre-configured Tomcat package described above. The up-to-date version of Tomcat is pushed to it as soon as it is released.
+- It is highly recommended to use and keep upgraded the pre-configured Tomcat package described above.
+  The up-to-date version of Tomcat is pushed to it as soon as it is released.
 - It is also recommended to maintain the JVM up-to-date on a very regular basis (Oracle issues a JVM major version every 6 months).
 - And, of course, it is recommended to keep the Windows platform up-to-date.
 
