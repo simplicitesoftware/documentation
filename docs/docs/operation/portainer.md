@@ -6,7 +6,7 @@ title: Portainer
 Simplicité with Portainer & Traefik
 ====================================
 
-Portainer is a container management platform that enables efficient deployment and operation of Docker containers. 
+Portainer is a container management platform that enables efficient deployment and operation of Docker containers.
 This document demonstrates how to use Portainer to deploy Simplicité instances with automated configuration and management.
 
 - **minimal manual configuration**
@@ -19,7 +19,8 @@ This document demonstrates how to use Portainer to deploy Simplicité instances 
 
 ![Portainer](img/portainer/portainer.png)
 
-## 1) Server deployment
+1 - Server deployment
+---------------------
 
 Sizing of the server should be made according to the needs, as always. Any up-to-date unix image should be able to run the containers.
 
@@ -27,14 +28,15 @@ Sizing of the server should be made according to the needs, as always. Any up-to
 <summary>Click to open</summary>
 
 - Medium-sized server :
-    - 2 vCores
-    - 50GiB storage
-    - 250Mbps bandwidth
+  - 2 vCores
+  - 50GiB storage
+  - 250Mbps bandwidth
 - Almalinux 9 image
 
 </details>
 
-## 2) System configuration
+2 - System configuration
+------------------------
 
 ### Firewall
 
@@ -85,7 +87,8 @@ sudo dnf update -y
 
 :::info
 
-The system **must** be kept up-to-date by either executing the above command regularly, or by setting up automatic updates. If you activate automatic reboot, make sur you have some kind of VM backup setup.
+The system **must** be kept up-to-date by either executing the above command regularly, or by setting up automatic updates. If you activate
+automatic reboot, make sur you have some kind of VM backup setup.
 
 ```bash
 sudo dnf install dnf-automatic -y
@@ -98,7 +101,8 @@ If there are any problems with automatic updates, logs should be available throu
 
 :::
 
-## 2) Docker Install
+3 - Docker Install
+------------------
 
 Portainer needs Docker as a requirement, so it will be installed after usual upgrades. Based on [docker CentOS install docs](https://docs.docker.com/engine/install/centos/) (adapted)
 
@@ -124,7 +128,8 @@ Optionally a firewall should be configured on the host (or among the host) to al
 Minimal configuration is to allow the HTTP port `80` and HTTPS port `443` (along with the SSH port `22` from legitimate origins) through this firewall.
 :::
 
-## 3) Portainer install with lets encrypt and traefik
+4 - Portainer install with lets encrypt and traefik
+---------------------------------------------------
 
 This is an adaptation of Portainer's doc "[Deploying Portainer behind Traefik Proxy](https://docs.portainer.io/advanced/reverse-proxy/traefik)"
 
@@ -139,9 +144,11 @@ This is an adaptation of Portainer's doc "[Deploying Portainer behind Traefik Pr
 
 :::tip
 To generate the basic auth user / pwd, you can use the following command line (doubling the `$` is required)
-```
+
+```bash
 htpasswd -bn your_user_name your_super_complex_password | sed 's/\$/$$/g'
 ```
+
 :::
 
 <details>
@@ -219,19 +226,23 @@ volumes:
 </details>
 
 :::info
-The Traefik container and the Simplicité instances have to run in the same Docker network, that's why a "proxy" network is created where all containers will be placed.
+The Traefik container and the Simplicité instances have to run in the same Docker network, that's why a "proxy" network
+is created where all containers will be placed.
 :::
 
-## 4) Configure
+5 - Configure
+-------------
 
 - access `https://portainer.my.domain` **right after starting the service** (it's only configurable for a limited amount of time)
 - create local environment
 - create registry.simplicite.io registry, with authentication
 - pull a Simplicité image
 
-## 5) Start a Simplicité instance
+6 - Start a Simplicité instance
+-------------------------------
 
-This is the minimal configuration to get a working Simplicité (non persistent) instance. Create a "stack" (a docker compose deployment, in Portainer's semantics), and paste the following config.
+This is the minimal configuration to get a working Simplicité (non persistent) instance. Create a "stack"
+(a docker compose deployment, in Portainer's semantics), and paste the following config.
 
 ```yaml
 services:
@@ -284,8 +295,9 @@ services:
     (...)
 ```
 
-
-To use [developer mode](/docs/docs/operation/docker.md#developer-mode-) for development-oriented features and for the [Simplicité VSCode tools extension](/docs/docs/devops/external-editor.md#simplicité-extension), add the following `DEV_MODE` environment variable.
+To use [developer mode](/docs/docs/operation/docker.md#developer-mode) for development-oriented features and
+for the [Simplicité VSCode tools extension](/docs/docs/devops/external-editor.md#simplicité-extension),
+add the following `DEV_MODE` environment variable.
 
 ```yaml
 services:
@@ -297,24 +309,29 @@ services:
       (...)
 ```
 
-## 6) Configure stack templates
+7 - Configure stack templates
+-----------------------------
 
-You can also configure Portainer to use our stack templates, to do so change the _App Templates_ URL in the settings using this URL: `https://cdn.jsdelivr.net/gh/simplicitesoftware/resources@latest/public/portainer_templates/templates.json`
+You can also configure Portainer to use our stack templates, to do so change the _App Templates_ URL in the settings
+using this URL: `https://cdn.jsdelivr.net/gh/simplicitesoftware/resources@latest/public/portainer_templates/templates.json`
 
 ![templates](img/portainer/templates.png)
 
 Or manually configure custom templates using the `*.yml` present at [this location](https://cdn.jsdelivr.net/gh/simplicitesoftware/resources@latest/public/portainer_templates/).
 
-## Backup an instance
+Backup an instance
+------------------
 
-This script makes the assumption that you have deployed with portainer a stack that with an app service (Simplicité) and a database service (PostgreSQL). You can call it daily and setup rotating backups.
+This script makes the assumption that you have deployed with portainer a stack that with an app service (Simplicité)
+and a database service (PostgreSQL). You can call it daily and setup rotating backups.
 
-Each backed up project uses a variables-definitions `backup-myproject.sh` script that call a unified `backup.sh` script. `backup-myproject.sh` should be called by cron (`crontab -e`).
+Each backed up project uses a variables-definitions `backup-myproject.sh` script that call a unified `backup.sh` script.
+`backup-myproject.sh` should be called by cron (`crontab -e`).
 
 <details>
 <summary>Click to see scripts</summary>
 
-`backup-myproject.sh` script: 
+`backup-myproject.sh` script:
 
 ```bash
 #!/bin/bash
