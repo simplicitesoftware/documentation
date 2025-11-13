@@ -3,13 +3,19 @@ sidebar_position: 320
 title: Collaborative Coding
 ---
 
-# Collaborative Coding with Simplicité
+Collaborative Coding with Simplicité
+====================================
 
-This document outlines best practices and workflows for collaborative development on Simplicité platform projects. It provides guidance for teams working together on Simplicité applications, covering version control, environment setup, access management, and quality practices.
+This document outlines best practices and workflows for collaborative development on Simplicité platform projects.
+It provides guidance for teams working together on Simplicité applications, covering version control,
+environment setup, access management, and quality practices.
 
-Collaborative development on Simplicité projects requires careful coordination between team members, proper version control practices, and effective use of the platform's built-in collaboration features. The foundation of successful team collaboration is proper Git repository management for modules and adherence to established workflows.
+Collaborative development on Simplicité projects requires careful coordination between team members,
+proper version control practices, and effective use of the platform's built-in collaboration features.
+The foundation of successful team collaboration is proper Git repository management for modules and adherence to established workflows.
 
-## Environment Setup
+Environment Setup
+-----------------
 
 ### Individual Development Environments
 
@@ -25,13 +31,15 @@ Each Simplicité module can be exposed as a Git repository, enabling standard co
 
 - Modules are **non-bare repositories** - The local worktree is needed by the export/import processes
 - Configure HTTP(S) access with the following settings in `.git/config`:
-  ```ini
+
+  ```text
   [http]
       uploadpack = true
       receivepack = true
   ```
 
-## Recommended Development Workflow
+Recommended Development Workflow
+--------------------------------
 
 Based on real-world experience from Simplicité integrator teams, here's the recommended workflow for feature development:
 
@@ -56,14 +64,17 @@ Based on real-world experience from Simplicité integrator teams, here's the rec
 3. **Address feedback** and make necessary changes
 4. **Merge the request** after approval
 
-## External Editor Integration
+External Editor Integration
+---------------------------
 
 ### VS Code Setup
 
 For teams using VS Code, install the following extensions:
 
-- **[Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)** - Provides IntelliSense and Java debugging tools
-- **[Simplicité VSCode tools extension](https://marketplace.visualstudio.com/items?itemName=SimpliciteSoftware.simplicite-vscode-tools)** (optional) - Allows pushing code directly to Simplicité instances
+- **[Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)**,
+  provides IntelliSense and Java debugging tools
+- **[Simplicité VSCode tools extension](https://marketplace.visualstudio.com/items?itemName=SimpliciteSoftware.simplicite-vscode-tools)** (optional),
+  allows pushing code directly to Simplicité instances
 
 :::warning
 You must activate the `DEV_MODE` system parameter for the Simplicité VSCode extension to work.
@@ -80,7 +91,8 @@ The typical workflow when using external editors:
 5. **Commit changes** locally
 6. **Push changes** back to Simplicité
 
-## Code Quality and Security Practices
+Code Quality and Security Practices
+-----------------------------------
 
 ### Testing and Quality Assurance
 
@@ -105,7 +117,8 @@ Integrate code quality tools into your development workflow:
 - **Unit test coverage** measurement using JaCoCo
 - **Automated testing** in CI/CD pipelines
 
-## Additional Resources
+Additional Resources
+--------------------
 
 - [Git Repositories Documentation](/docs/integration/webservices/git-repositories)
 - [External Editor Setup](/docs/devops/external-editor)

@@ -48,7 +48,7 @@ public class MyTests {
 		// Using the system is dangerous
 		return Grant.getSystemAdmin();
 	}
-	
+
 	@Test
 	public void testMyActionOfMyObject() {
 		try {
@@ -85,35 +85,38 @@ public Grant getGrant() {
 
 Using dedicated datasets ensures reproducible test results.
 
-> **Note**: For some very "low level" unit tests it is still possible to run the tests outside of Simplicité.
-> 
-> For instance:
-> 
-> ```java
-> package com.simplicite.tests.MyModule;
-> 
-> import static org.junit.Assert.assertEquals;
-> import org.junit.Test;
->
-> /**
->  * Local unit tests example
->  */
-> public class MyLocalTests {
-> 	@Test
-> 	public void testSomethingLocally() {
-> 		assertEquals(/* Something got from a "static" method */, /* Some other thing */));
-> 		// Etc.
-> 	}
-> }
-> ```
-> 
-> Then you can run the tests of this class by:
-> 
-> ```plaintext
-> mvn test -Dtest="com.simplicite.tests.MyModule.MyLocalTests"
-> ```
-> 
-> Using "mocks" of configurable items is possible but is not relevant as it allows only very limited and unrealistic testing.
+:::note
+
+For some very "low level" unit tests it is still possible to run the tests outside of Simplicité.
+
+For instance:
+
+```java
+package com.simplicite.tests.MyModule;
+
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+/**
+ * Local unit tests example
+ */
+public class MyLocalTests {
+	@Test
+	public void testSomethingLocally() {
+		assertEquals(/* Something got from a "static" method */, /* Some other thing */));
+		// Etc.
+	}
+}
+```
+
+Then you can run the tests of this class by:
+
+```bash
+mvn test -Dtest="com.simplicite.tests.MyModule.MyLocalTests"
+```
+
+Using "mocks" of configurable items is possible but is not relevant as it allows only very limited and unrealistic testing.
+
+:::
 
 ### Using legacy methods
 
@@ -127,7 +130,8 @@ It is applicable to:
 - Adapters
 - Grant hooks
 
-A _Run unit tests_ action button is available to run the `unitTests` method (and as this is an action, the call can be automated using the API or I/O endpoint, see bellow).
+A _Run unit tests_ action button is available to run the `unitTests` method (and as this is an action, the call can be automated
+using the API or I/O endpoint, see bellow).
 
 It is possible to use these legacy methods to wrap a unit tests shared code class:
 
@@ -166,68 +170,90 @@ You can also invoke the action from the API endpoint (for instance if you want t
 
 ### For a unit tests shared code class
 
-```plaintext
+```text
 curl -s <API credentials> <base URL>/api/rest/Script/<shared code row ID>/action:runUnitTests | jq -r '.result'
 ```
 
-> **Note**: you can get the row ID of your unit test shared code from its logical name by:
->
-> ```plaintext
-> curl -s <API credentials> <base URL>/api/rest/Script?scr_code=<unit tests shared code logical name> | jq -r '.[].row_id'
-> ```
+:::note
+
+You can get the row ID of your unit test shared code from its logical name by:
+
+```text
+curl -s <API credentials> <base URL>/api/rest/Script?scr_code=<unit tests shared code logical name> | jq -r '.[].row_id'
+```
+
+:::
 
 ### For the legacy unit tests methods
 
 - for a business object
 
-```plaintext
+```text
 curl -s <API credentials> <base URL>/api/rest/ObjectInternal/<business object row ID>/action:runUnitTests | jq -r '.result'
 ```
 
-> **Note**: you can get the row ID of your business object from its logical name by:
->
-> ```plaintext
-> curl -s <API credentials> <base URL>/api/rest/ObjectInternal?obo_name=<business object logical name> | jq -r '.[].row_id'
-> ```
+:::note
+
+You can get the row ID of your business object from its logical name by:
+
+```text
+curl -s <API credentials> <base URL>/api/rest/ObjectInternal?obo_name=<business object logical name> | jq -r '.[].row_id'
+```
+
+:::
 
 - for a business workflow
 
-```plaintext
+```text
 curl -s <API credentials> <base URL>/api/rest/BPMProcess/<business workflow row ID>/action:runUnitTests | jq -r '.result'
 ```
 
-> **Note**: you can get the row ID of your business workflow from its name by:
->
-> ```plaintext
-> curl -s <API credentials> <base URL>/api/rest/BPMProcess?pcs_name=<business workflow name> | jq -r '.[].row_id'
-> ```
+:::note
+
+You can get the row ID of your business workflow from its name by:
+
+```text
+curl -s <API credentials> <base URL>/api/rest/BPMProcess?pcs_name=<business workflow name> | jq -r '.[].row_id'
+```
+
+:::
 
 - for an external object
 
-```plaintext
+```text
 curl -s <API credentials> <base URL>/api/rest/ObjectExternal/<external object row ID>/action:runUnitTests | jq -r '.result'
 ```
-> **Note**: you can get the row ID of your external object from its name by:
->
-> ```plaintext
-> curl -s <API credentials> <base URL>/api/rest/ObjectExternal?obe_name=<external object name> | jq -r '.[].row_id'
-> ```
+
+:::note
+
+You can get the row ID of your external object from its name by:
+
+```text
+curl -s <API credentials> <base URL>/api/rest/ObjectExternal?obe_name=<external object name> | jq -r '.[].row_id'
+```
 
 Etc.
+
+:::
 
 Run from I/O
 ------------
 
-You can also invoke a shared code unit tests shared code class execution from the I/O services endpoint (for instance if you want to automate the tests execution using this endpoint).
+You can also invoke a shared code unit tests shared code class execution from the I/O services endpoint
+(for instance if you want to automate the tests execution using this endpoint).
 
 **Example**:
 
-```plaintext
+```text
 curl -s -u <I/O credentials> --form service=unittests --form test=<test name> <base URL>/io | jq '.'
 ```
 
-> **Note**: if you are using the [instances manager](https:/docs/misc/manager) the above command can be issued as:
->
-> ```plaintext
-> sim unittests <unit tests shared code logical name>
-> ```
+:::note
+
+If you are using the [instances manager](https:/docs/misc/manager) the above command can be issued as:
+
+```text
+sim unittests <unit tests shared code logical name>
+```
+
+:::
