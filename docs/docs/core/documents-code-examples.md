@@ -105,7 +105,7 @@ PDF documents using iText&reg; 2.1.7
 This example is given in the server-side **Rhino** scripting language. It can be easily transposed to **Java** language.
 
 To use the **iText&reg;** library classes you need to include the `com.lowagie.text` package explicitly.
-For more information on itext 2.1.7 available on [the Javadoc]("https://coderanch.com/how-to/javadoc/itext-2.1.7).
+For more information on itext 2.1.7 available on [the Javadoc](https://coderanch.com/how-to/javadoc/itext-2.1.7).
 
 ```java
 import com.lowagie.text.*;
