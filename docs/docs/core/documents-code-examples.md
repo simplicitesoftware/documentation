@@ -66,14 +66,13 @@ List<DocumentDB> docs = multiDocs !=null ? multiDocs.getDocuments() : null;
 // ...
 ```
 
-
 QRCodes images
 --------------
 
 As of version 3.0, the standard `QRCodeTool` helper class provides various methods for generating QR codes images as PNG.
 
 Typical usage is to set an image field with a URL QR code:
- 
+
 ```java
 obj.getField("myQRCode").setDocument(obj, "qrcode.png", QRCodeTool.qrCodeImage(Globals.getContextURL()));
 ```
@@ -99,15 +98,14 @@ A EAN13 code (12 digits + 1 checksum digit) can then be used to generate a JPEG 
 ```java
 obj.getField("myEAN13Barcode").setDocument(obj, code + ".jpg", BarcodeTool.ean13Image(code));
 ```
+
 PDF documents using iText&reg; 2.1.7
 ------------------------------------
 
 This example is given in the server-side **Rhino** scripting language. It can be easily transposed to **Java** language.
 
 To use the **iText&reg;** library classes you need to include the `com.lowagie.text` package explicitly.
-For more information on itext 2.1.7 available on <a href="https://coderanch.com/how-to/javadoc/itext-2.1.7" target="_blank">javadoc</a>
-
-**Java**
+For more information on itext 2.1.7 available on [the Javadoc]("https://coderanch.com/how-to/javadoc/itext-2.1.7).
 
 ```java
 import com.lowagie.text.*;
@@ -115,7 +113,7 @@ import com.lowagie.text.*;
 (...)
 
 ByteArrayOutputStream bos = new java.io.ByteArrayOutputStream();
-	
+
 Document pdf = PDFTool.open(bos);
 pdf.add(new Paragraph("Hello world !"));
 (...)
@@ -136,8 +134,6 @@ Excel(R) sheet using Apache POI&reg;
 
 ### Create sheet from scratch
 
-**Java**
-
 ```java
 import com.simplicite.util.tools.ExcelPOITool;
 
@@ -154,12 +150,9 @@ bytes[] bytes = xls.generateToByteArray();
 // Do something with document content...
 ```
 
-
 ### Using an existing template sheet
 
 For this advanced usage of the **Apache POI** lib you need to include the `org.apache.poi.hssf.usermodel` package explicitly.
-
-**Java**
 
 ```java
 import com.simplicite.util.tools.ExcelPOITool;
@@ -178,7 +171,6 @@ for (int i = 0; i < rows.size(); i++) {
 	xls.addRow(sheet, r);
 }
 ```
-
 
 In the above example `doc` is a Simplicité document.
 

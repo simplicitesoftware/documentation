@@ -6,9 +6,11 @@ title: Search
 Search
 =======
 
-## Searching with the UI
+Searching with the UI
+---------------------
 
-There are different kind of searches in Simplicité : 
+There are different kind of searches in Simplicité:
+
 - Global Search
 - Advanced Search
 - Object Search
@@ -19,18 +21,25 @@ There are different kind of searches in Simplicité :
 
 ### Global Search
 
-The global search (aka fulltext search, or indexed search) works by searching the **index** for the string the user types in the header search bar. Needless to say, only objects that the user has access to are displayed.
+The global search (aka fulltext search, or indexed search) works by searching the **index** for the string the user types in the header search bar.
+Needless to say, only objects that the user has access to are displayed.
 
 For the objects to appear in the search:
+
 1. The object must be **indexable** (property set on the Business Object configuration options)
 2. At least one of its fields must be indexable (property set on the Field configuration)
 
-The search index can be configured in `USE_SEARCH_INDEX`
+The search index can be configured in `USE_SEARCH_INDEX`:
+
 - `sql` is the default Simplicité index
-- `lucene` refers to the industry standard [Apache Lucene](https://lucene.apache.org/core) index (*on which ElasticSearch is built on for example*)
+- `lucene` refers to the industry standard [Apache Lucene](https://lucene.apache.org/core) index (_on which ElasticSearch is built on for example_)
 - `no` to deactivate global search
 
-The **Simplicité index** is quite simple: it uses a single database table (`m_index`) to store a concatenation of all the indexable fields. It is the default and is by far the most used. That index is available for the designe to see under the **Object Index** object (for example if there is a need to understand why some terms don't give results). It is easy to use, and easy to debug, but its performance and precision can be affected/limited by:
+The **Simplicité index** is quite simple: it uses a single database table (`m_index`) to store a concatenation of all the indexable fields.
+It is the default and is by far the most used. That index is available for the designer to see under the **Object Index** object
+(for example if there is a need to understand why some terms don't give results). It is easy to use, and easy to debug,
+but its performance and precision can be affected/limited by:
+
 - the database used
 - the quantity of indexed data
 - the query language (SQL)
@@ -41,11 +50,12 @@ The **Lucene index** relies on the lucene engine to index objects and retrieve r
 
 ### Advanced Search
 
-The advanced search is a by-column search on an object. 
+The advanced search is a by-column search on an object.
 
-The be activated, the object needs to have at least one searchable field (*be careful: indexable->global vs searchable->object*).
+The be activated, the object needs to have at least one searchable field (_be careful: indexable->global vs searchable->object_).
 
-It has three main presentations: 
+It has three main presentations:
+
 - **detached** as a floating container
 - **pinned to columns**
 - **docked**
@@ -66,15 +76,17 @@ The Menu search facilitates the task of finding a particular item in the domain 
 
 ### Form Search
 
-The Form search facilitated finding a particular attribute in a big form, highlighting and putting the focus on the attribute. It is deactivatable on the configuration of each object.
+The Form search facilitated finding a particular attribute in a big form, highlighting and putting the focus on the attribute.
+It is deactivatable on the configuration of each object.
 
 ![form search](img/search/form-search.png)
 
-## Customizing results
+### Customizing results
 
 To customize results and modify the object search behavior object by object, you can use the dedicated object hooks, `preSearch` and `postSearch`.
 
-## Searching in...
+Searching programmatically
+--------------------------
 
 ### Java
 
@@ -103,6 +115,6 @@ TBD... lib ajax & lib npm
 
 ### API
 
-TBD... 
+TBD...
 
 -->

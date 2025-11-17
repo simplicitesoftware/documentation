@@ -13,8 +13,8 @@ The authentication mechanism will remain the same but, once connected, the user 
 built by a server side script (by implementing the `<Disposition name>.display` function which can
 using associated resources if required).
 
-The following example demonstrates the implementation of a basic single-page custom user interface utilizing Bootstrap and the Ajax API. This interface is delivered through a client-side JavaScript resource. The disposition illustrated in this example is named `MyDisp`.
-
+The following example demonstrates the implementation of a basic single-page custom user interface utilizing Bootstrap and the Ajax API.
+This interface is delivered through a client-side JavaScript resource. The disposition illustrated in this example is named `MyDisp`.
 
 Server side script
 ------------------
@@ -22,7 +22,6 @@ Server side script
 In the example, the server side script just builds the static parts of the disposition page
 (including the main div which will be used by the client side script):
 
-**Java**
 ```java
 import com.simplicite.webapp.HTMLPage;
 import com.simplicite.webapp.web.BootstrapWebPage;
@@ -35,7 +34,7 @@ public String display(Parameters params) {
 	wp.appendCSSInclude(HTMLPage.getResourceCSSURL(g, "STYLES")); // Include a custom stylesheet
 	wp.setFavicon(HTMLPage.getResourceIconURL(g, "FAVICON"));
 	wp.setReady("mydisp(\"" + wp.getRoot() + "\");");
-	
+
 	LinkedHashMap sm = new LinkedHashMap();
 	sm.put("submenu1", "My sub menu 1");
 	sm.put("submenu2", "My sub menu 2");
@@ -44,22 +43,21 @@ public String display(Parameters params) {
 	m.put("menu2", wp.subMenu("menu2", "My menu 2", sm));
 	m.put("quit", "<span class=\"glyphicon glyphicon-off\"></span> " + g.T("QUIT"));
 	wp.setMenu("home", "<img src=\"" + HTMLPage.getResourceImageURL(g, "LOGO") + "\" style=\"margin: 5px;\"/>", m, false, true, true);
-	
+
 	wp.appendHTML("<div id=\"main\"></div>");
-	
+
 	wp.appendHTML("<div id=\"footer\">&copy; Simplicité Software</div>");
-	
+
 	return wp.toString();
 }
 ```
 
-
 As of version **3.1 MAINTENANCE 08**, the `displayPublic`, `displayPublicHome`, `displayHome`, `displayLogon` and `displayLogout`
-functions can be used on the same principle to override the public main page, public home page, authenticated home page, logon page and logout page when needed.
+functions can be used on the same principle to override the public main page, public home page, authenticated home page,
+logon page and logout page when needed.
 
 For instance to override the default logon script with a Bootstrap&reg; page, you can implement the `displayLogon` function as:
 
-**Java**
 ```Java
 import com.simplicite.webapp.HTMLPage;
 import com.simplicite.webapp.web.BootstrapWebPage;
@@ -68,18 +66,17 @@ public String display(Parameters params) {
 	Grant g = getGrant();
 
 	BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), g.getParameter("WINDOW_TITLE", "Simplicité"));
-	
+
 	wp.appendJSInclude(HTMLPage.getResourceJSURL(g, "SCRIPT"));
 	wp.appendCSSInclude(HTMLPage.getResourceCSSURL(g, "STYLES"));
 	wp.setFavicon(HTMLPage.getResourceIconURL(g, "FAVICON"));
-	
+
 	wp.append(HTMLPage.getResourceHTMLContent(g, "LOGON"));
 	wp.setReady("loaded();");
-	
+
 	return wp.toString();
 }
 ```
-
 
 The disposition `LOGON` HTML resource being:
 
@@ -118,7 +115,7 @@ The client side JavaScript `SCRIPT` resource uses the Ajax API to dynamically bu
 function mydisp(root) {
 	var app = new Simplicite.Ajax(root);
 	home();
-	
+
 	$("#home").click(function() { home(); });
 	$("#menu1").click(function() { alert("You clicked menu 1 !"); });
 	$("#submenu1").click(function() { alert("You clicked sub menu 1 !"); });
@@ -128,7 +125,7 @@ function mydisp(root) {
 	function loading() {
 		$("#main").empty().append($("<img/>", { src: "../images/image/inprogress.gif" }));
 	}
-	
+
 	function home() {
 		loading();
 		app.getGrant(function() {
