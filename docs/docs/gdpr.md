@@ -95,7 +95,7 @@ In the log business object `AppLogger` records there is a text field that holds 
 
 In the technical logs the login is present as plain text on each line. Ex (in this example the login is `designer`)
 
-```plaintext
+```text
 2018-08-28 15:35:00,479 INFO [com.simplicite.util.CronJob] SIMPLICITE|https://myapp.mysdomain.com||ICORECM005|designer|com.simplicite.util.CronJob|run||Job processed
 ```
 

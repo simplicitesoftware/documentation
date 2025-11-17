@@ -240,7 +240,7 @@ kubectl get service postgres
 
 Which produces something like:
 
-```plaintext
+```text
 NAME       TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
 postgres   NodePort   10.3.179.187   <none>        5432:31392/TCP   9m6s
 ```

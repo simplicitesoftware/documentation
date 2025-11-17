@@ -19,7 +19,7 @@ When using the Tomcat web container the root application is `webapps/ROOT`.
 
 The `application.name` property `WEB-INF/classes/application.properties` must be changed to an empty value:
 
-```plaintext
+```text
 application.name=
 ```
 
@@ -53,7 +53,7 @@ This `dataDir` environment entry can also be defined in the `META-INF/context.xm
 ```
 
 Note: Alternatively the root data dir can be defined by a JVM argument `-Ddata.dir=...` when launching Tomcat or by setting a `DATA_DIR`environment variable.
- 
+
 And the log file location defined in the `WEB-INF/classes/log4j2.xml` file must also be changed to:
 
 ```xml

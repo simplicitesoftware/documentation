@@ -6,7 +6,7 @@ title: Templates
 Templates
 ====================
 
-Here are two examples using substitutions in a text template 
+Here are two examples using substitutions in a text template
 
 vCard publication
 -----------------
@@ -16,7 +16,7 @@ to be imported on contact management systems, e-mail clients, mobile devices, ..
 
 An example of vCard publication (using a dedicated publication template) is provided on the standard `User` object:
 
-```plaintext
+```text
 [BEGIN]
 BEGIN:VCARD
 VERSION:2.1

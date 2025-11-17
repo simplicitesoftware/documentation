@@ -20,7 +20,7 @@ JBoss 4.2
 
 These services may be removed from `<jboss root>/server/default/deploy` to improve JBoss performances :
 
-```plaintext
+```text
 bsh-deployer.xml
 cache-invalidation-service.xml
 ejb3.deployer

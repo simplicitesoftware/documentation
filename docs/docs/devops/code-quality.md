@@ -73,7 +73,7 @@ You may also want to set the _Simplicite way_ profile as default Java profile in
 
 After cloning/pulling your module's Git repository you can launch the analysis by:
 
-```plaintext
+```text
 mvn clean compile org.sonarsource.scanner.maven:sonar-maven-plugin:RELEASE:sonar [<sonar options>]
 ```
 
@@ -95,7 +95,7 @@ You need some additionals components (see below).
 You need to have [Node.js](https://nodejs.org) installed, then you need to install the [Sonarqube scanner](https://www.npmjs.com/package/sonarqube-scanner)
 additional NPM module:
 
-```plaintext
+```text
 sudo su -
 npm install -g sonarqube-scanner
 exit
@@ -105,7 +105,7 @@ exit
 
 After cloning/pulling your module's Git repository you can launch the analysis by:
 
-```plaintext
+```text
 sonar-scanner [<sonar options>]
 ```
 

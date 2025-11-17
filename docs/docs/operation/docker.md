@@ -205,7 +205,7 @@ sudo docker run\
 
 Both the server and prebuilt images allows you to start a container using an external database using the following `DB_*` environment variables:
 
-```plaintext
+```text
 sudo docker run\
 	(...)\
 	-e DB_SETUP=<setup MySQL/MariaDB, PostgreSQL Oracle or SQLServer database if empty = true|false>\
@@ -535,7 +535,7 @@ or `-p [<listen host, e.g. 127.0.0.1>:]<local AJP port, e.g. 8009>:8009` in you 
 In this **very basic example** all plain HTTP traffic is redirected to HTTPS. The SSL certificates are handled by NGINX
 and thus the container's `8443` port (exposed here using `-p 8443:8443`) is the only one used.
 
-```plaintext
+```text
 server {
     listen 80;
     server_name myapp.myhost.mydomain;
@@ -570,7 +570,7 @@ server {
 In this **very basic example** all plain HTTP traffic is redirected to HTTPS. The SSL certificates are handled by Traefik
 and thus the container's `8443` port (exposed here using `-p 8443:8443`) is the only one used.
 
-```plaintext
+```text
 [entryPoints]
   [entryPoints.http]
   address = ":80"

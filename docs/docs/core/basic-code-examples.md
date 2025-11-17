@@ -27,7 +27,7 @@ Packages inclusions
 
 All scripts are processed with the following packages included **by default** (no need to import them explicitly):
 
-```plaintext
+```text
 java.lang
 java.util
 org.json
@@ -42,13 +42,13 @@ com.simplicite.webapp.tools
 It is possible to include a whole additional packages by:
 
 #### Java
-```plaintext
+```text
 import <java class name (e.g. org.apache.commons.lang3)>.*;
 ```
 
 or a single additional class by:
 #### Java
-```plaintext
+```text
 import <java class name (e.g. org.apache.commons.lang3.StringUtils)>;
 ```
 Example:

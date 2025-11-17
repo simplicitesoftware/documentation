@@ -9,7 +9,7 @@ Apache SSL configuration
 Certificate Authority
 ---------------------
 
-CA key with password: 
+CA key with password:
 
 	openssl genrsa -des3 -out CA.key 2048
 
@@ -28,14 +28,14 @@ Web server key and certificate request:
 
 	openssl req -nodes -sha256 -newkey rsa:2048 -keyout server.key -out server.csr
 
-Signed by CA: 
+Signed by CA:
 
 	openssl ca -days 365 -in server.csr -cert CA.crt -keyfile CA.key -out server.crt
 
-Or self-signed: 
+Or self-signed:
 
 	openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
-	
+
 You can use this procedure to create either single host or wildcard certificate.
 
 > **Note**: It is also possible to create a certificate for **both** host and wildcard by appending an appropriate "SAN" (`subjectAltName`) configuration to your `openssl.cnf` file, see [this document](http://wiki.cacert.org/FAQ/subjectAltName))
@@ -47,7 +47,7 @@ User key and certificate request :
 
 	openssl req -nodes -sha512 -newkey rsa:2048 -keyout user.key -out user.csr
 
-Signed by CA : 
+Signed by CA :
 
 	openssl ca -days 365 -in $1.csr -cert CA.crt -keyfile CA.key -out user.crt
 
@@ -114,7 +114,7 @@ Example of an HTTPS configuration for Apache for `https://www.mydomain.com/` wit
 
 For the above examples, the typical `curl` call would be something like:
 
-	curl --cacert CA.crt --cert user.crt --key user.key https://www.mydomain.com/secure/	
+	curl --cacert CA.crt --cert user.crt --key user.key https://www.mydomain.com/secure/
 
 ### Using client certificate authentication on Simplicité side
 
@@ -160,7 +160,7 @@ It is recommended to configure the `root` user's crontable task:
 
 With
 
-```plaintext
+```text
 0 4 * * * certbot renew 2>&1
 ```
 
