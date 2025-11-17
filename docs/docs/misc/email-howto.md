@@ -57,7 +57,8 @@ If your SMTP server requires authentication you need to add these additional ite
 To use GMail as SMTP server you need to configure an existing (and active) GMail account as follows:
 
 1) Log into your Google account (if you have multiple accounts, be sure that you are signed into the account you wish to send emails from).
-2) Open the following [link](https://myaccount.google.com/lesssecureapps) and toggle the 'Allow less secure apps' option to ON. This is telling your Gmail server to allow it to be accessed by less secured apps.
+2) Open the following [Google page](https://myaccount.google.com/lesssecureapps) and toggle the 'Allow less secure apps' option to ON.
+   This is telling your Gmail server to allow it to be accessed by less secured apps.
 3) Set the `MAIL_SERVICE` with SSL or TLS protocol:
 
 Using SSL protocol on port 465:
@@ -95,7 +96,8 @@ Using TLS protocol on port 587:
 Sender email address
 --------------------
 
-You can override the sender email address configured above (`mail.from`) by setting the system parameter `EMAIL_DEFAULT_SENDER` (which can be overridden by the `BPMALERT_FROM` system parameter for the particular case of workflow alerts).
+You can override the sender email address configured above (`mail.from`) by setting the system parameter `EMAIL_DEFAULT_SENDER`
+(which can be overridden by the `BPMALERT_FROM` system parameter for the particular case of workflow alerts).
 
 When this parameter is not set (or set to `default`), the `mail.from` is used.
 

@@ -25,7 +25,8 @@ For instance you can create a new web request:
 
 Enter the REST request URL and credentials (in the "Basic" tab).
 
-Then, in the PowerQuery tool window, in the "Transform" tab, convert the returned JSON array to a table using the "To table" button (leave the default "No delimiter" option when prompted):
+Then, in the PowerQuery tool window, in the "Transform" tab, convert the returned JSON array to a table using
+the "To table" button (leave the default "No delimiter" option when prompted):
 
 ![](img/excel/excel-2.png)
 
@@ -42,7 +43,7 @@ when building the REST URL. To do so you have to change the query code using the
 
 Example:
 
-```
+```text
 let
     Params = Excel.CurrentWorkbook(){[Name="Params"]}[Content],
     N = Params{0}[Value],

@@ -18,13 +18,17 @@ With MySQL version 5.x / MariaDB, you **must** use a 5.x JDBC Driver.
 Some MySQL 5.x / MariaDB servers must be accessed over SSL, in such a case some additional arguments are needed:
 
 Connecting from the command line:
-```
+
+```text
 mysql --protocol=tcp --ssl-mode=REQUIRED --host=<host> --port=<port> --database=<database> --user=<username> --password=<password> [--default-character-set=utf8]
 ```
+
 JDBC URL:
-```
+
+```text
 jdbc:mysql://<username>:<password>@<host>:<port>/<database>?autoReconnect=true&verifyServerCertificate=false&useSSL=true&requireSSL=true[&useUnicode=yes&characterEncoding=utf8&characterResultSets=utf8]
 ```
+
 ### Maximum packet size
 
 You need to check and increase if needed the `max_allowed_packet` settings to be compliant with your requirement, a good minimal value is `16M`.
@@ -54,13 +58,16 @@ PostgreSQL
 
 Beware backslashes treatment in PostgreSQL  :
 
-Before PostgreSQL 9.1, the configuration variable `standard_conforming_strings` was turned `off` by default. That's why PostgreSQL did not treat backslashes literally but interpreted them.
+Before PostgreSQL 9.1, the configuration variable `standard_conforming_strings` was turned `off` by default.
+That's why PostgreSQL did not treat backslashes literally but interpreted them.
 
-But according to SQL standard, backslashes should be treated literally. So, from PostgreSQL 9.1, the `standard_conforming_strings` config variable has been turned `on`.
+But according to SQL standard, backslashes should be treated literally. So, from PostgreSQL 9.1,
+the `standard_conforming_strings` config variable has been turned `on`.
 
-If you want your code be portable between different database engines, you may want to have this config variable turned on. So if you're on PostgreSQL 9.0 or lower :
+If you want your code be portable between different database engines, you may want to have this config variable turned on.
+So if you're on PostgreSQL 9.0 or lower :
 
-```
+```sql
 alter database YOUR_DB set standard_conforming_strings=on;
 ```
 
@@ -68,7 +75,7 @@ An other means is to use the E PostgreSQL specific prefix to construct a literal
 
 Example :
 
-```
+```text
 set standard_conforming_strings to true;
 
 select 'hop\'';
@@ -78,7 +85,7 @@ select E'hop\'';
 hop'
 ```
 
-```
+```text
 set standard_conforming_strings to false;
 
 select 'hop\'';
@@ -101,12 +108,14 @@ See [this document](https://www.postgresql.org/9.6/static/functions-matching.htm
 PostgreSQL 9.6+'s extension module `postgres_fdw` allows you to link a remote database into a local database.
 
 To do so, connect to the local database as the `postgres` super administrator:
+
+```text
+sudo su - postgres -c "psql -d <local database name>"
 ```
-	sudo su - postgres -c "psql -d <local database name>"
-```
+
 Then issue the following commands:
 
-```plaintext
+```text
 CREATE EXTENSION postgres_fdw;
 CREATE SERVER <arbitrary remote server name> FOREIGN DATA WRAPPER postgres_fdw OPTIONS (host '<remote host name or IP>', port '<remote port>', dbname '<remote database name>');
 CREATE USER MAPPING FOR CURRENT_USER SERVER <arbitrary remote server name> OPTIONS (user '<remote username>', password '<remove password>');
@@ -120,13 +129,17 @@ GRANT <ALL PRIVILEGES|SELECT> ON ALL TABLES IN SCHEMA <arbitrary local schema na
 Use `ALL PRIVILEGES` for read+write access, `SELECT` for read-ony access.
 
 Then after connecting as local user to local database:
+
+```text
+PGPASSWORD=<local password> psql -h <local host> -p <local port> -U <local username> -d <local database>
 ```
-	PGPASSWORD=<local password> psql -h <local host> -p <local port> -U <local username> -d <local database>
-```
+
 you can access remote tables like this `select * from <arbitrary local schema name>.<remote table name>;`
 
-> **Note**: you can only import some of the remote schema's tables by appending `LIMIT (<remote table name 1>, <remote table name 2>, ...)`
-> to the above `IMPORT FOREIGN SCHEMA` statement. Of course you can use other linking strategies depending on your requirement.
+:::note
+You can only import some of the remote schema's tables by appending `LIMIT (<remote table name 1>, <remote table name 2>, ...)`
+to the above `IMPORT FOREIGN SCHEMA` statement. Of course you can use other linking strategies depending on your requirement.
+:::
 
 Oracle
 ------
@@ -145,7 +158,7 @@ All following activities must be done as `root`.
 
 Download the RPMs from [Oracle XE download site](https://www.oracle.com/database/technologies/xe-downloads.html)
 
-```plaintext
+```text
 oracle-database-preinstall-18c-1.0-1.el7.x86_64.rpm
 oracle-database-xe-18c-1.0-1.x86_64.rpm
 ```
@@ -158,7 +171,7 @@ yum -y localinstall oracle-database*
 
 Then setup the server (this includes setting the `<system password>` used below):
 
-```plaintext
+```text
 /etc/init.d/oracle-xe-18c configure
 ```
 
@@ -198,14 +211,14 @@ chmod +x /etc/profile.d/oraclexe.sh
 
 Then you can connect as `SYSDBA` either using the `oracle` account (no password needed in this case):
 
-```plaintext
+```text
 sudo su - oracle
 sqlplus / as sysdba
 ```
 
 or from any other account:
 
-```plaintext
+```text
 sqlplus system/<system password>@XE as sysdba
 ```
 
@@ -230,7 +243,6 @@ set NLS_LANG=.AL32UTF8
 sqlplus <user>/<pwd>
 sql> @script.sql
 ```
-
 
 ### Optimization
 
@@ -271,7 +283,7 @@ Download the 3 instant client PRM packages from [Oracle website](http://www.orac
 
 And install them:
 
-```plaintext
+```text
 rpm -ivh oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm oracle-instantclient12.2-sqlplus-12.2.0.1.0-1.x86_64.rpm oracle-instantclient12.2-tools-12.2.0.1.0-1.x86_64.rpm
 ```
 
@@ -279,7 +291,7 @@ rpm -ivh oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm oracle-instantcl
 
 Create environment file:
 
-```plaintext
+```text
 sudo vi /etc/profile.d/oracleclient.sh
 sudo chmod +x /etc/profile.d/oracleclient.sh
 ```
@@ -299,7 +311,7 @@ export NLS_LANG
 
 You can improve `sqlplus` behavior by appending options in `$ORACLE_HOME/sqlplus/admin/glogin.sql` like:
 
-```plaintext
+```text
 set pagesize 999
 set linesize 999
 ```
@@ -313,19 +325,19 @@ The up-to-date instructions are in this document: [](https://docs.microsoft.com/
 
 Install the YUM repository:
 
-```plaintext
+```text
 sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/7/mssql-server-preview.repo
 ```
 
 Install server:
 
-```plaintext
+```text
 sudo yum install mssql-server
 ```
 
 Enable and start server:
 
-```plaintext
+```text
 sudo systemctl enable mssql-server
 sudo systemctl start mssql-server
 ```
@@ -340,6 +352,7 @@ Physical model
 ### Meta-model schema
 
 The default database contains all tables needed by the runtime. System tables are prefixed by:
+
 - `m_` for the core system (objects, fields, rights...)
 - `bpm_` for business process and orchestration
 - `social_` for all social features
@@ -348,11 +361,12 @@ The default database contains all tables needed by the runtime. System tables ar
 They must be accessed thru the UI or API to be updated.
 
 Some important tables:
+
 - `m_system`: contains global platform settings
 - `m_user` and `m_resp`: contains users and responsibilities
 - `m_document`: contains all the documents attached to document fields
-	- This table will be huge when `DOC_DIR=BLOB` (see below)
-	- Otherwise the table only contains the path to the `dbdoc` directory
+  - This table will be huge when `DOC_DIR=BLOB` (see below)
+  - Otherwise the table only contains the path to the `dbdoc` directory
 - `m_log`: contains all persistent application log events and metrics
 - `m_session`: contains all sessions
 
@@ -362,13 +376,13 @@ Each module import will generate automatically its related schema:
 
 - all tables and columns based on Business object definitions
 - common indexes per business object/table:
-	- the unique primary key (the `row_id` if not overridden)
-	- one unique user-key based on ordered functional-key fields: syntax `<table>_<column>_uk`
-	- non unique indexes on textual searchable fields: syntax `<table>_<column>_idx`
+  - the unique primary key (the `row_id` if not overridden)
+  - one unique user-key based on ordered functional-key fields: syntax `<table>_<column>_uk`
+  - non unique indexes on textual searchable fields: syntax `<table>_<column>_idx`
 - foreign-keys per link:
-	- non unique index on foreign-keys: syntax `<table>_<column>_fk`
-	- integrity constraint on foreign-keys: syntax `<table>_<column>_fkc`
-	- non unique index on meta-object fields (logical link to `<object>:<id>`): syntax `<table>_<column>_mo`
+  - non unique index on foreign-keys: syntax `<table>_<column>_fk`
+  - integrity constraint on foreign-keys: syntax `<table>_<column>_fkc`
+  - non unique index on meta-object fields (logical link to `<object>:<id>`): syntax `<table>_<column>_mo`
 
 Example of Demo's physical data model:
 
@@ -376,6 +390,7 @@ Example of Demo's physical data model:
 
 The generated indexes are enough to optimize the SQL queries generated by the engine (UI searches, inner/outer joins...).
 Designer can add other indexes to optimize certain complex/specific queries:
+
 - with a shared code (type SQL) in the application module
 - to be applied on each instance (with the shared code `Apply` action on UI, or the DB access, or with a CLI sql)
 
@@ -383,24 +398,26 @@ Designer can add other indexes to optimize certain complex/specific queries:
 
 The engine generates the `ALTER` of tables and columns when the name/type/length are updated during a module (re)import.
 It replaces also the indexes and foreign-keys:
+
 - The queries can be in error due to DB limitation or incoherent data, for examples:
-	- altering a varchar column to date or integer is forbidden
-	- or the data contains mismatching data
-	- the new User-Key is non unique with existing records in table
-	- the index is limited to a certain size...
+  - altering a varchar column to date or integer is forbidden
+  - or the data contains mismatching data
+  - the new User-Key is non unique with existing records in table
+  - the index is limited to a certain size...
 - The designer must analyze the logs after installation to fix the DB/data errors before re-ALTERing.
 - Or may contact the support for unsolvable problem or ask for advice.
 
-The engine **never** `DROP`s a table or a column even if the business object/field is deleted
+The engine **never** `DROP`s a table or a column even if the business object/field is deleted:
+
 - For rollback reasons in case of error
 - After a successful migration, the designer/DBA have to drop the deprecated table/column
 
 The platform can not migrate the data automatically in case of complex model refactoring.
 Designer have to build and apply SQL patches to update data, for examples:
+
 - changing a column to more complex type (ex: deprecated column varchar to a new date column)
 - changing a 0,N relationship to a N,N table: all references have to be moved/inserted in the N,N
 - splitting one big object/table in several objects/tables...
-
 
 ### DB Performances
 
@@ -419,6 +436,7 @@ The monitoring keeps in mind the top 10 long-queries:
 ![](img/databases-howto/top10.png)
 
 When the duration is too long the query has to be analyzed with an external CLI to `EXPLAIN PLAN`:
+
 - Some internal queries can be numerous or long but called once to load meta-data during a clear-cache (full-scan of models).
 - For the others, indexes can be added has described above with a SQL shared script.
 
@@ -428,12 +446,12 @@ The `m_document` table contains all files attached to document's fields.
 It can store the documents in 2 ways thru the system parameter `DOC_DIR`:
 
 - Way **BLOB** in the database
-	- `DOC_DIR` = `BLOB`
-	- `DOC_LOCAL_DIR` = path to fallback directory
-	- Saving the database will also save all documents
+  - `DOC_DIR` = `BLOB`
+  - `DOC_LOCAL_DIR` = path to fallback directory
+  - Saving the database will also save all documents
 - Way **DBDOC** in a local/mounted file system
-	- `DOC_DIR` = the (relative) path to the documents directory
-	- this external directory and the database **must** be backed-up at the same time to ensure data consistency.
+  - `DOC_DIR` = the (relative) path to the documents directory
+  - this external directory and the database **must** be backed-up at the same time to ensure data consistency.
 
 Since V6, it is possible to migrate easily from/to `BLOB` using the UI actions.
 
@@ -443,9 +461,9 @@ Example to migrate the documents to BLOB:
 ![](img/databases-howto/migconfirm.png)
 
 The migration is irreversible in case of error (not enough disk to write files, partition size of m_document...):
+
 - It is imperative to first save the database and the documents for a possible rollback.
 - It is a long async process running depending on the quantity of documents, a test may be done first on a copy of the production instance.
 - It is strongly recommended to disable all UI/API access during the migration (if users use documents).
 - It can be stopped/launched several times: each document is migrated once, the process restarts at the last migrated document.
 - When all documents are migrated, the `DOC_DIR` is updated to the final value.
-

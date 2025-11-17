@@ -28,26 +28,26 @@ Cordova
 - `ANDROID_HOME` and `ANDROID_SDK_ROOT` : root of your android SDK (ex `C:\dev\android\sdk`)
 - `GRADLE_USER_HOME` : change the gradle home repository without special characters in path (ex `C:\dev\.gradle`)
 - Add to `PATH`
-	- the studio gradle (ex `C:\dev\android\studio\gradle\gradle-4.6\bin`)
-	- the JVM bin directory (ex `C:\dev\java\jdk1.8\bin`)
+  - the studio gradle (ex `C:\dev\android\studio\gradle\gradle-4.6\bin`)
+  - the JVM bin directory (ex `C:\dev\java\jdk1.8\bin`)
 
 ### Install cordova CLI
 
-```
+```text
 npm install -g cordova`
 cordova --version
 ```
 
 ### Create your application
 
-```
+```text
 cordova create myproject com.simplicite.mobile.myproject MyProjectName
 cd myproject
 ```
 
 Add platforms and plugins with CLI
 
-```
+```text
 cordova platform add android
 cordova plugin add cordova-plugin-whitelist
 cordova plugin add cordova-plugin-inappbrowser
@@ -61,24 +61,25 @@ Androïd test
 
 Create/launch one emulator in Android Studio then:
 
-```
+```text
 cordova build android
 cordova emulate android
 ```
 
-Starts on your device in debug mode
+Starts on your device in debug mode:
+
 - see https://developer.android.com/studio/run/device
 - see https://developer.android.com/studio/debug/dev-options
 
-```
+```text
 cordova run android
 ```
 
 In Android Studio:
+
 - You will have to validate the license terms before using the tools
 - Create one ADV (virtual device) before using `cordova emulate android`
 - After cordova generation, open the project `/platforms/android` to build/test the app
-
 
 Integrate the hybrid app
 ------------------------
@@ -88,9 +89,8 @@ Open your project directory and customize your application:
 - `www/img/logo.png` is used on the default splash screen
 - all `res/icon/android` and `res/icon/ios` with your logos
 - change the default `www/js/index.js`
-
-	- Init **firebase** plugin to register / receive notifications on each device
-	- Launch the webapp into a **inAppBrowser** : the simplest way to wrap the site into a browser (but with some limitations)
+  - Init **firebase** plugin to register / receive notifications on each device
+  - Launch the webapp into a **inAppBrowser** : the simplest way to wrap the site into a browser (but with some limitations)
 
 ### Script www/js/index.js
 
@@ -166,7 +166,7 @@ Open your project directory and customize your application:
 - Import your icons into `res/icon` folders
 - Change `config.xml` to bind all sizes as follow:
 
-```
+```xml
     <platform name="android">
 			...
         <icon density="ldpi" src="res/icon/android/icon-36-ldpi.png" />
@@ -187,21 +187,20 @@ Open your project directory and customize your application:
 
 - Install the plugin splash screen:
 
-```
+```text
 cordova plugin add cordova-plugin-splashscreen
 ```
 
 - Put all your image in project's resources, example `/res/screen/android/screen-hdpi-landscape.png`
 - Add to `config.xml` the size mapping
 
-```
+```xml
 <platform name="android">
 	...
 	<splash src="res/screen/android/screen-hdpi-landscape.png" density="land-hdpi"/>
 	...
 </platform>
 ```
-
 
 Firebase configuration
 ----------------------
@@ -216,7 +215,6 @@ The platform will use several system parameters:
 - `FIREBASE_CONFIG` : public configuration on Web client-side
 - `FIREBASE_LIBS` : public firebase libs to load on client-side
 - `FIREBASE_VAPID_KEY` : public key for firebase authentication
-
 
 ### Register your application on Firebase
 
@@ -233,7 +231,7 @@ The platform will use several system parameters:
 
 Notification https://github.com/arnesson/cordova-plugin-firebase
 
-```
+```text
 cordova plugin add cordova-plugin-firebase
 cordova run android
 ```
@@ -258,14 +256,15 @@ On UI `$ui.firebase` wrap all Firebase message:
 - to register user and device on server-side (see `FIREBASE_TOKENS` on each user)
 - to send a notification to users (unique, groups or all)
 
-on Server-side service, see `GoogleFireBaseTools`
+on Server-side service, see `GoogleFireBaseTools`:
+
 - you must generate first your Service Account Key on console
 
 https://console.firebase.google.com/u/0/project/simplicitemobilemyproject/settings/serviceaccounts/adminsdk
 
 - then place your strongly **private** credentials in the parameter `FIREBASE_PRIVATE_KEY` on server-side
 
-```
+```json
 {
   "type": "service_account",
   "project_id": "simplicite-app",
@@ -286,36 +285,36 @@ To receive message on webapp, the browser needs 2 parameters:
 
 1) Add a **public** system param `FIREBASE_LIBS`
 
-```
-["https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"
-,"https://www.gstatic.com/firebasejs/7.20.0/firebase-messaging.js"]
-```
+   ```json
+   ["https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"
+   ,"https://www.gstatic.com/firebasejs/7.20.0/firebase-messaging.js"]
+   ```
 
 2) Add a **public** system param `FIREBASE_CONFIG` to init firebase on client-side:
 
-- see https://firebase.google.com/web/setup
-- or access to console / Project / Setup / Add Firebase to your Web application
+   - see https://firebase.google.com/web/setup
+   - or access to console / Project / Setup / Add Firebase to your Web application
 
-```
-{
-"apiKey": "AIzaSyB...",
-"authDomain": "simplicite-app.firebaseapp.com",
-"databaseURL": "https://simplicite-app.firebaseio.com",
-"projectId": "simplicite-app",
-"storageBucket": "simplicite-app.appspot.com",
-"messagingSenderId": "123...",
-"appId": "1:1234...",
-"measurementId": "G-XXX..."
-}
-```
+   ```json
+   {
+     "apiKey": "AIzaSyB...",
+     "authDomain": "simplicite-app.firebaseapp.com",
+     "databaseURL": "https://simplicite-app.firebaseio.com",
+     "projectId": "simplicite-app",
+     "storageBucket": "simplicite-app.appspot.com",
+     "messagingSenderId": "123...",
+     "appId": "1:1234...",
+     "measurementId": "G-XXX..."
+   }
+   ```
 
 3) Add a **public** system param `FIREBASE_VAPID_KEY` to authent client
 
-Get the public VAPID key from key-pair on Firebase console / Configuration web:
+   Get the public VAPID key from key-pair on Firebase console / Configuration web:
 
-```
-BIDDmZgk5QSFd7Bf1sf2yfUrfi...
-```
+   ```text
+   BIDDmZgk5QSFd7Bf1sf2yfUrfi...
+   ```
 
 _note_ firebase is not loaded in webapp:
 
@@ -338,8 +337,11 @@ JSON message:
 
 To send one notification to a device:
 
-```
-curl --header "Authorization: key=<cloud messaging server key>" --header "Content-type: application/json" -d '{"to":"<device token>", "data":{"title":"hello","body":"world","icon":"notification_icon"}}' https://fcm.googleapis.com/fcm/send
+```bash
+curl --header "Authorization: key=<cloud messaging server key>" \
+  --header "Content-type: application/json" \
+  -d '{"to":"<device token>", "data":{"title":"hello","body":"world","icon":"notification_icon"}}' \
+  https://fcm.googleapis.com/fcm/send
 ```
 
 - Get the server key on your Firebase console / Project Setup / Cloud Messaging / Server key Token (use the long one, the short key is deprecated)
@@ -352,9 +354,9 @@ curl --header "Authorization: key=<cloud messaging server key>" --header "Conten
 
 1) Generate your mono-color/transparent icons : https://romannurik.github.io/AndroidAssetStudio/icons-notification.html
 2) Import them into your project `res/icon/android`
-1) Add resources in `config.xml` to copy them in drawable as `notification_icon`
+3) Add resources in `config.xml` to copy them in drawable as `notification_icon`
 
-```
+```xml
     <platform name="android">
     ...
         <resource-file src="res/icon/android/drawable-mdpi/notification_icon.png" target="app/src/main/res/drawable-mdpi/notification_icon.png" />
@@ -365,10 +367,10 @@ curl --header "Authorization: key=<cloud messaging server key>" --header "Conten
     </platform>
 ```
 
-see
+see:
+
 - https://github.com/arnesson/cordova-plugin-firebase/issues/764
 - https://firebase.google.com/reference/admin/java/reference/com/google/firebase/messaging/AndroidNotification.Builder.html#setIcon(java.lang.String)
-
 
 Deploy on Google Play Store
 ---------------------------
@@ -377,7 +379,7 @@ Assuming your application is working on debug mode on your mobile device, you ca
 
 ### Build a release APK
 
-```
+```text
 cordova build --release android
 ```
 
@@ -386,10 +388,11 @@ The unsigned APK is generated in your android directory `myproject/platforms/and
 ### Sign your APK file
 
 Create a keystore with your company information:
+
 - with Android studio: https://developer.android.com/studio/publish/app-signing
 - with CLI keytool: https://www.linkedin.com/pulse/how-create-signed-android-apk-apache-cordovausing-cordova-ghatul/
 
-```
+```text
 cordova build android --release -- --keystore="path/to/keystore" --storePassword=xxxx --alias=key0 --password=xxxx
 ```
 
@@ -398,6 +401,7 @@ The signed APK is generated in your android directory `myproject/platforms/andro
 ### Upload the APK with the play-store console
 
 You will have to change the version each time you deliver an new APK:
+
 - in root files `config.xml` and `package.json`
 - rebuild the release
 
@@ -412,7 +416,6 @@ Process is quite long at the very first time:
 - Promote to production when ready to use: `https://play.google.com/store/apps/details?id=com.simplicite.mobile.myproject`
 
 Congrats if you are still alive at this stage!
-
 
 Deploy on Apple Store
 ---------------------
@@ -432,7 +435,7 @@ See https://cordova.apache.org/en/latest/guide/platforms/ios/index.html
 - install CLI to compile and deploy
 - then rebuild your cordova app with the `iOS` platform
 
-```
+```bash
 sudo xcode-select --install
 sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 npm i -g xcode
@@ -449,7 +452,6 @@ If the build is successful, launch all emulators (iPhone, iPad) to test the app 
 
 ![](img/cordova/ios_simu.jpg)
 
-
 ### iOS icons
 
 The application needs many icons to target all iOS versions.
@@ -462,7 +464,7 @@ The application needs many icons to target all iOS versions.
 - Create all icons in `res/icon/ios` directory
 - Add icons in your `config.xml`:
 
-```
+```xml
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
@@ -490,57 +492,55 @@ The application needs many icons to target all iOS versions.
 
 - Create the App ID : https://developer.apple.com/account/resources/identifier/list
 
-	- Description = `Simplicite My Project`
-	- Explicit App ID = `com.simplicite.mobile.myproject`
-	- App services = add `Push notifications`
+  - Description = `Simplicite My Project`
+  - Explicit App ID = `com.simplicite.mobile.myproject`
+  - App services = add `Push notifications`
 
 - Generate the CSR file: Certificate Signing Request
 
-	- On your mac open the Keychain access
-	- Menu Certificate assistant > Request a certificate from a certificate authority
-	- Enter your email and full name, store the file on disk
+  - On your mac open the Keychain access
+  - Menu Certificate assistant > Request a certificate from a certificate authority
+  - Enter your email and full name, store the file on disk
 
 - Prepare the APN (Apple Push Notification) certificate
 
-	- Edit the App ID to create the notification certificates
-	- In Push notification section / developer
-	- Upload the CSR file
-	- Download the generated certificate `aps_development.cer`
-	- Add it to your session certificates in Keychain access
-	- With keychain, open the certificate `Apple Development Push Services`
-	- And export your private key into a `p12` file
+  - Edit the App ID to create the notification certificates
+  - In Push notification section / developer
+  - Upload the CSR file
+  - Download the generated certificate `aps_development.cer`
+  - Add it to your session certificates in Keychain access
+  - With keychain, open the certificate `Apple Development Push Services`
+  - And export your private key into a `p12` file
 
 - Configure firebase
 
-	- In the firebase console, open the project setup
-	- In Cloud messaging section upload the certificate APNs
-
+  - In the firebase console, open the project setup
+  - In Cloud messaging section upload the certificate APNs
 
 See all steps here:
 
 - https://firebase.google.com/cloud-messaging/ios/certs
 - https://medium.com/@felipepucinelli/how-to-add-push-notifications-in-your-cordova-application-using-firebase-69fac067e821
 
-
 ### Create the Provisioning Profile
 
-To test your app befowre the final deployment in App Store, you have to sign the app thru a physical iOS device (so buy one iPhone or iPad!).
+To test your app before the final deployment in App Store, you have to sign the app thru a physical iOS device (so buy one iPhone or iPad!).
 
 - Create a development key and Team with the CSR file
 
 - On the console create a device item with its serial number
 
-	- connect the device to your mac thru USB link
-	- use `iTunes` to open the device infos to get the serial number
+  - connect the device to your mac thru USB link
+  - use `iTunes` to open the device infos to get the serial number
 
 - Then create a profile to associate the App ID with the device
 - Download the profile into `Xcode`
 
-	- Menu Preferences / Account / Settings to import the profile
-	- Open the application properties and select the Development Team to sign the App
-	- Launch the app with your real device
-	- During compilation enter your certificate password
-	- Enjoy when the App brings to life on device!
+  - Menu Preferences / Account / Settings to import the profile
+  - Open the application properties and select the Development Team to sign the App
+  - Launch the app with your real device
+  - During compilation enter your certificate password
+  - Enjoy when the App brings to life on device!
 
 ### Deploy on the Apple store
 
@@ -555,7 +555,6 @@ The last step is to create the Store listing:
 - Submit to verify the App, the process can be very long (form 1 to 10 days)
 
 See https://clearbridgemobile.com/how-to-submit-an-app-to-the-app-store/
-
 
 Known limitations with inAppBrowser
 -----------------------------------

@@ -3,9 +3,11 @@ sidebar_position: 420
 title: Custom User
 ---
 
-# Custom User Object
+Custom User Object
+==================
 
-An out-of-the-box Simplicité comes pre-installed with a `User` object, to which the authentication mechanisms are tied. When building an application, you'll eventually come to the point where you either need to:
+An out-of-the-box Simplicité comes pre-installed with a `User` object, to which the authentication mechanisms are tied. When building an application,
+you'll eventually come to the point where you either need to:
 
 1. add custom business data to the user (maybe its department, or employee number, etc)
 2. make the user list available to admins
@@ -20,16 +22,20 @@ The simplest option to fulfill those needs would be to simply use the `User` obj
 While this is the easiest way to configure user management, it has some serious drawbacks:
 
 - you'll have to override the `User` template to add in your fields and customize it
-- you'll be stuck with a collection of Simplicité-specific fields that you don't want your admin group to see / deal with (language, home page, module, menu visibility, home phone, etc)
+- you'll be stuck with a collection of Simplicité-specific fields that you don't want your admin group to see / deal with
+  (language, home page, module, menu visibility, home phone, etc)
 - you might not want to use Simplicité's user domain nor scope, which will be available once you grant the `USER_ADMIN` group
-- you might not want your admins to use Simplicité's group system (for example if groups are automatically granted depending on the user's function in a business entity)
+- you might not want your admins to use Simplicité's group system (for example if groups are automatically granted depending
+  on the user's function in a business entity)
 - etc.
 
 That's why Simplicité provides `SimpleUser`, a minimal version you can extend, just as `User` does.
 
-## Configuration
+Configuration
+-------------
 
-In order to use a custom user object, it is necessary to create an **inheritor** of the platform `SimpleUser` object. Create an object, like you would do normally, but then specify the following :
+In order to use a custom user object, it is necessary to create an **inheritor** of the platform `SimpleUser` object. Create an object,
+like you would do normally, but then specify the following :
 
 - **ObjectName:** `<your_custom_name>`
 - **Extend of Code:** SimpleUser
@@ -39,7 +45,8 @@ In order to use a custom user object, it is necessary to create an **inheritor**
 
 ![configuration](img/custom-user/custom-user-configuration.png)
 
-## Custom code
+Custom code
+-----------
 
 The following code is added to the object to make it **really minimalistic** by hiding most of SimpleUser's fields and automating group attribution. Add and adapt the following code to your use case:
 

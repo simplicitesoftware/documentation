@@ -39,6 +39,8 @@ And configure each Tomcat node's `conf/server.xml` like this:
 (...)
 ```
 
-> **Note**: this configuration correspond to **root** deployed Simplicité instances.
-> When transposing this to your particular case pay a great attention to the trailing slashes which are **mandatory**
-> for the load balancing to run properly.
+:::note
+This configuration correspond to **root** deployed Simplicité instances.
+When transposing this to your particular case pay a great attention to the trailing slashes which are **mandatory**
+for the load balancing to run properly.
+:::

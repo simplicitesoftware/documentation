@@ -32,14 +32,17 @@ You can import an existing SSL certificate and its key into a keystore by first 
 
 Generate a certificate request from your keystore:
 
-	keytool -certreq -alias tomcat -keyalg RSA -file mycert.csr -keystore mykeystore.jks 
+	keytool -certreq -alias tomcat -keyalg RSA -file mycert.csr -keystore mykeystore.jks
 
 Once you get the signed certificate `mycert-signed.crt` import it with back into the keystore with:
 
-	keytool -importcert -alias tomcat -file mycert-signed.crt -keystore mykeystore.jks 
+	keytool -importcert -alias tomcat -file mycert-signed.crt -keystore mykeystore.jks
 
-> **Note**: Make sure that the Java global `cacerts` keystore contains the CA certificate that signed your certificate, if it is not the case you need to add it with:
-> `keytool -keystore /etc/pki/java/cacerts -import -trustcacerts -alias <CA alias> -file <CA certificate file>.crt`
+:::note
+Make sure that the Java global `cacerts` keystore contains the CA certificate that signed your certificate,
+if it is not the case you need to add it with:
+`keytool -keystore /etc/pki/java/cacerts -import -trustcacerts -alias <CA alias> -file <CA certificate file>.crt`
+:::
 
 ### List keystore contents
 
