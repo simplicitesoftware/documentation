@@ -55,7 +55,7 @@ So cron expressions can be as simple as this: `* * * * ? *` or more complex, lik
 - `L` _last_: has different meaning in each of the two fields in which it is allowed.
   For example, the value `L` in the day-of-month field means _the last day of the month_
   (day 31 for January, day 28 for February on non-leap years). If used in the day-of-week field by itself, it simply means `7` or `SAT`.
-  But if used in the day-of-week field after another value, it means _the last xxx day of the month_ (for example `6L` means _the last friday of the month_.
+  But if used in the day-of-week field after another value, it means _the last xxx day of the month_ (for example `6L` means _the last Friday of the month_.
   When using the `L` option, it is important not to specify lists, or ranges of values, as you will get confusing results.
 - `W` _weekday_: used to specify the weekday (Monday-Friday) nearest the given day. As an example, if you were to specify `15W` as
   the value for the day-of-month field, the meaning is: _the nearest weekday to the 15th of the month_. So if the 15th is a Saturday,
