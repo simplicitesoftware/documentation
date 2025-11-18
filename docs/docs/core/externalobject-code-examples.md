@@ -543,7 +543,7 @@ If the external object is a component dedicated only to display within the versi
 a redirect statement to display another component (e.g. form, list, ...)
 is an **anti-pattern** you should instead return a client-side JavaScript statement using the
 appropriate client-side JavaScript function to display the target component
-(e.g. `return this.javascript("$ui.displayForm(...)");`
+(e.g. `return this.javascript("$ui.displayForm(...)");`)
 
 Redirect statements are however **partially** supported for backward compatibility by the responsive UI.
 They may still make sense though in standalone pages outside of the responsive UI.

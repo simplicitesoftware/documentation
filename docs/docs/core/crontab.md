@@ -11,7 +11,10 @@ Introduction
 
 The Simplicité crontab (internal task scheduler) allow you to schedule executions of **objects' actions** of method type.
 
-> **Note**: You can choose which user will be processing the action, so you need to make sure this user is fully granted the involved business objects and actions
+:::note
+You can choose which user will be processing the action, so you need to make sure this user is fully
+granted the involved business objects and actions
+:::
 
 Cron expressions
 ----------------
@@ -48,11 +51,13 @@ So cron expressions can be as simple as this: `* * * * ? *` or more complex, lik
 - `-` used to specify ranges. For example, `10-12` in the hour field means _the hours 10, 11 and 12_.
 - `,` used to specify additional values. For example, `MON,WED,FRI` in the day-of-week field means _the days Monday, Wednesday, and Friday_.
 - `/` used to specify increments. For example, `0/15` in the seconds field means _the seconds 0, 15, 30, and 45_. And `5/15` in the seconds
-  field means _the seconds 5, 20, 35, and 50_. You can also specify `/` after the `*` character - in this case `*` is equivalent to having `0` before the `/`.
+  field means _the seconds 5, 20, 35, and 50_. You can also specify `/` after the `*` character,
+   in this case `*` is equivalent to having `0` before the `/`.
   `1/3` in the day-of-month field means _every 3 days starting on the first day of the month_.
-- `L` _last_: has different meaning in each of the two fields in which it is allowed. For example, the value `L` in the day-of-month field means _the last day of the month_
+- `L` _last_: has different meaning in each of the two fields in which it is allowed. For example,
+  the value `L` in the day-of-month field means _the last day of the month_
   (day 31 for January, day 28 for February on non-leap years). If used in the day-of-week field by itself, it simply means `7` or `SAT`.
-  But if used in the day-of-week field after another value, it means _the last xxx day of the month_ (for example `6L` means _the last friday of the month_.
+  But if used in the day-of-week field after another value, it means _the last xxx day of the month_ (for example `6L` means _the last Friday of the month_.
   When using the `L` option, it is important not to specify lists, or ranges of values, as you will get confusing results.
 - `W` _weekday_: used to specify the weekday (Monday-Friday) nearest the given day. As an example, if you were to specify `15W` as
   the value for the day-of-month field, the meaning is: _the nearest weekday to the 15th of the month_. So if the 15th is a Saturday,
@@ -68,9 +73,12 @@ So cron expressions can be as simple as this: `* * * * ? *` or more complex, lik
   having an all-inclusive calendar. A value of `5C` in the day-of-month field means _the first day included by the calendar on or after the 5th_.
   A value of `1C` in the day-of-week field means _the first day included by the calendar on or after Sunday_.
 
-> **Notes**:
-> - The `L` and `W` characters can also be combined in the day-of-month field to yield `LW`, which translates to _last weekday of the month_.
-> - The legal characters and the names of months and days of the week are not case sensitive. `MON` is the same as `mon`.
+:::note
+
+- The `L` and `W` characters can also be combined in the day-of-month field to yield `LW`, which translates to _last weekday of the month_.
+- The legal characters and the names of months and days of the week are not case sensitive. `MON` is the same as `mon`.
+
+:::
 
 ### Examples
 

@@ -37,7 +37,8 @@ Object definition and right-related hooks
 The `postLoad` hook is called **once**, when the object definition is loaded.
 It can therefore be used to modify the **static** object definition.
 
-In this context, "static" refers to definition settings that remain constant throughout the duration of the user session, as opposed to dynamic settings that may be modified by other hooks.
+In this context, "static" refers to definition settings that remain constant throughout the duration of the user session,
+as opposed to dynamic settings that may be modified by other hooks.
 
 For instance it can be used to:
 
@@ -50,9 +51,10 @@ For instance it can be used to:
 
 **Example:**
 
-In this example, a restrictive search specification is applied to the object (limiting results to validated records only) if the user belongs to a specified group.
+In this example, a restrictive search specification is applied to the object (limiting results to validated records only)
+if the user belongs to a specified group.
 
-```simplicite-java
+```java
 @Override
 public void postLoad() {
 	if (getGrant().hasResponsibility("MYGROUP"))
@@ -75,7 +77,7 @@ they just allow to **restrict** these rights depending on more complex business 
 
 In the following example, the status of the parent object is evaluated to determine whether creation is permitted or denied.
 
-```simplicite-java
+```java
 @Override
 public boolean isCreateEnable() {
 	ObjectDB p = getParentObject();
@@ -85,7 +87,7 @@ public boolean isCreateEnable() {
 }
 
 In this example, updates are permitted only when a specific field's value is true.
-```simplicite-java
+```java
 @Override
 public boolean isUpdateEnable(String[] row) {
 	return Tool.isTrue(row[getFieldIndex("objField1")]);
@@ -93,7 +95,8 @@ public boolean isUpdateEnable(String[] row) {
 ```
 
 In this example, delete permissions follow the same rule as update permissions.
-```simplicite-java
+
+```java
 @Override
 public boolean isDeleteEnable(String[] row) {
 	return isUpdateEnable(row);
@@ -135,7 +138,7 @@ public boolean isPrintTemplateEnable(String[] row, String printTemplateName) {
 	// In this example the publication is allowed depending on the value of a given object field
 	if ("myPrintTemplate".equals(printtmpl))
 		return Tool.isTrue(row[getFieldIndex("objField1")]);
-	return true; 
+	return true;
 }
 ```
 
@@ -169,10 +172,9 @@ The `canReference` hook allows to show/hide linked objects' panels based on cust
 @Override
 public boolean canReference(String objectName, String fieldName) {
 	// In this example the MyPanelObject's panel is shown only if the user does not belong to MYGROUP
-	return ("MyPanelObject".equals(objectName) && !getGrant().hasResponsibility("MYGROUP"));	
+	return ("MyPanelObject".equals(objectName) && !getGrant().hasResponsibility("MYGROUP"));
 }
 ```
-
 
 ### Bulk update hook
 
@@ -188,11 +190,11 @@ public boolean canUpdateAll(ObjectField fieldName) {
 }
 ```
 
-
 ### Data history hook
 
-The `isHistoric` hook allows to dynamically restrict the standard historization. By default, this method return true when the business object has been designed with the historic property.
-Above, the data bulk update is allowed to user who does not belong to MYGROUP.  
+The `isHistoric` hook allows to dynamically restrict the standard historization. By default, this method return true
+when the business object has been designed with the historic property.
+Above, the data bulk update is allowed to user who does not belong to MYGROUP.
 
 **Example:**
 
@@ -207,7 +209,8 @@ public boolean isHistoric() {
 Data preparation hooks
 ----------------------
 
-These data preparation hooks are Object UI-oriented hooks because they are called before displaying a page for read or write (create, update, delete) of an object item.
+These data preparation hooks are Object UI-oriented hooks because they are called before displaying
+a page for read or write (create, update, delete) of an object item.
 
 - `initCreate` before displaying a create form
 - `initCopy` before displaying a copy form
@@ -236,7 +239,7 @@ public void initCreate() {
 @Override
 public void initUpdate() {
 	String s = getStatus();
-	getField("objField1").setUpdatable("PENDING".equals(s) || "VALIDATED".equals(s));	
+	getField("objField1").setUpdatable("PENDING".equals(s) || "VALIDATED".equals(s));
 }
 
 @Override
@@ -285,7 +288,7 @@ It allows to set field filters for example, etc. just before the search page is 
 @Override
 public void initSearch() {
 	getField("objField1").setFilter("is null or <1000");
-	getField("objLogin").setFilter(getGrant().getLogin());	
+	getField("objLogin").setFilter(getGrant().getLogin());
 }
 ```
 
@@ -294,6 +297,7 @@ public void initSearch() {
 The `initRefSelect` hook is called before a reference lookup popup is displayed.
 
 It allows to set field filters or search-spec just before the popup page is displayed:
+
 - the parent object is set to get contextual information
 - `this.getParentObjectRefField`: useful to know from which foreign key the list is called from UI
 - `parent.getOldValue`: contains DB value of parent field
@@ -321,14 +325,13 @@ public void initRefSelect(ObjectDB parent) {
 
 The `initDataMapSelect` hook has the same behavior to get referenced data by values.
 
-
 ### Action preparation hooks
 
 When action has confirm fields this hook allows to prepare them before rendering.
 
 **Example:**
 
-```simplicite-java
+```java
 @Override
 public void initAction(Action action) {
 	ObjectField f = action.getConfirmField("myFieldName");
@@ -344,29 +347,28 @@ displaying the result of an export, a pivot table, a chart, an agenda, a publica
 
 They allow to define field filters for example, field values, etc. just before the result is displayed.
 
-
 Data processing hooks
 ---------------------
 
 ### Pre and post validation hooks
 
 These `preValidate` and `postValidate` hooks are called before and after the generic data validation
-is made by the engine.  
+is made by the engine.
 
 The generic validation is made before saving a record (creation or update). It only checks the
 compliance of submitted date in regards to the object definition (e.g. it checks the type of the fileds, checks
-value of the mandatory fields, apply regular expression checks, ...).  
+value of the mandatory fields, apply regular expression checks, ...).
 
 If you have some additional validation logic to add to your business object, such as setting a mandatory
 field default value before validation or checking a validated value against a more advance business logic
-(e.g. check that an order quantity is higher than a previously ordered quantity).  
+(e.g. check that an order quantity is higher than a previously ordered quantity).
 
-Information, warning and/or error messages may be returned (only one message or several).  
-Only error message(s) prevents the actual saving of the record.  
+Information, warning and/or error messages may be returned (only one message or several).
+Only error message(s) prevents the actual saving of the record.
 
 **Examples:**
 
-```simplicite-java
+```java
 @Override
 public List<String> preValidate() {
 	List<String> msgs = new ArrayList<String>();
@@ -392,16 +394,16 @@ configured in the `TEXT` list.
 
 ### Pre and post selection hooks
 
-The `preSelect` and `postSelect` hooks are called before/after selecting the object data (in a list they are called for each list items). 
+The `preSelect` and `postSelect` hooks are called before/after selecting the object data (in a list they are called for each list items).
 
-They can be used to implement some business rules to set some field values for example.  
+They can be used to implement some business rules to set some field values for example.
 
 **Example:**
 
 ```java
 @Override
 public void preSelect(String rowId, boolean copy) {
-	// If the data is selected for a copy set a field with particular value 
+	// If the data is selected for a copy set a field with particular value
 	if (copy)
 		getField("objField1").setValue("value");
 	super.preSelect(rowId, copy);
@@ -410,7 +412,8 @@ public void preSelect(String rowId, boolean copy) {
 
 ### Pre and post creation, update, deletion hooks
 
-The `preCreate`, `preUpdate`, `preDelete`, `postCreate`, `postUpdate`, `postDelete` hooks are called before/after creating, updating, deleting the object data.
+The `preCreate`, `preUpdate`, `preDelete`, `postCreate`, `postUpdate`, `postDelete` hooks are called before/after creating,
+updating, deleting the object data.
 
 The `preSave` hook is called just after the `preCreate` or `preUpdate` hooks (see below).
 
@@ -454,13 +457,17 @@ Post delete hook can be used to implement some business rules after the object i
 		ObjectField client = this.getField("orderClientId");  // foreign key
 		ObjectField number = this.getField("orderNumber");
 		String n = this.getGrant().getNextValueForColumnWhere(this.getTable(), number.getColumn(), client.getColumn()+" = "+client.getValue());
-		number.setValue(n); 	
+		number.setValue(n);
 		return super.preCreate();
 	}
 ```
 
-> **Note**: to generate unique codes based on the **row ID** the right approach is to configure a default value expression on your field with an expression like
-> `[EXPR:Tool.format("ABC-%05d", Long.valueOf([ROWID]))]` (in this example the field gets `ABC-00123` as value at the creation of a record with row ID `123`)
+:::note
+To generate unique codes based on the **row ID** the right approach is to configure
+a default value expression on your field with an expression like
+`[EXPR:Tool.format("ABC-%05d", Long.valueOf([ROWID]))]` (in this example the field gets `ABC-00123`
+as value at the creation of a record with row ID `123`)
+:::
 
 ### Pre and post save hooks
 
@@ -471,11 +478,11 @@ In all cases, the `preSave` hook is called after a `preUpdate` or a `preCreate` 
 In all cases, the `postSave` hook is called after a `postUpdate` or `postCreate` hook.
 
 These hooks can be used to implement some business rules to set some field values (that needs to be done after validation)
-or just to prevent saving in some particular cases, etc.  
+or just to prevent saving in some particular cases, etc.
 
 **Example:**
 
-```simplicite-java
+```java
 @Override
 public String postSave() {
 	// Update a data of a linked object after
@@ -490,9 +497,9 @@ public String postSave() {
 			} catch (SaveException|ValidateException e) {
 				AppLog.error(e, getGrant());
 			}
-			
+
 		}
-		
+
 	}
 	return super.postSave();
 }
@@ -506,10 +513,11 @@ The javascript override the default behavior and have to reload the form or redi
 String url = HTMLTool.getFormURL("User", null, "1", "nav=add");
 return HTMLTool.redirectStatement(url);
 ```
+
 or
 
 ```java
-String js = 
+String js =
 	// Redirect after a given transition
 	"if (action=="MyTransition-WAIT-DONE") {" +
 		"$ui.info('Transition done!');" +
@@ -523,15 +531,15 @@ return HTMLTool.javascriptStatement(js);
 
 ### Pre and post search hooks
 
-The `preSearch` and `postSearch` hooks are called before/after searching the object data: before/after the search core method is called.  
+The `preSearch` and `postSearch` hooks are called before/after searching the object data: before/after the search core method is called.
 
-Pre search hook is called to add specific filters or order the result: list, pivot table, graph, publication or export.  
+Pre search hook is called to add specific filters or order the result: list, pivot table, graph, publication or export.
 
 Post search hook is called after search to add specific code for instance to evaluate simple calculated fields, reorder or remove records.
 
 **Examples:**
 
-```simplicite-java
+```java
 @Override
 public void preSearch() {
 	getField("objField1").setFilter("is null or <1000");
@@ -544,11 +552,11 @@ public List<String[]> postSearch(List<String[]> rows) {
 	int fieldIndex = getFieldIndex("objField1");
 	int i=0;
 	for(String[] row: rows){
-		row[i] = "Value #" + i;	
+		row[i] = "Value #" + i;
 		i++;
 	}
 	return super.postSearch(rows);
-	
+
 }
 ```
 
@@ -612,10 +620,10 @@ These hooks are called to add specific behaviors before/after an import.
 	}
 	@Override
 	public String postImport() {
-		// Send an alert if a null value is imported 
+		// Send an alert if a null value is imported
 		Alert a = getAlert("MYALERT", Alert.TYPE_INFO);
 		if (!Tool.isEmpty(a) && getField("objField1").isEmpty())
-			a.send(this);	
+			a.send(this);
 		return super.postImport();
 	}
 ```
@@ -688,7 +696,7 @@ public String getExportFileName(String type, String name, String row[]) {
 
 ### Pre and post alerts hooks
 
-The `preAlert` and `postAlert` hooks are called before/after the alert is sending.  
+The `preAlert` and `postAlert` hooks are called before/after the alert is sending.
 
 The `preAlert` hook can be used to change the alert just before sending (change the core message and/or add specific recipients).
 
@@ -706,6 +714,7 @@ public String preAlert(Alert a) {
 	return super.preAlert(a);
 }
 ```
+
 The `postAlert` hook can be used to implement some business logic just after sending.
 
 **Example:**
@@ -718,7 +727,7 @@ public String postAlert(Alert a) {
 }
 ```
 
-<h4 id="sendalert">Send alert with custom attachments</h4>
+### Send alert with custom attachments
 
 It is possible to send one alert from any other hook and to add specific attachments:
 
@@ -745,7 +754,7 @@ public String postSave() {
 				}
 			}
 		}
-		
+
 		// Send with custom attachments
 		alert.send(this, att);
 	}
@@ -791,7 +800,8 @@ Other hooks
 
 ### Short label hook
 
-The `getUserKeyLabel` hook can be used to override a business object record's default "short" label (the one which is displayed on form titles, on indexed search results, on treeviews, ...)
+The `getUserKeyLabel` hook can be used to override a business object record's default "short" label
+(the one which is displayed on form titles, on indexed search results, on treeviews, ...)
 
 **Example:**
 
@@ -808,8 +818,6 @@ public String getUserKeyLabel(String[] row) {
 ### Style hook
 
 It is possible to set style (for instance a CSS class) on a field based on business logic:
-
-**Java**
 
 ```java
 @Override
@@ -864,10 +872,10 @@ h.search(false);
 ```
 
 ### Redirection
- 
+
 It is possible to open a given "abstract" father object (e.g. `Vegetable`) record
 as its corresponding specialized child object (e.g. `Carrot` or `Cabbage`) record by implementing a father-child redirect hook.
- 
+
 **Example:**
 
 ```java
@@ -935,7 +943,7 @@ Inheritance
 -----------
 
 Let's say you have a `MyChildObject` that inherits from `MyFatherObject` you can call the hooks of the father object's code
-from the child object's code by using the `MyFatherObject.<hook name>.call(this, <hook arguments>)` syntax (the `.call(this, ` part
+from the child object's code by using the `MyFatherObject.<hook name>.call(this, <hook arguments>)` syntax (the `.call(this,` part
 make the call to be done for the child object's scope).
 
 **Example:**

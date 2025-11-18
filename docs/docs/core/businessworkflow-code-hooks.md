@@ -16,20 +16,20 @@ You **need** to implement one or several of these hooks if you want to apply out
 Hooks are very powerful as you can write any needed code, but you need to be careful on the choice of the hook to put your logic in.
 The choice depends on the nature of the considered business logic.
 
-
 Process definition and right-related hooks
 -----------------------------------------
 
 ### Post instantiate hook
 
-The `postInstantiate` hook is called **once** when the process definition is loaded.  
+The `postInstantiate` hook is called **once** when the process definition is loaded.
 It can therefore be used to modify the **static** process definition of each instance.
 
-In this context, "static" refers to definition settings that remain constant throughout the duration of the user session, as opposed to dynamic settings that may be modified by other hooks.
+In this context, "static" refers to definition settings that remain constant throughout the duration of the user session,
+as opposed to dynamic settings that may be modified by other hooks.
 
-For instance it can be used to:  
+For instance it can be used to:
 
-- Change some related object definition: field behavior (visibility, updatability, ...) depending on user's rights 
+- Change some related object definition: field behavior (visibility, updatability, ...) depending on user's rights
 - Change some activities definition
 
 Example:
@@ -46,18 +46,18 @@ public void postInstantiate(Grant g) {
 	// Show/Hide some fields
 	o.getField("myField").setVisibility(ObjectField.VIS_HIDDEN);
 	o.getField("myOtherField").setVisibility(ObjectField.VIS_BOTH);
-	
+
 	// Limit the search to employees
 	if (g.hasResponsibility("EMPLOYEE"))
 		o.setDefaultSearchSpec("(t.amount > 1000 and t.enabled='1')");
-	
+
 	super.postInstantiate(g);
 }
 ```
 
 ### Pre/Post activate hook
 
-The `preActivate`/ `postActivate` hook are called before/after the process is activated.  
+The `preActivate`/ `postActivate` hook are called before/after the process is activated.
 Activate a process auto-validate the `BEGIN` activity and returns the first user activity.
 
 Example:
@@ -67,7 +67,7 @@ Example:
 @Override
 public Message preActivate() {
 	// Activity definition (Data, Translation...)
-	Activity a = getActivity("ACTIVITY_CODE");  
+	Activity a = getActivity("ACTIVITY_CODE");
 	AppLog.info("activity = " + a.toString(),getGrant());
 	// Activity instance in this process
 	ActivityFile context = getContext(a);
@@ -116,7 +116,7 @@ public void postLock(ActivityFile context) {
 
 ### Pre/Post validate hook
 
-The `preValidate`/ `postValidate` hook are called before/after one activity is validated.  
+The `preValidate`/ `postValidate` hook are called before/after one activity is validated.
 Allows to add business rules before/after the activity is validated (on UI `next` button is clicked).
 
 - Change the activity result (the return code to be used in transition)
@@ -124,47 +124,44 @@ Allows to add business rules before/after the activity is validated (on UI `next
 
 Example:
 
-**Java**
-
 ```Java
 @Override
 public Message preValidate(ActivityFile context) {
 	// At the client step
-	String step = context.getActivity().getStep();  
-	if ("STEP-CLIENT".equals(step)) {  
+	String step = context.getActivity().getStep();
+	if ("STEP-CLIENT".equals(step)) {
 		// Check if the name is set
-		String name = context.getDataValue("Field", "cliName");  
+		String name = context.getDataValue("Field", "cliName");
 		if (Tool.isEmpty(name)) {
 			Message m = new Message();
 			m.raiseError("ERR_CLIENT_NAME");
 			return m;
 		}
 		// Change the activity result if the address is empty
-		String addressId = context.getDataValue("Field", "cliAddressFK");  
-		if (Tool.isEmpty(addressId)) {  
+		String addressId = context.getDataValue("Field", "cliAddressFK");
+		if (Tool.isEmpty(addressId)) {
 			AppLog.info("empty address", getGrant());
 			// EmptyAddress is set in a transition condition
-			context.setDataFile("Return", "Code", "EmptyAddress");  
-		}  
-	} 
+			context.setDataFile("Return", "Code", "EmptyAddress");
+		}
+	}
 		return super.preValidate(context);
 }
 ```
 
 ### Pre/Post abandon hook
 
-The `preAbandon` /`postAbandon` hooks are called  when the process is abandoned.  
+The `preAbandon` /`postAbandon` hooks are called  when the process is abandoned.
 
-Allows to add specific business rules (before/after) in the case the process is abandoned.  
+Allows to add specific business rules (before/after) in the case the process is abandoned.
 
 <!-- **TO BE COMPLETED** -->
 
 Example:
+
 - Change the forward page
 - Delete the created object or return an error
 - Cancel the abandon
-
-**Java**
 
 ```Java
 @Override
@@ -180,7 +177,7 @@ public Message preAbandon() {
 		o.resetFilters();
 		if (o.select(id)) o.del();
 	}
-	
+
 	// Return a Message to cancel the abandon ?
 	if (someRule) {
 		Message m = new Message();
@@ -190,19 +187,18 @@ public Message preAbandon() {
 	return super.preAbandon();// continue
 }
 ```
-### Pre/Post cancel hook  
 
-The `preCancel`/`postCancel` hook are called  when the activity is canceled.  
-Allows to add specific business rules (before/after) in the case the activity is canceled.  
+### Pre/Post cancel hook
+
+The `preCancel`/`postCancel` hook are called  when the activity is canceled.
+Allows to add specific business rules (before/after) in the case the activity is canceled.
 
 Example:
-
-**Java**
 
 ```Java
 @Override
 public Message preCancel(ActivityFile context) {
-	String step = context.getActivity().getStep();  
+	String step = context.getActivity().getStep();
 	// Billing step is canceled ?
 	if ("STEP-BILLING".equals(step)) {
 		// Force the status of the demand step
@@ -223,7 +219,7 @@ Example:
 ```Java
 @Override
 public Message preUnlock(ActivityFile context) {
-	String step = context.getActivity().getStep();  
+	String step = context.getActivity().getStep();
 	if ("STEP-DEMAND".equals(step)) {
 		// Reset fields
 		context.setDataFile("Field", "demAmount", "");
@@ -233,13 +229,12 @@ public Message preUnlock(ActivityFile context) {
 }
 
 ```
+
 ### Pre/Post terminate hook
 
 The `preTerminate`/ `postTerminate` hooks is called when the process is terminated = END activity is reached.
 
 Example:
-
-**Java**
 
 ```Java
 @Override
@@ -259,4 +254,3 @@ public void postTerminate() {
 	super.postTerminate();
 }
 ```
-

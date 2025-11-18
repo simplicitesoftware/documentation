@@ -11,7 +11,8 @@ This document describes the core **client-side JavaScript** API to be used withi
 It applies to either:
 
 - the additional client-side behavior you may want to add to the generic pages as object search pages, object list, object forms, ...
-- your custom pages that uses the standard UI page framework (please refer to [this document](/docs/core/externalobject-code-examples) for details on how to develop such custom pages).
+- your custom pages that uses the standard UI page framework (please refer to [this document](/docs/core/externalobject-code-examples)
+for details on how to develop such custom pages).
 
 Note that you can use in either case the other JavaScript APIs such as:
 
@@ -33,6 +34,7 @@ onload_functions.push(function() {
 	console.log("Welcome to Simplicite version " + Simplicite.VERSION);
 });
 ```
+
 Example 1 (using the Ajax API singleton):
 
 ```javascript
@@ -43,12 +45,17 @@ onload_functions.push(function() {
 });
 ```
 
-> **Note**: You can also use jQuery `$(document).ready()` but the functions will be called **before** the ones added as above and therefore **before** the standard
-> load event functions, some standard stuff may not be initialized at that stage. The use of `ready`is thus **not recommended** unless you know what you do.
-_
+:::note
+You can also use jQuery `$(document).ready()` but the functions will be called **before**
+the ones added as above and therefore **before** the standard
+load event functions, some standard stuff may not be initialized at that stage.
+The use of `ready`is thus **not recommended** unless you know what you do.
+:::
+
 ### Page before unloading
 
-A JavaScript function can be bind to the page `beforeunload` event (it uses jQuery's `bind()` on the `"beforeunload"`" event and the added functions are called **after** the standard beforeunload event functions of the generic UI):
+A JavaScript function can be bind to the page `beforeunload` event (it uses jQuery's `bind()` on the `"beforeunload"`"
+event and the added functions are called **after** the standard beforeunload event functions of the generic UI):
 
 Example:
 
@@ -60,7 +67,8 @@ onbeforeunload_functions.push(function() {
 
 ### Page unloading
 
-A JavaScript function can be bind to the page `unload` event (it uses jQuery's `bind()` on the `"unload"`" event and the added functions are called **after** the standard unload event functions of the generic UI):
+A JavaScript function can be bind to the page `unload` event (it uses jQuery's `bind()` on the `"unload"`"
+event and the added functions are called **after** the standard unload event functions of the generic UI):
 
 Example:
 
@@ -70,7 +78,7 @@ onunload_functions.push(function() {
 });
 ```
 
-<!-- 
+<!--
 ### Main _Enter_ key press event
 
 **TO BE COMPLETED**
@@ -93,7 +101,8 @@ Custom JavaScript patterns
 
 It is **highly recommended** to write your client JavaScript code in unique namespaces.
 
-For instance you can use the object name `MyObject` as namespace (among advantages of this pattern you have private functions, per-business object naming unicity, etc.): 
+For instance you can use the object name `MyObject` as namespace (among advantages of this pattern you have private functions,
+per-business object naming unicity, etc.):
 
 E.g.:
 

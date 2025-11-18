@@ -5,9 +5,12 @@ title: Advanced code examples
 
 Advanced code examples
 ======================
-These examples illustrate more complex use cases for implementing business logic in Java within Simplicité. They are intended for developers already familiar with the basics of object modeling and Java integration.  
 
-Before diving in, please refer to the [basic code examples](/docs/core/basic-code-examples) for guidelines on naming conventions and logging strategies to ensure consistency and maintainability.
+These examples illustrate more complex use cases for implementing business logic in Java within Simplicité. They are intended for developers
+already familiar with the basics of object modeling and Java integration.
+
+Before diving in, please refer to the [basic code examples](/docs/core/basic-code-examples) for guidelines on naming conventions and logging
+strategies to ensure consistency and maintainability.
 
 Sharing parameters
 ------------------
@@ -24,24 +27,23 @@ Examples:
 
 Share a parameter between objects:
 
-**Java**
-
-```simplicite-java
+```java
 @Override
 public void initUpdate() {
 	getGrant().setParameter("MYAPP_CONTEXT_ID", getRowId());
 	super.initUpdate();
 }
+
 @Override
 public void initList(ObjectDB parent) {
 	// To use the current Id of A when a list B is displayed
 	String id = getGrant().getParameter("MYAPP_CONTEXT_ID");
 	if (!Tool.isEmpty(id)){
 		// ...
-	} 
+	}
 	super.initList(parent);
 }
-	
+
 @Override
 	public Object display(Parameters params) {
 	// To use the current Id of A when the external object is displayed
@@ -62,7 +64,6 @@ public void myAction() {
 
 Store a set of data (as `org.json.JSONObject` between hooks of the same object:
 
-**Java**
 ```Java
 @Override
 public List<String> postValidate() {
@@ -70,6 +71,7 @@ public List<String> postValidate() {
 	getGrant().setParameter("MY_DATA", data.toString());
 	return super.postValidate();
 }
+
 @Override
 public String postSave() {
 	JSONParser parser = new JSONParser();
@@ -89,7 +91,7 @@ Etc.
 
 To make a global setting, it is necessary to use the system singleton
 
-```simplicite-java
+```java
 Grant.getSystemAdmin().setParameter(name, value);
 Grant.getSystemAdmin().getParameter(name);
 Grant.getSystemAdmin().removeParameter(name);
@@ -102,9 +104,9 @@ The best solution is to load the parameter depending on user in the `GrantHooks`
 - To request only once any external resource (LDAP, ...) to retrieve external data, rights...
 - Or read some fields added to the object User or in the local database
 
-Example: 
+Example:
 
-```simplicite-java
+```java
 @Override
 public void postLoadGrant(Grant g) {
 	try {
@@ -120,7 +122,7 @@ public void postLoadGrant(Grant g) {
 }
 ```
 
-### Booby traps:
+### Booby traps
 
 - `name`: prefix the names of the grant-level parameters with your **unique** project code to prevent any conflicts
 - `value`: store small values/objects in memory (parameters are in the user's session = the JVM heap)
@@ -135,7 +137,6 @@ As of version 3.1 MAINTENANCE 07, it is possible to do an advanced validation of
 
 **Example**:
 
-**Java**
 ```Java
 try {
 	setFieldValue("myPhoneNumber",  new PhoneNumTool("fr").getNationalNumber(getFieldValue("myPhoneNumber")));
@@ -153,15 +154,16 @@ Data preparation
 
 In order to programmatically generate a list of values, you have to:
 
-1. assign a non-empty static list of values to the field, as you would do for a normal list (this is to avoid "empty list" errors to be triggered by the platform)
+1. assign a non-empty static list of values to the field, as you would do for a normal list
+   (this is to avoid "empty list" errors to be triggered by the platform)
 2. build the dynamic list in the appropriate object's hook:
-	- in the `postLoad` hook if the list is fixed for the duration of the user's session
-	- in the `postSelect` hook if, for instance, the list depends on the current record
-	- etc.
+   - in the `postLoad` hook if the list is fixed for the duration of the user's session
+   - in the `postSelect` hook if, for instance, the list depends on the current record
+   - etc.
 
 **Example**:
 
-```simplicite-java
+```java
 @Override
 public void postLoad() {
 	ObjectField field = getField("myField");
@@ -185,7 +187,6 @@ Encryption/decryption methods using `String` produce/consumes Base64-encoded str
 
 **Example:**
 
-**Java**
 ```Java
 public String key() {
 	// ZZZ set as a system parameter (make sure to configure it as "private") ZZZ
@@ -198,6 +199,7 @@ public String key() {
 	return System.getenv("MY_ENCRYPTION_KEY");
 	// etc.
 }
+
 @Override
 public String preSave() {
 	// Encrypt the value before saving
@@ -209,6 +211,7 @@ public String preSave() {
 	}
 	return super.preSave();
 }
+
 @Override
 public void postSelect(String rowId, boolean copy) {
 	// Decrypt the value after selecting it
@@ -224,12 +227,13 @@ public void postSelect(String rowId, boolean copy) {
 
 > **Note**: an encrypted field using this method cannot be searchable except of exact values (by encrypting the search filter in the `preSearch` hook)
 
-Since version 6.0, you can use the hook `fieldEncryptDB`
-- To be called automatically on form, list (edit list...), search 
+Since version 6.0, you can use the hook `fieldEncryptDB`:
+
+- To be called automatically on form, list (edit list...), search
 - but also in more UI context: crosstab, redolog...
 
 **Example:**
-**Java**
+
 ```java
 private String getKey() {
 	// ZZZ set as a system parameter (make sure to configure it as "private") ZZZ
@@ -253,7 +257,7 @@ private String getKey() {
  */
 public String fieldEncryptDB(ObjectField f, String value, boolean encrypt, String context) {
 	if (f.getName().equals("mySensitiveField")) {
-		return encrypt 
+		return encrypt
 			? EncryptionTool.encrypt(value, getKey())
 			: EncryptionTool.decrypt(value, getKey());
 	}
@@ -269,8 +273,7 @@ and the certificate password as a password field.
 
 It can be easily transposed with the JKS available as a static local file or as a (protected) resource
 and with the password stored as a system parameter or a environment variable etc.
-  
-**Java**
+
 ```Java
 public String callAPI() {
 	try {
@@ -291,17 +294,14 @@ public String callAPI() {
 > and then importing it in a JKS file using `keytool -importkeystore -destkeystore mycert.jks -srckeystore mycert.p12 -srcstoretype PKCS12`
 > (you will be prompted to enter the passwords for the certificates)
 
-
 Asynchronous code
 -----------------
 
-This example to implement a monitoring of CSV exports launched in parallel. 
-
+This example to implement a monitoring of CSV exports launched in parallel.
 
 ```Java
 // Launcher, example : Action button
 public String myActionMethod() {
-
 	JobQueue.push("myExport123", new Runnable() {
 		@Override
 		public void run() {
@@ -317,8 +317,7 @@ and tracker thread, example : external object to display the counter
 @Override
 public String display(Parameters params) {
 	// same object instance
-	ObjectDB obj = getGrant().getObject("myExportObject123", "MyObject"); 
+	ObjectDB obj = getGrant().getObject("myExportObject123", "MyObject");
 	return obj.getParameter(ImportExportTool.EXPORT_PROGRESS);
 }
 ```
-

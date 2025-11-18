@@ -13,12 +13,12 @@ Shared code is a configuration object that lets you write reusable code that can
 
 ## Unit testing the `increaseStock` method
 
-[Previously](/tutorial/expanding/hooks#increase-stock-method) we created an `increaseStock` method for the `DemoProduct` object. Let's write a unit test for this method. 
+[Previously](/tutorial/expanding/hooks#increase-stock-method) we created an `increaseStock` method for the `DemoProduct` object. Let's write a unit test for this method.
 
 To do so, follow the steps below :
 1. In the **Settings > Shared code** menu, click **Create**
 ![](img/shared-code/create.png)
-2. Fill in the **Shared code** fields like so : 
+2. Fill in the **Shared code** fields like so :
     - Name : **TrnProductTest**
     - Type : **Server code (unit tests)**
     ![](img/shared-code/create-values.png)
@@ -26,9 +26,9 @@ To do so, follow the steps below :
 4. Click **Edit**
 5. Select **Java** and click **Confirm**
 
-Implement the `TrnProductTest` class like so : 
+Implement the `TrnProductTest` class like so :
 
-```simplicite-java title=TrnProductTest.java
+```java title=TrnProductTest.java
 package com.simplicite.tests.Training;
 
 import static org.junit.Assert.assertEquals;
@@ -55,7 +55,7 @@ public class TrnProductTest {
         // Using the system admin grant for testing
         return Grant.getSystemAdmin();
     }
-    
+
     /**
      * Test the increaseStock action
      * Verifies that calling increaseStock increases the product stock by 10 units
@@ -72,17 +72,17 @@ public class TrnProductTest {
                 .put("trnPrdStock", 5), true, false, false);
             // Save the test product to database
             product.save();
-            
+
             // Get reference to stock field and store initial value
             ObjectField stockField = product.getField("trnPrdStock");
             int initialStock = stockField.getInt(0);
-            
+
             // Execute the increaseStock action on the product
             product.invokeAction("IncreaseStock", null);
-            
+
             // Assert that stock increased by exactly 10 units
             assertEquals("Stock should be increased by 10", initialStock + 10, stockField.getInt(0));
-            
+
             // Cleanup by removing test product from database
             product.delete();
         }
@@ -101,9 +101,9 @@ public class TrnProductTest {
 
 In the previous code excerpt, we use `Grant.getSystemAdmin()` to instantiate `TrnProduct`. For this to work, we need to add the `TRN_SUPERADMIN` profile to `ADMIN` :
 
-1. In **Users and rights > Groups**, open **ADMIN** 
+1. In **Users and rights > Groups**, open **ADMIN**
     > You might need to [remove the module filter](/make/project/module#module-filtering) if ADMIN doesn't appear in the list
-2. In the **Profile members** panel, create **TRN_SUPERADMIN** Profile in the **Training** module. 
+2. In the **Profile members** panel, create **TRN_SUPERADMIN** Profile in the **Training** module.
 3. Clear the platform's cache
 
 ## Running the unit test

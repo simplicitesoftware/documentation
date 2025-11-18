@@ -119,7 +119,8 @@ canDeleteLink: null //function(tplLink) { return false; }, // default is false
 Case 1: Business object hooks
 -----------------------------
 
-ModelBusinessObject is a template to edit the internal objects in a diagram (as a class diagram), and has been scripted to: 
+ModelBusinessObject is a template to edit the internal objects in a diagram (as a class diagram), and has been scripted to:
+
 - Add icons and datatypes on attributes
 - Change link aspect: reference arrow, aggregation, inheritance...
 - Launch the wizards to create objects and fields
@@ -320,6 +321,7 @@ Case 2: States model
 --------------------
 
 In this example:
+
 - Use Ajax to get the related list Id
 - Change the node rendering to display the state code and label
 - Add information on states transition (alert, granted groups...)

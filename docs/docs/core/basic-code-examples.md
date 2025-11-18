@@ -41,25 +41,24 @@ com.simplicite.webapp.tools
 
 It is possible to include a whole additional packages by:
 
-#### Java
 ```text
 import <java class name (e.g. org.apache.commons.lang3)>.*;
 ```
 
 or a single additional class by:
-#### Java
+
 ```text
 import <java class name (e.g. org.apache.commons.lang3.StringUtils)>;
 ```
-Example:
 
-#### Java
+Example:
 
 ```java
 import org.apache.commons.lang3.StringUtils;
 AppLog.info(StringUtils.isNumeric("hello world"),getGrant()); // false
 AppLog.info(StringUtils.isNumeric("123"),getGrant()); // true
 ```
+
 Logging
 -------
 
@@ -67,9 +66,7 @@ Logging
 
 It is possible to log messages using:
 
-#### Java
-
-```simplicite-java
+```java
 AppLog.debug("Hello world !",getGrant());   // Debug level message
 AppLog.info("Hello world !",getGrant());    // Info level message
 // e is type java.lang.Throwable
@@ -80,17 +77,15 @@ AppLog.fatal(e,getGrant());   // Fatal level message
 
 It is also possible to link a message to an explicit log code:
 
-#### Java
-
-```simplicite-java
+```java
 AppLog.log("MYLOGCODE_001","Hello world !",getGrant());
 ```
+
 Note that if the log code is omitted the `log` method is the equivalent to the default `info`method.
 
 The messages are actually displayed depending on the log appenders configuration and on the log code associated configuration.
 
 Designers can activate the hooks tracer during the development phase. (only > V6 Version)
-
 
 ```java
 Override
@@ -103,6 +98,7 @@ public void postLoad() {
 	traceHooks(true, false);
 }
 ```
+
 It is possible to track hook's duration : log a warning after 2s by default (only in > V6 Version of Simplicité)
 
 ```java
@@ -149,9 +145,7 @@ Business objects manipulation
 
 Selecting a **single record** from its row ID.
 
-#### Java
-
-```simplicite-java
+```java
 ObjectDB o = getGrant().getTmpObject("myObject");
 synchronized (o.getLock()) {
 	o.resetFilters();
@@ -169,9 +163,7 @@ Search **multiple records** with filters and ordering.
 
 Without pagination:
 
-#### Java
-
-```simplicite-java
+```java
 ObjectDB o = getGrant().getTmpObject("myObject");
 synchronized (o.getLock()) {
 
@@ -207,27 +199,23 @@ synchronized (o.getLock()) {
 }
 ```
 
-With pagination to limit memory usage:
+With pagination to limit memory usage, you have to implement a callback for each page:
 
-#### Java
+- V6 supports a `pageNum` parameter to calculate a global rowNum in search:
 
-You have to implement a callback for each page:
-
-V6 supports a `pageNum` parameter to calculate a global rownum in search:
-
-```simplicite-java
+```java
 final int maxRowsPerPage = 50;
 obj.search(true, maxRowsPerPage, (rows, pageNum) -> {
-	int rownum = maxRowsPerPage * pageNum;
+	int rowNum = maxRowsPerPage * pageNum;
 	for (String[] row : rows) {
 		o.setValues(row, true);
 		// ...
-		rownum++;
+		rowNum++;
 	}
 });
 ```
 
-V5 previous syntax without `pageNum`:
+- V5 previous syntax without `pageNum`:
 
 ```java
 int maxRowsPerPage = 50;
@@ -250,14 +238,13 @@ You should thus never use the **values** but only the **codes** in your code.
 
 Example: iterate on the codes of a field's list of values:
 
-#### Java
-
 ```java
 for (EnumItem item : o.getField("myField").getList().getAllItems()) {
 	String code = item.getCode();
 	// ...
 }
 ```
+
 ### Filtering
 
 The setSearchSpec is a method that allows you to set an SQL where clause on your business object.
@@ -269,9 +256,7 @@ If it's a static filter that never changes, use the postLoad hook to define your
 The object's table alias is t.
 The alias of the related object table is t_logical name technical key.
 
-#### Java
-
-```simplicite-java
+```java
 @Override
 public void postLoad() {
 	if (getGrant().hasResponsibility("USER_GROUP"))
@@ -290,20 +275,17 @@ Others
 
 ### Sending emails
 
-#### Java
+```java
+ObjectDB obj = getGrant().getTmpObject("myObject");
+ObjectField myObjectFile = obj.getField("myObjFile"); // must be of type file
 
-```simplicite-java
-	ObjectDB obj = getGrant().getTmpObject("myObject");
-	ObjectField myObjectFile = obj.getField("myObjFile"); // must be of type file
-
-	// https://platform.simplicite.io/current/javadoc/com/simplicite/util/tools/MailTool.html
-	MailTool mail = new MailTool(getGrant());
-	mail.addRcpt("contact@null.fr");
-	mail.setSubject("Test Mail");
-	mail.addAttach(obj, myObjectFile);
-	mail.setBody("<p>Hello</p>");
-	mail.send();
-	);
+// https://platform.simplicite.io/current/javadoc/com/simplicite/util/tools/MailTool.html
+MailTool mail = new MailTool(getGrant());
+mail.addRcpt("contact@null.fr");
+mail.setSubject("Test Mail");
+mail.addAttach(obj, myObjectFile);
+mail.setBody("<p>Hello</p>");
+mail.send();
 ```
 
 ### ZIP files
@@ -312,7 +294,7 @@ Others
 
 This simple example unzips a ZIP file read from a public URL and unzip it to a temporary folder for processing files:
 
-```simplicite-java
+```java
 public void readZip(File zipFile){
 	File destDir = new File(this.getGrant().getTmpDir() + "/mydata." + System.currentTimeMillis());
 	try {
@@ -348,7 +330,7 @@ public byte[] writeZip() {
 
 Example to export a ZIP with documents from object fields using a temporary directory:
 
-```simplicite-java
+```java
 String tmpdir = FileTool.getRandomDirname(Platform.getTmpDir(), "myArchive");
 try {
 	File tmp = new File(tmpdir);
@@ -384,6 +366,6 @@ finally {
 }
 ```
 
-> **Note**: There are several other methods and variants in `Tool`, `ZIPTool` and `FileTool` that you can use to manipulate URLs and files
-
-
+:::note
+There are several other methods and variants in `Tool`, `ZIPTool` and `FileTool` that you can use to manipulate URLs and files
+:::

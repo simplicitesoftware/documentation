@@ -25,7 +25,7 @@ This is why the unit testing of such hooks have to be done in the context of a r
 
 For instance:
 
-```simplicite-java
+```java
 package com.simplicite.tests.MyModule;
 
 import static org.junit.Assert.assertEquals;

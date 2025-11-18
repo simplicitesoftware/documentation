@@ -48,13 +48,14 @@ like you would do normally, but then specify the following :
 Custom code
 -----------
 
-The following code is added to the object to make it **really minimalistic** by hiding most of SimpleUser's fields and automating group attribution. Add and adapt the following code to your use case:
+The following code is added to the object to make it **really minimalistic** by hiding most of SimpleUser's fields and automating group attribution.
+Add and adapt the following code to your use case:
 
 - the package name
 - the class name
 - the group / type correspondence in the `postSave`
 
-```simplicite-java
+```java
 package com.simplicite.objects.SimFeatures;
 
 import java.util.*;
