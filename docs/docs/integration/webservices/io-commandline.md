@@ -6,37 +6,36 @@ title: I/O services
 I/O services for command line interface
 =======================================
 
-The `/io` endpoint is designed to execute usual operation tasks in a CLI, without using the UI. 
+The `/io` endpoint is designed to execute usual operation tasks in a CLI, without using the UI.
 
 :::warning
-
 In production the I/O endpoint should be restricted only to allowed origins (e.g. using filtering on request's origin IP address or similar approaches).
-
 :::
 
 Authentication
 --------------
 
-Access to the `/io` endpoint is granted by passing credentials the endpoint, which will be refered to with the `<credentials>` placeholder in the rest of this document. Those credentials can be of different types:
+Access to the `/io` endpoint is granted by passing credentials the endpoint, which will be refered
+to with the `<credentials>` placeholder in the rest of this document. Those credentials can be of different types:
 
 - standard access:
-	- `-u <login>:<password>`
-	- a simple login and password of an active user in the platform
-	- the user must not have a `FORCE_CHANGE_PASSWORD` flag (as it is the case for designer on a fresh install)
+  - `-u <login>:<password>`
+  - a simple login and password of an active user in the platform
+  - the user must not have a `FORCE_CHANGE_PASSWORD` flag (as it is the case for designer on a fresh install)
 - a dedicated I/O password
-	- `-u designer:<password>` (works only for the **designer** user)
-	- passed as
-		- a JVM argument `io.password`
-		- an environement variable `IO_PASSWORD`
-		- [legacy/unsafe] a system parameter `EAI <login>`
-	- either in plain text, or hashed with the algorithm specified in `HASH_PASSWORD`
+  - `-u designer:<password>` (works only for the **designer** user)
+  - passed as
+    - a JVM argument `io.password`
+    - an environement variable `IO_PASSWORD`
+    - [legacy/unsafe] a system parameter `EAI <login>`
+  - either in plain text, or hashed with the algorithm specified in `HASH_PASSWORD`
 - API access
-	- `-H "X-Simplicite-Authorization: Bearer $TOKEN"`, cf [API auth](/docs/integration/webservices/services-auth) first
-	- on the `/api/io` endpoint
+  - `-H "X-Simplicite-Authorization: Bearer $TOKEN"`, cf [API auth](/docs/integration/webservices/services-auth) first
+  - on the `/api/io` endpoint
 
 You can test it by using the following command:
 
-```shell
+```text
 curl <credentials> --form "file=" $INSTANCE_URL/io
 ```
 

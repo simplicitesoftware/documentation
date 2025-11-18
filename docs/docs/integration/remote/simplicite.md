@@ -91,5 +91,6 @@ Then linked objects are usable as local business objects: search, links, `row_id
 Current limitations:
 
 - Designer can't specify which fields are to be synchronized, it's the whole object that is synchronized (use inheritance to extend objects locally).
-- There will surely be undetermined cases of flows that cross when there are several primaries in parallel that allow concurrent accesses: the last update wins.
+- There will surely be undetermined cases of flows that cross when there are several primaries in parallel
+  that allow concurrent accesses: the last update wins.
 - The system will not set a lock between applications: the `m_object_usage` table remains for local access concurrency.
