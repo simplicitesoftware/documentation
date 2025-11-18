@@ -3,33 +3,42 @@ sidebar_position: 10
 title: I/O services
 ---
 
-I/O services for command line interface (`/io`)
-=================================================
+I/O services for command line interface
+=======================================
 
-As of **version 3.0**, usual administrative tasks can be done using the `curl` command line tool using the I/O endpoint.
-
-:::note
-In version 3.x adding `-b cookies.txt -c cookies.txt` as arguments of the `curl` calls is **required**
-as they allow to re-use the same server session (identified by the `JSESSIONID` cookie).
-In versions 4.0+ a technical session is used to avoid taking care of the session cookie.
-:::
-
-As of **version 3.1**, the I/O endpoint supports either I/O authentication (using the I/O password stored
-in a `EAI <login>:<password>` system parameter, in this case `<credentials>` is `-u <login>[:<I/O password>]`)
-or the API endpoint authentication mechanisms described in [this document](/docs/integration/webservices/services-auth)
-(in this case `<credentials>` are API endpoint authentication headers).
-
-As of **version 4.0.P22**, the I/O endpoint does not any longer support API authentication,
-to use such API authentication you now need to use the I/O service deployed on the API endpoint.
-
-As of **version 5**, the I/O endpoint allows passing a dedicated password as the `io.password` JVM argument or the `IO_PASSWORD` environment parameter
-(which can contain either a plain text password - not recommended - or a non salted hashed password using the configured hashing algorithm)
-instead of the legacy (and rather unsecure) `EAI *` system parameters.
+The `/io` endpoint is designed to execute usual operation tasks in a CLI, without using the UI. 
 
 :::warning
-In production the I/O endpoint should be restricted only to allowed origins
-(e.g. using filtering on request's origin IP address or similar approaches).
+
+In production the I/O endpoint should be restricted only to allowed origins (e.g. using filtering on request's origin IP address or similar approaches).
+
 :::
+
+Authentication
+--------------
+
+Access to the `/io` endpoint is granted by passing credentials the endpoint, which will be refered to with the `<credentials>` placeholder in the rest of this document. Those credentials can be of different types:
+
+- standard access:
+	- `-u <login>:<password>`
+	- a simple login and password of an active user in the platform
+	- the user must not have a `FORCE_CHANGE_PASSWORD` flag (as it is the case for designer on a fresh install)
+- a dedicated I/O password
+	- `-u designer:<password>` (works only for the **designer** user)
+	- passed as
+		- a JVM argument `io.password`
+		- an environement variable `IO_PASSWORD`
+		- [legacy/unsafe] a system parameter `EAI <login>`
+	- either in plain text, or hashed with the algorithm specified in `HASH_PASSWORD`
+- API access
+	- `-H "X-Simplicite-Authorization: Bearer $TOKEN"`, cf [API auth](/docs/integration/webservices/services-auth) first
+	- on the `/api/io` endpoint
+
+You can test it by using the following command:
+
+```shell
+curl <credentials> --form "file=" $INSTANCE_URL/io
+```
 
 Rights
 ------
@@ -62,7 +71,7 @@ Imports
 
 To import a file `<file>` the command is:
 
-```text
+```bash
 curl <credentials> --form service=<import command> --form file=@<file> [<extra parameters>] <I/O URL>
 ```
 
@@ -98,7 +107,7 @@ Exports
 
 To export data in a file `<file>` the command is:
 
-```text
+```bash
 curl <credentials> --form service=<export command> -o <file> [<extra parameters>] <I/O URL>
 ```
 
@@ -133,7 +142,7 @@ Git
 
 As of **version 3.2**, to do a Git commit on a module, the command is:
 
-```text
+```bash
 curl <credentials> --form service=modulecommit --form module=<module name> --form message="<commit message>" <I/O URL>
 ```
 
@@ -144,7 +153,7 @@ Others
 
 To flush server-side cache, the command is:
 
-```text
+```bash
 curl <credentials> --form service=clearcache <I/O URL>
 ```
 
@@ -152,7 +161,7 @@ curl <credentials> --form service=clearcache <I/O URL>
 
 Various purge tasks can be processed using following commands:
 
-```text
+```bash
 curl <credentials> --form service=<purge command> <I/O URL>
 ```
 
@@ -175,7 +184,7 @@ As of version 5.2 for `purgelogs`, `purgejobs`and `purgesupervisions` an additio
 
 To force indexation to be (re)built, the command is:
 
-```text
+```bash
 curl <credentials> --form service=buildindex <I/O URL>
 ```
 
@@ -183,13 +192,13 @@ curl <credentials> --form service=buildindex <I/O URL>
 
 To run all tests from a **test shared code**, the command is:
 
-```text
+```bash
 curl <credentials> --form service=unittests --form test=<test shared code name> <I/O URL>
 ```
 
 To run all unit tests shared codes of a **module**, the command is:
 
-```text
+```bash
 curl <credentials> --form service=unittests --form module=<module name> <I/O URL>
 ```
 
@@ -199,19 +208,19 @@ be refactored as **test shared code**.
 
 To run a **deprecated** business object's unit tests, the command is:
 
-```text
+```bash
 curl <credentials> --form service=unittests --form object=<business object name> <I/O URL>
 ```
 
 To run a **deprecated** external object's unit tests, the command is:
 
-```text
+```bash
 curl <credentials> --form service=unittests --form extobject=<external object name> <I/O URL>
 ```
 
 To run a **deprecated** business process's unit tests, the command is:
 
-```text
+```bash
 curl <credentials> --form service=unittests --form process=<business process name> <I/O URL>
 ```
 
@@ -221,6 +230,6 @@ curl <credentials> --form service=unittests --form process=<business process nam
 
 To retrieve the server logs, the command is:
 
-```text
+```bash
 curl <credentials> --form service=logs <I/O URL>
 ```
