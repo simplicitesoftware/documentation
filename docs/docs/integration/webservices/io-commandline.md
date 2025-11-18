@@ -68,17 +68,20 @@ curl <credentials> --form service=<import command> --form file=@<file> [<extra p
 
 Where `<import command>` is one of :
 
-- `xmlimport` : import a **standard XML** file (no extra parameter required)
-- `zipimport` : import a **standard ZIP** file (no extra parameter required)
-- `csvimport` : import a single object's **standard CSV** file with `<extra parameters>` = `--form object=<object name>`
-- `adpimport` : import a custom file using an adapter with `<extra parameters>` = `--form adapter=<adapter name>`
-- `moduleimport` : import a **standard XML/JSON or ZIP/tar.gz** using module strategy file
-  with `<extra parameters>` = `--form module=<module name> --form version=<module version> --form zip=<true|false>`
-  (restricted to users who have a responsibility on the `ADMIN` group)
-  - an optional extra parameter can be set the diff mode import: `--form diff=<true|false>` (defaults to `true`)
-- `modulesimport` (as of **version 5**) : import a set of modules (with optional datasets loading and unit tests execution) described by an **importspec**
-  (this applies the same version-driver logic as the one used during the startup's importspec phase)
-- `sqlscript` : execute a SQL script (no extra parameter required, restricted to users who have a responsibility on the `ADMIN` group)
+- `xmlimport`: import a **standard XML** file
+- `jsonimport`: import a **standard JSON** file
+- `zipimport`: import a **standard ZIP** file
+- `csvimport`: import a single object's **standard CSV** file with mandatory `<extra parameters>` = `--form object=<object name>`
+- `adpimport`: import a custom file using an adapter with mandatory `<extra parameters>` = `--form adapter=<adapter name>`
+
+And for the users having a responsibility on the `ADMIN` group:
+
+- `moduleimport`: import a **standard XML/JSON or ZIP/tar.gz** using module strategy file
+  with mandatory `<extra parameters>` = `--form module=<module name> --form version=<module version> --form zip=<true|false>`
+  - an optional extra parameter can be set to use the diff mode import: `--form diff=<true|false>` (defaults to `true`)
+- `modulesimport` (note the `modules` with an `s`): import a set of modules described by an **import specification**,
+  the `file` parameter is here a JSON or YAML file using the same syntax as the one used during the startup's import specification phase
+- `sqlscript`: execute a SQL script
 
 The file can also be designated by a URL then the `--form file=@<file>` is to be changed to `--form url=@<url>`.
 
@@ -86,7 +89,7 @@ The file can also be designated by a URL then the `--form file=@<file>` is to be
 - An optional extra parameter can be set to indicate processing logs output format: `--form output=<plain|xml>` (defaults to `plain`)
 
 :::note
-The standard XML, ZIP and CSV formats are described [in this document](/docs/integration/webservices/standard-formats).
+The standard formats are described [in this document](/docs/integration/webservices/standard-formats).
 :::
 
 Exports
@@ -103,8 +106,14 @@ Where `<export command>` is one of :
 - `xmlexport`: export an object data to a **standard XML** file with `<extra parameters>` = `--form object=<object name>`
   - an optional  extra parameter can be set to inline documents and images as Base64 strings
     in the XML file: `--form inlinedocs=<true|false>` (default is `false`)
+- `jsonexport`: export an object data to a **standard JSON** file with `<extra parameters>` = `--form object=<object name>`
+  - an optional  extra parameter can be set to inline documents and images as Base64 strings
+    in the JSON file: `--form inlinedocs=<true|false>` (default is `false`)
 - `zipexport`: export an object data to a **standard ZIP** file with `<extra parameters>` = `--form object=<object name>`
 - `csvexport`: export an object data to a **standard CSV** file with `<extra parameters>` = `--form object=<object name>`
+
+And for the users having a responsibility on the `ADMIN` group:
+
 - `moduleexport`: export module configuration to a standard XML file with `<extra parameters>` = `--form module=<module name>`
   (restricted to users who have a responsibility on the `ADMIN` group)
   - an optional extra parameter can be set to indicate the output format: `--form zip=<true|false>` (defaults to `false`)
@@ -114,13 +123,9 @@ Where `<export command>` is one of :
   order in **standard XML** format (restricted to users who have a responsibility on the `ADMIN` group)
   Note that this service is primarily dedicated to export small amounts of reference and/or dev/test data as a complement to the module configuration.
 
-<!--
-**********************************************
-TODO: arguments for various formats (XML/JSON)
-**********************************************
--->
-
-> **Note**: the standard XML, ZIP and CSV formats are described [here](/docs/integration/webservices/standard-formats)
+:::note
+The standard formats are described [in this document](/docs/integration/webservices/standard-formats).
+:::
 
 Git
 ---
@@ -129,35 +134,6 @@ As of **version 3.2**, to do a Git commit on a module, the command is:
 
 ```text
 curl <credentials> --form service=modulecommit --form module=<module name> --form message="<commit message>" <I/O URL>
-```
-
-Import specification
---------------------
-
-As of **version 5.3**, the import specification syntax can also be used, the command is:
-
-```text
-curl <credentials> --form service=importspec --form file=@<file> <I/O URL>
-```
-
-Where the content of `<file>` is a JSON import specification (or its YAML equivalent) like:
-
-```json
-{
-	"modules": [
-		{
-			"name": "<module name>",
-			"version": "<module version>",
-			"datasets": true,
-				|| "<dataset name>",
-				|| [ "<dataset name 1>", ..., "<dataset name N>" ],
-			"unittests": true
-				|| "<shared code name>"
-				|| [ "<shared code name 1>", ..., "<shared code name N>" ]
-		},
-		...
-	]
-}
 ```
 
 Others
