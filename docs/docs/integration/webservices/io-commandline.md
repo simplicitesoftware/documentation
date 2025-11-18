@@ -80,7 +80,8 @@ And for the users having a responsibility on the `ADMIN` group:
   with mandatory `<extra parameters>` = `--form module=<module name> --form version=<module version> --form zip=<true|false>`
   - an optional extra parameter can be set to use the diff mode import: `--form diff=<true|false>` (defaults to `true`)
 - `modulesimport` (note the `modules` with an `s`): import a set of modules described by an **import specification**,
-  the `file` parameter is here a JSON or YAML file using the same syntax as the one used during the startup's import specification phase
+  the `file` parameter is here a JSON or YAML file using the same syntax as the one used during the startup's import specification phase,
+  see [this document](/docs/operation/auto-setup/#import-spec) for details on the import specification syntax.
 - `sqlscript`: execute a SQL script
 
 The file can also be designated by a URL then the `--form file=@<file>` is to be changed to `--form url=@<url>`.
