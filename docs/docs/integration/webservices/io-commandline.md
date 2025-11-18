@@ -15,7 +15,7 @@ In production the I/O endpoint should be restricted only to allowed origins (e.g
 Authentication
 --------------
 
-Access to the `/io` endpoint is granted by passing credentials the endpoint, which will be refered
+Access to the `/io` endpoint is granted by passing credentials the endpoint, which will be referred
 to with the `<credentials>` placeholder in the rest of this document. Those credentials can be of different types:
 
 - standard access:
@@ -26,7 +26,7 @@ to with the `<credentials>` placeholder in the rest of this document. Those cred
   - `-u designer:<password>` (works only for the **designer** user)
   - passed as
     - a JVM argument `io.password`
-    - an environement variable `IO_PASSWORD`
+    - an environment variable `IO_PASSWORD`
     - [legacy/unsafe] a system parameter `EAI <login>`
   - either in plain text, or hashed with the algorithm specified in `HASH_PASSWORD`
 - API access
