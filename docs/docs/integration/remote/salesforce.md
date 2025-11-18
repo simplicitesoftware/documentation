@@ -25,19 +25,22 @@ The configuration of the remote SalesForce&reg; business object is then set in t
 }
 ```
 
-Nothing else needs to be configured, except rights, as the remote SalesForce&reg; object configuration is dynamically processed to build the local Simplicité  business object.
+Nothing else needs to be configured, except rights, as the remote SalesForce&reg; object configuration
+is dynamically processed to build the local Simplicité  business object.
 
 However, the optional `<additional configuration items>` allow some advanced configuration to be added:
 
 - `mappings: [<array of { <Simplicité field name>: <SalesForce field name>}>]` allows to define explicit mappings between
-explicitly or implicitly configured Simplicité fields, by default the list is `[{"row_id", "Id"},{"created_by", "CreatedById"},{"created_dt", "CreatedDate"},{"updated_by", "LastModifiedById"},{"updated_dt", "LastModifiedDate"}]`
+  explicitly or implicitly configured Simplicité fields, by default the list is
+  `[{"row_id", "Id"},{"created_by", "CreatedById"},{"created_dt", "CreatedDate"},{"updated_by", "LastModifiedById"},{"updated_dt", "LastModifiedDate"}]`
 - `ignored: [<array of SalesForce field names>]` allows to define a list of fields that are not taken into account on Simplicité side,
-by default the list is: `["IsDeleted", "OwnerId", "SystemModstamp", "MasterRecordId"]`.
+  by default the list is: `["IsDeleted", "OwnerId", "SystemModstamp", "MasterRecordId"]`.
 
 Credentials
 -----------
 
-The credentials, that can be shared among several business objects of the same remote SalesForce&reg; instance are configured as JSON in a system parameter (either a global server parameter or a user server parameter):
+The credentials, that can be shared among several business objects of the same remote SalesForce&reg;
+instance are configured as JSON in a system parameter (either a global server parameter or a user server parameter):
 
 ```json
 {
@@ -50,7 +53,9 @@ The credentials, that can be shared among several business objects of the same r
 }
 ```
 
-> **Note**: multiple credentials can also be configured if you need to access to several remote SalesForce&reg; instances.
+:::note
+Multiple credentials can also be configured if you need to access to several remote SalesForce&reg; instances.
+:::
 
 The client ID and client secret are the one defined for a **Connected App** in SalesForce admin UI.
 

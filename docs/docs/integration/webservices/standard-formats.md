@@ -18,7 +18,8 @@ All other fields are optional, except for mandatory fields required during recor
 Standard XML format
 -------------------
 
-The standard XML follows these [XSD schemas](https://www.simplicite.io/resources/schemas/). To summarize it consist in a list of `object` blocs with list of  `data` blocs inside.
+The standard XML follows these [XSD schemas](https://www.simplicite.io/resources/schemas/).
+To summarize it consist in a list of `object` blocs with list of  `data` blocs inside.
 Each `object` corresponds to one business object, each `data` bloc correspond to one record of the business object.
 In a `data` bloc, each tag correspond to one of the objet field, the field tags can be different from on bloc to another.
 
@@ -44,7 +45,7 @@ Example:
 	</data>
 </object>
 </simplicite>
-``` 
+```
 
 You can specify the import mode in the `action` attribute of each of the `object` bloc.
 
@@ -59,9 +60,11 @@ The `action` attribute can also be used to call a custom action of the business 
 
 As explained in the introduction you **must** at least put the functional keys of your record in all your `data` blocs.
 
-In XML format the document fields are inlined in the XML, the content of the document being set in a `CDATA` bloc, either as plain text or as base 64 encoded string (depending on MIME type).
+In XML format the document fields are inlined in the XML, the content of the document being set in a `CDATA` bloc,
+either as plain text or as base 64 encoded string (depending on MIME type).
 
-A same XML file can have several `object` blocs corresponding to several different business objects, however to respect relational links these blocs must be put in an appropriate order.
+A same XML file can have several `object` blocs corresponding to several different business objects,
+however to respect relational links these blocs must be put in an appropriate order.
 
 Standard ZIP format
 -------------------
@@ -94,9 +97,13 @@ The XML action mode for CSV import is `upsert`.
 Standard JSON format
 --------------------
 
-**to be completed**
+:::info
+To be completed
+:::
 
 Standard YAML format
 --------------------
 
-**to be completed**
+:::info
+To be completed
+:::

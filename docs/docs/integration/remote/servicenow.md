@@ -24,7 +24,7 @@ The configuration of the SNOW table is then provided in the _Filter_ field as JS
 	"table": "<SNOW table name, e.g. sn_customerservice_access_request>",
 	"credentials": "<system parameter name, e.g. MY_SNOW_CONFIG>",
 	"debug": true
-}	
+}
 ```
 
 The `credentials` value above refers to a dedicated JSON system parameter, e.g. `MY_SNOW_CONFIG`:
@@ -41,7 +41,8 @@ The `debug` flag enable/disable detailed logging, this is only useful in develop
 
 ### Service object fields configuration
 
-The configured fields are using the physical name to map to the SNOW object's columns. Logical names and translations are free to be configured as you like.
+The configured fields are using the physical name to map to the SNOW object's columns.
+Logical names and translations are free to be configured as you like.
 They must match the SNOW column type.
 
 For naming compatibility reasons all physical names **MUST** be prefixed by `ServiceNow.`, e.g. `ServiceNow.number` or `ServiceNow.state`

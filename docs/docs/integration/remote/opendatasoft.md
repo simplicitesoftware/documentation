@@ -6,8 +6,6 @@ title: OpenDataSoft
 OpenDataSoft integration
 ========================
 
-This document applies to version 3.0 MAINTENANCE 20 and above.
-
 It describes how to configure [OpenDataSoft&reg;](http://www.opendatasoft.com/) (ODS) datasets as Simplicité business objects.
 
 It also describe how to publish an ODS dataset from a Simplicité business object REST API.
@@ -22,7 +20,7 @@ The configuration (including dataset URL and optional credentials) of the datase
 ```json
 {
 	"name": "<dataset name (required unless if you use explicit 'dataset_url' and 'search_url')>",
-	"base_url": "<custom base URL, used to build both datase URL and search URL using 'name' (optional, defaults to root OpenDataSoft URL)>",
+	"base_url": "<custom base URL, used to build both dataset URL and search URL using 'name' (optional, defaults to root OpenDataSoft URL)>",
 	"dataset_url": "<custom dataset metadata URL (optional, useful only if URLs based on 'base_url' and 'name' are not the right ones)>",
 	"search_url": "<custom dataset search URL (optional, useful only if URLs based on 'base_url' and 'name' are not the right ones)>",
 	"username": "<user name (optional, exclusive with 'apikey', only required for authenticated datasets)>",

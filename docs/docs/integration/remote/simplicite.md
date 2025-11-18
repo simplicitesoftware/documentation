@@ -6,9 +6,10 @@ title: Simplicité
 Simplicité remote business objects
 ==============================================
 
-It describes how to configure and use 
-- remote Simplicité business objects,
-- datalinks between several applications.
+It describes how to configure and use:
+
+- Remote Simplicité business objects,
+- Data links between several applications.
 
 Remote object configuration
 ---------------------------
@@ -34,7 +35,8 @@ Nothing else needs to be configured as the remote business object configuration 
 
 > **Note**: the debug mode generates verbose logs, avoid enabling it when you don't need it
 
-The credentials, that can be shared among several business objects of the same remote instance are configured as JSON in a system parameter (either a global server parameter or a user server parameter):
+The credentials, that can be shared among several business objects of the same remote instance are configured as JSON in a system parameter
+(either a global server parameter or a user server parameter):
 
 ```json
 {
@@ -61,26 +63,30 @@ Then linked objects are usable as local business objects: search, links, `row_id
 - The objects to be data-linked must be designed in a separate module to be installed everywhere. The metadata must be the same to share consistent data.
 - Those objects need the **timestamp** option because the last update date is needed between databases, otherwise a slow full-scan will occur.
 - Each application can inherit the linked-objects locally (in another business module) to extend them, add non-synchronized fields, rules...
-- In another setting module, all **Hosts** (URL of applications) must be shared 
-	- with the API/REST credentials with **CRUD rights** on objects
-	- the host name must match with the instance deployment to detect if it is the dependant or the main:
-		- Forced named: JVM property `-Dapplication.name=MyAppName1` or by hook `Globals.setApplicationName("MyAppName1")` in startup hook `PlatformHooks.postPlatformInit(Grant sys)`
-		- Forced URL: JVM property `-Dapplication.url=https://appli1.mydomain.io` or by hook `Globals.setApplicationURL("https://appli1.mydomain.io")`
-		- With system parameter `SERVER_URL` or `DIRECT_URL` or by default the webapp context path
+- In another setting module, all **Hosts** (URL of applications) must be shared
+  - with the API/REST credentials with **CRUD rights** on objects
+  - the host name must match with the instance deployment to detect if it is the dependant or the main:
+    - Forced named: JVM property `-Dapplication.name=MyAppName1` or by hook `Globals.setApplicationName("MyAppName1")`
+      in startup hook `PlatformHooks.postPlatformInit(Grant sys)`
+    - Forced URL: JVM property `-Dapplication.url=https://appli1.mydomain.io` or by hook `Globals.setApplicationURL("https://appli1.mydomain.io")`
+    - With system parameter `SERVER_URL` or `DIRECT_URL` or by default the webapp context path
 - Finally designer have to define the **DataLinks**:
-	- between hosts: set as primary or secondary, anyone can be a primary, but there can't be only secondaries
-	- with objects to synchronize in a given order of dependencies (it can synchronized objects and related links).
+  - between hosts: set as primary or secondary, anyone can be a primary, but there can't be only secondaries
+  - with objects to synchronize in a given order of dependencies (it can synchronized objects and related links).
 
 ### Runtime
 
-- Datalinks are loaded once at startup/clear-cache, and tracked in server logs.
-- In case of UI update, the primaries call all known hosts **synchronously** (to guarantee the order of possible successive calls). The update must be designed fast without many hooks/rules.
+- Data links are loaded once at startup/clear-cache, and tracked in server logs.
+- In case of UI update, the primaries call all known hosts **synchronously** (to guarantee the order of possible successive calls).
+  The update must be designed fast without many hooks/rules.
 - It uses the common API/REST interface: the "sync" service is like a POST but it forces the same `row_id` everywhere (no data mapping needed).
-- In case of host shutdown or HTTP error, the **cron `DataLink`** checks and resynchronizes the tables from the last timestamp stored in system parameters `_SYNC_MASTER_<object>`
+- In case of host shutdown or HTTP error, the **cron `DataLink`** checks and resynchronizes
+  the tables from the last timestamp stored in system parameters `_SYNC_MASTER_<object>`
 - Removing all parameters `_SYNC_MASTER_<object>` will make a full-resync.
-- In the worst case if everything has been stopped or the databases are mostly corrupted with outer SQL access (i.e sync by HTTP/REST calls is the worst solution): 
-it is possible to disable the cron and copy the tables with faster DB mechanisms, there is a strict equality of data (especially `row_id`),
- beware to keep optional added columns locally.
+- In the worst case if everything has been stopped or the databases are mostly corrupted with outer SQL access
+  (i.e sync by HTTP/REST calls is the worst solution):
+  it is possible to disable the cron and copy the tables with faster DB mechanisms, there is a strict equality of data (especially `row_id`),
+  beware to keep optional added columns locally.
 
 Current limitations:
 

@@ -10,7 +10,9 @@ This document applies to version 4.0 P 21 and above.
 
 It describes how to configure and use remote LDAP objects.
 
-> **Warning**: this configuration item is still being developed, its configuration strategy is likely to change.
+:::warning
+This configuration item is still being developed, its configuration strategy is likely to change.
+:::
 
 Configuration
 -------------

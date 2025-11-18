@@ -10,7 +10,7 @@ This document describes how to configure and implement a custom service objects.
 
 A service object is a business object which interact with an remote service (e.g. a remote system API).
 
-The `helper class `com.simplicite.util.ObjectService` offers a "framework" for implementing a such service object.
+The helper class `com.simplicite.util.ObjectService` offers a "framework" for implementing a such service object.
 
 Minimalistic example
 --------------------
