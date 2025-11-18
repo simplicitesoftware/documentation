@@ -12,6 +12,18 @@ The `/io` endpoint is designed to execute usual operation tasks in a CLI, withou
 In production the I/O endpoint should be restricted only to allowed origins (e.g. using filtering on request's origin IP address or similar approaches).
 :::
 
+I/O URL
+-------
+
+The `<I/O URL>` used in `curl` commands below is the one available on the I/O endpoint: `http[s]://<host[:port]>[/<app root>]/io`.
+
+As of **version 4.0.P22** it can also be one available on the API endpoint `http[s]://<host[:port]>[/<app root>]/api/io`
+
+:::note
+All requests to these URL **must** use the `POST` method with multipart for data
+(this is what does the `--form` arguments passed to the `curl` commands)
+:::
+
 Authentication
 --------------
 
@@ -36,7 +48,7 @@ to with the `<credentials>` placeholder in the rest of this document. Those cred
 You can test it by using the following command:
 
 ```text
-curl <credentials> --form "file=" $INSTANCE_URL/io
+curl <credentials> --form "file=" <I/O URL>
 ```
 
 Rights
@@ -53,24 +65,12 @@ Standard formats
 
 The standard formats used by the standard I/O imports/exports are described in [this document](/docs/integration/webservices/standard-formats)
 
-I/O URL
--------
-
-The `<I/O URL>` used in `curl` commands below is the one available on the I/O endpoint: `http[s]://<host[:port]>[/<app root>]/io`.
-
-As of **version 4.0.P22** it can also be one available on the API endpoint `http[s]://<host[:port]>[/<app root>]/api/io`
-
-:::note
-All requests to these URL **must** use the `POST` method with multipart for data
-(this is what does the `--form` arguments passed to the `curl` commands)
-:::
-
 Imports
 -------
 
 To import a file `<file>` the command is:
 
-```bash
+```text
 curl <credentials> --form service=<import command> --form file=@<file> [<extra parameters>] <I/O URL>
 ```
 
@@ -106,7 +106,7 @@ Exports
 
 To export data in a file `<file>` the command is:
 
-```bash
+```text
 curl <credentials> --form service=<export command> -o <file> [<extra parameters>] <I/O URL>
 ```
 
@@ -141,7 +141,7 @@ Git
 
 As of **version 3.2**, to do a Git commit on a module, the command is:
 
-```bash
+```text
 curl <credentials> --form service=modulecommit --form module=<module name> --form message="<commit message>" <I/O URL>
 ```
 
@@ -152,7 +152,7 @@ Others
 
 To flush server-side cache, the command is:
 
-```bash
+```text
 curl <credentials> --form service=clearcache <I/O URL>
 ```
 
@@ -160,7 +160,7 @@ curl <credentials> --form service=clearcache <I/O URL>
 
 Various purge tasks can be processed using following commands:
 
-```bash
+```text
 curl <credentials> --form service=<purge command> <I/O URL>
 ```
 
@@ -183,7 +183,7 @@ For `purgelogs`, `purgejobs`and `purgesupervisions` an additional parameter `dep
 
 To force indexation to be (re)built, the command is:
 
-```bash
+```text
 curl <credentials> --form service=buildindex <I/O URL>
 ```
 
@@ -191,14 +191,21 @@ curl <credentials> --form service=buildindex <I/O URL>
 
 To run all tests from a **test shared code**, the command is:
 
-```bash
+```text
 curl <credentials> --form service=unittests --form test=<test shared code name> <I/O URL>
 ```
 
 To run all unit tests shared codes of a **module**, the command is:
 
-```bash
+```text
 curl <credentials> --form service=unittests --form module=<module name> <I/O URL>
+```
+
+To run all unit tests shared codes defined using an **import specification** file
+(where only `module` and `unittests` must be defined), the command is:
+
+```text
+curl <credentials> --form service=unittests --form file=<import spec file> <I/O URL>
 ```
 
 :::note
