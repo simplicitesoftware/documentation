@@ -68,11 +68,18 @@ The standard formats used by the standard I/O imports/exports are described in [
 Imports
 -------
 
-To import a file `<file>` the command is:
+To import data from a file `<file>` the command is:
 
 ```text
 curl <credentials> --form service=<import command> --form file=@<file> [<extra parameters>] <I/O URL>
 ```
+
+:::note
+
+- The data to import can also be retrieved on the server side from an URL passed like this `--form url=<url>`.
+- The data to import can also be submitted as raw data using `--form data=<raw data>`
+
+:::
 
 Where `<import command>` is one of :
 
@@ -91,8 +98,6 @@ And for the users having a responsibility on the `ADMIN` group:
   the `file` parameter is here a JSON or YAML file using the same syntax as the one used during the startup's import specification phase,
   see [this document](/docs/operation/auto-setup/#import-spec) for details on the import specification syntax.
 - `sqlscript`: execute a SQL script
-
-The file can also be designated by a URL then the `--form file=@<file>` is to be changed to `--form url=@<url>`.
 
 - An optional extra parameter can be set to get processing logs or not: `--form log=<true|false>` (defaults to `false`)
 - An optional extra parameter can be set to indicate processing logs output format: `--form output=<plain|xml>` (defaults to `plain`)
