@@ -13,7 +13,8 @@ Each configuration of an app starts with the creation of a module.
 
 **All the configuration objects are part of a module, corresponding to the export unit of Simplicité**.
 
-Simplicité is configured via **configuration objects** that provide the description of the application. These objects are business objects, fields, templates, actions, etc.
+Simplicité is configured via **configuration objects** that provide the description of the application.
+These objects are business objects, fields, templates, actions, etc.
 
 Usage
 -----
@@ -48,7 +49,7 @@ To create a Module, follow the steps below:
 
 ### Module filtering & default module {#module-filtering}
 
-The **Visible Modules* button in the platform's header: ![](img/module/header-button.png)
+The **Visible Modules** button in the platform's header: ![](img/module/header-button.png)
 
 - Filters the platform's configuration objects by module (eye icon next to the module name).
 - Sets a default module for new configuration objects (selected item in the list).
@@ -57,7 +58,7 @@ The **Visible Modules* button in the platform's header: ![](img/module/header-bu
 
 > In this example, "MyApp" is the default module, and configuration objects (e.g., Business Objects, Groups, Fields) are filtered accordingly.
 
-When a Module filter is set, the header button is *highlighted*.
+When a Module filter is set, the header button is _highlighted_.
 
 Configuration
 -------------
@@ -74,17 +75,18 @@ Configuration
 There are several module types:
 
 - **Simplicité modules** : those are reserved for official Simplicité modules, you should not create nor edit modules of the following types :
-    - System : core modules
-    - Add-On : some are provided by default, others through the AppStore
+  - System : core modules
+  - Add-On : some are provided by default, others through the AppStore
 - **Multi-module** apps. Modules of this kind offer specific functionality through the [Application object](/make/project/application).
-    - Application 
+  - Application
 - **Standard modules** : interchangeable types, provided for filtering purposes, with no associated functionality
-    - App component
-    - Common
-    - Toolbox
-    - Services
-    - Data
+  - App component
+  - Common
+  - Toolbox
+  - Services
+  - Data
 
-## Read more
+Read more
+---------
 
 - [Managing Git repositories](/docs/integration/webservices/git-repositories)

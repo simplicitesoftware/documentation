@@ -13,16 +13,17 @@ In Simplicité, the logging mechanisms are based on configurable **log events** 
 
 Each log event:
 
-* defines which type(s) of logging is done (non exclusive):
-	- **Technical logging** using Log4J which allows flexible logging strategies including appending the logs to the application server's logger(s)
-	- **Business logging** stored as a business records in the database, this is thus to be considered as audit trail more than logging, cf. the `AppLog` business object
-* can be dynamically associated to a logging level:
-	- Debug
-	- Info
-	- Warning
-	- Error
-	- Fatal
-* can be dynamically enabled/disabled
+- defines which type(s) of logging is done (non exclusive):
+  - **Technical logging** using Log4J which allows flexible logging strategies including appending the logs to the application server's logger(s)
+  - **Business logging** stored as a business records in the database, this is thus to be considered
+  as an audit trail more than logging, cf. the `AppLog` business object
+- can be dynamically associated to a logging level:
+  - Debug
+  - Info
+  - Warning
+  - Error
+  - Fatal
+- can be dynamically enabled/disabled
 
 Technical logging
 -----------------
@@ -33,17 +34,18 @@ The technical logging is based on Log4J&reg; and can be configured using a stand
 
 A default `log4j2.xml` configuration file is provided including several samples of appenders, two of them are active and have a specific behavior:
 
-* `SIMPLICITE-CONSOLE` is configured to push logs to the standard output (in default Tomcat's logging configuration, this output is appended to the `catalina.out` log file)
-* `SIMPLICITE-FILE` is configured to push logs in dedicated daily log files
+- `SIMPLICITE-CONSOLE` is configured to push logs to the standard output
+  (in default Tomcat's logging configuration, this output is appended to the `catalina.out` log file)
+- `SIMPLICITE-FILE` is configured to push logs in dedicated daily log files
 
 The configurable log event levels matches the Log4J&reg; log levels.
 
-> **Notes**:
->
-> * If you modify the default Log4J&reg; configuration, the `SIMPLICITE-FILE` appender must be kept with this name and
->   must remain a file-based appender as it is used by the system log viewer of the generic UI.
-> * Unless you do custom logging configuration at your application's server level, it is not recommended to keep the
->  `SIMPLICITE-CONSOLE` appender active in production
+:::note
+If you modify the default Log4J&reg; configuration, the `SIMPLICITE-FILE` appender must be kept with this name and
+must remain a file-based appender as it is used by the system log viewer of the generic UI.
+Unless you do custom logging configuration at your application's server level, it is not recommended to keep the
+`SIMPLICITE-CONSOLE` appender active in production
+:::
 
 Some very verbose log events are also conditioned the value of some system parameters (e.g. `LOG_SQL_USER` and `LOG_SQL_SYSTEM`
 which enables/disables the logging of all user-level or system level SQL requests, these very low level logging **must be disabled by default**
@@ -69,7 +71,7 @@ are to be considered as business data more than pure logging. Typical business u
 
 By default, a subset of theses audit logs are used by:
 
-* The login/logout audit statistics
-* The platform monitoring dashboards when started
+- The login/logout audit statistics
+- The platform monitoring dashboards when started
 
 The business logs that have been triggered by a scheduled job are linked to the execution record of the job (cf. business object `AsyncJob`).

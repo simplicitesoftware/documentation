@@ -3,15 +3,19 @@ sidebar_position: 10
 title: System parameters
 ---
 
-# System Parameters
+System parameters
+=================
 
-## Introduction
+Introduction
+------------
 
-System Parameters are used to manage **static variables** (e.g., VAT rates) and to **assign or override settings** for end users. They provide a flexible way to configure system-wide values or user-specific preferences without modifying the application code.
+System Parameters are used to manage **static variables** (e.g., VAT rates) and to **assign or override settings** for end users.
+They provide a flexible way to configure system-wide values or user-specific preferences without modifying the application code.
 
 System Parameters help centralize configuration, making it easier to maintain and adjust application behavior dynamically.
 
-## Features
+Features
+--------
 
 ### Global configuration
 
@@ -34,9 +38,11 @@ System Parameters help centralize configuration, making it easier to maintain an
   into account the above user-level and disposition-level system parameters potential customizations.
 - Designers can use system parameters to adjust application behavior dynamically (if the value is updatable, see above).
 - The system parameters can be accessed programmatically to control workflows, visibility, or validation rules.
-    - When you invoke the `Grant.getParameter("<system param name>")` method you get the actual **loaded** value for the user.
-    - When you invoke the `Grant.getSystemParam("<system param name>")` you get the **raw** main system parameter value from the database, regardless of the user.
-    - When you invoke the `Grant.getUserSystemParam("<system param name>")` you get the **raw** user-level system parameter value from the database, regardless of the user.
+  - When you invoke the `Grant.getParameter("<system param name>")` method you get the actual **loaded** value for the user.
+  - When you invoke the `Grant.getSystemParam("<system param name>")` you get the **raw** main system parameter
+    value from the database, regardless of the user.
+  - When you invoke the `Grant.getUserSystemParam("<system param name>")` you get the **raw** user-level
+    system parameter value from the database, regardless of the user.
 
 ### Environment variables substitutions
 
@@ -45,8 +51,12 @@ parameter using the `[ENV:<environment variable name>]` and `[PROP:<JVM property
 
 The values of the designated environment variable and/or JVM properties are substituted when loading the system parameters.
 
-> **Attention**: if you read the **raw** value from the database using `Grant.getSystemParam("<system parameter name>")` the returned value
-> does not take into account these substitutions but you can use the `Tool.replaceEnvVars/replaceProperties/replaceEnvVarsAndProperties` helper methods to do so.
+I
+:::warning
+If you read the **raw** value from the database using `Grant.getSystemParam("<system parameter name>")` the returned value
+does not take into account these substitutions but you can use the `Tool.replaceEnvVars/replaceProperties/replaceEnvVarsAndProperties`
+helper methods to do so.
+:::
 
 The typical usage of these substitutions is to avoid storing secrets in the database, e.g. client ID/secrets or certificates of an external authentication
 providers in the `AUTH_PROVIDERS` system parameter:
@@ -74,7 +84,8 @@ This is a **forced** and **global** override of the system parameter value which
 > **Attention**: if you read the **raw** value from the database using `Grant.getSystemParam("<system parameter name>")` the returned value
 > does not take into account this override
 
-## Configuration
+Configuration
+-------------
 
 | Field                | Description                                                           |
 | -------------------- | --------------------------------------------------------------------- |
@@ -85,7 +96,8 @@ This is a **forced** and **global** override of the system parameter value which
 | **Type**             | Type of the system parameter                                          |
 | **Module**           | The module to which the parameter belongs                             |
 
-## How System Parameters Manage Application Settings
+How system parameters manage application settings
+-------------------------------------------------
 
 - **Static Variables**: Used to store constant values like VAT rates, tax rules, or API keys.
 - **User**: Override default settings for specific users.
@@ -93,7 +105,8 @@ This is a **forced** and **global** override of the system parameter value which
 - **Configurable Features**: Adjust feature availability using system parameters.
 - **Performance & Limits**: Adjust system limits, such as maximum file upload size or API rate limits.
 
-## How to create a System Parameter?
+How to create a system parameter?
+---------------------------------
 
 System Parameters are available in the **Settings** menu and can also be found using the **menu search bar**.
 
@@ -105,10 +118,11 @@ System Parameters are available in the **Settings** menu and can also be found u
 6. Assign the parameter to a **specific user** if needed.
 7. Save the changes and clear the platform's cache to apply updates.
 
-<div class="warning">
+:::warning
 It is required to clear the platform's cache to apply changes made to System Parameters.
-</div>
+:::
 
-## Learn more
+Learn more
+----------
 
 - [System Parameters List](/docs/core/system-parameters-list)
