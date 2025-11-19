@@ -94,16 +94,41 @@ Some of the provider settings are still documented with the deprecated syntax.
 Troubleshooting
 ---------------
 
-To investigate authentication issues, the `DAUTHCS001` log event can be **temporarily** activated.
+To investigate authentication issues, one useful tool is the `DAUTHCS001` [log event](/make/settings/log-event). By default, it is configured as a *Debug* (`D`) event because the output is verbose and can leak secrets, so it has to be activated when necessary by setting it to an *Information* (`I`) event.
 
-![dauthcs001.png](img/auth-providers/dauthcs001.png)
+:::warning
+
+Make sure to deactivate it as it produces **very verbose** output. Whatever method you chose, you'll have to set the level back to the *Debug* value (`D`)
+
+:::
+
+### UI activation
 
 The value is only updatable by users with the `ADMIN_SYSTEM` user parameter set to `yes`.
 
-:::warning
-Make sure to deactivate it as it produces **very verbose** output.
-:::
+![dauthcs001.png](img/auth-providers/dauthcs001.png)
 
 :::info
+
 Before Simplicité v6, this menu item used to be in the "Operation" domain, in the extended view.
+
 :::
+
+### IO activation
+
+When deali!ng with authentication problems, it is sometimes impossible to access the UI, and you might defer to the [I/O services](/docs/integration/webservices/io-commandline/)
+
+```shell
+curl -u designer:$IO_PASSWORD --form service=jsonimport --form "file=@-" $INSTANCE_URL/io <<'EOF'
+[{"name":"LogEvent","action":"update","data":[{"lev_code":"DAUTHCS001","lev_level":"I"}]}]
+EOF
+curl -u designer:$IO_PASSWORD --form service=clearcache $INSTANCE_URL/io
+```
+
+### Database activation
+
+As a last resort, that's how the change can be made at database level
+
+```sql
+UPDATE m_log_event SET lev_level='I' WHERE lev_code='DAUTHCS001';
+```
