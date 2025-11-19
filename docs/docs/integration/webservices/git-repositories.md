@@ -16,8 +16,8 @@ In production this Git endpoint's URL should be restricted only to allowed origi
 
 :::
 
-Configuration {#config}
------------------------
+Configuration
+-------------
 
 The Git repositories are stored on the server file system.
 
@@ -30,8 +30,8 @@ This can be done either:
 
 Then you also need to set the `USE_GIT` system parameter to `yes`.
 
-Export {#export}
-----------------
+Export
+------
 
 To export the `MyModule` module as a Git repository the first thing to do is to create or update the module's repository
 using the dedicated action on the _Module_ object:
@@ -46,8 +46,8 @@ git clone http(s)://<host name>[/<app context root>]/git/<module name>
 
 The credentials you have to use in this case are the same as the one you can use for the I/O interface.
 
-Import {#import}
-----------------
+Import
+------
 
 Any `git push [origin]` on the cloned module's repository triggers a module import (e.g. after having made some local changes or to upgrade another instance by pushing on another remote).
 
@@ -78,7 +78,6 @@ there are 2 possible ways to export/import a module from the "primary" to the "s
 - Use a clone of the "primary" instance Git repository configured with an additional remote that points to the "secondary" instance.
   Then `git pull` will pull from the "primary" instance and `git push <remote name>` will push to the "secondary" instance.
 
-
 E.g. from a **public** GitHub repository:
 
 ```json
@@ -100,8 +99,8 @@ As of version 5.2, you can set the JVM properties (`remote.git.username/password
 if you want to avoid configuring username/password credentials in your module's settings.
 A **much better approach** being to use a SSH URI with configured SSH public/private keys.
 
-Advanced {#advanced}
---------------------
+Advanced
+--------
 
 The Git repositories created/cloned by Simplicité:
 
@@ -117,7 +116,7 @@ The Git repositories created/cloned by Simplicité:
 If you manually create/clone repositories used by Simplicité (which is not supposed to be done except for very specific needs)
 make sure to create/clone **non bare** repositories and make sure to have these two options activated (which is not the case by default).
 
-### Branches {#branches}
+### Branches
 
 You can specify the branch to use in the origin definition (or in the remotes definitions, see bellow):
 
@@ -131,7 +130,7 @@ You can specify the branch to use in the origin definition (or in the remotes de
 }
 ```
 
-### Other remotes {#remotes}
+### Other remotes
 
 You can specify additional remotes:
 
@@ -155,7 +154,7 @@ You can specify additional remotes:
 
 Each remote definition use the same syntax as the origin definition.
 
-### Maven settings {#maven}
+### Maven settings
 
 If required, you can specify additional settings to change the Maven settings generated in the `pom.xml`.
 
@@ -183,7 +182,7 @@ If required, you can specify additional settings to change the Maven settings ge
 }
 ```
 
-### SonarQube&reg; settings {#sonar}
+### SonarQube settings
 
 If required, you can specify additional settings to change the SonarQube&reg; configuration generated in the `pom.xml`.
 
@@ -198,9 +197,9 @@ If required, you can specify additional settings to change the SonarQube&reg; co
 }
 ```
 
-### Linting settings {#linting}
+### Linting settings
 
-#### Checkstyle&reg; settings {#checkstyle}
+#### Checkstyle
 
 If required, you can specify additional settings to change the Checkstyle&reg; configuration generated in the `pom.xml`.
 
@@ -211,7 +210,7 @@ If required, you can specify additional settings to change the Checkstyle&reg; c
 }
 ```
 
-#### JSHint&reg; settings {#jshint}
+#### JSHint
 
 If required, you can specify additional settings to change the JSHint&reg; configuration.
 
@@ -221,7 +220,7 @@ If required, you can specify additional settings to change the JSHint&reg; confi
 }
 ```
 
-#### ESLint&reg; settings {#eslint}
+#### ESLint
 
 If required, you can specify additional settings to change the ESLint&reg; configuration.
 
@@ -231,7 +230,7 @@ If required, you can specify additional settings to change the ESLint&reg; confi
 }
 ```
 
-#### StyleLint&reg; settings {#stylelint}
+#### StyleLint
 
 If required, you can specify additional settings to change the StyleLint&reg; configuration.
 
@@ -241,7 +240,7 @@ If required, you can specify additional settings to change the StyleLint&reg; co
 }
 ```
 
-### GPG signature {#gpg}
+### GPG signature
 
 As of version 5.3 it is possible to enable GPG signature of commits.
 

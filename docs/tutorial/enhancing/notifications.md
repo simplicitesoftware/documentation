@@ -54,7 +54,7 @@ To add the `NOTI_USER` group to the `TRN_SUPERADMIN` profile, follow the steps b
 2. In the **Profile members** panel, click **Create**
     ![](img/notifications/group-add.png)
 3. Select the `NOTI_READER` group
-    > If the `NOTI_READER` group isn't visible, [remove the Module filter](/make/project/module#module-filtering)
+    > If the `NOTI_READER` group isn't visible, [remove the Module filter](/make/project/module#module-filtering-and-default-module)
 4. Click **Save & Close**
 
 ## Testing the notification with `usertest`

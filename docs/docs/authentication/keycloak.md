@@ -43,9 +43,9 @@ networks:
 Then follow the basic setup steps:
 
 1. create a `simplicite-test-realm` realm
-2. create a `simplicite-app` client in that realm (see [oidc idp docs](/docs/authentication/oauth2#idp))
+2. create a `simplicite-app` client in that realm (see [OpenIDConnect (OIC) IdP docs](/docs/authentication/oauth2#in-the-identity-provider))
    - redirect URIs : `https://<instance_url>/oauth2callback`
-   - post logour URIs : `https://<instance_url>/logoutconfirm`
+   - post logout URIs : `https://<instance_url>/logoutconfirm`
    - other access URIs : `https://<instance_url>`
    - client authentication **ON** (standard flow)
    - the rest as is...

@@ -102,7 +102,7 @@ public class TrnProductTest {
 In the previous code excerpt, we use `Grant.getSystemAdmin()` to instantiate `TrnProduct`. For this to work, we need to add the `TRN_SUPERADMIN` profile to `ADMIN` :
 
 1. In **Users and rights > Groups**, open **ADMIN**
-    > You might need to [remove the module filter](/make/project/module#module-filtering) if ADMIN doesn't appear in the list
+    > You might need to [remove the module filter](/make/project/module#module-filtering-and-default-module) if ADMIN doesn't appear in the list
 2. In the **Profile members** panel, create **TRN_SUPERADMIN** Profile in the **Training** module.
 3. Clear the platform's cache
 
