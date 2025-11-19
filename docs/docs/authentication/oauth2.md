@@ -47,7 +47,7 @@ Before doing these changes, **make sure** that you will still be able to login w
 
 </details>
 
-### In the Identity Provider {#idp}
+### In the Identity Provider
 
 The callback URL (redirect URI) to configure **in your OAuth2/OpenIDConnect identity provider** for your instance is `<base URL>/oauth2callback`.
 

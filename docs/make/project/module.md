@@ -47,7 +47,7 @@ To create a Module, follow the steps below:
 | Compare with remote repository | Compare local configuration with a remote repository                                         |
 | ALTER DB history               | Retain relevant configuration items' old values during export                                |
 
-### Module filtering & default module {#module-filtering}
+### Module filtering and default module
 
 The **Visible Modules** button in the platform's header: ![](img/module/header-button.png)
 

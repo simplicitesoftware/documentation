@@ -1,22 +1,26 @@
-# Simplicité Documentation
+Simplicité Documentation
+========================
 
-## Installation
+Installation
+------------
 
-```
-$ npm install
+```shell
+npm install
 ```
 
 ### Local Development
 
-```
-$ npm run start
+```shell
+npm run start
 ```
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-## Deployment
+Deployment
+----------
 
 The documentation is automatically deployed when changes are pushed to the master branch. GitHub Actions will:
+
 1. Build the documentation
 2. Deploy the updated content to GitHub Pages
 3. Make it available at the public URL
@@ -25,7 +29,8 @@ No manual deployment steps are required - just push your changes to master.
 
 ⚠ Build will fail if broken links / anchors are detected
 
-## Creating New Documentation
+Creating New Documentation
+--------------------------
 
 1. Create a new markdown file (`.md` or `.mdx`) in the appropriate directory under `docs/`.
 2. For images:
@@ -33,12 +38,14 @@ No manual deployment steps are required - just push your changes to master.
    - Place related images in this directory
    - Reference images using relative paths: `![Alt text](./img/document-name/image-name.png)`
 
-### Documentation metadata 
+### Documentation metadata
 
-Markdown documents can use the following Markdown [front matter](https://docusaurus.io/docs/markdown-features#front-matter) metadata fields, enclosed by a line --- on either side.
+Markdown documents can use the following Markdown [front matter](https://docusaurus.io/docs/markdown-features#front-matter)
+metadata fields, enclosed by a line --- on either side.
 
-Example : 
-```
+Example:
+
+```yaml
 ---
 id: doc-markdown
 title: Docs Markdown Features
@@ -64,13 +71,16 @@ last_update:
 ### Code blocks
 
 You can add a `title` to the code block by adding a title key after the language (leave a space between them).
-```js
+
+```javascript
 console.log('What a great log');
 ```
 
 ### Code block tabs
 
-To use [code block tabs](https://docusaurus.io/docs/markdown-features/code-blocks#multi-language-support-code-blocks) that make some documentation more readable, use a `.mdx` file format and use the following syntax (put the import instructions before your first use of the tabs, or right **after** the front matter headings)
+To use [code block tabs](https://docusaurus.io/docs/markdown-features/code-blocks#multi-language-support-code-blocks)
+that make some documentation more readable, use a `.mdx` file format and use the following syntax
+(put the import instructions before your first use of the tabs, or right **after** the front matter headings)
 
 ```mdx
 import Tabs from '@theme/Tabs';
@@ -90,20 +100,20 @@ import TabItem from '@theme/TabItem';
 </Tabs>
 ```
 
-### Custom title ids : 
+### Custom title ids
 
 The following syntax will allow a link to `[text](/url#my-explicit-id)` instead of the default `[text](/url#hello-world)`
-````
+
+```markdown
 ### Hello World {#my-explicit-id}
 ```
 
 ### Admonitions
 
-In addition to the basic Markdown syntax, use special admonitions syntax by wrapping text with a set of 3 colons, followed by a label denoting its type. 
+In addition to the basic Markdown syntax, use special admonitions syntax by wrapping text with a set of 3 colons, followed by a label denoting its type.
 
 See [Admonitions how-to](https://docusaurus.io/docs/markdown-features/admonitions)
 
-
 ### See more
 
-https://docusaurus.io/docs/category/guides
+[Docusaurus guides](https://docusaurus.io/docs/category/guides)
