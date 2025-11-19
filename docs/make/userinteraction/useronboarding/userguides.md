@@ -161,4 +161,10 @@ Guides can be:
 - **Automatically launched** (once per user).
 - **Replayed** at any time with a button in the UI.
 
+
 ![](img/useronboarding/guide.gif)
+
+## Learn more
+
+- [Guide recorder](/make/userinteraction/useronboarding/guiderecorder)
+
