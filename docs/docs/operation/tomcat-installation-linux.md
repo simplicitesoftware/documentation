@@ -177,14 +177,18 @@ export ANT_OPTS="$ANT_OPTS -Dtomcat.root=$TOMCAT_ROOT -Dtomcat.host=localhost -D
 
 Optionally, you can add extra useful packages (back as `root`):
 
-	yum install vim git wget lynx nmap ...
+```shell
+yum install vim git wget lynx nmap ...
+```
 
 Option 1 - Expose Tomcat using an Apache AJP reverse proxy
 ----------------------------------------------------------
 
 As `root`, install apache with SSL module :
 
-	yum install httpd mod_ssl
+```shell
+yum install httpd mod_ssl
+```
 
 Add this to `/etc/httpd/conf/httpd.conf` for an HTTP endpoint:
 
@@ -202,10 +206,16 @@ This corresponds to the following configuration:
 
 Enable and start Apache:
 
-	systemctl enable httpd.service
-	systemctl start httpd.service
+```shell
+systemctl enable httpd.service
+systemctl start httpd.service
+```
 
-> **Note**: if you get HTTP `503` error on this page you can try running the following command as `root`: `chcon -Rt httpd_sys_content_t /var/www`
+:::note
+
+If you get HTTP `503` error on this page you can try running the following command as `root`: `chcon -Rt httpd_sys_content_t /var/www`
+
+:::
 
 Create `/etc/init.d/tomcat` script with following content:
 
@@ -252,22 +262,32 @@ Adjust `JAVA_OPTS` to suitable settings for your environment.
 
 Make this script executable:
 
-	chmod +x /etc/init.d/tomcat
+```shell
+chmod +x /etc/init.d/tomcat
+```
 
 Enable and start Tomcat:
 
-	chkconfig tomcat on
-	/etc/init.d/tomcat start
+```shell
+chkconfig tomcat on
+/etc/init.d/tomcat start
+```
 
 Option 2 - Expose Tomcat using a NGINX HTTP reverse proxy
 ---------------------------------------------------------
 
 As `root`, install NGINX :
 
-	yum install epel-release
-	yum install nginx
+```shell
+yum install epel-release
+yum install nginx
+```
 
-> **Note**: check [this page](http://wiki.nginx.org/Install) for details on NGINX installation
+:::note
+
+Check [this page](http://wiki.nginx.org/Install) for details on NGINX installation
+
+:::
 
 Add a new `tomcat.conf` configuration file in `/etc/nginx/conf.d` with following content:
 
@@ -344,9 +364,11 @@ E.g. for a monitoring tool whose user agent starts with `MyMonitorTool` you can 
 
 Change/add these configuration items in the main NGINX configuration file as `root`:
 
-	vi /etc/nginx/nginx.conf
-
+```shell
+vi /etc/nginx/nginx.conf
 ```
+
+```nginx
 http {
 (...)
 	client_max_body_size 100M;
@@ -359,13 +381,20 @@ http {
 
 Enable and start NGINX:
 
-	systemctl enable nginx.service
-	systemctl start nginx.service
+```shell
+systemctl enable nginx.service
+systemctl start nginx.service
+```
 
 The rest is the same as above for Apache.
 
-> **Note**: SELinux may be causing HTTP `502` errors, check [this post](http://stackoverflow.com/questions/27435655/nginx-proxy-pass-not-working-in-selinux) for a solution that works.
-> A quick solution being to run the following command as `root`: `setsebool httpd_can_network_connect 1 -P`
+:::note
+
+*SELinux may be causing HTTP `502` errors, check [this post](http://stackoverflow.com/questions/27435655/nginx-proxy-pass-not-working-in-selinux)
+for a solution that works.
+A quick solution being to run the following command as `root`: `setsebool httpd_can_network_connect 1 -P`
+
+:::
 
 Option 3 - Expose Tomcat using the xinetd daemon
 ------------------------------------------------

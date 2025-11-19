@@ -6,7 +6,11 @@ title: Tomcat installation on Windows
 Tomcat installation guidelines for Windows server
 =================================================
 
-> **Warning**: before choosing this "traditional" installation procedure you should consider other approaches such as using [Docker containers](/docs/operation/docker).
+:::warning
+
+Before choosing this "traditional" installation procedure you should consider other approaches such as using [Docker containers](/docs/operation/docker).
+
+:::
 
 This document only gives only very **general guidelines**, not a detailed/precise procedure.
 
@@ -66,7 +70,11 @@ cd tomcat\bin
 Note that the `C:\Users\Administrator` base folder, and the above `256` / `1024` Mb values for allocated memory are just given as examples.
 Adjust these to match your configuration.
 
-> **Note**: If you don't install the above service make sure your Tomcat startup script defines at least the same JVM options as the one defined for the above service.
+:::note
+
+If you don't install the above service make sure your Tomcat startup script defines at least the same JVM options as the one defined for the above service.
+
+:::
 
 Adjust security level and firewall settings to publicly expose the Tomcat corrector's port(s) accordingly to your needs.
 
@@ -81,10 +89,14 @@ git clone https://<username>[:<password>]@platform.git.simplicite.io/template-<v
 
 Where `<version>` is one of the available versions, e.g. `4.0`
 
-> **Note**: as of version 4.0 there are several branches on the instance template,
-> make sure to use **only** the **release** branch in production, see [this document](/versions/versioning.md) for details on versions and branches.
->
-> It is recommended to only clone the **release** branch by adding `--single-branch --branch release` to the `git clone` instruction above.
+:::note
+
+As of version 4.0 there are several branches on the instance template,
+make sure to use **only** the **release** branch in production, see [this document](/versions/versioning.md) for details on versions and branches.
+
+It is recommended to only clone the **release** branch by adding `--single-branch --branch release` to the `git clone` instruction above.
+
+:::
 
 ### Initial database setup
 
@@ -95,7 +107,11 @@ Create the database **with UTF-8 encoding** and the database user **with appropr
 Then load the database using the appropriate dump file provided in the instances template.
 MySQL/MariaDB and PostgresQL dump files are available by default in the `app/WEB-INF/db` folder, for other databases please contact us to get an up-to-date dump.
 
-> **Note**: This setup **not required** with an embedded HSQLDB database.
+:::note
+
+This setup **not required** with an embedded HSQLDB database.
+
+:::
 
 ### Deploy webapp
 

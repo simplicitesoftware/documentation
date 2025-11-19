@@ -7,7 +7,9 @@ Simplicité Instances Manager for AlmaLinux
 ==========================================
 
 :::info
+
 This document applies to the Simplicité Instances Manager (SIM) software for **AlmaLinux 8, 9 or 10**.
+
 :::
 
 Introduction

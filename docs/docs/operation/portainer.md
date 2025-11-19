@@ -104,7 +104,8 @@ If there are any problems with automatic updates, logs should be available throu
 3 - Docker Install
 ------------------
 
-Portainer needs Docker as a requirement, so it will be installed after usual upgrades. Based on [docker CentOS install docs](https://docs.docker.com/engine/install/centos/) (adapted)
+Portainer needs Docker as a requirement, so it will be installed after usual upgrades.
+Based on [docker CentOS install docs](https://docs.docker.com/engine/install/centos/) (adapted)
 
 ```sh
 sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
@@ -280,7 +281,8 @@ volumes:
   git:
 ```
 
-To enable JPDA remote debugging add the following environment variables and open an access to port `8000`. Assign a different port to each instance (8001, 8002, 8003...).
+To enable JPDA remote debugging add the following environment variables and open an access to port `8000`.
+Assign a different port to each instance (8001, 8002, 8003...).
 
 ```yaml
 services:

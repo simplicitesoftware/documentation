@@ -7,7 +7,9 @@ Simplicité; Instances Manager for CentOS
 ========================================
 
 :::warning
+
 This document applies to the **legacy** Simplicité Instances Manager (SIM) software for **CentOS 7** (this OS is not maintained anymore).
+
 :::
 
 Introduction
