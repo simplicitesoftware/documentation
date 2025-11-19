@@ -337,7 +337,7 @@ JSON message:
 
 To send one notification to a device:
 
-```bash
+```shell
 curl --header "Authorization: key=<cloud messaging server key>" \
   --header "Content-type: application/json" \
   -d '{"to":"<device token>", "data":{"title":"hello","body":"world","icon":"notification_icon"}}' \
@@ -435,7 +435,7 @@ See https://cordova.apache.org/en/latest/guide/platforms/ios/index.html
 - install CLI to compile and deploy
 - then rebuild your cordova app with the `iOS` platform
 
-```bash
+```shell
 sudo xcode-select --install
 sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 npm i -g xcode

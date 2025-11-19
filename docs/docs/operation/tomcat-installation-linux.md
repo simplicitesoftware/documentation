@@ -30,7 +30,7 @@ Adjust `LANG` environment variable to appropriate value (e.g. `en_US.UTF8` for U
 
 Set appropriate timezone (change `Europe/Paris` to your timezone):
 
-```bash
+```shell
 rm /etc/localtime
 ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime
 ```
@@ -39,13 +39,13 @@ ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime
 
 Install the NTP daemon:
 
-```bash
+```shell
 yum install ntp
 ```
 
 Enable and start it:
 
-```bash
+```shell
 systemctl enable ntpd.service
 systemctl start ntpd.service
 ```
@@ -54,27 +54,27 @@ systemctl start ntpd.service
 
 Install a entropy generator (useful for all random-related stuff including SSL and Tomcat's sessions)
 
-```bash
+```shell
 yum install epel-release
 yum install haveged
 ```
 
 Enable it and start it:
 
-```bash
+```shell
 systemctl enable haveged
 systemctl start haveged
 ```
 
 ### OpenJDK
 
-```bash
+```shell
 yum install java-latest-openjdk [java-latest-openjdk-devel]
 ```
 
 Check (or change) the Java version used by the server:
 
-```bash
+```shell
 alternatives --config java
 ```
 
@@ -82,7 +82,7 @@ alternatives --config java
 
 Install Ant from Apache website as distribution's version is quite old and has too many dependencies
 
-```bash
+```shell
 wget http://www-eu.apache.org/dist/ant/binaries/apache-ant-1.10.1-bin.tar.gz
 sudo mv apache-ant-1.10.1 /opt/
 tar xvfz apache-ant-1.10.1-bin.tar.gz
@@ -110,13 +110,13 @@ Nothing to do (HSQLDB JAR is part of the application's libraries)
 
 Install the server and the JDBC driver:
 
-```bash
+```shell
 yum install mariadb-server mysql-connector-java
 ```
 
 Or on older distributions providing MySQL instead of MariaDB:
 
-```bash
+```shell
 yum install mysql-server mysql-connector-java
 ```
 
@@ -127,7 +127,7 @@ in `/etc/my.cnf` (in section `[mysqld]`)
 
 Install the server and the JDBC driver:
 
-```bash
+```shell
 yum install postgresql-server postgresql-jdbc
 ```
 
@@ -135,13 +135,13 @@ yum install postgresql-server postgresql-jdbc
 
 Create a dedicated account:
 
-```bash
+```shell
 useradd simplicite
 ```
 
 Connect this account:
 
-```bash
+```shell
 su - simplicite
 ```
 
@@ -160,7 +160,7 @@ Then, make sure the `tomcat/logs` folder is present and writeable, this is **man
 
 Add aliases in the `simplicite` user's `.bashrc` or in a global `/etc/profile.d/simplicite.sh` :
 
-```bash
+```shell
 alias vi=vim
 alias rm='rm -i'
 alias cp='cp -i'
@@ -209,7 +209,7 @@ Enable and start Apache:
 
 Create `/etc/init.d/tomcat` script with following content:
 
-```bash
+```shell
 #!/bin/sh
 #
 # Tomcat Control Script
@@ -376,7 +376,7 @@ In this case Apache and/or NGINX **must** be inhibited.
 
 As `root`, install xinetd :
 
-```bash
+```shell
 yum istall xinetd
 ```
 
@@ -412,7 +412,7 @@ This corresponds to the following configuration:
 
 Enable and start xinetd:
 
-```bash
+```shell
 systemctl enable xinetd
 systemctl start xinted
 ```
@@ -428,13 +428,13 @@ In this case Apache and/or NGINX **must** be inhibited.
 
 As `root`, install the gcc compiler:
 
-```bash
+```shell
 yum install gcc make
 ```
 
 Compile `jsvc`:
 
-```bash
+```shell
 cd tomcat/bin
 tar xvfz commons-daemon-native.tar.gz
 cd commons-daemon-x.y.z-native-src/unix
@@ -461,7 +461,7 @@ This corresponds to the following configuration:
 
 Create `/etc/init.d/tomcat` script with following content:
 
-```bash
+```shell
 #!/bin/sh
 #
 # Tomcat for Control Script
@@ -508,13 +508,13 @@ Adjust `JAVA_OPTS` to suitable settings for your environment.
 
 Make this script executable:
 
-```bash
+```shell
 chmod +x /etc/init.d/tomcat
 ```
 
 Enable and start Tomcat:
 
-```bash
+```shell
 chkconfig tomcat on
 /etc/init.d/tomcat start
 ```

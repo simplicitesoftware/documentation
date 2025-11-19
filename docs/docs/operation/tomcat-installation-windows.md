@@ -57,7 +57,7 @@ These cases requires additional installation/preparation/configuration steps tha
 
 Install Tomcat as a service:
 
-```bash
+```shell
 cd tomcat\bin
 .\service.bat install
 .\tomcat9.exe //US//Tomcat9 ++JvmOptions -server;-Dserver.vendor=tomcat;-Dserver.version=9;-Dfile.encoding=UTF-8;-Dgit.basedir=C:\Users\Administrator\git;-Dplatform.autoupgrade=true --JvmMs 256 --JvmMx 1024 --Startup auto

@@ -42,7 +42,7 @@ Sizing of the server should be made according to the needs, as always. Any up-to
 
 Installing a local firewall is **highly recommended**, for instance by issuing the following commands:
 
-```bash
+```shell
 sudo dnf -y install firewalld && sudo dnf clean all
 sudo systemctl enable firewalld
 sudo systemctl start firewalld
@@ -50,7 +50,7 @@ sudo systemctl start firewalld
 
 Configuration: here it allows HTTP(S) and SSH traffic from any source:
 
-```bash
+```shell
 sudo firewall-cmd --add-service=ssh --permanent
 sudo firewall-cmd --add-service=http --permanent
 sudo firewall-cmd --add-service=https --permanent
@@ -60,7 +60,7 @@ sudo firewall-cmd --reload
 
 Verify the configuration:
 
-```bash
+```shell
 sudo firewall-cmd --list-all
 ```
 
@@ -68,7 +68,7 @@ sudo firewall-cmd --list-all
 
 Adjust the system date and timezone to your nee, e.g.
 
-```bash
+```shell
 sudo timedatectl set-timezone Europe/Paris
 ```
 
@@ -81,7 +81,7 @@ It is **highly recommended** to allow only SSH connections using SSH keys
 
 The system **must** be up-to-date **before proceeding**:
 
-```bash
+```shell
 sudo dnf update -y
 ```
 
@@ -90,7 +90,7 @@ sudo dnf update -y
 The system **must** be kept up-to-date by either executing the above command regularly, or by setting up automatic updates. If you activate
 automatic reboot, make sur you have some kind of VM backup setup.
 
-```bash
+```shell
 sudo dnf install dnf-automatic -y
 sudo sed -i 's/^reboot=.*/reboot=when-needed/' /etc/dnf/automatic.conf
 sudo systemctl edit --full dnf-automatic.timer
@@ -145,7 +145,7 @@ This is an adaptation of Portainer's doc "[Deploying Portainer behind Traefik Pr
 :::tip
 To generate the basic auth user / pwd, you can use the following command line (doubling the `$` is required)
 
-```bash
+```shell
 htpasswd -bn your_user_name your_super_complex_password | sed 's/\$/$$/g'
 ```
 
@@ -333,7 +333,7 @@ Each backed up project uses a variables-definitions `backup-myproject.sh` script
 
 `backup-myproject.sh` script:
 
-```bash
+```shell
 #!/bin/bash
 set -euo pipefail
 
@@ -364,7 +364,7 @@ MAIL_TO="xxx"
 
 `backup.sh` script:
 
-```bash
+```shell
 #!/bin/bash
 
 set -euo pipefail

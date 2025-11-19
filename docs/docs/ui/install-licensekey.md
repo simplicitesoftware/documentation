@@ -54,6 +54,6 @@ Call a service interface: I/O (preferred) or API to create or update the license
 
 Example using the I/O service interface:
 
-```bash
+```shell
 curl -u designer:mydesignerpassword --form service=xmlimport --form file=@/my/path/to/license.xml http(s)//myhost[:myport][/mycontextroot]/io
 ```

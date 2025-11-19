@@ -110,7 +110,7 @@ public class MyLocalTests {
 
 Then you can run the tests of this class by:
 
-```bash
+```shell
 mvn test -Dtest="com.simplicite.tests.MyModule.MyLocalTests"
 ```
 

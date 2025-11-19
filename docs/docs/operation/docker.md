@@ -63,7 +63,7 @@ On an "out of the box" **CentOS 7** server you can start a clean & fresh Simplic
 
 First, install the standard Docker service:
 
-```bash
+```shell
 sudo yum -y update
 sudo yum -y install docker
 sudo systemctl enable docker
@@ -76,7 +76,7 @@ sudo systemctl start docker
 
 Then pull the platform image and run an ephemeral container from this image:
 
-```bash
+```shell
 sudo docker login
 sudo docker pull registry.simplicite.io/platform
 sudo docker run -it --rm -name <myapp> -p 80:8080 registry.simplicite.io/platform:<tag>
@@ -92,7 +92,7 @@ On an "out of the box" **Debian 9** server you can start a clean & fresh Simplic
 
 Install the up-to-date Docker-CE service:
 
-```bash
+```shell
 sudo apt-get update
 sudo apt-get -y remove docker docker-engine docker.io
 sudo apt-get install -y apt-transport-https ca-certificates wget software-properties-common
@@ -107,7 +107,7 @@ sudo systemctl enable docker
 
 Pull the platform image and run an ephemeral container:
 
-```bash
+```shell
 sudo docker login
 sudo docker pull registry.simplicite.io/platform:<tag>
 sudo docker run -it --rm -name <myapp> -p 80:8080 registry.simplicite.io/platform:<tag>
@@ -164,7 +164,7 @@ Run variants
 
 ### Run with an embedded HSQLDB database {#embeddeddatabase}
 
-```bash
+```shell
 sudo docker run\
 	[-it --rm | -d [--restart=always]]\
 	-name <myapp>\
@@ -183,14 +183,14 @@ as **named** volumes.
 
 You first need to create these named volumes (prior to first start of the container), this has to be done only once:
 
-```bash
+```shell
 sudo docker volume create <myapp>_db
 sudo docker volume create <myapp>_dbdoc
 ```
 
 Then you need to run your container with the appropriate `-v` volumes mappings, e.g:
 
-```bash
+```shell
 sudo docker run\
 	(...)\
 	-v <myapp>_db:/usr/local/tomcat/webapps/ROOT/WEB-INF/db\
@@ -226,7 +226,7 @@ sudo docker run\
 >
 > To get this address run the following command:
 >
-> ```bash
+> ```shell
 > ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+'
 > ```
 >
@@ -235,7 +235,7 @@ sudo docker run\
 > Also **make sure** your database is configured to **allow connections** on this IP and its port
 > and that the firewall considers the `docker0` interface as trusted, this can be ensured by:
 >
-> ```bash
+> ```shell
 > sudo firewall-cmd --permanent --zone=trusted --add-interface=docker0
 > sudo firewall-cmd --reload
 > ```
@@ -392,14 +392,14 @@ If you want the log folders to persist you **must** map the 2 log folders as a *
 
 You first need to create these named volumes (prior to first start of the container), this has to be done only once:
 
-```bash
+```shell
 sudo docker volume create <myapp>_server_logs
 sudo docker volume create <myapp>_platform_logs
 ```
 
 Then you need to run your container with the appropriate `-v` volumes mapping, e.g:
 
-```bash
+```shell
 sudo docker run (...) -name <myapp>\
 	-v <myapp>_server_logs:/usr/local/tomcat/logs\
 	-v <myapp>_platform_logs:/usr/local/tomcat/webapps/ROOT/WEB-INF/log\
@@ -416,13 +416,13 @@ If you want your modules' Git repository to persist you **must** map the Git bas
 
 You first need to create this named volume (prior to first start of the container), this has to be done only once:
 
-```bash
+```shell
 sudo docker volume create <myapp>_git
 ```
 
 Then you need to run your container with the appropriate `-v` volume mapping, e.g:
 
-```bash
+```shell
 sudo docker run (...) -name <myapp>\
 	-v <myapp>_git:/usr/local/tomcat/webapps/ROOT/WEB-INF/git\
 	registry.simplicite.io/platform[:tag]
@@ -652,7 +652,7 @@ RUN mv /usr/local/tomcat/webapps/ROOT /usr/local/tomcat/webapps/$ctx && \
 
 And the following build command:
 
-```bash
+```shell
 sudo docker build -t <image tag> --build-arg tag=<the tag of the base image> --build-arg ctx=<a non root context, e.g. myapp> .
 ```
 
@@ -715,13 +715,13 @@ You can use the Docker Compose tool to start an database container and a Simplic
 
 The only packages you need are Docker and the Docker Compose tool:
 
-```bash
+```shell
 sudo yum install docker docker-compose
 ```
 
 Then you can enable and start the Docker daeamon and login to DockerHub with an account allowed to pull the **private** pre-built images `registry.simplicite.io/platform:<tag>`:
 
-```bash
+```shell
 sudo systemctl enable docker
 sudo systemctl start docker
 sudo docker login
@@ -755,7 +755,7 @@ volumes:
 
 Start the containers by:
 
-```bash
+```shell
 sudo docker-compose up [-d]
 ```
 
@@ -837,7 +837,7 @@ volumes:
 
 Start the containers by:
 
-```bash
+```shell
 sudo docker-compose up [-d]
 ```
 
@@ -888,7 +888,7 @@ volumes:
 
 Start the containers by:
 
-```bash
+```shell
 sudo docker-compose up [-d]
 ```
 
@@ -898,7 +898,7 @@ sudo docker-compose up [-d]
 
 The commands to upgrade containers managed by Docker Compose tool are:
 
-```bash
+```shell
 sudo docker-compose pull
 sudo docker-compose up [-d]
 sudo docker image prune -a -f
@@ -950,14 +950,14 @@ ERROR: ZONE_CONFLICT: 'docker0' already bound to a zone
 
 Try this:
 
-```bash
+```shell
 sudo firewall-cmd --zone=trusted --remove-interface=docker0
 sudo firewall-cmd --zone=trusted --remove-interface=docker0 --permanent
 ```
 
 Andd restart docker:
 
-```bash
+```shell
 sudo systemctl start docker
 ```
 

@@ -33,7 +33,7 @@ and is available in the `JPDA_ADDRESS` environment variable.
 When using a "traditional" deployments of Tomcat 9.x servers you can (re)start Tomcat in JPDA mode by doing the following change
 in the startup script `startup.sh` (the change is to add the keyword `jpda` before `start`):
 
-```bash
+```shell
 (...)
 exec "$PRGDIR"/"$EXECUTABLE" jpda start "$@"
 ```
@@ -41,7 +41,7 @@ exec "$PRGDIR"/"$EXECUTABLE" jpda start "$@"
 By default the listening port is `8000` but you can change it to any port by setting the `JPDA_ADDRESS` environment variable
 to another value:
 
-```bash
+```shell
 JPDA_ADDRESS=12345
 export JPDA_ADDRESS
 ```
@@ -61,7 +61,7 @@ by setting up an SSH tunnel to securely forward the port.
 
 For instance:
 
-```bash
+```shell
 ssh -L 8000:localhost:12345 <user>@<server>
 ```
 

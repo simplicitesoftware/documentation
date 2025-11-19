@@ -18,7 +18,7 @@ Have a recent [Git](http://git-scm.com/) version installed.
 
 Turn off SSL verification (our Git repositories are accessible over HTTPS with certificates signed by our own certification authority):
 
-```bash
+```shell
 git config --global http.sslVerify false
 ```
 

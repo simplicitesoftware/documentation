@@ -49,7 +49,7 @@ Get the Simplicité sandbox template from our GIT repository
 
 Prepare the `app.war` by:
 
-```bash
+```shell
 cd app
 jar cf ../app.war .
 cd ..
@@ -143,7 +143,7 @@ Get the Simplicité sandbox template from our GIT repository
 
 Prepare the `app.war` by:
 
-```bash
+```shell
 cd app
 jar cf ../app.war .
 cd ..

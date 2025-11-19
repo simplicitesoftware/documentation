@@ -165,7 +165,7 @@ oracle-database-xe-18c-1.0-1.x86_64.rpm
 
 Install them:
 
-```bash
+```shell
 yum -y localinstall oracle-database*
 ```
 
@@ -177,13 +177,13 @@ Then setup the server (this includes setting the `<system password>` used below)
 
 Enable the service:
 
-```bash
+```shell
 systemctl enable oracle-xe-18c
 ```
 
 And start it (if not already started by setup):
 
-```bash
+```shell
 systemctl start oracle-xe-18c
 ```
 
@@ -191,7 +191,7 @@ systemctl start oracle-xe-18c
 
 Create environment file:
 
-```bash
+```shell
 cat << EOF > /etc/profile.d/oraclexe.sh
 ORACLE_HOME=/opt/oracle/product/18c/dbhomeXE
 export ORACLE_HOME
@@ -230,14 +230,14 @@ sql> select value from nls_database_parameters where parameter='NLS_CHARACTERSET
 
 And adapt the `NLS_LANG` value:
 
-```bash
+```shell
 NLS_LANG=AMERICAN_AMERICA.ALL32UTF8
 export NLS_LANG
 ```
 
 On windows to load an SQL script encoded in UTF8 thru the cmd prompt, you will have to change the default Windows code page (850) first:
 
-```bash
+```shell
 chcp 65001
 set NLS_LANG=.AL32UTF8
 sqlplus <user>/<pwd>
@@ -298,7 +298,7 @@ sudo chmod +x /etc/profile.d/oracleclient.sh
 
 With following content:
 
-```bash
+```shell
 ORACLE_HOME=/usr/lib/oracle/12.2/client64
 export ORACLE_HOME
 LD_LIBRARY_PATH=${ORACLE_HOME}/lib:${LD_LIBRARY_PATH}

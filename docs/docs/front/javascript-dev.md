@@ -35,12 +35,12 @@ import simplicite from 'simplicite';
 const app = simplicite.session({ url: '<instance URL>' });
 
 try {
-  const user = await app.login({ 
-    username: '<username>', 
-    password: '<password>' 
+  const user = await app.login({
+    username: '<username>',
+    password: '<password>'
   });
   console.log('Hello ' + user.login + '!');
-  
+
   const obj = app.getBusinessObject('MyObject');
   const list = await obj.search();
   // Work with results
@@ -59,7 +59,7 @@ try {
 ## Project Setup
 
 1. Create project directory and initialize:
-```bash
+```shell
 npm init -y
 npm install simplicite express
 ```
@@ -108,8 +108,8 @@ server.use(express.static(dir + '/public'));
 
 ```javascript
 const products = app.getBusinessObject('DemoProduct');
-const productList = await products.search(null, { 
-  inlineDocuments: ['demoPrdPicture'] 
+const productList = await products.search(null, {
+  inlineDocuments: ['demoPrdPicture']
 });
 ```
 
@@ -124,8 +124,8 @@ server.get('/', async (req, res) => {
 server.get('/products', async (req, res) => {
   headers(res);
   try {
-    const prdList = await products.search(null, { 
-      inlineDocuments: ['demoPrdPicture'] 
+    const prdList = await products.search(null, {
+      inlineDocuments: ['demoPrdPicture']
     });
     res.json(prdList);
   } catch (err) {
@@ -218,12 +218,12 @@ public class MyExternalObject extends ExternalObject {
     try {
       setDecoration(false);
       BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), getDisplay());
-      
+
       wp.appendAjax();
       wp.appendJSInclude(HTMLTool.getResourceJSURL(this, "CLASS"));
       wp.appendCSSInclude(HTMLTool.getResourceCSSURL(this, "STYLES"));
       wp.appendHTML(HTMLTool.getResourceHTMLContent(this, "HTML"));
-      
+
       wp.setReady(this.getName() + ".render({});");
       return wp.toString();
     } catch (Exception e) {
