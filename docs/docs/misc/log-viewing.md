@@ -34,6 +34,10 @@ can greatly improve overall readability. You can easily deactivate a filter with
 CronManager|ICORECM004|ICORECM005|MEMGC
 ```
 
+### Searching
+
+Use `/` to search using a regex, or use [chronological navigation](https://docs.lnav.org/en/v0.13.1/hotkeys.html#chronological-navigation) to fastly navigate to the next hour for example.
+
 ### Timeline view
 
 Press `i` to get a histogram view of the repartition of the error levels over time:
