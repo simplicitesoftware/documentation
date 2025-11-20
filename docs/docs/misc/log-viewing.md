@@ -31,7 +31,7 @@ Press tab to open the filtering panel, and enter a regex to filter or filter out
 can greatly improve overall readability. You can easily deactivate a filter with the spacebar in the filtering panel.
 
 ```pcre
-CronManager|ICORECM004|ICORECM005|MEMGC
+CronManager|ICORECM004|ICORECM005|MEMGC|ProcessScheduler
 ```
 
 ### Searching
