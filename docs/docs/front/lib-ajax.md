@@ -7,12 +7,15 @@ Ajax Library
 ============
 
 :::warning
+
 This documentation is part of the **Frontend Development** category, designed to guide you through frontend customization within Simplicité.
+
 :::
 
 This guide covers the Ajax Library's core methods and Simplicité's MVC architecture.
 
-# MVC Architecture
+MVC Architecture
+----------------
 
 Simplicité uses the **Model-View-Controller** pattern for organized, maintainable applications:
 
@@ -20,7 +23,8 @@ Simplicité uses the **Model-View-Controller** pattern for organized, maintainab
 - **View** (`$view`): UI components and rendering via `Simplicite.UI.View`
 - **Controller** (`$ui`): Frontend engine coordinating Model and View via `Simplicite.UI.Engine`
 
-## Global Objects
+Global Objects
+--------------
 
 Key objects available in Simplicité:
 
@@ -47,9 +51,10 @@ $ui.nav       // Same as $nav
 $ui.view.tools // Same as $tools
 ```
 
-# Accessing Simplicité Session
+Accessing Simplicité Session
+----------------------------
 
-## Core Methods
+### Core Methods
 
 | Method                          | Returns                             | Description                                          |
 |---------------------------------|-------------------------------------|------------------------------------------------------|
@@ -59,9 +64,10 @@ $ui.view.tools // Same as $tools
 | `getUserInfo(cbk, login, params)` | `Promise<Object>`                 | User data (login, name, email, picture)              |
 | `getBusinessObject(obj, inst)`  | `Simplicite.UI.BusinessObject`      | Business object instance                             |
 
-# Manipulating Business Objects
+Manipulating Business Objects
+-----------------------------
 
-## Key Methods
+### Key Methods
 
 | Method                           | Returns                                 | Description                                      |
 |----------------------------------|-----------------------------------------|--------------------------------------------------|
@@ -71,7 +77,7 @@ $ui.view.tools // Same as $tools
 | `getCount(cbk, filters, params)` | `integer`                               | Row count with filters                           |
 | `getForCreate(cbk, params)`      | `void`                                  | Load default item for creation                   |
 
-## Business Object Structure
+### Business Object Structure
 
 | Attribute | Description                                                    |
 |-----------|----------------------------------------------------------------|
@@ -82,10 +88,12 @@ $ui.view.tools // Same as $tools
 | `metadata`| Meta data (name, instance, fields)                             |
 
 :::tip
+
 Always manipulate Business Objects within a `search()` method to ensure data is properly loaded.
+
 :::
 
-## Field Access Example
+### Field Access Example
 
 ```javascript
 product.search(function() {
@@ -97,7 +105,8 @@ product.search(function() {
 }, null, {});
 ```
 
-# Displaying UI Elements
+Displaying UI Elements
+----------------------
 
 Display elements in the WORK area:
 

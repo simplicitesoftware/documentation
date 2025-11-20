@@ -12,9 +12,11 @@ This documentation is part of the **Frontend Development** category, designed to
 
 This guide covers creating custom widgets using **External Objects** for interactive, embedded components.
 
-## When to Use Custom Widgets
+When to Use Custom Widgets
+--------------------------
 
 Create custom widgets when:
+
 - Existing components don't meet your visualization needs
 - You need specific feature combinations
 - Default UI doesn't support your design requirements
@@ -23,17 +25,20 @@ Create custom widgets when:
 Most technical operations can be accomplished with Simplicité's core features. Custom widgets primarily address unique visualization needs.
 :::
 
-## Example: Welcome Card
+Example: Welcome Card
+---------------------
 
 ![](img/ui-component/welcome-card-result.png)
 
 A customizable entry point featuring:
+
 - Personalized greetings
 - Brand-aligned design
 - Interactive shortcuts
 - Dynamic content
 
-## Creating a Widget
+Creating a Widget
+-----------------
 
 ### 1. Create External Object
 
@@ -60,6 +65,7 @@ Click **Create Resources** to generate three files:
 ### 3. Choose Implementation Approach
 
 **Dynamic Instantiation (Recommended)**:
+
 - HTML contains only anchor elements
 - JavaScript creates content dynamically
 - Lighter DOM, faster loading
@@ -81,11 +87,13 @@ Simplicite.UI.ExternalObjects.DemoWelcomeCard = class extends Simplicite.UI.Exte
 ```
 
 **Static Instantiation**:
+
 - More complete HTML structure
 - Less JavaScript manipulation
 - Use when minimal dynamic data needed
 
-## Integration
+Integration
+-----------
 
 1. Navigate to **User Interface > Views > Show All**
 2. Select a **Home Page** view
@@ -97,10 +105,13 @@ Simplicite.UI.ExternalObjects.DemoWelcomeCard = class extends Simplicite.UI.Exte
 5. Save and preview
 
 :::warning
+
 Ensure proper permissions. If you see "External object not granted", clear cache and verify rights match your application.
+
 :::
 
-## Implementation Example
+Implementation Example
+----------------------
 
 ### Accessing Simplicité
 
@@ -110,7 +121,7 @@ async render(params, data = {}) {
   let product = app.getBusinessObject("DemoProduct");
   let user = app.getBusinessObject("User");
   let login = $ui.getGrant().login;
-  
+
   // Build your UI
 }
 ```
@@ -122,7 +133,7 @@ product.search(function() {
   for (let i = 0; i < product.count; i++) {
     const prd = product.list[i];
     const imageSrc = `data:${prd.demoPrdPicture.mime};base64,${prd.demoPrdPicture.content}`;
-    
+
     // Create and append elements
     let productDiv = $('<div>').addClass("product-card");
     // ... add content ...
@@ -134,6 +145,7 @@ product.search(function() {
 ### Accessing Fields
 
 Field naming follows patterns:
+
 - Object fields: `demoPrdName`, `demoPrdPrice`
 - Linked fields: `demoPrdSupId__demoSupName`
 
@@ -168,7 +180,8 @@ user.search(function() {
 }, null, {});
 ```
 
-## Complete Example Structure
+Complete Example Structure
+--------------------------
 
 <details>
 <summary>Full HTML</summary>
@@ -180,6 +193,7 @@ user.search(function() {
   <div id="demowelcomecard-productlist"></div>
 </div>
 ```
+
 </details>
 
 <details>
@@ -217,20 +231,22 @@ Simplicite.UI.ExternalObjects.DemoWelcomeCard = class extends Simplicite.UI.Exte
   }
 };
 ```
+
 </details>
 
-## Legacy Approach (V5)
+Legacy Approach (V5)
+--------------------
 
 For older versions, use namespace pattern:
 
 ```javascript
 var CustomWelcomeCard = CustomWelcomeCard || (function($) {
   let app = $ui.getApp();
-  
+
   function render(url) {
     // Implementation
   }
-  
+
   return { render: render };
 })(jQuery);
 ```

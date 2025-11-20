@@ -248,6 +248,7 @@ public class MyExternalObject extends ExternalObject {
 
 :::warning
 
-Avoid overusing JavaScript when Simplicité's native features (Business Logic, Declarative Rules, Object Hooks) can achieve the same results. This maintains compatibility and simplifies maintenance.
+Avoid overusing JavaScript when Simplicité's native features (Business Logic, Declarative Rules, Object Hooks) can achieve the same results.
+This maintains compatibility and simplifies maintenance.
 
 :::

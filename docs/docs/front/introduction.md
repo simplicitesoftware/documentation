@@ -12,19 +12,24 @@ This documentation is part of the **Frontend Development** category, designed to
 
 This guide covers Simplicité's tools for customizing UIs and implementing custom designs while maintaining access to all back-office features.
 
-## Target Users
+Target Users
+------------
 
-These functionalities are primarily for **web designers** and **frontend developers** who need to address requirements beyond Simplicité's default interface. The concepts involve:
+These functionalities are primarily for **web designers** and **frontend developers** who need to address requirements
+beyond Simplicité's default interface. The concepts involve:
+
 - **HTML**, **CSS**, and **JavaScript**
 - Web frameworks and CSS preprocessors
 
-## Use Cases
+Use Cases
+---------
 
 ### Visual Identity & Design Guidelines
 
 ![](img/introduction/identity-guidelines.png)
 
-When integrating Simplicité into systems with distinct design guidelines (e.g., government DSFR standards), you can customize the UI to ensure familiarity and compliance.
+When integrating Simplicité into systems with distinct design guidelines (e.g., government or corporate designs),
+you can customize the UI to ensure familiarity and compliance.
 
 ![](img/introduction/dsfr-simplicite.png)
 
@@ -32,7 +37,8 @@ When integrating Simplicité into systems with distinct design guidelines (e.g.,
 
 ![](img/introduction/client-oriented-webpage.png)
 
-For client-facing solutions, create custom frontends tailored to end-users. For example:
+For client-facing solutions, create custom front-ends tailored to end-users. For example:
+
 - Product catalogs with video previews
 - Custom ordering interfaces
 - Minimalist user-friendly pages
@@ -47,7 +53,8 @@ If your team uses specific frameworks (Vue.js, Mustache, etc.), Simplicité allo
 ![](img/introduction/vue-webpage.png)
 ![](img/introduction/mustache-webpage.png)
 
-## UI Structure
+UI Structure
+------------
 
 Simplicité's interface consists of four main sections:
 
@@ -58,7 +65,8 @@ Simplicité's interface consists of four main sections:
 - **WORK**: Main content area for forms, lists, and dynamic content
 - **FOOTER**: Legal mentions and accessibility features
 
-## Documentation Structure
+Documentation Structure
+-----------------------
 
 This documentation follows a progressive learning path:
 

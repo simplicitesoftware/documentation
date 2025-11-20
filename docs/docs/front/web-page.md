@@ -12,7 +12,8 @@ This documentation is part of the **Frontend Development** category, designed to
 
 This guide covers creating standalone web pages using **External Objects** that operate independently from Simplicité's standard UI.
 
-# Native Web Pages
+Native Web Pages
+----------------
 
 Create custom front-ends that interact with Simplicité's back-office while existing as dedicated pages.
 
@@ -20,15 +21,15 @@ Create custom front-ends that interact with Simplicité's back-office while exis
 
 These pages are rendered at `/ext/` of your Simplicité URL and can be public or private.
 
-## Creating an External Page
+### Creating an External Page
 
-### 1. Create External Object
+#### 1. Create External Object
 
 1. Set **Nature**: Basic
 2. Include necessary resources
 3. Write server-side Java code
 
-### 2. Java Server-Side Code
+#### 2. Java Server-Side Code
 
 ```java
 package com.simplicite.extobjects.Training;
@@ -45,16 +46,16 @@ public class MyExternalObject extends ExternalObject {
   public Object display(Parameters params) {
     try {
       setDecoration(false);
-      
+
       BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), getDisplay());
-      
+
       wp.appendAjax();
       wp.appendJSInclude(HTMLTool.getResourceJSURL(this, "CLASS"));
       wp.appendCSSInclude(HTMLTool.getResourceCSSURL(this, "STYLES"));
       wp.appendHTML(HTMLTool.getResourceHTMLContent(this, "HTML"));
-      
+
       wp.setReady(this.getName() + ".render({});");
-      
+
       return wp.toString();
     } catch (Exception e) {
       AppLog.error(getClass(), "display", null, e, getGrant());
@@ -65,12 +66,13 @@ public class MyExternalObject extends ExternalObject {
 ```
 
 **Key methods**:
+
 - `setDecoration(false)`: Full-page layout
 - `appendAjax()`: Enable async communication
 - `appendJSInclude/CSS/HTML()`: Load resources
 - `setReady()`: Initialize JavaScript when ready
 
-### 3. JavaScript Client-Side Setup
+#### 3. JavaScript Client-Side Setup
 
 ```javascript
 var MyExternalPage = (function($) {
@@ -82,7 +84,7 @@ var MyExternalPage = (function($) {
 })(jQuery);
 ```
 
-### 4. Full-Page CSS
+#### 4. Full-Page CSS
 
 ```css
 #myexternalpage {
@@ -94,9 +96,9 @@ var MyExternalPage = (function($) {
 }
 ```
 
-## Working with Business Objects
+### Working with Business Objects
 
-### Fetching Data
+#### Fetching Data
 
 ```javascript
 let app = new Simplicite.Ajax(params.root, "uipublic");
@@ -110,7 +112,7 @@ product.search(function() {
 }, null, { inlineDocuments: true });
 ```
 
-### Creating Objects
+#### Creating Objects
 
 ```javascript
 let order = app.getBusinessObject("DemoOrder");
@@ -122,12 +124,12 @@ order.getForCreate(function() {
   order.item.demoOrdPrdId__demoPrdReference = prd.demoPrdReference;
   order.item.demoOrdQuantity = "1";
   order.item.demoOrdComments = "Order from external page";
-  
+
   order.create();
 });
 ```
 
-## Page Access Control
+### Page Access Control
 
 Control public/private access:
 
@@ -136,7 +138,7 @@ Control public/private access:
 public Object display(Parameters params) {
   try {
     boolean pub = isPublic();
-    
+
     if (pub) {
       BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), getDisplay());
       // Configure public page
@@ -152,9 +154,9 @@ public Object display(Parameters params) {
 }
 ```
 
-## Special Considerations
+### Special Considerations
 
-### Resource Images
+#### Resource Images
 
 Pass images through params:
 
@@ -171,7 +173,7 @@ function render(params) {
 }
 ```
 
-### Database Documents
+#### Database Documents
 
 Enable inline documents:
 
@@ -193,7 +195,7 @@ product.search(function() {
 | `page`         | number            | Page index                           |
 | `visible`      | boolean           | Only visible fields                  |
 
-### Async Operations
+#### Async Operations
 
 Handle promises correctly:
 
@@ -213,11 +215,12 @@ async function getProductNames() {
 let productNames = await getProductNames();
 ```
 
-# Using Web Frameworks
+Using Web Frameworks
+--------------------
 
-## Vue.js Integration
+### Vue.js Integration
 
-### Method 1: Resource Files
+#### Method 1: Resource Files
 
 **Server-side setup**:
 
@@ -229,16 +232,16 @@ public class MyCustomVuePage extends ExternalObject {
       boolean pub = isPublic();
       setDecoration(!pub);
       String render = getName() + ".render(" + params.toJSONObject() + ");";
-      
+
       if (pub) {
         BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), getDisplay());
         wp.appendAjax();
         wp.appendVue();  // Enable Vue.js
-        
+
         wp.appendJSInclude(HTMLTool.getResourceJSURL(this, "SCRIPT"));
         wp.appendCSSInclude(HTMLTool.getResourceCSSURL(this, "STYLES"));
         wp.append(HTMLTool.getResourceHTMLContent(this, "HTML"));
-        
+
         wp.setReady(render);
         return wp.toString();
       } else {
@@ -261,15 +264,15 @@ var MyCustomVuePage = MyCustomVuePage || (() => {
     try {
       if (typeof Vue === 'undefined')
         throw 'Vue.js not available';
-      
+
       const data = {
         coverImage: params.coverUrl
       };
-      
-      const app = typeof $ui !== 'undefined' ? 
-        $ui.getAjax() : 
+
+      const app = typeof $ui !== 'undefined' ?
+        $ui.getAjax() :
         new Simplicite.Ajax(params.root, 'uipublic');
-      
+
       const vue = Vue.createApp({
         data() { return data; },
         methods: {
@@ -278,18 +281,18 @@ var MyCustomVuePage = MyCustomVuePage || (() => {
           }
         }
       });
-      
+
       // Load data
       product.search(function() {
         data.products = product.list;
         vue.mount("#mycustomvuepage");
       }, null, { inlineDocs: true });
-      
+
     } catch(e) {
       $('#mycustomvuepage').text(`Error: ${e.message}`);
     }
   }
-  
+
   return { render: render };
 })();
 ```
@@ -301,7 +304,7 @@ var MyCustomVuePage = MyCustomVuePage || (() => {
   <div id="header">
     <h1>{{ title }}</h1>
   </div>
-  
+
   <div id="content">
     <template v-for="item in products">
       <div class="product-card" v-on:click="selectProduct(item)">
@@ -321,17 +324,19 @@ var MyCustomVuePage = MyCustomVuePage || (() => {
 ```
 
 **Vue features available**:
+
 - `v-*` directives (v-if, v-for, v-bind, v-on, etc.)
 - `<template>` tags
 - `<style scoped>`
 - Methods and data reactivity
 
 **Not available**:
+
 - `ref` and `onMounted` (no imports)
 - `.vue` component files
 - Direct imports from 'vue'
 
-### Method 2: Built Project
+#### Method 2: Built Project
 
 1. Create Vue project with Node.js
 2. Run `npm run build`
@@ -339,7 +344,7 @@ var MyCustomVuePage = MyCustomVuePage || (() => {
 4. Add as resource in External Object
 5. Load from Java server-side code
 
-## Other Frameworks
+### Other Frameworks
 
 Available via `BootstrapWebPage`:
 
@@ -354,9 +359,10 @@ Available via `BootstrapWebPage`:
 
 For other frameworks, use the NPM Library approach or built project method.
 
-## Complete Examples
+### Complete Examples
 
 Refer to demo repositories:
+
 - [Plain web demo](https://github.com/simplicitesoftware/web-demo)
 - [Vue.js demo](https://github.com/simplicitesoftware/vue-demo)
 - [React demo](https://github.com/simplicitesoftware/react-demo)

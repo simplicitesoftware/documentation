@@ -14,7 +14,8 @@ The **Theme Editor** enables visual customization of your Simplicité instance f
 
 ![](img/theme/simplicite-mazette-form.png)
 
-## Accessing the Theme Editor
+Accessing the Theme Editor
+--------------------------
 
 1. Navigate to **User Interface > Themes**
 2. Select a theme
@@ -22,7 +23,8 @@ The **Theme Editor** enables visual customization of your Simplicité instance f
 
 ![](img/theme/theme-editor-overview.png)
 
-## Default Themes
+Default Themes
+--------------
 
 Simplicité includes several predefined themes:
 
@@ -47,7 +49,8 @@ Simplicité includes several predefined themes:
 ![](img/theme/theme-etat-overview.png)
 </details>
 
-## Creating a Theme
+Creating a Theme
+----------------
 
 1. Click **Create** in **User Interface > Themes**
 2. Select a base theme:
@@ -57,10 +60,13 @@ Simplicité includes several predefined themes:
 3. Choose name and module
 
 :::warning
+
 Base themes are building blocks, not for direct use. Create custom themes extending them.
+
 :::
 
-## Theme Files
+Theme Files
+-----------
 
 After creation, three files are generated:
 
@@ -68,7 +74,8 @@ After creation, three files are generated:
 2. **addons.less**: Custom style overrides
 3. **themeName_gen.css**: Compiled final stylesheet
 
-## Theme Editor Interface
+Theme Editor Interface
+----------------------
 
 ![](img/theme/theme-editor-parts.png)
 
@@ -190,6 +197,7 @@ Modal dialog styles (container, header, footer).
 ### 3. DOM Path Viewer
 
 Displays element structure for:
+
 - Understanding layouts
 - Defining custom styles
 - Ensuring consistency
@@ -197,6 +205,7 @@ Displays element structure for:
 **Usage**: Hover over Preview elements to see their DOM path in Less format.
 
 **Common paths**:
+
 - Home: `div.main > div.simplicite.wrapper > ... > element.class`
 - Form: `div.objform > div.card > ... > element.class`
 - List: `div.objlist > div.card.panel-list > ... > element.class`

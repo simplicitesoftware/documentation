@@ -7,22 +7,27 @@ Complementary Theme Styles
 ==========================
 
 :::warning
+
 This documentation is part of the **Frontend Development** category, designed to guide you through frontend customization within Simplicité.
+
 :::
 
 This guide covers advanced theme customization using the **addon.less** file to extend or override styles defined in **constants.less** and **theme_gen.css**.
 
-## What is Less?
+What is Less?
+-------------
 
 **Less** (Leaner CSS) is a CSS preprocessor that extends CSS with:
 
-- **Variables**: Reusable values
+- **Variables**: Reusable values:
+
 ```less
 @primary-color: #3498db;
 body { color: @primary-color; }
 ```
 
-- **Nesting**: Hierarchical styles
+- **Nesting**: Hierarchical styles:
+
 ```less
 .container {
   .header {
@@ -33,6 +38,7 @@ body { color: @primary-color; }
 ```
 
 - **Interaction States**:
+
 ```less
 .box {
   background-color: yellow;
@@ -41,7 +47,8 @@ body { color: @primary-color; }
 }
 ```
 
-- **Mixins**: Reusable style blocks
+- **Mixins**: Reusable style blocks:
+
 ```less
 .rounded-corners(@radius: 0.5rem) {
   border-radius: @radius;
@@ -49,26 +56,32 @@ body { color: @primary-color; }
 div { .rounded-corners(1rem); }
 ```
 
-- **Functions**: Dynamic calculations
+- **Functions**: Dynamic calculations:
+
 ```less
 @primary-color: #3498db;
 body { color: darken(@primary-color, 16%); }
 ```
 
 :::warning
+
 Only use **addon.less** when Simplicité's built-in customization options are insufficient. Overusing it can complicate maintenance.
+
 :::
 
-## When to Use addon.less
+When to Use addon.less
+-----------------------
 
 Use **addon.less** only for requirements that cannot be fulfilled through:
+
 - Theme Editor settings
 - Standard CSS properties
 - Simplicité's native customization features
 
 **Common use case**: Adding custom colored borders to UI elements for brand compliance.
 
-## Customization Process
+Customization process
+---------------------
 
 ### 1. Locate DOM Elements
 
@@ -84,6 +97,7 @@ Use one of these methods:
 ### 2. Identify Context
 
 Document the element's:
+
 - Classes
 - Parent containers
 - Related elements
@@ -129,10 +143,13 @@ div.container-table > table {
 ```
 
 :::tip
+
 If styles don't appear immediately, add `!important` to ensure they override default styles. Remember to clear your cache.
+
 :::
 
-## Example: Interactive List Rows
+Example: Interactive list rows
+------------------------------
 
 Add visual feedback for selected rows:
 
@@ -153,12 +170,11 @@ div.container-table > table {
 }
 ```
 
-## Applying Your Theme
+Applying your theme
+-------------------
 
 1. Navigate to **User Interface > Views > Home Pages**
 2. Select your view
 3. Apply your custom theme
-
-![](img/styles/view-apply-theme.png)
-
+   ![](img/styles/view-apply-theme.png)
 4. Clear cache to see changes
