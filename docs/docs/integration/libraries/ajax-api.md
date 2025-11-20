@@ -75,7 +75,8 @@ A typical usage is as follows:
 
 The content of the optional `params` parameter object depends on the service but there are 2 parameters that apply to all services:
 
-- `async` to indicate if the service is called asynchronously or not (defaults to `true`). This can also be done globally using the `setAsync(true|false)` function.
+- `async` to indicate if the service is called asynchronously or not (defaults to `true`).
+  This can also be done globally using the `setAsync(true|false)` function.
 - `error` as a local error handler (no default, if not specified the global error handler is used, see below).
 
 Example:
@@ -89,6 +90,7 @@ app.getGrant(function(res) {
 	}
 });
 ```
+
 You can also set a global request timeout by using the `app.setTimeout(<timeout in milliseconds>)` function, in case of timeout a standard error is generated.
 
 ### Custom error, warning, info and debug global handlers
@@ -277,7 +279,12 @@ app.setSysParam(function(value) {
 
 If the value is set to `undefined`, the system parameter is removed.
 
-> **Note**: As of **version 4.0** `app.grant.setParameter` is an alias to `app.setSysParam` without the `save` argument which is **forced to `false`** in this case.
+:::note
+
+As of **version 4.0** `app.grant.setParameter` is an alias to `app.setSysParam`
+without the `save` argument which is **forced to `false`** in this case.
+
+:::
 
 ### Texts
 
@@ -397,11 +404,12 @@ obj.search(function(list) {
 
 You can specify a `inlineDocs` option to get document and image content fields inlined in the list. Each returned document have:
 
-- an `id` attribute that gives the document ID (which is the value of the document field if `inlineDocs`is not specified) 
+- an `id` attribute that gives the document ID (which is the value of the document field if `inlineDocs`is not specified)
 - a `mime` attribute that gives the document MIME type
 - a `content` attribute that contains the document content as Base64-encoded string
 
-The `inlineThumbs` option includes image thumbnails with the same principle, the `thumbnail` attribute contains the thumbnail content as base64-encoded string.
+The `inlineThumbs` option includes image thumbnails with the same principle, the `thumbnail` attribute contains
+the thumbnail content as base64-encoded string.
 
 You can use both `inlineDocs` and `inlineThumbs`
 
@@ -436,7 +444,8 @@ obj.search(function(list) {
 
 ### Count records
 
-As of **version 3.2 MAINTENANCE 05**, the `getCount` service counts records according to specified filters (if no filters argument is set no search filters are applied).
+As of **version 3.2 MAINTENANCE 05**, the `getCount` service counts records according to specified filters
+(if no filters argument is set no search filters are applied).
 
 ```javascript
 obj.getCount(function(c) {
@@ -703,7 +712,7 @@ calling several APIs in parallel on the same business object instance is not thr
 When iterating over API calls, using `for` or `while` loops should be avoided
 (setting `async: false` is possible but not recommended).
 The following pattern is preferred instead:
- 
+
 ```javascript
 function myloop(i, n, callback) {
 	if (i == n) { // Loop end
@@ -744,7 +753,7 @@ pcs.getMetaData(function (metadata) {
 
 Note that once called the `getMetaData` service, the process meta data remains available in the `pcs.metadata` variable.
 
-<!-- 
+<!--
 External objects services
 -------------------------
 

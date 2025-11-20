@@ -86,7 +86,7 @@ var icbt = $('#mycontainerdiv').append($ui.imageButton({ id: 'myiconbutton', lab
 }));
 ```
 
-<!-- 
+<!--
 ### Forms
 
 **TO BE COMPLETED**

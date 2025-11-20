@@ -4,7 +4,7 @@ title: CSV
 ---
 
 CSV
-====================
+===
 
 This example produces a dummy CSV:
 
@@ -18,7 +18,7 @@ public String info(PrintTemplate pt) {
 		//csv building tools
 		CSVTool csvt = new CSVTool(';', '"');
 		StringBuilder csv = new StringBuilder();
-		
+
 		//add one example row
 		csv.append(csvt.serialize(new String[]{"A", "B", "C"})).append("\n");
 

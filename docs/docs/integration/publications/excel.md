@@ -4,14 +4,14 @@ title: Excel
 ---
 
 Microsoft Excel
-====================
+===============
 
 This methods are written in the object's code and called by a publication object, which MIME type must be set to XLS.
 
 It generates simple Microsoft Excel&reg; content using the Apache POI&reg; library and its wrapper tool.
 
 Simplest example
----------------------------
+----------------
 
 ```java
 public byte[] pubExcel(PrintTemplate pt){
@@ -31,7 +31,7 @@ public byte[] pubExcel(PrintTemplate pt){
 ```
 
 SQL-query based example
----------------------------
+-----------------------
 
 ```java
 public byte[] pubExcel(PrintTemplate pt){

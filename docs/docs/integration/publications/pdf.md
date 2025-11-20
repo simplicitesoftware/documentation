@@ -7,15 +7,18 @@ PDF Publications
 ====================
 
 PDF publications can be generated in several ways:
+
 - using the HTML->PDF tool based on the [openhtmltopdf](https://github.com/openhtmltopdf/openhtmltopdf) library
 - using the included open source [Apache PDFBox library](https://pdfbox.apache.org/)
 - using a third-party Java PDF generation library, that might be more advanced than PDFBox, like [iText](https://itextpdf.com/)
 - using a third-party HTML->PDF service, that might be more advanced than openhtmltopdf, like the open source [WeasyPrint](https://weasyprint.org)
 - using a third-party API-based PDF generation service ([ex](https://stackoverflow.com/questions/5344176/is-there-a-web-service-for-converting-html-to-pdf/5344424#5344424))
 
-## HTML template to PDF
+HTML template to PDF
+--------------------
 
 Configure a publication with:
+
 - **Forced MIME type** : PDF
 - **Template type** : File
 - **File** : simple html file
@@ -58,9 +61,11 @@ For images and styles, you can set them as Object resources and add them with th
 </html>
 ```
 
-## Binary generation
+Binary generation
+-----------------
 
 Configure a publication with:
+
 - **Forced MIME type** : PDF
 - **Template type** : method
 - **Method** : `pubPdf`
@@ -83,17 +88,17 @@ import java.io.IOException;
  */
 public class DemoClient extends ObjectDB {
 	private static final long serialVersionUID = 1L;
-	
+
 	//inspiration : https://www.tutorialspoint.com/pdfbox/
 	public byte[] pubPdf(){
 		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-		
+
 		try{
 			// init
 			PDDocument document = new PDDocument();
 			PDPage page = new PDPage();
 			document.addPage(page);
-			
+
 			// content
 			PDPageContentStream contentStream = new PDPageContentStream(document, page);
 			contentStream.beginText();
@@ -102,7 +107,7 @@ public class DemoClient extends ObjectDB {
 			contentStream.showText("Hello world");
 			contentStream.endText();
 			contentStream.close();
-			
+
 			// save
 			document.save(byteArrayOutputStream);
 			document.close();
@@ -110,7 +115,7 @@ public class DemoClient extends ObjectDB {
 		catch(IOException e){
 			AppLog.error(getClass(), "pubPdf", "Error creating PDF", e, getGrant());
 		}
-		
+
 		return byteArrayOutputStream.toByteArray();
 	}
 }

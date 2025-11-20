@@ -4,7 +4,7 @@ title: XML -> DB
 ---
 
 SAX XML Parser
-====================
+==============
 
 A SAX XML parser based adapter is provided as an abstract class to be overridden `com.simplicite.util.integration.SAXParserAdapter`.
 

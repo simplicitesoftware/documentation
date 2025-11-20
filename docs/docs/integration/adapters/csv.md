@@ -3,9 +3,10 @@ sidebar_position: 30
 title: CSV -> DB
 ---
 
-# CSV Line-Based Adapter
+CSV Line-Based Adapter
+======================
 
-A line based adapter specialized for CSV data is provided as an abstract class to be overridden: `com.simplicite.util.integration.CSVLineBasedAdapter`. 
+A line based adapter specialized for CSV data is provided as an abstract class to be overridden: `com.simplicite.util.integration.CSVLineBasedAdapter`.
 
 The methods to implement are :
 
@@ -24,11 +25,12 @@ public String postProcess() {
 	// close the default XML flow
 	super.postProcess();
 	// or inhibit output to avoid useless XML import
-	//setOutputStream(null);	
+	//setOutputStream(null);
 }
 ```
 
-## Fully functional example
+Fully functional example
+------------------------
 
 > Please read comments in code with attention in order to properly understand how logging is managed.
 
@@ -54,20 +56,20 @@ public class ExampleCsvAdapter extends CSVLineBasedAdapter {
 			super(message);
 		}
 	}
-	
+
 	public String preProcess(){
 		// set CSV separator
-		setSeparator(','); 
-		exampleObject = getGrant().getProcessObject(lgcObject); 
+		setSeparator(',');
+		exampleObject = getGrant().getProcessObject(lgcObject);
 
 		// to generate a subsequently imported XML, call super.preProcess()
 		// doing so will add a starting <simplicite> tag
 		return null;
 	}
-	
+
 	@Override
-	public String processValues(long lineNumber, String[] values){	
-		// Good practice: handle errors with exceptions		
+	public String processValues(long lineNumber, String[] values){
+		// Good practice: handle errors with exceptions
 		try{
 			// add some logs to the .log file (added in the imports supervisor object)
 			appendLog("=== Processing line #"+lineNumber+" : "+Arrays.toString(values));
@@ -85,7 +87,7 @@ public class ExampleCsvAdapter extends CSVLineBasedAdapter {
 		// returned String gets added to a XML subsequently imported.
 		// In this case, nothing is appended to the subsequently imported XML,
 		// because the objects are created directly.
-		return null; 
+		return null;
 	}
 
 	public void postProcess(){
@@ -108,5 +110,4 @@ public class ExampleCsvAdapter extends CSVLineBasedAdapter {
 		}
 	}
 }
-
 ```

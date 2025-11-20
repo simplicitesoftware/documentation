@@ -4,7 +4,7 @@ title: Word
 ---
 
 Microsoft Word
-====================
+==============
 
 > For **binary** contents the return type of method **must** be `byte[]`
 

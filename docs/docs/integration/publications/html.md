@@ -4,7 +4,7 @@ title: HTML
 ---
 
 HTML publication
-====================
+================
 
 > For **text** contents the return type of method **must** be `String`
 
@@ -17,7 +17,7 @@ public String myPublicationMethod (PrintTemplate pt) {
 	out += "<p>" + getFieldValue("myHTMLContentField") + "</p>";
 	out += HTMLTool.closePage();
 	return out;
-	
+
 }
 ```
 

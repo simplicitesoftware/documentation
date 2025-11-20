@@ -7,7 +7,8 @@ Basic code examples
 ===================
 
 These basic guidelines and examples show how to implement business logic within business objects, workflows, or external objects using Java.
-Rhino-based scripting is deprecated. Business logic must now be written in Java, which ensures strong typing, compilation, and compatibility with development tools such as IDEs, debuggers, and SonarQube®.
+Rhino-based scripting is deprecated. Business logic must now be written in Java, which ensures strong typing, compilation,
+and compatibility with development tools such as IDEs, debuggers, and SonarQube®.
 
 Naming conventions
 ------------------

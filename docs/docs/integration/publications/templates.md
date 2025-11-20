@@ -4,7 +4,7 @@ title: Templates
 ---
 
 Templates
-====================
+=========
 
 Here are two examples using substitutions in a text template
 

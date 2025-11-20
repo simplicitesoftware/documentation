@@ -4,15 +4,15 @@ title: Usage
 ---
 
 Adapter usage
-====================
+=============
 
 As a reminder, adapters can be:
+
 - used directly through the **XML imports** page
 - called by code typically through and **action** or an **external object**
 
-
 Custom business object action to submit object data to an adapter
----------------------------
+-----------------------------------------------------------------
 
 You can configure a business object custom action that submits some of your text field content to an adapter.
 
@@ -27,7 +27,7 @@ public String myAction() {
 ```
 
 Custom page (external object) to submit form data to adapter
----------------------------
+------------------------------------------------------------
 
 You can configure a simple custom page (external object) that displays an upload form for submitting a file to an adapter:
 
@@ -45,6 +45,7 @@ public String form(Parameters params){
 	h += HTMLTool.closeForm(form);
 	return h;
 }
+
 @Override
 public String display(Parameters params) {
 	Grant g = getGrant();
@@ -63,7 +64,7 @@ public String display(Parameters params) {
 		}
 		return m + form(params);
 	}
-} 
+}
 ```
 
 <details>
@@ -108,4 +109,8 @@ MyExternalObject.display = function(params) {
 
 Instead of a file upload input, you can adapt this example to use a `<textarea>` to provide input data.
 
-> **Note**: this custom page only offers a subset of the features available out of the box in the more complex _XML import_ page of the generic UI.
+:::note
+
+This custom page only offers a subset of the features available out of the box in the more complex _XML import_ page of the generic UI.
+
+:::
