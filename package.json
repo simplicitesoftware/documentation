@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "ncu": "npm-check-updates",
+    "lint": "markdownlint-cli2 --fix \"docs/**/*.md\" \"docs/**/*.mdx\" README.md",
     "generate-version": "python3 ./generateVersionsPage.py",
     "docusaurus": "docusaurus",
     "start": "npm run generate-version && docusaurus start",
@@ -37,6 +38,7 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.9.2",
     "@docusaurus/types": "3.9.2",
+    "markdownlint-cli2": "0.19.0",
     "npm-check-updates": "19.1.2"
   },
   "browserslist": {
