@@ -6,9 +6,9 @@ title: 1.5. Exporting a Module
 Building the "Order Management" Training App : Exporting a Module
 =================================================================
 
-::: note
+:::note[Prerequisite]
 
-Prerequisite : You have successfully completed the previous steps
+You have successfully completed the previous steps
 
 :::
 

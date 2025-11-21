@@ -6,9 +6,9 @@ title: 1.4. Creating a User
 Building the "Order Management" Training App : Creating a User
 ==============================================================
 
-:::note
+:::note[Prerequisite]
 
-Prerequisite : [A Business object with a field must be created before starting this tutorial](/tutorial/getting-started/object).
+[A Business object with a field must be created before starting this tutorial](/tutorial/getting-started/object).
 
 :::
 

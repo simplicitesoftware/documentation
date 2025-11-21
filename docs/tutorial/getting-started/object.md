@@ -6,9 +6,9 @@ title: 1.2. Creating a Business object
 Building the "Order Management" Training App : Creating a Business object
 =========================================================================
 
-:::note
+:::note[Prerequisite]
 
-Prerequisite : [A module, domain and group must be created before starting this tutorial](/tutorial/getting-started/module).
+[A module, domain and group must be created before starting this tutorial](/tutorial/getting-started/module).
 
 :::
 

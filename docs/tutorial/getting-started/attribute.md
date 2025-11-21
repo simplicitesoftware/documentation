@@ -6,9 +6,9 @@ title: 1.3. Creating a Field
 Building the "Order Management" Training App : Creating a Field
 ===============================================================
 
-:::note
+:::note[Prerequisite]
 
-Prerequisite : [A business object (TrnSupplier) must be created before starting this tutorial](/tutorial/getting-started/object)
+[A business object (TrnSupplier) must be created before starting this tutorial](/tutorial/getting-started/object)
 
 :::
 
