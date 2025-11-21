@@ -77,7 +77,7 @@ Make sure you have downloaded the generated file
 
 ### Granting **TRN_SUPERADMIN** to `usertest` and `designer`
 
-Follow the steps in [1.4. Creating a User > Adding designer to TRN_SUPERADMIN](/tutorial/getting-started/user#designer-superadmin)
+Follow the steps in [1.4. Creating a User > Adding designer to TRN_SUPERADMIN](/tutorial/getting-started/user#adding-designer-to-trn_superadmin)
 to re-create the Responsibilities for `designer` and `usertest`
 
 Clear the platform's cache and log in with `designer`
