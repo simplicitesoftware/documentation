@@ -7,5 +7,6 @@
     "no-inline-html": { "allowed_elements": [ "br", "iframe", "abbr", "kbd", "details", "summary", "Roadmap", "Tabs", "TabItem" ] },
     "no-duplicate-heading": { "siblings_only": true },
     "emphasis-style": { "style": "underscore" },
-    "code-block-style": { "style": "fenced" }
+    "code-block-style": { "style": "fenced" },
+    "ul-style": { "style": "dash" }
 }

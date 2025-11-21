@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "ncu": "npm-check-updates",
-    "lint": "markdownlint-cli2 --fix \"docs/**/*.md\" \"docs/**/*.mdx\" README.md",
+    "lint": "markdownlint-cli2 \"docs/**/*.md\" \"docs/**/*.mdx\" README.md",
     "generate-version": "python3 ./generateVersionsPage.py",
     "docusaurus": "docusaurus",
     "start": "npm run generate-version && docusaurus start",
