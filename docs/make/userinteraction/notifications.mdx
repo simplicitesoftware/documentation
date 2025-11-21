@@ -7,15 +7,22 @@ title: Notifications
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Notifications
+Notifications
+=============
 
-## What are Notifications ?
+What are Notifications?
+-----------------------
 
-Notifications are used to notify users of events that occur in the platform. They are triggered by an action (create, update, delete) on a business object and can optionally have an execution condition in the form of an [expression](/docs/core/expressions). They can be sent through multiple broadcast channels to multiple recipients. It's content is defined per language and can be overridden for a particular channel and/or recipient.
+Notifications are used to notify users of events that occur in the platform. They are triggered by an action (create, update, delete)
+on a business object and can optionally have an execution condition in the form of an [expression](/docs/core/expressions).
 
-Configured recipients are concerned by all of the notification's channels or be set up individually for a more precise configuration per recipient. 
+They can be sent through multiple broadcast channels to multiple recipients. It's content is defined
+per language and can be overridden for a particular channel and/or recipient.
 
-## Configuration
+Configured recipients are concerned by all of the notification's channels or be set up individually for a more precise configuration per recipient.
+
+Configuration
+-------------
 
 | Field | Description |
 | ----- | ----------- |
@@ -36,15 +43,17 @@ A named user of the platform
 A group of users
 </TabItem>
 <TabItem value="tab3" label="SQL">
-The result of an SQL query : 
+The result of an SQL query :
 
 ```sql
 SELECT user_fk FROM my_object WHERE row_id = [ROWID]
 ```
+
 </TabItem>
 </Tabs>
 
-If the notification is not mandatory, recipients have the option to **subscribe** or **unsubscribe** from the notifications they receive (via the *Subscriptions* button on their notification list).
+If the notification is not mandatory, recipients have the option to **subscribe** or **unsubscribe** from
+the notifications they receive (via the _Subscriptions_ button on their notification list).
 
 ### Channels
 
@@ -70,13 +79,15 @@ public class MyObject extends ObjectDB {
     [...]
 }
 ```
+
 </TabItem>
 <TabItem value="tab4" label="Web Push">
-Sends a push notification to the user's browser. 
+Sends a push notification to the user's browser.
 
 Read more about the Push API on [MDN](https://developer.mozilla.org/en-US/Web/API/Push_API) and the [VAPID RFC](https://datatracker.ietf.org/doc/rfc8292/)
 
-Web push notification require a set of system parameters :
+Web push notification require a set of system parameters:
+
 - `WEBPUSH` : `yes`
 - `WEBPUSH_VAPID_KEY` : generated VAPID public key
 - `WEBPUSH_VAPID_PRIVATE_KEY` : generated VAPID private key
@@ -87,13 +98,20 @@ To generate VAPID keys, you can use the [web-push tool](https://www.npmjs.com/pa
 </TabItem>
 </Tabs>
 
-> *By default, notifications are sent through all configured channels to all configured recipients, but optionally, a channel can be limited to some of the configured recipients.*
+:::note
 
-## Using Notifications in code
+By default, notifications are sent through all configured channels to all configured recipients,
+but optionally, a channel can be limited to some of the configured recipients.
+
+:::
+
+Using Notifications in code
+---------------------------
 
 ### `preNotification` hook
 
-The `preNotification` hook is called before the notification is sent. It can be used to modify the notification's content or cancel the notification when an error message is returned.
+The `preNotification` hook is called before the notification is sent. It can be used to modify the notification's content
+or cancel the notification when an error message is returned.
 
 ```java
 public class MyObject extends ObjectDB {
@@ -135,7 +153,8 @@ public class MyObject extends ObjectDB {
 }
 ```
 
-## End-user features
+End-user features
+-----------------
 
 - Users granted to the `NOTI_USER` group have access to a **Notification** shortcut that can be pinned to the platform's header.
 ![](img/notifications/pin-counter.png)
@@ -146,10 +165,10 @@ public class MyObject extends ObjectDB {
 - Notifications can be discarded by clicking on the **Check** button on a line or by clicking the **Mark all as read** button.
 - When clicking on a notification, the linked record is opened.
 
-- The **Customize** button allows to subscribe or unsubscribe from notifications : 
-    - Users can only unsubscribe from *non-mandatory* notifications (configured at the broadcast channel level)
+- The **Customize** button allows to subscribe or unsubscribe from notifications :
+  - Users can only unsubscribe from _non-mandatory_ notifications (configured at the broadcast channel level)
 
-## Read more
+Read more
+---------
 
 - [Notifications tutorial](/tutorial/enhancing/notifications)
-

@@ -3,17 +3,22 @@ sidebar_position: 40
 title: App store
 ---
 
-# App store
+App store
+=========
 
-## What is the App store ?
+What is the App store?
+----------------------
 
-The app store (domain *Project > App store*) allows installation of modules. It is based on declarative JSON files giving all necessary information for Simplicité to install that module.
+The app store (domain _Project > App store_) allows installation of modules. It is based
+on declarative JSON files giving all necessary information for Simplicité to install that module.
 
 As a reminder, that minimal information is:
+
 - the name of the module
 - a source to install from (usually a URL for the zipped module or the URL to the GIT repository)
 
-The JSON also includes some extra information useful to the designers who will visit the AppStore :
+The JSON also includes some extra information useful to the designers who will visit the AppStore:
+
 - an image
 - a title
 - a description
@@ -65,7 +70,12 @@ A store JSON file will thus typically look like this:
 
 </details>
 
-Ultimately, the source to install from is fed to the **Settings** field of the module. Starting from Simplicité 6.0, different settings can be provided depending on the version of the platform using [NPM's semver range syntax](https://www.npmjs.com/package/semver#hyphen-ranges-xyz---abc) (also checkout [this semver tool](https://jubianchi.github.io/semver-check/#/) if necessary). This means that if a module is tested in a given version, it's specifiable in the store, and it will appear as not installable with the appropriate error message for the designer: 
+Ultimately, the source to install from is fed to the **Settings** field of the module. Starting from Simplicité 6.0, different settings
+can be provided depending on the version of the platform using [NPM's semver range syntax](https://www.npmjs.com/package/semver#hyphen-ranges-xyz---abc)
+(also checkout [this semver tool](https://jubianchi.github.io/semver-check/#/) if necessary).
+
+This means that if a module is tested in a given version, it's specifiable in the store, and it will appear
+as not installable with the appropriate error message for the designer:
 
 ![semver](img/appstore/semver.png)
 
@@ -73,13 +83,14 @@ Stores are configured through the `STORE_SOURCE` setting, which default to Simpl
 
 ```json
 [
-    "https://cdn.jsdelivr.net/gh/simplicitesoftware/resources@latest/public/appstore_demo.json", 
+    "https://cdn.jsdelivr.net/gh/simplicitesoftware/resources@latest/public/appstore_demo.json",
     "https://cdn.jsdelivr.net/gh/simplicitesoftware/resources@latest/public/appstore_apps.json",
     "https://cdn.jsdelivr.net/gh/simplicitesoftware/resources@latest/public/appstore_tools.json"
 ]
 ```
 
-The idea behind that is that it makes it possible to easily share modules to an organization's pool of designer (for example, an authentication module that will be shared by all of the organization's apps).
+The idea behind that is that it makes it possible to easily share modules to an organization's pool of designer
+(for example, an authentication module that will be shared by all of the organization's apps).
 
 It also makes it possible to clone Simplicité's modules and stores to make them available on a network disconnected from the public internet.
 

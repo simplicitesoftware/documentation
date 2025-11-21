@@ -3,9 +3,11 @@ sidebar_position: 60
 title: Custom services
 ---
 
-# Custom services
+Custom services
+===============
 
-## Introduction
+Introduction
+------------
 
 This document describes how to implement custom services (e.g. custom REST APIs) using external objects.
 
@@ -22,35 +24,47 @@ the credentials that needs to be passed to the calls are noted `<credentials>`.
 The calls examples are given using the `curl` command line tool
 (that can easily be transposed to any HTTP client tool or API).
 
-> **Note**: in legacy versions 3.x the `-b cookies.txt -c cookies.txt` parameters of the `curl` calls below are **required**
-> as they allow to re-use the same server session (identified by the `JSESSIONID` cookie).
-> In versions 4.0+ a technical session is used to avoid taking care of the session cookie.
+:::note
+
+In legacy versions 3.x the `-b cookies.txt -c cookies.txt` parameters of the `curl` calls below are **required**
+as they allow to re-use the same server session (identified by the `JSESSIONID` cookie).
+
+In versions 4.0+ a technical session is used to avoid taking care of the session cookie.
+
+:::
 
 For an application deployed on `myapp` webapp root, the base URL of the custom services is:
 
-```sh
+```text
 http[s]://<host[:<port>]>/myapp/api/ext
 ```
 
 For an application deployed on the default webapp root, the base URL of the custom services is :
 
-```
+```text
 http[s]://<host[:<port>]>/api/ext
 ```
 
 It will be noted `<base URL>` in the rest of the document.
 
-> **Warning**: In production the services endpoint's URL should be restricted only to allowed origins e.g. using URL filtering based on request's origin IP address or similar approaches.
+:::warning
 
-## Scalability and performances
+In production the services endpoint's URL should be restricted only to allowed origins
+e.g. using URL filtering based on request's origin IP address or similar approaches.
 
-For optimal performances under high concurrent volume it may be useful to enable the API pooling by setting the `USE_WEBSERVICES_OBJECTPOOL` to `yes`, especially
-when using a single user (e.g. calls from a "public" frontend).
+:::
+
+Scalability and performances
+----------------------------
+
+For optimal performances under high concurrent volume it may be useful to enable the API pooling by setting the `USE_WEBSERVICES_OBJECTPOOL` to `yes`,
+especially when using a single user (e.g. calls from a "public" frontend).
 
 This allow calls to the services to be processed by a per-user pool of external objects.
-The pool size can be adjusted/limied using the `WEBSERVICES_EXTOBJECTPOOL_MAXPEROBJECT` and `WEBSERVICES_EXTOBJECTPOOL_MAXTOTAL` system parameters.
+The pool size can be adjusted/limited using the `WEBSERVICES_EXTOBJECTPOOL_MAXPEROBJECT` and `WEBSERVICES_EXTOBJECTPOOL_MAXTOTAL` system parameters.
 
-## Service implementation
+Service implementation
+----------------------
 
 A custom service is just a plain external object (check [this document](/docs/core/externalobject-code-examples) for general principles of external objects).
 
@@ -88,9 +102,14 @@ public class MyServiceV1 extends com.simplicite.webapp.services.RESTServiceExter
 }
 ```
 
-> **Note**: by default the non implemented method `get/post/put/del/head` of this helper class return a plain 400 ("Bad request") error.
+:::note
 
-## Service call
+Bby default the non implemented method `get/post/put/del/head` of this helper class return a plain 400 ("Bad request") error.
+
+:::
+
+Service call
+------------
 
 Then the service could be called (using `POST` method in this example) like this:
 
@@ -117,7 +136,8 @@ The result is then:
 }
 ```
 
-## Mapped business object services helper class
+Mapped business object services helper class
+--------------------------------------------
 
 As of version 4.0.P23 a high-level helper class `com.simplicite.webapp.services.RESTMappedObjectsExternalObject`
 is provided to simply expose Simplicité business object CRUD in a simplified and customized way.

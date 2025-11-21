@@ -107,7 +107,7 @@ If there are any problems with automatic updates, logs should be available throu
 Portainer needs Docker as a requirement, so it will be installed after usual upgrades.
 Based on [docker CentOS install docs](https://docs.docker.com/engine/install/centos/) (adapted)
 
-```sh
+```shell
 sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
 sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo systemctl start docker
@@ -119,7 +119,7 @@ docker run hello-world # check everything is running smoothly
 
 Portainer also needs SELinux to be disabled:
 
-```sh
+```shell
 sudo sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 sudo reboot
 ```

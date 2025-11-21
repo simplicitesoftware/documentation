@@ -12,7 +12,8 @@ This feature relies on the Eclipse [JGit](https://github.com/eclipse-jgit/jgit) 
 
 :::warning
 
-In production this Git endpoint's URL should be restricted only to allowed origins e.g. using URL filtering on request's origin IP address or similar approaches.
+In production this Git endpoint's URL should be restricted only to allowed origins
+e.g. using URL filtering on request's origin IP address or similar approaches.
 
 :::
 
@@ -21,7 +22,8 @@ Configuration
 
 The Git repositories are stored on the server file system.
 
-Due to the way the JGit library is designed, the base folder in which these repositories will be located **must** be passed to the application server as a **system property**.
+Due to the way the JGit library is designed, the base folder in which these repositories
+will be located **must** be passed to the application server as a **system property**.
 
 This can be done either:
 
@@ -49,7 +51,8 @@ The credentials you have to use in this case are the same as the one you can use
 Import
 ------
 
-Any `git push [origin]` on the cloned module's repository triggers a module import (e.g. after having made some local changes or to upgrade another instance by pushing on another remote).
+Any `git push [origin]` on the cloned module's repository triggers a module import
+(e.g. after having made some local changes or to upgrade another instance by pushing on another remote).
 
 Import from an origin remote
 ----------------------------
@@ -104,7 +107,7 @@ Advanced
 
 The Git repositories created/cloned by Simplicité:
 
-- Are **non bare** repositories, the local worktree is needed by the export/import processes
+- Are **non bare** repositories, the local work tree is needed by the export/import processes
 - Have the following configuration set by default in `.git/config` file to allow read-write access over HTTP(S):
 
 ```text

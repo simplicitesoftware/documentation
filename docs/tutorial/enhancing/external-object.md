@@ -4,17 +4,27 @@ title: 3.2. Adding a custom web service
 description: Creating a custom REST endpoint
 ---
 
-# Building the "Order Management" Training App : Creating a custom REST endpoint
+Building the "Order Management" Training App : Creating a custom REST endpoint
+==============================================================================
 
-> Prerequisite : [You have a basic understanding of the Simplicité platform, and the steps in "2. Expanding your app" are completed](/category/2-expanding-your-app)
+:::info
 
-## What is a custom web service ?
+Prerequisite : [You have a basic understanding of the Simplicité platform, and the steps in "2. Expanding your app" are completed](/category/2-expanding-your-app)
 
-By default, for each object, Simplicité exposes default REST endpoints. Sometimes, the default REST endpoints don't cover the business requirements, custom web services can be created with **External Objects**. An External Object can be used to implement a specific UI component, a custom front-end, a specific web service... [Learn more](/category/external-objects)
+:::
 
-## Creating an endpoint to retrieve the List of Suppliers
+What is a custom web service?
+-----------------------------
+
+By default, for each object, Simplicité exposes default REST endpoints. Sometimes, the default REST endpoints don't cover the business requirements,
+custom web services can be created with **External Objects**. An External Object can be used to implement a specific UI component,
+a custom front-end, a specific web service... [Learn more](/category/external-objects)
+
+Creating an endpoint to retrieve the List of Suppliers
+------------------------------------------------------
 
 Let's say we want to call a custom endpoint that returns a list of Suppliers like so :
+
 ```json
 {
     "found": true, // false if no results
@@ -29,36 +39,40 @@ Let's say we want to call a custom endpoint that returns a list of Suppliers lik
 }
 ```
 
-To create a custom endpoint, follow the steps below :
+To create a custom endpoint, follow the steps below:
+
 1. In the **User interface > External Objects > Rest web service** menu, click **Create**
 2. Fill in the form like so :
-    - Code : **TrnWebService**
-    - Nature : **REST web service**
-    ![](img/external-object/create.png)
+   - Code : **TrnWebService**
+   - Nature : **REST web service**
+   ![](img/external-object/create.png)
 3. Click **Save**
 
 ### Making the endpoint public
 
-In the **Permissions** panel linked to the External Object :
+In the **Permissions** panel linked to the External Object:
+
 1. Click **Create**
-    ![](img/external-object/create-permission.png)
+   ![](img/external-object/create-permission.png)
 2. In the **Primary group** field, click `+` to create a new Group
-    ![](img/external-object/create-group.png)
+   ![](img/external-object/create-group.png)
 3. Fill in the Group fields like so :
-    - Name : **TRN_PUBLIC**
-    - Module Name : **Training**
-    ![](img/external-object/group-values.png)
+   - Name : **TRN_PUBLIC**
+   - Module Name : **Training**
+   ![](img/external-object/group-values.png)
 4. Click **Save & Close** to create the new Group
 5. Click **Save & Close** on the `Create Permission` form to create the Permission
 
 ::::tip
+
 The Endpoint is now granted to the users with the `TRN_PUBLIC` Responsibility
+
 ::::
 
 ### Implementing the web service GET method
 
 1. Click **Edit code**
-    ![](img/external-object/edit-code.png)
+   ![](img/external-object/edit-code.png)
 2. Select `Java`, and click **Confirm**
 
 Implement the `TrnWebService` Class like so :
@@ -163,29 +177,34 @@ public class TrnWebService extends com.simplicite.webapp.services.RESTServiceExt
 	}
 }
 ```
+
 [Source file](TrnWebService.java)
 
 ### Adding the TRN_PUBLIC Group to `public` user
 
-Since the endpoint is available without authentication we need to add the TRN_PUBLIC responsibility to `public` :
+Since the endpoint is available without authentication we need to add the TRN_PUBLIC responsibility to `public`:
+
 1. In **Users and rights > Users > Show all**, open `public`
 2. In the Responsibility panel, click **Associate** and associate the **TRN_PUBLIC** Group
 
 ### Granting READ ONLY rights to TRN_PUBLIC
 
-For both the `TrnSupplier` and `TrnProduct` object, grant TRN_PUBLIC to the READ Functions
+For both the `TrnSupplier` and `TrnProduct` object, grant TRN_PUBLIC to the READ Functions:
+
 1. In **Business objects > Business objects** open the object
-2. In the **Functions** panel, open the *Read only* Function, click **Associate** and associate the **TRN_PUBLIC** Group
+2. In the **Functions** panel, open the _read only_ Function, click **Associate** and associate the **TRN_PUBLIC** Group
 
-
-## Test the endpoint
+Test the endpoint
+-----------------
 
 Public endpoints are available on `<base_url>/api/ext/<External Object Name>`
 Clear the platform's cache and call the endpoint via Postman or `curl`
 
 :::tip[Success]
-```sh
+
+```shell
 $ curl <instance_url>/api/ext/TrnWebService
 > {"found":true,"suppliers":[{"code":"BIM","nbPrdInStock":1,"name":"Bim Computers Ltd."}]}
 ```
+
 :::
