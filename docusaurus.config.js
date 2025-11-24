@@ -16,7 +16,11 @@ const config = {
   organizationName: "simplicitesoftware", // Usually your GitHub org/user name.
   projectName: "documentation", // Usually your repo name.
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "throw",
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "throw",
+    },
+  },
   onBrokenAnchors: "throw",
 
   // Even if you don't use internationalization, you can use this field to set

@@ -216,8 +216,10 @@ Here is the list of available substituted tags that you can use in expressions:
 - `[PARAM:<parameter name>]`:
   object parameter value
 
-::note
+:::note
+
 The UI URLs and grant level tags are also available at business object level.
+
 :::
 
 ### External object level
