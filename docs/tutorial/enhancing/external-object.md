@@ -7,9 +7,9 @@ description: Creating a custom REST endpoint
 Building the "Order Management" Training App : Creating a custom REST endpoint
 ==============================================================================
 
-:::info
+:::note[Prerequisite]
 
-Prerequisite : [You have a basic understanding of the Simplicité platform, and the steps in "2. Expanding your app" are completed](/category/2-expanding-your-app)
+[You have a basic understanding of the Simplicité platform, and the steps in "2. Expanding your app" are completed](/category/2-expanding-your-app)
 
 :::
 
