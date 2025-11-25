@@ -90,8 +90,9 @@ For all API services, you can get a pretty printed JSON response by appending `&
 By default the authentication method is HTTP basic auth (username + password), but client certificate authentication can also be used.
 The examples bellow are using the `curl` command HTTP client, `<credentials>` is thus either:
 
-- `-u <username>:<password>` for username + password authentication method
-- `--cert-type pem --cert <path to your certificate file> --key <path to your certificate key file>` for client certificate authentication method
+- `-u <username>:<password>` for username & password authentication method
+- `--cert-type pem --cert <path to your PEM client certificate file> --key <path to your PEM certificate key file>`
+  or `--cert-type P12 --cert <path to your P12 client certificate file>[:'<your password>']` for client certificate authentication method
 
 ### Manager API
 
