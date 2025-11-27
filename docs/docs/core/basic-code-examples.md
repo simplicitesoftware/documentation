@@ -86,58 +86,8 @@ Note that if the log code is omitted the `log` method is the equivalent to the d
 
 The messages are actually displayed depending on the log appenders configuration and on the log code associated configuration.
 
-Designers can activate the hooks tracer during the development phase. (only > V6 Version)
+Designers can [activate the hooks tracer](/docs/core/objects/businessobject-code-hooks#trace-hooks) during development phase for easier debugging or understanding.
 
-```java
-Override
-public void postLoad() {
-	// no trace (the default)
-	traceHooks(false, false);
-	// trace only implemented hooks (during test)
-	traceHooks(true, true);
-	// trace all hooks (verbose only for training)
-	traceHooks(true, false);
-}
-```
-
-It is possible to track hook's duration : log a warning after 2s by default (only in > V6 Version of Simplicité)
-
-```java
-@Override
-protected void hookBegin(String hook, int maxTime, int maxStack, Object... args) throws HookException {
-	// postUpdate may be long because of ...
-	if ("postUpdate".equals(hook))
-		maxTime = 10000; // warning after 10s in ms
-
-	// default duration is 2s by default
-	// default stack is set 20 to stop infinite calls loop => HookException
-	super.hookBegin(hook, maxTime, maxStack);
-}
-
-@Override
-protected long hookEnd(String hook) {
-	long time = super.hookEnd(hook);
-	// do something if postUpdate is too long
-	if (time>10000 && "postUpdate".equals(hook)) {
-		// notify the supervisor...
-	}
-	return time;
-}
-```
-
-It is possible to track method duration : log a warning after 2s bu default (only in > V6 Version of Simplicité)
-
-```java
-// Same for Action method
-@Override
-protected void methodBegin(String method, int maxTime, int maxStack) throws HookException {
-	super.methodBegin(method, maxTime, maxStack);
-}
-@Override
-protected long methodEnd(String method) {
-	return super.methodEnd(method);
-}
-```
 
 Business objects manipulation
 -----------------------------
