@@ -1,14 +1,17 @@
 ---
 sidebar_position: 30
-title: Businessobject code hooks
+title: Objects code hooks
 ---
 
 Business objects hooks
 ======================
 
-This document describes the business object hooks that can be implemented to put some additional business logic to your business objects. They are not mandatory, as simple business objects can rely on configuration only, but **hooks are needed to apply dynamic business logic that goes beyond what can be configured**.
+This document describes the hooks available to implement **custom business objects logic that goes beyond what can be configured**.
 
-Note that other mechanisms exists to add some business logic to your business objects using advanced configuration such as:
+:::info
+
+Hooks are **not mandatory** and it is good practice to use configuration whenever possible.
+Other mechanisms exist to add business logic to business objects:
 
 - default value expressions
 - calculated fields expressions
@@ -18,16 +21,28 @@ Note that other mechanisms exists to add some business logic to your business ob
 
 See [this document](/docs/core/expressions) for details on expressions.
 
-Hooks are very powerful as you can write any needed code, but you need to be careful on the choice of the hook to put your logic in.
-The choice depends on the nature of the considered business logic:
+:::
 
-- object definition and right-related logic,
-- data manipulation logic,
-- data preparation logic,
-- etc.
+Hooks are called by the platform at specific moments in the object's lifecycle.
+Technically they are **overridable Java methods**, and the exhaustive list is thus available in the [`ObjectDB` Javadoc](https://platform.simplicite.io/current/javadoc/com/simplicite/util/ObjectDB.html).
+However, this document organizes them into four main categories:
 
-Some very common and useful code examples are given in the [basic code examples](/docs/core/basic-code-examples) document.
-<!-- and some more unusual examples are given [advanced code examples](/docs/core/advanced-code-examples) document.-->
+- right-related hooks,
+- data preparation hooks,
+- data processing hooks,
+- other hooks
+
+:::tip
+
+Extra sources of documentation and examples:
+
+- [basic code examples](/docs/core/basic-code-examples)
+- [advanced code examples](/docs/core/advanced-code-examples)
+- [forum](https://communicty.simplicite.io)
+- [github](https://github.com/simplicitesoftware)
+- [Javadoc](https://platform.simplicite.io/current/javadoc/com/simplicite/util/ObjectDB.html)
+
+:::
 
 Object definition and right-related hooks
 -----------------------------------------
@@ -47,7 +62,11 @@ For instance it can be used to:
   name (e.g. the instance used by webservices - name is prefixed by `api_` - may hide or make non updatable one field
   which is visible or updatble to UI users)
 
-> **Warning**: you should never trigger an object loading within a `postLoad`, this may result in an uncatchable stack overflow fatal error for your instance
+:::warning
+
+Never trigger an object loading within a `postLoad`, this may result in an uncatchable stack overflow fatal error for your instance
+
+:::
 
 **Example:**
 
@@ -953,5 +972,80 @@ make the call to be done for the child object's scope).
 public String postCreate() {
 	super.postCreate();	// Call parent object hook
 	// Do something specific to the child object
+}
+```
+
+Trace Hooks
+-----------
+
+As of Simplicité v6.0, hooks traces are activable through the `traceHooks` method to facilitate debugging, lifecycle understanding, etc.
+
+```java
+@Override
+public void postLoad() {
+	// no trace (the default)
+	traceHooks(TRACE_HOOKS_NONE);
+	// trace only implemented hooks (during test)
+	traceHooks(TRACE_HOOKS_IMPLEMENTED);
+	// trace only implemented hooks with main parameters (during test)
+	traceHooks(TRACE_HOOKS_IMPLEMENTED_ARGS);
+	// trace all hooks (verbose for training)
+	traceHooks(TRACE_HOOKS_FULL);
+}
+```
+
+You will get very precise (and verbose) logging:
+
+```text
+2025-11-27 10:40:47,741|⋮|INFO||⋮|⋮|⋮|⋮|⋮|⋮||Hook DemoClient(menu_ajax_DemoClient) < postLoad time=0:00:00.000
+2025-11-27 10:40:48,762|⋮|INFO||⋮|⋮|⋮|⋮|⋮|⋮||Hook DemoClient(the_ajax_DemoClient) > getUserKeyLabel
+2025-11-27 10:40:48,763|⋮|INFO||⋮|⋮|⋮|⋮|⋮|⋮||Hook DemoClient(the_ajax_DemoClient) < getUserKeyLabel time=0:00:00.001
+2025-11-27 10:40:48,765|⋮|INFO||⋮|⋮|⋮|⋮|⋮|⋮||Hook DemoClient(the_ajax_DemoClient) > getUserKeyLabel
+2025-11-27 10:40:48,766|⋮|INFO||⋮|⋮|⋮|⋮|⋮|⋮||Hook DemoClient(the_ajax_DemoClient) < getUserKeyLabel time=0:00:00.001
+2025-11-27 10:40:48,768|⋮|INFO||⋮|⋮|⋮|⋮|⋮|⋮||Hook DemoClient(the_ajax_DemoClient) > getUserKeyLabel
+2025-11-27 10:40:48,769|⋮|INFO||⋮|⋮|⋮|⋮|⋮|⋮||Hook DemoClient(the_ajax_DemoClient) < getUserKeyLabel time=0:00:00.001
+2025-11-27 10:40:48,771|⋮|INFO||⋮|⋮|⋮|⋮|⋮|⋮||Hook DemoClient(the_ajax_DemoClient) > getUserKeyLabel
+2025-11-27 10:40:48,771|⋮|INFO||⋮|⋮|⋮|⋮|⋮|⋮||Hook DemoClient(the_ajax_DemoClient) < getUserKeyLabel time=0:00:00.000
+2025-11-27 10:40:50,084|⋮|INFO||⋮|⋮|⋮|⋮|⋮|⋮||Hook DemoClient(the_ajax_DemoClient) > getUserKeyLabel
+2025-11-27 10:40:50,086|⋮|INFO||⋮|⋮|⋮|⋮|⋮|⋮||Hook DemoClient(the_ajax_DemoClient) < getUserKeyLabel time=0:00:00.002
+2025-11-27 10:40:50,560|⋮|INFO||⋮|⋮|⋮|⋮|⋮|⋮||Hook DemoClient(target_DemoClient) < postLoad time=0:00:00.000
+```
+
+It is possible to track hook's duration : log a warning after 2s by default (only in > V6 Version of Simplicité)
+
+```java
+@Override
+protected void hookBegin(String hook, int maxTime, int maxStack, Object... args) throws HookException {
+	// postUpdate may be long because of ...
+	if ("postUpdate".equals(hook))
+		maxTime = 10000; // warning after 10s in ms
+
+	// default duration is 2s by default
+	// default stack is set 20 to stop infinite calls loop => HookException
+	super.hookBegin(hook, maxTime, maxStack);
+}
+
+@Override
+protected long hookEnd(String hook) {
+	long time = super.hookEnd(hook);
+	// do something if postUpdate is too long
+	if (time>10000 && "postUpdate".equals(hook)) {
+		// notify the supervisor...
+	}
+	return time;
+}
+```
+
+It is possible to track method duration : log a warning after 2s bu default (only in > V6 Version of Simplicité)
+
+```java
+// Same for Action method
+@Override
+protected void methodBegin(String method, int maxTime, int maxStack) throws HookException {
+	super.methodBegin(method, maxTime, maxStack);
+}
+@Override
+protected long methodEnd(String method) {
+	return super.methodEnd(method);
 }
 ```
