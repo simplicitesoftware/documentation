@@ -260,7 +260,6 @@ The following example, that should be adapted to specific needs, does the follow
 - iframes limited to those of same origin
 - deactivated XSS protection (a CORS policy is a better approach and **must be implemented**)
 - specified Referrer-Policy
-- force cache to verify content (no-cache does **not** mean absence of cache, but forces the browser to verify that cached files were not tampered)
 
 ```json
 {
@@ -269,8 +268,7 @@ The following example, that should be adapted to specific needs, does the follow
     "X-Content-Type-Options": "nosniff",
     "X-Frame-Options": "SAMEORIGIN",
     "X-XSS-Protection": "0",
-    "Referrer-Policy": "strict-origin-when-cross-origin",
-    "Cache-Control": "no-cache"
+    "Referrer-Policy": "strict-origin-when-cross-origin"
 }
 ```
 
@@ -280,7 +278,12 @@ By default Tomcat sets the same-site cookie to `unset` (see [this page](https://
 
 This can be changed by uncommenting the `CookieProcessor` block in the `META-INF/context.xml` of the webapp and setting the appropriate value.
 
-**Note**: If an external authentication system such as an OAuth2/OpenIDConnect or SAML IdP is used, `lax` must be used instead of `strict`
+:::note[Notes]
+
+- The default value of this Tomcat setting is `lax` if you use our Docker images (or at least or pre-configured Tomcat)
+- If an external authentication system such as an OAuth2/OpenIDConnect or SAML IdP is used, `lax` **must** be used instead of `strict`
+
+:::
 
 ### Object usage
 
