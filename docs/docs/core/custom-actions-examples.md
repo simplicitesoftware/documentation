@@ -246,6 +246,8 @@ public String myAction(Action action, AsyncTracker tracker) {
 
 		// Start the tracking
 		tracker.start();
+
+		tracker.setTitle("Scanning data...")`
 		tracker.add("MyAction has started");
 
 		// Track the job 1
@@ -257,6 +259,9 @@ public String myAction(Action action, AsyncTracker tracker) {
 		tracker.error("something wrong");
 		// ...
 		tracker.pop("done");
+
+		// Change the dialog title
+		tracker.setTitle("Exporting data...")`
 
 		// 20%
 		tracker.setProgress(20);
@@ -280,6 +285,9 @@ public String myAction(Action action, AsyncTracker tracker) {
 			return null;
 
 		// ...
+
+		tracker.setProgress(100);
+		tracker.setTitle("Congratulation!")`
 	}
 	catch (Exception e) {
 		// Assign the error on current task
