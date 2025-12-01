@@ -74,7 +74,7 @@ to have easy to read expressions.
 
 Here is the list of available substituted tags that you can use in expressions:
 
-### Param system tags
+### System tags
 
 #### Available tags
 
@@ -83,7 +83,7 @@ Only used for backend technical settings and system-parameters:
 - `[ENV:env var name]`: variable sets at environment/system level
 - `[PROP:JVM prop name]`: variable sets at jvm/tomcat level
 
-Beware, they are not substituted in contraints and field calculation to preserve data privacy (secret, password...).
+Beware, they are not substituted in constraints and field calculation to preserve data privacy (secret, password...).
 For those cases use `[PARAM]` or `[SYSPARAM]` instead.
 
 ### UI URLs tags
