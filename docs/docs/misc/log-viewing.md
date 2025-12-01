@@ -11,10 +11,16 @@ LNAV, short for Log Navigator, is an efficient log viewing CLI which gives you a
 
 ### Piping
 
-Being a CLI allows to pipe thing to it, for example logs from the I/O service:
+Being a CLI allows to pipe things to it, as logs from the I/O service
 
 ```shell
 curl -u designer:$IO_PASSWORD --form service=logs $IO_URL | lnav
+```
+
+It also makes it possible to follow a stream of logs from a docker containers in a remote server through SSH:
+
+```shell
+ssh user@server "docker exec -i containername tail -n +0 -F /usr/local/tomcat/webapps/ROOT/WEB-INF/log/simplicite.log" | lnav
 ```
 
 ### Log files merging
