@@ -32,18 +32,18 @@ The comprehensive descriptions below (and the [JavaDoc](https://platform.simplic
 |                          | All of Grant + following:                         | All of Grant + following: |
 | `[APPNAME]`              | `[CONTEXT:context]`                               | `[OBJECTID]`              |
 | `[ENCODING]`             | `[OBJECTID]`                                      | `[OBJECT]`                |
-| `[GRANT]`                | `[OBJECT]`                                        | `[OBJNAME]`               |
+| `[GRANT]`                | `[OBJECT]` or `[OBJ]`                             | `[OBJNAME]`               |
 | `[LOGIN]`                | `[TABLE]`                                         | `[OBJLABEL]`              |
 | `[USERID]`               | `[OBJNAME]`                                       | `[PARAM:parameter name]`  |
 | `[LANG]`                 | `[OBJLABEL]`                                      |                           |
 | `[HASRESP:group]`        | `[OBJINST]`                                       |                           |
 | `[TEXT:code]`            | `[PARENT]`                                        |                           |
 | `[SYSPARAM:name]`        | `[PARENTNAME]`                                    |                           |
-| `[VERSION[:<module>]]`   | `[PARENTLABEL]`                                   |                           |
+| `[VERSION(:<module>)]`   | `[PARENTLABEL]`                                   |                           |
 | `[ENV:<env var name>]`   | `[PARENTINST]`                                    |                           |
-| `[PROP:<JVM prop name>]` | `[CHILDOF:parent object name[:parent ref field]]` |                           |
-|                          | `[PANELOF:parent object name[:parent ref field]]` |                           |
-|                          | `[REFFROM:object name[:ref field]]`               |                           |
+| `[PROP:<JVM prop name>]` | `[CHILDOF:parent object name(:parent ref field)]` |                           |
+| `[OBJECT:name(:inst)]`   | `[PANELOF:parent object name(:parent ref field)]` |                           |
+|                          | `[REFFROM:object name(:ref field)]`               |                           |
 |                          | `[DATAMAPFROM:object name]`                       |                           |
 |                          | `[STATUS]`                                        |                           |
 |                          | `[OLDSTATUS]`                                     |                           |
@@ -74,26 +74,40 @@ to have easy to read expressions.
 
 Here is the list of available substituted tags that you can use in expressions:
 
+### System tags
+
+#### Available tags
+
+Only used for backend technical settings and system-parameters:
+
+- `[ENV:<environment variable name>(:<default value>)]`:
+  value of the specified environment variable or the specified default value if the environment variable is not set
+- `[PROP:<system property name>(:<default value>)]`:
+  value of the specified JVM property or the specified default value if the JVM property is not set
+
+Beware, do not substitute private variable (secret, password...) in front constraints or visible field calculation to preserve data privacy.
+For those cases use a `[PARAM]` or a `[SYSPARAM]` instead with the `private` type.
+
 ### UI URLs tags
 
 #### Available tags
 
 - `[HOMEURL]` : Home URL (without quotes)
-- `[EXTOBJECTURL:<external object name>[:<optional URL parameters>]]`:
+- `[EXTOBJECTURL:<external object name>(:<optional URL parameters>)]`:
   External object URL (without quotes)
-- `[EXTOBJECTPUBLICURL:<external object name>[:<optional URL parameters>]]`:
+- `[EXTOBJECTPUBLICURL:<external object name>(:<optional URL parameters>)]`:
   External object URL (without quotes)
 - `[CONTENTURL:<static content file name>]`:
   Static content URL (without quotes)
-- `[IMAGERESOURCEURL:<resource code>[:<OBJECT|EXTOBJECT|DISPOSITION>:<business object or external object or disposition name>]]`:
+- `[IMAGERESOURCEURL:<resource code>(:<OBJECT|EXTOBJECT|DISPOSITION>:<business object or external object or disposition name>)]`:
   Image resource URL (without quotes)
-- `[ICONRESOURCEURL:<resource code>[:<OBJECT|EXTOBJECT|DISPOSITION>:<business object or external object or disposition name>]]`:
+- `[ICONRESOURCEURL:<resource code>(:<object|extobject>:<business object or external object or disposition name>)]`:
   Icon resource URL (without quotes)
-- `[CSSRESOURCEURL:<resource code>[:<OBJECT|EXTOBJECT|DISPOSITION>:<business object or external object or disposition name>]]`:
+- `[CSSRESOURCEURL:<resource code>(:<OBJECT|EXTOBJECT|DISPOSITION>:<business object or external object or disposition name>)]`:
   CSS stylesheet resource URL (without quotes)
-- `[JSRESOURCEURL:<resource code>[:<OBJECT|EXTOBJECT|DISPOSITION>:<business object or external object or disposition name>]]`:
+- `[JSRESOURCEURL:<resource code>(:<OBJECT|EXTOBJECT|DISPOSITION>:<business object or external object or disposition name>])]`:
   JavaScript resource URL (without quotes)
-- `[HTMLRESOURCEURL:<resource code>[:<OBJECT|EXTOBJECT|DISPOSITION>:<business object or external object or disposition name>]]`:
+- `[HTMLRESOURCEURL:<resource code>(:<OBJECT|EXTOBJECT|DISPOSITION>:<business object or external object or disposition name>)]`:
   HTML resource URL (without quotes)
 
 ### Grant level
@@ -118,21 +132,17 @@ Here is the list of available substituted tags that you can use in expressions:
   value of a static text
 - `[SYSPARAM:<name>]`:
   value of a system parameter (without surrounding quotes because a system parameter can be numeric)
-- `[VERSION[:<module>]]`:
+- `[VERSION(:<module>)]`:
   value of the version of a specified module or value of the `VERSION` system parameter if no module specified
-- `[ENV:<environment variable name>[:<default value>]]`:
-  value of the specified environment variable or the specified default value if the environment variable is not set
-- `[PROP:<system property name>[:<default value>]]`:
-  value of the specified JVM property or the specified default value if the JVM property is not set
 - `[APPLICATION]` or `[APPNAME]`:
   the application name
 - `[ENCODING]`:
   the application encoding
-- `[NOW]` (deprecated) or `[DATE`[:day offset]`]`:
+- `[NOW]` (deprecated) or `[DATE(:day offset)]`:
   current date in service format yyyy-MM-dd (with optional day offset)
-- `[TIME`[:millisecond offset]`]`:
+- `[TIME(:millisecond offset)]`:
   current time in internal format hh:mm:ss (with optional millisecond offset)
-- `[DATETIME`[:millisecond offset]`]`:
+- `[DATETIME(:millisecond offset)]`:
   current datetime in service format yyyy-MM-dd HH:mm:ss (with optional millisecond offset)
 - `[MONTH]`:
   current month in format MM
@@ -142,7 +152,7 @@ Here is the list of available substituted tags that you can use in expressions:
   value of a list of values code
 - `[TEXT:<code>]`:
   static text in user language
-- `[OBJECT:<object name>[:<optional object instance name>]]`:
+- `[OBJECT:<object name>(:<optional object instance name>)]`:
   the specified object (by default it uses temporary instance)
 
 > **Note**: the UI URLs tags are also available at grant-level
@@ -181,16 +191,20 @@ Here is the list of available substituted tags that you can use in expressions:
   the current object parent object label
 - `[PARENTOBJECTINSTANCENAME]` or `[PARENTINSTANCENAME]` or `[PARENTINST]`:
   the current object parent object instance name
-- `[CHILDOF:<parent object name>[:<optional parent ref field>]]`:
+- `[CHILDOF:<parent object name>(:<optional parent ref field>)]`:
   check if current object is child object of specified object (thru optional specified ref field)
-- `[PANELOF:<parent object name>[:<optional parent ref field>]]`:
+- `[PANELOF:<parent object name>(:<optional parent ref field>)]`:
   check if current object is panel child object of specified object (thru optional specified ref field)
-- `[REFFROM:<object name>[:<optional ref field>]]` or `[REFERENCEDFROM:<object name>[:<optional ref field>]]`:
+- `[REFFROM:<object name>(:<optional ref field>)]` or `[REFERENCEDFROM:<object name>(:<optional ref field>)]`:
   check if current object is referenced object from specified object (thru optional specified ref field)
 - `[DATAMAPFROM:<object name>]` or `[DATAMAPPEDFROM:<object name>]`:
   check if current object is data mapped object from specified object
 - `[CONTEXT:<context>]`:
-  check if in specified context
+  check if in specified context, ex `[CONTEXT:UPDATE]`.
+  context available values:
+  `SEARCH`, `LIST`, `CREATE`, `COPY`, `UPDATE`, `DELETE`, `CROSSTAB`, `PRINTTMPL`, `UPDATEALL`,
+  `REFSELECT`, `DATAMAPSELECT`, `PREVALIDATE`, `POSTVALIDATE`, `STATETRANSITION`, `EXPORT`, `IMPORT`,  
+  `ASSOCIATE`, `PANELLIST`, `ACTION`, `AGENDA`, `PLACEMAP`
 - `[OBJECTSTATUS]` or `[STATUS]`:
   the object current status (if object has a status)
 - `[OBJECTOLDSTATUS]` or `[OLDSTATUS]`:
