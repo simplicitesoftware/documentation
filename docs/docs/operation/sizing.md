@@ -1,3 +1,8 @@
+---
+sidebar_position: 27
+title: Sizing
+---
+
 Infrastructure sizing recommendations
 ========
 
