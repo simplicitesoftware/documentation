@@ -437,14 +437,25 @@ If you prefer HTTP(S) remote URIs you can pass a username and password using `-e
 
 ### Add an SSH key {#sshkey}
 
-It is possible to mount your local `.ssh` directory (that contains your SSH key, authorized SSH keys, ...) by adding this kind of mount argument:
-`-v /path/to/your/ssh/dir:/usr/local/tomcat/.ssh`
+It is  possible to provide a SSH private key to be added by passing this environment variable:
+`-e SSH_PRIV_KEY="<your well formatted SSH private key>`
 
-It is also possible to provide a list of IP addresses or hostnames to be added to the known hosts file by passing this environment variable:
-`-e SSH_KNOWN_HOSTS="github.com gitlab.com"`
+:::tip
 
-> **Note**: it may be better to mount the `.ssh` dir in **read only** mode by adding `:ro` but in this case the `SSH_KNOWN_HOSTS` is inefficient
-> as it can't write the `.ssh/known_hosts` file. In this case you must reference your known hosts **prior** to mounting the volume in read only.
+By default the key is assumed to be a RSA key (resulting in a `id_rsa` file name) but an alternative type can
+be specified using `-e SSH_PRIV_KEY_TYPE="<type, e.g. ed25519>"` (resulting in a `id_<type>` file name e.g. `id_ed25519`).
+
+:::
+
+It is also possible to provide a list of IP addresses or host names to be added to the known hosts file by passing this environment variable:
+`-e SSH_KNOWN_HOSTS="<space-separated list of host names, e.g github.com gitlab.com>"`
+
+:::note
+
+**Alternatively** it is possible to read-only mount your local `.ssh` directory (that contains your SSH key, authorized SSH keys, ...)
+by adding this kind of mount argument: `-v /path/to/your/ssh/dir:/usr/local/tomcat/.ssh:ro`
+
+:::
 
 ### Run on a specific time zone {#timezone}
 
