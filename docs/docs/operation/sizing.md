@@ -15,17 +15,19 @@ Infrastructure sizing recommendations
 Factors
 -------
 
-Sizing an infrastructure—RAM, disk, CPUs, etc.—depends mostly on the application itself rather than the platform. A number of factors can impact resource requirements:
+Sizing an infrastructure—RAM, disk, CPUs, etc.—depends mostly on the application itself rather than the platform.
 
-- Database type and location  
-- Volume and nature of data  
-- Backup operations  
-- Number of simultaneous users (both normal and peak)  
-- Usage patterns  
-- Number of business objects managed by the application  
-- Heavy processing tasks, such as batch loads or large computations  
-- High API traffic or unusual third-party usage  
-- High availability requirements  
+A number of factors can impact resource requirements:
+
+- Database type and location
+- Volume and nature of data
+- Backup operations
+- Number of simultaneous users (both normal and peak)
+- Usage patterns
+- Number of business objects managed by the application
+- Heavy processing tasks, such as batch loads or large computations
+- High API traffic or unusual third-party usage
+- High availability requirements
 - Other environment-specific constraints
 
 Development and test environments
@@ -45,7 +47,6 @@ For small-scale environments with few users and limited datasets, **rough VM siz
 | Medium  | 8 GB  | 40 GB | 4    | ~10 instances + databases      |
 | Large   | 16 GB | 80 GB | 8    | ~20 instances + databases      |
 
-
 Production environments
 ------------------------
 
@@ -56,3 +57,5 @@ Best practices:
 1. Reserve dev/test sizing for low-load environments only
 2. Use scalable infrastructure
 3. Document usage and growth expectations to support future adjustments
+4. Proceed with regular & realistic high-load benches (with expected maximal number of concurrent users + representative use case scenarii & think times)
+   to define/maintain the appropriate sizing for your application
