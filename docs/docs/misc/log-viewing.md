@@ -20,7 +20,7 @@ curl -u designer:$IO_PASSWORD --form service=logs $IO_URL | lnav
 It also makes it possible to follow a stream of logs from a docker containers in a remote server through SSH:
 
 ```shell
-ssh user@server "docker exec -i containername tail -n +0 -F /usr/local/tomcat/webapps/ROOT/WEB-INF/log/simplicite.log" | lnav
+ssh -n user@server "docker exec -i containername tail -n +0 -F /usr/local/tomcat/webapps/ROOT/WEB-INF/log/simplicite.log" | lnav
 ```
 
 ### Log files merging

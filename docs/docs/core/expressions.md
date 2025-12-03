@@ -80,11 +80,13 @@ Here is the list of available substituted tags that you can use in expressions:
 
 Only used for backend technical settings and system-parameters:
 
-- `[ENV:env var name]`: variable sets at environment/system level
-- `[PROP:JVM prop name]`: variable sets at jvm/tomcat level
+- `[ENV:<environment variable name>(:<default value>)]`:
+  value of the specified environment variable or the specified default value if the environment variable is not set
+- `[PROP:<system property name>(:<default value>)]`:
+  value of the specified JVM property or the specified default value if the JVM property is not set
 
-Beware, they are not substituted in constraints and field calculation to preserve data privacy (secret, password...).
-For those cases use `[PARAM]` or `[SYSPARAM]` instead.
+Beware, do not substitute private variable (secret, password...) in front constraints or visible field calculation to preserve data privacy.
+For those cases use a `[PARAM]` or a `[SYSPARAM]` instead with the `private` type.
 
 ### UI URLs tags
 
@@ -99,7 +101,7 @@ For those cases use `[PARAM]` or `[SYSPARAM]` instead.
   Static content URL (without quotes)
 - `[IMAGERESOURCEURL:<resource code>(:<OBJECT|EXTOBJECT|DISPOSITION>:<business object or external object or disposition name>)]`:
   Image resource URL (without quotes)
-- `[ICONRESOURCEURL:<resource code>(:<OBJECT|EXTOBJECT|DISPOSITION>:<business object or external object or disposition name>)]`:
+- `[ICONRESOURCEURL:<resource code>(:<object|extobject>:<business object or external object or disposition name>)]`:
   Icon resource URL (without quotes)
 - `[CSSRESOURCEURL:<resource code>(:<OBJECT|EXTOBJECT|DISPOSITION>:<business object or external object or disposition name>)]`:
   CSS stylesheet resource URL (without quotes)
@@ -132,10 +134,6 @@ For those cases use `[PARAM]` or `[SYSPARAM]` instead.
   value of a system parameter (without surrounding quotes because a system parameter can be numeric)
 - `[VERSION(:<module>)]`:
   value of the version of a specified module or value of the `VERSION` system parameter if no module specified
-- `[ENV:<environment variable name>(:<default value>)]`:
-  value of the specified environment variable or the specified default value if the environment variable is not set
-- `[PROP:<system property name>(:<default value>)]`:
-  value of the specified JVM property or the specified default value if the JVM property is not set
 - `[APPLICATION]` or `[APPNAME]`:
   the application name
 - `[ENCODING]`:
