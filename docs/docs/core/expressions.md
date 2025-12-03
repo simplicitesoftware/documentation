@@ -86,7 +86,7 @@ Only used for backend technical settings and system-parameters:
   value of the specified JVM property or the specified default value if the JVM property is not set
 
 Beware, do not substitute private variable (secret, password...) in front constraints or visible field calculation to preserve data privacy.
-For those cases use a `[PARAM]` or a `[SYSPARAM]` instead with the `private` type.
+For those cases use a `[SYSPARAM]` instead with the `private` type to restrict the value substitution to the back side.
 
 ### UI URLs tags
 
@@ -99,15 +99,15 @@ For those cases use a `[PARAM]` or a `[SYSPARAM]` instead with the `private` typ
   External object URL (without quotes)
 - `[CONTENTURL:<static content file name>]`:
   Static content URL (without quotes)
-- `[IMAGERESOURCEURL:<resource code>(:<OBJECT|EXTOBJECT|DISPOSITION>:<business object or external object or disposition name>)]`:
+- `[IMAGERESOURCEURL:<resource code>(:<OBJECT|EXTOBJECT|DISPOSITION>:<object name>)]`:
   Image resource URL (without quotes)
-- `[ICONRESOURCEURL:<resource code>(:<object|extobject>:<business object or external object or disposition name>)]`:
+- `[ICONRESOURCEURL:<resource code>(:<object|extobject>:<object name>)]`:
   Icon resource URL (without quotes)
-- `[CSSRESOURCEURL:<resource code>(:<OBJECT|EXTOBJECT|DISPOSITION>:<business object or external object or disposition name>)]`:
+- `[CSSRESOURCEURL:<resource code>(:<OBJECT|EXTOBJECT|DISPOSITION>:<object name>)]`:
   CSS stylesheet resource URL (without quotes)
-- `[JSRESOURCEURL:<resource code>(:<OBJECT|EXTOBJECT|DISPOSITION>:<business object or external object or disposition name>])]`:
+- `[JSRESOURCEURL:<resource code>(:<OBJECT|EXTOBJECT|DISPOSITION>:<object name>])]`:
   JavaScript resource URL (without quotes)
-- `[HTMLRESOURCEURL:<resource code>(:<OBJECT|EXTOBJECT|DISPOSITION>:<business object or external object or disposition name>)]`:
+- `[HTMLRESOURCEURL:<resource code>(:<OBJECT|EXTOBJECT|DISPOSITION>:<object name>)]`:
   HTML resource URL (without quotes)
 
 ### Grant level
@@ -217,15 +217,15 @@ For those cases use a `[PARAM]` or a `[SYSPARAM]` instead with the `private` typ
   Check if object is in creation as a copy
 - `[ROWID]`:
   Row ID value
-- `[FIELD:<name>]` or `[INPUT:<input name>]`:
+- `[FIELD:<field full name>]`:
   the specified field
-- `[COLUMN:<field input name>]`:
+- `[COLUMN:<field full name>]`:
   the specified field column name
-- `[LABEL:<field input name>]`:
+- `[LABEL:<field full name>]`:
   the specified field label
-- `[VALUE:<field input name>]`:
+- `[VALUE:<field full name>]`:
   the specified input field current value
-- `[OLDVALUE:<field input name>]`:
+- `[OLDVALUE:<field full name>]`:
   the specified input field old value (not available on lists)
 - `[PARAM:<parameter name>]`:
   object parameter value
