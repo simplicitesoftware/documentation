@@ -29,8 +29,10 @@ When required the involved services may need to be stopped in the following orde
 
 Then clean up the Tomcat work folders (and optionally the technical logs folder):
 
-	rm -fr $TOMCAT_ROOT/work/Catalina $TOMCAT_ROOT/conf/Catalina
-	rm -fr $TOMCAT_ROOT/logs/*
+```shell
+rm -fr $TOMCAT_ROOT/work/Catalina $TOMCAT_ROOT/conf/Catalina
+rm -fr $TOMCAT_ROOT/logs/*
+```
 
 Then the services are to be restarted in the following order:
 
@@ -82,10 +84,10 @@ For each logging event, an event **code** is associated, and depending on the co
 
 - The `DEBUG` log level is convenient for investigating an issue but **must not** be set by default.
 - The applicative `ERROR` logs (containing the `SIMPLICITE` keyword) usually correspond to normal application
-errors (the only error logs that requires investigation are the one that correspond to a database problem)
+  errors (the only error logs that requires investigation are the one that correspond to a database problem)
 - The other error logs needs further investigation in any case.
 - Any log at level `FATAL` generally requires services restart with prior technical investigation
-(typically if the error correspond to a memory or file system issue requires actions at OS level)
+  (typically if the error correspond to a memory or file system issue requires actions at OS level)
 
 Housekeeping
 ------------
@@ -161,8 +163,8 @@ For a given application a comprehensive save consist in:
 
 - Saving the database content using an usual database dump tool: `mysqldump`for MySQL or `pgdump`for postgreSQL
 - Saving the documents data directory content located in `$TOMCAT_ROOT/data/simplicite/<my application>/dbdoc`
-  (classical packaging) or `$TOMCAT_ROOT/webapps/ROOT/WEB-INF/dbdoc` (instances packaging) or in a custom location depending on your installation)
-using an usual archive tool: `zip` or `tar`
+  (classical packaging) or `$TOMCAT_ROOT/webapps/ROOT/WEB-INF/dbdoc` (instances packaging) or in a custom location depending on your installation
+  using an usual archive tool: `zip` or `tar`
 
 These two operations needs to be done exactly **at the same time** to avoid any data inconsistencies.
 
@@ -193,7 +195,7 @@ The typical output for the ping is:
 
 The typical output for the health check (in JSON format) is:
 
-```json
+```text
 [Platform]
 Status=OK
 Version=<version, e.g. 5.2.19>
@@ -270,7 +272,8 @@ Date=2022-10-17 12:12:31
 ElapsedTime=230
 ```
 
-If both page/service does not return response or returns a HTTP status different from `200` or if the response value for `status` is not `OK`, something needs to be investigated/fixed.
+If both page/service does not return response or returns a HTTP status different from `200` or if the response value for `status` is not `OK`,
+something needs to be investigated/fixed.
 
 System updates
 --------------
@@ -281,15 +284,21 @@ System updates **must** be applied regularly, especially in case of critical sec
 
 On Linux CentOS, you can check if there are pending system upgrades packages by:
 
-	sudo dnfcheck-update
+```shell
+sudo dnfcheck-update
+```
 
 You can then apply the updates by:
 
-	sudo dnf update
+```shell
+sudo dnf update
+```
 
 You should then clean up update packages by:
 
-	sudo dnf clean all
+```shell
+sudo dnf clean all
+```
 
 If there is an **JVM** update you must stop the running Tomcat instances prior to the update and restart them after the update.
 
@@ -299,8 +308,10 @@ If there is a **kernel** update you must reboot the server after the update.
 
 To clean up old kernels you can do:
 
-	sudo dnf install yum-utils
-	sudo package-cleanup --oldkernels --count=2
+```shell
+sudo dnf install yum-utils
+sudo package-cleanup --oldkernels --count=2
+```
 
 Tomcat updates
 --------------
@@ -312,9 +323,11 @@ The Tomcat server **must** be updated regularly, depending on the way it has bee
 Platform updates
 ----------------
 
-> **Note**: this chapter is not applicable when using our Docker images. When using such images the Simplicité platform is always up-to-date in the latest images.
+> **Note**: this chapter is not applicable when using our Docker images. When using such images the Simplicité
+> platform is always up-to-date in the latest images.
 
-The Simplicité&reg; platform **must** be updated regularly, at least on its maintenance branch (see [versions](/versions/versioning.md)), depending on the way it has been installed the process may vary.
+The Simplicité&reg; platform **must** be updated regularly, at least on its maintenance branch (see [versions](/versions/versioning.md)),
+depending on the way it has been installed the process may vary.
 
 Troubleshooting
 ---------------

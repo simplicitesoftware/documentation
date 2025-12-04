@@ -6,7 +6,7 @@ title: Docker tutorial
 Deploying Simplicité with Docker images tutorial
 ================================================
 
-For this tutorial we use an out-of-the-box **AlmaLinux/RockyLinux** (or legacy CentOS 7 or Debian) host but this can be transposed to any other host OS.
+For this tutorial we use an out-of-the-box **AlmaLinux 8, 9 or 10** (or legacy CentOS 7 or Debian) host but this can be transposed to any other host OS.
 
 By following the steps below you should have an easily-maintainable **production-grade** deployment of Simplicité up and running **in a few minutes**.
 
@@ -21,7 +21,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
-<TabItem value="almalinux" label="AlmaLinux/RockyLinux/CentOS 8+">
+<TabItem value="almalinux" label="AlmaLinux 8, 9 or 10">
 ```shell
 sudo dnf -y update && sudo dnf clean all
 sudo reboot
@@ -49,7 +49,7 @@ filters the access to your host.
 Install and enable firewall :
 
 <Tabs>
-<TabItem value="almalinux" label="AlmaLinux/RockyLinux/CentOS 8+">
+<TabItem value="almalinux" label="AlmaLinux 8, 9 or 10">
 ```shell
 sudo dnf -y install firewalld && sudo dnf clean all
 sudo systemctl enable firewalld
@@ -87,7 +87,7 @@ sudo firewall-cmd --list-all
 This step is not required but provides various useful tools and aliases on your host.
 
 <Tabs>
-<TabItem value="almalinux" label="AlmaLinux/RockyLinux/CentOS 8+">
+<TabItem value="almalinux" label="AlmaLinux 8, 9 or 10">
 ```shell
 sudo dnf -y install vim-enhanced git wget curl zip unzip && sudo dnf clean all
 sudo dnf -y install epel-release && sudo dnf -y install certbot htop && sudo dnf clean all
@@ -104,7 +104,7 @@ sudo yum -y install epel-release && sudo yum -y install certbot htop && sudo yum
 Add these useful aliases to `~/.bashrc`:
 
 <Tabs>
-<TabItem value="almalinux" label="AlmaLinux/RockyLinux/CentOS 8+">
+<TabItem value="almalinux" label="AlmaLinux 8, 9 or 10">
 ```shell
 cat << EOF >> .bashrc
 alias vi=vim
@@ -147,7 +147,7 @@ EOF
 This step is not required if you don't plan to connect to the deployed databases from your host.
 
 <Tabs>
-<TabItem value="almalinux" label="AlmaLinux/RockyLinux/CentOS 8+">
+<TabItem value="almalinux" label="AlmaLinux 8, 9 or 10">
 ```shell
 sudo dnf -y install mariadb postgresql && sudo dnf clean all
 ```
@@ -167,7 +167,27 @@ sudo apt install mariadb-client postgresql-client
 ### Docker
 
 <Tabs>
-<TabItem value="almalinux" label="AlmaLinux/RockyLinux/CentOS 8+">
+<TabItem value="almalinux10" label="AlmaLinux 10">
+
+:::note
+
+Here we install the distribution's Podman
+
+:::
+
+```shell
+sudo dnf -y install podman-docker.noarch
+sudo docker --version
+```
+</TabItem>
+<TabItem value="almalinux9" label="AlmaLinux 8 or 9">
+
+:::note
+
+Here we install Docker CE (Community edition)
+
+:::
+
 ```shell
 sudo dnf -y install 'dnf-command(config-manager)'
 sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
@@ -178,6 +198,13 @@ sudo systemctl start docker
 ```
 </TabItem>
 <TabItem value="centos7" label="CentOS 7">
+
+:::note
+
+Here we install the distribution's Docker
+
+:::
+
 ```shell
 sudo yum -y install docker && sudo yum clean all
 sudo systemctl enable docker
@@ -196,10 +223,13 @@ sudo systemctl status docker
 </TabItem>
 </Tabs>
 
-> **Note**:
-> By default Docker is allowed to change the firewall rules to open exposed ports.
-> To disable this default behavior you need to edit `/usr/lib/systemd/system/docker.service` cartridge file
-> and add `--iptables=false` (or similar if using `nftables`) to the `ExecStart` command.
+:::tip
+
+By default Docker is allowed to change the firewall rules to open exposed ports.
+To disable this behavior you need to edit `/usr/lib/systemd/system/docker.service` cartridge file
+And add `--iptables=false` (or similar if using `nftables`) to the `ExecStart` command.
+
+:::
 
 Sign-in to **our private Docker registry**:
 
@@ -221,7 +251,12 @@ Where `<tag>` is one of the available tags. E.g. `6-latest` = `6` or `5-latest` 
 ### Docker compose
 
 <Tabs>
-<TabItem value="almalinux" label="AlmaLinux/RockyLinux/CentOS 8+ and Debian">
+<TabItem value="almalinux10" label="AlmaLinux 10">
+```shell
+sudo dnf -y install podman-compose.noarch
+```
+</TabItem>
+<TabItem value="almalinux9" label="AlmaLinux 8 or 9 and Debian">
 The compose plugin is installed by default.
 </TabItem>
 <TabItem value="centos7" label="CentOS 7">
