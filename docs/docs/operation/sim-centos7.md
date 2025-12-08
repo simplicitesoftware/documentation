@@ -774,10 +774,6 @@ These system settings **SHOULD NOT** be changed unless you know precisely what y
 - `APPS_GROUP` Linux group used by the manager (defaults to `simplicite`)
 - `APPS_HOME` Home directory in which the manager is located (defaults to `/var/simplicite`)
 
-##### Reverse proxy settings
-
-- `APPS_HTTPSERVER` Reverse proxy used by the manager (`nginx/traefik`, defaults to `nginx`)
-
 ##### SSL settings
 
 - `APPS_SSL` (optional) use SSL ? 'true/false/force` (defaults to `true`)

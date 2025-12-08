@@ -787,7 +787,11 @@ These system settings **SHOULD NOT** be changed unless you know precisely what y
 
 ##### Reverse proxy settings
 
-- `APPS_HTTPSERVER` Reverse proxy used by the manager (`nginx/traefik`, defaults to `nginx`)
+- `APPS_HTTPSERVER` Reverse proxy used by the manager (`nginx` or `httpd`, defaults to `nginx`)
+
+:::warning[Attention]
+Apache (`httpd`) is only compatible with `APPS_ROOTCONTEXT=false`
+:::
 
 ##### SSL settings
 
