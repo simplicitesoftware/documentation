@@ -87,8 +87,8 @@ This setting allows you to copy descendant dependencies recursively.
 However, there are constraints:
 
 - Objects linked in (0,n) relationships must be identified by their parents: each foreign key must be a functional key;
-  otherwise, duplication is impossible without creating aa duplicate.
-- Only downward (0,n) relationships (tree-like) can be traversed. The runtime cannot copy an (n,n) relationship;
+  otherwise, duplication is impossible without creating a duplicate.
+- Only downward (0,n) relationships (tree-like) can be traversed;
   it will stop at the (n,n) relationship in a cascading copy (e.g., copying a user will copy their responsibilities but not their groups).
 
 For other specific copying scenarios, the copy must be performed code-wise in the `postCreate` hook, testing the `isCopied()`.
