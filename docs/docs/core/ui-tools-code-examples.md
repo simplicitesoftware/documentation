@@ -13,7 +13,9 @@ The Simplicité UI tools methods are in the `Simplicite.UI` namespace and rely o
 All methods are statics, they should be called as `Simplicite.UI.<method>(...)`.
 In order to write more compact code the `Simplicite.UI` should be aliased, for instance:
 
-	var $ui = Simplicite.UI;
+```javascript
+var $ui = Simplicite.UI;
+```
 
 This `$ui` alias will be used in the above examples.
 

@@ -88,7 +88,6 @@ The messages are actually displayed depending on the log appenders configuration
 
 Designers can [activate the hooks tracer](/docs/core/objects/businessobject-code-hooks#trace-hooks) during development phase for easier debugging or understanding.
 
-
 Business objects manipulation
 -----------------------------
 

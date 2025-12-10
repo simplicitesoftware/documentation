@@ -494,7 +494,6 @@ Case 4: Use case diagram
 - Draw directly on canvas to render the Actors nodes (system or human), but keep the default rendering of Activities
 - Resize and rename the labels
 
-
 ```javascript
 // Modeler extension
 Simplicite.ModelHooks.ModelUseCase = {

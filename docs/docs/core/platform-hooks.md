@@ -8,14 +8,20 @@ Platform hooks
 
 This document describes the hooks that can be implemented to put some **additional** business logic at user session level.
 
-> **Important**: As of version 5.0, static grant hooks are **deprecated**, they are replaced by the platform hooks singleton with same methods.
-> **Rhino** scripting language is no longer supported in Simplicité version 6.0+.
+:::warning
 
-> This document describes `PlatformHooks` implementation examples but it can be directly transposed to legacy `GrantHooks`.
+**Important**: As of version 5.0, static grant hooks are **deprecated**, they are replaced by the platform hooks singleton with same methods.
 
-> None of these hooks **needs** to be implemented. You can implement one or several of these hooks if you want to apply out some dynamic business logic that goes beyond what can be configured.
+**Rhino** scripting language is no longer supported in Simplicité version 6.0+.
 
-> These hooks are located in the singleton shared code named `PlatformHooks`.
+This document describes `PlatformHooks` implementation examples but it can be directly transposed to legacy `GrantHooks`.
+
+None of these hooks **needs** to be implemented. You can implement one or several of these hooks if you want
+to apply out some dynamic business logic that goes beyond what can be configured.
+
+These hooks are located in the singleton shared code named `PlatformHooks`.
+
+:::
 
 Platform init hook
 -------------------
@@ -36,12 +42,18 @@ public String postPlatformInit(Grant sys) {
 	return "SOME_ENV env var is not set";
 }
 ```
-> **Note** This initialization-related platform hook is called only once, it is not re-called after a clear cache
+
+:::note
+
+This initialization-related platform hook is called only once, it is not re-called after a clear cache
+
+:::
 
 Authentication hooks
 --------------------
 
-The `customAuth` (version 3.2+), `parseAuth` (version 3.0+) and `postAuth` (version 4.0+) platform hooks can be used to implement/customize authentication flows.
+The `customAuth` (version 3.2+), `parseAuth` (version 3.0+) and `postAuth` (version 4.0+) platform hooks
+can be used to implement/customize authentication flows.
 
 ```mermaid
 flowchart TD
@@ -75,9 +87,11 @@ Check:
 Custom start page hook
 ----------------------
 
-The `customStartPage` (version 5.0+) platform hook allows to implement a custom low-level start page `/` instead of the default start page that only redirects to `/ui/`.
+The `customStartPage` (version 5.0+) platform hook allows to implement a custom low-level start page `/`
+instead of the default start page that only redirects to `/ui/`.
 
-Note that similar start page customization can also be achieved at a higher level by implementing the `displayPublic` hook of a disposition associated to the `public` user.
+Note that similar start page customization can also be achieved at a higher level by implementing
+the `displayPublic` hook of a disposition associated to the `public` user.
 
 Custom authentication page hook
 -------------------------------
@@ -113,8 +127,6 @@ The `preLoadGrant` is called **before** actually loading the user rights (at tha
 
 Example:
 
-**Java**
-
 ```Java
 @Override
 public void preLoadGrant(Grant g) {
@@ -127,8 +139,6 @@ public void preLoadGrant(Grant g) {
 The `postLoadGrant` is called **after** the user rights are loaded (responsibilities, system parameters...).
 
 Example:
-
-**Java**
 
 ```Java
 @Override
@@ -160,8 +170,6 @@ It is called for each granted menu item for considered user.
 
 Example:
 
-**Java**
-
 ```Java
 @Override
 public boolean isMenuEnable(Grant g, String domain, String item) {
@@ -178,8 +186,6 @@ Fulltext search hooks
 These hooks change the result of a fulltext search. The `rows` argument is a `Vector` of `SearchItem`.
 
 Example:
-
-**Java**
 
 ```Java
 @Override
@@ -215,9 +221,6 @@ Other hooks
 
 This platform hook is called when a password change is attempted, it can be used to implement custom rules for password format validation:
 
-
-**Java**
-
 ```Java
 @Override
 public List<String> validatePassword(Grant g, String pwd) {
@@ -241,8 +244,6 @@ The error(s) returned by the above hooks are **added** to the default error mess
 
 This platform hook is called when an explicit or implicit logout occurs (it is called just before the session is dropped)
 
-**Java**
-
 ```Java
 @Override
 public void logout(Grant g) {
@@ -255,8 +256,6 @@ public void logout(Grant g) {
 
 This platform hook is called when a document download has been requested and has been successfully checked (versions 3.2+):
 
-**Java**
-
 ```Java
 @Override
 public void downloadDocument(Grant g, DocumentDB doc) {
@@ -265,4 +264,3 @@ public void downloadDocument(Grant g, DocumentDB doc) {
 	super.downloadDocument(g, doc);
 }
 ```
-

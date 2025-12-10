@@ -79,6 +79,7 @@ The code snippets are a list of contextual code examples, they can serve both to
 
 The visible snippets are calculated regarding the **context** of the script you currently have opened, Simplicité having different & unique
 snippets for; &nbsp; _business-objects_ | _external-objects_ | _dispositions_ | _adapters_ | ...
+
 :::
 
 There are two ways to trigger the code snippets feature:
@@ -100,8 +101,10 @@ But both are based on the same workflow:
 ### Smart features
 
 :::warning
+
 This is still an **experimental** feature that only is made available for **designer** users in `v6.3`,
 and shall be enabled through the `FEATURE_FLAGS` system parameter by setting `"java_language_server": true`.
+
 :::
 
 From the version 6.3, a Java-Language-Server was added & linked to Simplicité, offering smart-editing features like

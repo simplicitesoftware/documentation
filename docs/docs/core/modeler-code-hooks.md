@@ -8,7 +8,8 @@ SVG Modeler hooks
 
 This document describes the **SVG Modeler** hooks that can be implemented to put some **additional** business logic in a specific Modeler template.
 
-None of these hooks needs to be implemented. You need to implement one or several of these hooks if you want to apply out some dynamic business logic that goes beyond what can be configured.
+None of these hooks needs to be implemented. You need to implement one or several of these hooks if you want to apply
+out some dynamic business logic that goes beyond what can be configured.
 
 To get documentation about previous version of hooks using **Canvas** on legacy UI: [Canvas code examples](/docs/core/modeler-code-hooks-legacy)
 
@@ -138,7 +139,8 @@ canRemoveContainer: function(tpl) { return true; }
 Case 1: Business object hooks
 -----------------------------
 
-ModelBusinessObject is a template to edit the internal objects in a diagram (as a class diagram), and has been scripted to: 
+ModelBusinessObject is a template to edit the internal objects in a diagram (as a class diagram), and has been scripted to:
+
 - Add icons and datatypes on attributes
 - Change link aspect: reference arrow, aggregation, inheritance...
 - Launch the wizards to create objects and fields
@@ -435,6 +437,7 @@ Case 2: States model
 --------------------
 
 In this example:
+
 - Use Ajax to get the related list Id
 - Change the node rendering to display the state code and label
 - Add information on states transition (alert, granted groups...)
@@ -544,7 +547,7 @@ onDrawNode: function(n, display) {
 		if (n.shadow) b.attr("filter","url(#shadow)");
 		else b.removeAttr("filter");
 		n.bind(b);
-	
+
 		// Picture
 		var x = pad,
 			imgId = n.data.usr_image_id,
@@ -555,7 +558,7 @@ onDrawNode: function(n, display) {
 				.attr({ x:x, y:pad });
 			x += 50+pad;
 		}
-		
+
 		// User infos
 		elt("text", { x:x, y:pad, dy:"1em"}).text(n.label).appendTo(n.elt).css("font-weight", "bold");
 		elt("text", { x:x, y:pad, dy:"4em"}).text("Login: "+n.data.usr_login).appendTo(n.elt);
@@ -569,7 +572,7 @@ onDrawNode: function(n, display) {
 			.click(function() {
 				self.topui.openURL("mailto:"+n.data.usr_email);
 			});
-		
+
 		// Set final size of border
 		var box = n.elt[0].getBBox();
 		n.size(box.width + pad*2, box.height + pad*2);
@@ -584,7 +587,6 @@ Case 4: Demo products and orders
 ------------------------
 
 - Specific node drawing with product image and infos
-
 
 ```javascript
 Simplicite.Diagram.ModelHooks.DemoModel = {
@@ -627,7 +629,7 @@ onDrawNode: function(n, display) {
 		if (n.shadow) b.attr("filter","url(#shadow)");
 		else b.removeAttr("filter");
 		n.bind(b);
-	
+
 		// Picture
 		var x = pad,
 			imgId = n.data[imgField],
@@ -638,7 +640,7 @@ onDrawNode: function(n, display) {
 				.attr({ x:x, y:pad });
 			x += 50+pad;
 		}
-		
+
 		// Product infos
 		elt("text", { x:x, y:pad, dy:"1em"}).text(n.label).appendTo(n.elt).css("font-weight", "bold");
 		if (n.object=="DemoSupplier") {

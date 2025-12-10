@@ -94,11 +94,13 @@ Some of the provider settings are still documented with the deprecated syntax.
 Troubleshooting
 ---------------
 
-To investigate authentication issues, one useful tool is the `DAUTHCS001` [log event](/make/settings/log-event). By default, it is configured as a *Debug* (`D`) event because the output is verbose and can leak secrets, so it has to be activated when necessary by setting it to an *Information* (`I`) event.
+To investigate authentication issues, one useful tool is the `DAUTHCS001` [log event](/make/settings/log-event).
+By default, it is configured as a _Debug_ (`D`) event because the output is verbose and can leak secrets,
+so it has to be activated when necessary by setting it to an _Information_ (`I`) event.
 
 :::warning
 
-Make sure to deactivate it as it produces **very verbose** output. Whatever method you chose, you'll have to set the level back to the *Debug* value (`D`)
+Make sure to deactivate it as it produces **very verbose** output. Whatever method you chose, you'll have to set the level back to the _Debug_ value (`D`)
 
 :::
 

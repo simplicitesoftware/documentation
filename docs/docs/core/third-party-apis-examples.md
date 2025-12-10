@@ -124,11 +124,14 @@ public class Calendar implements java.io.Serializable {
 
 }
 ```
+
 #### Code snippet using a business object
 
 You can now use the previous script on a business object hook and create an event. See [business object hooks code examples](/docs/core/objects/businessobject-code-hooks)
 
-Example of a business object where event are created on google calendar. Date has to be on RFC3339 format. Simplicite provide method to change date to this specific format.
+Example of a business object where event are created on google calendar. Date has to be on RFC3339 format.
+Simplicite provide method to change date to this specific format.
+
 ```Java
 @Override
 public String preCreate() {
@@ -162,11 +165,13 @@ returned by Google Maps geocoding service using the value of the `myAddress` tex
 	if (a.hasChanged())
 		setFieldValue("myCoords", gT.geocodeOne(a.getValue().replace("\n", ", ")));
 ```
+
 > **Note**: to debug response from the API you can use the `DCORESV001` log event code
 
 ### Nominatim
 
-**Nominatim** is OpenStreetMap's geocoding service. Please read the [usage policy](https://operations.osmfoundation.org/policies/nominatim/) as it may not be suitable for you case.
+**Nominatim** is OpenStreetMap's geocoding service. Please read the [usage policy](https://operations.osmfoundation.org/policies/nominatim/)
+as it may not be suitable for you case.
 
 ```java
 private static String geoCode(String address, String zipCode, String city, String country) throws IOException,JSONException{
@@ -199,6 +204,7 @@ try {
 	AppLog.error(e, getGrant());
 }
 ```
+
 > **Note**: to debug response from the API you can use the `DCORESV001` log event code
 
 SMS
@@ -435,7 +441,6 @@ from/to the cloud storages.
 
 Example:
 
-**Java**
 ```java
 // (...)
 import com.simplicite.util.tools.CloudStorageTool;
