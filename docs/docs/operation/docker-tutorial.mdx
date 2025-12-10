@@ -104,7 +104,24 @@ sudo yum -y install epel-release && sudo yum -y install certbot htop && sudo yum
 Add these useful aliases to `~/.bashrc`:
 
 <Tabs>
-<TabItem value="almalinux" label="AlmaLinux 8, 9 or 10">
+<TabItem value="almalinux10" label="AlmaLinux 10">
+```shell
+cat << EOF >> .bashrc
+alias vi=vim
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias dir='ls -alF'
+alias d='podman'
+alias di='podman images'
+alias dp='podman ps --all'
+alias dv='podman volume'
+alias dc='podman compose'
+EOF
+. .bashrc
+```
+</TabItem>
+<TabItem value="almalinux9" label="AlmaLinux 8 or 9">
 ```shell
 cat << EOF >> .bashrc
 alias vi=vim
@@ -117,7 +134,6 @@ alias di='sudo docker images'
 alias dp='sudo docker ps --all'
 alias dv='sudo docker volume'
 alias dc='sudo docker compose'
-alias k='sudo kubectl'
 EOF
 . .bashrc
 ```
@@ -135,7 +151,6 @@ alias di='sudo docker images'
 alias dp='sudo docker ps --all'
 alias dv='sudo docker volume'
 alias dc='sudo /usr/bin/docker-compose'
-alias k='sudo kubectl'
 EOF
 . .bashrc
 ```
@@ -149,17 +164,20 @@ This step is not required if you don't plan to connect to the deployed databases
 <Tabs>
 <TabItem value="almalinux" label="AlmaLinux 8, 9 or 10">
 ```shell
-sudo dnf -y install mariadb postgresql && sudo dnf clean all
+sudo dnf -y install postgresql && sudo dnf clean all
+sudo dnf -y install mariadb && sudo dnf clean all
 ```
 </TabItem>
 <TabItem value="centos7" label="CentOS 7">
 ```shell
-sudo yum -y install mariadb postgresql && sudo yum clean all
+sudo yum -y install postgresql && sudo yum clean all
+sudo yum -y install mariadb && sudo yum clean all
 ```
 </TabItem>
 <TabItem value="debian" label="Debian">
 ```shell
-sudo apt install mariadb-client postgresql-client
+sudo apt install postgresql-client
+sudo apt install mariadb-client
 ```
 </TabItem>
 </Tabs>
@@ -223,28 +241,38 @@ sudo systemctl status docker
 </TabItem>
 </Tabs>
 
-:::tip
-
-By default Docker is allowed to change the firewall rules to open exposed ports.
-To disable this behavior you need to edit `/usr/lib/systemd/system/docker.service` cartridge file
-And add `--iptables=false` (or similar if using `nftables`) to the `ExecStart` command.
-
-:::
-
 Sign-in to **our private Docker registry**:
 
+<Tabs>
+<TabItem value="almalinux10" label="AlmaLinux 10">
+```shell
+podman login https://registry.simplicite.io
+```
+</TabItem>
+<TabItem value="others" label="AlmaLinux 8 or 9 or CentOS 7 or Debian">
 ```shell
 sudo docker login https://registry.simplicite.io
 ```
+</TabItem>
+</Tabs>
 
-> **Note**:
-> The images' prefix is `registry.simplicite.io/` (e.g. `registry.simplicite.io/platform:5-x`).
+:::note
+The images' prefix is `registry.simplicite.io/` (e.g. `registry.simplicite.io/platform:6-latest`).
 
 To test if everything works fine you can try starting a Tomcat-only ephemeral container with:
 
+<Tabs>
+<TabItem value="almalinux10" label="AlmaLinux 10">
+```shell
+podman run -it --rm -p 80:8080 registry.simplicite.io/server:<tag>
+```
+</TabItem>
+<TabItem value="others" label="AlmaLinux 8 or 9 or CentOS 7 or Debian">
 ```shell
 sudo docker run -it --rm -p 80:8080 registry.simplicite.io/server:<tag>
 ```
+</TabItem>
+</Tabs>
 
 Where `<tag>` is one of the available tags. E.g. `6-latest` = `6` or `5-latest` = `5`, etc.
 
@@ -273,7 +301,11 @@ The sample `docker-compose.yml` files below are using different databases.
 
 Create a folder for your instance (e.g. `myinstance`), all following files must be created in this folder.
 
-> **Note**: Alternatively you can add `--project-name=myinstance` to all Docker compose` command invocations.
+:::note
+
+Alternatively you can add `--project-name=myinstance` to all Docker compose` command invocations.
+
+:::
 
 ### Embedded HSQL database (1 container)
 
@@ -295,8 +327,65 @@ volumes:
   myinstance-hsqldb-git:
 ```
 
-> **Warning**: if you are planning to use a reverse proxy and/or to expose simplicite in HTTPS, make sure you use the appropriate port mapping and configuration
-> see [this document](/docs/operation/docker#exposed-ports) for more details.
+:::warning
+
+If you are planning to use a reverse proxy and/or to expose simplicite in HTTPS, make sure you use the appropriate port mapping and configuration
+see [this document](/docs/operation/docker#exposed-ports) for more details.
+
+:::
+
+### PostgreSQL database (2 containers)
+
+```yaml
+services:
+  db:
+    image: postgres:latest
+    restart: unless-stopped
+    container_name: myinstance-postgres-database
+    environment:
+      POSTGRES_USER: "simplicite"
+      POSTGRES_PASSWORD: "simplicite"
+      POSTGRES_DB: "simplicite"
+    # ZZZ Uncomment these 2 lines only if you want to access to the database from the host machine ZZZ
+    #ports:
+    #  - 127.0.0.1:5432:5432
+    volumes:
+      - myinstance-postgres-db:/var/lib/postgresql/data
+  simplicite:
+    image: platform:<tag>
+    restart: unless-stopped
+    container_name: myinstance-postgres-webapp
+    environment:
+      DB_SETUP: "true"
+      DB_VENDOR: "postgresql"
+      DB_HOST: db
+      DB_USER: "simplicite"
+      DB_PASSWORD: "simplicite"
+      DB_NAME: "simplicite"
+      DB_WAIT: 10
+    ports:
+      - 80:8080
+    volumes:
+      - myinstance-postgres-git:/usr/local/tomcat/webapps/ROOT/WEB-INF/git
+    depends_on:
+      - db
+volumes:
+  myinstance-postgres-db:
+  myinstance-postgres-git:
+```
+
+:::note
+
+Note that the `DB_HOST` environment variable of the `simplicite` is using the name of the `db` service as hostname.
+
+:::
+
+:::warning
+
+If you are planning to use a reverse proxy and/or to expose simplicite in HTTPS, make sure you use the appropriate port mapping and configuration
+see [this document](/docs/operation/docker#exposed-ports) for more details.
+
+:::
 
 ### MySQL database (2 containers)
 
@@ -340,55 +429,18 @@ volumes:
   myinstance-mysql-git:
 ```
 
-> **Note**: that the `DB_HOST` environment variable of the `simplicite` is using the name of the `db` service as hostname.
+:::note
 
-> **Warning**: if you are planning to use a reverse proxy and/or to expose simplicite in HTTPS, make sure you use the appropriate port mapping and configuration
-> see [this document](/docs/operation/docker#exposed-ports) for more details.
+Note that the `DB_HOST` environment variable of the `simplicite` is using the name of the `db` service as hostname.
 
-### PostgreSQL database (2 containers)
+:::
 
-```yaml
-services:
-  db:
-    image: postgres:latest
-    restart: unless-stopped
-    container_name: myinstance-postgres-database
-    environment:
-      POSTGRES_USER: "simplicite"
-      POSTGRES_PASSWORD: "simplicite"
-      POSTGRES_DB: "simplicite"
-    # ZZZ Uncomment these 2 lines only if you want to access to the database from the host machine ZZZ
-    #ports:
-    #  - 127.0.0.1:5432:5432
-    volumes:
-      - myinstance-postgres-db:/var/lib/postgresql/data
-  simplicite:
-    image: platform:<tag>
-    restart: unless-stopped
-    container_name: myinstance-postgres-webapp
-    environment:
-      DB_SETUP: "true"
-      DB_VENDOR: "postgresql"
-      DB_HOST: db
-      DB_USER: "simplicite"
-      DB_PASSWORD: "simplicite"
-      DB_NAME: "simplicite"
-      DB_WAIT: 10
-    ports:
-      - 80:8080
-    volumes:
-      - myinstance-postgres-git:/usr/local/tomcat/webapps/ROOT/WEB-INF/git
-    depends_on:
-      - db
-volumes:
-  myinstance-postgres-db:
-  myinstance-postgres-git:
-```
+:::warning
 
-> **Note**: that the `DB_HOST` environment variable of the `simplicite` is using the name of the `db` service as hostname.
+If you are planning to use a reverse proxy and/or to expose simplicite in HTTPS, make sure you use the appropriate port mapping and configuration
+see [this document](/docs/operation/docker#exposed-ports) for more details.
 
-> **Warning**: if you are planning to use a reverse proxy and/or to expose simplicite in HTTPS, make sure you use the appropriate port mapping and configuration
-> see [this document](/docs/operation/docker#exposed-ports) for more details.
+:::
 
 ### Oracle or SQLServer database
 
@@ -402,21 +454,63 @@ Start/stop/upgrade
 
 To start the container(s):
 
+<Tabs>
+<TabItem value="almalinux10" label="AlmaLinux 10">
+```shell
+podman compose up [-d]
+```
+</TabItem>
+<TabItem value="almalinux9" label="AlmaLinux 8 or 9">
+```shell
+sudo docker compose up [-d]
+```
+</TabItem>
+<TabItem value="others" label="CentOS 7 or Debian">
 ```shell
 sudo docker-compose up [-d]
 ```
+</TabItem>
+</Tabs>
 
 To stop the container(s):
 
+<Tabs>
+<TabItem value="almalinux10" label="AlmaLinux 10">
+```shell
+podman compose down
+```
+</TabItem>
+<TabItem value="almalinux9" label="AlmaLinux 8 or 9">
+```shell
+sudo docker compose down
+```
+</TabItem>
+<TabItem value="others" label="CentOS 7 or Debian">
 ```shell
 sudo docker-compose down
 ```
+</TabItem>
+</Tabs>
 
 To update the images (after stopping the containers(s)):
 
+<Tabs>
+<TabItem value="almalinux10" label="AlmaLinux 10">
+```shell
+podman compose pull
+```
+</TabItem>
+<TabItem value="almalinux9" label="AlmaLinux 8 or 9">
+```shell
+sudo docker compose pull
+```
+</TabItem>
+<TabItem value="others" label="CentOS 7 or Debian">
 ```shell
 sudo docker-compose pull
 ```
+</TabItem>
+</Tabs>
 
 Optional: Add an SSL-enabled NGINX reverse proxy
 ------------------------------------------------
@@ -444,9 +538,14 @@ services:
 And, of course, remove the exposed `80` port from the `simplicite` and expose the `8443` **locally** only
 (i.e. remove the `-80:8080` and add `- 127.0.0.1:8443:8443` in the `ports` section of your deployment descriptors).
 
-> **Warning**: As explained in [this document](/docs/operation/docker#exposed-ports) the `8080` port is for an **HTTP** endpoint of the reverse proxy
-> and the `8443` port is for an **HTTPS** endpoint of the reverse proxy.
-> If you don't use the right port for the right usage (typically if you misuse the `8080` for an HTTPS endpoint of the reverse proxy) it **will** result in unexpected behaviors
+:::warning
+
+As explained in [this document](/docs/operation/docker#exposed-ports) the `8080` port is for an **HTTP** endpoint of the reverse proxy
+and the `8443` port is for an **HTTPS** endpoint of the reverse proxy.
+
+If you don't use the right port for the right usage (typically if you misuse the `8080` for an HTTPS endpoint of the reverse proxy) it **will** result in unexpected behaviors
+
+:::
 
 Where `nginx.conf` is like:
 
@@ -515,8 +614,13 @@ http {
 }
 ```
 
-> **Note**: that the `proxy_pass` statement is using the name of the `simplicite` service as hostname
-> and the secured `8443` port (not the unsecured `8080` port) as explained above using the right port here is **mandatory** to avoid unexpected behaviors
+:::note
+
+Note
+that the `proxy_pass` statement is using the name of the `simplicite` service as hostname
+and the secured `8443` port (not the unsecured `8080` port) as explained above using the right port here is **mandatory** to avoid unexpected behaviors
+
+:::
 
 The mapped `/etc/sslserver.crt` and `/etc/sslserver.key` are the SSL certificate and corresponding key
 that you have obtained/bought for your hostname(s).
@@ -539,7 +643,11 @@ This may be required on some networks (e.g. with old proxies) where websockets a
 The Java compiler can be totally **inhibited** using the `COMPILER=false`.
 This may be required in some particular cases (e.g. security reasons).
 
+:::note
+
 Note that this means that any Java compiled class must be provided otherwise, e.g. by mounting/copying externally built JARs in the `WEB-INF/lib` of the webapp.
+
+:::
 
 ### Generate a self-signed certificate
 
@@ -559,86 +667,107 @@ openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt
 
 You can obtain a free **signed** certificate from the **LetsEncrypt** service, there are some steps to go thru:
 
-1) Add this to the HTTP server config in `nginx.conf` (before the `location / {...}` block):
+1. Add this to the HTTP server config in `nginx.conf` (before the `location / {...}` block):
 
-```nginx
-(...)
-        location ^~ /.well-known/acme-challenge/ {
-            root /usr/local/tomcat/webapps/ROOT;
-        }
-(...)
-```
+   ```nginx
+   (...)
+           location ^~ /.well-known/acme-challenge/ {
+               root /usr/local/tomcat/webapps/ROOT;
+           }
+   (...)
+   ```
 
-2) Comment the HTTPS config in the `nginx.conf` file.
+2. Comment the HTTPS config in the `nginx.conf` file.
 
-3) Create a `.well-known` dir:
+3. Create a `.well-known` dir:
 
-```shell
-mkdir .well-known
-```
+   ```shell
+   mkdir .well-known
+   ```
 
-4) Add a new volume mapping to the `simplicite` service in the `docker-compose.yml` file:
+4. Add a new volume mapping to the `simplicite` service in the `docker-compose.yml` file:
 
-```yaml
-(...)
-      - ./.well-known:/usr/local/tomcat/webapps/ROOT/.well-known
-(...)
-```
+   ```yaml
+   (...)
+         - ./.well-known:/usr/local/tomcat/webapps/ROOT/.well-known
+   (...)
+   ```
 
-5) Restart
+5. Restart
 
-6) Request the LetEncrypt certificate by:
+6. Request the LetEncrypt certificate by:
 
-```shell
-sudo certbot certonly --webroot -w . -d <myhostname>
-```
+   ```shell
+   sudo certbot certonly --webroot -w . -d <myhostname>
+   ```
 
-7) Uncomment the HTTPS config  in the `nginx.conf` file.
+7. Uncomment the HTTPS config  in the `nginx.conf` file.
 
-8) Change the certificate and key volume mappings in the `docker-compose.yml` file to:
+8. Change the certificate and key volume mappings in the `docker-compose.yml` file to:
 
-```yaml
-(...)
-      - /etc/letsencrypt/live/<myhostname>/fullchain.pem:/etc/ssl/server.crt
-      - /etc/letsencrypt/live/<myhostname>/privkey.pem:/etc/ssl/server.key
-(...)
-```
+   ```yaml
+   (...)
+         - /etc/letsencrypt/live/<myhostname>/fullchain.pem:/etc/ssl/server.crt
+         - /etc/letsencrypt/live/<myhostname>/privkey.pem:/etc/ssl/server.key
+   (...)
+   ```
 
-9) Restart.
+9. Restart
 
-> **Note**: the above step are not required when you renew the certificate by `sudo certbot renew`.
+Thee above last 3 steps are not required when you renew the certificate by `sudo certbot renew`.
 
 Connecting to a running container
 ---------------------------------
 
 List the running containers with:
 
+<Tabs>
+<TabItem value="almalinux10" label="AlmaLinux 10">
+```shell
+podman ps
+```
+</TabItem>
+<TabItem value="others" label="Almalinux 8 or 9 CentOS 7 or Debian">
 ```shell
 sudo docker ps
 ```
+</TabItem>
+</Tabs>
 
 Look for the container ID or name of the Simplicité container and execute a bash shell into this container:
 
+<Tabs>
+<TabItem value="almalinux10" label="AlmaLinux 10">
+```shell
+podman exec -it <container ID or name> bash
+```
+</TabItem>
+<TabItem value="others" label="Almalinux 8 or 9 CentOS 7 or Debian">
 ```shell
 sudo docker exec -it <container ID or name> bash
 ```
+</TabItem>
+</Tabs>
 
 Inside the container the Tomcat base folder is `/usr/local/tomcat`.
 
 Reviewing logs of a running container
 -------------------------------------
 
-List the running containers with:
-
-```shell
-sudo docker ps
-```
-
 Look for the container ID or name of the Simplicité container and execute standard Docker logs commands such as:
 
+<Tabs>
+<TabItem value="almalinux10" label="AlmaLinux 10">
+```shell
+podman logs -f <container ID or name>
+```
+</TabItem>
+<TabItem value="others" label="Almalinux 8 or 9 CentOS 7 or Debian">
 ```shell
 sudo docker logs -f <container ID or name>
 ```
+</TabItem>
+</Tabs>
 
 Deploying wih a license key
 ---------------------------
