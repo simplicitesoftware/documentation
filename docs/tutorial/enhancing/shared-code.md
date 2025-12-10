@@ -3,25 +3,32 @@ sidebar_position: 5
 title: 3.4. Writing unit tests
 ---
 
-# Building the "Order Management" Training App : Writing unit tests - Shared code
+Building the "Order Management" Training App : Writing unit tests - Shared code
+===============================================================================
 
 > Prerequisite : [You have a basic understanding of the Simplicité platform, and the steps in "2. Expanding your app" are completed](/category/2-expanding-your-app)
 
-## What is a Shared code ?
+What is a Shared code?
+----------------------
 
-Shared code is a configuration object that lets you write reusable code that can be accessed across your entire application. It can be used to write unit tests, extending Platform base classes, writing SQL scripts, etc... [Learn more](/make/settings/shared-code)
+Shared code is a configuration object that lets you write reusable code that can be accessed across your entire application.
 
-## Unit testing the `increaseStock` method
+It can be used to write unit tests, extending Platform base classes, writing SQL scripts, etc... [Learn more](/make/settings/shared-code)
 
-[Previously](/tutorial/expanding/hooks#increase-stock-method) we created an `increaseStock` method for the `DemoProduct` object. Let's write a unit test for this method.
+Unit testing the `increaseStock` method
+---------------------------------------
 
-To do so, follow the steps below :
+[Previously](/tutorial/expanding/hooks#increase-stock-method) we created an `increaseStock` method for the `DemoProduct` object.
+Let's write a unit test for this method.
+
+To do so, follow the steps below:
+
 1. In the **Settings > Shared code** menu, click **Create**
-![](img/shared-code/create.png)
+   ![](img/shared-code/create.png)
 2. Fill in the **Shared code** fields like so :
-    - Name : **TrnProductTest**
-    - Type : **Server code (unit tests)**
-    ![](img/shared-code/create-values.png)
+   - Name : **TrnProductTest**
+   - Type : **Server code (unit tests)**
+     ![](img/shared-code/create-values.png)
 3. Click **Save**
 4. Click **Edit**
 5. Select **Java** and click **Confirm**
@@ -93,26 +100,32 @@ public class TrnProductTest {
     }
 }
 ```
+
 [Source file](TrnProductTest.java)
 
-6. Click **Save**
+Then click **Save**
 
-## Adding `TRN_SUPERADMIN` to the `ADMIN` Group
+Adding `TRN_SUPERADMIN` to the `ADMIN` Group
+--------------------------------------------
 
-In the previous code excerpt, we use `Grant.getSystemAdmin()` to instantiate `TrnProduct`. For this to work, we need to add the `TRN_SUPERADMIN` profile to `ADMIN` :
+In the previous code excerpt, we use `Grant.getSystemAdmin()` to instantiate `TrnProduct`. For this to work,
+we need to add the `TRN_SUPERADMIN` profile to `ADMIN` :
 
 1. In **Users and rights > Groups**, open **ADMIN**
-    > You might need to [remove the module filter](/make/project/module#module-filtering-and-default-module) if ADMIN doesn't appear in the list
+   > You might need to [remove the module filter](/make/project/module#module-filtering-and-default-module) if ADMIN doesn't appear in the list
 2. In the **Profile members** panel, create **TRN_SUPERADMIN** Profile in the **Training** module.
 3. Clear the platform's cache
 
-## Running the unit test
+Running the unit test
+---------------------
 
 1. Log in using `designer`
 2. Access the previously created Shared code
 3. Click **Run**
-    ![](img/shared-code/run.png)
+   ![](img/shared-code/run.png)
 
 :::tip[Success]
+
 ![](img/shared-code/success.png)
+
 :::
