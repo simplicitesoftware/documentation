@@ -7,8 +7,11 @@ title: Object Fields
 
 ## What is an Object Field?
 
-In Simplicité®, the **Object Field** is the link that connects a [Field](/make/businessobjects/fields) (global attribute)
-to a [Business Object](/make/businessobjects/business-objects).
+In Simplicité®, the **Object Field** is the link that connects:
+
+- a [Field](/make/businessobjects/fields) (global attribute)
+- to a [Business Object](/make/businessobjects/business-objects)
+
 This is a core part of the platform's **meta-model**: an N-N relationship between Objects and Fields.
 
 Each Object Field instance allows:
@@ -28,12 +31,14 @@ This layered design promotes **reusability** and **customization**:
 
 ## Creating Fields and Object Fields
 
-When you add a Field to a Business Object through the **template editor**, you're actually creating a **[Field](/make/businessobjects/fields)**
-and an **Object Field**.
+When you add a Field to a Business Object through the **template editor**,
+you're actually creating a **[Field](/make/businessobjects/fields)** and an **Object Field**.
 We strongly recommend that you create Fields and object fields using the template editor.  
+
 :::note
-The template editor translates the field into the designer's language. You will need to pass over the translations for the other languages.   
+The template editor translates the field into the designer's language. You will need to pass over the translations for the other languages.
 :::
+
 This object field stores all contextual information about the field for that object:
 
 | Field property (global) | Can be overridden in Object Field? |
