@@ -198,6 +198,14 @@ sudo dnf -y install podman-docker.noarch
 sudo podman --version
 loginctl enable-linger
 ```
+
+:::tip
+
+If you prefer to use `docker` instead of `podman`, you can but you should do
+`sudo touch /etc/containers/nodocker` to avoid the annoying warning.
+
+:::
+
 </TabItem>
 <TabItem value="almalinux9" label="AlmaLinux 8 or 9">
 
@@ -270,6 +278,14 @@ To test if everything works fine you can try starting a Tomcat-only ephemeral co
 ```shell
 podman run -it --rm -p 80:8080 registry.simplicite.io/server:<tag>
 ```
+
+:::tip
+
+To avoid the annoying warning when running `podman compose` you should add
+`export PODMAN_COMPOSE_WARNING_LOGS=false` to your `.bashrc`
+
+:::
+
 </TabItem>
 <TabItem value="others" label="AlmaLinux 8 or 9 or CentOS 7 or Debian">
 ```shell
