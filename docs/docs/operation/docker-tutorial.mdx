@@ -27,7 +27,7 @@ sudo dnf -y update && sudo dnf clean all
 sudo reboot
 ```
 </TabItem>
-<TabItem value="centos7" label="CentOS 7">
+<TabItem value="centos" label="CentOS 7">
 ```shell
 sudo yum -y update && sudo yum clean all
 sudo reboot
@@ -56,7 +56,7 @@ sudo systemctl enable firewalld
 sudo systemctl start firewalld
 ```
 </TabItem>
-<TabItem value="centos7" label="CentOS 7">
+<TabItem value="centos" label="CentOS 7">
 ```shell
 sudo yum -y install firewalld && sudo yum clean all
 sudo systemctl enable firewalld
@@ -93,7 +93,7 @@ sudo dnf -y install vim-enhanced git wget curl zip unzip && sudo dnf clean all
 sudo dnf -y install epel-release && sudo dnf -y install certbot htop && sudo dnf clean all
 ```
 </TabItem>
-<TabItem value="centos7" label="CentOS 7">
+<TabItem value="centos" label="CentOS 7">
 ```shell
 sudo yum -y install vim-enhanced git wget curl zip unzip && sudo yum clean all
 sudo yum -y install epel-release && sudo yum -y install certbot htop && sudo yum clean all
@@ -104,7 +104,7 @@ sudo yum -y install epel-release && sudo yum -y install certbot htop && sudo yum
 Add these useful aliases to `~/.bashrc`:
 
 <Tabs>
-<TabItem value="almalinux10" label="AlmaLinux 10">
+<TabItem value="almalinux9-almalinux10" label="AlmaLinux 9 or 10">
 ```shell
 cat << EOF >> .bashrc
 alias vi=vim
@@ -121,7 +121,7 @@ EOF
 . .bashrc
 ```
 </TabItem>
-<TabItem value="almalinux9" label="AlmaLinux 8 or 9">
+<TabItem value="almalinux8" label="AlmaLinux 8">
 ```shell
 cat << EOF >> .bashrc
 alias vi=vim
@@ -138,7 +138,7 @@ EOF
 . .bashrc
 ```
 </TabItem>
-<TabItem value="centos7" label="CentOS 7">
+<TabItem value="centos" label="CentOS 7">
 ```shell
 cat << EOF >> .bashrc
 alias vi=vim
@@ -168,7 +168,7 @@ sudo dnf -y install postgresql && sudo dnf clean all
 sudo dnf -y install mariadb && sudo dnf clean all
 ```
 </TabItem>
-<TabItem value="centos7" label="CentOS 7">
+<TabItem value="centos" label="CentOS 7">
 ```shell
 sudo yum -y install postgresql && sudo yum clean all
 sudo yum -y install mariadb && sudo yum clean all
@@ -185,7 +185,7 @@ sudo apt install mariadb-client
 ### Docker
 
 <Tabs>
-<TabItem value="almalinux10" label="AlmaLinux 10">
+<TabItem value="almalinux9-almalinux10" label="AlmaLinux 9 or 10">
 
 :::note
 
@@ -207,7 +207,7 @@ If you prefer to use `docker` instead of `podman`, you can but you should do
 :::
 
 </TabItem>
-<TabItem value="almalinux9" label="AlmaLinux 8 or 9">
+<TabItem value="almalinux8" label="AlmaLinux 8">
 
 :::note
 
@@ -224,7 +224,7 @@ sudo systemctl enable docker
 sudo systemctl start docker
 ```
 </TabItem>
-<TabItem value="centos7" label="CentOS 7">
+<TabItem value="centos" label="CentOS 7">
 
 :::note
 
@@ -250,15 +250,15 @@ sudo systemctl status docker
 </TabItem>
 </Tabs>
 
-Sign-in to **our private Docker registry**:
+### Sign-in to our private Docker registry
 
 <Tabs>
-<TabItem value="almalinux10" label="AlmaLinux 10">
+<TabItem value="almalinux9-almalinux10" label="AlmaLinux 9 or 10">
 ```shell
 podman login registry.simplicite.io
 ```
 </TabItem>
-<TabItem value="others" label="AlmaLinux 8 or 9 or CentOS 7 or Debian">
+<TabItem value="alamlinux8-centos-debian" label="AlmaLinux 8 or CentOS 7 or Debian">
 ```shell
 sudo docker login registry.simplicite.io
 ```
@@ -274,20 +274,12 @@ The images' prefix is `registry.simplicite.io/` (e.g. `registry.simplicite.io/pl
 To test if everything works fine you can try starting a Tomcat-only ephemeral container with:
 
 <Tabs>
-<TabItem value="almalinux10" label="AlmaLinux 10">
+<TabItem value="almalinux9-almalinux10" label="AlmaLinux 9 or 10">
 ```shell
 podman run -it --rm -p 80:8080 registry.simplicite.io/server:<tag>
 ```
-
-:::tip
-
-To avoid the annoying warning when running `podman compose` you should add
-`export PODMAN_COMPOSE_WARNING_LOGS=false` to your `.bashrc`
-
-:::
-
 </TabItem>
-<TabItem value="others" label="AlmaLinux 8 or 9 or CentOS 7 or Debian">
+<TabItem value="almalinux8-centos-debian" label="AlmaLinux 8 or CentOS 7 or Debian">
 ```shell
 sudo docker run -it --rm -p 80:8080 registry.simplicite.io/server:<tag>
 ```
@@ -299,15 +291,23 @@ Where `<tag>` is one of the available tags. E.g. `6-latest` = `6` or `5-latest` 
 ### Docker compose
 
 <Tabs>
-<TabItem value="almalinux10" label="AlmaLinux 10">
+<TabItem value="almalinux" label="AlmaLinux 9 or 10">
 ```shell
-sudo dnf -y install podman-compose.noarch
+sudo dnf -y install epel-release && sudo dnf -y install podman-compose.noarch
 ```
+
+:::tip
+
+To avoid the annoying warning when running `podman compose` you should add
+`export PODMAN_COMPOSE_WARNING_LOGS=false` to your `.bashrc`
+
+:::
+
 </TabItem>
-<TabItem value="almalinux9" label="AlmaLinux 8 or 9 and Debian">
+<TabItem value="almalinux8-debian" label="AlmaLinux 8 or Debian">
 The compose plugin is installed by default.
 </TabItem>
-<TabItem value="centos7" label="CentOS 7">
+<TabItem value="centos" label="CentOS 7">
 ```shell
 sudo yum -y install epel-release && sudo yum -y install docker-compose && sudo yum clean all
 ```
@@ -475,17 +475,17 @@ Start/stop/upgrade
 To start the container(s):
 
 <Tabs>
-<TabItem value="almalinux10" label="AlmaLinux 10">
+<TabItem value="almalinux8-almalinux10" label="AlmaLinux 9 or 10">
 ```shell
 podman compose up [-d]
 ```
 </TabItem>
-<TabItem value="almalinux9" label="AlmaLinux 8 or 9">
+<TabItem value="almalinux8-debian" label="AlmaLinux 8 or Debian">
 ```shell
 sudo docker compose up [-d]
 ```
 </TabItem>
-<TabItem value="others" label="CentOS 7 or Debian">
+<TabItem value="centos" label="CentOS 7">
 ```shell
 sudo docker-compose up [-d]
 ```
@@ -495,17 +495,17 @@ sudo docker-compose up [-d]
 To stop the container(s):
 
 <Tabs>
-<TabItem value="almalinux10" label="AlmaLinux 10">
+<TabItem value="almalinux9-almalinux10" label="AlmaLinux 9 or 10">
 ```shell
 podman compose down
 ```
 </TabItem>
-<TabItem value="almalinux9" label="AlmaLinux 8 or 9">
+<TabItem value="almalinux8" label="AlmaLinux 8">
 ```shell
 sudo docker compose down
 ```
 </TabItem>
-<TabItem value="others" label="CentOS 7 or Debian">
+<TabItem value="centos-debian" label="CentOS 7 or Debian">
 ```shell
 sudo docker-compose down
 ```
@@ -515,17 +515,17 @@ sudo docker-compose down
 To update the images (after stopping the containers(s)):
 
 <Tabs>
-<TabItem value="almalinux10" label="AlmaLinux 10">
+<TabItem value="almalinux" label="AlmaLinux 9 or 10">
 ```shell
 podman compose pull
 ```
 </TabItem>
-<TabItem value="almalinux9" label="AlmaLinux 8 or 9">
+<TabItem value="almalinux8-debian" label="AlmaLinux 8 or Debian">
 ```shell
 sudo docker compose pull
 ```
 </TabItem>
-<TabItem value="others" label="CentOS 7 or Debian">
+<TabItem value="centos" label="CentOS 7">
 ```shell
 sudo docker-compose pull
 ```
@@ -742,12 +742,12 @@ Connecting to a running container
 List the running containers with:
 
 <Tabs>
-<TabItem value="almalinux10" label="AlmaLinux 10">
+<TabItem value="almalinux9-almalinux10" label="AlmaLinux 9 or 10">
 ```shell
 podman ps
 ```
 </TabItem>
-<TabItem value="others" label="Almalinux 8 or 9 CentOS 7 or Debian">
+<TabItem value="almalinux8-centos-debian" label="Almalinux 8 or CentOS 7 or Debian">
 ```shell
 sudo docker ps
 ```
@@ -757,12 +757,12 @@ sudo docker ps
 Look for the container ID or name of the Simplicité container and execute a bash shell into this container:
 
 <Tabs>
-<TabItem value="almalinux10" label="AlmaLinux 10">
+<TabItem value="almalinux9-almalinux10" label="AlmaLinux 9 or 10">
 ```shell
 podman exec -it <container ID or name> bash
 ```
 </TabItem>
-<TabItem value="others" label="Almalinux 8 or 9 CentOS 7 or Debian">
+<TabItem value="almalinux8-centos-debian" label="Almalinux 8 or CentOS 7 or Debian">
 ```shell
 sudo docker exec -it <container ID or name> bash
 ```
@@ -777,12 +777,12 @@ Reviewing logs of a running container
 Look for the container ID or name of the Simplicité container and execute standard Docker logs commands such as:
 
 <Tabs>
-<TabItem value="almalinux10" label="AlmaLinux 10">
+<TabItem value="almalinux9-almalinux10" label="AlmaLinux 9 or 10">
 ```shell
 podman logs -f <container ID or name>
 ```
 </TabItem>
-<TabItem value="others" label="Almalinux 8 or 9 CentOS 7 or Debian">
+<TabItem value="almalinux8-centos-debian" label="Almalinux 8 or CentOS 7 or Debian">
 ```shell
 sudo docker logs -f <container ID or name>
 ```
