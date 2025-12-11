@@ -7,9 +7,12 @@ title: Object Fields
 
 ## What is an Object Field?
 
-In Simplicité®, the **Object Field** is the link that connects a [Field](/make/businessobjects/fields) (global attribute) to a [Business Object](/make/businessobjects/business-objects). This is a core part of the platform's **meta-model**: an N-N relationship between Objects and Fields.
+In Simplicité®, the **Object Field** is the link that connects a [Field](/make/businessobjects/fields) (global attribute)
+to a [Business Object](/make/businessobjects/business-objects).
+This is a core part of the platform's **meta-model**: an N-N relationship between Objects and Fields.
 
 Each Object Field instance allows:
+
 - Linking a **Field** to a **Business Object** creating the column in the object table  
 - Overriding the properties of that Field **only for the given object** (translation, mandatory status, display properties, etc.)
 - Controlling visibility and behavior of the field in context
@@ -25,7 +28,8 @@ This layered design promotes **reusability** and **customization**:
 
 ## Creating Fields and Object Fields
 
-When you add a Field to a Business Object through the **template editor**, you're actually creating a **[Field](/make/businessobjects/fields)** and an **Object Field**.   
+When you add a Field to a Business Object through the **template editor**, you're actually creating a **[Field](/make/businessobjects/fields)**
+and an **Object Field**.
 We strongly recommend that you create Fields and object fields using the template editor.  
 :::note
 The template editor translates the field into the designer's language. You will need to pass over the translations for the other languages.   
@@ -62,7 +66,45 @@ This object field stores all contextual information about the field for that obj
 | Extended on list        | ✔ Yes                             |
 | Exportable              | ✔ Yes                             |
 
+:::note
 
+- Permissions can override all properties to force the value per user group.
+- All properties are loaded per object instance and finally can be changed in the `postLoad` hook to implement specific rules.
+
+:::
+
+## Technical key of the business object
+
+From the definition of the physical object and attribute names, a table and a column are created in the database.
+In reality, as soon as a business object is created, 5 default columns are created, the **technical fields**.
+This can be verified by testing an SQL query via the "DB Access" shortcut as seen in the previous chapter:
+
+```sql
+select * from trn_supplier;
+```
+
+The following columns are obtained:
+
+| row\_id | created\_dt | created\_by | updated\_dt | updated\_by | trn\_sup\_code |
+|---------|-------------|-------------|-------------|-------------|----------------|
+|         |             |             |             |             |                |
+
+The `row_id` column is called the **technical key**.
+It is generated and managed by the base, **so there is no need to create ID attributes** for your objects.
+
+These 5 columns are not intended to be visible to the user.
+
+## Functional key of the business object
+
+The functional key is a set of fields defining the **functional** uniqueness of the business object.
+Thus, if it is decided that the functional key of the customer is composed of his name and his first name,
+then two customers with the same name + first name cannot exist.
+
+**Every business object must have a functional key**.
+
+If there is no key, Simplicité will only allow the creation of one record, which will have an  "empty" functional key.
+The second record, also having an "empty" functional key,
+will trigger an error because the functional key already exists.
 
 ## One Field, multiple uses
 
@@ -73,6 +115,7 @@ A single Field can be:
 - **Not used** in any Business Object (yet still useful for workflows, tasks, custom scripts...)
 
 Examples:
+
 - `comment` → used on all forms for notes  
 - `status` → reused in multiple workflow-related objects  
 - `totalAmount` → a calculated field only used in the "Order" object  
