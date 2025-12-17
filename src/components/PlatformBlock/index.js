@@ -74,6 +74,9 @@ export default function PlatformBlock({
       case "beta":
         res = "🚧 Beta";
         break;
+      case "beta-rc":
+        res = "🚧 Release Candidate";
+        break;
       case "current":
         res = "✅ Current";
         break;

@@ -17,6 +17,9 @@ export default function VersionsTable({
             case "beta":
                 maintenance = "🚧 Beta";
                 break;
+            case "beta-rc":
+                maintenance = "🚧 Release Candidate";
+                break;
             case "current":
                 maintenance = "✅ Current";
                 break;

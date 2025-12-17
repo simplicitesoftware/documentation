@@ -179,6 +179,8 @@ def prettier_anchor(version, maintenance, supportType):
         anchor = f"🚧 {version} Alpha"
     elif maintenance == "beta":
         anchor = f"🚧 {version} Beta"
+    elif maintenance == "beta-rc":
+        anchor = f"🚧 {version} Release Candidate"
     elif maintenance == "current":
         anchor = f"✅ {version} Current"
     elif maintenance == "active":
