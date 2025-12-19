@@ -50,10 +50,10 @@ export default function VersionsTable({
         let support;
         switch (st) {
             case "shortterm":
-                support = "Short Term - STS";
+                support = "⌛ Short Term (STS)";
                 break;
             case "longterm":
-                support = "Long Term - LTS";
+                support = "📅 Long Term (LTS)";
                 break;
             default:
                 support = "N/A";

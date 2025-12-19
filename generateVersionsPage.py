@@ -185,9 +185,9 @@ def prettier_anchor(version, maintenance, supportType):
         anchor = f"✅ {version} Current"
     elif maintenance == "active":
         if supportType == "longterm":
-            anchor = f"☑️ {version} Long Term Release"
+            anchor = f"☑️ {version} LTS"
         elif supportType == "shortterm":
-            anchor = f"☑️ {version} Short Term Release"
+            anchor = f"☑️ {version} STS"
         else:
             anchor = f"N/A"
     elif maintenance == "expired":
@@ -196,7 +196,7 @@ def prettier_anchor(version, maintenance, supportType):
             anchor += " LTS"
         elif supportType == "shortterm":
             anchor += " STS"
-        anchor += " Expired"
+        anchor += " expired"
 
     return anchor
 
