@@ -78,7 +78,7 @@ providers in the `AUTH_PROVIDERS` system parameter:
 ### Environment variables overrides
 
 As of version 6.2 it is possible to use environment variables to override the value of a given system
-parameter using the corresponding environment variable named `SIMPLICITE_<system parameter name>`.
+parameter using the corresponding environment variable named `SIMPLICITE_SYSPARAM_<system parameter name>`.
 This is a **forced** and **global** override of the system parameter value which can't be updated at runtime (at UI level the form is also set read-only).
 
 > **Attention**: if you read the **raw** value from the database using `Grant.getSystemParam("<system parameter name>")` the returned value
