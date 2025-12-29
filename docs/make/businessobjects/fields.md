@@ -3,9 +3,11 @@ sidebar_position: 50
 title: Fields
 ---
 
-# Fields
+Fields
+======
 
-## What is a Field ?
+What is a Field?
+----------------
 
 If the object has a form, the attribute will be a field of this form. The configuration of the attribute allows
 to determine if it is mandatory or not, its type (text, number, single or multiple enumerated) etc.
@@ -26,10 +28,11 @@ The object field object allows to **override** the parameters of the attribute (
 
 When a field is linked to an object via an object field, Simplicité will create a column in the business object's table.
 
-## Field types
+Field types
+-----------
 
 | Type | Description |
-|------|-------------|
+| ---- | ----------- |
 | Short text | A short text field allows the user to enter a text value < 4000 characters |
 | Long text | A long text field allows the user to enter a text value. |
 | Integer | A integer field allows the user to enter a numeric value. |
@@ -43,7 +46,7 @@ When a field is linked to an object via an object field, Simplicité will create
 | Boolean | A boolean field allows the user to select a value between true and false. |
 | URL | A URL field is a field that allows the user to enter a URL value. The content must be a valid URL |
 | HTML content | A HTML content field allows the user to input styled text. |
-| Email | An email field allows the user to input an email address. |
+| Email | An email field allows the user to input an email address. |
 | Validated text | A validated text field allows the user to input a text value. The text is validated by a regular expression. |
 | Document | A document field allows the user to upload a file. |
 | Internal ID | An internal ID field is used to create a link with another object. |
@@ -55,14 +58,15 @@ When a field is linked to an object via an object field, Simplicité will create
 | Color | A color field allows the user to select a color. Displays a color picker. |
 | Geographical coordinates | A geographical coordinates field allows the user to input a latitude and longitude. Displays a map when a map provider is configured. |
 
-## Field rendering options
+Field rendering options
+-----------------------
 
 The following rendering modes are available per field type. Use these to control how inputs are displayed in forms and lists.
 
 ### Boolean
 
 | Label | Description |
-|-------|-------------|
+| ----- | ----------- |
 | Two radio buttons | Render as radio buttons (Yes/No) |
 | Single checkbox | Render as a single checkbox |
 | Combobox | Render as a dropdown list |
@@ -71,7 +75,7 @@ The following rendering modes are available per field type. Use these to control
 ### Color
 
 | Label | Description |
-|-------|-------------|
+| ----- | ----------- |
 | #RRGGBB | Hexadecimal color input |
 | rgb | RGB color input |
 | rgba | RGBA color input with alpha channel |
@@ -79,7 +83,7 @@ The following rendering modes are available per field type. Use these to control
 ### Date
 
 | Label | Description |
-|-------|-------------|
+| ----- | ----------- |
 | To year | Year-only selector |
 | To month | Month-only selector |
 | To day | Day-only selector |
@@ -87,7 +91,7 @@ The following rendering modes are available per field type. Use these to control
 ### Date and time
 
 | Label | Description |
-|-------|-------------|
+| ----- | ----------- |
 | To year | Year part selector |
 | To month | Month part selector |
 | To day | Day part selector |
@@ -98,7 +102,7 @@ The following rendering modes are available per field type. Use these to control
 ### Document
 
 | Label | Description |
-|-------|-------------|
+| ----- | ----------- |
 | Single document with icon on list | Display a single document as an icon |
 | Single document name | Display a single document as a filename |
 | Multi-documents boxes | Display multiple documents as boxes |
@@ -107,7 +111,7 @@ The following rendering modes are available per field type. Use these to control
 ### Enumeration
 
 | Label | Description |
-|-------|-------------|
+| ----- | ----------- |
 | Single or multiple selection list | Default list; supports single or multiple selection depending on field |
 | Horizontal | Horizontal layout of checkboxes/radio buttons |
 | Vertical | Vertical layout of checkboxes/radio buttons |
@@ -116,7 +120,7 @@ The following rendering modes are available per field type. Use these to control
 ### Foreign key (Object/Internal ID selector)
 
 | Label | Description |
-|-------|-------------|
+| ----- | ----------- |
 | Popup picker | Select via a popup dialog |
 | Select dropdown | Select via a dropdown list |
 | Popup and select | Offer both popup and dropdown selection |
@@ -124,7 +128,7 @@ The following rendering modes are available per field type. Use these to control
 ### Decimal (double)
 
 | Label | Description |
-|-------|-------------|
+| ----- | ----------- |
 | Simple number | Numeric input with decimals |
 | Monetary | Decimal input with currency formatting |
 | Percentage | Decimal input formatted as percent |
@@ -147,7 +151,7 @@ The following rendering modes are available per field type. Use these to control
 ### Image
 
 | Label | Description |
-|-------|-------------|
+| ----- | ----------- |
 | Take a selfie | Capture image using front camera |
 | Take a picture | Capture image using rear camera |
 | Signature pad | Capture a signature in a popup |
@@ -158,7 +162,7 @@ The following rendering modes are available per field type. Use these to control
 ### Integer
 
 | Label | Description |
-|-------|-------------|
+| ----- | ----------- |
 | Simple number | Integer input |
 | Monetary | Integer input with currency formatting |
 | Progress bar | Display value as a progress bar |
@@ -179,7 +183,7 @@ The following rendering modes are available per field type. Use these to control
 ### Link
 
 | Label | Description |
-|-------|-------------|
+| ----- | ----------- |
 | Icon on list | Display as an icon |
 | Value | Display as a clickable value |
 | QRCode/barcode scanner | Provide a QR code / barcode scanner action |
@@ -187,7 +191,7 @@ The following rendering modes are available per field type. Use these to control
 ### Long text
 
 | Label | Description |
-|-------|-------------|
+| ----- | ----------- |
 | Expression | Expression editor style |
 | Fixed font | Monospaced text editor |
 | HTML | HTML editor for fragments |
@@ -201,21 +205,21 @@ The following rendering modes are available per field type. Use these to control
 ### Notepad
 
 | Label | Description |
-|-------|-------------|
+| ----- | ----------- |
 | Text scratch pad | Text-based running notes |
 | Users activities | Activity-styled running log |
 
 ### Short text
 
 | Label | Description |
-|-------|-------------|
+| ----- | ----------- |
 | QRCode/barcode scanner | Input with QR code / barcode scanner |
 | Icon picker | Icon picker |
 
 ### Time
 
 | Label | Description |
-|-------|-------------|
+| ----- | ----------- |
 | To hour | Hour selector |
 | To minute | Minute selector |
 | To second | Second selector |
@@ -223,12 +227,13 @@ The following rendering modes are available per field type. Use these to control
 ### Link rendering (for linked objects)
 
 | Label | Description |
-|-------|-------------|
+| ----- | ----------- |
 | Child list | Display linked items as a list |
 | Pillbox | Display linked items as pills |
 | Pillbox with creation | Pills with inline create action |
 
-## Technical key of the business object
+Technical key of the business object
+------------------------------------
 
 From the definition of the physical object and attribute names, a table and a column are created in the database.
 In reality, as soon as a business object is created, 5 default columns are created, the **technical fields**.
@@ -243,17 +248,24 @@ The `row_id` column is called the **technical key**. It is generated and managed
 
 These 5 columns are not intended to be visible to the user.
 
-## Functional key
+Functional key
+--------------
 
 The functional key is a set of fields defining the **functional** uniqueness of the business object.
 Thus, if it is decided that the functional key of the customer is composed of his name and his first name,
-then two customers with the same name + first name cannot exist. 
+then two customers with the same name + first name cannot exist.
 
-**Every business object must have a functional key**. 
-_If there is no key, Simplicité will only allow the creation of one record, which will have an  "empty" functional key.
-The second record, also having an "empty" functional key, will trigger an error because the functional key already exists._
+:::note[Important]
 
-## Foreign key
+Every business object must have a functional key.
+
+:::
+
+If there is no key, Simplicité will only allow the creation of one record, which will have an  "empty" functional key.
+The second record, also having an "empty" functional key, will trigger an error because the functional key already exists.
+
+Foreign key
+-----------
 
 A link between two objects is defined:
 
@@ -264,9 +276,11 @@ A link between two objects is defined:
     - the object referenced in "Joined object"
     - empty "referenced field"
 
-## Joined fields
+Joined fields
+-------------
 
-When there is a 1:N relationship between two objects, it becomes possible to add joined fields to the referring object. In our example, it is possible to display supplier information on the product form.
+When there is a 1:N relationship between two objects, it becomes possible to add joined fields to the referring object.
+In our example, it is possible to display supplier information on the product form.
 
 There are three ways to join fields:
 
@@ -281,10 +295,11 @@ The joined field is defined:
   - the referenced object in "linked object"
   - the foreign key used in "reference field"
 
-## Calculated fields
+Calculated fields
+-----------------
 
 The simplest type of customization is the calculated field. This is a field whose value will depend **on other fields in the same business object**.
-In some cases, it may be useful to join fields from related objects just to be used for calculated fields. 
+In some cases, it may be useful to join fields from related objects just to be used for calculated fields.
 For example, in the exercise, the total price of the order will be calculated by multiplying the product's price by the number of items ordered.
 So the product's price will need to be _part of the order for the value to be available_.
 

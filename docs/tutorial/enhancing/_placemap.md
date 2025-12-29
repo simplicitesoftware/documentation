@@ -7,10 +7,11 @@ title: Place map
 Place map
 =========
 
-Google Map geolocation from an address can be configured from the **Interface/Places maps** menu or in V6 **User interface/Objects rendering/Places map**.
+Google Map geolocalization from an address can be configured from the **Interface/Places maps** menu
+or in V6 **User interface/Objects rendering/Places map**.
 
 The business object on which you want to generate a location map must have a **Geographical coordinates** type field
-in order to store the longitude and lattitude of an address.
+in order to store the longitude and latitude of an address.
 
 The value of this field is not calculated automatically (in fact it is necessary to specify from which other
 field(s) the calculation can be done - object fields or external data source).

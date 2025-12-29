@@ -74,7 +74,7 @@ Configuration
 | Code | Object's unique identifier |
 | Table | Table name / `service` for a [Service object](/docs/core/objects/service-objects) / `select` for a [Select object](/docs/core/objects/select-objects) |
 | Extend of Logical name | Used for inheritance (parent object) |
-| Icon code | Object's logo |
+| Icon code | Object's logo |
 
 Read more
 ---------
