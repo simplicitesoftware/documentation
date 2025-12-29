@@ -36,12 +36,16 @@ it is announced with plenty of time ahead.
 :::
 
 :::info
+
 Fixes associated to security risks are landed on **all maintained versions as soon as possible**
+
 :::
 
 :::info
+
 **Once a version is released, it only receives critical fixes**. There are exceptions to this rule for the latest release where easily
 backportable and backward-compatible features are sometimes included.
+
 :::
 
 Upgrade requirements
