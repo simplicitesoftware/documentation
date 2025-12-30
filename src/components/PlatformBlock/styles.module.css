@@ -253,7 +253,7 @@
 /* ---------------- *
     Specificities
  * ---------------- */
-.alpha, .beta {
+.alpha, .beta, .beta-rc {
   background: var(--blue_bg);
   color: var(--blue_txt);
 }

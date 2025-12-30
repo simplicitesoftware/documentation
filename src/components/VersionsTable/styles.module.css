@@ -21,7 +21,7 @@
 }
 
 table {
-    .alpha, .beta {
+    .alpha, .beta, .beta-rc {
         background: var(--blue_overlay) !important;
     }
 
