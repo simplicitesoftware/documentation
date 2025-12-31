@@ -20,7 +20,7 @@ The tree is defined by configuring:
 There are 3 ways of configuring the nodes:
 
 | **Manual** | **Automatic (links only)** | **Automatic (all)** |
-|---|---|---|
+| ---------- | -------------------------- | ------------------- |
 | The possible nodes and how they connect (through direct 1/N, N/N, **or indirect** relationships), is explicitly configured | The only configured node type is the root type. The platform will calculate connected nodes based on the data model relationships (1/N, N/N) | This mode operates like the previous one, but it additionally shows available actions, external objects, shortcuts, processes, and subtrees |
 
 :::warning

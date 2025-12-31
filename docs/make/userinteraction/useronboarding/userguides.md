@@ -66,7 +66,7 @@ A **Tour** is a structured JSON object that defines a guide with **steps**, **co
 
 #### Structure of a Tour
 
-```js
+```javascript
 {
     name: "GuideName",
     condition: { ... },       // Launch conditions and access rules
@@ -84,7 +84,7 @@ The condition defines when and how the tour can be launched:
 - `access` - function to check user permissions.
 - `init` - optional logic to verify the page or elements are ready.
 
-```js
+```javascript
 condition: {
     context: "list",            // Launch context: "list", "form", etc.
     inst: "the_ajax_Object",    // Technical instance name of the target object
@@ -115,7 +115,7 @@ Each step guides the user through an action or element:
   - `event` : `"click" | "onload" | "toggle" | "change"`
   - `condition` : `(ctn,obj,tour)->true`
 
-```js
+```javascript
 {
     step: "step-id",
     title: { FRA: "Titre", ENU: "Title" },
@@ -129,7 +129,7 @@ Each step guides the user through an action or element:
 
 At the end of a tour, you can display an optional message:
 
-```js
+```javascript
 {
     exitToast: { FRA: "Merci et à bientôt !", ENU: "Thank you and see you soon!" }
 }

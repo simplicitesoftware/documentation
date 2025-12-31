@@ -232,13 +232,13 @@ Create a system parameter `KEYCLOAK_SYNC` that specifies the list of Keycloak ro
 
 #### Local user/group mapping
 
-| Parameter                | Value                                                                             | Description                                                                |
-|--------------------------|-----------------------------------------------------------------------------------|----------------------------------------------------------------------------|
-| USER_SYNC                | `true`                                                                            | Synchronize the user and responsibilities on new session with SESSION_INFO |
-| USER_SYNC_DEFAULTS       | `{ "usr_lang":"FRA", "usr_minrows":"20", "usr_maxrows":"50", "viw_name":"Home" }` | Default values during a user synchronization with the external repository  |
-| USER_SYNC_GROUPS_INCLUDE | `["APPLI_SIMPLICITE_*"]`                                                          | List of groups to include in responsibilities (accept wildcard *)          |
+| Parameter                | Value                                                                             | Description                                                                   |
+| ------------------------ | --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| USER_SYNC                | `true`                                                                            | Synchronize the user and responsibilities on new session with SESSION_INFO    |
+| USER_SYNC_DEFAULTS       | `{ "usr_lang":"FRA", "usr_minrows":"20", "usr_maxrows":"50", "viw_name":"Home" }` | Default values during a user synchronization with the external repository     |
+| USER_SYNC_GROUPS_INCLUDE | `["APPLI_SIMPLICITE_*"]`                                                          | List of groups to include in responsibilities (accept wildcard *)             |
 | USER_SYNC_GROUPS_EXCLUDE | `["ADMIN", "GRANT_ADMIN", "SOCIAL_ADMIN", "KEYCLOAK_*"]`                          | List of local groups to preserve in user responsibilities (accept wildcard *) |
-| USER_SYNC_GROUPS_FORCED  | `["SOCIAL_USER"]`                                                                 | List of local groups to add in user responsibilities                       |
+| USER_SYNC_GROUPS_FORCED  | `["SOCIAL_USER"]`                                                                 | List of local groups to add in user responsibilities                          |
 
 - The names of Keycloak groups or roles have to be set into `USER_SYNC_GROUPS_INCLUDE`, and must be configured as local Group (or group profile).
 - It is strongly recommended to prefix all roles and groups with an application name (MYAPP_ADMIN, MYAPP_USER...) to simplify the mapping

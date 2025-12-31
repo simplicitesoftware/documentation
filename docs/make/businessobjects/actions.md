@@ -16,11 +16,11 @@ At the meta-model level, the action is linked to the object by a function, which
 
 The type of action and the type of action execution allow to distinguish various usage scenarios:
 
-|   | List | Item (Line / form) | Hidden |
-|---|------|--------------------|--------|
-|Front-end|Run front-end script on a set of elements (e.g. copy a list of user emails to the clipboard)|Run front-end script on a single element (e.g. copy user's email to clipboard)|No use case possible|
-|Back-end|Execute a script on a set of elements (e.g. have the platform send an email to a set of users)|Execute a script on a single element (e.g. have the platform send an email to the user)|Provide an action accessible via web service or via code without displaying a button|
-|None|Display of a button in the interface for use from front-end scripts|Display of a button in the interface for use from front-end scripts|No use case possible|
+| Type | List | Item (Line / form) | Hidden |
+| ---- | ---- | ------------------ | ------ |
+| Front-end | Run front-end script on a set of elements (e.g. copy a list of user emails to the clipboard) | Run front-end script on a single element (e.g. copy user's email to clipboard) | No use case possible |
+| Back-end | Execute a script on a set of elements (e.g. have the platform send an email to a set of users) | Execute a script on a single element (e.g. have the platform send an email to the user) | Provide an action accessible via web service or via code without displaying a button |
+| None | Display of a button in the interface for use from front-end scripts | Display of a button in the interface for use from front-end scripts | No use case possible |
 
 Front-end actions
 -----------------

@@ -3,17 +3,22 @@ sidebar_position: 0
 title: Introduction
 ---
 
-# Welcome to the Simplicité Tutorial
+Welcome to the Simplicité Tutorial
+==================================
 
-## Getting Started
+Getting Started
+---------------
 
 Before beginning the tutorials, you'll need:
+
 - A Simplicité trial instance (contact us to get a one-month trial)
 - An up to date browser
 
-## Tutorial Structure
+Tutorial Structure
+------------------
 
 ### Foundation: Building an Order Management Application
+
 Learn the fundamentals by creating a complete business application:
 
 1. **Creating Your First Module**
@@ -32,6 +37,7 @@ Learn the fundamentals by creating a complete business application:
    - Managing access controls
 
 ### Expanding Your Application
+
 Once you've built the basic structure, learn how to enhance your application with advanced features:
 
 1. **Links, Field Areas and Layout**
@@ -49,7 +55,8 @@ Once you've built the basic structure, learn how to enhance your application wit
     - First steps into Java coding
     - Custom data exports
 
-## How to Use This Tutorial
+How to Use This Tutorial
+------------------------
 
 Follow these steps for each tutorial:
 
@@ -66,10 +73,12 @@ Follow these steps for each tutorial:
    - Follow the steps carefully
    - Test your implementation
 
+Navigation Note
+---------------
 
-## Navigation Note
+While Simplicité offers multiple ways to reach any screen, these tutorials provide a structured path through the platform.
 
-While Simplicité offers multiple ways to reach any screen, these tutorials provide a structured path through the platform. The meta-model approach ensures you'll always know where to find configuration options, even as you become more experienced with the platform.
+The meta-model approach ensures you'll always know where to find configuration options, even as you become more experienced with the platform.
 
 ---
 

@@ -81,11 +81,11 @@ Extra mandatory settings might exist depending on the provider's type, please re
 Before Simplicité v4, providers were configured in individual system parameters instead of one single JSON. PEM certificates
 are embeddable in the JSON as base64 starting of v5.3.39.
 
-|                                                                     | Setting specification                                             | Example                   |
-|---------------------------------------------------------------------|-------------------------------------------------------------------|---------------------------|
-| In `AUTH_PROVIDERS` as JSON                                         | `<setting (lowercase)>`                                           | `"client_id"`             |
-| ⚠️ Deprecated in v4 ⚠️ Individual system parameters                | `<type (uppercase)>_<setting (uppercase)> <provider (lowercase)>` | `OAUTH2_CLIENT_ID google` |
-| ⚠️ Deprecated in v5 ⚠️ Image as implicitly specified resource name | `<type (uppercase)>_SIGNIN_<provider (uppercase)>`                | `LDAP_SIGNIN_MYOPENLDAP`  |
+|                                                                  | Setting specification                                             | Example                   |
+| ---------------------------------------------------------------- | ----------------------------------------------------------------- | ------------------------- |
+| In `AUTH_PROVIDERS` as JSON                                      | `<setting (lowercase)>`                                           | `"client_id"`             |
+| **Deprecated in v4** Individual system parameters                | `<type (uppercase)>_<setting (uppercase)> <provider (lowercase)>` | `OAUTH2_CLIENT_ID google` |
+| **Deprecated in v5** Image as implicitly specified resource name | `<type (uppercase)>_SIGNIN_<provider (uppercase)>`                | `LDAP_SIGNIN_MYOPENLDAP`  |
 
 :::warning
 Some of the provider settings are still documented with the deprecated syntax.

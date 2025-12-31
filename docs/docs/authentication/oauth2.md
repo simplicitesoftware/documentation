@@ -4,7 +4,7 @@ title: OAuth2
 ---
 
 OAuth2 Authentication
-============================
+=====================
 
 Providers
 ---------
@@ -12,7 +12,7 @@ Providers
 The following table indicates OAuth2/OpenIDConnect providers supports per Simplicité version:
 
 | Provider      | v3  | v4      | v5      | v6      |
-|---------------|-----|---------|---------|---------|
+| ------------- | --- | ------- | ------- | ------- |
 | OpenIDConnect | No  | Yes     | Yes     | Yes     |
 | Google        | Yes | Yes     | Yes     | Yes     |
 | Microsoft     | No  | Yes     | Yes     | Yes     |
@@ -166,8 +166,8 @@ To learn more about OpenIDConnect (and its relationship with OAuth2), pleaser re
 Beyond the common OAuth2 settings, there are some additional system parameters that needs to be configured for the OIDC providers :
 
 | **Setting** | **Required** | **Comments** | **Availability** |
-|---|---|---|---|
-| `base_url` | **required**, unless `authorize_url`, `token_url` and `userinfo_url` are defined |  | v4.0 |
+| --- | --- | --- | --- |
+| `base_url` | **required**, unless `authorize_url`, `token_url` and `userinfo_url` are defined | / | v4.0 |
 | `authorize_url` | **required**, unless `base_url` is defined | defaults to `base_url/authorize` | v4.0 |
 | `token_url` | **required**, unless `base_url` is defined | defaults to `base_url/token` | v4.0 |
 | `userinfo_url` | **required**, unless `base_url` is defined | defaults to `base_url/userinfo` | v4.0 |
