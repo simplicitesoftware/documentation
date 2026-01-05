@@ -12,8 +12,8 @@ Simple search syntax
 Simple search syntax for search filters is a plain character string including,
 if required, search SQL-like wildcards:
 
-- `*` (or `%`): any group of characters
-- `?` (or `_`): any single character
+- `*` or `%`: any group of characters
+- `_` (underscore): any single character
 
 Date fields search filter syntax is `YYYY-MM-DD`
 
