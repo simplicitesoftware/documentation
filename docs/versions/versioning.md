@@ -61,8 +61,12 @@ Not upgrading the platform is associated to numerous risks:
 - Support difficulties and latency: although flexible, our team officially only offers support on up-to-date platforms
   (mainly to rule out the responsibility of known bugs, and facilitate case reproduction)
 
+<!-- markdownlint-disable -->
+
 | Upgrade type | Priority               | Planning and testing | Justification |
 | ------------ | ---------------------- | -------------------- | ------------- |
 | `revision`   | Upgrade ASAP           | None                 | May contain critical fixes, should have no impact on the app. |
 | `minor`      | Plan upgrade           | Low                  | If you can do a minor upgrade, it means your version is in standard maintenance period, which has a lifespan of ~6months. A **minor version** is just a slightly more impacting revision which **may** require some minor refactoring of "atypical" custom code (e.g. custom code that is not using the Simplicité Java API). The configuration remains fully compatible vs previous minor version. |
 | `major`      | Put it on your roadmap | Medium               | A **major version** includes significant compatibility-breaking changes, including on the platform's technical components, that **will** require impact analysis and potential refactoring on your custom code. The configuration remains fully compatible vs previous major version except that some configuration concepts can become outdated. Upgrading to the next major version is **recommended** as no further functional changes will be done on the previous major version |
+
+<!-- markdownlint-enable -->

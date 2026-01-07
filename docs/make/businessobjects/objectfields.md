@@ -3,9 +3,11 @@ sidebar_position: 40
 title: Object Fields
 ---
 
-# Object Fields
+Object Fields
+=============
 
-## What is an Object Field?
+What is an Object Field?
+------------------------
 
 In Simplicité®, the **Object Field** is the link that connects:
 
@@ -16,11 +18,12 @@ This is a core part of the platform's **meta-model**: an N-N relationship betwee
 
 Each Object Field instance allows:
 
-- Linking a **Field** to a **Business Object** creating the column in the object table  
+- Linking a **Field** to a **Business Object** creating the column in the object table
 - Overriding the properties of that Field **only for the given object** (translation, mandatory status, display properties, etc.)
 - Controlling visibility and behavior of the field in context
 
-## Understanding Object Fields
+Understanding Object Fields
+---------------------------
 
 This layered design promotes **reusability** and **customization**:
 
@@ -29,17 +32,23 @@ This layered design promotes **reusability** and **customization**:
 - Some Fields may exist without being linked to any object (used in actions, processes, etc.)
 - Some Object Fields are used to **bring in joined data** from related objects (e.g., product price shown on an order)
 
-## Creating Fields and Object Fields
+Creating Fields and Object Fields
+---------------------------------
 
 When you add a Field to a Business Object through the **template editor**,
 you're actually creating a **[Field](/make/businessobjects/fields)** and an **Object Field**.
-We strongly recommend that you create Fields and object fields using the template editor.  
+
+We strongly recommend that you create Fields and object fields using the template editor.
 
 :::note
+
 The template editor translates the field into the designer's language. You will need to pass over the translations for the other languages.
+
 :::
 
 This object field stores all contextual information about the field for that object:
+
+<!-- markdownlint-disable -->
 
 | Field property (global) | Can be overridden in Object Field? |
 |-------------------------|------------------------------------|
@@ -71,6 +80,8 @@ This object field stores all contextual information about the field for that obj
 | Extended on list        | ✔ Yes                             |
 | Exportable              | ✔ Yes                             |
 
+<!-- markdownlint-enable -->
+
 :::note
 
 - Permissions can override all properties to force the value per user group.
@@ -78,10 +89,13 @@ This object field stores all contextual information about the field for that obj
 
 :::
 
-## Technical key of the business object
+Technical key of the business object
+------------------------------------
 
 From the definition of the physical object and attribute names, a table and a column are created in the database.
+
 In reality, as soon as a business object is created, 5 default columns are created, the **technical fields**.
+
 This can be verified by testing an SQL query via the "DB Access" shortcut as seen in the previous chapter:
 
 ```sql
@@ -99,7 +113,8 @@ It is generated and managed by the base, **so there is no need to create ID attr
 
 These 5 columns are not intended to be visible to the user.
 
-## Functional key of the business object
+Functional key of the business object
+-------------------------------------
 
 The functional key is a set of fields defining the **functional** uniqueness of the business object.
 Thus, if it is decided that the functional key of the customer is composed of his name and his first name,
@@ -111,22 +126,24 @@ If there is no key, Simplicité will only allow the creation of one record, whic
 The second record, also having an "empty" functional key,
 will trigger an error because the functional key already exists.
 
-## One Field, multiple uses
+One Field, multiple uses
+------------------------
 
 A single Field can be:
 
-- Used in **multiple** Business Objects via Object Fields  
-- Used in a **single** Business Object with different roles (base field, joined field, calculated field, etc.)  
+- Used in **multiple** Business Objects via Object Fields
+- Used in a **single** Business Object with different roles (base field, joined field, calculated field, etc.)
 - **Not used** in any Business Object (yet still useful for workflows, tasks, custom scripts...)
 
 Examples:
 
-- `comment` → used on all forms for notes  
-- `status` → reused in multiple workflow-related objects  
-- `totalAmount` → a calculated field only used in the "Order" object  
+- `comment` → used on all forms for notes
+- `status` → reused in multiple workflow-related objects
+- `totalAmount` → a calculated field only used in the "Order" object
 - `actionTempField` → an internal field used only by an action, never shown on a form
 
-## Key use cases
+Key use cases
+-------------
 
 ### 1. Field override per object
 
@@ -153,7 +170,8 @@ Some fields exist without being tied to a Business Object. For example:
 - Fields in a **scripted action form**
 - Temporary fields used for **batch processing**
 
-## Summary
+Summary
+-------
 
 | Concept          | Description                                         |
 |------------------|-----------------------------------------------------|
@@ -163,7 +181,8 @@ Some fields exist without being tied to a Business Object. For example:
 | Overridable?     | Label, mandatory status, visibility, etc.           |
 | Optional link    | A Field may be linked to 0, 1 or N objects          |
 
-## See also
+See also
+---------
 
 - [Business Objects](/make/businessobjects/business-objects)
 - [Fields](/make/businessobjects/fields)

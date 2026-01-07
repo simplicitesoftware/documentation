@@ -39,8 +39,8 @@ All application instances must be declared as **Hosts**, each with:
 
 | Field               | Description                                                                 |
 |---------------------|-----------------------------------------------------------------------------|
-| Host Name       | Required to distinguish **primary** vs **secondary** roles                  |
-| URL            | Full REST API endpoint of the remote application                            |
+| Host Name           | Required to distinguish **primary** vs **secondary** roles                  |
+| URL                 | Full REST API endpoint of the remote application                            |
 | REST Credentials    | Must have **CRUD** access on synchronized objects                           |
 
 Host identity can be set via:

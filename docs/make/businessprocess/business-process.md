@@ -3,10 +3,11 @@ sidebar_position: 10
 title: Business process
 ---
 
-Business process 
-=====================
+Business process
+================
 
-## What is a Business process ?
+What is a Business process?
+---------------------------
 
 This document describes the business process configuration to create a business process "Screen workflow".
 
@@ -14,40 +15,42 @@ Note that simple business process can only rely on configuration.
 
 You **need** to implement one or several hooks if you want to apply out some dynamic business logic that goes beyond what can be configured.
 
-## How to create a Business process "Screen workflow" ?
+How to create a Business process "Screen workflow"?
+---------------------------------------------------
 
-### Create a business process 
+### Create a business process
 
-- Name: unique name required  
-- Code: internal code required  
-- Type: Screen workflow  
-- Source code: any java class which modify default behavior  
-- Module: application module  
+- Name: unique name required
+- Code: internal code required
+- Type: Screen workflow
+- Source code: any java class which modify default behavior
+- Module: application module
 
 When the process is created 2 activities are generated: Begin and End.
 If these two activities did not exist or were removed, they must be created manually.
 Save without exit.
 
-> **Note**:
->
-> The other fields are only for long processes.
+:::note
 
-### Add process permission 
+The other fields are only for long processes.
+
+:::
+
+### Add process permission
 
 Go to Permission process tab to add rights to the process:
 
-Read only: ability to view activities  
-Instantiation: possibility to start the process  
-Cancel process: possibility to stop the process  
-
+Read only: ability to view activities
+Instantiation: possibility to start the process
+Cancel process: possibility to stop the process
 
 ### Put a process in a domain
 
 Check that you can select your process in a domain form.
 
-### Translate the business process 
+### Translate the business process
 
-Add translations to your business process.  
+Add translations to your business process.
 This translation will appear on all the activities in your process.
 
 ### Create activities
@@ -68,10 +71,12 @@ To create an activity, enter the following information:
 
 Other time related properties are used to alert if the activity is longer (/shorter).
 
-###  Translate activity 
+### Translate activity
 
-This step is to give a label in each language installed and a short help to the activity.  
-In addition, the translations appear on the left-hand side of the screen, enabling the user to track the progress of their process and view past and current activities.  
+This step is to give a label in each language installed and a short help to the activity.
+
+In addition, the translations appear on the left-hand side of the screen, enabling the user to track the progress
+of their process and view past and current activities.
 
 ### Grant activity to workflow group
 
@@ -92,7 +97,7 @@ This last step of the wizard allows you to define properties for this activity:
 Those who are checked will be kept, others are optional and can be removed
 If you do not use the wizard, click on build activities button to generate optional and mandatory activity data.
 
-- Everything between "_" must be changed. 
+- Everything between "_" must be changed.
 - Everything between _required_ must be entered.
 
 - Check and enter the line: `Object.Name` = `MyObject`
@@ -105,7 +110,7 @@ Other data will not be used and can stay unchecked.
 
 Activity data are defined inside a **group** with a **name**: `<GroupName>.<DataName>`
 
-Each is defined with a **single value** by activity: 
+Each is defined with a **single value** by activity:
 
 - a fixed value: the object name, a filter value...
 - or dynamically set from a previous activity with the syntax `[StepName.GroupName.DataName]`
@@ -114,13 +119,13 @@ Each is defined with a **single value** by activity:
 Activity New, Update, Delete, Row(s) selection, Search:
 
 - `Object.Name`: to define the name of the business object
-- `Field.<Fieldname`: to set the value of the object field 
-- Activity data are accessible by code or syntax `[<MyStepName>.Field.<myFieldname>]`
+- `Field.<FieldName>`: to set the value of the object field
+- Activity data are accessible by code or syntax `[<MyStepName>.Field.<MyFieldName>]`
 
 Select single/multiple:
 
 - `Constraint.Mandatory`: must be `true` to force the user to select at least one value
-- `Filter.<fieldname>`: optional to force a field filter on list
+- `Filter.<FieldName>`: optional to force a field filter on list
 - `Search.Spec`: optional to specify one SQL filter on list
 - `[<MyStepName>.Field.row_id]`: at runtime will contain the list of `row_id` = rows selected by the user
 
@@ -132,15 +137,15 @@ Service activity:
 Other common data:
 
 - `Next.Step`: optional, the following activity name to force the process routing (no declared transition needed)
-- `Return.Code`: optional, the return value of the activity in case of routing between different transitions with conditionnal value
+- `Return.Code`: optional, the return value of the activity in case of routing between different transitions with conditional value
 
 End activity optional parameters:
 
 - `Forward.Page`: final URL to redirect the end of the process
 - `PARAM.<index>`: URL parameter
 - Example to forward to a created object during the process:
-    - `Forward.Page` = `[EXPR:HTMLTool.getFormURL("MyBusinessObject", null, "[PARAM:1]", null)]`
-    - `PARAM.1` = `[MyStepNew.Field.row_id]`
+  - `Forward.Page` = `[EXPR:HTMLTool.getFormURL("MyBusinessObject", null, "[PARAM:1]", null)]`
+  - `PARAM.1` = `[MyStepNew.Field.row_id]`
 
 ### Activity link
 
@@ -156,7 +161,9 @@ An activity link is made of different properties:
 - To Step : target activity
 - Optional name
 - Action: you can add an action button on the activity by combining a transition to Action
-- Condition optional if there is only one way to get out of the original activity. Required to perform routing between multiple paths, the value of the condition must be equal to the given “Return.Code” of the source activity, the [DEFAULT] can be used to define a default path if no other conditions are valid.
+- Condition optional if there is only one way to get out of the original activity.
+  Required to perform routing between multiple paths, the value of the condition must be equal to the given “Return.Code” of the source activity,
+  the [DEFAULT] can be used to define a default path if no other conditions are valid.
 - Callback method : callback during the transition (java script method in the process)
 - Alert name : to add an alert (a server trace or email a user) on transition
 - Module

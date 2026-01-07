@@ -39,7 +39,7 @@ Configuration
 | **Parameter code**   | Unique identifier for the System Parameter                            |
 | **Description**      |                                                                       |
 | **Value**            | The stored value of the parameter (string, number, json, etc.)        |
-| **Overridden value** | _cf Overrides section below_  |
+| **Overridden value** | _Cf. Overrides section below_                                         |
 | **Type**             | Type of the system parameter                                          |
 | **Module**           | The module to which the parameter belongs                             |
 
@@ -55,13 +55,13 @@ as **they are readable through JS code to any connected user**.
 The type can be one of the following:
 
 - for **PUBLIC / NON SENSITIVE** parameters:
-	- Application: recommended default
-	- Look & Feel: _deprecated, do not use_
-	- Logger: _deprecated, do not use_
-	- Easy mode: _deprecated, do not use_
+  - Application: recommended default
+  - Look & Feel: _deprecated, do not use_
+  - Logger: _deprecated, do not use_
+  - Easy mode: _deprecated, do not use_
 - for **PRIVATE / SENSITIVE** parameters:
-	- Private: recommended default
-	- Runtime
+  - Private: recommended default
+  - Runtime
 
 Overrides
 ---------
@@ -70,7 +70,7 @@ The default value for a system parameter is what is found in the **value** field
 
 - user parameters
 - disposition parameters
-- overriden values
+- overridden values
 - environment variables
 
 ### User parameter
@@ -81,12 +81,12 @@ It's usually set through code via application logic and not part of the app conf
 
 ### Disposition parameter
 
-This override is made at the disposition level, tipically for UI parameters. 
+This override is made at the disposition level, typically for UI parameters.
 It's usually part of the app configuration.
 
-### Overriden value
+### Overridden value
 
-This field (`sys_value2`) is part of the Sytem Parameter object but is **not exportable**, which means that the value will not end up in the module configuration.
+This field (`sys_value2`) is part of the System Parameter object but is **not exportable**, which means that the value will not end up in the module configuration.
 It is useful when the system parameter:
 
 1. differs _per environment_
@@ -107,9 +107,9 @@ If you use the **raw value** APIs (`getSystemParam` & `getUserSystemParam`), you
 
 :::
 
-In many cases, a system parameter is better managed through environment variablese:
+In many cases, a system parameter is better managed through environment variables:
 
-- often the prefered method of configuration for operation teams with little to no knowledge of Simplicité
+- often the preferred method of configuration for operation teams with little to no knowledge of Simplicité
 - in a CI/CD pipeline, configuring the app through the UI is not practical
 - there are cases where parameters are used **before** they are practical to import or read in the database
 - etc.
@@ -127,6 +127,7 @@ This is a **forced** and **global** override of the system parameter value which
 #### Environment variables substitutions
 
 System parameters accept substitutions of the following substitution tags:
+
 - `[ENV:<environment variable name>[:<default value>]]`
 - `[PROP:<JVM property name>[:<default value>]]`
 

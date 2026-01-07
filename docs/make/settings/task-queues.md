@@ -57,7 +57,8 @@ If no queue is specified, the job will be pushed to the default `AppQueue`.
 Monitoring
 ----------
 
-A built-in **history and monitoring dashboard** tracks the evolution of each queue over time. The system stores the last **1,000 metrics** per queue, including:
+A built-in **history and monitoring dashboard** tracks the evolution of each queue over time.
+The system stores the last **1,000 metrics** per queue, including:
 
 - Queue size
 - Number of active workers

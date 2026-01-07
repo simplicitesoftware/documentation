@@ -147,76 +147,76 @@ Options can be changed in :
 
 ### Simplicite.UI.Globals.exports
 
-| Name                         | Description                                                             | Default value                              |
-|------------------------------|-------------------------------------------------------------------------|--------------------------------------------|
-| CVS                          | CVS export options                                                      | `{ enabled:true, sep:';' }`                |
+| Name                         | Description                                                             | Default value                                              |
+|------------------------------|-------------------------------------------------------------------------|------------------------------------------------------------|
+| CVS                          | CVS export options                                                      | `{ enabled:true, sep:';' }`                                |
 | XLS                          | Excel export options                                                    | `{ enabled:true, formats: { poi: "Excel", html: "HTML" }}` |
-| PDF                          | PDF export options                                                      | `{ enabled:true }`                         |
-| ARC                          | Archive export options                                                  | `{ enabled:true }`                         |
-| XML                          | Simplicite XML export options                                           | `{ enabled:true, inline:true, timestamp:false }` |
-| ZIP                          | Simplicite ZIP export options                                           | `{ enabled:true }`                         |
+| PDF                          | PDF export options                                                      | `{ enabled:true }`                                         |
+| ARC                          | Archive export options                                                  | `{ enabled:true }`                                         |
+| XML                          | Simplicite XML export options                                           | `{ enabled:true, inline:true, timestamp:false }`           |
+| ZIP                          | Simplicite ZIP export options                                           | `{ enabled:true }`                                         |
 
 ### Simplicite.UI.Globals.list
 
-| Name                         | Description                                                             | Default value                              |
-|------------------------------|-------------------------------------------------------------------------|--------------------------------------------|
-| container                    | target container for the list                                           | '#work' if undefined                       |
-| beforeload\(ctn,obj\)        | optional trigger before loading the list data                           |                                            |
-| preload\(ctn,obj,params\)    | optional trigger before rendering the list (data loaded)                |                                            |
-| onload\(ctn,obj,params\)     | optional trigger when list is displayed                                 |                                            |
-| onunload\(ctn,obj,params\)   | optional trigger before unloading the list                              |                                            |
-| onloadrow\(ctn,obj,id,item,tr\)    | optional trigger when a row is displayed                          |                                            |
-| onunloadrow\(ctn,obj,id,item,tr\)  | optional trigger before unloading a row                           |                                            |
-| display\(ctn,obj,params,cbk\)| optional function to override default rendering                         |                                            |
-| title                        | list title                                                              | object label                               |
-| minified                     | false: displays rows as table records or true: summaries                | false                                      |
-| minifiable                   | allows to switch rendering rows to summaries                            | true                                       |
-| layout                       | minified obj-grid layout "article", "masonry", "inline" or "float"      | 'masonry'                                  |
-| areas                        | array of field-areas to display on header row                           | visible areas                              |
-| columns                      | array of fields/columns to display                                      | visible fields on list                     |
-| rows                         | array of rows to display [ items ]                                      | result of search service                   |
-| sort                         | allows the sort by columns                                              | true                                       |
-| search                       | allows search by 'column', 'popup' or 'docked' dialog                   | 'popup'                                    |
-| groupBy                      | flag to group fields if specified                                       | false                                      |
-| filters                      | optional filters - override object filters and updatable by user        |                                            |
-| fixedFilters                 | optional fixed filters - override filters and not updatable by user     |                                            |
-| forceSearch                  | show the search dialog when the list is opened                          |                                            |
-| showFilters                  | show each user filter on top of list                                    | true if PANEL_FILTER=yes                   |
-| showSearchInlined            | show/hide the inlined search by columns                                 | false                                      |
-| showIndex                    | show the fulltext search                                                | metadata.indexable                         |
-| indexRequest                 | current index search request                                            |                                            |
-| oncreate                     | create handler, null or false: no creation                              | bind create action if granted              |
-| actions                      | arrays `{ list, listPlus, row, rowPlus }` of actions `{name, label, confirm, callback, showLabel, ...}`<br/>null:no action | metadata.actions |
-| floating                     | ensure some actions to stay visible during vertical scrolling           | true                                       |
-| sticky                       | ensure table header to stay visible during vertical scrolling (V5)      | true                                       |
-| onopen\(ctn,obj,rowId\)      | handler when record is opened/clicked                                   | engine.openObject                          |
-| onhelp\(ctn,obj\)            | handler to display the long help                                        | engine.displayHelp                         |
-| onsavecell\(ctn,obj,id,f,index\) | handler to save the editable field by cell                          | engine.saveField                           |
-| showAreaTitles               | show area titles                                                        | true                                       |
-| renderTitle\(obj,fld,label\) | optional title rendering                                                |                                            |
-| renderValue\(obj,fld,val\)   | optional cell rendering                                                 |                                            |
-| rowActionsRight              | true to display actions on the right side                               | false                                      |
-| followLinks                  | allows references navigation                                            | true                                       |
-| rowOpenDocs                  | add links to open documents and images                                  | true                                       |
-| isExtended                   | show/hide extended fields on list, except creation                      | false                                      |
-| msg                          | array of messages to display on list                                    |                                            |
-| msgRow                       | array of row messages `{rowId:[msg]}` to display per rowId              |                                            |
-| help                         | contextual help                                                         |                                            |
-| nav                          | optional navigation 'new' or 'add'                                      |                                            |
-| showNav                      | displays the navigation bar                                             | true                                       |
-| showTotals                   | displays the total row if any                                           | true                                       |
-| context                      | list context LIST, PANEL, UPDATE                                        | Simplicite.CONTEXT_LIST                    |
-| inst                         | optional instance name                                                  | `the\_ajax\_<name>`                        |
-| parent                       | optional parent object for panel                                        |                                            |
-| view                         | optional view container `{ name, item, home }`                          |                                            |
-| edit                         | edit list current mode = 'newline' or 'rows'                            |                                            |
-| listEdit                     | allows to edit cells ?                                                  | from metadata                              |
-| addEdit                      | allows to add row on list ?                                             | from metadata                              |
-| bulkDelete                   | allows bulk deletion on list ?                                          | from metadata                              |
-| bulkUpdate                   | allows bulk update on list ?                                            | from metadata                              |
-| selectRows                   | can select rows for bulk actions ?                                      |                                            |
-| onSelectRow                  | select row handler                                                      | call service                               |
-| template                     | list template                                                           | see below                                  |
+| Name                               | Description                                                             | Default value                              |
+|------------------------------------|-------------------------------------------------------------------------|--------------------------------------------|
+| container                          | target container for the list                                           | '#work' if undefined                       |
+| beforeload\(ctn,obj\)              | optional trigger before loading the list data                           |                                            |
+| preload\(ctn,obj,params\)          | optional trigger before rendering the list (data loaded)                |                                            |
+| onload\(ctn,obj,params\)           | optional trigger when list is displayed                                 |                                            |
+| onunload\(ctn,obj,params\)         | optional trigger before unloading the list                              |                                            |
+| onloadrow\(ctn,obj,id,item,tr\)    | optional trigger when a row is displayed                                |                                            |
+| onunloadrow\(ctn,obj,id,item,tr\)  | optional trigger before unloading a row                                 |                                            |
+| display\(ctn,obj,params,cbk\)      | optional function to override default rendering                         |                                            |
+| title                              | list title                                                              | object label                               |
+| minified                           | false: displays rows as table records or true: summaries                | false                                      |
+| minifiable                         | allows to switch rendering rows to summaries                            | true                                       |
+| layout                             | minified obj-grid layout "article", "masonry", "inline" or "float"      | 'masonry'                                  |
+| areas                              | array of field-areas to display on header row                           | visible areas                              |
+| columns                            | array of fields/columns to display                                      | visible fields on list                     |
+| rows                               | array of rows to display [ items ]                                      | result of search service                   |
+| sort                               | allows the sort by columns                                              | true                                       |
+| search                             | allows search by 'column', 'popup' or 'docked' dialog                   | 'popup'                                    |
+| groupBy                            | flag to group fields if specified                                       | false                                      |
+| filters                            | optional filters - override object filters and updatable by user        |                                            |
+| fixedFilters                       | optional fixed filters - override filters and not updatable by user     |                                            |
+| forceSearch                        | show the search dialog when the list is opened                          |                                            |
+| showFilters                        | show each user filter on top of list                                    | true if PANEL_FILTER=yes                   |
+| showSearchInlined                  | show/hide the inlined search by columns                                 | false                                      |
+| showIndex                          | show the fulltext search                                                | metadata.indexable                         |
+| indexRequest                       | current index search request                                            |                                            |
+| oncreate                           | create handler, null or false: no creation                              | bind create action if granted              |
+| actions                            | arrays `{ list, listPlus, row, rowPlus }` of actions `{name, label, confirm, callback, showLabel, ...}`<br/>null:no action | metadata.actions |
+| floating                           | ensure some actions to stay visible during vertical scrolling           | true                                       |
+| sticky                             | ensure table header to stay visible during vertical scrolling (V5)      | true                                       |
+| onopen\(ctn,obj,rowId\)            | handler when record is opened/clicked                                   | engine.openObject                          |
+| onhelp\(ctn,obj\)                  | handler to display the long help                                        | engine.displayHelp                         |
+| onsavecell\(ctn,obj,id,f,index\)   | handler to save the editable field by cell                              | engine.saveField                           |
+| showAreaTitles                     | show area titles                                                        | true                                       |
+| renderTitle\(obj,fld,label\)       | optional title rendering                                                |                                            |
+| renderValue\(obj,fld,val\)         | optional cell rendering                                                 |                                            |
+| rowActionsRight                    | true to display actions on the right side                               | false                                      |
+| followLinks                        | allows references navigation                                            | true                                       |
+| rowOpenDocs                        | add links to open documents and images                                  | true                                       |
+| isExtended                         | show/hide extended fields on list, except creation                      | false                                      |
+| msg                                | array of messages to display on list                                    |                                            |
+| msgRow                             | array of row messages `{rowId:[msg]}` to display per rowId              |                                            |
+| help                               | contextual help                                                         |                                            |
+| nav                                | optional navigation 'new' or 'add'                                      |                                            |
+| showNav                            | displays the navigation bar                                             | true                                       |
+| showTotals                         | displays the total row if any                                           | true                                       |
+| context                            | list context LIST, PANEL, UPDATE                                        | Simplicite.CONTEXT_LIST                    |
+| inst                               | optional instance name                                                  | `the\_ajax\_<name>`                        |
+| parent                             | optional parent object for panel                                        |                                            |
+| view                               | optional view container `{ name, item, home }`                          |                                            |
+| edit                               | edit list current mode = 'newline' or 'rows'                            |                                            |
+| listEdit                           | allows to edit cells ?                                                  | from metadata                              |
+| addEdit                            | allows to add row on list ?                                             | from metadata                              |
+| bulkDelete                         | allows bulk deletion on list ?                                          | from metadata                              |
+| bulkUpdate                         | allows bulk update on list ?                                            | from metadata                              |
+| selectRows                         | can select rows for bulk actions ?                                      |                                            |
+| onSelectRow                        | select row handler                                                      | call service                               |
+| template                           | list template                                                           | see below                                  |
 
 ```html
 <div class="objlist">
@@ -266,52 +266,52 @@ Options can be changed in :
 
 ### Simplicite.UI.Globals.form
 
-| Name                         | Description                                                             | Default value                              |
-|------------------------------|-------------------------------------------------------------------------|--------------------------------------------|
-| container                    | target container for the form                                           | '#work' if undefined                       |
-| beforeload\(ctn,obj,params\) | optional trigger before loading the form data                           |                                            |
-| preload\(ctn,obj,params\)    | optional trigger before rendering the form (data loaded)                |                                            |
-| onload\(ctn,obj,params\)     | optional trigger when form is displayed                                 |                                            |
-| onunload\(ctn,obj,params\)   | optional trigger before unloading the form                              |                                            |
-| noRowFound\(ctn,obj,id\)     | optional hook if the requested record is not found                      | alert `NO_ROW_FOUND` + redirect to the list|
-| display\(ctn,obj,params,cbk\)| optional function to override default rendering                         |                                            |
-| title                        | form title                                                              | userkey label                              |
-| titleMax                     | form title max length (ellipsis)                                        | 120                                        |
-| values                       | fields values                                                           | result of get service                      |
-| beforesave\(ctn,obj,index,cbk\) | handler before save the form, cbk(true/false) to continue, stop save |                                            |
-| aftersave\(ctn,obj,index,msgs\) | handler after save the form, cbk(true/false) to continue, stop       |                                            |
-| onsave\(ctn,obj,cbk\)        | handler to save the form                                                | engine.saveForm                            |
-| onsaveclose\(ctn,obj,cbk\)   | handler to save and close the form                                      | engine.saveForm + closeForm                |
-| onsavenew\(ctn,obj,cbk\)     | handler to save and create                                              | engine.saveForm + create                   |
-| onsavecopy\(ctn,obj,cbk\)    | handler to save and copy                                                | engine.saveForm + copy                     |
-| onclose\(ctn,obj\)           | handler to close form                                                   | engine.closeForm                           |
-| activateSaveOnChange         | activate the save button only on change event ?                         | false                                      |
-| actionAutoSave               | auto-save form on custom action                                         | true                                       |
-| onhelp\(ctn,obj\)            | handler to display the long help                                        | engine.displayHelp                         |
-| onsocial\(ctn,obj\)          | handler to display the social posts                                     | engine.displaySocial                       |
-| actions                      | `{ form, formPlus }` arrays of actions `{name, label, confirm, callback...}`<br />null:no action | metadata.actions  |
-| transitions                  | arrays of transition actions `{name, label, confirm, callback...}`<br />null: no transition |                        |
-| floating                     | ensure some actions to stay visible during vertical scrolling           | true                                       |
-| readonly                     | read only applies on fields<br />use onsave/onclose/actions/transitions to disable buttons |                         |
-| isExtended                   | show/Hide extended fields on form                                       | false                                      |
-| msg                          | optional array of messages                                              |                                            |
-| help                         | contextual help                                                         |                                            |
-| nav                          | optional navigation 'new' or 'add'<br />to navigate on list 'first', 'prev', 'next' or 'last' |                      |
-| showNav                      | displays the navigation bar                                             | true                                       |
-| showOptions                  | displays the options menu                                               | true                                       |
-| showAreas                    | displays fields areas in 'tabs' or 'split' mode if no UI template       | 'tabs'                                     |
-| showViews                    | displays views/links, true/false,  'tabs', 'vertical' or 'split'        | 'vertical'                                 |
-| followLinks                  | allows references navigation                                            | true                                       |
-| createLinks                  | allows references creation                                              | true                                       |
-| formTab                      | selected tab index per tab area                                         |                                            |
-| viewTab                      | selected view                                                           | metadata.defaultView                       |
-| inst                         | optional instance name                                                  | `the\_ajax\_<name>`                        |
-| copy                         | gets the item for copy                                                  | false                                      |
-| workflow                     | displays the form within a workflow                                     | false                                      |
-| parent                       | optional parent object `{ name, inst, field, rowId }`                     |                                          |
-| constraints                  | applies object constraints                                              | true                                       |
-| areaColumn                   | default columns per area without UI template                            | 2                                          |
-| template                     | form template                                                           | see below                                  |
+| Name                            | Description                                                             | Default value                              |
+|---------------------------------|-------------------------------------------------------------------------|--------------------------------------------|
+| container                       | target container for the form                                           | '#work' if undefined                       |
+| beforeload\(ctn,obj,params\)    | optional trigger before loading the form data                           |                                            |
+| preload\(ctn,obj,params\)       | optional trigger before rendering the form (data loaded)                |                                            |
+| onload\(ctn,obj,params\)        | optional trigger when form is displayed                                 |                                            |
+| onunload\(ctn,obj,params\)      | optional trigger before unloading the form                              |                                            |
+| noRowFound\(ctn,obj,id\)        | optional hook if the requested record is not found                      | alert `NO_ROW_FOUND` + redirect to the list|
+| display\(ctn,obj,params,cbk\)   | optional function to override default rendering                         |                                            |
+| title                           | form title                                                              | userkey label                              |
+| titleMax                        | form title max length (ellipsis)                                        | 120                                        |
+| values                          | fields values                                                           | result of get service                      |
+| beforesave\(ctn,obj,index,cbk\) | handler before save the form, cbk(true/false) to continue, stop save    |                                            |
+| aftersave\(ctn,obj,index,msgs\) | handler after save the form, cbk(true/false) to continue, stop          |                                            |
+| onsave\(ctn,obj,cbk\)           | handler to save the form                                                | engine.saveForm                            |
+| onsaveclose\(ctn,obj,cbk\)      | handler to save and close the form                                      | engine.saveForm + closeForm                |
+| onsavenew\(ctn,obj,cbk\)        | handler to save and create                                              | engine.saveForm + create                   |
+| onsavecopy\(ctn,obj,cbk\)       | handler to save and copy                                                | engine.saveForm + copy                     |
+| onclose\(ctn,obj\)              | handler to close form                                                   | engine.closeForm                           |
+| activateSaveOnChange            | activate the save button only on change event ?                         | false                                      |
+| actionAutoSave                  | auto-save form on custom action                                         | true                                       |
+| onhelp\(ctn,obj\)               | handler to display the long help                                        | engine.displayHelp                         |
+| onsocial\(ctn,obj\)             | handler to display the social posts                                     | engine.displaySocial                       |
+| actions                         | `{ form, formPlus }` arrays of actions `{name, label, confirm, callback...}`<br />null:no action | metadata.actions  |
+| transitions                     | arrays of transition actions `{name, label, confirm, callback...}`<br />null: no transition |                        |
+| floating                        | ensure some actions to stay visible during vertical scrolling           | true                                       |
+| readonly                        | read only applies on fields<br />use onsave/onclose/actions/transitions to disable buttons |                         |
+| isExtended                      | show/Hide extended fields on form                                       | false                                      |
+| msg                             | optional array of messages                                              |                                            |
+| help                            | contextual help                                                         |                                            |
+| nav                             | optional navigation 'new' or 'add'<br />to navigate on list 'first', 'prev', 'next' or 'last' |                      |
+| showNav                         | displays the navigation bar                                             | true                                       |
+| showOptions                     | displays the options menu                                               | true                                       |
+| showAreas                       | displays fields areas in 'tabs' or 'split' mode if no UI template       | 'tabs'                                     |
+| showViews                       | displays views/links, true/false,  'tabs', 'vertical' or 'split'        | 'vertical'                                 |
+| followLinks                     | allows references navigation                                            | true                                       |
+| createLinks                     | allows references creation                                              | true                                       |
+| formTab                         | selected tab index per tab area                                         |                                            |
+| viewTab                         | selected view                                                           | metadata.defaultView                       |
+| inst                            | optional instance name                                                  | `the\_ajax\_<name>`                        |
+| copy                            | gets the item for copy                                                  | false                                      |
+| workflow                        | displays the form within a workflow                                     | false                                      |
+| parent                          | optional parent object `{ name, inst, field, rowId }`                   |                                            |
+| constraints                     | applies object constraints                                              | true                                       |
+| areaColumn                      | default columns per area without UI template                            | 2                                          |
+| template                        | form template                                                           | see below                                  |
 
 ```html
 <div class="objform">
@@ -417,46 +417,46 @@ Options can be changed in :
 
 :::note
 
-- elements can be moved or added for specific rendering :
+- elements can be moved or added for specific rendering:
 
 :::
 
-| Type      | Element                                                 |
-|-----------|---------------------------------------------------------|
-| ACTION    | `<div class="action" data-action="name"/>`              |
-| FIELD     | `<span\|div\|img class="field" data-field="fullinput"/>`  |
+| Type      | Element                                                  |
+|-----------|----------------------------------------------------------|
+| ACTION    | `<div class="action" data-action="name"/>`               |
+| FIELD     | `<span\|div\|img class="field" data-field="fullinput"/>` |
 | TEXT      | `<span\|div class="text" data-text="code"/>`             |
 | BUTTON    | `<button\|div class="btn" data-obj="" data-rowid=""/>`   |
 
 ### Simplicite.UI.Globals.agenda
 
-| Name                         | Description                                                             | Default value                              |
-|------------------------------|-------------------------------------------------------------------------|--------------------------------------------|
-| beforeload\(ctn,obj,agd\)    | optional trigger before loading the calendar                            |                                            |
-| onload\(ctn,obj,agd\)        | optional trigger when form is displayed                                 |                                            |
-| onunload\(ctn,obj,agd\)      | optional trigger before unloading the form                              |                                            |
-| minTime                      | optional minimum time                                                   | '00:00:00'                                 |
-| maxTime                      | optional maximum time \(exclusive\)                                     | '24:00:00'                                 |
-| startTime                    | optional work time start                                                | Agenda start or '09:00'                    |
-| endTime                      | optional work time end                                                  | Agenda end or '18:00'                      |
-| snap                         | optional snap duration                                                  | Agenda quantum or '00:05:00'               |
-| slot                         | optional slot duration                                                  | Agenda quantum or '00:30:00'               |
-| height                       | optional height \(in px, auto or function\)                             | 800                                        |
-| login                        | optional user login filter                                              |                                            |
-| group                        | optional group name filter                                              |                                            |
-| date                         | optional date to display                                                | today                                      |
-| click\(event\)               | optional open event handler                                             | Open event form                            |
-| select\(start,end\)          | optional range selection handler                                        | Open creation form                         |
+| Name                         | Description                                                             | Default value                                          |
+|------------------------------|-------------------------------------------------------------------------|--------------------------------------------------------|
+| beforeload\(ctn,obj,agd\)    | optional trigger before loading the calendar                            |                                                        |
+| onload\(ctn,obj,agd\)        | optional trigger when form is displayed                                 |                                                        |
+| onunload\(ctn,obj,agd\)      | optional trigger before unloading the form                              |                                                        |
+| minTime                      | optional minimum time                                                   | '00:00:00'                                             |
+| maxTime                      | optional maximum time \(exclusive\)                                     | '24:00:00'                                             |
+| startTime                    | optional work time start                                                | Agenda start or '09:00'                                |
+| endTime                      | optional work time end                                                  | Agenda end or '18:00'                                  |
+| snap                         | optional snap duration                                                  | Agenda quantum or '00:05:00'                           |
+| slot                         | optional slot duration                                                  | Agenda quantum or '00:30:00'                           |
+| height                       | optional height \(in px, auto or function\)                             | 800                                                    |
+| login                        | optional user login filter                                              |                                                        |
+| group                        | optional group name filter                                              |                                                        |
+| date                         | optional date to display                                                | today                                                  |
+| click\(event\)               | optional open event handler                                             | Open event form                                        |
+| select\(start,end\)          | optional range selection handler                                        | Open creation form                                     |
 | drop\(event,delta,revert\)   | optional drag&drop handler                                              | Update the event date in DB, revert if no allowed      |
 | resize\(event,delta,revert\) | optional event resizing handler                                         | Update the event duration in DB, revert if not allowed |
 | title\(obj,item\)            | optional title handler                                                  | Label fields or the user-key label                     |
-| editable\(obj,item\)         | optional handler to indicate if a specific event is editable            | true if object is updatable                   |
-| classNames\(obj,item\)       | optional handler to get a list of classes to apply to event (override other color handlers) |                           |
-| color\(obj,item\)            | optional handler to color the event                                     | Generate a color per user/group or light grey |
-| borderColor\(obj,item\)      | optional handler of event border color                                  | 'grey'                                        |
-| textColor\(obj,item\)        | optional handler of event text color                                    | 'black'                                       |
-| render\(event,element\)      | optional handler to render the event                                    |                                               |
-| column\(moment\)             | optional handler to display the date header                             |                                               |
+| editable\(obj,item\)         | optional handler to indicate if a specific event is editable            | true if object is updatable                            |
+| classNames\(obj,item\)       | optional handler to get a list of classes to apply to event (override other color handlers) |                                    |
+| color\(obj,item\)            | optional handler to color the event                                     | Generate a color per user/group or light grey          |
+| borderColor\(obj,item\)      | optional handler of event border color                                  | 'grey'                                                 |
+| textColor\(obj,item\)        | optional handler of event text color                                    | 'black'                                                |
+| render\(event,element\)      | optional handler to render the event                                    |                                                        |
+| column\(moment\)             | optional handler to display the date header                             |                                                        |
 
 ### Simplicite.UI.Globals.timesheet
 
@@ -538,22 +538,22 @@ Global events
 Some common events are triggered by the UI to predefined classes.
 A specific component can implement some of then to add dynamic behaviors.
 
-| Class name                   | Trigger name                        | Occurs when                                  | Arguments                                        |
-|------------------------------|-------------------------------------|----------------------------------------------|--------------------------------------------------|
-| js-content-load              | ui.content.load                     | a common content is loaded (form, list...)   |                                                  |
-| js-content-unload            | ui.content.unload                   | a common content is unloaded                 |                                                  |
-| js-reload                    | ui.reload                           | the navigation reloads the work area         |                                                  |
+| Class name                   | Trigger name                        | Occurs when                                  | Arguments                                            |
+|------------------------------|-------------------------------------|----------------------------------------------|------------------------------------------------------|
+| js-content-load              | ui.content.load                     | a common content is loaded (form, list...)   |                                                      |
+| js-content-unload            | ui.content.unload                   | a common content is unloaded                 |                                                      |
+| js-reload                    | ui.reload                           | the navigation reloads the work area         |                                                      |
 | js-notify                    | ui.notify                           | one object has been updated in the work area | `{type:create\|update\|delete, object, rowId, item}` |
-| js-resizable                 | ui.resize                           | the screen size has changed                  | width, height, reload                            |
-| js-zoom                      | ui.zoom                             | the screen zoom factor                       | percent factor                                   |
-| js-searchable                | ui.search.filters                   | the object filters have changed              | filters, object                                  |
-| js-row-selected              | ui.list.row.selected                | a list item is (un)selected                  | ids, count                                       |
-| js-ctrl-s                    | ui.key.ctrls                        | CTRL-S is pressed                            |                                                  |
-| js-field-visible             | ui.field.visible                    | a field is shown or hidden                   | field, visible                                   |
-| js-view-visible              | ui.view.visible                     | a view is shown or hidden                    | view, visible, slide                             |
-| js-view-filters              | ui.view.filters                     | the view filters have changed                | filters \{ fromDate, toDate, fields... \}        |
-| js-area-visible              | ui.area.visible                     | an area is shown or hidden                   | area, visible                                    |
-| js-action-visible            | ui.action.visible                   | an action is shown or hidden                 | action, visible                                  |
+| js-resizable                 | ui.resize                           | the screen size has changed                  | width, height, reload                                |
+| js-zoom                      | ui.zoom                             | the screen zoom factor                       | percent factor                                       |
+| js-searchable                | ui.search.filters                   | the object filters have changed              | filters, object                                      |
+| js-row-selected              | ui.list.row.selected                | a list item is (un)selected                  | ids, count                                           |
+| js-ctrl-s                    | ui.key.ctrls                        | CTRL-S is pressed                            |                                                      |
+| js-field-visible             | ui.field.visible                    | a field is shown or hidden                   | field, visible                                       |
+| js-view-visible              | ui.view.visible                     | a view is shown or hidden                    | view, visible, slide                                 |
+| js-view-filters              | ui.view.filters                     | the view filters have changed                | filters \{ fromDate, toDate, fields... \}            |
+| js-area-visible              | ui.area.visible                     | an area is shown or hidden                   | area, visible                                        |
+| js-action-visible            | ui.action.visible                   | an action is shown or hidden                 | action, visible                                      |
 
 Usage samples:
 
