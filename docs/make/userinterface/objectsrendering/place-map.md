@@ -1,18 +1,28 @@
-# Place Map
+---
+sidebar_position: 40
+title: Place map
+---
 
-Place Maps are a way to easily show geolocated objects on a Google Map : 
+Place Map
+=========
+
+Place Maps are a way to easily show geo-localized objects on a Google Map:
 
 ![place map](img/place-map/placemap.png)
 
-## Configuration
+Configuration
+-------------
 
 Make sur you have the prerequisites:
+
 - update the `GOOGLE_API_KEY` system parameter after [generating it with a Google Account](https://developers.google.com/maps/documentation/javascript/get-api-key)
-- have a **geographical coordinates attribute** setup on your object (if working with an address, you might have to use some tool to transform the address into coordinates, see the following example from the demo using a google maps tool and also requires a working Google API key)
+- have a **geographical coordinates attribute** setup on your object (if working with an address, you might have to use some tool
+  to transform the address into coordinates, see the following example from the demo using a google maps tool and also requires a working Google API key)
 
-And proceed to configure the placemap. You can configure up to 3 labels that will show up when clicking on a pin, the first one being considered a title.
+And proceed to configure the place map. You can configure up to 3 labels that will show up when clicking on a pin, the first one being considered a title.
 
-## Geocoding address
+Geocoding address
+-----------------
 
 ```java
 /** Hook override: geo-locate from address fields */
