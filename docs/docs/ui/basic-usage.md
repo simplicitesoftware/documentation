@@ -103,7 +103,8 @@ Menu
 
 ![](img/basic-usage/addlist.png)
 
-1. New line appears in list. Validation controls and rules (required fields, functional key ... etc) are the same as in form.  The default action bar disappears.
+1. New line appears in list. Validation controls and rules (required fields, functional key, etc.) are the same as in form.
+   The default action bar disappears.
 2. Save / Cancel to return to list and exit the creation mode.
    Creation is only possible if the list contains all the required fields, including functional keys.
 

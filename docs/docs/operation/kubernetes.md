@@ -394,4 +394,5 @@ Start proxy to expose the dashboard on `http://localhost:8001`.
 kubectl proxy
 ```
 
-Point your browser to [](http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/) and sign in using the above token.
+Point your browser to [](http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/)
+and sign in using the above token.

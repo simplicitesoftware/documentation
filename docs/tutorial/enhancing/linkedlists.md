@@ -12,7 +12,9 @@ What is a Linked list?
 ----------------------
 
 Linked lists allow you to create dynamic dropdown menus where the available options in one field change based on what's
-selected in another field... [Learn more](/docs/make/businessobjects/linkedlist.md)
+selected in another field...
+
+[Learn more](/docs/make/businessobjects/linkedlist.md)
 
 Creating a _Shipping type_ and _Shipping sub-type_ field for the Order
 ----------------------------------------------------------------------

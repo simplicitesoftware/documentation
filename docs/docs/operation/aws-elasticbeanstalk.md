@@ -28,7 +28,9 @@ datasource descriptor `META-INF/context.xml` file.
 
 Make sure to use the `org.apache.tomcat.jdbc.pool` connection pool implementation for your datasource by adding this explicit attribute:
 
-	factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+```text
+factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+```
 
 This is **required** because default Apache DBCP2 connection pool implementation is not deployed by default on AWS Elastic Beanstalk&reg; Tomcat environments.
 

@@ -13,7 +13,9 @@ What is a business process?
 
 A process is a sequence of screens that guides the user through a specific process.
 
-It can be used to create, update, delete, or approve data... [Learn more](/make/businessprocess/business-process)
+It can be used to create, update, delete, or approve data...
+
+[Learn more](/make/businessprocess/business-process)
 
 Creating a screen workflow to create an order
 ---------------------------------------------

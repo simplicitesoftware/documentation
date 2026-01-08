@@ -56,7 +56,7 @@ The **Increase stock** Action is now granted to the **TRN_SUPERADMIN*** Group.
 Test the Action with the usertest User
 --------------------------------------
 
-1. Clear the platform's cache and log in using _usertest_
+1. Clear the platform's cache and log in using **usertest**
    > For a detailed step-by-step, see : [Testing the User](/tutorial/getting-started/user#activating-and-testing-the-user)
 
 2. Open an existing Product

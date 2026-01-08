@@ -16,7 +16,9 @@ What is a User?
 ---------------
 
 Users belong to Groups, and each user-group relationship is defined by a Responsibility.
-Groups are granted to Business object CRUD functions, in turn granting a User to a Business Object... [Learn more](/make/usersrights/users)
+Groups are granted to Business object CRUD functions, in turn granting a User to a Business Object...
+
+[Learn more](/make/usersrights/users)
 
 Creating a User
 ---------------

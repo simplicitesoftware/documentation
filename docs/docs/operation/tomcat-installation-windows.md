@@ -105,7 +105,8 @@ This is **only** required for the **initial** installation.
 Create the database **with UTF-8 encoding** and the database user **with appropriate rights** (create table, alter table, select/insert/update/delete).
 
 Then load the database using the appropriate dump file provided in the instances template.
-MySQL/MariaDB and PostgresQL dump files are available by default in the `app/WEB-INF/db` folder, for other databases please contact us to get an up-to-date dump.
+MySQL/MariaDB and PostgresQL dump files are available by default in the `app/WEB-INF/db` folder,
+for other databases please contact us to get an up-to-date dump.
 
 :::note
 
@@ -137,7 +138,9 @@ To benefit from our support you **must** upgrade the deployed version of the pla
 
 The base components such as the Java JVM and the Tomcat server are also regularly upgraded by their respective vendors.
 
-The Simplicité platform is **only** validated and tested with up-to-date stable versions of these components (the ones that are shipped in our Docker images).
+The Simplicité platform is **only** validated and tested with up-to-date stable versions of
+these components (the ones that are shipped in our Docker images).
+
 Our support is thus only available if you use these recommended up-to-date components.
 
 - It is highly recommended to use and keep upgraded the pre-configured Tomcat package described above.

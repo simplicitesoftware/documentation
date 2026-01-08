@@ -27,10 +27,10 @@ You will find all documentation and how to configure it on [TinyMCE website](htt
 
 Those are the default options:
 
-	plugins: ['advlist autolink charmap code fullscreen image link media paste save searchreplace table textcolor'],
-	toolbar: 'fullscreen | bold italic | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent',
-	menubar: 'edit insert format table tools',
-	statusbar: false
+- plugins: ['advlist autolink charmap code fullscreen image link media paste save searchreplace table textcolor'],
+- toolbar: 'fullscreen | bold italic | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent',
+- menubar: 'edit insert format table tools',
+- statusbar: false
 
 System Parameters
 -----------------

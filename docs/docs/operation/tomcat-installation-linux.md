@@ -348,7 +348,8 @@ This avoids useless public sessions to be created by these robots. But sometimes
 for the same reason. To do so you need to find a way to recognize your web monitoring tool(s) requests (usually from its user agent string
 or from its origin IP, etc.) and redirect all traffic to the `/health` health-check page.
 
-E.g. for a monitoring tool whose user agent starts with `MyMonitorTool` you can add this to your NGINX configuration (before the `location /<webapp>` bloc):
+E.g. for a monitoring tool whose user agent starts with `MyMonitorTool` you can add this to your NGINX configuration
+(before the `location /<webapp>` block):
 
 ```nginx
     if ($request_uri != "/health") {

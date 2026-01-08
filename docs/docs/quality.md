@@ -24,7 +24,8 @@ On the `master` branch:
 
 - The up-to date check is done at least once a week.
 - All newer version of the components are upgraded as soon as they are available.
-  However, in general, only the stable released components are upgraded, the unstable release candidate, beta or alpha versions of the components are ignored.
+  However, in general, only the stable released components are upgraded, the unstable release candidate,
+  beta or alpha versions of the components are ignored.
 
 #### Java dependencies
 

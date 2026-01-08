@@ -88,7 +88,8 @@ The instance is then available on `http://<your server IP address or hostname>`
 
 ### Basic procedure on Debian 9 {#debian}
 
-On an "out of the box" **Debian 9** server you can start a clean & fresh Simplicité&reg; **sandbox** instance with the following commands in only few seconds:
+On an "out of the box" **Debian 9** server you can start a clean & fresh Simplicité&reg;
+**sandbox** instance with the following commands in only few seconds:
 
 Install the up-to-date Docker-CE service:
 
@@ -927,8 +928,8 @@ Downgrading to a previous Simplicite container on an upgraded database may thus 
 
 - Starting a previous minor (e.g; 5.0.x to 5.1.0) or major version (4.0 to 5.0.0) Simplicité container on an upgraded database will prevent
   the webapp to start (you will get a fatal error message indicating this explicitly).
-- If the upgrade/downgrade is done from and to revisions of the same minor version (e.g. 5.0.3 to 5.0.4) the risks of blocking issues is very limited so
-  the webapp will start but you may still experiment some unpredictable issues.
+- If the upgrade/downgrade is done from and to revisions of the same minor version (e.g. 5.0.3 to 5.0.4)
+  the risks of blocking issues is very limited so the webapp will start but you may still experiment some unpredictable issues.
 
 Note that you may also experiment issues when downgrading the database container but this is out of the scope of this document.
 

@@ -173,13 +173,13 @@ Some fields exist without being tied to a Business Object. For example:
 Summary
 -------
 
-| Concept          | Description                                         |
-|------------------|-----------------------------------------------------|
-| Field            | The global definition (name, type, size, etc.)      |
-| Object Field     | The contextual use of the field in an object        |
-| Object-Field link | N-N relationship between object and field          |
-| Overridable?     | Label, mandatory status, visibility, etc.           |
-| Optional link    | A Field may be linked to 0, 1 or N objects          |
+| Concept           | Description                                         |
+| ----------------- | --------------------------------------------------- |
+| Field             | The global definition (name, type, size, etc.)      |
+| Object Field      | The contextual use of the field in an object        |
+| Object-Field link | N-N relationship between object and field           |
+| Overridable?      | Label, mandatory status, visibility, etc.           |
+| Optional link     | A Field may be linked to 0, 1 or N objects          |
 
 See also
 ---------

@@ -13,7 +13,9 @@ What is a Shared code?
 
 Shared code is a configuration object that lets you write reusable code that can be accessed across your entire application.
 
-It can be used to write unit tests, extending Platform base classes, writing SQL scripts, etc... [Learn more](/make/settings/shared-code)
+It can be used to write unit tests, extending Platform base classes, writing SQL scripts, etc...
+
+[Learn more](/make/settings/shared-code)
 
 Unit testing the `increaseStock` method
 ---------------------------------------
