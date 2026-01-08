@@ -53,7 +53,8 @@ Link translations are used to override an object's translation when displayed in
 <details>
     <summary>Example</summary>
 
-    ![](img/translations/link-translation.png)
+![](img/translations/link-translation.png)
+
 </details>
 
 ### Action
@@ -77,7 +78,8 @@ They are also the default label given to a View Area when the preset search is u
 <details>
     <summary>Example</summary>
 
-    ![](img/translations/search-translation.png)
+![](img/translations/search-translation.png)
+
 </details>
 
 Using the Java API

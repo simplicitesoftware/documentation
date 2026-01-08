@@ -59,7 +59,7 @@ In this most basic case the import looks like this:
 > `XML_Simplicité`  --->  nativeXMLReader()  ---> DB
 
 One good thing is that with this native reader this
-**data travels through all the normal validations pipesand Java hooks that you configured for your object**.
+**data travels through all the normal validations pipes and Java hooks that you configured for your object**.
 It's just as if you copied it on the forms and hit "save", if the data is not valid, you'll get an error.
 
 ### Stock XML adapters
