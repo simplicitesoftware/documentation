@@ -4,7 +4,9 @@ title: Versions
 ---
 
 Versions
-=========
+========
+
+<!-- markdownlint-disable -->
 
 <VersionsTable versions={[{'version': '7.0', 'maintenance': 'alpha', 'support': 'N/A', 'releaseDate': 'N/A', 'latestPatch': '7.0.0-alpha', 'patchDate': '2026-01-07', 'endDate': 'N/A'}, {'version': '6.3', 'maintenance': 'beta-rc', 'support': 'longterm', 'releaseDate': '2026-01-15', 'latestPatch': '6.3.0-beta-rc4', 'patchDate': '2026-01-07', 'endDate': 'N/A'}, {'version': '6.2', 'maintenance': 'current', 'support': 'shortterm', 'releaseDate': '2025-02-10', 'latestPatch': '6.2.20', 'patchDate': '2026-01-02', 'endDate': '2026-04-15'}, {'version': '6.1', 'maintenance': 'expired', 'support': 'shortterm', 'releaseDate': '2024-07-10', 'latestPatch': '6.1.30', 'patchDate': '2025-05-12', 'endDate': '2025-05-12'}, {'version': '6.0', 'maintenance': 'expired', 'support': 'shortterm', 'releaseDate': '2024-01-31', 'latestPatch': '6.0.26', 'patchDate': '2024-10-31', 'endDate': '2024-10-31'}, {'version': '5.3', 'maintenance': 'active', 'support': 'longterm', 'releaseDate': '2023-04-24', 'latestPatch': '5.3.81', 'patchDate': '2025-12-05', 'endDate': '2027-01-31'}, {'version': '5.2', 'maintenance': 'expired', 'support': 'shortterm', 'releaseDate': '2022-04-20', 'latestPatch': '5.2.54', 'patchDate': '2024-01-31', 'endDate': '2023-09-30'}, {'version': '5.1', 'maintenance': 'expired', 'support': 'shortterm', 'releaseDate': '2021-09-01', 'latestPatch': '5.1.66', 'patchDate': '2023-10-31', 'endDate': '2022-10-31'}, {'version': '5.0', 'maintenance': 'expired', 'support': 'shortterm', 'releaseDate': '2021-01-11', 'latestPatch': '5.0.71', 'patchDate': '2022-10-31', 'endDate': '2021-09-30'}, {'version': '4.0', 'maintenance': 'expired', 'support': 'longterm', 'releaseDate': '2017-10-20', 'latestPatch': '4.0.P25', 'patchDate': '2024-01-15', 'endDate': '2024-01-15'}, {'version': '3.2', 'maintenance': 'expired', 'support': 'longterm', 'releaseDate': '2015-11-23', 'latestPatch': '3.2.P09', 'patchDate': '2020-07-02', 'endDate': 'N/A'}, {'version': '3.1', 'maintenance': 'expired', 'support': 'shortterm', 'releaseDate': '2015-02-01', 'latestPatch': '3.1.M14', 'patchDate': '2019-05-25', 'endDate': 'N/A'}, {'version': '3.0', 'maintenance': 'expired', 'support': 'shortterm', 'releaseDate': '2014-01-14', 'latestPatch': '3.0.M37', 'patchDate': '2018-09-25', 'endDate': 'N/A'}]}/>
 
@@ -102,4 +104,6 @@ Versions
 
 
 </div>
+
+<!-- markdownlint-disable -->
 

@@ -141,6 +141,7 @@ def generate_markdown():
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(generate_header())
+        f.write("<!-- markdownlint-disable -->\n\n")
         f.write(f"<VersionsTable versions={{{versions_array(versions)}}}/>\n\n")
 
         f.write("<div>\n\n")
@@ -165,11 +166,13 @@ def generate_markdown():
 
         f.write("</div>\n\n")
 
+        f.write("<!-- markdownlint-disable -->\n\n")
+
         print(f"Successfully generated {OUTPUT_FILE} with {len(versions)} versions.")
 
 def generate_header():
     """Generate the header for the Markdown file."""
-    return "---\nsidebar_position: 3\ntitle: Versions\n---\n\nVersions\n=========\n\n"
+    return "---\nsidebar_position: 3\ntitle: Versions\n---\n\nVersions\n========\n\n"
 
 def prettier_anchor(version, maintenance, supportType):
     """Generate a prettier anchor for the version."""
