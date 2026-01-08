@@ -99,6 +99,13 @@ The I/O endpoint is needed for multiple-nodes deployments to allow propagating v
 Setting appropriate network filtering and credentials is thus **required** in this particular case.
 :::
 
+### SSE endpoint
+
+The `/ui/sse` endpoint provides a UI service to push messages from server to the authentified browser to update UI data (counters, locks...) on the fly.
+
+- The standard SSE protocol uses HTTP GET **asynchronous** so the infrastructure must support this whithout breaking the socket
+- Otherwise, the parameter `USE_SSE` must be set to `no` to disbaled this SSE feature: the UI will use polling to refresh some UI data
+
 ### Git endpoint
 
 If the Git endpoint is used, its access **must** be secured.

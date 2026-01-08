@@ -1772,6 +1772,20 @@ yes/no Flag to display the about-box on objects
 
 Use API interface?
 
+`USE_SSE`
+---------
+
+### Default value
+
+`yes`
+
+### Description
+
+Use Server-Side-Event services?
+
+- `yes`: allows to push messages from serveur to browser, HTTP Asynchronous GET must be available on server side.
+- `no`: when the infra does not support SSE protocol, it means that the UI will only use polling to refresh some components (badge/counters, usage lock...)
+
 `USE_API_TESTER`
 ----------------
 
