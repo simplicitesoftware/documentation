@@ -42,10 +42,10 @@ These are meant for dev/test workloads only and **do not apply to production**, 
 For small-scale environments with few users and limited datasets, **rough VM sizing guidelines** are:
 
 | VM Size | RAM   | Disk  | vCPU | Approx. # of Dev/Test Instances |
-|---------|-------|-------|------|--------------------------------|
-| Small   | 4 GB  | 20 GB | 2    | ~5 instances + databases       |
-| Medium  | 8 GB  | 40 GB | 4    | ~10 instances + databases      |
-| Large   | 16 GB | 80 GB | 8    | ~20 instances + databases      |
+|---------|-------|-------|------|---------------------------------|
+| Small   | 4 GB  | 20 GB | 2    | ~5 instances + databases        |
+| Medium  | 8 GB  | 40 GB | 4    | ~10 instances + databases       |
+| Large   | 16 GB | 80 GB | 8    | ~20 instances + databases       |
 
 Production environments
 ------------------------

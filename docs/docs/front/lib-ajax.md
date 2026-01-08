@@ -56,13 +56,13 @@ Accessing Simplicité Session
 
 ### Core Methods
 
-| Method                          | Returns                             | Description                                          |
-|---------------------------------|-------------------------------------|------------------------------------------------------|
-| `getApp()`                      | `Simplicite.Ajax`                   | Current Simplicité session                           |
-| `getView(cbk, name, params)`    | `Promise<Object>`                   | View definition by name                              |
-| `getGrant()`                    | `Simplicite.Ajax.Grant`             | Current user rights                                  |
-| `getUserInfo(cbk, login, params)` | `Promise<Object>`                 | User data (login, name, email, picture)              |
-| `getBusinessObject(obj, inst)`  | `Simplicite.UI.BusinessObject`      | Business object instance                             |
+| Method                            | Returns                             | Description                                          |
+| --------------------------------- | ----------------------------------- | ---------------------------------------------------- |
+| `getApp()`                        | `Simplicite.Ajax`                   | Current Simplicité session                           |
+| `getView(cbk, name, params)`      | `Promise<Object>`                   | View definition by name                              |
+| `getGrant()`                      | `Simplicite.Ajax.Grant`             | Current user rights                                  |
+| `getUserInfo(cbk, login, params)` | `Promise<Object>`                   | User data (login, name, email, picture)              |
+| `getBusinessObject(obj, inst)`    | `Simplicite.UI.BusinessObject`      | Business object instance                             |
 
 Manipulating Business Objects
 -----------------------------
@@ -97,11 +97,11 @@ Always manipulate Business Objects within a `search()` method to ensure data is 
 
 ```javascript
 product.search(function() {
-  for (let i = 0; i < product.count; i++) {
-    const prd = product.list[i];
-    console.log(prd.demoPrdName);        // Direct field access
-    console.log(prd.demoPrdSupId__demoSupName); // Linked field access
-  }
+    for (let i = 0; i < product.count; i++) {
+      const prd = product.list[i];
+      console.log(prd.demoPrdName);        // Direct field access
+      console.log(prd.demoPrdSupId__demoSupName); // Linked field access
+    }
 }, null, {});
 ```
 
@@ -110,17 +110,17 @@ Displaying UI Elements
 
 Display elements in the WORK area:
 
-| Method                        | Description                                          |
-|-------------------------------|------------------------------------------------------|
-| `displayForm(ctn, obj, p, cbk)` | Display form for object                            |
-| `displayList(ctn, obj, p, cbk)` | Display list for object                            |
-| `displaySearch(ctn, obj, p, cbk)` | Display search form for object                   |
+| Method                            | Description                                          |
+|-----------------------------------|------------------------------------------------------|
+| `displayForm(ctn, obj, p, cbk)`   | Display form for object                              |
+| `displayList(ctn, obj, p, cbk)`   | Display list for object                              |
+| `displaySearch(ctn, obj, p, cbk)` | Display search form for object                       |
 
 **Example**:
 
 ```javascript
 $ui.displayForm(null, "DemoProduct", rowId, {
-  nav: "add",
-  target: "work"
+    nav: "add",
+    target: "work"
 });
 ```

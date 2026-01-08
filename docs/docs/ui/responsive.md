@@ -158,6 +158,7 @@ Options can be changed in :
 
 ### Simplicite.UI.Globals.list
 
+<!-- markdownlint-disable table-column-style -->
 | Name                               | Description                                                             | Default value                              |
 |------------------------------------|-------------------------------------------------------------------------|--------------------------------------------|
 | container                          | target container for the list                                           | '#work' if undefined                       |
@@ -217,41 +218,42 @@ Options can be changed in :
 | selectRows                         | can select rows for bulk actions ?                                      |                                            |
 | onSelectRow                        | select row handler                                                      | call service                               |
 | template                           | list template                                                           | see below                                  |
+<!-- markdownlint-enable table-column-style -->
 
 ```html
 <div class="objlist">
-	<div class="panel panel-default panel-list">
-		<div class="panel-heading">
-			<div class="head">
-				<div class="obj-title">
-					<span class="icon-title"/> <!-- object icon/image -->
-					<div>
-						<h4 class="form-title"/> <!-- object title -->
-						<div>
-							<div class="list-count"/> <!-- total rows -->
-							<div class="list-pages"/> <!-- page/nb pages -->
-						</div>
-					</div>
-				</div>
-				<div class="list-filters"/>   <!-- list filters -->
-				<div class="list-actionbar"/> <!-- list actions -->
-			</div>
-		</div>
-		<div class="panel-body">
-			<form autocomplete="off" onsubmit="return false;"/> <!-- table or summaries -->
-		</div>
-		<div class="panel-footer">
-			<div class="list-footer">
-				<div class="list-count"/>     <!-- total rows -->
-				<div class="list-pages"/>     <!-- page/nb pages -->
-				<div class="list-more"/>      <!-- more columns toggle -->
-				<div class="list-navbar"/>    <!-- pages nav bar -->
-				<div class="list-rows"/>      <!-- rows per page -->
-				<div class="list-minify"/>    <!-- minify toggle -->
-				<div class="list-groupby"/>   <!-- group-by toggle -->
-			</div>
-		</div>
-	</div>
+    <div class="panel panel-default panel-list">
+        <div class="panel-heading">
+            <div class="head">
+                <div class="obj-title">
+                    <span class="icon-title"/> <!-- object icon/image -->
+                    <div>
+                        <h4 class="form-title"/> <!-- object title -->
+                        <div>
+                            <div class="list-count"/> <!-- total rows -->
+                            <div class="list-pages"/> <!-- page/nb pages -->
+                        </div>
+                    </div>
+                </div>
+                <div class="list-filters"/>   <!-- list filters -->
+                <div class="list-actionbar"/> <!-- list actions -->
+            </div>
+        </div>
+        <div class="panel-body">
+            <form autocomplete="off" onsubmit="return false;"/> <!-- table or summaries -->
+        </div>
+        <div class="panel-footer">
+            <div class="list-footer">
+                <div class="list-count"/>     <!-- total rows -->
+                <div class="list-pages"/>     <!-- page/nb pages -->
+                <div class="list-more"/>      <!-- more columns toggle -->
+                <div class="list-navbar"/>    <!-- pages nav bar -->
+                <div class="list-rows"/>      <!-- rows per page -->
+                <div class="list-minify"/>    <!-- minify toggle -->
+                <div class="list-groupby"/>   <!-- group-by toggle -->
+            </div>
+        </div>
+    </div>
 </div>
 ```
 
@@ -266,6 +268,7 @@ Options can be changed in :
 
 ### Simplicite.UI.Globals.form
 
+<!-- markdownlint-disable table-column-style -->
 | Name                            | Description                                                             | Default value                              |
 |---------------------------------|-------------------------------------------------------------------------|--------------------------------------------|
 | container                       | target container for the form                                           | '#work' if undefined                       |
@@ -312,27 +315,28 @@ Options can be changed in :
 | constraints                     | applies object constraints                                              | true                                       |
 | areaColumn                      | default columns per area without UI template                            | 2                                          |
 | template                        | form template                                                           | see below                                  |
+<!-- markdownlint-enable table-column-style -->
 
 ```html
 <div class="objform">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<div class="head">
-				<div class="obj-title">
-					<img class="icon-title"/>
-					<h4 class="form-title"/>
-					<div class="obj-usages"/>
-				</div>
-				<div class="form-actionbar"/>
-			</div>
-		</div>
-		<div class="panel-body">
-			<form autocomplete="off" class="panel-form" onsubmit="return false;">
-				<div class="form-areas"/>
-			</form>
-			<div class="form-navbar"/>
-		</div>
-	</div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="head">
+                <div class="obj-title">
+                    <img class="icon-title"/>
+                    <h4 class="form-title"/>
+                    <div class="obj-usages"/>
+                </div>
+                <div class="form-actionbar"/>
+            </div>
+        </div>
+        <div class="panel-body">
+            <form autocomplete="off" class="panel-form" onsubmit="return false;">
+                <div class="form-areas"/>
+            </form>
+            <div class="form-navbar"/>
+        </div>
+    </div>
 </div>
 ```
 
@@ -383,6 +387,7 @@ Options can be changed in :
 
 ### Simplicite.UI.Globals.summary
 
+<!-- markdownlint-disable table-column-style -->
 | Name                         | Description                                                             | Default value                              |
 |------------------------------|-------------------------------------------------------------------------|--------------------------------------------|
 | beforeload\(ctn,obj\)        | optional trigger before loading the summary                             |                                            |
@@ -394,24 +399,25 @@ Options can be changed in :
 | maxFields                    | limit fields size, 0: no field                                          | 10                                         |
 | layout                       | search index obj-grid layout 'article', 'masonry', 'inline' or 'float'  | 'masonry'                                  |
 | template                     | summary template                                                        | see below                                  |
+<!-- markdownlint-enable table-column-style -->
 
 ```html
 <div class="obj-summary">
-	<div class="obj-body">
-		<div class="title">
-			<img class="obj-icon"/>
-			<div>
-				<h4 class="obj-title"/>
-				<h5 class="obj-label"/>
-			</div>
-		</div>
-		<div class="image">
-			<img class="obj-image"/>
-		</div>
-		<div class="obj-fields"/>
-		<div class="obj-addons"/>
-	</div>
-	<div class="obj-actions"/>
+    <div class="obj-body">
+        <div class="title">
+            <img class="obj-icon"/>
+            <div>
+                <h4 class="obj-title"/>
+                <h5 class="obj-label"/>
+            </div>
+        </div>
+        <div class="image">
+            <img class="obj-image"/>
+        </div>
+        <div class="obj-fields"/>
+        <div class="obj-addons"/>
+    </div>
+    <div class="obj-actions"/>
 </div>
 ```
 
@@ -430,6 +436,7 @@ Options can be changed in :
 
 ### Simplicite.UI.Globals.agenda
 
+<!-- markdownlint-disable table-column-style -->
 | Name                         | Description                                                             | Default value                                          |
 |------------------------------|-------------------------------------------------------------------------|--------------------------------------------------------|
 | beforeload\(ctn,obj,agd\)    | optional trigger before loading the calendar                            |                                                        |
@@ -457,6 +464,7 @@ Options can be changed in :
 | textColor\(obj,item\)        | optional handler of event text color                                    | 'black'                                                |
 | render\(event,element\)      | optional handler to render the event                                    |                                                        |
 | column\(moment\)             | optional handler to display the date header                             |                                                        |
+<!-- markdownlint-enable table-column-style -->
 
 ### Simplicite.UI.Globals.timesheet
 
@@ -478,12 +486,12 @@ Options can be changed in :
 
 ```html
 <div class="web-news">
-	<div class="news-img"></div>
-	<div class="news-body">
-		<div class="news-title"></div>
-		<div class="news-date"></div>
-		<div class="news-desc"></div>
-	</div>
+    <div class="news-img"></div>
+    <div class="news-body">
+        <div class="news-title"></div>
+        <div class="news-date"></div>
+        <div class="news-desc"></div>
+    </div>
 </div>
 ```
 
@@ -624,39 +632,39 @@ or the disposition `SCRIPT` to override properties or functions, for example:
 
 ```javascript
 (function(ui,$) {
-	// Bind ui.loaded = engine is loaded (before home page)
-	$(document).on("ui.loaded", function() {
-		// customize UI here
-		// UI options = Globals merged with disposition script
-		var opt = ui.options;
-		// Disable links on forms
-		opt.form.followLinks = false;
-		// Export to Excel with POI only
-		opt.exports.XLS.formats = { poi: "Excel" };
-	});
+    // Bind ui.loaded = engine is loaded (before home page)
+    $(document).on("ui.loaded", function() {
+        // customize UI here
+        // UI options = Globals merged with disposition script
+        var opt = ui.options;
+        // Disable links on forms
+        opt.form.followLinks = false;
+        // Export to Excel with POI only
+        opt.exports.XLS.formats = { poi: "Excel" };
+    });
 
-	// Bind ui.ready = UI is ready (after home page)
-	$(document).on("ui.ready", function() {
-		// Remove some Admin menu to GUEST users
-		if (ui.grant.hasResponsibility("GUEST"))
-			$(".main-menu [data-obj='myAdminObject']").remove();
-		// Customize footer infos...
-	});
+    // Bind ui.ready = UI is ready (after home page)
+    $(document).on("ui.ready", function() {
+        // Remove some Admin menu to GUEST users
+        if (ui.grant.hasResponsibility("GUEST"))
+            $(".main-menu [data-obj='myAdminObject']").remove();
+        // Customize footer infos...
+    });
 
-	// Bind ui.beforeunload to document = UI and Ajax are still available
-	$(document).on("ui.beforeunload", function() {
-		// window will be unloaded
-		var app = ui.getAjax();
-		ui.alert({
-			title: app.T("INFO"),
-			content: "bye " + ui.grant.getFullName()
-		});
-	});
+    // Bind ui.beforeunload to document = UI and Ajax are still available
+    $(document).on("ui.beforeunload", function() {
+        // window will be unloaded
+        var app = ui.getAjax();
+        ui.alert({
+            title: app.T("INFO"),
+            content: "bye " + ui.grant.getFullName()
+        });
+    });
 
-	// Bind ui.unload to document = last call
-	$(document).on("ui.unload", function() {
-		// window is unloaded
-	});
+    // Bind ui.unload to document = last call
+    $(document).on("ui.unload", function() {
+        // window is unloaded
+    });
 })(window.$ui, jQuery);
 ```
 
@@ -673,69 +681,69 @@ The hook will be called once by each object instance (the_ajax, panel_ajax...).
 
 ```javascript
 (function(ui) {
-	// Is it the responsive UI ?
-	if (!ui) return;
-	// Ajax services with current grant, menu, texts...
-	var app = ui.getAjax();
-	// Register the hooks for myObject
-	Simplicite.UI.hooks.myObject = function(o, cbk) {
+    // Is it the responsive UI ?
+    if (!ui) return;
+    // Ajax services with current grant, menu, texts...
+    var app = ui.getAjax();
+    // Register the hooks for myObject
+    Simplicite.UI.hooks.myObject = function(o, cbk) {
 
-		try {
-			// In the example hooks will be available on main instance only
-			if (o.isMainInstance()) {
-				console.log("myObject hook loading...");
-				// object UI parameters = clone of the globals properties
-				var p = o.locals.ui;
+        try {
+            // In the example hooks will be available on main instance only
+            if (o.isMainInstance()) {
+                console.log("myObject hook loading...");
+                // object UI parameters = clone of the globals properties
+                var p = o.locals.ui;
 
-				// When object form is loaded in the container ctn
-				p.form.onload = function(ctn, obj, params) {
-					// Alert on big amount
-					var amount = ui.getUIField(ctn, obj, "myAmount"),
-					check = ui.getUIField(ctn, obj, "myCheck");
-					if (parseInt(amount.ui.val()) > 5000) {
-						// Simple alert
-						ui.alert(app.T("MESSAGE_TO_CHECK_THE_AMOUNT"));
-						// Uncheck on screen
-						check.ui.val(false);
-					}
-					// Bind change on a field to change one other field
-					var field = ui.getUIField(ctn, obj, "myField");
-					field.ui.on("change", function() {
-						var v = field.ui.val(),
-							f = ui.getUIField(ctn, obj, "myOtherField");
-						// Change properties
-						f.ui.visible(v ? Simplicite.VIS_HIDDEN: Simplicite.VIS_BOTH);
-						f.ui.updatable(f.required && v=="123");
-					});
-					// Bind change on a view (V5.2 for N,N pillbox or edit list)
-					var view = ui.getUIView(ctn, obj, "myLinkedObject;myForeignKeyField") ;
-					view && view.ui.change(function(e) {
-						field.ui.val("updated");
-						// Activate an action
-						ui.getUIAction(ctn, obj, "myAction").ui.visible(true);
-					});
-				};
-				// When object row is loaded in the container ctn
-				p.list.onloadrow = function(ctn, obj, id, item, tr) {
-					var field = ui.getUIField(ctn, obj, "myField", id);
-					field.ui.on("change", function() {
-						var v = field.ui.val(),
-							f = ui.getUIField(ctn, obj, "myOtherField", id);
-						f.ui.visible(v ? Simplicite.VIS_HIDDEN: Simplicite.VIS_BOTH);
-						f.ui.updatable(f.required && v=="123");
-					});
-				};
-			}
-		}
-		catch(e) {
-			// Thank you to isolate your scripts
-			app.error("Error in Simplicite.UI.hooks.myObject: "+e.message);
-		}
-		finally {
-			// Required callback when hooks are loaded
-			cbk && cbk();
-		}
-	};
+                // When object form is loaded in the container ctn
+                p.form.onload = function(ctn, obj, params) {
+                    // Alert on big amount
+                    var amount = ui.getUIField(ctn, obj, "myAmount"),
+                    check = ui.getUIField(ctn, obj, "myCheck");
+                    if (parseInt(amount.ui.val()) > 5000) {
+                        // Simple alert
+                        ui.alert(app.T("MESSAGE_TO_CHECK_THE_AMOUNT"));
+                        // Uncheck on screen
+                        check.ui.val(false);
+                    }
+                    // Bind change on a field to change one other field
+                    var field = ui.getUIField(ctn, obj, "myField");
+                    field.ui.on("change", function() {
+                        var v = field.ui.val(),
+                            f = ui.getUIField(ctn, obj, "myOtherField");
+                        // Change properties
+                        f.ui.visible(v ? Simplicite.VIS_HIDDEN: Simplicite.VIS_BOTH);
+                        f.ui.updatable(f.required && v=="123");
+                    });
+                    // Bind change on a view (V5.2 for N,N pillbox or edit list)
+                    var view = ui.getUIView(ctn, obj, "myLinkedObject;myForeignKeyField") ;
+                    view && view.ui.change(function(e) {
+                        field.ui.val("updated");
+                        // Activate an action
+                        ui.getUIAction(ctn, obj, "myAction").ui.visible(true);
+                    });
+                };
+                // When object row is loaded in the container ctn
+                p.list.onloadrow = function(ctn, obj, id, item, tr) {
+                    var field = ui.getUIField(ctn, obj, "myField", id);
+                    field.ui.on("change", function() {
+                        var v = field.ui.val(),
+                            f = ui.getUIField(ctn, obj, "myOtherField", id);
+                        f.ui.visible(v ? Simplicite.VIS_HIDDEN: Simplicite.VIS_BOTH);
+                        f.ui.updatable(f.required && v=="123");
+                    });
+                };
+            }
+        }
+        catch(e) {
+            // Thank you to isolate your scripts
+            app.error("Error in Simplicite.UI.hooks.myObject: "+e.message);
+        }
+        finally {
+            // Required callback when hooks are loaded
+            cbk && cbk();
+        }
+    };
 })(window.$ui);
 ```
 
@@ -769,8 +777,8 @@ Simplicite.UI.BusinessObjects.myObject = class extends Simplicite.UI.BusinessObj
  * @function
  */
 onLoad(locals) {
-	// empty by default
-	super.onLoad(locals);
+    // empty by default
+    super.onLoad(locals);
 }
 
 /**
@@ -781,8 +789,8 @@ onLoad(locals) {
  * @function
  */
 beforeLoadForm(ctn, obj, p) {
-	// empty by default
-	super.beforeLoadForm(ctn, obj, p);
+    // empty by default
+    super.beforeLoadForm(ctn, obj, p);
 }
 
 /**
@@ -793,8 +801,8 @@ beforeLoadForm(ctn, obj, p) {
  * @function
  */
 noRowFound(ctn, obj, rowId) {
-	// default implementation
-	super.noRowFound(ctn, obj, rowId);
+    // default implementation
+    super.noRowFound(ctn, obj, rowId);
 }
 
 /**
@@ -805,8 +813,8 @@ noRowFound(ctn, obj, rowId) {
  * @function
  */
 preLoadForm(ctn, obj, p) {
-	// empty by default
-	super.preLoadForm(ctn, obj, p);
+    // empty by default
+    super.preLoadForm(ctn, obj, p);
 }
 
 /**
@@ -818,8 +826,8 @@ preLoadForm(ctn, obj, p) {
  * @function
  */
 displayForm(ctn, obj, p, cbk) {
-	// default implementation
-	super.displayForm(ctn, obj, p, cbk);
+    // default implementation
+    super.displayForm(ctn, obj, p, cbk);
 }
 
 /**
@@ -830,8 +838,8 @@ displayForm(ctn, obj, p, cbk) {
  * @function
  */
 onLoadForm(ctn, obj, p) {
-	// empty by default
-	super.onLoadForm(ctn, obj, p);
+    // empty by default
+    super.onLoadForm(ctn, obj, p);
 }
 
 /**
@@ -842,8 +850,8 @@ onLoadForm(ctn, obj, p) {
  * @function
  */
 onUnloadForm(ctn, obj, p) {
-	// empty by default
-	super.onUnloadForm(ctn, obj, p);
+    // empty by default
+    super.onUnloadForm(ctn, obj, p);
 }
 
 /**
@@ -854,8 +862,8 @@ onUnloadForm(ctn, obj, p) {
  * @function
  */
 beforeLoadList(ctn, obj, p) {
-	// empty by default
-	super.beforeLoadList(ctn, obj, p);
+    // empty by default
+    super.beforeLoadList(ctn, obj, p);
 }
 
 /**
@@ -866,8 +874,8 @@ beforeLoadList(ctn, obj, p) {
  * @function
  */
 preLoadList(ctn, obj, p) {
-	// empty by default
-	super.preLoadList(ctn, obj, p);
+    // empty by default
+    super.preLoadList(ctn, obj, p);
 }
 
 /**
@@ -879,8 +887,8 @@ preLoadList(ctn, obj, p) {
  * @function
  */
 displayList(ctn, obj, p, cbk) {
-	// default implementation
-	super.displayList(ctn, obj, p, cbk);
+    // default implementation
+    super.displayList(ctn, obj, p, cbk);
 }
 
 /**
@@ -894,8 +902,8 @@ displayList(ctn, obj, p, cbk) {
  * @function
  */
 displayListRow(ctn, row, obj, id, p, cbk) {
-	// default implementation
-	super.displayListRow(ctn, row, obj, id, p, cbk);
+    // default implementation
+    super.displayListRow(ctn, row, obj, id, p, cbk);
 }
 
 /**
@@ -908,8 +916,8 @@ displayListRow(ctn, row, obj, id, p, cbk) {
  * @function
  */
 onLoadListRow(ctn, obj, id, item, row) {
-	// empty by default
-	super.onLoadListRow(ctn, obj, id, item, row);
+    // empty by default
+    super.onLoadListRow(ctn, obj, id, item, row);
 }
 
 /**
@@ -922,8 +930,8 @@ onLoadListRow(ctn, obj, id, item, row) {
  * @function
  */
 onUnloadListRow(ctn, obj, id, item, row) {
-	// empty by default
-	super.onUnloadListRow(ctn, obj, id, item, row);
+    // empty by default
+    super.onUnloadListRow(ctn, obj, id, item, row);
 }
 
 /**
@@ -934,8 +942,8 @@ onUnloadListRow(ctn, obj, id, item, row) {
  * @function
  */
 onLoadList(ctn, obj, p) {
-	// empty by default
-	super.onLoadList(ctn, obj, p);
+    // empty by default
+    super.onLoadList(ctn, obj, p);
 }
 
 /**
@@ -946,8 +954,8 @@ onLoadList(ctn, obj, p) {
  * @function
  */
 onUnloadList(ctn, obj, p) {
-	// empty by default
-	super.onUnloadList(ctn, obj, p);
+    // empty by default
+    super.onUnloadList(ctn, obj, p);
 }
 
 /**
@@ -958,8 +966,8 @@ onUnloadList(ctn, obj, p) {
  * @function
  */
 beforeLoadSearch(ctn, obj, p) {
-	// empty by default
-	super.beforeLoadSearch(ctn, obj, p);
+    // empty by default
+    super.beforeLoadSearch(ctn, obj, p);
 }
 
 /**
@@ -971,8 +979,8 @@ beforeLoadSearch(ctn, obj, p) {
  * @function
  */
 displaySearch(ctn, obj, p, cbk) {
-	// default implementation
-	super.displaySearch(ctn, obj, p, cbk);
+    // default implementation
+    super.displaySearch(ctn, obj, p, cbk);
 }
 
 /**
@@ -983,8 +991,8 @@ displaySearch(ctn, obj, p, cbk) {
  * @function
  */
 onLoadSearch(ctn, obj, p) {
-	// empty by default
-	super.onLoadSearch(ctn, obj, p);
+    // empty by default
+    super.onLoadSearch(ctn, obj, p);
 }
 
 /**
@@ -995,8 +1003,8 @@ onLoadSearch(ctn, obj, p) {
  * @function
  */
 onUnloadSearch(ctn, obj, p) {
-	// empty by default
-	super.onUnloadSearch(ctn, obj, p);
+    // empty by default
+    super.onUnloadSearch(ctn, obj, p);
 }
 
 /**
@@ -1007,8 +1015,8 @@ onUnloadSearch(ctn, obj, p) {
  * @function
  */
 beforeLoadSummary(ctn, obj, p) {
-	// empty by default
-	super.beforeLoadSummary(ctn, obj, p);
+    // empty by default
+    super.beforeLoadSummary(ctn, obj, p);
 }
 
 /**
@@ -1020,8 +1028,8 @@ beforeLoadSummary(ctn, obj, p) {
  * @function
  */
 displaySummary(ctn, mo, obj, cbk) {
-	// default implementation
-	super.displaySummary(ctn, mo, obj, cbk);
+    // default implementation
+    super.displaySummary(ctn, mo, obj, cbk);
 }
 
 /**
@@ -1033,8 +1041,8 @@ displaySummary(ctn, mo, obj, cbk) {
  * @function
  */
 onloadSummary(ctn, mo, obj, p) {
-	// empty by default
-	super.onloadSummary(ctn, mo, obj, p);
+    // empty by default
+    super.onloadSummary(ctn, mo, obj, p);
 }
 
 /**
@@ -1046,8 +1054,8 @@ onloadSummary(ctn, mo, obj, p) {
  * @function
  */
 beforeLoadAgenda(ctn, obj, agd, p) {
-	// empty by default
-	super.beforeLoadAgenda(ctn, obj, agd, p);
+    // empty by default
+    super.beforeLoadAgenda(ctn, obj, agd, p);
 }
 
 /**
@@ -1059,8 +1067,8 @@ beforeLoadAgenda(ctn, obj, agd, p) {
  * @function
  */
 onLoadAgenda(ctn, obj, agd, p) {
-	// empty by default
-	super.onLoadAgenda(ctn, obj, agd, p);
+    // empty by default
+    super.onLoadAgenda(ctn, obj, agd, p);
 }
 
 /**
@@ -1072,8 +1080,8 @@ onLoadAgenda(ctn, obj, agd, p) {
  * @function
  */
 onUnloadAgenda(ctn, obj, agd, p) {
-	// empty by default
-	super.onUnloadAgenda(ctn, obj, agd, p);
+    // empty by default
+    super.onUnloadAgenda(ctn, obj, agd, p);
 }
 
 /**
@@ -1084,8 +1092,8 @@ onUnloadAgenda(ctn, obj, agd, p) {
  * @function
  */
 beforeLoadTimesheet(ctn, obj, p) {
-	// empty by default
-	super.beforeLoadTimesheet(ctn, obj, p);
+    // empty by default
+    super.beforeLoadTimesheet(ctn, obj, p);
 }
 
 /**
@@ -1096,8 +1104,8 @@ beforeLoadTimesheet(ctn, obj, p) {
  * @function
  */
 onLoadTimesheet(ctn, obj, ts) {
-	// empty by default
-	super.onLoadTimesheet(ctn, obj, ts);
+    // empty by default
+    super.onLoadTimesheet(ctn, obj, ts);
 }
 
 /**
@@ -1108,8 +1116,8 @@ onLoadTimesheet(ctn, obj, ts) {
  * @function
  */
 onUnloadTimesheet(ctn, obj, ts) {
-	// empty by default
-	super.onUnloadTimesheet(ctn, obj, ts);
+    // empty by default
+    super.onUnloadTimesheet(ctn, obj, ts);
 }
 
 }; // class Simplicite.UI.BusinessObjects.MyObject
@@ -1124,17 +1132,17 @@ onUnloadTimesheet(ctn, obj, ts) {
  * @function
  */
 function setImage(data) {
-	// Object instance displayed on screen
-	var user = $ui.getAjax().getBusinessObject("User", "the_ajax_User");
-	// Image field on UI
-	var pict = $ui.getUIField($("#work"), user, "usr_image_id");
-	// Change the image on screen if field exists
-	pict && pict.ui.val({
-		id: "0", // new image
-		name: "picture.png",
-		mime: "image/png",
-		content: data.split(",")[1] // exclude "data:image/png;base64,"
-	});
+    // Object instance displayed on screen
+    var user = $ui.getAjax().getBusinessObject("User", "the_ajax_User");
+    // Image field on UI
+    var pict = $ui.getUIField($("#work"), user, "usr_image_id");
+    // Change the image on screen if field exists
+    pict && pict.ui.val({
+        id: "0", // new image
+        name: "picture.png",
+        mime: "image/png",
+        content: data.split(",")[1] // exclude "data:image/png;base64,"
+    });
 }
 ```
 
@@ -1142,48 +1150,48 @@ function setImage(data) {
 
 ```javascript
 (function(ui) {
-	var app = ui.getAjax();
-	Simplicite.UI.hooks.MyChildObject = function(o, cbk) {
-		try {
-			var p = o.locals.ui;
-			// Instance panel only
-			if (p && o.isPanelInstance()) {
-				// When the child list is loaded
-				p.list.onload = function(ctn, obj) {
-					// Check the parent object of child object
-					if (obj.parent && obj.parent.object && obj.parent.name=="MyParentObject") {
-						// Append a crosstab container to the list
-						var ct = $('<div/>').appendTo(ctn);
-						ui.displayCrosstab(ct, "MyObject", "MyCrosstabName", {
-							// use a dedicated instance
-							inst: "my_inst_object",
-							// Filter the crosstab instance
-							filters: {
-								fieldStatus: 'VALID',
-								fieldParentId: obj.parent.rowId
-							},
-							// Override some crosstab options
-							options: {
-								ztable: true,    // show CT table
-								zstotal: false,  // hide the sub-totals
-								zcontrol: false, // hide the control panel
-								zcaption: false, // hide the table caption
-								zgraph: 'bar_stack', // Add a stacked chart
-								zwidth: '100%',      // chart width
-								zheight: '400px'     // chart height
-							}
-						});
-					}
-				};
-			}
-		}
-		catch(e) {
-			app.error("Error in Simplicite.UI.hooks.MyChildObject", e);
-		}
-		finally {
-			cbk && cbk();
-		}
-	};
+    var app = ui.getAjax();
+    Simplicite.UI.hooks.MyChildObject = function(o, cbk) {
+        try {
+            var p = o.locals.ui;
+            // Instance panel only
+            if (p && o.isPanelInstance()) {
+                // When the child list is loaded
+                p.list.onload = function(ctn, obj) {
+                    // Check the parent object of child object
+                    if (obj.parent && obj.parent.object && obj.parent.name=="MyParentObject") {
+                        // Append a crosstab container to the list
+                        var ct = $('<div/>').appendTo(ctn);
+                        ui.displayCrosstab(ct, "MyObject", "MyCrosstabName", {
+                            // use a dedicated instance
+                            inst: "my_inst_object",
+                            // Filter the crosstab instance
+                            filters: {
+                                fieldStatus: 'VALID',
+                                fieldParentId: obj.parent.rowId
+                            },
+                            // Override some crosstab options
+                            options: {
+                                ztable: true,    // show CT table
+                                zstotal: false,  // hide the sub-totals
+                                zcontrol: false, // hide the control panel
+                                zcaption: false, // hide the table caption
+                                zgraph: 'bar_stack', // Add a stacked chart
+                                zwidth: '100%',      // chart width
+                                zheight: '400px'     // chart height
+                            }
+                        });
+                    }
+                };
+            }
+        }
+        catch(e) {
+            app.error("Error in Simplicite.UI.hooks.MyChildObject", e);
+        }
+        finally {
+            cbk && cbk();
+        }
+    };
 })(window.$ui);
 ```
 
@@ -1205,7 +1213,7 @@ For example:
 }
 /* Hide the minifiable button on list */
 .objlist.object-myObject .btn-minifiable {
-	display: none;
+    display: none;
 }
 /* Hide area 3 on mobile XS screen */
 @media screen and (max-width: 767px) {
@@ -1235,47 +1243,47 @@ Example:
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Simplicite custom web front-end demo</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
-	<script type="text/javascript" src="http(s)://<base URL>/scripts/jquery/jquery.js"></script>
-	<script type="text/javascript" src="http(s)://<base URL>/scripts/ui/ui-bundle.js" charset="UTF-8"></script>
-	<script type="text/javascript" src="scripts.js"></script>
+    <title>Simplicite custom web front-end demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <script type="text/javascript" src="http(s)://<base URL>/scripts/jquery/jquery.js"></script>
+    <script type="text/javascript" src="http(s)://<base URL>/scripts/ui/ui-bundle.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="scripts.js"></script>
 </head>
 <body>
 <div class="container main" style="display:none">
-	<header>
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-collapse" aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">Simplicité</a>
-				</div>
-				<div class="collapse navbar-collapse" id="header-collapse">
-					<ul class="nav navbar-nav">
-						<li class="menu menu-catalog"><a href="#">Catalog</a></li>
-						<li class="menu menu-orders"><a href="#">My orders</a></li>
-					</ul>
-					<form class="navbar-form navbar-right">
-						<span class="logged-client"></span>
-						<div class="form-group">
-							<input type="text" class="form-control input-login" placeholder="enter your client ID">
-						</div>
-						<button type="button" class="btn btn-default btn-login">Login</button>
-					</form>
-				</div>
-			</div>
-		</nav>
-	</header>
-	<div id="work">
-		<div id="nav"></div>
-		<div id="content"></div>
-	</div>
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Simplicité</a>
+                </div>
+                <div class="collapse navbar-collapse" id="header-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="menu menu-catalog"><a href="#">Catalog</a></li>
+                        <li class="menu menu-orders"><a href="#">My orders</a></li>
+                    </ul>
+                    <form class="navbar-form navbar-right">
+                        <span class="logged-client"></span>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-login" placeholder="enter your client ID">
+                        </div>
+                        <button type="button" class="btn btn-default btn-login">Login</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="work">
+        <div id="nav"></div>
+        <div id="content"></div>
+    </div>
 </div>
 </body>
 </html>
@@ -1285,129 +1293,129 @@ Script:
 
 ```javascript
 (function($) {
-	// Ajax connector
-	var app = new Simplicite.Ajax("http(s)://<base URL>", "api", "website", "simplicite");
-	var client;
+    // Ajax connector
+    var app = new Simplicite.Ajax("http(s)://<base URL>", "api", "website", "simplicite");
+    var client;
 
-	// Simplified client login
-	function login() {
-		client = null;
-		var lc = $(".logged-client").empty();
-		var code = $(".input-login").val();
-		if (code) {
-			// Search the client
-			var cli = app.getBusinessObject("DemoClient");
-			cli.search(function(list) {
-				if (list && list.length) {
-					client =  list[0];
-					// Displays the name in header
-					lc.text(client.demoCliFirstname + " " + client.demoCliLastname);
-					// Load client orders
-					myOrders();
-				}
-				else $ui.alert("Invalid client code.")
-			}, {
-				demoCliCode: code
-			});
-		}
-		else $ui.alert("Please enter your client code.")
-	}
+    // Simplified client login
+    function login() {
+        client = null;
+        var lc = $(".logged-client").empty();
+        var code = $(".input-login").val();
+        if (code) {
+            // Search the client
+            var cli = app.getBusinessObject("DemoClient");
+            cli.search(function(list) {
+                if (list && list.length) {
+                    client =  list[0];
+                    // Displays the name in header
+                    lc.text(client.demoCliFirstname + " " + client.demoCliLastname);
+                    // Load client orders
+                    myOrders();
+                }
+                else $ui.alert("Invalid client code.")
+            }, {
+                demoCliCode: code
+            });
+        }
+        else $ui.alert("Please enter your client code.")
+    }
 
-	// Order button callback
-	function order(a, prd, id) {
-		if (!client) {
-			$ui.alert("Please enter your client code first.");
-			return;
-		}
-		$("#content").objectForm("DemoOrder", app.DEFAULT_ROW_ID, {
-			// populate the parent product
-			parent: {
-				name: prd.getName(),
-				inst: prd.getInstance(),
-				field: "demoOrdPrdId",
-				rowId: prd.getRowId(),
-				object: prd
-			},
-			// populate the client
-			onload: function(ctn,ord) {
-				$ui.populateReference(ctn, ord, "demoOrdCliId", client.row_id);
-			}
-		});
-	}
+    // Order button callback
+    function order(a, prd, id) {
+        if (!client) {
+            $ui.alert("Please enter your client code first.");
+            return;
+        }
+        $("#content").objectForm("DemoOrder", app.DEFAULT_ROW_ID, {
+            // populate the parent product
+            parent: {
+                name: prd.getName(),
+                inst: prd.getInstance(),
+                field: "demoOrdPrdId",
+                rowId: prd.getRowId(),
+                object: prd
+            },
+            // populate the client
+            onload: function(ctn,ord) {
+                $ui.populateReference(ctn, ord, "demoOrdCliId", client.row_id);
+            }
+        });
+    }
 
-	// Catalog of products
-	function catalog() {
-		tglMenu("catalog");
-		$("#content").objectList("DemoProduct", {
-			nav: "new",        // start a new navigation bar
-			minified: true,    // show summaries by default
-			minifiable: true,  // allow to toggle to grid/table
-			selectRows: false, // no rows selection
-			// only one action on item = order
-			actions: {
-				 list: null,
-				 listPlus: null,
-				 row: [{
-					 name: "order",
-					 label: "Order now !",
-					 callback: order,
-					 icon: "truck",
-					 showLabel: true
-				 }],
-				 rowPlus: null
-			}
-		});
-	}
+    // Catalog of products
+    function catalog() {
+        tglMenu("catalog");
+        $("#content").objectList("DemoProduct", {
+            nav: "new",        // start a new navigation bar
+            minified: true,    // show summaries by default
+            minifiable: true,  // allow to toggle to grid/table
+            selectRows: false, // no rows selection
+            // only one action on item = order
+            actions: {
+                 list: null,
+                 listPlus: null,
+                 row: [{
+                     name: "order",
+                     label: "Order now !",
+                     callback: order,
+                     icon: "truck",
+                     showLabel: true
+                 }],
+                 rowPlus: null
+            }
+        });
+    }
 
-	// List orders of identified client
-	function myOrders() {
-		tglMenu("orders");
-		$("#content").objectList("DemoOrder", {
-			nav: "new",
-			fixedFilters: { // fixed filter = this filter is not updatable by user
-				demoOrdCliId: client ? client.row_id: "is null"
-			},
-			// Simplified list
-			oncreate: null,   // no creation
-			actions: null,    // no generic actions (prefs, reload, export, ...)
-			listEdit: false,  // no edit list
-			addList: false,   // no create on list
-			bulkDelete: false, // no bulk deletion
-			bulkUpdate: false, // no bulk update
-			selectRows: false, // no row selectors
-			onload: function(ctn, obj) {
-				// Limit searchable fields
-				obj.locals.ui.search.fields = ["demoOrdNumber", "demoOrdDate", "demoPrdReference"];
-			}
-		});
-	}
+    // List orders of identified client
+    function myOrders() {
+        tglMenu("orders");
+        $("#content").objectList("DemoOrder", {
+            nav: "new",
+            fixedFilters: { // fixed filter = this filter is not updatable by user
+                demoOrdCliId: client ? client.row_id: "is null"
+            },
+            // Simplified list
+            oncreate: null,   // no creation
+            actions: null,    // no generic actions (prefs, reload, export, ...)
+            listEdit: false,  // no edit list
+            addList: false,   // no create on list
+            bulkDelete: false, // no bulk deletion
+            bulkUpdate: false, // no bulk update
+            selectRows: false, // no row selectors
+            onload: function(ctn, obj) {
+                // Limit searchable fields
+                obj.locals.ui.search.fields = ["demoOrdNumber", "demoOrdDate", "demoPrdReference"];
+            }
+        });
+    }
 
-	function tglMenu(name) {
-		$(".menu").removeClass("active");
-		$(".menu.menu-"+name).addClass("active");
-	}
+    function tglMenu(name) {
+        $(".menu").removeClass("active");
+        $(".menu.menu-"+name).addClass("active");
+    }
 
-	function init() {
-		// Additive styles
-		$('head').append('<link rel="stylesheet" href="css/styles.min.css" type="text/css"/>');
+    function init() {
+        // Additive styles
+        $('head').append('<link rel="stylesheet" href="css/styles.min.css" type="text/css"/>');
 
-		// Login
-		$(".btn-login").click(login);
-		$(".input-login").keyup(function(e) {
-			if (e.which==13) login();
-		});
-		// Menu
-		$(".menu-orders > a").click(myOrders);
-		$(".menu-catalog > a").click(catalog).click();
+        // Login
+        $(".btn-login").click(login);
+        $(".input-login").keyup(function(e) {
+            if (e.which==13) login();
+        });
+        // Menu
+        $(".menu-orders > a").click(myOrders);
+        $(".menu-catalog > a").click(catalog).click();
 
-		// Show UI
-		$(".main").fadeIn();
-	}
+        // Show UI
+        $(".main").fadeIn();
+    }
 
-	// Load UI engine with bootstrap rendering
-	$ui.ready(app, "bootstrap", {
-		useMainParts: false // don't load standard parts
-	}, init);
+    // Load UI engine with bootstrap rendering
+    $ui.ready(app, "bootstrap", {
+        useMainParts: false // don't load standard parts
+    }, init);
 })(jQuery);
 ```
 
@@ -1440,32 +1448,32 @@ it is possible to add the client autocomplete API feature on a **main form** by 
 
 ```javascript
 var MyObject = (function(ui, $) {
-	if (!ui) return; // Do nothing on legacy UI
-	Simplicite.UI.hooks.MyObject = function(o, cbk) {
-		try {
-			o.locals.ui.form.onload = function(ctn, obj) {
-				try {
-					ui.loadScript({
-						url: Simplicite.GOOGLE_MAPS_JS_URL,
-						onload: function() {
-							var addr = ui.getUIField(ctn, obj, "myAddressField").ui.input[0];
-							var ac = new google.maps.places.Autocomplete(addr);
-							ac.addListener("place_changed", function() {
-								var l = ac.getPlace().geometry.location;
-								ui.getUIField(ctn, obj, "myCoordinatesField").ui.val(l.lat() + "," + l.lng());
-							});
-						}
-					});
-				} catch (el) {
-					console.error(el.message);
-				}
-			};
-		} catch (e) {
-			console.error(e.message);
-		} finally {
-			cbk && cbk();
-		}
-	};
+    if (!ui) return; // Do nothing on legacy UI
+    Simplicite.UI.hooks.MyObject = function(o, cbk) {
+        try {
+            o.locals.ui.form.onload = function(ctn, obj) {
+                try {
+                    ui.loadScript({
+                        url: Simplicite.GOOGLE_MAPS_JS_URL,
+                        onload: function() {
+                            var addr = ui.getUIField(ctn, obj, "myAddressField").ui.input[0];
+                            var ac = new google.maps.places.Autocomplete(addr);
+                            ac.addListener("place_changed", function() {
+                                var l = ac.getPlace().geometry.location;
+                                ui.getUIField(ctn, obj, "myCoordinatesField").ui.val(l.lat() + "," + l.lng());
+                            });
+                        }
+                    });
+                } catch (el) {
+                    console.error(el.message);
+                }
+            };
+        } catch (e) {
+            console.error(e.message);
+        } finally {
+            cbk && cbk();
+        }
+    };
 })(window.$ui, jQuery);
 ```
 
@@ -1473,45 +1481,45 @@ If you want this to work **also** on the list (edit list / create on list) you n
 
 ```javascript
 var MyObject = (function(ui) {
-	if (!ui) return; // Do nothing on legacy UI
-	var app = ui.getAjax();
-	Simplicite.UI.hooks.MyObject = function(o, cbk) {
-		try {
-			function addAddressHook(ctn, obj, list) {
-				function autocomplete(id) {
-					var addr = ui.getUIField(ctn, obj, "myAddressField", id).ui.input[0];
-					if (addr) {
-						var ac = new google.maps.places.Autocomplete(addr);
-						ac.addListener("place_changed", function() {
-							var l = ac.getPlace().geometry.location;
-							ui.getUIField(ctn, obj, "myCoordinatesField", id).ui.val(l.lat() + "," + l.lng());
-						});
-					}
-				}
-				try {
-					ui.loadScript({
-						url: Simplicite.GOOGLE_MAPS_JS_URL,
-						onload: function() {
-							if (list) {
-								autocomplete(app.DEFAULT_ROW_ID); // Create on list
-								for (var i = 0; i < obj.list.length; i++)
-									autocomplete(obj.list[i].data.row_id); // Edit list
-							} else
-								autocomplete(); // Create/update form
-						}
-					});
-				} catch (el) {
-					console.error(el.message);
-			 	}
-			}
-			o.locals.ui.list.onload = function(ctn, obj) { addAddressHook(ctn, obj, true); };
-			o.locals.ui.form.onload = function(ctn, obj) { addAddressHook(ctn, obj); };
-		} catch (e) {
-			console.error(e.message);
-		} finally {
-			cbk && cbk();
-		}
-	};
+    if (!ui) return; // Do nothing on legacy UI
+    var app = ui.getAjax();
+    Simplicite.UI.hooks.MyObject = function(o, cbk) {
+        try {
+            function addAddressHook(ctn, obj, list) {
+                function autocomplete(id) {
+                    var addr = ui.getUIField(ctn, obj, "myAddressField", id).ui.input[0];
+                    if (addr) {
+                        var ac = new google.maps.places.Autocomplete(addr);
+                        ac.addListener("place_changed", function() {
+                            var l = ac.getPlace().geometry.location;
+                            ui.getUIField(ctn, obj, "myCoordinatesField", id).ui.val(l.lat() + "," + l.lng());
+                        });
+                    }
+                }
+                try {
+                    ui.loadScript({
+                        url: Simplicite.GOOGLE_MAPS_JS_URL,
+                        onload: function() {
+                            if (list) {
+                                autocomplete(app.DEFAULT_ROW_ID); // Create on list
+                                for (var i = 0; i < obj.list.length; i++)
+                                    autocomplete(obj.list[i].data.row_id); // Edit list
+                            } else
+                                autocomplete(); // Create/update form
+                        }
+                    });
+                } catch (el) {
+                    console.error(el.message);
+                 }
+            }
+            o.locals.ui.list.onload = function(ctn, obj) { addAddressHook(ctn, obj, true); };
+            o.locals.ui.form.onload = function(ctn, obj) { addAddressHook(ctn, obj); };
+        } catch (e) {
+            console.error(e.message);
+        } finally {
+            cbk && cbk();
+        }
+    };
 })(window.$ui);
 ```
 
@@ -1543,29 +1551,29 @@ import com.simplicite.util.tools.*;
  * External object MyExternalPage
  */
 public class MyExternalPage extends ExternalObject {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * Display method
-	 * @param params Request parameters
-	 */
-	@Override
-	public Object display(Parameters params)
-	{
-		// No header or legacy stuff
-		setDecoration(false);
-		// Send page for responsive UI ?
-		if (getGrant().isResponsive())
-		{
-			// Add the STYLES resource attached to MyExternalPage definition
-			appendCSSInclude(HTMLTool.getResourceCSSURL(this, "STYLES"));
-			// Add the SCRIPT resource attached to MyExternalPage definition
-			appendJSInclude(HTMLTool.getResourceJSURL(this, "SCRIPT"));
-			// Run the client-side JavaScript statement that will be run by the UI
-			return sendJavaScript("MyExternalPage.render(ctn);");
-		}
-		else return "Unsupported in legacy version";
-	}
+    /**
+     * Display method
+     * @param params Request parameters
+     */
+    @Override
+    public Object display(Parameters params)
+    {
+        // No header or legacy stuff
+        setDecoration(false);
+        // Send page for responsive UI ?
+        if (getGrant().isResponsive())
+        {
+            // Add the STYLES resource attached to MyExternalPage definition
+            appendCSSInclude(HTMLTool.getResourceCSSURL(this, "STYLES"));
+            // Add the SCRIPT resource attached to MyExternalPage definition
+            appendJSInclude(HTMLTool.getResourceJSURL(this, "SCRIPT"));
+            // Run the client-side JavaScript statement that will be run by the UI
+            return sendJavaScript("MyExternalPage.render(ctn);");
+        }
+        else return "Unsupported in legacy version";
+    }
 }
 ```
 
@@ -1579,32 +1587,32 @@ It displays a title and the lists of users and groups in 2 bootstrap columns.
 
 ```javascript
 var MyExternalPage = (function() {
-	// render the gadget in container ctn
-	function render(ctn) {
-		var app = $ui.getAjax(), // Ajax services
-			view = $ui.view,     // view controller
-			tools = view.tools,  // bootstrap tools
-			users = $('<div/>'), // container of users
-			groups = $('<div/>'),// container of groups
-			row = tools.row([
-				tools.col("md-6", users),
-				tools.col("md-6", groups)
-			]),
-			title = $('<h1 class="myexternalpage"/>')
-				.append(view.icon('far/user'))
-				.append($('<span/>').text(app.T("MY_TITLE")));
+    // render the gadget in container ctn
+    function render(ctn) {
+        var app = $ui.getAjax(), // Ajax services
+            view = $ui.view,     // view controller
+            tools = view.tools,  // bootstrap tools
+            users = $('<div/>'), // container of users
+            groups = $('<div/>'),// container of groups
+            row = tools.row([
+                tools.col("md-6", users),
+                tools.col("md-6", groups)
+            ]),
+            title = $('<h1 class="myexternalpage"/>')
+                .append(view.icon('far/user'))
+                .append($('<span/>').text(app.T("MY_TITLE")));
 
-		// Load the lists
-		$ui.displayList(users, "User");
-		$ui.displayList(groups, "Group");
+        // Load the lists
+        $ui.displayList(users, "User");
+        $ui.displayList(groups, "Group");
 
-		// Replace container content
-		view.getContent(ctn)
-			.html(title)
-			.append(row);
-	}
+        // Replace container content
+        view.getContent(ctn)
+            .html(title)
+            .append(row);
+    }
 
-	return { render: render };
+    return { render: render };
 })();
 ```
 
@@ -1618,12 +1626,12 @@ Put your specific styles in the external object's `STYLES` resource, for example
 
 ```css
 .myexternalpage {
-	padding: 15px;
-	background: #337ab7;
-	color: #fff;
+    padding: 15px;
+    background: #337ab7;
+    color: #fff;
 }
 .myexternalpage span {
-	margin-left: 10px;
+    margin-left: 10px;
 }
 ```
 

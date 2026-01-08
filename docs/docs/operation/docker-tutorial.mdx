@@ -223,6 +223,7 @@ sudo docker --version
 sudo systemctl enable docker
 sudo systemctl start docker
 ```
+
 </TabItem>
 <TabItem value="centos" label="CentOS 7">
 
@@ -237,8 +238,10 @@ sudo yum -y install docker && sudo yum clean all
 sudo systemctl enable docker
 sudo systemctl start docker
 ```
+
 </TabItem>
 <TabItem value="debian" label="Debian">
+
 ```shell
 sudo apt update && sudo apt-get install apt-transport-https ca-certificates curl gnupg2 software-properties-common
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
@@ -247,6 +250,7 @@ sudo apt update && sudo apt install docker-ce
 sudo docker --version
 sudo systemctl status docker
 ```
+
 </TabItem>
 </Tabs>
 
@@ -563,7 +567,8 @@ And, of course, remove the exposed `80` port from the `simplicite` and expose th
 As explained in [this document](/docs/operation/docker#exposed-ports) the `8080` port is for an **HTTP** endpoint of the reverse proxy
 and the `8443` port is for an **HTTPS** endpoint of the reverse proxy.
 
-If you don't use the right port for the right usage (typically if you misuse the `8080` for an HTTPS endpoint of the reverse proxy) it **will** result in unexpected behaviors
+If you don't use the right port for the right usage (typically if you misuse the `8080` for an HTTPS endpoint of the reverse proxy)
+it **will** result in unexpected behaviors
 
 :::
 
@@ -665,7 +670,8 @@ This may be required in some particular cases (e.g. security reasons).
 
 :::note
 
-Note that this means that any Java compiled class must be provided otherwise, e.g. by mounting/copying externally built JARs in the `WEB-INF/lib` of the webapp.
+Note that this means that any Java compiled class must be provided otherwise,
+e.g. by mounting/copying externally built JARs in the `WEB-INF/lib` of the webapp.
 
 :::
 

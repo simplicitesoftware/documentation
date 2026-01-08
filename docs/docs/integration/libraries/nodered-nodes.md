@@ -31,7 +31,8 @@ Bad use cases:
   enterprise applications. It is more suited for small to medium-sized projects.
 - Real-time systems: While Node-RED can handle real-time data, it is not optimized for it, and other tools might be more
   appropriate for real-time systems with high performance requirements.
-- Data-intensive applications: Node-RED is not designed to handle large amounts of data, and other tools might be more appropriate for data-intensive applications.
+- Data-intensive applications: Node-RED is not designed to handle large amounts of data, and other tools might
+  be more appropriate for data-intensive applications.
 - Mission-critical systems: Node-RED is not recommended for use in mission-critical systems where high availability and fault-tolerance are required,
   as it is built on top of JavaScript and Node.js, which are not designed for high availability.
 

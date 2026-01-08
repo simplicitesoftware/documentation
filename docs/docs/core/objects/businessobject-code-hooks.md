@@ -76,8 +76,8 @@ if the user belongs to a specified group.
 ```java
 @Override
 public void postLoad() {
-	if (getGrant().hasResponsibility("MYGROUP"))
-		setDefaultSearchSpec(getStatusField().getColumn() + " = 'VALIDATED'");
+    if (getGrant().hasResponsibility("MYGROUP"))
+        setDefaultSearchSpec(getStatusField().getColumn() + " = 'VALIDATED'");
 }
 ```
 
@@ -99,17 +99,17 @@ In the following example, the status of the parent object is evaluated to determ
 ```java
 @Override
 public boolean isCreateEnable() {
-	ObjectDB p = getParentObject();
-	if (p != null && "MyParentObject".equals(p.getName()))
-		return "VALIDATED".equals(p.getStatus());
-	return true;
+    ObjectDB p = getParentObject();
+    if (p != null && "MyParentObject".equals(p.getName()))
+        return "VALIDATED".equals(p.getStatus());
+    return true;
 }
 
 In this example, updates are permitted only when a specific field's value is true.
 ```java
 @Override
 public boolean isUpdateEnable(String[] row) {
-	return Tool.isTrue(row[getFieldIndex("objField1")]);
+    return Tool.isTrue(row[getFieldIndex("objField1")]);
 }
 ```
 
@@ -118,7 +118,7 @@ In this example, delete permissions follow the same rule as update permissions.
 ```java
 @Override
 public boolean isDeleteEnable(String[] row) {
-	return isUpdateEnable(row);
+    return isUpdateEnable(row);
 }
 ```
 
@@ -136,10 +136,10 @@ it just allow to **restrict** the right depending on more complex business rules
 ```java
 @Override
 public boolean isActionEnable(String[] row, String action) {
-	// In this example the custom action is allowed depending on the value of a given object field
-	if ("myCustomAction".equals(action))
-		return Tool.isTrue(row[getFieldIndex("objField1")]);
-	return true;
+    // In this example the custom action is allowed depending on the value of a given object field
+    if ("myCustomAction".equals(action))
+        return Tool.isTrue(row[getFieldIndex("objField1")]);
+    return true;
 }
 ```
 
@@ -154,10 +154,10 @@ The `isPrintTemplateEnable` hook has a similar use as above right hooks but for 
 ```java
 @Override
 public boolean isPrintTemplateEnable(String[] row, String printTemplateName) {
-	// In this example the publication is allowed depending on the value of a given object field
-	if ("myPrintTemplate".equals(printtmpl))
-		return Tool.isTrue(row[getFieldIndex("objField1")]);
-	return true;
+    // In this example the publication is allowed depending on the value of a given object field
+    if ("myPrintTemplate".equals(printtmpl))
+        return Tool.isTrue(row[getFieldIndex("objField1")]);
+    return true;
 }
 ```
 
@@ -174,10 +174,10 @@ This hook is called when building the list of possible state transition. It may 
 ```java
 @Override
 public boolean isStateTransitionEnable(String fromStatus, String toStatus) {
-	// In this example above the transition between `PENDING` state and `VALIDATED` statuses is dynamically allowed to users of `MYGROUP`:
-	if ("PENDING".equals(fromStatus) && "VALIDATED".equals(toStatus))
-		return getGrant().hasResponsibility("MYGROUP");
-	return true;
+    // In this example above the transition between `PENDING` state and `VALIDATED` statuses is dynamically allowed to users of `MYGROUP`:
+    if ("PENDING".equals(fromStatus) && "VALIDATED".equals(toStatus))
+        return getGrant().hasResponsibility("MYGROUP");
+    return true;
 }
 ```
 
@@ -190,8 +190,8 @@ The `canReference` hook allows to show/hide linked objects' panels based on cust
 ```java
 @Override
 public boolean canReference(String objectName, String fieldName) {
-	// In this example the MyPanelObject's panel is shown only if the user does not belong to MYGROUP
-	return ("MyPanelObject".equals(objectName) && !getGrant().hasResponsibility("MYGROUP"));
+    // In this example the MyPanelObject's panel is shown only if the user does not belong to MYGROUP
+    return ("MyPanelObject".equals(objectName) && !getGrant().hasResponsibility("MYGROUP"));
 }
 ```
 
@@ -204,8 +204,8 @@ The `canUpdateAll` hook allows to dynamically enable/disable the bulk update fea
 ```java
 @Override
 public boolean canUpdateAll(ObjectField fieldName) {
-	// In this example, the bulk update feature is allowed to users who does not belong to MYGROUP
-	return (!getGrant().hasResponsibility("MYGROUP"));
+    // In this example, the bulk update feature is allowed to users who does not belong to MYGROUP
+    return (!getGrant().hasResponsibility("MYGROUP"));
 }
 ```
 
@@ -220,8 +220,8 @@ Above, the data bulk update is allowed to user who does not belong to MYGROUP.
 ```java
 @Override
 public boolean isHistoric() {
-	// In this example an historization is done only when the object's status had changed
-	return !getStatus().equals(getOldStatus());
+    // In this example an historization is done only when the object's status had changed
+    return !getStatus().equals(getOldStatus());
 }
 ```
 
@@ -251,19 +251,19 @@ They allow to define the properties of attributes, hide, initialize them, put th
 ```java
 @Override
 public void initCreate() {
-	getField("objField1").setUpdatable(true);
-	getField("objField2").setUpdatable(getGrant().hasResponsibility("MYGROUP"));
+    getField("objField1").setUpdatable(true);
+    getField("objField2").setUpdatable(getGrant().hasResponsibility("MYGROUP"));
 }
 
 @Override
 public void initUpdate() {
-	String s = getStatus();
-	getField("objField1").setUpdatable("PENDING".equals(s) || "VALIDATED".equals(s));
+    String s = getStatus();
+    getField("objField1").setUpdatable("PENDING".equals(s) || "VALIDATED".equals(s));
 }
 
 @Override
 public void initDelete() {
-	initUpdate();
+    initUpdate();
 }
 ```
 
@@ -278,8 +278,8 @@ It allows to define the properties of attributes, hide, initialize them, put the
 ```java
 @Override
 public void initList(ObjectDB parent) {
-	getField("objField1").setUpdatable(true);
-	getField("objField2").setUpdatable(false);
+    getField("objField1").setUpdatable(true);
+    getField("objField2").setUpdatable(false);
 }
 ```
 
@@ -288,8 +288,8 @@ public void initList(ObjectDB parent) {
 
 ```javascript
 MyObject.initList = function(parent) {
-	this.getField("objField1").setUpdatable(true);
-	this.getField("objField2").setUpdatable(false);
+    this.getField("objField1").setUpdatable(true);
+    this.getField("objField2").setUpdatable(false);
 };
 ```
 
@@ -306,8 +306,8 @@ It allows to set field filters for example, etc. just before the search page is 
 ```java
 @Override
 public void initSearch() {
-	getField("objField1").setFilter("is null or <1000");
-	getField("objLogin").setFilter(getGrant().getLogin());
+    getField("objField1").setFilter("is null or <1000");
+    getField("objLogin").setFilter(getGrant().getLogin());
 }
 ```
 
@@ -328,17 +328,17 @@ It allows to set field filters or search-spec just before the popup page is disp
 ```java
 @Override
 public void initRefSelect(ObjectDB parent) {
-	if (parent!=null
-	&& "MyParentObject".equals(parent.getName()) // one parent context
-	&& "myForeignKey".equals(getParentObjectRefField())) // thru one foreign key
-	{
-		// DB value of a parent field
-		String dbValue = parent.getOldValue("myParentField1");
-		// current UI value of a parent field (available since 5.3)
-		String uiValue = parent.getValue("myParentField1");
-		// set a filter to search records without parent or matching with parent DB or current UI value
-		getField("objField1").setFilter("is null or ='+Tool.toSQL(uiValue)+' or ='+Tool.toSQL(dbValue)+'");
-	}
+    if (parent!=null
+    && "MyParentObject".equals(parent.getName()) // one parent context
+    && "myForeignKey".equals(getParentObjectRefField())) // thru one foreign key
+    {
+        // DB value of a parent field
+        String dbValue = parent.getOldValue("myParentField1");
+        // current UI value of a parent field (available since 5.3)
+        String uiValue = parent.getValue("myParentField1");
+        // set a filter to search records without parent or matching with parent DB or current UI value
+        getField("objField1").setFilter("is null or ='+Tool.toSQL(uiValue)+' or ='+Tool.toSQL(dbValue)+'");
+    }
 }
 ```
 
@@ -353,9 +353,9 @@ When action has confirm fields this hook allows to prepare them before rendering
 ```java
 @Override
 public void initAction(Action action) {
-	ObjectField f = action.getConfirmField("myFieldName");
-	f.setDefaultValue("aValue");
-	f.setRequired(true);
+    ObjectField f = action.getConfirmField("myFieldName");
+    f.setDefaultValue("aValue");
+    f.setRequired(true);
 }
 ```
 
@@ -390,21 +390,21 @@ Only error message(s) prevents the actual saving of the record.
 ```java
 @Override
 public List<String> preValidate() {
-	List<String> msgs = new ArrayList<String>();
+    List<String> msgs = new ArrayList<String>();
 
-	msgs.add(Message.formatError("ERR_TEST0")); // Global error message
-	msgs.add(Message.formatInfo("ERR_TEST1", null, "objField1")); // Field error message
-	msgs.add(Message.formatWarning("WRN_TEST1", null, "objField2")); // Field warning message
+    msgs.add(Message.formatError("ERR_TEST0")); // Global error message
+    msgs.add(Message.formatInfo("ERR_TEST1", null, "objField1")); // Field error message
+    msgs.add(Message.formatWarning("WRN_TEST1", null, "objField2")); // Field warning message
 
-	return msgs; // Return a list of messages
+    return msgs; // Return a list of messages
 }
 
 @Override
 public List<String> postValidate() {
-	if (isNew())
-		getField("objField1").setValue(getFieldValue("objField2"));
+    if (isNew())
+        getField("objField1").setValue(getFieldValue("objField2"));
 
-	return null; // No message
+    return null; // No message
 }
 ```
 
@@ -422,10 +422,10 @@ They can be used to implement some business rules to set some field values for e
 ```java
 @Override
 public void preSelect(String rowId, boolean copy) {
-	// If the data is selected for a copy set a field with particular value
-	if (copy)
-		getField("objField1").setValue("value");
-	super.preSelect(rowId, copy);
+    // If the data is selected for a copy set a field with particular value
+    if (copy)
+        getField("objField1").setValue("value");
+    super.preSelect(rowId, copy);
 }
 ```
 
@@ -457,11 +457,11 @@ Post delete hook can be used to implement some business rules after the object i
 
 ```Java
 @Override
-	public String preCreate() {
-		// Get a system param sequence next value
-		this.setFieldValue("objRefField", "REF"+this.getGrant().getNextSystemParamValue("MYSEQUENCEPARAM"));
-		return super.preCreate();
-	}
+    public String preCreate() {
+        // Get a system param sequence next value
+        this.setFieldValue("objRefField", "REF"+this.getGrant().getNextSystemParamValue("MYSEQUENCEPARAM"));
+        return super.preCreate();
+    }
 ```
 
 > **Note**: for this simple case, the same result could be obtained using te following default value expression of the `objRefField` field:
@@ -471,14 +471,14 @@ Post delete hook can be used to implement some business rules after the object i
 
 ```Java
 @Override
-	public String preCreate() {
-		// Generate a unique number use as an id. For example an Order number for a Client.
-		ObjectField client = this.getField("orderClientId");  // foreign key
-		ObjectField number = this.getField("orderNumber");
-		String n = this.getGrant().getNextValueForColumnWhere(this.getTable(), number.getColumn(), client.getColumn()+" = "+client.getValue());
-		number.setValue(n);
-		return super.preCreate();
-	}
+    public String preCreate() {
+        // Generate a unique number use as an id. For example an Order number for a Client.
+        ObjectField client = this.getField("orderClientId");  // foreign key
+        ObjectField number = this.getField("orderNumber");
+        String n = this.getGrant().getNextValueForColumnWhere(this.getTable(), number.getColumn(), client.getColumn()+" = "+client.getValue());
+        number.setValue(n);
+        return super.preCreate();
+    }
 ```
 
 :::note
@@ -504,23 +504,23 @@ or just to prevent saving in some particular cases, etc.
 ```java
 @Override
 public String postSave() {
-	// Update a data of a linked object after
-	if (getOldStatus() == "VALIDATED" && getStatus() == "DELIVERED") {
-		ObjectDB obj = getGrant().getTmpObject("MyLinkedObject");
-		synchronized(obj){
-			obj.getLock();
-			obj.select(getField("objMyLinkedObjectMyObjectId").getValue());
-			obj.getField("otherObjField1").setValue("value");
-			try {
-				new BusinessObjectTool(obj)/* or obj.getTool() in version 5+ */.validateAndSave();
-			} catch (SaveException|ValidateException e) {
-				AppLog.error(e, getGrant());
-			}
+    // Update a data of a linked object after
+    if (getOldStatus() == "VALIDATED" && getStatus() == "DELIVERED") {
+        ObjectDB obj = getGrant().getTmpObject("MyLinkedObject");
+        synchronized(obj){
+            obj.getLock();
+            obj.select(getField("objMyLinkedObjectMyObjectId").getValue());
+            obj.getField("otherObjField1").setValue("value");
+            try {
+                new BusinessObjectTool(obj)/* or obj.getTool() in version 5+ */.validateAndSave();
+            } catch (SaveException|ValidateException e) {
+                AppLog.error(e, getGrant());
+            }
 
-		}
+        }
 
-	}
-	return super.postSave();
+    }
+    return super.postSave();
 }
 ```
 
@@ -537,14 +537,14 @@ or
 
 ```java
 String js =
-	// Redirect after a given transition
-	"if (action=="MyTransition-WAIT-DONE") {" +
-		"$ui.info('Transition done!');" +
-		"$ui.displayList(null, object, { nav:'new' });" +
-	"} else {" +
-		// reload the form
-		"$ui.displayForm(null, object, object.getRowId(), { nav:'add' });" +
-	"}";
+    // Redirect after a given transition
+    "if (action=="MyTransition-WAIT-DONE") {" +
+        "$ui.info('Transition done!');" +
+        "$ui.displayList(null, object, { nav:'new' });" +
+    "} else {" +
+        // reload the form
+        "$ui.displayForm(null, object, object.getRowId(), { nav:'add' });" +
+    "}";
 return HTMLTool.javascriptStatement(js);
 ```
 
@@ -561,20 +561,20 @@ Post search hook is called after search to add specific code for instance to eva
 ```java
 @Override
 public void preSearch() {
-	getField("objField1").setFilter("is null or <1000");
-	getField("objField2").setOrder(1);
-	getField("objField3").setOrder(-2);
-	super.preSearch();
+    getField("objField1").setFilter("is null or <1000");
+    getField("objField2").setOrder(1);
+    getField("objField3").setOrder(-2);
+    super.preSearch();
 }
 @Override
 public List<String[]> postSearch(List<String[]> rows) {
-	int fieldIndex = getFieldIndex("objField1");
-	int i=0;
-	for(String[] row: rows){
-		row[i] = "Value #" + i;
-		i++;
-	}
-	return super.postSearch(rows);
+    int fieldIndex = getFieldIndex("objField1");
+    int i=0;
+    for(String[] row: rows){
+        row[i] = "Value #" + i;
+        i++;
+    }
+    return super.postSearch(rows);
 
 }
 ```
@@ -586,14 +586,14 @@ The `postDelete` and `postDeleteAll` hooks can return a redirect statement.
 ```java
 @Override
 public String postDeleteAll() {
-	String url = HTMLTool.getFormURL("User", null, "1", "nav=add");
-	return HTMLTool.redirectStatement(url);
+    String url = HTMLTool.getFormURL("User", null, "1", "nav=add");
+    return HTMLTool.redirectStatement(url);
 }
 
 @Override
 public String postDelete() {
-	String url = HTMLTool.getFormURL("User", null, "1", "nav=add");
-	return HTMLTool.redirectStatement(url);
+    String url = HTMLTool.getFormURL("User", null, "1", "nav=add");
+    return HTMLTool.redirectStatement(url);
 }
 ```
 
@@ -608,15 +608,15 @@ These hooks are called to add specific behaviors before/after a bulk update/dele
 ```java
 @Override
 public String preUpdateAll(Parameters params) {
-	if (params!=null) {
-		// Check values
-		if ("123".equals(params.getParameter("objField1")))
-			return Message.formatError("ERR_TEST", null, "objField1");
-		// force values for each record
-		params.setParameter("objField2", "forced value");
-		params.setParameter("objDate3", Tool.getCurrentDate());
-	}
-	return super.preUpdateAll(params);
+    if (params!=null) {
+        // Check values
+        if ("123".equals(params.getParameter("objField1")))
+            return Message.formatError("ERR_TEST", null, "objField1");
+        // force values for each record
+        params.setParameter("objField2", "forced value");
+        params.setParameter("objDate3", Tool.getCurrentDate());
+    }
+    return super.preUpdateAll(params);
 };
 ```
 
@@ -630,21 +630,21 @@ These hooks are called to add specific behaviors before/after an import.
 
 ```Java
 @Override
-	public String preImport() {
-		if (getFieldValue("objField1").equals("value 1")) {
-			setFieldValue("objField2", "value 2");
-			setFieldValue("objField3", "value 3");
-		}
-		return super.preImport();
-	}
-	@Override
-	public String postImport() {
-		// Send an alert if a null value is imported
-		Alert a = getAlert("MYALERT", Alert.TYPE_INFO);
-		if (!Tool.isEmpty(a) && getField("objField1").isEmpty())
-			a.send(this);
-		return super.postImport();
-	}
+    public String preImport() {
+        if (getFieldValue("objField1").equals("value 1")) {
+            setFieldValue("objField2", "value 2");
+            setFieldValue("objField3", "value 3");
+        }
+        return super.preImport();
+    }
+    @Override
+    public String postImport() {
+        // Send an alert if a null value is imported
+        Alert a = getAlert("MYALERT", Alert.TYPE_INFO);
+        if (!Tool.isEmpty(a) && getField("objField1").isEmpty())
+            a.send(this);
+        return super.postImport();
+    }
 ```
 
 ### Export hooks
@@ -660,17 +660,17 @@ The `isExportAllowed` hook is called before exporting data to deny or confirm th
 ```java
 @Override
 public String isExportAllowed(String mode, String media, String rowId) {
-	// List export by a non-admin user
-	if (rowId==null && !getGrant().hasResponsibility("ONE_ADMIN_GROUP")) {
-		long max = 5000;
-		List<String> ids = canSelectRow() ? getSelectedIds() : null;
-		long n = ids==null ? getCount() : ids.size();
-		if (n > max)
-			return Message.formatSimpleError("Too many records to export:" + n + " (limited to "+max+")");
-		if (n > max/5)
-			return Message.formatSimpleWarning("Are you sure to export "+n+" records?");
-	}
-	return null; // ok
+    // List export by a non-admin user
+    if (rowId==null && !getGrant().hasResponsibility("ONE_ADMIN_GROUP")) {
+        long max = 5000;
+        List<String> ids = canSelectRow() ? getSelectedIds() : null;
+        long n = ids==null ? getCount() : ids.size();
+        if (n > max)
+            return Message.formatSimpleError("Too many records to export:" + n + " (limited to "+max+")");
+        if (n > max/5)
+            return Message.formatSimpleWarning("Are you sure to export "+n+" records?");
+    }
+    return null; // ok
 }
 ```
 
@@ -684,18 +684,18 @@ The `preExport` and `postExport` hooks are called before/after data export.
 ```java
 @Override
 public void preExport() {
-	if (getGrant().hasResponsibility("ONE_GROUP"))
-		setFieldFilter("objField", "Public");
+    if (getGrant().hasResponsibility("ONE_GROUP"))
+        setFieldFilter("objField", "Public");
 }
 
 @Override
 public List<String[]> postExport(List<String[]> rows) {
-	if (rows!=null && getGrant().hasResponsibility("ONE_GROUP")) {
-		int i = getFieldIndex("objField");
-		for (String[] row : rows)
-			row[i] = "forced value";
-	}
-	return rows;
+    if (rows!=null && getGrant().hasResponsibility("ONE_GROUP")) {
+        int i = getFieldIndex("objField");
+        for (String[] row : rows)
+            row[i] = "forced value";
+    }
+    return rows;
 }
 ```
 
@@ -706,10 +706,10 @@ The `getExportFileName` hook is called to force the exported filename on client 
 ```java
 @Override
 public String getExportFileName(String type, String name, String row[]) {
-	if ("PDF".equals(type) && row!=null)
-		return "pdf-" + getFieldValue("objField") + "-" + Tool.getCurrentDate();
-	// default based on display or user-key label
-	return super.getExportFileName(type, name, row);
+    if ("PDF".equals(type) && row!=null)
+        return "pdf-" + getFieldValue("objField") + "-" + Tool.getCurrentDate();
+    // default based on display or user-key label
+    return super.getExportFileName(type, name, row);
 }
 ```
 
@@ -724,13 +724,13 @@ The `preAlert` hook can be used to change the alert just before sending (change 
 ```Java
 @Override
 public String preAlert(Alert a) {
-	if (a!=null) {
-		a.setSubject("ENU", "Dear [bill_last_name]");
-		a.setContent("ENU", "Your bill of [bill_amount] ...");
-		a.addRecipient("john@domain.com", Alert.RECIP_TO);
-		a.addRecipient(getGrant().getEmail(), Alert.RECIP_CC);
-	}
-	return super.preAlert(a);
+    if (a!=null) {
+        a.setSubject("ENU", "Dear [bill_last_name]");
+        a.setContent("ENU", "Your bill of [bill_amount] ...");
+        a.addRecipient("john@domain.com", Alert.RECIP_TO);
+        a.addRecipient(getGrant().getEmail(), Alert.RECIP_CC);
+    }
+    return super.preAlert(a);
 }
 ```
 
@@ -741,8 +741,8 @@ The `postAlert` hook can be used to implement some business logic just after sen
 ```Java
 @Override
 public String postAlert(Alert a) {
-	getField("objField4").setValue("Mail sent !");
-	return super.postAlert(a);
+    getField("objField4").setValue("Mail sent !");
+    return super.postAlert(a);
 }
 ```
 
@@ -753,31 +753,31 @@ It is possible to send one alert from any other hook and to add specific attachm
 ```Java
 @Override
 public String postSave() {
-	Grant g = getGrant();
-	// Get the alert definition (with subject, body, recipients... or null if the alert is disabled)
-	Alert alert = getAlert("MyAlert", Alert.TYPE_INFO);
-	if (!Tool.isEmpty(alert)) {
-		// Add attachments from a child object with a document field
-		List<DocumentDB> att = new ArrayList();
-		ObjectDB a = g.getTmpObject("MyObjectAttachment");
-		synchronized(a){
-			a.getLock();
-			a.resetFilters();
-			a.setFieldFilter("MyObject_FK", getRowId());
-			for (String[] row : a.search()) {
-				a.setValues(row);
-				DocumentDB doc = a.getField("MyDocField").getDocument(g);
-				if (!Tool.isEmpty(doc)) {
-					AppLog.info("debug attach: "+doc.toString(), g);
-					att.add(doc);
-				}
-			}
-		}
+    Grant g = getGrant();
+    // Get the alert definition (with subject, body, recipients... or null if the alert is disabled)
+    Alert alert = getAlert("MyAlert", Alert.TYPE_INFO);
+    if (!Tool.isEmpty(alert)) {
+        // Add attachments from a child object with a document field
+        List<DocumentDB> att = new ArrayList();
+        ObjectDB a = g.getTmpObject("MyObjectAttachment");
+        synchronized(a){
+            a.getLock();
+            a.resetFilters();
+            a.setFieldFilter("MyObject_FK", getRowId());
+            for (String[] row : a.search()) {
+                a.setValues(row);
+                DocumentDB doc = a.getField("MyDocField").getDocument(g);
+                if (!Tool.isEmpty(doc)) {
+                    AppLog.info("debug attach: "+doc.toString(), g);
+                    att.add(doc);
+                }
+            }
+        }
 
-		// Send with custom attachments
-		alert.send(this, att);
-	}
-	return super.postSave();
+        // Send with custom attachments
+        alert.send(this, att);
+    }
+    return super.postSave();
 }
 ```
 
@@ -791,27 +791,27 @@ It is possible to add code during the predefined search creation:
 
 ```Java
 @Override
-	public String preSavePredefinedSearch(PredefinedSearch ps) {
-		// stop creation
-		if (ps.getId() == "0" && ps.getName("0")=="something reserved")
-			return "ERROR";
-		return null; // ok
-	}
-	@Override
-	public List<PredefinedSearch> getPredefinedSearches() {
-		// all public + privates
-		List<PredefinedSearch> list = getGrant().getPredefinedSearch("MyObject");
-		int i =0;
-		for (PredefinedSearch ps: list) {
-			// remove ungranted searches
-			if (ps.getName(ps.getId())=="something reserved") {
-				list.remove(i);
-			}else{
-				i++;
-			}
-		}
-		return list;
-	}
+    public String preSavePredefinedSearch(PredefinedSearch ps) {
+        // stop creation
+        if (ps.getId() == "0" && ps.getName("0")=="something reserved")
+            return "ERROR";
+        return null; // ok
+    }
+    @Override
+    public List<PredefinedSearch> getPredefinedSearches() {
+        // all public + privates
+        List<PredefinedSearch> list = getGrant().getPredefinedSearch("MyObject");
+        int i =0;
+        for (PredefinedSearch ps: list) {
+            // remove ungranted searches
+            if (ps.getName(ps.getId())=="something reserved") {
+                list.remove(i);
+            }else{
+                i++;
+            }
+        }
+        return list;
+    }
 ```
 
 Other hooks
@@ -827,10 +827,10 @@ The `getUserKeyLabel` hook can be used to override a business object record's de
 ```java
 @Override
 public String getUserKeyLabel(String[] row) {
-	if (this.isTreeviewInstance()) // On treeviews
-		return getFieldValue("myFirstLabelField", row) + " - " + getFieldValue("mySecondLabelField", row);
-	else // Elsewhere
-		return getFieldValue("myThirdLabelField", row);
+    if (this.isTreeviewInstance()) // On treeviews
+        return getFieldValue("myFirstLabelField", row) + " - " + getFieldValue("mySecondLabelField", row);
+    else // Elsewhere
+        return getFieldValue("myThirdLabelField", row);
 }
 ```
 
@@ -841,17 +841,17 @@ It is possible to set style (for instance a CSS class) on a field based on busin
 ```java
 @Override
 public String getStyle(ObjectField field, String[] row) {
-	// style on myFieldDate1
-	if (field!=null && row!=null && field.getName().equals("myFieldDate1")) {
-		String d1 = row[getFieldIndex("myFieldDate1")];
-		String today = Tool.getCurrentDate();
-		if (!Tool.isEmpty(d1) && Tool.diffMonth(today, d1) <= 3) {
-			// CSS class name added to control (already defined or to define in resource STYLES)
-			return "redbg"; // default red background
-		}
-	}
-	// default style
-	return super.getStyle(field, row);
+    // style on myFieldDate1
+    if (field!=null && row!=null && field.getName().equals("myFieldDate1")) {
+        String d1 = row[getFieldIndex("myFieldDate1")];
+        String today = Tool.getCurrentDate();
+        if (!Tool.isEmpty(d1) && Tool.diffMonth(today, d1) <= 3) {
+            // CSS class name added to control (already defined or to define in resource STYLES)
+            return "redbg"; // default red background
+        }
+    }
+    // default style
+    return super.getStyle(field, row);
 }
 ```
 
@@ -862,15 +862,15 @@ As of version `3.2 MAINTENANCE06` the `getHelp` and `getCtxHelp` hooks can be us
 ```java
 @Override
 public String getHelp() {
-	if (getGrant().hasResponsibility("MYGROUP"))
-		return "This is a custom main help";
-	return super.getHelp();
+    if (getGrant().hasResponsibility("MYGROUP"))
+        return "This is a custom main help";
+    return super.getHelp();
 };
 @Override
 public String getCtxHelp(String context) {
-	if (getGrant().hasResponsibility("MYGROUP") && ObjectCtxHelp.CTXHELP_UPDATE.equals(ctx))
-		return "This is a custom contextual help";
-	return super.getCtxHelp(ctx);
+    if (getGrant().hasResponsibility("MYGROUP") && ObjectCtxHelp.CTXHELP_UPDATE.equals(ctx))
+        return "This is a custom contextual help";
+    return super.getCtxHelp(ctx);
 };
 ```
 
@@ -901,36 +901,36 @@ as its corresponding specialized child object (e.g. `Carrot` or `Cabbage`) recor
 @Override
 public String[] getTargetObject(String rowId, String[] row) {
 
-	// prevent redirect in template editor or XML import
-	if (editTemplateUsage() || isBatchInstance())
-		return null;
+    // prevent redirect in template editor or XML import
+    if (editTemplateUsage() || isBatchInstance())
+        return null;
 
-	// Propagate the copy Id (not "0")
+    // Propagate the copy Id (not "0")
     if (isCopied())
-		rowId = getCopyId();
-	// No redirection at creation
-	else if (rowId.equals(ObjectField.DEFAULT_ROW_ID))
-		return null;
+        rowId = getCopyId();
+    // No redirection at creation
+    else if (rowId.equals(ObjectField.DEFAULT_ROW_ID))
+        return null;
 
-	// select the record if not in memory
-	if (row==null && select(rowId))
-		row = getValues();
+    // select the record if not in memory
+    if (row==null && select(rowId))
+        row = getValues();
 
-	// target object name
-	String target = null;
-	if (row!=null) {
-		String type = getFieldValue("vegetableType"), row);
-		if (type.equals("CARROT"))
-			target = "Carrot";
-		else if (type.equals("CABBAGE"))
-			target = "Cabbage";
-	}
-	// Unknown target = no redirection
-	if (target==null)
-		return null;
+    // target object name
+    String target = null;
+    if (row!=null) {
+        String type = getFieldValue("vegetableType"), row);
+        if (type.equals("CARROT"))
+            target = "Carrot";
+        else if (type.equals("CABBAGE"))
+            target = "Cabbage";
+    }
+    // Unknown target = no redirection
+    if (target==null)
+        return null;
 
-	// Main instance of target object
-	return new String[] { target, "the_ajax_" + target, rowId };
+    // Main instance of target object
+    return new String[] { target, "the_ajax_" + target, rowId };
 };
 ```
 
@@ -951,10 +951,10 @@ Useful to indicate with inherited object have to be displayed in a panel of a pa
  * @return The object itself or one of its inherited object linked thru the meta-object field to parent
  */
 public static String getTargetMetaObject(Grant g, String object, String field, String parent) {
-	// Show only carrots when parent is a carrot farmer
-	if ("Vegetable".equals(object) && "CarrotFarmer".equals(parent) && "myMetaObjectField".equals(field))
-		return "Carrot";
-	return object;
+    // Show only carrots when parent is a carrot farmer
+    if ("Vegetable".equals(object) && "CarrotFarmer".equals(parent) && "myMetaObjectField".equals(field))
+        return "Carrot";
+    return object;
 }
 ```
 
@@ -970,8 +970,8 @@ make the call to be done for the child object's scope).
 ```java
 @Override
 public String postCreate() {
-	super.postCreate();	// Call parent object hook
-	// Do something specific to the child object
+    super.postCreate();    // Call parent object hook
+    // Do something specific to the child object
 }
 ```
 
@@ -983,14 +983,14 @@ As of Simplicité v6.0, hooks traces are activable through the `traceHooks` meth
 ```java
 @Override
 public void postLoad() {
-	// no trace (the default)
-	traceHooks(TRACE_HOOKS_NONE);
-	// trace only implemented hooks (during test)
-	traceHooks(TRACE_HOOKS_IMPLEMENTED);
-	// trace only implemented hooks with main parameters (during test)
-	traceHooks(TRACE_HOOKS_IMPLEMENTED_ARGS);
-	// trace all hooks (verbose for training)
-	traceHooks(TRACE_HOOKS_FULL);
+    // no trace (the default)
+    traceHooks(TRACE_HOOKS_NONE);
+    // trace only implemented hooks (during test)
+    traceHooks(TRACE_HOOKS_IMPLEMENTED);
+    // trace only implemented hooks with main parameters (during test)
+    traceHooks(TRACE_HOOKS_IMPLEMENTED_ARGS);
+    // trace all hooks (verbose for training)
+    traceHooks(TRACE_HOOKS_FULL);
 }
 ```
 
@@ -1016,23 +1016,23 @@ It is possible to track hook's duration : log a warning after 2s by default (onl
 ```java
 @Override
 protected void hookBegin(String hook, int maxTime, int maxStack, Object... args) throws HookException {
-	// postUpdate may be long because of ...
-	if ("postUpdate".equals(hook))
-		maxTime = 10000; // warning after 10s in ms
+    // postUpdate may be long because of ...
+    if ("postUpdate".equals(hook))
+        maxTime = 10000; // warning after 10s in ms
 
-	// default duration is 2s by default
-	// default stack is set 20 to stop infinite calls loop => HookException
-	super.hookBegin(hook, maxTime, maxStack);
+    // default duration is 2s by default
+    // default stack is set 20 to stop infinite calls loop => HookException
+    super.hookBegin(hook, maxTime, maxStack);
 }
 
 @Override
 protected long hookEnd(String hook) {
-	long time = super.hookEnd(hook);
-	// do something if postUpdate is too long
-	if (time>10000 && "postUpdate".equals(hook)) {
-		// notify the supervisor...
-	}
-	return time;
+    long time = super.hookEnd(hook);
+    // do something if postUpdate is too long
+    if (time>10000 && "postUpdate".equals(hook)) {
+        // notify the supervisor...
+    }
+    return time;
 }
 ```
 
@@ -1042,10 +1042,10 @@ It is possible to track method duration : log a warning after 2s bu default (onl
 // Same for Action method
 @Override
 protected void methodBegin(String method, int maxTime, int maxStack) throws HookException {
-	super.methodBegin(method, maxTime, maxStack);
+    super.methodBegin(method, maxTime, maxStack);
 }
 @Override
 protected long methodEnd(String method) {
-	return super.methodEnd(method);
+    return super.methodEnd(method);
 }
 ```

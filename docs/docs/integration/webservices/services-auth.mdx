@@ -10,8 +10,9 @@ API authentication
 
 This document only applies to the API endpoint.
 
-This document **does not apply** to :
-- legacy webservices endpoint (that uses authentication methods configured at the server configuration level) 
+This document **does not apply** to:
+
+- legacy webservices endpoint (that uses authentication methods configured at the server configuration level)
 - the I/O endpoint
 - the GIT endpoint
 
@@ -26,7 +27,7 @@ The example use the `curl` command line tool (that can easily be transposed to a
 API Base URL
 ------------
 
-In all following examples, `$BASE_URL` is used to represent the app's API endpoint. 
+In all following examples, `$BASE_URL` is used to represent the app's API endpoint.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -55,7 +56,10 @@ BASE_URL="http[s]://<host[:<port>]>/myapp/api"
 Login
 -----
 
-**To get an access token**, a first call to the login service (`$BASE_URL/login[<optional parameter(s)>]`) is needed. As this login service is only dedicated to webservices, no interactive login/password entry mechanisms is available. Whatever method is used to retrieve the access token, it must be used for subsequent service calls. In all following examples, `$TOKEN` is used to represent the token.
+**To get an access token**, a first call to the login service (`$BASE_URL/login[<optional parameter(s)>]`) is needed. As this login
+service is only dedicated to webservices, no interactive login/password entry mechanisms is available. Whatever
+method is used to retrieve the access token, it must be used for subsequent service calls. In all following examples,
+`$TOKEN` is used to represent the token.
 
 <Tabs>
 <TabItem value="tab1" label="HTTP Basic auth">
@@ -69,7 +73,8 @@ TOKEN=$(curl -u <login>[:<password>] "$BASE_URL/login")
 
 :::warning
 
-[Information exposure through query strings in url](https://owasp.org/www-community/vulnerabilities/Information_exposure_through_query_strings_in_url) is a very bad practice, please use HTTP Basic Auth instead.
+[Information exposure through query strings in url](https://owasp.org/www-community/vulnerabilities/Information_exposure_through_query_strings_in_url)
+is a very bad practice, please use HTTP Basic Auth instead.
 
 :::
 
@@ -183,7 +188,8 @@ If for som odd reason you can't set the `X-Simplicite-Authorization` header you 
 
 :::
 
-Different APIs are available under `/api` and they are documented seperately :
+Different APIs are available under `/api` and they are documented separately:
+
 - [REST](rest-services)
 - [SOAP](soap-services)
 - [Raw](raw-services)

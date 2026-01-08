@@ -19,8 +19,8 @@ Cordova
 ### Prerequisites
 
 - Java VM version 1.8+
-- Node.js: https://nodejs.org
-- Android Studio and SDK: https://developer.android.com/studio
+- [Node.js](https://nodejs.org)
+- [Android Studio and SDK](https://developer.android.com/studio)
 
 ### Environment variables
 
@@ -68,8 +68,8 @@ cordova emulate android
 
 Starts on your device in debug mode:
 
-- see https://developer.android.com/studio/run/device
-- see https://developer.android.com/studio/debug/dev-options
+- see [](https://developer.android.com/studio/run/device)
+- see [](https://developer.android.com/studio/debug/dev-options)
 
 ```text
 cordova run android
@@ -218,7 +218,7 @@ The platform will use several system parameters:
 
 ### Register your application on Firebase
 
-1) Create your Firebase account https://firebase.google.com
+1) Create your [Firebase account](https://firebase.google.com)
 2) Access to the console to add your project, ex `SimpliciteMobileMyProject`
 
 ### Add to project the application for Androïd
@@ -229,7 +229,7 @@ The platform will use several system parameters:
 
 ### Add the firebase plugin
 
-Notification https://github.com/arnesson/cordova-plugin-firebase
+Notification [](https://github.com/arnesson/cordova-plugin-firebase)
 
 ```text
 cordova plugin add cordova-plugin-firebase
@@ -242,10 +242,7 @@ uninstall this plugin and use this compatible fork: `cordova-plugin-firebasex`
 ### Send a message with the console
 
 - Use the google console to access the `Cloud Messaging` section of your project
-- Compose a message
-
-https://console.firebase.google.com/u/0/project/simplicitemobilemyproject/notification/compose
-
+- Compose a message [](https://console.firebase.google.com/u/0/project/simplicitemobilemyproject/notification/compose)
 - Verify your device
 
 ### Back-end integration
@@ -259,9 +256,7 @@ On UI `$ui.firebase` wrap all Firebase message:
 on Server-side service, see `GoogleFireBaseTools`:
 
 - you must generate first your Service Account Key on console
-
-https://console.firebase.google.com/u/0/project/simplicitemobilemyproject/settings/serviceaccounts/adminsdk
-
+  [](https://console.firebase.google.com/u/0/project/simplicitemobilemyproject/settings/serviceaccounts/adminsdk)
 - then place your strongly **private** credentials in the parameter `FIREBASE_PRIVATE_KEY` on server-side
 
 ```json
@@ -286,13 +281,15 @@ To receive message on webapp, the browser needs 2 parameters:
 1) Add a **public** system param `FIREBASE_LIBS`
 
    ```json
-   ["https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"
-   ,"https://www.gstatic.com/firebasejs/7.20.0/firebase-messaging.js"]
+   [
+     "https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js",
+     "https://www.gstatic.com/firebasejs/7.20.0/firebase-messaging.js"
+   ]
    ```
 
 2) Add a **public** system param `FIREBASE_CONFIG` to init firebase on client-side:
 
-   - see https://firebase.google.com/web/setup
+   - see [](https://firebase.google.com/web/setup)
    - or access to console / Project / Setup / Add Firebase to your Web application
 
    ```json
@@ -350,9 +347,9 @@ curl --header "Authorization: key=<cloud messaging server key>" \
 ### Notification icons
 
 - iOS does not support customization and use the default app icon
-- Androïd supports icon resources referenced in notification:
+- Android supports icon resources referenced in notification:
 
-1) Generate your mono-color/transparent icons : https://romannurik.github.io/AndroidAssetStudio/icons-notification.html
+1) Generate your mono-color/transparent icons: [](https://romannurik.github.io/AndroidAssetStudio/icons-notification.html)
 2) Import them into your project `res/icon/android`
 3) Add resources in `config.xml` to copy them in drawable as `notification_icon`
 
@@ -369,8 +366,8 @@ curl --header "Authorization: key=<cloud messaging server key>" \
 
 see:
 
-- https://github.com/arnesson/cordova-plugin-firebase/issues/764
-- https://firebase.google.com/reference/admin/java/reference/com/google/firebase/messaging/AndroidNotification.Builder.html#setIcon(java.lang.String)
+- [](https://github.com/arnesson/cordova-plugin-firebase/issues/764)
+- [](https://firebase.google.com/reference/admin/java/reference/com/google/firebase/messaging/AndroidNotification.Builder.html#setIcon(java.lang.String))
 
 Deploy on Google Play Store
 ---------------------------
@@ -389,8 +386,8 @@ The unsigned APK is generated in your android directory `myproject/platforms/and
 
 Create a keystore with your company information:
 
-- with Android studio: https://developer.android.com/studio/publish/app-signing
-- with CLI keytool: https://www.linkedin.com/pulse/how-create-signed-android-apk-apache-cordovausing-cordova-ghatul/
+- with [Android studio](https://developer.android.com/studio/publish/app-signing)
+- with [CLI keytool](https://www.linkedin.com/pulse/how-create-signed-android-apk-apache-cordovausing-cordova-ghatul/)
 
 ```text
 cordova build android --release -- --keystore="path/to/keystore" --storePassword=xxxx --alias=key0 --password=xxxx
@@ -405,7 +402,7 @@ You will have to change the version each time you deliver an new APK:
 - in root files `config.xml` and `package.json`
 - rebuild the release
 
-See Google documentation. https://support.google.com/googleplay/android-developer#topic=3450769
+See [Google documentation](https://support.google.com/googleplay/android-developer#topic=3450769)
 
 Process is quite long at the very first time:
 
@@ -422,14 +419,14 @@ Deploy on Apple Store
 
 ### Install the iOS platform
 
-https://cordova.apache.org/fr/latest/guide/platforms/ios/
+[](https://cordova.apache.org/fr/latest/guide/platforms/ios/)
 
 You will have to do the same with iOS platform on your Mac. It is not possible to build the app on PC/Windows.
 iOS app requires Xcode to compile swift code and cordova plugins.
 
-See https://cordova.apache.org/en/latest/guide/platforms/ios/index.html
+See [](https://cordova.apache.org/en/latest/guide/platforms/ios/index.html)
 
-- Create your apple ID: https://developer.apple.com/account/#/welcome
+- [Create your apple ID](https://developer.apple.com/account/#/welcome)
 - Download Xcode 10
 - configure `xcode-select` to target the Xcode installation
 - install CLI to compile and deploy
@@ -490,20 +487,17 @@ The application needs many icons to target all iOS versions.
 
 ### Setup firebase for iOS
 
-- Create the App ID : https://developer.apple.com/account/resources/identifier/list
-
+- [Create the App ID](https://developer.apple.com/account/resources/identifier/list)
   - Description = `Simplicite My Project`
   - Explicit App ID = `com.simplicite.mobile.myproject`
   - App services = add `Push notifications`
 
 - Generate the CSR file: Certificate Signing Request
-
   - On your mac open the Keychain access
   - Menu Certificate assistant > Request a certificate from a certificate authority
   - Enter your email and full name, store the file on disk
 
 - Prepare the APN (Apple Push Notification) certificate
-
   - Edit the App ID to create the notification certificates
   - In Push notification section / developer
   - Upload the CSR file
@@ -513,14 +507,13 @@ The application needs many icons to target all iOS versions.
   - And export your private key into a `p12` file
 
 - Configure firebase
-
   - In the firebase console, open the project setup
   - In Cloud messaging section upload the certificate APNs
 
 See all steps here:
 
-- https://firebase.google.com/cloud-messaging/ios/certs
-- https://medium.com/@felipepucinelli/how-to-add-push-notifications-in-your-cordova-application-using-firebase-69fac067e821
+- [](https://firebase.google.com/cloud-messaging/ios/certs)
+- [](https://medium.com/@felipepucinelli/how-to-add-push-notifications-in-your-cordova-application-using-firebase-69fac067e821)
 
 ### Create the Provisioning Profile
 
@@ -546,7 +539,7 @@ To test your app before the final deployment in App Store, you have to sign the 
 
 The last step is to create the Store listing:
 
-- login to https://appstoreconnect.apple.com
+- login to [](https://appstoreconnect.apple.com)
 - Create the App with Plus button
 - Set the title, sub-title and description, privacy-policy URL, etc.
 - Upload screenshots for iPhone and iPad
@@ -554,7 +547,7 @@ The last step is to create the Store listing:
 - Give a login/password to allow Apple to make internal verifications
 - Submit to verify the App, the process can be very long (form 1 to 10 days)
 
-See https://clearbridgemobile.com/how-to-submit-an-app-to-the-app-store/
+See [](https://clearbridgemobile.com/how-to-submit-an-app-to-the-app-store/)
 
 Known limitations with inAppBrowser
 -----------------------------------

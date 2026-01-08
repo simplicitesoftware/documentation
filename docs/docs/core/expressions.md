@@ -24,9 +24,12 @@ Summary
 Here is a summary of available preprocessed tags that can be used in expressions.
 
 :::note
+
 The comprehensive descriptions below (and the [JavaDoc](https://platform.simplicite.io/current/javadoc/)) contains additional information.
+
 :::
 
+<!-- markdownlint-disable table-column-style -->
 | [Grant level](https://platform.simplicite.io/current/javadoc/com/simplicite/util/GrantCore.html#prepareExpression-java.lang.String-java.lang.String-boolean-boolean-) | [Object level](https://platform.simplicite.io/current/javadoc/com/simplicite/util/ObjectCore.html#prepareExpression-java.lang.String-java.lang.String:A-boolean-boolean-) | [External object level](https://platform.simplicite.io/current/javadoc/com/simplicite/util/ExternalObject.html#prepareExpression-java.lang.String-) |
 |:------------------------:|:-------------------------------------------------:|:-------------------------:|
 |                          | All of Grant + following:                         | All of Grant + following: |
@@ -59,6 +62,7 @@ The comprehensive descriptions below (and the [JavaDoc](https://platform.simplic
 |                          | `[DISPLAYVALUE:input name]`                       |                           |
 |                          | `[DISPLAYOLDVALUE:input name]`                    |                           |
 |                          | `[PARAM:parameter name]`                          |                           |
+<!-- markdownlint-enable table-column-style -->
 
 Description
 -----------
@@ -66,7 +70,8 @@ Description
 Configuration items' expressions (e.g. calculated fields, constraints, state transition expressions, etc.) are in fact fragments of **Rhino** script code.
 
 They are similar to the main script you can implement to extend the configuration item behavior.
-The main difference is on the bindings namings, for instance for a business object the `this` you use in the main script is available as `obj` in the expressions.
+The main difference is on the bindings namings, for instance for a business object the `this` you use in
+the main script is available as `obj` in the expressions.
 
 In addition there are some preprocessed tags that are substituted to their corresponding script code at runtime. For instance `[VALUE:myField]`
 is in fact substituted as `obj.getFieldValue("myField")`. Using substituted tags is therefore not mandatory, consider them as "shorthands"
@@ -203,7 +208,7 @@ For those cases use a `[SYSPARAM]` instead with the `private` type to restrict t
   check if in specified context, ex `[CONTEXT:UPDATE]`.
   context available values:
   `SEARCH`, `LIST`, `CREATE`, `COPY`, `UPDATE`, `DELETE`, `CROSSTAB`, `PRINTTMPL`, `UPDATEALL`,
-  `REFSELECT`, `DATAMAPSELECT`, `PREVALIDATE`, `POSTVALIDATE`, `STATETRANSITION`, `EXPORT`, `IMPORT`,  
+  `REFSELECT`, `DATAMAPSELECT`, `PREVALIDATE`, `POSTVALIDATE`, `STATETRANSITION`, `EXPORT`, `IMPORT`,
   `ASSOCIATE`, `PANELLIST`, `ACTION`, `AGENDA`, `PLACEMAP`
 - `[OBJECTSTATUS]` or `[STATUS]`:
   the object current status (if object has a status)

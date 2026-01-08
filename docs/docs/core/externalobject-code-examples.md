@@ -9,7 +9,8 @@ External object code examples
 Principles
 ----------
 
-An external object is basically a custom HTML page/component that can be made available into the generic web UI's authenticated zone or in the public zone.
+An external object is basically a custom HTML page/component that can be made available into
+the generic web UI's authenticated zone or in the public zone.
 
 By extension it can also be used to generate other type of files such as a PDF document or an image.
 But this is not a typical use of external objects as there are other mechanisms for generating such contents (e.g. publication templates).

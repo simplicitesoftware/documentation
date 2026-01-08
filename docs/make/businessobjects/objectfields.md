@@ -48,8 +48,7 @@ The template editor translates the field into the designer's language. You will 
 
 This object field stores all contextual information about the field for that object:
 
-<!-- markdownlint-disable -->
-
+<!-- markdownlint-disable table-column-style -->
 | Field property (global) | Can be overridden in Object Field? |
 |-------------------------|------------------------------------|
 | Logical name            | ✖ No                              |
@@ -79,8 +78,7 @@ This object field stores all contextual information about the field for that obj
 | Extended                | ✔ Yes                             |
 | Extended on list        | ✔ Yes                             |
 | Exportable              | ✔ Yes                             |
-
-<!-- markdownlint-enable -->
+<!-- markdownlint-enable table-column-style -->
 
 :::note
 
