@@ -47,7 +47,7 @@ It is possible to override the default icon sets, which can be useful if you are
 
 In this case, use the **Icons set** field of the Theme to specify your resource. Call it `IMAGES_COLOR` if you want to override the color set.
 
-Javascript API
+JavaScript API
 --------------
 
 To use an icon in your JS code, use the following API:

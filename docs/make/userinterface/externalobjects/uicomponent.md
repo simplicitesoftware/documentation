@@ -100,7 +100,7 @@ There are 2 different categories for your external object's implementation:
    - `com.simplicite.webapp.web.ResponsiveExternalObject` by default
    - Can be overridden by a java code extending `ResponsiveExternalObject` or at least `ExternalObject` (the main parent class).
 
-2. The _workflow_ and _behavior_ that is done using the _Javascript Resource_.
+2. The _workflow_ and _behavior_ that is done using the _JavaScript Resource_.
    - JS class extending `Simplicite.UI.ExternalObject`
    - Implementing the `render()` method to handle the DOM-related instantiations.
    - Declaring any other custom behaviors or features.
@@ -426,7 +426,7 @@ The key concepts and understanding that you need are:
 You may need to implement some behaviors and features specifically on the _server-side_ (though in the java code).
 Such workflow is required when you don't want to share information with the front (public) or you just want the calculations to be done by the backend.
 
-1. **Javascript:** make a call to the [service](https://platform.simplicite.io/current/jsdoc/Simplicite.UI.ExternalObject.html#service) hook,
+1. **JavaScript:** make a call to the [service](https://platform.simplicite.io/current/jsdoc/Simplicite.UI.ExternalObject.html#service) hook,
    and pass the  and data needed as arguments.
 
    ```javascript
@@ -632,5 +632,5 @@ Read More
 
 **JS Dev**:
 
-- [Javascript Development](/docs/front/javascript-dev).
+- [JavaScript Development](/docs/front/javascript-dev).
 - [Ajax Library](/docs/front/lib-ajax).

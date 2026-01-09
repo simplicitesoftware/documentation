@@ -52,7 +52,7 @@ All **External Objects** are organized as web elements, thus are composed of 3 [
 
 - **HTML** is the resource containing the _HTML_ code of your object that defines its core structure and organization.
 - **STYLES** is the resource containing the stylesheet (_CSS_ or _LESS_) associated with your object's _HTML_.
-- **CLASS** is the resource with the Javascript logic inside of which you will code the behaviors and interactions for your External Object.
+- **CLASS** is the resource with the JavaScript logic inside of which you will code the behaviors and interactions for your External Object.
 
 And in addition, all external objects works with a **Java Class** that ensures both their proper setup, and the rendering of the web resources.
 
@@ -115,7 +115,7 @@ How to create
        @Override
        public Object display(Parameters params) {
            try {
-               // Call the render Javascript method implemented in the SCRIPT resource
+               // Call the render JavaScript method implemented in the SCRIPT resource
                // ctn is the "div.extern-content" to fill on UI
                return javascript(getName() + ".render(ctn);");
            }
@@ -148,7 +148,7 @@ Read More
 
 **Tips & Advices**:
 
-- [Javascript Development](/docs/front/javascript-dev).
+- [JavaScript Development](/docs/front/javascript-dev).
 - [Ajax Library](/docs/front/lib-ajax).
 
 **Details & Specificities**:

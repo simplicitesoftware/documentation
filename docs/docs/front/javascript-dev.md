@@ -1,9 +1,9 @@
 ---
 sidebar_position: 30
-title: Javascript Development
+title: JavaScript Development
 ---
 
-Javascript Development
+JavaScript Development
 ======================
 
 :::warning
@@ -178,7 +178,7 @@ Explore examples for different environments:
 - **React Native**: [Mobile demo](https://github.com/simplicitesoftware/react-native-demo)
 - **Within Simplicité**: [Demo module](https://github.com/simplicitesoftware/module-demo-jslib)
 
-Core Javascript usage
+Core JavaScript usage
 ---------------------
 
 ### External Objects (Embedded Widgets)

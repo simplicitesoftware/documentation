@@ -170,7 +170,7 @@ export default function PlatformBlock({
             </div>
             <div className={styles.bodyRight}>
               <div className={styles.subBlock}>
-                <h3>Javascript</h3>
+                <h3>JavaScript</h3>
                 <div className={styles.blockItems}>
                   {jsResources.base.map((r,i) => (
                       <div key={`js-${i}`} className={styles.blockItem}>

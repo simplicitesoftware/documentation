@@ -229,7 +229,7 @@ If required, you can specify additional settings to change the ESLint&reg; confi
 
 ```json
 {
-  "eslintConfig": "<default|<Javascript resource name>>"
+  "eslintConfig": "<default|<JavaScript resource name>>"
 }
 ```
 

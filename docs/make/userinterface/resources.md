@@ -21,7 +21,7 @@ Resource types
 | Image       | Image file that can be used in a publication                      |
 | Style CSS   | CSS stylesheet for customizing the UI                             |
 | Object icon | Icon set                                                          |
-| Javascript  | Javascript file for front-end customization                       |
+| JavaScript  | JavaScript file for front-end customization                       |
 | HTML        | Used for the content of a publication                             |
 | Markdown    | Store a Markdown file                                             |
 | PDF         | Store a PDF file in the application for use in business process   |

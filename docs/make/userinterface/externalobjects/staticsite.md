@@ -12,13 +12,13 @@ What is a Static Web Site?
 Simplicité's [External Objects](/make/userinterface/externalobjects/basic) allow you to create **Static Web Site** objects;
 standalone web pages used to display elements without necessarily being logged nor necessarily interacting with any feature from Simplicité's backend.
 
-In other terms it is a static site that you create using either the native web stack (HTML, CSS, Javascript)
+In other terms it is a static site that you create using either the native web stack (HTML, CSS, JavaScript)
 or any popular web frameworks (Vue.js, React Angular, etc.).
 
 :::tip
 
 If the static site interacts with Simplicité's backend it is **highly** recommended
-to use [our simplified Javascript client lib](https://www.npmjs.com/package/simplicite) especially if it is based on a web framework.
+to use [our simplified JavaScript client lib](https://www.npmjs.com/package/simplicite) especially if it is based on a web framework.
 
 :::
 
@@ -86,7 +86,7 @@ Specific use case and code examples can be found in the following pages:
 
 **CLASS**:
 
-- Javascript where you declare all of your component's behavior and interactions.
+- JavaScript where you declare all of your component's behavior and interactions.
 - Most happens in the `async render(){ ... }` method.
 - Access your HTML using `const $content = this.ctn;` and then `$content.html(...)`.
   > You can also use more classic ways to access your elements like `document.getElementById()` or `$(<element-identifier>)`.

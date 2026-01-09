@@ -79,7 +79,7 @@ public class _ extends com.simplicite.webapp.web.WebPageExternalObject { // repl
     @Override
     public String displayBody(Parameters params) {
         try {
-            // Call the render Javascript function implemented in the SCRIPT resource
+            // Call the render JavaScript function implemented in the SCRIPT resource
             return javascript(getName() + ".render();");
         }
         catch (Exception e) {
@@ -162,5 +162,5 @@ Read More
 
 **JS Dev**:
 
-- [Javascript Development](/docs/front/javascript-dev).
+- [JavaScript Development](/docs/front/javascript-dev).
 - [Ajax Library](/docs/front/lib-ajax).
