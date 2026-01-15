@@ -17,8 +17,10 @@ based on standard Docker images or custom-built images for specific requirements
 See [this document](/docs/operation/docker) for details.
 
 :::info
+
 Our standard Docker images are built using the **most recent** up-to-date versions of the underlying OS, Java VM and Tomcat server
 for considered Simplicité version.
+
 :::
 
 Note that it is also still possible to deploy it as managed application container(s) on a wide range of platforms as a service (**PaaS**) such as
@@ -56,8 +58,10 @@ Any OS on which a suitable Java JVM is officially available. This includes:
 
 Our **recommended** OS family for production is Linux.
 
-:::tip
-**Note**: All operating systems **MUST** be maintained with current updates.
+:::note
+
+All operating systems **MUST** be maintained with current updates.
+
 :::
 
 The OS can run either on **physical** or **virtual** servers or in Docker&reg; **containers**.
@@ -69,7 +73,7 @@ The following table only indicates the **LTS (Long Term Support)** JVM versions.
 | ![](https://platform.simplicite.io/logos/logo125.png) | JVM 1.8 | JVM 11  | JVM 17  | JVM 21  | JVM 25  |
 |:-----------------------------------------------------:|---------|---------|---------|---------|---------|
 | Alpha 7.0                                             | no      | no      | yes (1) | yes (1) | **yes** |
-| Beta 6.3 and current **6.2**                          | no      | no      | yes (1) | **yes** | yes (1) |
+| Current **6.3**                                       | no      | no      | yes (1) | **yes** | yes (1) |
 | Legacy 6.x                                            | no      | yes (1) | yes (1) | **yes** | yes (1) |
 | Maintained **5.3** and legacy 5.x                     | no      | yes (1) | **yes** | yes (1) | yes (1) |
 | Legacy 4.0                                            | no      | yes (1) | **yes** | yes (1) | yes (1) |
@@ -82,8 +86,10 @@ The following table only indicates the **LTS (Long Term Support)** JVM versions.
 The "yes" in **bold** also denotes the JVM version included in our default Docker images.
 
 :::tip
+
 **Note**: The selected JVM version **MUST** be used with its **up-to-date release**.
 Only these up-to-date releases are tested and supported.
+
 :::
 
 ### Application servers
@@ -91,7 +97,7 @@ Only these up-to-date releases are tested and supported.
 | ![](https://platform.simplicite.io/logos/logo125.png) | Web profile (1) | Webapp |
 |:-----------------------------------------------------:|-----------------|--------|
 | Alpha 7.0                                             | JakartaEE 11    | 6.1    |
-| Beta 6.3, current **6.2** and legacy 6.x              | JEE 8           | 4.0    |
+| Current **6.3** and legacy 6.x                        | JEE 8           | 4.0    |
 | Maintained **5.3** and legacy 5.x                     | JEE 8           | 4.0    |
 | Legacy 4.0                                            | JEE 8           | 4.0    |
 | Legacy 3.2                                            | JEE 7           | 3.1    |
@@ -106,8 +112,10 @@ The recommended webapp implementations are :
 - **Webapp 4.0** (JEE): Apache Tomcat&reg; 9.0.x
 
 :::tip
+
 **Note**: Application servers **MUST** be used with their **up-to-date maintenance releases**.
 Only these up-to-date releases are tested and supported.
+
 :::
 
 Databases
@@ -116,7 +124,7 @@ Databases
 | ![](https://platform.simplicite.io/logos/logo125.png) | PostgreSQL | MySQL | Oracle   | SQLServer |
 |:-----------------------------------------------------:|------------|-------|----------|-----------|
 | Alpha 7.0                                             | 18+        | 9+    | 23ai+    | 2025+     |
-| Beta 6.3, current **6.2** and legacy 6.x              | 13+        | 8+    | 19c+     | 2019+     |
+| Current **6.2** and legacy 6.x                        | 13+        | 8+    | 19c+     | 2019+     |
 | Maintained **5.3** and legacy 5.x                     | 13+        | 8+    | 19c+     | 2019+     |
 | Legacy 4.0                                            | 10+        | 5.5+  | 12c+     | 2016+     |
 | Legacy 3.2                                            | 9+         | 5.1+  | 11g+     | 2012+     |
@@ -124,10 +132,12 @@ Databases
 | Legacy 3.0                                            | 9+         | 5.1+  | 10g+     | 2008+     |
 
 :::tip
+
 **Note**: The above versions are the **recommended** minimal versions.
 Only the versions listed above are officially tested and supported. While earlier versions may function,
 support is not provided for environments using versions outside of those specified.
 It is **strongly** recommended to use the **most recent release** of the selected database server.
+
 :::
 
 Web browsers
@@ -136,7 +146,7 @@ Web browsers
 | ![](https://platform.simplicite.io/logos/logo125.png) | _ECMAScript_    | Edge (1) |Firefox (1) | Chrome (1) | Safari (1) | IE11    |
 |:-----------------------------------------------------:|-----------------|----------|------------|------------|------------|---------|
 | Alpha 7.0                                             | _ES2024 (ES15)_ | yes      | yes        | yes        | yes        | no      |
-| Beta 6.3, current **6.2** and legacy 6.x              | _ES2022 (ES13)_ | yes      | yes        | yes        | yes        | no      |
+| Current **6.3** and legacy 6.x                        | _ES2022 (ES13)_ | yes      | yes        | yes        | yes        | no      |
 | Maintained **5.3** and legacy 5.x                     | _ES2020 (ES11)_ | yes      | yes        | yes        | yes        | no      |
 | Legacy 4.0                                            | _ES2015 (ES6)_  | yes      | yes        | yes        | yes        | yes (2) |
 | Legacy 3.x                                            | _ES2009 (ES5)_  | yes      | yes        | yes        | yes        | yes     |
@@ -146,5 +156,7 @@ Web browsers
    (note that IE11 is officially retired on June 6th 2022).
 
 :::tip
+
 **Note**: Web browsers **MUST** be maintained with the latest updates.
+
 :::
