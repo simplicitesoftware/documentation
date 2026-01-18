@@ -61,9 +61,11 @@ To create a dataset, follow the steps below:
 ### Using 6.2 or earlier
 
 :::warning
-From v6.3.0, datasets have been reworked to contain their declaration (not on objects anymore),
+
+From v6.3, datasets have been reworked to contain their declaration (not on objects anymore),
 if your dataset existed before, you can migrate the declared order by using the **Migrate export Order** action.
 This action is usable only if the _current dataset's object list is empty_.
+
 :::
 
 ![](img/datasets/dataset6.png)
@@ -71,9 +73,9 @@ This action is usable only if the _current dataset's object list is empty_.
 Below is the way to declare your dataset if you have a version that precedes the v6.3 (although we strongly advise you to stay up-to-date):
 
 1. Add the order of export of each objects of your module.
-In case your application depends on different modules make sure that the global export order is consistent, as datasets relate to one module only.
-![](img/datasets/dataset7.png)
+   In case your application depends on different modules make sure that the global export order is consistent, as datasets relate to one module only.
+   ![](img/datasets/dataset7.png)
 
 2. Once all the export orders have been completed, you can generate your dataset.
-Go to the Project menu and click on Modules (you can use the menu's search bar), open your module and click on Export data.
-![](img/datasets/dataset8.png)
+   Go to the Project menu and click on Modules (you can use the menu's search bar), open your module and click on Export data.
+   s![](img/datasets/dataset8.png)
