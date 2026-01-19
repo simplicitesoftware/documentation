@@ -190,7 +190,7 @@ export default function VersionsTable({
                     ))}
                 </tbody>
             </table>
-            <span><b>(*) Important </b>⚠️ Maintained versions should not be used for new (or projects in implementation phase). Using the current release is <i>always</i> the best option 😉</span>
+            <span><b>(*) Important </b>⚠️ Maintained versions should not be used for **new projects** (or projects still in active implementation phase). Using the current release is <i>always</i> the best option 😉</span>
         </div>
     )
 }
