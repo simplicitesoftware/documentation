@@ -8,11 +8,15 @@ PDF Publications
 
 PDF publications can be generated in several ways:
 
-- using the HTML->PDF tool based on the [openhtmltopdf](https://github.com/openhtmltopdf/openhtmltopdf) library
-- using the included open source [Apache PDFBox library](https://pdfbox.apache.org/)
+- using the HTML->PDF tool (based on the [OpenHtmlToPdf](https://github.com/openhtmltopdf/openhtmltopdf) library)
+- using the `HTMLToPDFTool` helper class (or directly the included underlying open source [Apache PDFBox library](https://pdfbox.apache.org/))
+
+or for more complex/specific cases:
+
 - using a third-party Java PDF generation library, that might be more advanced than PDFBox, like [iText](https://itextpdf.com/)
-- using a third-party HTML->PDF service, that might be more advanced than openhtmltopdf, like the open source [WeasyPrint](https://weasyprint.org)
+- using a third-party HTML->PDF external service, that might be more advanced than OpenHtmlToPdf, like the open source [WeasyPrint](https://weasyprint.org)
 - using a third-party API-based PDF generation service ([ex](https://stackoverflow.com/questions/5344176/is-there-a-web-service-for-converting-html-to-pdf/5344424#5344424))
+- etc.
 
 HTML template to PDF
 --------------------
