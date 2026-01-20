@@ -72,7 +72,29 @@ Configure a publication with:
 
 And then implement the method (which must be of type `byte[]`) in the object's code.
 
-Example:
+Example using the `HTMLToPDFTool` wrapper class:
+
+```Java
+package com.simplicite.objects.Demo;
+
+import com.simplicite.util.*;
+import com.simplicite.util.tools.HTMLToPDFTool;
+
+/**
+ * Customer business object
+ */
+public class DemoClient extends ObjectDB {
+	public static final long serialVersionUID = 1L;
+
+	public byte[] pubPdf(){
+		return HTMLToPDFTool.toPDF("Hello <b>world</b>!"); // HTML
+		// return HTMLToPDFTool.markdownToPDF("My PDF", "Hello **world**!"); // Markdown
+		// etc.
+	}
+}
+```
+
+Example using directly the lower-level PDFBox lib API:
 
 ```Java
 package com.simplicite.objects.Demo;
@@ -87,7 +109,7 @@ import java.io.IOException;
  * Customer business object
  */
 public class DemoClient extends ObjectDB {
-	private static final long serialVersionUID = 1L;
+	public static final long serialVersionUID = 1L;
 
 	//inspiration : https://www.tutorialspoint.com/pdfbox/
 	public byte[] pubPdf(){
