@@ -39,12 +39,14 @@ When configuring a Field, you'll notice this linked list behavior in action:
 How to create a Linked list?
 ----------------------------
 
-<details>
-    <summary>Prerequisite</summary>
-    You have previously created a main list of values and it's sub list of values
-    ![](img/linkedlist/pre-requisite.png)
-</details>
-To create a linked list, click **Create** in the **Business objects > Linked list** menu :
+:::note[Prerequisite]
+
+You have previously created a main list of values and it's sub list of values
+![](img/linkedlist/pre-requisite.png)
+
+:::
+
+To create a linked list, click **Create** in the **Business objects > Linked list** menu:
 
 1. In the **Object** reference field :
    - Choose the **Object Field** that will control (or trigger) the changes
@@ -59,7 +61,7 @@ To create a linked list, click **Create** in the **Business objects > Linked lis
 
 :::tip
 
-With this configuration, when "Sub-list 1" is selected in the _appObjMainList_ field, _APP_OBJ_SUB_LIST_1_ items will be displayed in _appObjSubList_.
+With this configuration, when "Sub-list 1" is selected in the _appObjMainList_ field, the _APP_OBJ_SUB_LIST_1_ items will be displayed in _appObjSubList_.
 
 :::
 
