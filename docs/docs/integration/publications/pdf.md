@@ -120,7 +120,7 @@ public class DemoClient extends ObjectDB {
 	public Object pubPdf(PrintTemplate pt) {
 		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
-		try{
+		try {
 			// init
 			PDDocument document = new PDDocument();
 			PDPage page = new PDPage();
@@ -138,8 +138,7 @@ public class DemoClient extends ObjectDB {
 			// save
 			document.save(byteArrayOutputStream);
 			document.close();
-		}
-		catch(IOException e){
+		} catch(IOException e) {
 			AppLog.error(getClass(), "pubPdf", "Error creating PDF", e, getGrant());
 		}
 
