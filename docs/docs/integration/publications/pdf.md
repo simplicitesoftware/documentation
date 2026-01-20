@@ -70,7 +70,7 @@ Configure a publication with:
 - **Template type** : method
 - **Method** : `pubPdf`
 
-And then implement the method (which must be of type `byte[]`) in the object's code.
+And then implement the publication method in the object's code.
 
 Example using the `HTMLToPDFTool` wrapper class:
 
@@ -78,6 +78,7 @@ Example using the `HTMLToPDFTool` wrapper class:
 package com.simplicite.objects.Demo;
 
 import com.simplicite.util.*;
+import com.simplicite.util.annotations.BusinessObjectPublication;
 import com.simplicite.util.tools.HTMLToPDFTool;
 
 /**
@@ -86,7 +87,8 @@ import com.simplicite.util.tools.HTMLToPDFTool;
 public class DemoClient extends ObjectDB {
 	public static final long serialVersionUID = 1L;
 
-	public byte[] pubPdf(){
+	@BusinessObjectPublication
+	public Object pubPdf(PrintTemplate pt) {
 		return HTMLToPDFTool.toPDF("Hello <b>world</b>!"); // HTML
 		// return HTMLToPDFTool.markdownToPDF("My PDF", "Hello **world**!"); // Markdown
 		// etc.
@@ -100,6 +102,8 @@ Example using directly the lower-level PDFBox lib API:
 package com.simplicite.objects.Demo;
 
 import com.simplicite.util.*;
+import com.simplicite.util.annotations.BusinessObjectPublication;
+
 import org.apache.pdfbox.pdmodel.*;
 import org.apache.pdfbox.pdmodel.font.*;
 import java.io.ByteArrayOutputStream;
@@ -111,8 +115,9 @@ import java.io.IOException;
 public class DemoClient extends ObjectDB {
 	public static final long serialVersionUID = 1L;
 
-	//inspiration : https://www.tutorialspoint.com/pdfbox/
-	public byte[] pubPdf(){
+	// inspiration : https://www.tutorialspoint.com/pdfbox/
+	@BusinessObjectPublication
+	public Object pubPdf(PrintTemplate pt) {
 		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
 		try{
