@@ -179,56 +179,6 @@ Consider disabling the inclusion of the `manifest.json` to the pages of the gene
 As a matter of fact, due to the absence of the session ID cookie by some web browsers when downloading this manifest file, the session ID is passed
 in the URL which makes it more visible than as a cookie (e.g; in an access log).
 
-### Other sensible topics
-
-#### Secrets
-
-All secrets **should** be passed to the platform as environment variables in order to prevent them to be accessible and potentially altered
-at runtime.
-
-As of version 6 all system parameters can be fully overridden by a corresponding environment variable named `SIMPLICITE_SYSPARAM_<name of the system parameter>`.
-
-It is also possible to configure some configuration items (e.g. system parameters, modules settings, ...)
-using environment variable substitution tags `[ENV:...]`.
-
-It is highly recommended to use these mechanisms for all secret/sensible pieces of data and credentials such as:
-usernames, passwords, secrets, encryption keys, URLs, ...
-
-#### Development mode
-
-Some development-oriented features are disabled when the development mode is not enabled.
-The development mode can be disabled/enabled (disabled by default) by either the `platform.devmode` JVM property
-or by the `DEV_MODE` environment variable.
-
-In production it is highly recommended to have the development mode disabled.
-
-The scope of the features depends on the major version of the platform, see the release notes for details.
-
-#### Compiler
-
-You can disable the Java compiler by setting the `platform.compiler` JVM property to `false`.
-
-:::note
-
-By disabling the compiler you prevent the platform from being able to compile your module's Java sources. It means that you **must**
-package your module with a JAR containing the compiled classes of your sources.
-
-:::
-
-#### Websockets
-
-The `/ui/<events|lsp|...>` endpoints provides websocket services to provide client-side access to some server-side services: logs, LSP, etc.
-
-It is not a pure matter of security as these are parts of the secured UI endpoint but it can be disabled
-by setting the `platform.websocket` JVM property to `false`.
-
-#### Server side events
-
-As of version 6, the `/ui/sse` endpoint provides a service to push messages from server-side to the client to update UI data (counters, locks...).
-
-- The standard SSE protocol uses HTTP GET **asynchronous** so the infrastructure must support this without breaking the socket
-- Otherwise, the parameter `USE_SSE` must be set to `no` to disabled this SSE feature: the UI will use polling to refresh some UI data
-
 Securing your application's configuration and custom code
 ---------------------------------------------------------
 
@@ -240,13 +190,21 @@ associated to this user) because everything granted to this user is made availab
 ### Private system parameters
 
 Ensure that all system parameters that hold confidential data that should not be available elsewhere than on the server side
-(e.g. services credentials, passwords, ...) are configured as _Private_ type
+(e.g. services credentials, passwords, ...) are configured as _Private_ type.
 
 ### Secrets
 
-If credentials/secrets need to be managed in system parameters (e.g. username/password of the SMTP server in the `MAIL_SERVICE` system parameter),
-they **should** be passed as environment variables and use the environment variables substitutions
-`[ENV:<environment variable name>]` in the configured system parameters to avoid storing these credentials/secrets in the database.
+All secrets **should** be passed to the platform as environment variables in order to prevent them to be accessible and potentially altered
+at runtime.
+
+As of version 6, all system parameters can be fully overridden by a corresponding environment variable
+named `SIMPLICITE_SYSPARAM_<name of the system parameter>`.
+
+It is also possible to configure some configuration items (e.g. system parameters, modules settings, ...)
+using environment variable substitution tags `[ENV:...]`.
+
+It is highly recommended to use these mechanisms for all secret/sensible pieces of data and credentials such as:
+usernames, passwords, secrets, encryption keys, URLs, ...
 
 ### Business object filtering
 
@@ -375,15 +333,17 @@ A feature allows users to get information about other users using the same recor
 
 To avoid this usage data being available, it **should** be disabled by setting the private system parameter `USE_OBJECT_USAGE` to `no`.
 
-### Websockets
+#### Development mode
 
-Some features (including the one above) relies, by default, on a websockets-based communication.
-Websockets can be globally inhibited by passing the `server.websocket=false` JVM argument.
+Some development-oriented features are disabled when the development mode is not enabled.
+The development mode can be disabled/enabled (disabled by default) by either the `platform.devmode` JVM property
+or by the `DEV_MODE` environment variable.
 
-### Development tools
+In production it is highly recommended to have the development mode disabled.
 
-Even if they are already restricted to profiles that should not be used in production (see above), some tools that are only relevant
-in the context of development/testing **should** be disabled in production, in particular:
+The scope of the features depends on the major version of the platform, see the release notes for details.
+
+Even if development mode is enabled some features may not be relevant anyway, in particular:
 
 - Database access: to do so, the grants on the `DBAccess/DBDocAccess` external objects' function can be deactivated or deleted
 - Logs viewer page: to do so, the grants on the `LogAccess` external object's function can be deactivated or deleted
@@ -392,6 +352,41 @@ in the context of development/testing **should** be disabled in production, in p
 
 These external objects can also simply be deleted, but this should not be done if the possibility to use these tools
 for punctual maintenance/investigation activities needs to be kept.
+
+#### Support mode
+
+In some cases the users support teams or _super administrators_ needs to be able to connect as another user.
+
+A feature called _God mode_ allows this. It is disabled by default and can be globally enabled/disabled using the `platform.godmode=<true|false>` JVM property.
+
+When enabled the access to this feature is managed by the `GOD_MODE` system parameter that is set to `no` but can be overridden on
+a per-user basis (e.g. by default the `designer`  user has `GOD_MODE` set to `yes`)
+
+#### Compiler
+
+You can enable/disable the Java compiler by setting the `platform.compiler=<true|false>` JVM property.
+
+:::note
+
+By disabling the compiler you prevent the platform from being able to compile your module's Java sources.
+
+It means that you **must** then package your module with a JAR containing the compiled classes of your sources.
+
+:::
+
+#### Websockets
+
+The `/ui/<events|lsp|...>` endpoints provides websocket services to provide client-side access to some server-side services: logs, LSP, etc.
+
+It is not a pure matter of security as these are parts of the secured UI endpoint but it can be enabled/disabled
+by setting the `platform.websocket=<true|false>` JVM property.
+
+#### Server side events
+
+As of version 6, the `/ui/sse` endpoint provides a service to push messages from server-side to the client to update UI data (counters, locks...).
+
+- The standard SSE protocol uses HTTP GET **asynchronous** so the infrastructure must support this without breaking the socket
+- Otherwise, the parameter `USE_SSE` must be set to `no` to disabled this SSE feature: the UI will use polling to refresh some UI data
 
 Securing your infrastructure
 ----------------------------
