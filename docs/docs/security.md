@@ -6,11 +6,11 @@ title: Security guidelines
 Security guidelines
 ===================
 
-This document provides guidelines and recommendations  for improving security of applications based on the Simplicité platform.
+This document provides guidelines for improving security of applications based on the Simplicité platform.
 
-:::note
+:::warning[Warning]
 
-These guidelines and recommendations should be evaluated and adapted based on the specific requirements and context of each implementation.
+These are generic recommendations should be evaluated and adapted based on the specific requirements and context of each implementation.
 
 :::
 
@@ -55,7 +55,7 @@ that have been configured, except for the public features that are chosen to be 
 Locally stored passwords must be encrypted/hashed (see the `HASH_PASSWORD` system parameter) according to the local authentication configuration.
 A second authentication factor **should** be enabled: standard TOTP via email, SMS or authentication applications is available as of version 5.2.
 
-:::note
+:::note[Note]
 
 When possible, using an external authentication mechanism is always a better and more secure approach than using locally
 stored password even with a second authentication factor.
@@ -103,18 +103,19 @@ At minimum, the I/O tester page **should** be disabled by setting the private sy
 
 For more information default on I/O authentication mechanisms, see [this document](/docs/integration/webservices/io-commandline).
 
-:::note
+:::note[Note]
 
 For backward compatibility reasons (and for particular cases) the I/O and Git endpoints **also** use the legacy authentication
 method based on private system parameters named `EAI *` or, as of version 5, the `io.password` JVM argument or the `IO_PASSWORD` environment variable
 which can contain either a plain text password (not recommended) or a non-salted hashed password using the configured hashing algorithm.
+
 If there is no good reason to keep it all the time, this authentication method **should** be inhibited (at least when not needed)
 by removing the corresponding system parameters, JVM argument or environment variable. Note that, as of minor version 5.1, it is not possible
 to use the user's password if it is requested to be changed.
 
 :::
 
-:::note
+:::warning[Important]
 
 The I/O endpoint is needed for multiple-nodes deployments to allow propagating various application-wide events amongst nodes (e.g. clear cache).
 Setting appropriate network filtering and credentials is thus **required** in this particular case.
@@ -149,11 +150,7 @@ are used for platform monitoring.
 If it is only used from a limited set of origins, access to this endpoint **should** be filtered (e.g. by using the "whitelist" Docker
 configuration or by a reverse proxy-level filtering).
 
-:::note
-
-As of version 6 a platform hook allows you to customize the health check in order to adapt it to your requirement.
-
-:::
+As of version 6, a platform hook allows you to customize the health check in order to adapt it to your requirement.
 
 ### Maven repository
 
@@ -169,7 +166,7 @@ This is relevant on production instances where this development-oriented feature
 If it is only used from a limited set of origins, access to this endpoint **should** be filtered
 (e.g. by using the "whitelist" Docker configuration or by a reverse proxy-level filtering)
 
-:::note
+:::info[Note]
 
 This 3rd party components list is anyway public on the [platform technical documentation website](https://platform.simplicite.io/).
 
@@ -367,11 +364,12 @@ a per-user basis (e.g. by default the `designer`  user has `GOD_MODE` set to `ye
 
 You can enable/disable the Java compiler by setting the `platform.compiler=<true|false>` JVM property.
 
-:::note
+:::warning[Warning]
 
 By disabling the compiler you prevent the platform from being able to compile your module's Java sources.
 
-It means that you **must** then package your module with a JAR containing the compiled classes of your sources.
+It means that you **must** then package your module with a JAR containing the compiled classes of your sources, or provide this
+JAR to the platform otherwise (e.g. by copying it into the `WEB-INF/lib` dir or the webapp).
 
 :::
 
@@ -418,7 +416,12 @@ Server infrastructure command line access **should** always use SSH (ideally key
 - The JVM, database server, JDBC driver and Java application server **must** be kept up-to-date.
 - Simplicité updates **must** be applied as soon as they are made available
 
-> **Note**: the warranty is void on a non up-to-date platform, keeping the Simplicité platform up-to-date is not just **recommended** it is **mandatory**.
+:::danger[Attention]
+
+Our vendor's warranty is **void** on a non up-to-date platform,
+keeping the Simplicité platform up-to-date is not just **recommended** it is **mandatory**.
+
+:::
 
 Securing Docker-based deployments
 ---------------------------------
