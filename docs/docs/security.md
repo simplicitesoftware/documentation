@@ -357,7 +357,8 @@ for punctual maintenance/investigation activities needs to be kept.
 
 In some cases the users support teams or _super administrators_ needs to be able to connect as another user.
 
-A feature called _God mode_ allows this. It is disabled by default and can be globally enabled/disabled using the `platform.godmode=<true|false>` JVM property.
+A feature called _God mode_ allows this. It is disabled by default and can be globally enabled/disabled
+using the `platform.godmode=<true|false>` JVM property.
 
 When enabled the access to this feature is managed by the `GOD_MODE` system parameter that is set to `no` but can be overridden on
 a per-user basis (e.g. by default the `designer`  user has `GOD_MODE` set to `yes`)
