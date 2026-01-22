@@ -6,9 +6,13 @@ title: Security guidelines
 Security guidelines
 ===================
 
-This document provides guidelines for improving security of applications based on the Simplicité platform.
+This document provides guidelines and recommendations  for improving security of applications based on the Simplicité platform.
 
-> **Note**: These recommendations should be evaluated and adapted based on the specific requirements and context of each implementation.
+:::note
+
+These guidelines and recommendations should be evaluated and adapted based on the specific requirements and context of each implementation.
+
+:::
 
 Platform upgrades
 -----------------
@@ -17,6 +21,17 @@ The platform regularly receives upgrades that potentially include security-relat
 The details of the fixes/changes are available in the release notes.
 
 To ensure security, it is thus **mandatory** to keep deployed instances up-to-date.
+
+Platform variants
+-----------------
+
+The platform is, by default, packaged as 2 variants: full and light (an other more specific variants may be built on-demand).
+
+The difference between these variants is the number of included 3rd party libs, see the [platform technical documentation website](https://platform.simplicite.io/)
+to check which variant matches your requirement.
+
+Docker images variants reflects the above variants and are also declined in JDK, JRE and JVM-less images in order to allow you to choose which Java VM
+matches your requirement.
 
 Securing application endpoints
 ------------------------------
@@ -32,6 +47,7 @@ There are 4 endpoints available on the Simplicité platform:
 - the API endpoint
 - the I/O endpoint
 - the Git endpoint
+- the Maven repository endpoint
 
 All of them are secured either by the standard authentication mechanisms (Java server's auth modules, OAuth2/OpenIDConnect or SAML flows)
 that have been configured, except for the public features that are chosen to be exposed on the UI endpoint's public components (see below)
@@ -40,8 +56,10 @@ Locally stored passwords must be encrypted/hashed (see the `HASH_PASSWORD` syste
 A second authentication factor **should** be enabled: standard TOTP via email, SMS or authentication applications is available as of version 5.2.
 
 :::note
+
 When possible, using an external authentication mechanism is always a better and more secure approach than using locally
 stored password even with a second authentication factor.
+
 :::
 
 In particular, the `designer` user's password **must** be hard to guess (this is also applicable to any user granted with advanced rights)
@@ -70,7 +88,7 @@ For more information on default API authentication mechanisms, see [this documen
 
 ### I/O endpoint
 
-Access to the I/O endpoint **must** be secured.
+Access to the I/O endpoint **must** be secured. As of major version 7 it is disabled by default.
 
 The I/O endpoint is dedicated for batch import/exports, including business modules installations/upgrades and system upgrades and thus should
 only be accessed from legitimate origins for these types of processes.
@@ -86,25 +104,22 @@ At minimum, the I/O tester page **should** be disabled by setting the private sy
 For more information default on I/O authentication mechanisms, see [this document](/docs/integration/webservices/io-commandline).
 
 :::note
+
 For backward compatibility reasons (and for particular cases) the I/O and Git endpoints **also** use the legacy authentication
 method based on private system parameters named `EAI *` or, as of version 5, the `io.password` JVM argument or the `IO_PASSWORD` environment variable
 which can contain either a plain text password (not recommended) or a non-salted hashed password using the configured hashing algorithm.
 If there is no good reason to keep it all the time, this authentication method **should** be inhibited (at least when not needed)
 by removing the corresponding system parameters, JVM argument or environment variable. Note that, as of minor version 5.1, it is not possible
 to use the user's password if it is requested to be changed.
+
 :::
 
 :::note
+
 The I/O endpoint is needed for multiple-nodes deployments to allow propagating various application-wide events amongst nodes (e.g. clear cache).
 Setting appropriate network filtering and credentials is thus **required** in this particular case.
+
 :::
-
-### SSE endpoint
-
-The `/ui/sse` endpoint provides a UI service to push messages from server to the authentified browser to update UI data (counters, locks...) on the fly.
-
-- The standard SSE protocol uses HTTP GET **asynchronous** so the infrastructure must support this whithout breaking the socket
-- Otherwise, the parameter `USE_SSE` must be set to `no` to disbaled this SSE feature: the UI will use polling to refresh some UI data
 
 ### Git endpoint
 
@@ -123,6 +138,7 @@ If it is only used from a limited set of origins, access to this endpoint **shou
 ### Health-check
 
 The `/health` page/service allows obtaining health-check technical information on a running instance.
+As of major version 7 the scope of the data returned by the default health check is reduced by default.
 
 Access to this URI **should** be secured by restricting access to the only IP in charge of technical monitoring.
 
@@ -131,7 +147,13 @@ This is relevant to disable it completely if, for instance, the JMX services of 
 are used for platform monitoring.
 
 If it is only used from a limited set of origins, access to this endpoint **should** be filtered (e.g. by using the "whitelist" Docker
-configuration or by a reverse proxy-level filtering)
+configuration or by a reverse proxy-level filtering).
+
+:::note
+
+As of version 6 a platform hook allows you to customize the health check in order to adapt it to your requirement.
+
+:::
 
 ### Maven repository
 
@@ -139,6 +161,7 @@ The instance exposes a Maven repository of the 3rd party Java components on the 
 This is only relevant in development.
 
 Access to this URI **should** be secured in production.
+As of version 7 its is disabled unless the platform is explicitly started in development mode.
 
 This page/service can also be disabled by setting the `USE_MAVEN` system parameter to `no`.
 This is relevant on production instances where this development-oriented feature is useless.
@@ -146,11 +169,65 @@ This is relevant on production instances where this development-oriented feature
 If it is only used from a limited set of origins, access to this endpoint **should** be filtered
 (e.g. by using the "whitelist" Docker configuration or by a reverse proxy-level filtering)
 
-> **Note**: this 3rd party components list is anyway public on the document website.
+:::note
+
+This 3rd party components list is anyway public on the [platform technical documentation website](https://platform.simplicite.io/).
+
+:::
 
 Consider disabling the inclusion of the `manifest.json` to the pages of the generic UI using the `USE_MANIFEST` system parameter.
 As a matter of fact, due to the absence of the session ID cookie by some web browsers when downloading this manifest file, the session ID is passed
 in the URL which makes it more visible than as a cookie (e.g; in an access log).
+
+### Other sensible topics
+
+#### Secrets
+
+All secrets **should** be passed to the platform as environment variables in order to prevent them to be accessible and potentially altered
+at runtime.
+
+As of version 6 all system parameters can be fully overridden by a corresponding environment variable named `SIMPLICITE_SYSPARAM_<name of the system parameter>`.
+
+It is also possible to configure some configuration items (e.g. system parameters, modules settings, ...)
+using environment variable substitution tags `[ENV:...]`.
+
+It is highly recommended to use these mechanisms for all secret/sensible pieces of data and credentials such as:
+usernames, passwords, secrets, encryption keys, URLs, ...
+
+#### Development mode
+
+Some development-oriented features are disabled when the development mode is not enabled.
+The development mode can be disabled/enabled (disabled by default) by either the `platform.devmode` JVM property
+or by the `DEV_MODE` environment variable.
+
+In production it is highly recommended to have the development mode disabled.
+
+The scope of the features depends on the major version of the platform, see the release notes for details.
+
+#### Compiler
+
+You can disable the Java compiler by setting the `platform.compiler` JVM property to `false`.
+
+:::note
+
+By disabling the compiler you prevent the platform from being able to compile your module's Java sources. It means that you **must**
+package your module with a JAR containing the compiled classes of your sources.
+
+:::
+
+#### Websockets
+
+The `/ui/<events|lsp|...>` endpoints provides websocket services to provide client-side access to some server-side services: logs, LSP, etc.
+
+It is not a pure matter of security as these are parts of the secured UI endpoint but it can be disabled
+by setting the `platform.websocket` JVM property to `false`.
+
+#### Server side events
+
+As of version 6, the `/ui/sse` endpoint provides a service to push messages from server-side to the client to update UI data (counters, locks...).
+
+- The standard SSE protocol uses HTTP GET **asynchronous** so the infrastructure must support this without breaking the socket
+- Otherwise, the parameter `USE_SSE` must be set to `no` to disabled this SSE feature: the UI will use polling to refresh some UI data
 
 Securing your application's configuration and custom code
 ---------------------------------------------------------
