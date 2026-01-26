@@ -40,7 +40,7 @@ See [this document](/docs/authentication/auth-providers) for details on how to c
 Before making these changes, ensure that access will remain possible with at least one user the ADMIN responsibility.
 :::
 
-### Grant hooks
+### Platform hooks
 
 The `PlatformHooks`'s `customAuthPage method` can be implemented to redirect to external login page or to return custom html page,
 and `customAuth method` to interpret the return of the custom auth page.
