@@ -132,7 +132,7 @@ pdf.add(PDFTool.getImageFromResource(obj.getGrant(), "MYIMAGERESOURCECODE"));
 Excel(R) sheet using Apache POI&reg;
 ------------------------------------
 
-### Create sheet from scratch
+### Create a basic sheet
 
 ```java
 import com.simplicite.util.tools.ExcelPOITool;
@@ -147,10 +147,10 @@ r.add(c);
 s.add(r);
 xls.add(s);
 bytes[] bytes = xls.generateToByteArray();
-// Do something with document content...
+// Do something with byte array...
 ```
 
-### Using an existing template sheet
+### Create an advanced sheet
 
 For this advanced usage of the **Apache POI** lib you need to include the `org.apache.poi.hssf.usermodel` package explicitly.
 
@@ -170,6 +170,37 @@ for (int i = 0; i < rows.size(); i++) {
 	}
 	xls.addRow(sheet, r);
 }
+bytes[] bytes = xls.generateToByteArray();
+// Do something with byte array...
+```
+
+Word(R) sheet using Docx4j
+--------------------------
+
+In the bellow example we add HTML fragments to a Word(R) document.
+
+### Create a basic document
+
+```java
+import com.simplicite.util.tools.DocxTool;
+
+(...)
+
+DocxTool dt = new DocxTool();
+dt.newDocument();
+dt.addHTML(html);
+dt.toByteArray();
+bytes[] bytes = dt.toByteArray();
+// Do something with byte array...
+```
+
+### Create from an existing template document
+
+```java
+DocxTool dt = new DocxTool(doc.getFile());
+dt.addHTML(html);
+bytes[] bytes = dt.toByteArray();
+// Do something with byte array...
 ```
 
 In the above example `doc` is a Simplicité document.
