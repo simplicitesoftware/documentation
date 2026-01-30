@@ -106,7 +106,7 @@ Depending on the SSO strategies others configurations are possible :
 | SAML_SP_PRIVATEKEY         | -----BEGIN RSA PRIVATE KEY-----(...)-----END RSA PRIVATE KEY | Private key of the SP.                                                                        |
 | SAML_USERINFO_MAPPINGS     | JSON data                                                    | User info fields mappings for synchronization (firstname, lastname, email and phone)          |
 
-### Grant hooks
+### Platform hooks
 
 Then you can implement `GrantHooks`'s `parseAuth` method to handle the returned
 Google account identifier if required.

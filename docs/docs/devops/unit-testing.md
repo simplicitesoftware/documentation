@@ -128,7 +128,7 @@ It is applicable to:
 - External objects
 - Dispositions
 - Adapters
-- Grant hooks
+- Platform hooks
 
 A _Run unit tests_ action button is available to run the `unitTests` method (and as this is an action, the call can be automated
 using the API or I/O endpoint, see bellow).

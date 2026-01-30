@@ -396,8 +396,8 @@ This provider adds specific KeyCloak functionality like user info group mapping,
 
 Refer to the [dedicated Keycloak documentation](keycloak) for details.
 
-Grant hooks
------------
+Platform hooks
+--------------
 
 If needed you can implement additional business logic in the `GrantHooks` Java class or Rhino script.
 
