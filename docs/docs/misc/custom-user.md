@@ -55,7 +55,7 @@ Add and adapt the following code to your use case:
 - the class name
 - the group / type correspondence in the `postSave`
 
-```java
+```simplicite-java
 package com.simplicite.objects.SimFeatures;
 
 import java.util.*;
