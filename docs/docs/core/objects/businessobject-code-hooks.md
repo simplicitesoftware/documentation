@@ -73,7 +73,7 @@ Never trigger an object loading within a `postLoad`, this may result in an uncat
 In this example, a restrictive search specification is applied to the object (limiting results to validated records only)
 if the user belongs to a specified group.
 
-```java
+```simplicite-java
 @Override
 public void postLoad() {
     if (getGrant().hasResponsibility("MYGROUP"))
@@ -96,7 +96,7 @@ they just allow to **restrict** these rights depending on more complex business 
 
 In the following example, the status of the parent object is evaluated to determine whether creation is permitted or denied.
 
-```java
+```simplicite-java
 @Override
 public boolean isCreateEnable() {
     ObjectDB p = getParentObject();
@@ -106,7 +106,7 @@ public boolean isCreateEnable() {
 }
 
 In this example, updates are permitted only when a specific field's value is true.
-```java
+```simplicite-java
 @Override
 public boolean isUpdateEnable(String[] row) {
     return Tool.isTrue(row[getFieldIndex("objField1")]);
@@ -115,7 +115,7 @@ public boolean isUpdateEnable(String[] row) {
 
 In this example, delete permissions follow the same rule as update permissions.
 
-```java
+```simplicite-java
 @Override
 public boolean isDeleteEnable(String[] row) {
     return isUpdateEnable(row);
@@ -350,7 +350,7 @@ When action has confirm fields this hook allows to prepare them before rendering
 
 **Example:**
 
-```java
+```simplicite-java
 @Override
 public void initAction(Action action) {
     ObjectField f = action.getConfirmField("myFieldName");
@@ -387,7 +387,7 @@ Only error message(s) prevents the actual saving of the record.
 
 **Examples:**
 
-```java
+```simplicite-java
 @Override
 public List<String> preValidate() {
     List<String> msgs = new ArrayList<String>();
@@ -501,7 +501,7 @@ or just to prevent saving in some particular cases, etc.
 
 **Example:**
 
-```java
+```simplicite-java
 @Override
 public String postSave() {
     // Update a data of a linked object after
@@ -558,7 +558,7 @@ Post search hook is called after search to add specific code for instance to eva
 
 **Examples:**
 
-```java
+```simplicite-java
 @Override
 public void preSearch() {
     getField("objField1").setFilter("is null or <1000");

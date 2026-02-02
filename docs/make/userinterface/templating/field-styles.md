@@ -74,7 +74,7 @@ The `getStyle` hook can be used to apply a custom CSS class to a field based on 
 
 The `getStyle` hook is called for each Field of the Object, in List and Form views.
 
-```java
+```simplicite-java
 public String getStyle(ObjectField field, String[] row) {
     // set a red background if the "myField" Field's value is "123"
     if ("myField".equals(field.getName()) && "123".equals(getFieldValue("myField", row))) {

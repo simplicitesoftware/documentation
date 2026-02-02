@@ -89,7 +89,7 @@ The `setLabel` method of the Java API can be used to set the translations for an
 
 Example: Customizing an object's label for a specific user group
 
-```java
+```simplicite-java
 public void postLoad() {
 	if (getGrant().hasResponsibility("USER_GROUP"))
 		setLabel("My Custom Object Label");

@@ -79,7 +79,7 @@ The Endpoint is now granted to the users with the `TRN_PUBLIC` Responsibility
 
 Implement the `TrnWebService` Class like so :
 
-```java title=TrnWebService.java
+```simplicite-java title=TrnWebService.java
 package com.simplicite.extobjects.Training;
 
 import java.util.List;

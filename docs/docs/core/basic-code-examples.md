@@ -67,7 +67,7 @@ Logging
 
 It is possible to log messages using:
 
-```java
+```simplicite-java
 AppLog.debug("Hello world !",getGrant());   // Debug level message
 AppLog.info("Hello world !",getGrant());    // Info level message
 // e is type java.lang.Throwable
@@ -78,7 +78,7 @@ AppLog.fatal(e,getGrant());   // Fatal level message
 
 It is also possible to link a message to an explicit log code:
 
-```java
+```simplicite-java
 AppLog.log("MYLOGCODE_001","Hello world !",getGrant());
 ```
 
@@ -95,7 +95,7 @@ Business objects manipulation
 
 Selecting a **single record** from its row ID.
 
-```java
+```simplicite-java
 ObjectDB o = getGrant().getTmpObject("myObject");
 synchronized (o.getLock()) {
 	o.resetFilters();
@@ -113,7 +113,7 @@ Search **multiple records** with filters and ordering.
 
 Without pagination:
 
-```java
+```simplicite-java
 ObjectDB o = getGrant().getTmpObject("myObject");
 synchronized (o.getLock()) {
 
@@ -153,7 +153,7 @@ With pagination to limit memory usage, you have to implement a callback for each
 
 - V6 supports a `pageNum` parameter to calculate a global rowNum in search:
 
-```java
+```simplicite-java
 final int maxRowsPerPage = 50;
 obj.search(true, maxRowsPerPage, (rows, pageNum) -> {
 	int rowNum = maxRowsPerPage * pageNum;
@@ -206,7 +206,7 @@ If it's a static filter that never changes, use the postLoad hook to define your
 The object's table alias is t.
 The alias of the related object table is t_logical name technical key.
 
-```java
+```simplicite-java
 @Override
 public void postLoad() {
 	if (getGrant().hasResponsibility("USER_GROUP"))
@@ -225,7 +225,7 @@ Others
 
 ### Sending emails
 
-```java
+```simplicite-java
 ObjectDB obj = getGrant().getTmpObject("myObject");
 ObjectField myObjectFile = obj.getField("myObjFile"); // must be of type file
 
@@ -244,7 +244,7 @@ mail.send();
 
 This simple example unzips a ZIP file read from a public URL and unzip it to a temporary folder for processing files:
 
-```java
+```simplicite-java
 public void readZip(File zipFile){
 	File destDir = new File(this.getGrant().getTmpDir() + "/mydata." + System.currentTimeMillis());
 	try {
@@ -280,7 +280,7 @@ public byte[] writeZip() {
 
 Example to export a ZIP with documents from object fields using a temporary directory:
 
-```java
+```simplicite-java
 String tmpdir = FileTool.getRandomDirname(Platform.getTmpDir(), "myArchive");
 try {
 	File tmp = new File(tmpdir);

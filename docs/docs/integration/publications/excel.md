@@ -13,7 +13,7 @@ It generates simple Microsoft Excel&reg; content using the Apache POI&reg; libra
 Simplest example
 ----------------
 
-```java
+```simplicite-java
 public byte[] pubExcel(PrintTemplate pt){
 	pt.setFilename(pt.getFilename().replace("[attr]", getFieldValue("attr")));
 	try{
@@ -33,7 +33,7 @@ public byte[] pubExcel(PrintTemplate pt){
 SQL-query based example
 -----------------------
 
-```java
+```simplicite-java
 public byte[] pubExcel(PrintTemplate pt){
 	//Simple Example of SQL query
 	String sqlQuery = "select prd_code, prd_name, prd_stock, prd_unitprice from demo_product where prd_sup_id="+getRowId();

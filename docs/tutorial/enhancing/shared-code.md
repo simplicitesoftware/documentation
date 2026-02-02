@@ -37,7 +37,7 @@ To do so, follow the steps below:
 
 Implement the `TrnProductTest` class like so :
 
-```java title=TrnProductTest.java
+```simplicite-java title=TrnProductTest.java
 package com.simplicite.tests.Training;
 
 import static org.junit.Assert.assertEquals;

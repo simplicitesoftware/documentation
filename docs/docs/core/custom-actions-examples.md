@@ -18,7 +18,7 @@ This _method_ field contains the name of a server-side **Java** method.
 For instance if you set `myCustomAction` as action _method_ and if you grant this action to the `MyObject` business object,
 the platform will look for the server-side **Java** method called `MyObject.myCustomAction()` and will run it.
 
-```java
+```simplicite-java
 public String myCustomAction() {
 	String rowId = getRowId();
 	return Message.formatSimpleInfo("Using instance " + getInstanceName() + (!Tool.isEmpty(rowId) ? " and row ID " + rowId : ""));
@@ -148,7 +148,7 @@ public String postSave() {
 
 The Action fields can also been accessed in the callback `method` of transition with this syntax:
 
-```java
+```simplicite-java
 public String myTransitionCallback(Action action) {
 	if (action!=null) {
 		String param = action.getConfirmField("myField").getValue();
@@ -224,7 +224,7 @@ Asynchronous action launched by the UI with tracking
 
 Since 6.0 the method signature can get a new parameter to implement the tracking:
 
-```java
+```simplicite-java
 public String myAction(Action action, AsyncTracker tracker) {
 	try {
 		// Already running ?
