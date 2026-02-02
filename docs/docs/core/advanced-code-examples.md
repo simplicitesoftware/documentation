@@ -27,7 +27,7 @@ Examples:
 
 Share a parameter between objects:
 
-```java
+```simplicite-java
 @Override
 public void initUpdate() {
     getGrant().setParameter("MYAPP_CONTEXT_ID", getRowId());
@@ -91,7 +91,7 @@ Etc.
 
 To make a global setting, it is necessary to use the system singleton
 
-```java
+```simplicite-java
 Grant.getSystemAdmin().setParameter(name, value);
 Grant.getSystemAdmin().getParameter(name);
 Grant.getSystemAdmin().removeParameter(name);
@@ -106,7 +106,7 @@ The best solution is to load the parameter depending on user in the `GrantHooks`
 
 Example:
 
-```java
+```simplicite-java
 @Override
 public void postLoadGrant(Grant g) {
     try {
@@ -168,7 +168,7 @@ In order to programmatically generate a list of values, you have to:
 
 **Example**:
 
-```java
+```simplicite-java
 @Override
 public void postLoad() {
     ObjectField field = getField("myField");
