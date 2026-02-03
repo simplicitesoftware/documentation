@@ -35,7 +35,9 @@ Sizing of the server should be made according to the needs, as always. Any up-to
 </details>
 
 :::warning
-As of February 2026, there are [compatibility problems between Almalinux 10 and Docker](https://forums.rockylinux.org/t/docker-installation-failed-on-rhel-10/20024), prefer Almalinux 9 instead.
+As of February 2026, there are
+[compatibility problems between Almalinux 10 and Docker](https://forums.rockylinux.org/t/docker-installation-failed-on-rhel-10/20024),
+prefer Almalinux 9 instead.
 :::
 
 2 - System configuration
@@ -82,10 +84,11 @@ It is **highly recommended** to allow only SSH connections using SSH keys
 
 ### System updates
 
-The system **must** be up-to-date **before proceeding**:
+The system **must** be up-to-date **before proceeding**, and portainer [needs SELinux to be disabled](https://docs.portainer.io/faqs/installing/my-host-is-using-selinux.-can-i-use-portainer):
 
 ```shell
 sudo dnf update -y
+sudo sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 sudo reboot
 ```
 
@@ -126,18 +129,6 @@ Check that everything runs smooth
 docker run hello-world # check everything is running smoothly
 ```
 
-Portainer also [needs SELinux to be disabled]():
-
-```shell
-sudo sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
-sudo reboot
-```
-
-:::note
-Optionally a firewall should be configured on the host (or among the host) to allow only the relevant traffic.
-Minimal configuration is to allow the HTTP port `80` and HTTPS port `443` (along with the SSH port `22` from legitimate origins) through this firewall.
-:::
-
 4 - Portainer install with lets encrypt and traefik
 ---------------------------------------------------
 
@@ -148,13 +139,10 @@ This is an adaptation of Portainer's doc "[Deploying Portainer behind Traefik Pr
 3. start the configured services with `sudo docker compose up -d`
 4. verify that you have access to `traefik.my.domain` and `portainer.my.domain`
 
-
-
-
-
 ### 4.1 - Directory
 
 The configuration basically needs 3 files:
+
 - the docker compose configuration for portainer and traefik
 - the variables for this configuration in an `.env` file
 - an `acme.json` file for Let's encrypt to work with
@@ -279,7 +267,7 @@ is created where all containers will be placed.
 
 ### Portainer admin user
 
-Access `https://portainer.my.domain` **right after starting the service** 
+Access `https://portainer.my.domain` **right after starting the service**
 
 :::warning
 It's only configurable for a limited amount of time
@@ -308,11 +296,11 @@ https://cdn.jsdelivr.net/gh/simplicitesoftware/resources@latest/public/portainer
 
 ### From templates
 
-1. select an app template (click on the line) or customize a template ("copy as custom"):
+Select an app template (click on the line) or customize a template ("copy as custom"):
 
 ![templates](img/portainer/templates.png)
 
-2. fill the values (the host URL must correspond to the wildcard domain for let's encrypt to work as intended)
+And then fill the values (the host URL must correspond to the wildcard domain for let's encrypt to work as intended)
 
 ![templates](img/portainer/templates.png)
 
