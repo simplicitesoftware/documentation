@@ -111,7 +111,7 @@ sudo timedatectl set-timezone Europe/Paris
 
 ### SSH connection method
 
-By default, **password authentication should be disabled** on almalinux if you deployed your server with a SSH key. 
+By default, **password authentication should be disabled** on almalinux if you deployed your server with a SSH key.
 Check your configuration and update it if necessary.
 
 ```shell
@@ -243,7 +243,7 @@ services:
       - --providers.docker.network=proxy
       - --providers.docker.exposedByDefault=false
       - --certificatesresolvers.leresolver.acme.httpchallenge=true
-      - --certificatesresolvers.leresolver.acme.email=${ACME_MAIL} 
+      - --certificatesresolvers.leresolver.acme.email=${ACME_MAIL}
       - --certificatesresolvers.leresolver.acme.storage=./acme.json
       - --certificatesresolvers.leresolver.acme.httpchallenge.entrypoint=web
     labels:
@@ -253,7 +253,7 @@ services:
       - traefik.http.routers.mydashboard.entrypoints=websecure
       - traefik.http.routers.mydashboard.service=api@internal
       - traefik.http.routers.mydashboard.middlewares=myauth
-      - traefik.http.middlewares.myauth.basicauth.users=${TRAEFIK_DASHBOARD_BASICAUTH} 
+      - traefik.http.middlewares.myauth.basicauth.users=${TRAEFIK_DASHBOARD_BASICAUTH}
   portainer:
     image: portainer/portainer-ce:latest
     command: -H unix:///var/run/docker.sock
@@ -313,7 +313,7 @@ It's only configurable for a limited amount of time
 ### Simplicité registry
 
 Go to `Administration > Registries` and create a **Custom Registry** with your dedicated Simplicité registry user and password
-mentioned in the [requirements](#simplicité-images-access). 
+mentioned in the [requirements](#simplicité-images-access).
 (_Reminder: you can check your credentials work by testing them on [registry-ui](https://registry-ui.simplicite.io)_)
 
 ```text
@@ -321,7 +321,6 @@ registry.simplicite.io
 ```
 
 ![templates](img/portainer/portainer-registry.png)
-
 
 ### Docker compose Simplicité templates
 
@@ -396,7 +395,7 @@ Backups
 
 ### Temporality
 
-Be mindfull of execution times: VM backups might abort instance backups, which might abort the app's processes 
+Be mindfull of execution times: VM backups might abort instance backups, which might abort the app's processes
 (the app usually needs to be stopped make an instance backup).
 
 |                          | Comment                                                                                                                                                               | Recommended time | Execution control   |
