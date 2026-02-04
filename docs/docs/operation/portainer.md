@@ -16,9 +16,11 @@ This document demonstrates how to use Portainer to deploy Simplicité instances 
 - Portainer available at `portainer.my.domain`
 - allow remote debugging
 
+The whole installation process can be done in under 30 minutes.
+
 ![Portainer](img/portainer/portainer.png)
 
-:::note
+:::info
 For on premise environments, many adaptations should be done to this doc:
 
 - registry proxy
@@ -31,14 +33,6 @@ Those adaptations are out of scope of this document.
 
 1 - Requirements
 ----------------
-
-:::note
-TL;DR:
-
-1. access to Simplicité registry
-2. a VM with a wildcard DNS record on it
-
-:::
 
 ### Simplicité images access
 
@@ -92,17 +86,12 @@ ssh almalinux@ssh.my-app-server.my-domain.com
 
 ### Firewall
 
-Installing a local firewall is **highly recommended**, for instance by issuing the following commands:
+Install a local firewall with HTTP, HTTPS and SSH enabled. is **highly recommended**, for instance by issuing the following commands:
 
 ```shell
 sudo dnf -y install firewalld && sudo dnf clean all
 sudo systemctl enable firewalld
 sudo systemctl start firewalld
-```
-
-Configuration: here it allows HTTP(S) and SSH traffic from any source:
-
-```shell
 sudo firewall-cmd --add-service=ssh --permanent
 sudo firewall-cmd --add-service=http --permanent
 sudo firewall-cmd --add-service=https --permanent
@@ -110,11 +99,7 @@ sudo firewall-cmd --remove-service=cockpit --permanent
 sudo firewall-cmd --reload
 ```
 
-Verify the configuration:
-
-```shell
-sudo firewall-cmd --list-all
-```
+The configuration is verifiable with `sudo firewall-cmd --list-all`
 
 ### System time
 
@@ -126,8 +111,12 @@ sudo timedatectl set-timezone Europe/Paris
 
 ### SSH connection method
 
-It is **highly recommended** to allow only SSH connections using SSH keys
-(remember to disable password authentication after having configured the allowed SSH keys)
+By default, **password authentication should be disabled** on almalinux if you deployed your server with a SSH key. 
+Check your configuration and update it if necessary.
+
+```shell
+sudo sshd -T | grep passwordauthentication
+```
 
 ### System updates
 
@@ -181,12 +170,7 @@ docker run hello-world # check everything is running smoothly
 
 This is an adaptation of Portainer's doc "[Deploying Portainer behind Traefik Proxy](https://docs.portainer.io/advanced/reverse-proxy/traefik)"
 
-1. create a local `acme.json` with `600` rights **prior** to starting this Docker compose configuration
-2. copy, adapt, and paste the following configuration at the home of your user
-3. start the configured services with `sudo docker compose up -d`
-4. verify that you have access to `traefik.my.domain` and `portainer.my.domain`
-
-### Directory
+### Portainer configuration directory
 
 The configuration basically needs 3 files:
 
@@ -203,7 +187,7 @@ touch acme.json
 chmod 600 acme.json
 ```
 
-### Services variables
+### Portainer variables
 
 :::warning
 **Do not** use the following configuration as is, make sure to adapt all variables.
@@ -227,7 +211,7 @@ htpasswd -bn your_user_name your_super_complex_password | sed 's/\$/$$/g'
 
 :::
 
-### Services compose file
+### Portainer compose file
 
 Copy and paste the configuration with `vi docker-compose.yml`
 
@@ -237,8 +221,6 @@ services:
     container_name: traefik
     image: "traefik:latest"
     restart: unless-stopped
-    env_file:
-      - ./portainer-and-traefik.env
     ports:
       - "80:80"
       - "443:443"
@@ -276,8 +258,6 @@ services:
     image: portainer/portainer-ce:latest
     command: -H unix:///var/run/docker.sock
     restart: unless-stopped
-    env_file:
-      - ./portainer-and-traefik.env
     networks:
       - proxy
     volumes:
@@ -309,6 +289,16 @@ The Traefik container and the Simplicité instances have to run in the same Dock
 is created where all containers will be placed.
 :::
 
+### Portainer start
+
+Running the start command will fetch images, start containers, get certificates, etc.
+
+```shell
+docker compose up -d
+```
+
+Verify that you have access to `traefik.my.domain` and `portainer.my.domain`
+
 5 - Configure Portainer
 ------------------------
 
@@ -322,11 +312,16 @@ It's only configurable for a limited amount of time
 
 ### Simplicité registry
 
-Go to `Administration > Registries` and create a `registry.simplicite.io` registry with your dedicated Simplicité registry user and password
+Go to `Administration > Registries` and create a **Custom Registry** with your dedicated Simplicité registry user and password
+mentioned in the [requirements](#simplicité-images-access). 
+(_Reminder: you can check your credentials work by testing them on [registry-ui](https://registry-ui.simplicite.io)_)
 
-:::info
-If you don't have Simplicité registry access, contact us. You might also have access to our images through your companies registries.
-:::
+```text
+registry.simplicite.io
+```
+
+![templates](img/portainer/portainer-registry.png)
+
 
 ### Docker compose Simplicité templates
 
@@ -345,11 +340,11 @@ https://cdn.jsdelivr.net/gh/simplicitesoftware/resources@latest/public/portainer
 
 Select an app template (click on the line) or customize a template ("copy as custom"):
 
-![templates](img/portainer/templates.png)
+![templates](img/portainer/app_templates.png)
 
 And then fill the values (the host URL must correspond to the wildcard domain for let's encrypt to work as intended)
 
-![templates](img/portainer/templates.png)
+![templates](img/portainer/deploy-template.png)
 
 ### From stacks
 
@@ -374,6 +369,12 @@ services:
     (...)
 ```
 
+:::warning
+At the moment, there seems to be no way of routing VSCode's JPDA packets over traefik.
+Our only option is thus to expose the port directly, without going through traefik.
+Remember that there is a firewall installed, and it might need configuration.
+:::
+
 ### VSCode tools
 
 To use [developer mode](/docs/docs/operation/docker.md#developer-mode) for development-oriented features and
@@ -390,17 +391,35 @@ services:
       (...)
 ```
 
-Backup an instance
-------------------
+Backups
+-------
 
-This script makes the assumption that you have deployed with portainer a stack that with an app service (Simplicité)
-and a database service (PostgreSQL). You can call it daily and setup rotating backups.
+### Temporality
+
+Be mindfull of execution times: VM backups might abort instance backups, which might abort the app's processes 
+(the app usually needs to be stopped make an instance backup).
+
+|                          | Comment                                                                                                                                                               | Recommended time | Execution control   |
+|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|---------------------|
+| App daily executions     |                                                                                                                                                                       | 12am             | Simplicité          |
+| Instance backups         | Example events where you might need a backup: Bad upgrade, catastrophic Simplicité configuration choices, bad file manipulation, database corruption, etc.            | 2am              | Server crontab      |
+| Instance backups backups | It's good practice to backup the instance backups on another server, making sure it's in another region, in the event of catastrophic datacenter-level accidents.<br> | 2am              | Server crontab      |
+| VM Backups               | Periodical VM backups are recommended, especially when [automatic system updates](#system-updates) are enabled.                                                       | 4am              | VM Provider         |
+| System update            | Happens after VM backups                                                                                                                                              | 6am              | Server dnf-automatic|
+
+### Backup script
+
+This is a backup script example for a Simplicité + PostgreSQL stack.
 
 Each backed up project uses a variables-definitions `backup-myproject.sh` script that call a unified `backup.sh` script.
 `backup-myproject.sh` should be called by cron (`crontab -e`).
 
+```text
+0 2 * * * /home/almalinux/backups/backup-myapp.sh 1>/dev/null 2>&1
+```
+
 <details>
-<summary>Click to see scripts</summary>
+<summary>See scripts</summary>
 
 `backup-myproject.sh` script:
 
