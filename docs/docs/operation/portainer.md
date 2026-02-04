@@ -18,27 +18,74 @@ This document demonstrates how to use Portainer to deploy Simplicité instances 
 
 ![Portainer](img/portainer/portainer.png)
 
-1 - Server deployment
----------------------
+:::note
+For on premise environments, many adaptations should be done to this doc:
 
-Sizing of the server should be made according to the needs, as always. Any up-to-date unix image should be able to run the containers.
+- registry proxy
+- let's encrypt alternative, or http-only configuration
+- custome app templates
+- etc
 
-<details>
-<summary>Click to open</summary>
+Those adaptations are out of scope of this document.
+:::
 
-- Medium-sized server (see [Sizing doc](/docs/operation/sizing) if necessary)
-  - 2 vCores
-  - 50GiB storage
-  - 250Mbps bandwidth
-- Almalinux 9 image
+1 - Requirements
+----------------
 
-</details>
+:::note
+TL;DR:
+
+1. access to Simplicité registry
+2. a VM with a wildcard DNS record on it
+
+:::
+
+### Simplicité images access
+
+No matter the infrastructure, to deploy Simplicité images, access to a registry serving those images is mandatory.
+In most cases, Simplicité's official registry should be used. Check credentials by connecting to the [registry's UI](https://registry-ui.simplicite.io/).
+
+### Server
 
 :::warning
 As of February 2026, there are
 [compatibility problems between Almalinux 10 and Docker](https://forums.rockylinux.org/t/docker-installation-failed-on-rhel-10/20024),
 prefer Almalinux 9 instead.
 :::
+
+The following commands have been tested on **Almalinux 9**, which is the OS we use and recommend.
+_Non RHEL-compatible unix OS will need some command adaptations (`dnf` -> `apt` etc.)._
+
+Sizing of the server should be made according to the needs, see [Sizing doc](/docs/operation/sizing) if necessary.
+The minimal recommended configuration would be:
+
+- 2 vCores
+- 4 GB
+- 50 GB storage
+- 250 Mbit bandwidth
+- your SSH key
+
+### Wildcard domain
+
+A [wildcard DNS record](https://en.wikipedia.org/wiki/Wildcard_DNS_record) configured on the server's IP adress.
+
+```text
+*.<my-app-server.my-domain.com> IN A <IP adress>
+```
+
+This domain is used for all services:
+
+- SSH connection : `ssh.my-app-server.my-domain.com` (_a subdomain like `ssh.my-app...` or `anything.my-app...` is needed
+because the DNS record is configured with the wildcard_)
+- Portainer access : `https://portainer.my-app-server.my-domain.com`
+- Traefik access : `https://traefik.my-app-server.my-domain.com`
+- Deployed apps : `https://test-instance.my-app-server.my-domain.com`
+
+Once configured, SSH connect to the server using the domain name (**not the IP**), to make sure it is configured properly.
+
+```shell
+ssh almalinux@ssh.my-app-server.my-domain.com
+```
 
 2 - System configuration
 ------------------------
@@ -71,7 +118,7 @@ sudo firewall-cmd --list-all
 
 ### System time
 
-Adjust the system date and timezone to your nee, e.g.
+Adjust the system date and timezone.
 
 ```shell
 sudo timedatectl set-timezone Europe/Paris
@@ -139,7 +186,7 @@ This is an adaptation of Portainer's doc "[Deploying Portainer behind Traefik Pr
 3. start the configured services with `sudo docker compose up -d`
 4. verify that you have access to `traefik.my.domain` and `portainer.my.domain`
 
-### 4.1 - Directory
+### Directory
 
 The configuration basically needs 3 files:
 
@@ -156,7 +203,7 @@ touch acme.json
 chmod 600 acme.json
 ```
 
-### 4.2 - Service variables
+### Services variables
 
 :::warning
 **Do not** use the following configuration as is, make sure to adapt all variables.
@@ -180,7 +227,7 @@ htpasswd -bn your_user_name your_super_complex_password | sed 's/\$/$$/g'
 
 :::
 
-### 4.3 - Service configuration
+### Services compose file
 
 Copy and paste the configuration with `vi docker-compose.yml`
 
