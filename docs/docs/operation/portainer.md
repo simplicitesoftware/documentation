@@ -398,13 +398,13 @@ Backups
 Be mindfull of execution times: VM backups might abort instance backups, which might abort the app's processes
 (the app usually needs to be stopped make an instance backup).
 
-|                          | Comment                                                                                                                                                               | Recommended time | Execution control   |
-|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|---------------------|
-| App daily executions     |                                                                                                                                                                       | 12am             | Simplicité          |
-| Instance backups         | Example events where you might need a backup: Bad upgrade, catastrophic Simplicité configuration choices, bad file manipulation, database corruption, etc.            | 2am              | Server crontab      |
-| Instance backups backups | It's good practice to backup the instance backups on another server, making sure it's in another region, in the event of catastrophic datacenter-level accidents.<br> | 2am              | Server crontab      |
-| VM Backups               | Periodical VM backups are recommended, especially when [automatic system updates](#system-updates) are enabled.                                                       | 4am              | VM Provider         |
-| System update            | Happens after VM backups                                                                                                                                              | 6am              | Server dnf-automatic|
+|                          | Comment                                                                                                                                                           | Recommended time | Execution control    |
+|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|----------------------|
+| App daily executions     |                                                                                                                                                                   | 12am             | Simplicité           |
+| Instance backups         | Example events where you might need a backup: Bad upgrade, catastrophic Simplicité configuration choices, bad file manipulation, database corruption, etc.        | 2am              | Server crontab       |
+| Instance backups backups | It's good practice to backup the instance backups on another server, making sure it's in another region, in the event of catastrophic datacenter-level accidents. | 2am              | Server crontab       |
+| VM Backups               | Periodical VM backups are recommended, especially when [automatic system updates](#system-updates) are enabled.                                                   | 4am              | VM Provider          |
+| System update            | Happens after VM backups                                                                                                                                          | 6am              | Server dnf-automatic |
 
 ### Backup script
 
