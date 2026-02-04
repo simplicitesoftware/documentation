@@ -397,7 +397,7 @@ The signed APK is generated in your android directory `myproject/platforms/andro
 
 ### Upload the APK with the play-store console
 
-You will have to change the version each time you deliver an new APK:
+You will have to change the version each time you deliver a new APK:
 
 - in root files `config.xml` and `package.json`
 - rebuild the release

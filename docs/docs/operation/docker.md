@@ -722,7 +722,7 @@ You need to check carefully the build logs to see which libraries were ignored.
 Run with Docker Compose tool
 ----------------------------
 
-You can use the Docker Compose tool to start an database container and a Simplicité instace container.
+You can use the Docker Compose tool to start a database container and a Simplicité instace container.
 
 ### Prerequisites
 
