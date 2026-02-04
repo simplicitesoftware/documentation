@@ -17,7 +17,7 @@ Abstract
 --------
 
 Hooks are executed on the client-side in javascript and the override the rendering.
-Edit the script and create an JavaScript object to declare the hooks :
+Edit the script and create a JavaScript object to declare the hooks :
 
 ```javascript
 // Modeler extension (SVG)
@@ -309,7 +309,7 @@ onNewNode: function(template, container, position, form) {
 },
 onAddContent: function(node, template, form) {
 	var self = this;
-	// Add field screen flow thru external object wrapper
+	// Add field screen flow through external object wrapper
 	if (node.object=="ObjectInternal" && template.name=="Field") {
 		self.topui.loadURL(null, self.root + "/ui/ext/SystemAddField?row_id="+node.id);
 	}

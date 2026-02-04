@@ -10,47 +10,88 @@ Portainer is a container management platform that enables efficient deployment a
 This document demonstrates how to use Portainer to deploy Simplicité instances with automated configuration and management.
 
 - **minimal manual configuration**
-- SSL certificates auto-setup with Let's Encrypt
+- SSL certificates auto-setup with Let's Encrypt at `my-simplicite-app.my.domain`
 - HTTP -> HTTPS redirection
-- Traefik's reverse proxy dashboard activated and available at `traefik.my.domain` behind `admin / _ChangeItNow_` default basic auth
-  (can be changed using `htpasswd -bn your_user_name your_super_complex_password | sed 's/\$/$$/g'`, doubling the `$` is required)
+- Traefik's reverse proxy dashboard activated and available at `traefik.my.domain` behind basic auth
 - Portainer available at `portainer.my.domain`
 - allow remote debugging
 
+The whole installation process can be done in under 30 minutes.
+
 ![Portainer](img/portainer/portainer.png)
 
-1 - Server deployment
----------------------
+:::info
+For on premise environments, many adaptations should be done to this doc:
 
-Sizing of the server should be made according to the needs, as always. Any up-to-date unix image should be able to run the containers.
+- registry proxy
+- let's encrypt alternative, or http-only configuration
+- custome app templates
+- etc
 
-<details>
-<summary>Click to open</summary>
+Those adaptations are out of scope of this document.
+:::
 
-- Medium-sized server :
-  - 2 vCores
-  - 50GiB storage
-  - 250Mbps bandwidth
-- Almalinux 9 image
+1 - Requirements
+----------------
 
-</details>
+### Simplicité images access
+
+No matter the infrastructure, to deploy Simplicité images, access to a registry serving those images is mandatory.
+In most cases, Simplicité's official registry should be used. Check credentials by connecting to the [registry's UI](https://registry-ui.simplicite.io/).
+
+### Server
+
+:::warning
+As of February 2026, there are
+[compatibility problems between Almalinux 10 and Docker](https://forums.rockylinux.org/t/docker-installation-failed-on-rhel-10/20024),
+prefer Almalinux 9 instead.
+:::
+
+The following commands have been tested on **Almalinux 9**, which is the OS we use and recommend.
+_Non RHEL-compatible unix OS will need some command adaptations (`dnf` -> `apt` etc.)._
+
+Sizing of the server should be made according to the needs, see [Sizing doc](/docs/operation/sizing) if necessary.
+The minimal recommended configuration would be:
+
+- 2 vCores
+- 4 GB
+- 50 GB storage
+- 250 Mbit bandwidth
+- your SSH key
+
+### Wildcard domain
+
+A [wildcard DNS record](https://en.wikipedia.org/wiki/Wildcard_DNS_record) configured on the server's IP adress.
+
+```text
+*.<my-app-server.my-domain.com> IN A <IP adress>
+```
+
+This domain is used for all services:
+
+- SSH connection : `ssh.my-app-server.my-domain.com` (_a subdomain like `ssh.my-app...` or `anything.my-app...` is needed
+because the DNS record is configured with the wildcard_)
+- Portainer access : `https://portainer.my-app-server.my-domain.com`
+- Traefik access : `https://traefik.my-app-server.my-domain.com`
+- Deployed apps : `https://test-instance.my-app-server.my-domain.com`
+
+Once configured, SSH connect to the server using the domain name (**not the IP**), to make sure it is configured properly.
+
+```shell
+ssh almalinux@ssh.my-app-server.my-domain.com
+```
 
 2 - System configuration
 ------------------------
 
 ### Firewall
 
-Installing a local firewall is **highly recommended**, for instance by issuing the following commands:
+Install a local firewall with HTTP, HTTPS and SSH enabled. is **highly recommended**, for instance by issuing the following commands:
 
 ```shell
 sudo dnf -y install firewalld && sudo dnf clean all
 sudo systemctl enable firewalld
 sudo systemctl start firewalld
-```
-
-Configuration: here it allows HTTP(S) and SSH traffic from any source:
-
-```shell
 sudo firewall-cmd --add-service=ssh --permanent
 sudo firewall-cmd --add-service=http --permanent
 sudo firewall-cmd --add-service=https --permanent
@@ -58,15 +99,11 @@ sudo firewall-cmd --remove-service=cockpit --permanent
 sudo firewall-cmd --reload
 ```
 
-Verify the configuration:
-
-```shell
-sudo firewall-cmd --list-all
-```
+The configuration is verifiable with `sudo firewall-cmd --list-all`
 
 ### System time
 
-Adjust the system date and timezone to your nee, e.g.
+Adjust the system date and timezone.
 
 ```shell
 sudo timedatectl set-timezone Europe/Paris
@@ -74,15 +111,21 @@ sudo timedatectl set-timezone Europe/Paris
 
 ### SSH connection method
 
-It is **highly recommended** to allow only SSH connections using SSH keys
-(remember to disable password authentication after having configured the allowed SSH keys)
+By default, **password authentication should be disabled** on almalinux if you deployed your server with a SSH key. 
+Check your configuration and update it if necessary.
+
+```shell
+sudo sshd -T | grep passwordauthentication
+```
 
 ### System updates
 
-The system **must** be up-to-date **before proceeding**:
+The system **must** be up-to-date **before proceeding**, and portainer [needs SELinux to be disabled](https://docs.portainer.io/faqs/installing/my-host-is-using-selinux.-can-i-use-portainer):
 
 ```shell
 sudo dnf update -y
+sudo sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+sudo reboot
 ```
 
 :::info
@@ -93,11 +136,11 @@ automatic reboot, make sur you have some kind of VM backup setup.
 ```shell
 sudo dnf install dnf-automatic -y
 sudo sed -i 's/^reboot=.*/reboot=when-needed/' /etc/dnf/automatic.conf
-sudo systemctl edit --full dnf-automatic.timer
 sudo systemctl enable --now dnf-automatic.timer
 ```
 
-If there are any problems with automatic updates, logs should be available through `sudo journalctl -u dnf-automatic.service`
+- edit automatic updates execution time (defaults to 6am) with `sudo systemctl edit --full dnf-automatic.timer`
+- if there are any problems with automatic updates, logs should be available through `sudo journalctl -u dnf-automatic.service`
 
 :::
 
@@ -109,39 +152,55 @@ Based on [docker CentOS install docs](https://docs.docker.com/engine/install/cen
 
 ```shell
 sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
-sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo systemctl start docker
 sudo systemctl enable docker
 sudo usermod -aG docker almalinux # add your current user to docker group
 exit # we need to exit and log back in for the docker group to take effect
-docker run hello-world # check everything is running smoothly
 ```
 
-Portainer also needs SELinux to be disabled:
+Check that everything runs smooth
 
 ```shell
-sudo sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
-sudo reboot
+docker run hello-world # check everything is running smoothly
 ```
-
-:::note
-Optionally a firewall should be configured on the host (or among the host) to allow only the relevant traffic.
-Minimal configuration is to allow the HTTP port `80` and HTTPS port `443` (along with the SSH port `22` from legitimate origins) through this firewall.
-:::
 
 4 - Portainer install with lets encrypt and traefik
 ---------------------------------------------------
 
 This is an adaptation of Portainer's doc "[Deploying Portainer behind Traefik Proxy](https://docs.portainer.io/advanced/reverse-proxy/traefik)"
 
-1. create a local `acme.json` with `600` rights **prior** to starting this Docker compose configuration
-2. copy, adapt, and paste the following configuration at the home of your user
-3. start the configured services with `sudo docker compose up -d`
-4. verify that you have access to `traefik.my.domain` and `portainer.my.domain`
+### Portainer configuration directory
+
+The configuration basically needs 3 files:
+
+- the docker compose configuration for portainer and traefik
+- the variables for this configuration in an `.env` file
+- an `acme.json` file for Let's encrypt to work with
+
+```shell
+mkdir portainer-and-traefik
+cd portainer-and-traefik
+touch .env
+touch docker-compose.yml
+touch acme.json
+chmod 600 acme.json
+```
+
+### Portainer variables
 
 :::warning
-**Do not** use the following configuration as is, make sure to adapt all lines that are marked `ADAPT` in the configuration.
+**Do not** use the following configuration as is, make sure to adapt all variables.
 :::
+
+Create and adapt the following file with `vi .env`
+
+```shell
+TOP_DOMAIN="my.domain" # wildcard domain (*.my.domain) configured on this server's IP
+ACME_MAIL="mail@my.domain" # email for the generation of SSL certificates with Let's Encrypt.
+TRAEFIK_DASHBOARD_ACTIVE="true"
+TRAEFIK_DASHBOARD_BASICAUTH="user_name:http-basic-auth-pwd" # cf tip below
+```
 
 :::tip
 To generate the basic auth user / pwd, you can use the following command line (doubling the `$` is required)
@@ -152,8 +211,9 @@ htpasswd -bn your_user_name your_super_complex_password | sed 's/\$/$$/g'
 
 :::
 
-<details>
-<summary>See config</summary>
+### Portainer compose file
+
+Copy and paste the configuration with `vi docker-compose.yml`
 
 ```yaml
 services:
@@ -171,7 +231,7 @@ services:
       - "./acme.json:/acme.json"
     command:
       - --api.insecure=true
-      - --api.dashboard=true # ADAPT to deactivate Traefik dashboard
+      - --api.dashboard=${TRAEFIK_DASHBOARD_ACTIVE}
       - --entrypoints.web.address=:80
       - --entrypoints.web.http.redirections.entrypoint.to=websecure
       - --entryPoints.web.http.redirections.entrypoint.scheme=https
@@ -183,17 +243,17 @@ services:
       - --providers.docker.network=proxy
       - --providers.docker.exposedByDefault=false
       - --certificatesresolvers.leresolver.acme.httpchallenge=true
-      - --certificatesresolvers.leresolver.acme.email=mail@my.domain # ADAPT email for the generation of SSL certificates with Let's Encrypt.
+      - --certificatesresolvers.leresolver.acme.email=${ACME_MAIL} 
       - --certificatesresolvers.leresolver.acme.storage=./acme.json
       - --certificatesresolvers.leresolver.acme.httpchallenge.entrypoint=web
     labels:
       - traefik.enable=true
-      - traefik.http.routers.mydashboard.rule=Host(`traefik.my.domain`) # ADAPT domain name
+      - traefik.http.routers.mydashboard.rule=Host(`traefik.${TOP_DOMAIN}`)
       - traefik.http.routers.mydashboard.tls.certresolver=leresolver
       - traefik.http.routers.mydashboard.entrypoints=websecure
       - traefik.http.routers.mydashboard.service=api@internal
       - traefik.http.routers.mydashboard.middlewares=myauth
-      - traefik.http.middlewares.myauth.basicauth.users=admin:$$apr1$$HQ4CZZxC$$kUrQ6qAFrX4v/EAYFdrsh1 # ADAPT basic auth
+      - traefik.http.middlewares.myauth.basicauth.users=${TRAEFIK_DASHBOARD_BASICAUTH} 
   portainer:
     image: portainer/portainer-ce:latest
     command: -H unix:///var/run/docker.sock
@@ -206,13 +266,13 @@ services:
     labels:
       # Frontend
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`portainer.my.domain`)" # ADAPT domain name
+      - "traefik.http.routers.frontend.rule=Host(`portainer.${TOP_DOMAIN}`)"
       - "traefik.http.routers.frontend.entrypoints=websecure"
       - "traefik.http.services.frontend.loadbalancer.server.port=9000"
       - "traefik.http.routers.frontend.service=frontend"
       - "traefik.http.routers.frontend.tls.certresolver=leresolver"
       # Edge
-      - "traefik.http.routers.edge.rule=Host(`edge.my.domain`)" # ADAPT domain name
+      - "traefik.http.routers.edge.rule=Host(`edge.${TOP_DOMAIN}`)"
       - "traefik.http.routers.edge.entrypoints=websecure"
       - "traefik.http.services.edge.loadbalancer.server.port=8000"
       - "traefik.http.routers.edge.service=edge"
@@ -224,62 +284,74 @@ volumes:
   portainer_data:
 ```
 
-</details>
-
 :::info
 The Traefik container and the Simplicité instances have to run in the same Docker network, that's why a "proxy" network
 is created where all containers will be placed.
 :::
 
-5 - Configure
--------------
+### Portainer start
 
-- access `https://portainer.my.domain` **right after starting the service** (it's only configurable for a limited amount of time)
-- create local environment
-- create registry.simplicite.io registry, with authentication
-- pull a Simplicité image
+Running the start command will fetch images, start containers, get certificates, etc.
+
+```shell
+docker compose up -d
+```
+
+Verify that you have access to `traefik.my.domain` and `portainer.my.domain`
+
+5 - Configure Portainer
+------------------------
+
+### Portainer admin user
+
+Access `https://portainer.my.domain` **right after starting the service**
+
+:::warning
+It's only configurable for a limited amount of time
+:::
+
+### Simplicité registry
+
+Go to `Administration > Registries` and create a **Custom Registry** with your dedicated Simplicité registry user and password
+mentioned in the [requirements](#simplicité-images-access). 
+(_Reminder: you can check your credentials work by testing them on [registry-ui](https://registry-ui.simplicite.io)_)
+
+```text
+registry.simplicite.io
+```
+
+![templates](img/portainer/portainer-registry.png)
+
+
+### Docker compose Simplicité templates
+
+Go to `Administration > Settings > General` and configure **App Templates** with the Simplicité Templates:
+
+```text
+https://cdn.jsdelivr.net/gh/simplicitesoftware/resources@latest/public/portainer_templates/templates.json
+```
+
+![templates](img/portainer/templates.png)
 
 6 - Start a Simplicité instance
 -------------------------------
 
-This is the minimal configuration to get a working Simplicité (non persistent) instance. Create a "stack"
-(a docker compose deployment, in Portainer's semantics), and paste the following config.
+### From templates
 
-```yaml
-services:
-  test:
-    image: registry.simplicite.io/platform:6-latest-light
-    restart: unless-stopped
-    container_name: test
-    networks:
-      - proxy
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.test.rule=Host(`test.my.domain`)"
-      - "traefik.http.routers.test.entrypoints=websecure"
-      - "traefik.http.routers.test.tls.certresolver=leresolver"
-      - "traefik.http.services.test.loadbalancer.server.port=8443"
-networks:
-  proxy:
-    name: proxy
-```
+Select an app template (click on the line) or customize a template ("copy as custom"):
 
-To make it persistent add the following volumes to the above configuration:
+![templates](img/portainer/app_templates.png)
 
-```yaml
-services:
-  test:
-    (...)
-    volumes:
-      - db:/usr/local/tomcat/webapps/ROOT/WEB-INF/db
-      - dbdoc:/usr/local/tomcat/webapps/ROOT/WEB-INF/dbdoc
-      - git:/usr/local/tomcat/webapps/ROOT/WEB-INF/git
-(...)
-volumes:
-  db:
-  dbdoc:
-  git:
-```
+And then fill the values (the host URL must correspond to the wildcard domain for let's encrypt to work as intended)
+
+![templates](img/portainer/deploy-template.png)
+
+### From stacks
+
+1. take a look at the [templates on Github](https://github.com/simplicitesoftware/resources/tree/master/public/portainer_templates)
+2. Go to Stacks (effectively docker compose configurations) > Add stack
+
+### JPDA Remote debugging
 
 To enable JPDA remote debugging add the following environment variables and open an access to port `8000`.
 Assign a different port to each instance (8001, 8002, 8003...).
@@ -297,6 +369,14 @@ services:
     (...)
 ```
 
+:::warning
+At the moment, there seems to be no way of routing VSCode's JPDA packets over traefik.
+Our only option is thus to expose the port directly, without going through traefik.
+Remember that there is a firewall installed, and it might need configuration.
+:::
+
+### VSCode tools
+
 To use [developer mode](/docs/docs/operation/docker.md#developer-mode) for development-oriented features and
 for the [Simplicité VSCode tools extension](/docs/docs/devops/external-editor.md#simplicité-extension),
 add the following `DEV_MODE` environment variable.
@@ -311,27 +391,35 @@ services:
       (...)
 ```
 
-7 - Configure stack templates
------------------------------
+Backups
+-------
 
-You can also configure Portainer to use our stack templates, to do so change the _App Templates_ URL in the settings
-using this URL: `https://cdn.jsdelivr.net/gh/simplicitesoftware/resources@latest/public/portainer_templates/templates.json`
+### Temporality
 
-![templates](img/portainer/templates.png)
+Be mindfull of execution times: VM backups might abort instance backups, which might abort the app's processes 
+(the app usually needs to be stopped make an instance backup).
 
-Or manually configure custom templates using the `*.yml` present at [this location](https://cdn.jsdelivr.net/gh/simplicitesoftware/resources@latest/public/portainer_templates/).
+|                          | Comment                                                                                                                                                               | Recommended time | Execution control   |
+|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|---------------------|
+| App daily executions     |                                                                                                                                                                       | 12am             | Simplicité          |
+| Instance backups         | Example events where you might need a backup: Bad upgrade, catastrophic Simplicité configuration choices, bad file manipulation, database corruption, etc.            | 2am              | Server crontab      |
+| Instance backups backups | It's good practice to backup the instance backups on another server, making sure it's in another region, in the event of catastrophic datacenter-level accidents.<br> | 2am              | Server crontab      |
+| VM Backups               | Periodical VM backups are recommended, especially when [automatic system updates](#system-updates) are enabled.                                                       | 4am              | VM Provider         |
+| System update            | Happens after VM backups                                                                                                                                              | 6am              | Server dnf-automatic|
 
-Backup an instance
-------------------
+### Backup script
 
-This script makes the assumption that you have deployed with portainer a stack that with an app service (Simplicité)
-and a database service (PostgreSQL). You can call it daily and setup rotating backups.
+This is a backup script example for a Simplicité + PostgreSQL stack.
 
 Each backed up project uses a variables-definitions `backup-myproject.sh` script that call a unified `backup.sh` script.
 `backup-myproject.sh` should be called by cron (`crontab -e`).
 
+```text
+0 2 * * * /home/almalinux/backups/backup-myapp.sh 1>/dev/null 2>&1
+```
+
 <details>
-<summary>Click to see scripts</summary>
+<summary>See scripts</summary>
 
 `backup-myproject.sh` script:
 

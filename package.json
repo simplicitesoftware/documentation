@@ -6,6 +6,7 @@
     "ncu": "npm-check-updates",
     "lint": "markdownlint-cli2 \"docs/**/*.md\" \"docs/**/*.mdx\" README.md",
     "generate-version": "python3 ./generateVersionsPage.py",
+    "init-make-doc": "python3 ./scripts/init_make_doc.py",
     "docusaurus": "docusaurus",
     "start": "npm run generate-version && npm run lint && docusaurus start",
     "build": "npm run generate-version && npm run lint && docusaurus build",

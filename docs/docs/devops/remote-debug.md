@@ -72,7 +72,7 @@ Such tunnels can also easily be configured using SSH GUIs clients like PuTTY.
 :::
 
 Then you can configure a **remote debug configuration** in your IDE pointing to `localhost:8000`
-(or directly on `<server>:12345` if you have chosen to open the remote port thru the server firewall).
+(or directly on `<server>:12345` if you have chosen to open the remote port through the server firewall).
 
 Then , provided that you have a copy of your modules' code locally in the IDE you will be able to define
 breakpoints, do step by step debugging, etc.

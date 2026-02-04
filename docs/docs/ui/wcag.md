@@ -68,7 +68,7 @@ The main region contains the current activity (list, form, pivot table, screen-f
 
 ### Excluded regions
 
-Complex widgets are not accessible because of massive mouse usage thru drag&drop:
+Complex widgets are not accessible because of massive mouse usage through drag&drop:
 
 - the SVG diagram to edit business models
 - the template editor to design object form/area/fields
@@ -121,7 +121,7 @@ Primary focusable elements are identified with the class `.js-focusable`, the fi
 CSS styles by default:
 
 - `:focus`: outline the element when focused, not required for all elements (ex: button prefers `:hover` to be highlighted)
-- `:focus-visible`: outline the element when focused thru keyboard, required for accessibility to identify the focus (no hover, no pointer)
+- `:focus-visible`: outline the element when focused through keyboard, required for accessibility to identify the focus (no hover, no pointer)
 
 Example:
 

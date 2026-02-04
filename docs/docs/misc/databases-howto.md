@@ -235,7 +235,7 @@ NLS_LANG=AMERICAN_AMERICA.ALL32UTF8
 export NLS_LANG
 ```
 
-On windows to load an SQL script encoded in UTF8 thru the cmd prompt, you will have to change the default Windows code page (850) first:
+On windows to load an SQL script encoded in UTF8 through the cmd prompt, you will have to change the default Windows code page (850) first:
 
 ```shell
 chcp 65001
@@ -358,7 +358,7 @@ The default database contains all tables needed by the runtime. System tables ar
 - `social_` for all social features
 - etc.
 
-They must be accessed thru the UI or API to be updated.
+They must be accessed through the UI or API to be updated.
 
 Some important tables:
 
@@ -443,7 +443,7 @@ When the duration is too long the query has to be analyzed with an external CLI 
 ### Documents storage and migration
 
 The `m_document` table contains all files attached to document's fields.
-It can store the documents in 2 ways thru the system parameter `DOC_DIR`:
+It can store the documents in 2 ways through the system parameter `DOC_DIR`:
 
 - Way **BLOB** in the database
   - `DOC_DIR` = `BLOB`

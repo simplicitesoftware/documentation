@@ -21,7 +21,7 @@ It can be useful to store parameters (or serializable objects) in the user's ses
 
 - Share parameters between screens in the user's navigation: a component needs to know from where it has been opened...
 - Use some parameters in Action: asynchronous or recursive calls to limit the stack size (with heap memory)
-- Use some parameters in External objects (not thru http parameters on each browser calls)
+- Use some parameters in External objects (not through http parameters on each browser calls)
 
 Examples:
 

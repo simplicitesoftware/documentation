@@ -16,7 +16,7 @@ Simplicité being a Java platform, calling **any** HTTP-based resource (file, AP
 - Standard low-level HTTP client Java API (`java.net.[http.]*`)
 - Included HTTP client libraries such as the Apache HTTP Client library or the Unirest client library for APIs
 - Utility classes provided by Simplicité such as `com.simplicite.util.HTTPTool`
-  or the very simple `Tool.readUrl(...)`, e.g. calling an REST-like API returning a JSON object:
+  or the very simple `Tool.readUrl(...)`, e.g. calling a REST-like API returning a JSON object:
 
 ```java
 JSONObject result = new JSONObject(Tool.readUrl("http(s)://my3rdpartyapi.com/a/b/c?d=e"));

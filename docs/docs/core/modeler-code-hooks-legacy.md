@@ -15,7 +15,7 @@ Abstract
 --------
 
 Hooks are executed on the client-side in javascript and the override the rendering.
-Edit the script and create an JavaScript object to declare the hooks :
+Edit the script and create a JavaScript object to declare the hooks :
 
 ```javascript
 // Modeler extension (canvas)

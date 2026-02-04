@@ -132,18 +132,19 @@ Exposed ports
 
 The prebuilt images are configured to exposes the following ports for different usage:
 
-- Tomcat HTTP port `8080` for direct access or to be exposed directly as an HTTP endpoint or thru an **HTTP** reverse proxy endpoint (Apache, NGINX, ...)
-- Tomcat secure HTTP port `8443` to be exposed thru an **HTTPS** reverse proxy endpoint (Apache, NGINX, ...)
+- Tomcat HTTP port `8080` for direct access or to be exposed directly as an HTTP endpoint
+or through an **HTTP** reverse proxy endpoint (Apache, NGINX, ...)
+- Tomcat secure HTTP port `8443` to be exposed through an **HTTPS** reverse proxy endpoint (Apache, NGINX, ...)
 - Tomcat SSL port `8444` to be exposed directly as an HTTPS endpoint, Note that this requires an additional `-e` flag
   and to mount (or replace) the appropriate JKS certificate (see below)
-- Tomcat AJP port `8009` to be exposed thru an HTTP/HTTPS reverse proxy (Apache), this requires an additional `-e` flag (see below)
+- Tomcat AJP port `8009` to be exposed through an HTTP/HTTPS reverse proxy (Apache), this requires an additional `-e` flag (see below)
 - Tomcat admin port `8005` for starting/stopping Tomcat from outside of the container (not supposed to be used)
 - Tomcat JPDA port `8000` for remote debugging Tomcat (Tomcat is started with the `jpda` keyword), this requires an additional `-e` flag (see below)
 - Tomcat JMX port `1099` for connecting a JMX monitoring tool on Tomcat (Tomcat is started with additional JVM options) and `1098`
   for RMI communication, this requires an additional `-e` flag (see below)
 
-> **Warning**: If you expose the HTTP port `8080` thru an HTTPS reverse proxy endpoint
-> or if you expose the secure HTTPS port thru an HTTP reverse proxy endpoint
+> **Warning**: If you expose the HTTP port `8080` through an HTTPS reverse proxy endpoint
+> or if you expose the secure HTTPS port through an HTTP reverse proxy endpoint
 > it will result in unexpected and unwanted behaviors.
 
 The typical configuration using the above ports are the following:
@@ -721,7 +722,7 @@ You need to check carefully the build logs to see which libraries were ignored.
 Run with Docker Compose tool
 ----------------------------
 
-You can use the Docker Compose tool to start an database container and a Simplicité instace container.
+You can use the Docker Compose tool to start a database container and a Simplicité instace container.
 
 ### Prerequisites
 

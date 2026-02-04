@@ -397,7 +397,7 @@ The signed APK is generated in your android directory `myproject/platforms/andro
 
 ### Upload the APK with the play-store console
 
-You will have to change the version each time you deliver an new APK:
+You will have to change the version each time you deliver a new APK:
 
 - in root files `config.xml` and `package.json`
 - rebuild the release
@@ -517,13 +517,13 @@ See all steps here:
 
 ### Create the Provisioning Profile
 
-To test your app before the final deployment in App Store, you have to sign the app thru a physical iOS device (so buy one iPhone or iPad!).
+To test your app before the final deployment in App Store, you have to sign the app through a physical iOS device (so buy one iPhone or iPad!).
 
 - Create a development key and Team with the CSR file
 
 - On the console create a device item with its serial number
 
-  - connect the device to your mac thru USB link
+  - connect the device to your mac through USB link
   - use `iTunes` to open the device infos to get the serial number
 
 - Then create a profile to associate the App ID with the device
@@ -552,5 +552,5 @@ See [](https://clearbridgemobile.com/how-to-submit-an-app-to-the-app-store/)
 Known limitations with inAppBrowser
 -----------------------------------
 
-- Google `OAuth2` doesn't work into the inAppBrowser for security reason (only thru native browsers Chrome or Safari)
+- Google `OAuth2` doesn't work into the inAppBrowser for security reason (only through native browsers Chrome or Safari)
 - W3C `navigator.mediaDevices` is not yet supported by inAppBrowser (missing some CAMERA permissions)

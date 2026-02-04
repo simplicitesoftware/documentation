@@ -962,7 +962,7 @@ User's activities tracking:
 - database: save actions in m_redolog
 - prune: integer to define the depth to store in DB
 - unit: prune unit (hour, day, month, year)
-- logger: true to export data thru log4j
+- logger: true to export data through log4j
 
 `LOG_DEBUG`
 -----------
@@ -1073,7 +1073,7 @@ User's sessions tracking:
 - database: save all sessions in m_session
 - prune: integer to define the depth to store in DB
 - unit: prune unit (hour, day, month, year)
-- logger: true to export data thru log4j
+- logger: true to export data through log4j
 
 `LOG_SQL_SYSTEM`
 ----------------

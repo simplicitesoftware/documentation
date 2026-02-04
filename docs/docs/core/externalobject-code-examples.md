@@ -245,7 +245,7 @@ for instance, by a close button.
 Using many instances of a same external object on a same page
 -------------------------------------------------------------
 
-The container `.external-content` must be passed thru the rendering function and its body don't have to have an unique id.
+The container `.external-content` must be passed through the rendering function and its body don't have to have an unique id.
 
 Back side reuse the `ctn` parameter of front scope:
 

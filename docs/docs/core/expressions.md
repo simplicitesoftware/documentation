@@ -197,11 +197,11 @@ For those cases use a `[SYSPARAM]` instead with the `private` type to restrict t
 - `[PARENTOBJECTINSTANCENAME]` or `[PARENTINSTANCENAME]` or `[PARENTINST]`:
   the current object parent object instance name
 - `[CHILDOF:<parent object name>(:<optional parent ref field>)]`:
-  check if current object is child object of specified object (thru optional specified ref field)
+  check if current object is child object of specified object (through optional specified ref field)
 - `[PANELOF:<parent object name>(:<optional parent ref field>)]`:
-  check if current object is panel child object of specified object (thru optional specified ref field)
+  check if current object is panel child object of specified object (through optional specified ref field)
 - `[REFFROM:<object name>(:<optional ref field>)]` or `[REFERENCEDFROM:<object name>(:<optional ref field>)]`:
-  check if current object is referenced object from specified object (thru optional specified ref field)
+  check if current object is referenced object from specified object (through optional specified ref field)
 - `[DATAMAPFROM:<object name>]` or `[DATAMAPPEDFROM:<object name>]`:
   check if current object is data mapped object from specified object
 - `[CONTEXT:<context>]`:

@@ -45,7 +45,7 @@ Please refer to [this document](/docs/compatibility) for details on compliant co
 Deployment modes
 ----------------
 
-Exposing the application server thru a Apache/NGINX reverse proxy as described below is not mandatory but rather a good practice.
+Exposing the application server through a Apache/NGINX reverse proxy as described below is not mandatory but rather a good practice.
 
 ### Web mode
 
