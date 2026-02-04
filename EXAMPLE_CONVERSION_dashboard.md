@@ -109,7 +109,6 @@ Dashboards can contain the following component types:
 
 #### Pivot Component
 - Displays pivot tables available to the user
-- Supports drill-down interactions
 - Respects user access rights
 
 #### Chart Component
@@ -149,16 +148,9 @@ Users with ADMIN rights have access to additional component types:
 Configuration
 -------------
 
-### Dashboard Properties
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| **Label** | String | Yes | Dashboard display name |
-| **Sharing Groups** | Groups[] | No | Groups with DASHBOARD right that can access this dashboard |
-
 ### Sharing Configuration
 
-Dashboards can be shared with groups that have the `DASHBOARD` right:
+Dashboards can be shared with groups that have the `DASHBOARD` right and an active `Dashboards sharing` type :
 
 - **Share button**: Available in Dashboard Editor
 - **Group selection**: Select from available dashboard sharing groups

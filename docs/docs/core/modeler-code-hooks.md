@@ -309,7 +309,7 @@ onNewNode: function(template, container, position, form) {
 },
 onAddContent: function(node, template, form) {
 	var self = this;
-	// Add field screen flow thru external object wrapper
+	// Add field screen flow through external object wrapper
 	if (node.object=="ObjectInternal" && template.name=="Field") {
 		self.topui.loadURL(null, self.root + "/ui/ext/SystemAddField?row_id="+node.id);
 	}

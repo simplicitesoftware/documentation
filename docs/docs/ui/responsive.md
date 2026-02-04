@@ -1531,7 +1531,7 @@ Example of responsive external object
 ### External object configuration
 
 - Create as usual an external object named `MyExternalPage`
-- Granted to ADMIN and accessible thru Menu
+- Granted to ADMIN and accessible through Menu
 - Attach 2 resources:
   - `SCRIPT` as JavaScript
   - `STYLES` as CSS

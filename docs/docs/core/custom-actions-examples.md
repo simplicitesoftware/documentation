@@ -39,7 +39,7 @@ Examples:
 - `return $ui.displayPrint(null, 'MyPublication', obj, obj.getRowId());` to apply a publication on the current record of the object
 t etc.
 
-> **Note**: These server-side custom actions are available thru the webservices APIs.
+> **Note**: These server-side custom actions are available through the webservices APIs.
 
 Confirmation with custom fields
 -------------------------------
@@ -49,7 +49,7 @@ The action supports fields in the confirmation dialog:
 - If the field belong also to the object: the value is read only (to confirm a value or to preview a document)
 - If the field is standalone: the input field is updatable and will be sent to the server side as a String
 
-Previous V4 syntax supports only `String` values thru a `Map<String,String>`:
+Previous V4 syntax supports only `String` values through a `Map<String,String>`:
 
 ```java
 public String myCustomAction(Map<String,String> params) {
@@ -74,7 +74,7 @@ public String myCustomAction(Action action) {
 		java.io.File file = doc.getUploadFile();
 		AppLog.info(getClass(), "myCustomAction", "DOCUMENT FILE " + file, getGrant());
 		// do something with the document...
-		// Example import the file thru Adapter
+		// Example import the file through Adapter
 		Message res = new Integration().importADP(getGrant(), "MyAdapterName", new FileInputStream(file), "Imported from UI myCustomAction", null);
 		// You must remove the file from /tmp directory when used
 		file.delete();
@@ -91,7 +91,7 @@ Call to action with the returned message
 Custom `Action` can be added to the returned message (ex postSave) to ask the user to do something
 
 - action type must be hidden to be used only in this context
-- action is displayed only if the user is granted thru a function
+- action is displayed only if the user is granted through a function
 - action will call the front javascript or the back-end method
 
 ```java
@@ -112,7 +112,7 @@ return Message.formatCallToAction("MYCODE", "What is the best option?", Message.
 State transition with parameters
 --------------------------------
 
-When the action is a transition, there is no method invoked but confirmation fields are passed thru an object's parameter named `ActionFields`.
+When the action is a transition, there is no method invoked but confirmation fields are passed through an object's parameter named `ActionFields`.
 This parameters can be read in all common hooks during the state transition (validate / save / update).
 
 **Previous V4 implementation:**
@@ -216,7 +216,7 @@ javascript:return obj.getName().myCustomAction(obj.getInstanceName(), obj.getRow
 ```
 
 :::note
-These client-side custom actions are **not available** thru the webservices APIs.
+These client-side custom actions are **not available** through the webservices APIs.
 :::
 
 Asynchronous action launched by the UI with tracking

@@ -532,7 +532,7 @@ sim tomcat-<status|stop|start|debug> <name>
 
 Using `debug` is similar to `start` except that the Tomcat server is then started in JPDA debug mode.
 The JPDA port is available in the `JPDA_ADDRESS` environment variable.
-This port is temporary allowed thru the firewall.
+This port is temporary allowed through the firewall.
 
 :::warning
 Starting Tomcat in debug mode must only be done when required, it slows down your instance and makes it vulnerable.
@@ -932,7 +932,7 @@ This feature is different from the fact that the instance is marked as nightly u
 
 This `APPS_AUTOUPGRADE` setting just refers to the way an instance is being updated by the SIM:
 
-- `false` = **legacy** mode = the SIM updates the webapp and imports the patches thru the I/O interface of the instance
+- `false` = **legacy** mode = the SIM updates the webapp and imports the patches through the I/O interface of the instance
 - `true` = **auto-patching** mode = the SIM only updates the webapp and the patches are applied by the instance itself at startup
 
 ### Instance-level settings

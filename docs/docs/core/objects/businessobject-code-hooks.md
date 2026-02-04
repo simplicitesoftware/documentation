@@ -330,7 +330,7 @@ It allows to set field filters or search-spec just before the popup page is disp
 public void initRefSelect(ObjectDB parent) {
     if (parent!=null
     && "MyParentObject".equals(parent.getName()) // one parent context
-    && "myForeignKey".equals(getParentObjectRefField())) // thru one foreign key
+    && "myForeignKey".equals(getParentObjectRefField())) // through one foreign key
     {
         // DB value of a parent field
         String dbValue = parent.getOldValue("myParentField1");
@@ -948,7 +948,7 @@ Useful to indicate with inherited object have to be displayed in a panel of a pa
  * @param object object name (default target)
  * @param field meta-object field name
  * @param parent parent object name
- * @return The object itself or one of its inherited object linked thru the meta-object field to parent
+ * @return The object itself or one of its inherited object linked through the meta-object field to parent
  */
 public static String getTargetMetaObject(Grant g, String object, String field, String parent) {
     // Show only carrots when parent is a carrot farmer

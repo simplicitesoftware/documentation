@@ -46,7 +46,7 @@ specified in the `AUTH_HEADER` system parameter.
 
 If the value of this header does not contain a simple plain text login, the appropriate login can be determined using the `parseAuth` hook.
 
-Optionally -typically when request/responses goes thru a SSO reverse proxy - this default implementation checks the origin of the request against a
+Optionally -typically when request/responses goes through a SSO reverse proxy - this default implementation checks the origin of the request against a
 comma-separated list of IP addresses stored in the `AUTH_ORIGIN` system parameter.
 
 Client certificate authentication
