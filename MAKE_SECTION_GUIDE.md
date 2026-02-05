@@ -22,6 +22,10 @@ Some files in the make section currently contain tutorial-style content:
 - When/why to use it
 - Key concepts
 
+:::tip[Quick Start]
+For a step-by-step walkthrough, see the [Link to tutorial](/tutorial/).
+:::
+
 ### 2. **Features/Capabilities Section**
 - What the object can do
 - Key capabilities listed clearly

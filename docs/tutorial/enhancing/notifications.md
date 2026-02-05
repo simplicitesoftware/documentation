@@ -6,7 +6,11 @@ title: 3.5. Creating in-app notifications
 Building the "Order Management" Training App : Creating in-app notifications
 ============================================================================
 
-> Prerequisite : [You have a basic understanding of the Simplicité platform, and the steps in "2. Expanding your app" are completed](/category/2-expanding-your-app)
+:::note[Prerequisite]
+
+[You have a basic understanding of the Simplicité platform, and the steps in "2. Expanding your app" are completed](/category/2-expanding-your-app)
+
+:::
 
 What are Notifications?
 -----------------------

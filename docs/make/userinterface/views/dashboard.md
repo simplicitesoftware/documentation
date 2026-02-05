@@ -70,7 +70,7 @@ Dashboards can contain the following component types:
 | **Chart** | Chart visualization of pivot data | Pivot table with chart display enabled |
 | **Widget** | Custom external object widget | External objects configured as widgets |
 | **Filter** | Search bar with time period and field filters | - |
-| **List** | Business object list | Object must allow dashboard listing |
+| **List** | Business object list | Object must allow dashboard listing (`Dashboard` configuration field) |
 
 ### Component Configuration
 
