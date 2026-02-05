@@ -196,7 +196,7 @@ chmod 600 acme.json
 Create and adapt the following file with `vi .env`
 
 ```shell
-TOP_DOMAIN="my.domain" # wildcard domain (*.my.domain) configured on this server's IP
+WILDCARD_DOMAIN="my.domain" # wildcard domain (*.my.domain) configured on this server's IP, WITHOUT the wildcard
 ACME_MAIL="mail@my.domain" # email for the generation of SSL certificates with Let's Encrypt.
 TRAEFIK_DASHBOARD_ACTIVE="true"
 TRAEFIK_DASHBOARD_BASICAUTH="user_name:http-basic-auth-pwd" # cf tip below
@@ -242,13 +242,14 @@ services:
       - --providers.docker
       - --providers.docker.network=proxy
       - --providers.docker.exposedByDefault=false
+      - --providers.docker.defaultRule=Host(`{{ index .Labels "simplicite.subdomain"}}.${WILDCARD_DOMAIN}`)
       - --certificatesresolvers.leresolver.acme.httpchallenge=true
       - --certificatesresolvers.leresolver.acme.email=${ACME_MAIL}
       - --certificatesresolvers.leresolver.acme.storage=./acme.json
       - --certificatesresolvers.leresolver.acme.httpchallenge.entrypoint=web
     labels:
       - traefik.enable=true
-      - traefik.http.routers.mydashboard.rule=Host(`traefik.${TOP_DOMAIN}`)
+      - traefik.http.routers.mydashboard.rule=Host(`traefik.${WILDCARD_DOMAIN}`)
       - traefik.http.routers.mydashboard.tls.certresolver=leresolver
       - traefik.http.routers.mydashboard.entrypoints=websecure
       - traefik.http.routers.mydashboard.service=api@internal
@@ -266,13 +267,13 @@ services:
     labels:
       # Frontend
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`portainer.${TOP_DOMAIN}`)"
+      - "traefik.http.routers.frontend.rule=Host(`portainer.${WILDCARD_DOMAIN}`)"
       - "traefik.http.routers.frontend.entrypoints=websecure"
       - "traefik.http.services.frontend.loadbalancer.server.port=9000"
       - "traefik.http.routers.frontend.service=frontend"
       - "traefik.http.routers.frontend.tls.certresolver=leresolver"
       # Edge
-      - "traefik.http.routers.edge.rule=Host(`edge.${TOP_DOMAIN}`)"
+      - "traefik.http.routers.edge.rule=Host(`edge.${WILDCARD_DOMAIN}`)"
       - "traefik.http.routers.edge.entrypoints=websecure"
       - "traefik.http.services.edge.loadbalancer.server.port=8000"
       - "traefik.http.routers.edge.service=edge"
