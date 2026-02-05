@@ -6,7 +6,7 @@ title: 2.7. Creating a pivot table
 Building the "Order Management" Training App : Creating a Pivot table
 =====================================================================
 
-::note[Prerequisite]
+:::note[Prerequisite]
 
 [The Order object has a state model](/tutorial/expanding/states)
 

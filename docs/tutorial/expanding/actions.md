@@ -8,7 +8,7 @@ Building the "Order Management" Training App: Adding actions
 
 :::note[Prerequisite]
 
-The Supplier, Product, Client and Order objects must be complete before starting [this tutorial](/tutorial/expanding/addobjects)
+[The Supplier, Product, Client and Order objects must be complete before starting this tutorial](/tutorial/expanding/addobjects)
 
 :::
 

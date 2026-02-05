@@ -6,7 +6,11 @@ title: 3.4. Writing unit tests
 Building the "Order Management" Training App : Writing unit tests - Shared code
 ===============================================================================
 
-> Prerequisite : [You have a basic understanding of the Simplicité platform, and the steps in "2. Expanding your app" are completed](/category/2-expanding-your-app)
+:::note[Prerequisite]
+
+[You have a basic understanding of the Simplicité platform, and the steps in "2. Expanding your app" are completed](/category/2-expanding-your-app)
+
+:::
 
 What is a Shared code?
 ----------------------

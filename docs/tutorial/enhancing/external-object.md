@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: 3.2. Adding a custom web service
+title: 3.2. Adding a custom REST endpoint
 description: Creating a custom REST endpoint
 ---
 
