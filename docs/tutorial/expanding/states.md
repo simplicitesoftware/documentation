@@ -132,7 +132,7 @@ To test the State model, follow the steps below :
    **Expected result**:
 
    - In the Order menu
-   - The list of States are visible<
+   - The list of States are visible
      ![](img/states/success-logon.png)
 
    :::
