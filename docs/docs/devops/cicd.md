@@ -4,7 +4,7 @@ title: CI/CD
 unlisted: true
 ---
 
-sCI/CD
+CI/CD
 =====
 
 **Objectives:** demonstrate initialization of a Simplicité module and setup of a Continuous Integration pipeline, with:
@@ -67,6 +67,10 @@ git remote add gitlab https://gitlab.com/simplicite-gitlab-group/module-myapp
 git push -u gitlab master
 ```
 
+:::danger
+do not forget to add checkstyle at some point in the doc
+:::
+
 2- Deploy test instance
 -----------------------
 
@@ -103,7 +107,7 @@ MODULES_IMPORT_SPEC: |
 Create a `.env` file with the correct values for local testing:
 
 ```shell
-IO_PASSWORD="change-me"
+IO_PASSWORD="change-me_more-than-32-chars"
 PORTAINER_SERVER="top-domain"
 PORTAINER_API_TOKEN="get-the-token-in-portainer"
 STACK_NAME="test-simci"
@@ -170,17 +174,80 @@ Finally, commit, push to gitlab (and you dev instance which is now behind), and 
 
 ### Simplicité
 
-1. add a unit tests shared code in the module
+1. add an empty unit tests shared code in the module
 2. commit & pull changes locally
 
-#### Maven configuration setup
+### Gitlab
 
-Adapt the following json:
+The `simci simplicite-run-unit-tests` command calls the `/io` service
+(with the IO password conveniently set up through the compose template at the deploy stage)
+to instruct Simplicité to execute the unit tests of this module.
 
-- with the correct `maven.repositoryUrl` based on your Simplicité version (check [simplicité's maven repositories](https://docs.simplicite.io/versions))
-- with the correct `origin.uri` based on Gitlab's repo URL
+```yaml
+stages:
+  - build
+  - test # Add the "test" stage
+
+[...]
+
+unit-tests: # Add the "unit-test" stage
+  stage: test
+  script:
+    - export PORTAINER_API_TOKEN="${PORTAINER_API_TOKEN}"
+    - export IO_PASSWORD="${IO_PASSWORD}"
+    - ./others/simci simplicite-run-unit-tests MyApp gitlab-test-myapp $PORTAINER_URL
+```
+
+Commit & push to gitlab (and the dev instance...), verify that unit tests execute properly.
+
+:::tip
+Remember, if debugging of `simci` is ever needed, use local executiong with `test-simci.sh`
+instead of gitlab runners for quicker testing.
+:::
+
+:::danger
+
+DOES NOT FAIL IN GITLAB WHEN JOB FAILS
+
+```text
+[sim-cicd] Successfully installed jq
+[sim-cicd] === RUN UNIT TESTS
+INFO: Executing unit tests MyappTests of module MyApp...
+ERROR: Error during execution of unit tests MyappTests of module MyApp: Failure of 1 tests
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.simplicite.tests.MyApp.MyappTests.test(MyappTests.java:23)
+Cleaning up project directory and file based variables 00:00
+Job succeeded
+```
+
+:::
+
+3- Sonar Code quality
+---------------------
+
+:::note
+TODO
+:::
+
+4- Jacoco code coverage
+
+:::note
+TODO
+:::
+
 
 ----
+
+SimFeatures Examples
+---------------------------
+
+### Maven configuration setup
+
+Update the settings configuration to append the `maven`configuration.
+Adapt the Simplicité version (check [simplicité's maven repositories](https://docs.simplicite.io/versions)) to your case.
 
 ```json
 {
@@ -202,4 +269,58 @@ Adapt the following json:
 		"coverage.exclusions": "resources/**.js"
 	}
 }
+```
+
+### Gitlab pipeline
+
+```yaml
+variables:
+  SONARCLOUD_ENABLED: "true"
+
+stages:
+  - build
+  - test
+  - code-quality
+
+deploy-test:
+  stage: build
+  script:
+    - export PORTAINER_API_TOKEN="${PORTAINER_API_TOKEN}"
+    - export IO_PASSWORD="${IO_PASSWORD}"
+    - ./others/sim-cicd/simci portainer-stack-delete gitlab-simfeatures $PORTAINER_URL
+    - ./others/sim-cicd/simci portainer-stack-deploy -f ./others/portainer-stack.yml gitlab-simfeatures $PORTAINER_URL
+
+unit-tests:
+  stage: test
+  script:
+    - export PORTAINER_API_TOKEN="${PORTAINER_API_TOKEN}"
+    - export IO_PASSWORD="${IO_PASSWORD}"
+    - ./others/sim-cicd/simci simplicite-run-unit-tests SimFeatures gitlab-simfeatures $PORTAINER_URL
+    - ./others/sim-cicd/simci portainer-stack-get-coverage -v gitlab-simfeatures $PORTAINER_URL
+  artifacts:
+    paths:
+      - jacoco.xml
+    expire_in: 1 hour
+
+sonarcloud-check:
+  image: maven:3.9-eclipse-temurin-21-alpine
+  stage: code-quality
+  dependencies:
+    - unit-tests
+  cache:
+    key:
+      files:
+        - pom.xml
+      prefix: "${CI_JOB_NAME}"
+    paths:
+      - .sonar/cache
+      - .m2/repository
+  variables:
+    MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+  script:
+    - apk update && apk add nodejs npm
+    - ls -halt
+    - mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=module-simfeatures -Dsonar.coverage.jacoco.xmlReportPaths=jacoco.xml
+  rules:
+    - if: '$SONARCLOUD_ENABLED'
 ```
