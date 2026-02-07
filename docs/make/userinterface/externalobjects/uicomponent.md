@@ -47,7 +47,7 @@ Similarly to creating any type of _External Object_, go to _User Interface > Ext
      > Example values:
      > ![](img/uicomponent/uicomp_createpermission.png)
 
-     :::Note
+     :::note
 
      By default, trying to put your object in any interface will result in a `External Object __ not granted` text message.
 
