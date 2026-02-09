@@ -1,5 +1,5 @@
 ---
-sidebar_position: 200
+sidebar_position: 330
 title: CI/CD
 unlisted: true
 ---
@@ -205,26 +205,6 @@ Remember, if debugging of `simci` is ever needed, use local executiong with `tes
 instead of gitlab runners for quicker testing.
 :::
 
-:::danger
-
-DOES NOT FAIL IN GITLAB WHEN JOB FAILS
-
-```text
-[sim-cicd] Successfully installed jq
-[sim-cicd] === RUN UNIT TESTS
-INFO: Executing unit tests MyappTests of module MyApp...
-ERROR: Error during execution of unit tests MyappTests of module MyApp: Failure of 1 tests
-java.lang.AssertionError
-	at org.junit.Assert.fail(Assert.java:87)
-	at org.junit.Assert.assertTrue(Assert.java:42)
-	at org.junit.Assert.assertTrue(Assert.java:53)
-	at com.simplicite.tests.MyApp.MyappTests.test(MyappTests.java:23)
-Cleaning up project directory and file based variables 00:00
-Job succeeded
-```
-
-:::
-
 3- Sonar & Code quality
 ---------------------
 
@@ -315,13 +295,24 @@ sonarcloud-check:
     - if: '$SONARCLOUD_ENABLED'
 ```
 
-:::danger
-There is a problem in the free tier: we can only analyse the long term branch, which was probably set as `main` because of an empty project?
-Then it's difficult to change it to `master`.
+:::info
+Sometimes, on first analysis, Sonarcloud can set the "main branch" a something different than you actual main branch (usually `master`).
+It's problematic on the free tier where Sonarcloud will only analyze that branch.
+If that happens, delete the project on Sonarcloud, recreate it, update the token, and run another analysis.
 :::
 
 4- Jacoco code coverage
 ------------------------
+
+### Simplicité
+
+Update module settings, and add the following line to the `sonar` section:
+
+```json
+"coverage.exclusions": "resources/**.js"
+```
+
+Commit (and pull changes locally)
 
 ### Docker configuration
 
@@ -350,12 +341,14 @@ networks:
 
 ### Pipeline configuration
 
+- call `portainer-stack-get-coverage` at the end of unit test execution job
 - instruct Gitlab to keep the jacoco file after unit tests have run
 - attach that file to the sonar run with `-Dsonar.coverage.jacoco.xmlReportPaths=jacoco.xml`
 
 ```yaml
 unit-tests:
   [...]
+    - ./others/simci portainer-stack-get-coverage -v gitlab-test-myapp $PORTAINER_URL
   artifacts:
     paths:
       - jacoco.xml
@@ -364,7 +357,7 @@ unit-tests:
 sonarcloud-check:
   script:
     [...]
-    - mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=<replace_project_key> -Dsonar.coverage.jacoco.xmlReportPaths=jacoco.xml
+    - mvn verify [...] -Dsonar.coverage.jacoco.xmlReportPaths=jacoco.xml
   rules:
 ```
 
@@ -446,7 +439,8 @@ tree -a -I \.git
 	"sonar": {
 		"projectKey": "simplicite-gitlab-group_module-myapp",
 		"organization": "simplicite-gitlab",
-		"host.url": "https://sonarcloud.io"
+		"host.url": "https://sonarcloud.io",
+		"coverage.exclusions": "resources/**.js"
 	}
 }
 ```
