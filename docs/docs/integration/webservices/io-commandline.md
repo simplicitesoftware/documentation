@@ -97,7 +97,8 @@ And for the users having a responsibility on the `ADMIN` group:
 - `modulesimport` (note the `modules` with an `s`): import a set of modules described by an **import specification**,
   the `file` parameter is here a JSON or YAML file using the same syntax as the one used during the startup's import specification phase,
   see [this document](/docs/operation/auto-setup/#import-spec) for details on the import specification syntax.
-- `sqlscript`: execute a SQL script
+- As of **version 6.3**, `moduleinit`: create a new module and initialize its Git repository
+  with mandatory `<extra parameters>` = `--form module=<module name>` and optional `--form version=<module version> --form desc=<module description>`
 
 - An optional extra parameter can be set to get processing logs or not: `--form log=<true|false>` (defaults to `false`)
 - An optional extra parameter can be set to indicate processing logs output format: `--form output=<plain|xml>` (defaults to `plain`)
