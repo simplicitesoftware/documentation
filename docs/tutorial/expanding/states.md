@@ -80,12 +80,12 @@ To create a State model for the the Order Business object, follow the steps belo
 
    | Code              | English           | French              |
    | ----------------- | ----------------- | ------------------- |
-   | TRN_ORD_STATE-C-P | Back to Pending   | Retour à En Attente |
+   | TRN_ORD_STATE-C-P | Back to Pending   | Retour à En Attente |
    | TRN_ORD_STATE-C-V | Back to Validated | Retour à Validée    |
    | TRN_ORD_STATE-P-C | Cancel            | Annuler             |
    | TRN_ORD_STATE-P-V | Validate          | Valider             |
-   | TRN_ORD_STATE-V-C | Cancel            | Annuler             |
-   | TRN_ORD_STATE-V-S | Ship              | Envoyer             |
+   | TRN_ORD_STATE-V-C | Cancel            | Annuler             |
+   | TRN_ORD_STATE-V-S | Ship              | Envoyer             |
 
 9. Click **Next**
 
