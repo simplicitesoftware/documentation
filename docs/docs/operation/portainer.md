@@ -16,9 +16,46 @@ This document demonstrates how to use Portainer to deploy Simplicité instances 
 - Portainer available at `portainer.my.domain`
 - allow remote debugging
 
+![Portainer](img/portainer/portainer.png)
+
 The whole installation process can be done in under 30 minutes.
 
-![Portainer](img/portainer/portainer.png)
+```mermaid
+sequenceDiagram
+    actor Admin as Administrator
+    participant DNS as DNS Provider
+    participant Server as Almalinux Server
+    participant Docker as Docker Engine
+    participant Traefik as Traefik Container
+    participant LE as Let's Encrypt
+    participant Portainer as Portainer Container
+    participant DevInst as Simplicité Container
+
+    rect rgb(220,245,220)
+        note right of Admin: Install process
+        Admin->>DNS: Configure wildcard DNS record → Server IP
+
+        Admin->>Server: Configure system, firewall (HTTP/HTTPS/SSH), Docker, etc
+        Admin->>Server: Configure Portainer and Traefik
+        Admin->>Docker: Run Portainer and Traefik
+        Docker-->>Traefik: Start Traefik container
+        Docker-->>Portainer: Start Portainer container
+
+        Traefik-->>LE: Request certificates for traefik/portainer subdomains
+        LE-->>Traefik: Issue and store certificates in acme.json
+        Admin->>Portainer: Configure portainer (Simplicité registry & templates)
+    end
+
+    rect rgb(220,235,245)
+        note right of Admin: Deploy Simplicité process
+        Admin->>Portainer: Deploy Simplicité
+        Portainer-->>Docker: Deploy container
+        Docker-->>DevInst: Start Simplicité container
+        Traefik-->>LE: Request certificates for Instance
+        LE-->>Traefik: Issue and store certificates in acme.json
+        Admin->>DevInst: Connect
+    end
+```
 
 :::info
 For on premise environments, many adaptations should be done to this doc:
