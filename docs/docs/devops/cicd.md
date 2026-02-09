@@ -16,6 +16,53 @@ CI/CD
 This document focuses on an example based on a **Gitlab + Portainer** infrastructure,
 but is easily portable to other code versioning and orchestration tools (Github, Kubernetes, SIM, etc.).
 
+```mermaid
+sequenceDiagram
+    autonumber
+
+    actor Dev as Developer
+    participant DevInst as Dev Simplicité instance
+    participant LocalRepo as Local Git repo
+    participant Gitlab as Gitlab
+    participant TestInst as Test Simplicité instance
+    participant Sonar as SonarCloud
+
+    rect rgb(230,230,250)
+        note right of Dev: 1. Versionning
+        Dev->>DevInst: Create module, edit configuration
+        DevInst-->>LocalRepo: Expose module Git repository
+        LocalRepo->>DevInst: git clone / pull from Dev instance
+
+        Dev->>LocalRepo: Edit code, CI, compose and other non-configuration files
+        LocalRepo->>DevInst: git push
+        LocalRepo->>Gitlab: git push
+    end 
+
+    Gitlab-->>Gitlab: Trigger pipeline
+
+    rect rgb(230,230,250)
+        note right of Gitlab: 2. Deploy test instance
+        Gitlab->>TestInst: Deploy test instance (portainer + importspec)
+        TestInst-->>Dev: Test instance available (healthy, module pre-installed)
+    end
+
+    rect rgb(220,245,220)
+        note right of Gitlab: 3. Run unit tests
+        Gitlab->>TestInst: Run unit tests (IO service on test instance)
+        TestInst-->>Gitlab: JUnit results
+        Gitlab-->>Gitlab: Get code coverage data (if applies)
+    end
+
+    rect rgb(220,235,245)
+        note right of Gitlab: 4. Code quality / 5. Code coverage
+        Gitlab->>Gitlab: mvn validate (eslint, stylelint, jshint, checkstyle)
+        Gitlab->>Sonar: sonar-maven-plugin:sonar (projectKey, organization, Jacoco report path if applies)
+        Sonar-->>Gitlab: Analysis status & quality gate
+    end
+
+    Sonar-->>Dev: Review quality, coverage, issues
+```
+
 Prerequisites
 --------------
 
@@ -66,10 +113,6 @@ cd MyApp
 git remote add gitlab https://gitlab.com/simplicite-gitlab-group/module-myapp
 git push -u gitlab master
 ```
-
-:::danger
-do not forget to add checkstyle at some point in the doc
-:::
 
 2- Deploy test instance
 -----------------------
