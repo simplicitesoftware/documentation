@@ -63,7 +63,7 @@ You can use the **`isHistoric` hook** to add business rules that conditionally t
 - Historize only when specific conditions are met
 - Implement custom logic to determine when a snapshot should be created
 - Add fine-grained control over what changes are recorded
--  Restrict historization to specific user groups or responsibilities
+- Restrict historization to specific user groups or responsibilities
 
 Example:
 
@@ -81,8 +81,6 @@ You can now display the history of child objects within the parent object's hist
 
 - Check the **"Reassemble updates history"** option in the link setting
 - This will include child object changes in the parent's history view, providing a consolidated view of all related changes
-
-
 
 Change Log vs History Table: Key differences
 --------------------------------------------
@@ -131,4 +129,3 @@ The **History Table** is designed for **end-users and business purposes**.
 
 **Recommendation:** Use the History Table when you need to show change tracking to business users,
 as it provides better control over what is recorded and displayed.
-
