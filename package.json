@@ -21,7 +21,7 @@
     "@docusaurus/core": "3.9.2",
     "@docusaurus/faster": "3.9.2",
     "@docusaurus/preset-classic": "3.9.2",
-    "@docusaurus/theme-mermaid": "3.9.2",
+    "@docusaurus/theme-mermaid": "^3.9.2",
     "@docusaurus/theme-search-algolia": "3.9.2",
     "@fortawesome/fontawesome-svg-core": "7.1.0",
     "@fortawesome/free-brands-svg-icons": "7.1.0",
@@ -40,7 +40,7 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.9.2",
     "@docusaurus/types": "3.9.2",
-    "markdownlint-cli2": "0.20.0",
+    "markdownlint-cli2": "^0.20.0",
     "npm-check-updates": "19.3.2"
   },
   "browserslist": {
