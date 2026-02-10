@@ -98,7 +98,8 @@ And for the users having a responsibility on the `ADMIN` group:
   the `file` parameter is here a JSON or YAML file using the same syntax as the one used during the startup's import specification phase,
   see [this document](/docs/operation/auto-setup/#import-spec) for details on the import specification syntax.
 - As of **version 6.3**, `moduleinit`: create a new module and initialize its Git repository
-  with mandatory `<extra parameters>` = `--form module=<module name>` and optional `--form version=<module version> --form desc=<module description>`
+  with mandatory `<extra parameters>` = `--form module=<module name>` and optional `--form version=<module version> --form desc=<module description>`.
+  And other optional forces an initial commit `--form commitmessage="My initial commit message" --form commitformat=<xml(default)|json> --form commitexploded=<true|false(default)>`
 
 - An optional extra parameter can be set to get processing logs or not: `--form log=<true|false>` (defaults to `false`)
 - An optional extra parameter can be set to indicate processing logs output format: `--form output=<plain|xml>` (defaults to `plain`)
