@@ -47,7 +47,22 @@ the business object, with all the fields of the object to be historized, plus:
 - a reference to the creating record
 - the date of historization
 - the user's login
-- **[Since 6.3]** a **summary of updates** field that shows a summary of the changes made (equivalent to the Activity column in the change log/RedoLog)
+- **[Since 6.3]** a **summary of updates** field `row_diff` that shows a summary of the changes made (equivalent to the Activity column in the change log/RedoLog)
+
+:::note
+This new calculated field `row_diff` has been created to generate on search the difference of a record
+with its previous one (`row_id` based). It is now used for History object, but can be added in other objects.
+:::
+
+History object with active `FeatureFlag.HISTORY_DIFF_MODE` will automatically add this field (for previous 6.3 object)
+
+It is activated by default, and overridable through the system parameter [FEATURE_FLAGS](/versions/release-notes/v6-3#new-featureflags):
+
+```json
+{
+  "history_diff_mode": false
+}
+```
 
 A read-only function is created on this historical object, which must be granted in order to view it.
 The object is not automatically added to the model, but it is possible to add it manually.
@@ -55,6 +70,27 @@ The object is not automatically added to the model, but it is possible to add it
 It is the presence of a field in the history object that determines which changes cause historization.
 For example, if we delete the object field "description" from the `TrnProductHistoric` object,
 not only will the description not appear in the "snapshot" taken at any time, but the change in description will not create a new row in the history.
+
+### **[Since 6.3]** New action to generate the Historic object 
+
+A new action on object definition is available to build the history object/table:
+
+- Specify if the history is in descending order
+- Select the fields to be historized
+
+![](img/changelog1.png)
+
+![](img/changelog2.png)
+
+Then the action creates or updates the history object:
+
+- with technical fields `row_idx`, `created_by_hist` and `created_dt_hist`
+- and the foreign key `row_ref_id` to parent object with its referenced key fields
+- and the selected fields to be historized on parent updates
+
+
+This object can be updated manually by designers.
+
 
 ### Conditional historization
 
@@ -80,6 +116,9 @@ public boolean isHistoric() {
 You can now display the history of child objects within the parent object's history table:
 
 - Check the **"Reassemble updates history"** option in the link setting
+  
+  ![](img/redolog.png)
+
 - This will include child object changes in the parent's history view, providing a consolidated view of all related changes
 
 Change Log vs History Table: Key differences
@@ -104,8 +143,6 @@ The **Change Log** is a **technical tracking system** that records every single 
 :::danger Security Warning
 
 If you expose the Change Log to end-users, they may see **data they don't have permission to view**.
-
-**This exposes restricted data through the audit trail.**
 
 :::
 
