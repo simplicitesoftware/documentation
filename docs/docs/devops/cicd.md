@@ -1,7 +1,6 @@
 ---
 sidebar_position: 330
 title: CI/CD
-unlisted: true
 ---
 
 CI/CD
