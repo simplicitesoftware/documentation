@@ -41,20 +41,23 @@ History table
 
 The history table allows you to record all or part of an object in an _ad hoc_ table.
 
-Activating the history will result in the creation of a "Historic" object (e.g. `TrnProductHistoric`) in the same module as
-the business object, with all the fields of the object to be historized, plus:
+Activating the history will result in the creation of a "Historic" object  
+(e.g. `TrnProductHistoric`) in the same module as the business object,  
+with all the fields of the object to be historized, plus:
 
 - a reference to the creating record
 - the date of historization
 - the user's login
-- **[Since 6.3]** a **summary of updates** field `row_diff` that shows a summary of the changes made (equivalent to the Activity column in the change log/RedoLog)
+- **[Since 6.3]** a **summary of updates** field `row_diff`
 
 :::note
-This new calculated field `row_diff` has been created to generate on search the difference of a record
-with its previous one (`row_id` based). It is now used for History object, but can be added in other objects.
+This calculated field `row_diff` generates, on search,  
+the difference between a record and its previous version (`row_id` based).
+
+It is currently used for History objects but can also be added to other objects.
 :::
 
-History object with active `FeatureFlag.HISTORY_DIFF_MODE` will automatically add this field (for previous 6.3 object)
+When `FeatureFlag.HISTORY_DIFF_MODE` is active, the History object automatically includes this field (for pre-6.3 objects).
 
 It is activated by default, and overridable through the system parameter [FEATURE_FLAGS](/versions/release-notes/v6-3#new-featureflags):
 
@@ -71,7 +74,7 @@ It is the presence of a field in the history object that determines which change
 For example, if we delete the object field "description" from the `TrnProductHistoric` object,
 not only will the description not appear in the "snapshot" taken at any time, but the change in description will not create a new row in the history.
 
-### **[Since 6.3]** New action to generate the Historic object 
+### **[Since 6.3]** New action to generate the Historic object
 
 A new action on object definition is available to build the history object/table:
 
@@ -88,9 +91,7 @@ Then the action creates or updates the history object:
 - and the foreign key `row_ref_id` to parent object with its referenced key fields
 - and the selected fields to be historized on parent updates
 
-
 This object can be updated manually by designers.
-
 
 ### Conditional historization
 
