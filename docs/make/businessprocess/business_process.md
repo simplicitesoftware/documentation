@@ -5,7 +5,7 @@ description: Configuration guide for Screen Workflow processes using ModelWorkfl
 ---
 
 Business Process – Screen Workflow
-==========================================
+==================================
 
 Overview
 --------
@@ -163,7 +163,7 @@ The system automatically prepares the required data structure depending on the s
 Previously, this had to be done manually.
 
 Automatic Data Generation (Major Change in 6.3+)
--------------------------------------------------
+------------------------------------------------
 
 In previous versions:
 
@@ -208,7 +208,7 @@ The interface provides structured configuration for:
 - Search specification
 
 Activity Data (Advanced Configuration)
----------------------------------------
+--------------------------------------
 
 Although the UI generates the required structure, Activity Data still follows the same logical model.
 
@@ -282,12 +282,12 @@ Optional parameters:
 - `Forward.Page`: final URL to redirect the end of the process
 - `PARAM.<index>`: URL parameter
 
-Example:  
-Forward.Page = [EXPR:HTMLTool.getFormURL("MyBusinessObject", null, "[PARAM:1]", null)]  
-PARAM.1 = [MyStepNew.Field.row_id]  
+Example:
+Forward.Page = [EXPR:HTMLTool.getFormURL("MyBusinessObject", null, "[PARAM:1]", null)]
+PARAM.1 = [MyStepNew.Field.row_id]
 
 Execution Flow Summary (6.3+ Standard)
----------------------------------------
+--------------------------------------
 
 1. Create Business Process
 2. Click Edit Model
@@ -322,11 +322,10 @@ Conclusion
 
 Version 6.3 introduces a more structured and guided workflow configuration model.
 
-The Business Process defines the structure.  
+The Business Process defines the structure.
 Activity creation is now assisted by the UI, reducing manual data configuration and improving reliability.
 
 Learn more
 ----------
 
 - [Business workflow hooks](/docs/core/businessworkflow-code-hooks)
-  
