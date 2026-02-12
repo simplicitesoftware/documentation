@@ -82,7 +82,7 @@ A ModelWorkflow model is created automatically.
 
 In version 6.3+, Actors represent Groups.
 
-An Actor corresponds to a [group](make/usersrights/groups)
+An Actor corresponds to a [group](/make/usersrights/groups)
 that is authorized to participate in the workflow.
 
 Once an Actor is assigned, it automatically receives
