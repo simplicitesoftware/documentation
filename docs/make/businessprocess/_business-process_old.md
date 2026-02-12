@@ -152,7 +152,7 @@ End activity optional parameters:
 To create a link between two activities:
 
 - By the Business Process menu / Activity link / Create button
-- Or via the process diagram, drawing an arrow between the two considered activities (which pre-populates the form of creation).
+- Or via the process diagram, drawing an arrow between the two considered activities (which populates the form of creation).
 
 An activity link is made of different properties:
 
