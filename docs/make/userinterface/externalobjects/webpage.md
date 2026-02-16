@@ -9,7 +9,7 @@ Web Page
 What is a Web Page?
 -------------------
 
-A **Web Page** in Simplicité, is a type of [External Object](/make/userinterface/externalobjects/basic) that aims to be
+A **Web Page** in Simplicité, is a type of [External Object](/make/userinterface/externalobjects/uicomponent) that aims to be
 rendered as an interactive standalone page. Thus it is free of any peculiar interface constraints, and is supposed to be accessible to any user.
 
 The specificity (which differentiates it from a [Static Web Site](/make/userinterface/externalobjects/staticsite))
@@ -17,13 +17,6 @@ is that such object is allowed and meant to interact with Simplicité's backend.
 
 External objects of this type are exclusively rendered in the **public** zone, which means they can't be embedded within Simplicité's
 interfaces and are thus meant to be rendered at `https://<your-instance-name>/ext/<object-name>`, by default accessible to any user.
-
-:::tip
-
-If you want objects that can also be rendered in the **private** zone, you should use the [Basic](/make/userinterface/externalobjects/basic)
-nature for your _External Object_, and ensure to adapt the _Java Code_ accordingly.
-
-:::
 
 How to create
 -------------
