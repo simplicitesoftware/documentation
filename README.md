@@ -89,12 +89,12 @@ import TabItem from '@theme/TabItem';
 <Tabs>
 <TabItem value="tab1" label="Tab1">
 
-
+...
 
 </TabItem>
 <TabItem value="tab2" label="Tb2">
 
-
+...
 
 </TabItem>
 </Tabs>
