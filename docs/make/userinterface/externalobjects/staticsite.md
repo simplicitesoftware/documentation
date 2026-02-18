@@ -9,7 +9,7 @@ Static Web Site
 What is a Static Web Site?
 --------------------------
 
-Simplicité's [External Objects](/make/userinterface/externalobjects/basic) allow you to create **Static Web Site** objects;
+Simplicité's [External Objects](/make/userinterface/externalobjects/uicomponent) allow you to create **Static Web Site** objects;
 standalone web pages used to display elements without necessarily being logged nor necessarily interacting with any feature from Simplicité's backend.
 
 In other terms it is a static site that you create using either the native web stack (HTML, CSS, JavaScript)
@@ -49,16 +49,6 @@ Usage
 
 As a _Static Web Page_ isn't necessarily interacting with Simplicité's API or backend, you only have the 3 resources to worry about.
 For the development specific to Simplicité refer to the [JSdoc](https://platform.simplicite.io/current/jsdoc/global.html).
-
-:::tip
-
-Specific use case and code examples can be found in the following pages:
-
-- [WebPage](/make/userinterface/externalobjects/webpage),
-- [UI Component](/make/userinterface/externalobjects/uicomponent),
-- [External Objects](/make/userinterface/externalobjects/basic).
-
-:::
 
 **HTML**:
 
