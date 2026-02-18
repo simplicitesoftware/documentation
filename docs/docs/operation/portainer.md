@@ -31,7 +31,7 @@ sequenceDiagram
     participant Portainer as Portainer Container
     participant DevInst as Simplicité Container
 
-    rect rgb(220,245,220)
+    rect mermaid-rect-green-200
         note right of Admin: Install process
         Admin->>DNS: Configure wildcard DNS record → Server IP
 
@@ -46,7 +46,7 @@ sequenceDiagram
         Admin->>Portainer: Configure portainer (Simplicité registry & templates)
     end
 
-    rect rgb(220,235,245)
+    rect mermaid-rect-blue-300
         note right of Admin: Deploy Simplicité process
         Admin->>Portainer: Deploy Simplicité
         Portainer-->>Docker: Deploy container
