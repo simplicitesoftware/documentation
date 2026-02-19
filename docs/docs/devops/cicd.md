@@ -26,7 +26,7 @@ sequenceDiagram
     participant TestInst as Test Simplicité instance
     participant Sonar as SonarCloud
 
-    rect rgb(230,230,250)
+    rect mermaid-rect-blue-200
         note right of Dev: 1. Versionning
         Dev->>DevInst: Create module, edit configuration
         DevInst-->>LocalRepo: Expose module Git repository
@@ -39,20 +39,20 @@ sequenceDiagram
 
     Gitlab-->>Gitlab: Trigger pipeline
 
-    rect rgb(230,230,250)
+    rect mermaid-rect-blue-200
         note right of Gitlab: 2. Deploy test instance
         Gitlab->>TestInst: Deploy test instance (portainer + importspec)
         TestInst-->>Dev: Test instance available (healthy, module pre-installed)
     end
 
-    rect rgb(220,245,220)
+    rect mermaid-rect-green-200
         note right of Gitlab: 3. Run unit tests
         Gitlab->>TestInst: Run unit tests (IO service on test instance)
         TestInst-->>Gitlab: JUnit results
         Gitlab-->>Gitlab: Get code coverage data (if applies)
     end
 
-    rect rgb(220,235,245)
+    rect mermaid-rect-blue-300
         note right of Gitlab: 4. Code quality / 5. Code coverage
         Gitlab->>Gitlab: mvn validate (eslint, stylelint, jshint, checkstyle)
         Gitlab->>Sonar: sonar-maven-plugin:sonar (projectKey, organization, Jacoco report path if applies)

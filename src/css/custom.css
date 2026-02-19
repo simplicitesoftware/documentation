@@ -8,6 +8,10 @@
   --ifm-color-primary-lightest: #abacfe;
   --ifm-background-color: #f3f1ee;
   --ifm-container-width-xxl: 2300px;
+  /* Mermaid colors rect (light theme) */
+  --mermaid-rect-blue-200: #DDDCFF;
+  --mermaid-rect-blue-300: #BBB9FF;
+  --mermaid-rect-green-200: #DEFBEB;
 }
 
 [data-theme='dark'] {
@@ -19,6 +23,10 @@
   --ifm-color-primary-lighter: #ffc56e;
   --ifm-color-primary-lightest: #ffd89d;
   --ifm-background-color: #171717;
+  /* Mermaid colors rect (dark theme) */
+  --mermaid-rect-blue-200: #0F0F32;
+  --mermaid-rect-blue-300: #1E1E65;
+  --mermaid-rect-green-200: #0F2D1D;
 }
 
 [data-theme='light'] .DocSearch {
@@ -60,7 +68,16 @@
     var(--ifm-color-emphasis-100) 100%
   );
 }
-
+/* Mermaid: rect use fill (SVG),colors from variables */
+.docusaurus-mermaid-container rect.rect[fill="mermaid-rect-blue-200"] {
+  fill: var(--mermaid-rect-blue-200) !important;
+}
+.docusaurus-mermaid-container rect.rect[fill="mermaid-rect-blue-300"] {
+  fill: var(--mermaid-rect-blue-300) !important;
+}
+.docusaurus-mermaid-container rect.rect[fill="mermaid-rect-green-200"] {
+  fill: var(--mermaid-rect-green-200) !important;
+}
 .header-github-link::before {
   content: '';
   width: 24px;
