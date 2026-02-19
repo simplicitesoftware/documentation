@@ -23,6 +23,19 @@ These hooks are located in the singleton shared code named `PlatformHooks`.
 
 :::
 
+Introduction
+------------
+
+All the platform hooks must be implemented in custom Java "shared code" which name is or starts with `PlatformHooks`, e.g.
+
+```java
+package com.simplicite.commons.MyModule;
+
+public class PlatformHooks /* or PlatformHooksForMyModule */ extends com.simplicite.util.engine.PlatformHooksInterface {
+	// Place your platform hooks overrides here
+}
+```
+
 Platform init hook
 -------------------
 
@@ -66,9 +79,9 @@ flowchart TD
     E-->F
     F-->G1
     G1-->G
-    A0(customAuth)
+    A0("customAuth")
     A("parseAuth (extract login)")
-    B(preAuth)
+    B("preAuth")
     D("postAuth")
     E("preLoadGrant")
     F("postLoadGrant")
@@ -115,6 +128,31 @@ public void customHealthCheck(HttpServletRequest request, HttpServletResponse re
 		.put("date", Tool.toDatetime(new Date())));
 }
 ```
+
+User authentication hooks
+-------------------------
+
+### `parseAuth`
+
+The `parseAuth` platform hook allow you to map the received username (e.g. from an external authentication system) to an actual existing user's login:
+
+```java
+@Override
+public String parseAuth(Grant sys, SessionInfo info) {
+	try {
+		String login = info.getLogin();
+		// Do something with login (e.g. trim the @<domain> from an email)
+		return login;
+	} catch (Exception e) {
+		AppLog.error(e, sys);
+		return super.parseAuth(sys, info);
+	}
+}
+```
+
+### `preAuth`&amp; `postAuth`
+
+These 2 hooks can be used to implement **before** and **after** authentication processing custom rules.
 
 User loading hooks
 ------------------
