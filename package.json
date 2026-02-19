@@ -41,7 +41,7 @@
     "@docusaurus/module-type-aliases": "3.9.2",
     "@docusaurus/types": "3.9.2",
     "markdownlint-cli2": "0.21.0",
-    "npm-check-updates": "19.4.0"
+    "npm-check-updates": "19.4.1"
   },
   "browserslist": {
     "production": [

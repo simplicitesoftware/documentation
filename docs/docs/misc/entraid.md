@@ -50,11 +50,11 @@ Set `oauth2_client_id` `oauth2_client_secret` `oauth2_authorize_url` and `oauth2
 ```json
 [
     { "name": "simplicite", "type": "internal", "visible": true },
-    { 
-        "name": "azuread", 
-        "type": "oauth2", 
-        "label": "Sign in with AzureAD (OAuth2)", 
-        "client_id": "[ENV:oauth2_client_id]", 
+    {
+        "name": "azuread",
+        "type": "oauth2",
+        "label": "Sign in with AzureAD (OAuth2)",
+        "client_id": "[ENV:oauth2_client_id]",
         "client_secret": "[ENV:oauth2_client_secret]",
         "authorize_url": "[ENV:oauth2_authorize_url]",
         "token_url": "[ENV:oauth2_token_url]",
@@ -63,7 +63,6 @@ Set `oauth2_client_id` `oauth2_client_secret` `oauth2_authorize_url` and `oauth2
         "userinfo_mappings": {
             "login":"email"
         },
-       
         "sync": true,
         "visible": true
     }
@@ -123,11 +122,11 @@ Update the `AUTH_PROVIDERS` system parameter to map these claims:
 ```json
 [
     { "name": "simplicite", "type": "internal", "visible": true },
-    { 
-        "name": "azuread", 
-        "type": "oauth2", 
-        "label": "Sign in with AzureAD (OAuth2)", 
-        "client_id": "[ENV:oauth2_client_id]", 
+    {
+        "name": "azuread",
+        "type": "oauth2",
+        "label": "Sign in with AzureAD (OAuth2)",
+        "client_id": "[ENV:oauth2_client_id]",
         "client_secret": "[ENV:oauth2_client_secret]",
         "authorize_url": "[ENV:oauth2_authorize_url]",
         "token_url": "[ENV:oauth2_token_url]",
