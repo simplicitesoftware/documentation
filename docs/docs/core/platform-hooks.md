@@ -10,16 +10,18 @@ This document describes the hooks that can be implemented to put some **addition
 
 :::warning
 
-**Important**: As of version 5.0, static grant hooks are **deprecated**, they are replaced by the platform hooks singleton with same methods.
+**Important**: As of version 5.0, static grant hooks are **deprecated**, they are replaced by the platform hooks with same methods signatures.
 
 **Rhino** scripting language is no longer supported in Simplicité version 6.0+.
 
-This document describes `PlatformHooks` implementation examples but it can be directly transposed to legacy `GrantHooks`.
+This document gives only platform hooks implementation examples but they can be directly transposed from/to the corresponding legacy static grant hooks.
 
-None of these hooks **needs** to be implemented. You can implement one or several of these hooks if you want
+:::
+
+:::info
+
+None of these hooks **needs** to be implemented. You can implement one or several of these hooks **only** if you want
 to apply out some dynamic business logic that goes beyond what can be configured.
-
-These hooks are located in the singleton shared code named `PlatformHooks`.
 
 :::
 
