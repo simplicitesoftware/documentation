@@ -132,9 +132,31 @@ public void customHealthCheck(HttpServletRequest request, HttpServletResponse re
 User authentication hooks
 -------------------------
 
+### `customAuth`
+
+This platform hook is dedicated to implement a custom authentication mechanism when the standard out-of-the box
+SAML/Oauth2/OpenIDConnect/SAML/... mechanisms does not fit your requirement.
+
+:::warning
+
+Never use this hook to implement specifically one of the above standard mechanism.
+:::
+
+### `preAuth`&amp; `postAuth`
+
+These two hooks can be used to implement custom processing **before** and/or **after** the authentication.
+E.g.:
+
+- requiring some additional context form an external system before authentication
+- notifying an external system after authentication
+- etc.
+
+Practically speaking their usage is rather rare.
+
 ### `parseAuth`
 
-The `parseAuth` platform hook allow you to map the received username (e.g. from an external authentication system) to an actual existing user's login:
+The `parseAuth` platform hook allow you to use the received data from the authentication (e.g. from an external authentication system)
+to return an actual existing user's login:
 
 ```java
 @Override
@@ -149,10 +171,6 @@ public String parseAuth(Grant sys, SessionInfo info) {
 	}
 }
 ```
-
-### `preAuth`&amp; `postAuth`
-
-These 2 hooks can be used to implement **before** and **after** authentication processing custom rules.
 
 User loading hooks
 ------------------
