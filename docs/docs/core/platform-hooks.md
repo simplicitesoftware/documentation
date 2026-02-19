@@ -10,11 +10,12 @@ This document describes the hooks that can be implemented to put some **addition
 
 :::warning
 
-**Important**: As of version 5.0, static grant hooks are **deprecated**, they are replaced by the platform hooks with same methods signatures.
+As of version 5.0, the static grant hooks are **deprecated**, they are replaced by the platform hooks with same methods signatures.
 
-**Rhino** scripting language is no longer supported in Simplicité version 6.0+.
+This document gives only platform hooks implementation examples but they can be easily transposed from/to the corresponding legacy static grant hooks.
 
-This document gives only platform hooks implementation examples but they can be directly transposed from/to the corresponding legacy static grant hooks.
+The Rhino scripting language is no longer supported as of Simplicité version 6.0, if you have legacy grant hooks implemented in this language
+and plan to upgrade from v5 to v6, you must transpose them as Java platform hooks
 
 :::
 
@@ -28,7 +29,7 @@ to apply out some dynamic business logic that goes beyond what can be configured
 Introduction
 ------------
 
-All the platform hooks must be implemented in custom Java "shared code" which name is or starts with `PlatformHooks`, e.g.
+All the platform hooks must be implemented in custom Java "shared code(s)" which name is or starts with `PlatformHooks`, e.g.
 
 ```java
 package com.simplicite.commons.MyModule;
