@@ -129,17 +129,19 @@ async render(params, data = {}) {
 ### Fetching Business Objects
 
 ```javascript
-product.search(function() {
-  for (let i = 0; i < product.count; i++) {
-    const prd = product.list[i];
-    const imageSrc = `data:${prd.demoPrdPicture.mime};base64,${prd.demoPrdPicture.content}`;
+prd.search({} /* or null */,{ inlineDocuments: ['demoPrdPicture'] }).then(rows => {
+  for (const row of rows) {
+    const imageSrc = `data:${row.demoPrdPicture.mime};base64,${row.demoPrdPicture.content}`;
 
     // Create and append elements
     let productDiv = $('<div>').addClass("product-card");
     // ... add content ...
     $("#product-list").append(productDiv);
   }
-}, null, { inlineDocuments: ['demoPrdPicture'] });
+});
+// Notes:
+// - in v5  move the above search result processing lambda function from the .then() to the first argument of .search()
+// - in modern browsers you can also use the const rows = await search(...) syntax
 ```
 
 ### Accessing Fields
@@ -162,22 +164,18 @@ $ui.displayForm(null, "DemoProduct", prd.row_id, {
 });
 ```
 
-### Getting User Info
+### Getting current user info
 
 ```javascript
-let grant = $ui.getGrant();
-let currentUserLogin = grant.login;
-let user = app.getBusinessObject("User");
+const grant = $ui.getGrant();
 
-user.search(function() {
-  const usr = user.list.find(u => u.usr_login === currentUserLogin);
-  if (usr && usr.row_id) {
-    $ui.displayForm(null, "User", usr.row_id, {
-      nav: "add",
-      target: "work"
-    });
-  }
-}, null, {});
+$app.getBusinessObject("User").search({ usr_login: grant.login }).then(rows => {
+  $ui.displayForm(null, "User", rows[0].row_id, { nav: "add", target: "work" });
+});
+// Notes:
+// - in v5 replace $app by $ui.getApp()
+// - in v5  move the above search result processing lambda function from the .then() to the first argument of .search()
+// - in modern browsers you can also use the const rows = await search(...) syntax
 ```
 
 Complete Example Structure
@@ -202,32 +200,27 @@ Complete Example Structure
 ```javascript
 Simplicite.UI.ExternalObjects.DemoWelcomeCard = class extends Simplicite.UI.ExternalObject {
   async render(params, data = {}) {
-    let app = $ui.getApp();
-    let product = app.getBusinessObject("DemoProduct");
-    let login = $ui.getGrant().login;
-
     // Build header
-    $("#demowelcomecard-header")
-      .append($('<h1>').text("Welcome to Simplicité!"))
-      .append($('<h3>').text("Explore and enjoy your experience!"));
+    $('#demowelcomecard-header')
+      .append($('<h1>').text('Welcome to Simplicité!'))
+      .append($('<h3>').text('Explore and enjoy your experience!'));
 
     // Build actions
-    $("#demowelcomecard-actions")
-      .append($('<button/>').text("Tutorial")
-        .on("click", () => window.open("https://docs.simplicite.io/", "_blank")))
-      .append($('<button/>').text("Products")
-        .on("click", () => $("#demowelcomecard-productlist").toggle()));
+    $('#demowelcomecard-actions')
+      .append($('<button/>').text('Tutorial')
+        .on('click', () => window.open('https://docs.simplicite.io/', '_blank')))
+      .append($('<button/>').text('Products')
+        .on('click', () => $('#demowelcomecard-productlist').toggle()));
 
     // Load products
-    product.search(function() {
-      for (let i = 0; i < product.count; i++) {
-        const prd = product.list[i];
-        let card = $('<div>').addClass("product-card");
-        // Build card content
-        $("#demowelcomecard-productlist").append(card);
+    $app.getBusinessObject('DemoProduct').search({} /* or null */, { inlineDocuments: true }).then(rows => {
+      for (const row of rows; i++) {
+        let card = $('<div>').addClass('product-card');
+        // Build card content with row...
+        $('#demowelcomecard-productlist').append(card);
       }
-      $("#demowelcomecard-productlist").hide();
-    }, null, { inlineDocuments: true });
+      $('#demowelcomecard-productlist').hide();
+    });
   }
 };
 ```
