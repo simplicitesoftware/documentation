@@ -45,3 +45,6 @@ To create a scope and make it available to a user:
 
 How to create a home page?
 --------------------------
+
+We recommend to use the **View editor**
+![](img/home-page/homepage1.png)
