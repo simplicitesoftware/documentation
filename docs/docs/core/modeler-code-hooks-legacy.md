@@ -337,11 +337,10 @@ onLoadModel: function() {
 	var self = this;
 	var s = new Simplicite.Ajax();
 	var p = s.getBusinessObject("FieldList");
-	p.search(function() {
-		if (p.list && p.list.length>0) {
-			self.template.listId = p.list[0].row_id;
-		}
-	}, { lov_model_id: self.id });
+	p.search({ lov_model_id: self.id }).then(rows => {
+		if (rows.length > 0)
+			self.template.listId = rows[0].row_id;
+	});
 },
 
 // Called when node is loaded
@@ -504,11 +503,10 @@ onLoadModel: function() {
 	var self = this;
 	var s = new Simplicite.Ajax();
 	var uc = s.getBusinessObject("ALMUseCase");
-	uc.search(function() {
-		if (uc.list && uc.list.length>0) {
-			self.template.useCaseId = uc.list[0].row_id;
-		}
-	}, { ALMUseCaseModelId: self.id });
+	uc.search({ ALMUseCaseModelId: self.id }).then(rows => {
+		if (rows.length>0)
+			self.template.useCaseId = rows[0].row_id;
+	});
 },
 
 // Override default box with vertical contents

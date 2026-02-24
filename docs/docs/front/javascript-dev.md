@@ -185,24 +185,22 @@ Core JavaScript usage
 
 JavaScript in External Objects enables custom behaviors and Simplicité communication.
 
-**Example**: Display product list with name and price
+**Example**: Display product list of supplier `BIM` with name and price
 
 ```javascript
-let app = $ui.getApp();
-let prdList = app.getBusinessObject("DemoProduct");
+let prd = $app.getBusinessObject('DemoProduct');
 
-products.search(function(){
-  for (let i=0; i<products.list.length; i++) {
-    const prd = products.list[i];
+prd.search([ demoPrdSupId__demoSupCode: 'BIM' ]).then(rows => {
+  for (const row of rows) {
     document.getElementById("widget-productlist").insertAdjacentHTML(
       'beforeend',
       `<div class="widget-product">
-        <span>${prd.demoPrdName}</span>
-        <span>${prd.demoPrdUnitPrice}</span>
+        <span>${row.demoPrdName}</span>
+        <span>${row.demoPrdUnitPrice}</span>
       </div>`
     );
   }
-}, null, {});
+});
 ```
 
 ### External Pages

@@ -1305,8 +1305,8 @@ Script:
         if (code) {
             // Search the client
             var cli = app.getBusinessObject("DemoClient");
-            cli.search(function(list) {
-                if (list && list.length) {
+            cli.search({ demoCliCode: code }).then(list => {
+                if (list.length > 0) {
                     client =  list[0];
                     // Displays the name in header
                     lc.text(client.demoCliFirstname + " " + client.demoCliLastname);
@@ -1314,8 +1314,6 @@ Script:
                     myOrders();
                 }
                 else $ui.alert("Invalid client code.")
-            }, {
-                demoCliCode: code
             });
         }
         else $ui.alert("Please enter your client code.")

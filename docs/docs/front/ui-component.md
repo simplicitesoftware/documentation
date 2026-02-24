@@ -139,9 +139,6 @@ prd.search({} /* or null */,{ inlineDocuments: ['demoPrdPicture'] }).then(rows =
     $("#product-list").append(productDiv);
   }
 });
-// Notes:
-// - in v5  move the above search result processing lambda function from the .then() to the first argument of .search()
-// - in modern browsers you can also use the const rows = await search(...) syntax
 ```
 
 ### Accessing Fields
@@ -172,10 +169,6 @@ const grant = $ui.getGrant();
 $app.getBusinessObject("User").search({ usr_login: grant.login }).then(rows => {
   $ui.displayForm(null, "User", rows[0].row_id, { nav: "add", target: "work" });
 });
-// Notes:
-// - in v5 replace $app by $ui.getApp()
-// - in v5  move the above search result processing lambda function from the .then() to the first argument of .search()
-// - in modern browsers you can also use the const rows = await search(...) syntax
 ```
 
 Complete Example Structure

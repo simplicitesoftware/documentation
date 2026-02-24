@@ -96,13 +96,12 @@ Always manipulate Business Objects within a `search()` method to ensure data is 
 ### Field Access Example
 
 ```javascript
-product.search(function() {
-    for (let i = 0; i < product.count; i++) {
-      const prd = product.list[i];
-      console.log(prd.demoPrdName);        // Direct field access
-      console.log(prd.demoPrdSupId__demoSupName); // Linked field access
+product.search().then(rows => {
+    for (const row of rows) {
+      console.log(row.demoPrdName); // Direct field access
+      console.log(row.demoPrdSupId__demoSupName); // Linked field access
     }
-}, null, {});
+});
 ```
 
 Displaying UI Elements

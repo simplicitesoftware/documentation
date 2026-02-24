@@ -316,14 +316,12 @@ onAddContent: function(node, template, form) {
 	// Add a function
 	else if (node.object=="ObjectInternal" && template.name=="BusinessFunction") {
 		var o = this.app.getBusinessObject(template.object);
-		o.getForCreate(function() {
+		o.getForCreate().then(() => {
 			o.item[template.refField] = node.id; // Referenced object
 			o.item.fct_name = node.data.obo_name+"-R"; // Default name
-			o.populate(function() {
+			o.populate().then(() => {
 				self.topui.displayForm(null, o, "0", { nav: "new", showNav: true, values: o.item });
 			});
-		},{
-			metadata: true
 		});
 	}
 },
@@ -450,10 +448,10 @@ onLoadModel: function(data, loaded) {
 	// Search th list of values of state-model
 	var self = this,
 		o = self.app.getBusinessObject("FieldList","tmp_ajax_FieldList");
-	o.search(function() {
-		if (o.list && o.list.length) self.template.listId = o.list[0].row_id;
+	o.search({ lov_model_id: self.modelId }.then(list => {
+		if (list.length) self.template.listId = list[0].row_id;
 		loaded();
-	}, { lov_model_id: self.modelId });
+	});
 },
 onDrawNode: function(node, cbk) {
 	if (node.template.name=="State" && node.data)

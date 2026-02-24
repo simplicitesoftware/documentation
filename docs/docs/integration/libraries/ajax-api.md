@@ -380,10 +380,10 @@ Note that once called the `getMetaData` service, the object metadata remains ava
 The `search` service searches records according to specified filters (if no filters argument is set no search filters are applied).
 
 ```javascript
-obj.search(function(list) {
-	console.log(list);
-	$("body").append($("<div/>").text("Found " + list.length + " records"));
-}[, { <field1>: <filter1>, ..., <fieldN>: <filterN> }]);
+obj.search({ <field1>: <filter1>, ..., <fieldN>: <filterN> }).then(rows => {
+	console.log(rows);
+	$("body").append($("<div/>").text("Found " + rows.length + " records"));
+});
 ```
 
 Note that once called the `search` service, the search result list remains available in the `obj.list` variable
@@ -396,10 +396,9 @@ You can specify a `page` parameter to activate pagination on search, the `obj.ma
 gives you the number of pages (that are between `0` and `obj.maxpage - 1`) e.g.:
 
 ```javascript
-obj.search(function(list) {
-	console.log(list);
+obj.search(null, { page: 0 }).then(()) => {
 	$("body").append($("<div/>").text("Found " + obj.count + " records, out of which " + obj.list.length + " have been returned for page " + obj.page + "/" + obj.maxpage));
-}, undefined, { page: 0 });
+});
 ```
 
 You can specify a `inlineDocs` option to get document and image content fields inlined in the list. Each returned document have:
@@ -422,24 +421,23 @@ $("body").append($("<img/>", { src: app.dataURL(obj.list[i].<field name>) }));
 If the document/image field is not inlined you can get the download URL of the document/image using:
 
 ```javascript
-app.documentURL(obj.metadata.name, "<field name>", (obj.list[i])[obj.getRowIdFieldName()], obj.list[i].<field name>);
+$app.documentURL(obj.metadata.name, "<field name>", (obj.list[i])[obj.getRowIdFieldName()], obj.list[i].<field name>);
 ```
 
 The following example is the equivalent of the application-level news service example above
 but using directly the `WebNews` object:
 
 ```javascript
-var obj = app.getBusinessObject("WebNews");
-obj.search(function(list) {
-	for (var i = 0; i < list.length; i++) {
-		var item = list[i];
+var nws = $app.getBusinessObject("WebNews");
+nws.search(null, { inlineDocs: true }).then(list => {
+	for (const item of list) {
 		$("body")
 			.append($("<h4/>").text(item.nws_title))
 			.append($("<small/>").text(item.nws_date))
 			.append($("<div/>").text(item.nws_description));
 		$("body").append($("<img/>", { src: app.dataURL(item.nws_image) }));
 	}
-}, undefined, { inlineDocs: true });
+});
 ```
 
 ### Count records
@@ -448,10 +446,9 @@ As of **version 3.2 MAINTENANCE 05**, the `getCount` service counts records acco
 (if no filters argument is set no search filters are applied).
 
 ```javascript
-obj.getCount(function(c) {
-	console.log(c);
+obj.getCount({ <field1>: <filter1>, ..., <fieldN>: <filterN> }).then(c => {
 	$("body").append($("<div/>").text("There are " + c.count + " records = " + (c.maxpage+1) + " pages of " + c.pagesize + " records)"));
-}[, { <field1>: <filter1>, ..., <fieldN>: <filterN> }]);
+});
 ```
 
 ### Search records from index
@@ -522,22 +519,22 @@ is set to `"0"` in the returned record)
 The `create` service sends a record for creation.
 
 ```javascript
-obj.create(function(item) {
-	console.log(item);
-}[, item]);
+obj.create(itemToCreate /* or empty = use obj.item */).then(createdItem /* or () */=> {
+	console.log(createdItem /* or obj.item */);
+}[);
 ```
 
-If no explicit `item` is passed as argument the current `obj.item` is used.
+If no explicit `itemToCreate` is passed as argument the current `obj.item` is used.
 
 Except for simple cases, the record to create should be got by the `getForCreate` service.
 
 ```javascript
-obj.getForCreate(function(item) {
-	console.log(item); // initialized record for creation
-	obj.create(function(item) {
-		// set some fields...
-		console.log(item); // created record (with created row ID)
-	}[, item]);
+obj.getForCreate(itemToPrepareForUpdate).then(itemToCreate => {
+	console.log(itemToCreate); // prepared record for creation
+	// set some fields...
+	obj.create(itemToCreate).then(createdItem => {
+		console.log(createdItem); // created record (with created row ID)
+	});
 });
 ```
 
@@ -568,12 +565,12 @@ $("#ok").click(function() {
 	r.onloadend = function(e) {
 		var c = app.base64EncodeArrayBuffer(e.target.result);
 		var obj = app.getBusinessObject("WebNews");
-		obj.getForCreate(function() {
+		obj.getForCreate().then(() => {
 			console.log(obj.item);
 			obj.item.nws_title = $("#title").val();
 			obj.item.nws_description = $("#desc").val();
 			obj.item.nws_image = { id: "0", name: f.name, mime: f.type, content: c };
-			obj.create(function() {
+			obj.create().then(() => {
 				alert("News created !");
 				$("#title").val("");
 				$("#desc").val("");
@@ -599,22 +596,22 @@ Where the corresponding HTML form components are:
 The `update` service sends a record for update.
 
 ```javascript
-obj.update(function(item) {
-	console.log(item);
-}[, item]);
+obj.update(itemToUpdate /* or empty = use obj.item */).then(updatedItem /* or () */ => {
+	console.log(updatedItem /* or obj.item */);
+});
 ```
 
-If no explicit `item` is passed as argument the current `obj.item` is used.
+If no explicit `itemToUpdate` is passed as argument the current `obj.item` is used.
 
 The record to create should typically be got by the `getForUpdate` service.
 
 ```javascript
-obj.getForUpdate(function(item) {
-	console.log(item); // initialized record for update
-	obj.update(function(item) {
-		// update some fields...
-		console.log(item); // updated record
-	}[, item]);
+obj.getForUpdate(itemToPrepareForUpdate).then(itemToUpdate => {
+	console.log(itemToUpdate); // prepared record for update
+	// update some fields...
+	obj.update(itemToUpdate).then(updatedItem => {
+		console.log(updatedItem); // updated record
+	});
 });
 ```
 
@@ -625,12 +622,12 @@ obj.getForUpdate(function(item) {
 A copy is a creation where the record to create is got by the `getForCopy` service.
 
 ```javascript
-obj.getForCopy(function(item) {
-	console.log(item); // initialized record for copy
-	obj.update(function(item) {
-		// update some fields...
-		console.log(item); // created record (with created row ID)
-	}[, item]);
+obj.getForCopy(itemToPrepareForCopy).then(itemToCopy => {
+	console.log(itemToCopy); // initialized record for copy
+	// update/set some fields...
+	obj.update().then(copiedItem => {
+		console.log(copiedItem); // created record (with created row ID)
+	});
 });
 ```
 
@@ -639,9 +636,9 @@ obj.getForCopy(function(item) {
 The `del` service deletes the record that corresponds to specified row ID.
 
 ```javascript
-obj.del(function() {
+obj.del(rowId /* or empty to use cirrent item row ID */).then(() => {
 	console.log("Deleted !");
-}, rowID);
+});
 ```
 
 ### Object parameters
@@ -663,9 +660,9 @@ The `getParameter` service gets a single object parameter.
 Sample usage is:
 
 ```javascript
-obj.getParameter(function(value) {
+obj.getParameter("MYOBJPARAM").then(value => {
 	$("body").append($("<div/>").text("MYOBJPARAM = " + value));
-}, "MYOBJPARAM");
+});
 ```
 
 ### Call action

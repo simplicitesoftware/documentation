@@ -102,14 +102,13 @@ var MyExternalPage = (function($) {
 
 ```javascript
 let app = new Simplicite.Ajax(params.root, "uipublic");
-let product = app.getBusinessObject("DemoProduct");
+let prd = app.getBusinessObject("DemoProduct");
 
-product.search(function() {
-  for (let i = 0; i < product.count; i++) {
-    let prd = product.list[i];
-    // Use product data
+prd.search({} /* or null */, { inlineDocuments: true }).then(rows => {
+  for (const row of rows) {
+    // Use product row data
   }
-}, null, { inlineDocuments: true });
+});
 ```
 
 #### Creating Objects
@@ -117,15 +116,14 @@ product.search(function() {
 ```javascript
 let order = app.getBusinessObject("DemoOrder");
 
-order.getForCreate(function() {
+order.getForCreate().then(() => {
   order.item.demoOrdCliId = cli.row_id;
   order.item.demoOrdCliId__demoCliCode = cli.demoCliCode;
   order.item.demoOrdPrdId = prd.row_id;
   order.item.demoOrdPrdId__demoPrdReference = prd.demoPrdReference;
   order.item.demoOrdQuantity = "1";
   order.item.demoOrdComments = "Order from external page";
-
-  order.create();
+  order.create().then(() => console.log('Created !'));
 });
 ```
 
@@ -178,10 +176,9 @@ function render(params) {
 Enable inline documents:
 
 ```javascript
-product.search(function() {
-  let prd = product.list[0];
-  let imageSrc = `data:${prd.demoPrdPicture.mime};base64,${prd.demoPrdPicture.content}`;
-}, null, { inlineDocuments: true });
+prd.search({} /* ord null */, { inlineDocuments: true }).then(rows => {
+  let imageSrc = `data:${rows[0].demoPrdPicture.mime};base64,${rows[0].demoPrdPicture.content}`;
+});
 ```
 
 **Search parameters**:
@@ -201,15 +198,14 @@ Handle promises correctly:
 
 ```javascript
 async function getProductNames() {
-  let result = await new Promise((resolve, reject) => {
-    product.search(function() {
-      let names = product.list.map(prd => prd.demoPrdName);
+  return result = await new Promise((resolve, reject) => {
+    prd.search().then(rows => {
+      const names = product.list.map(prd => prd.demoPrdName);
       resolve(names);
-    }, (err) => {
+    }).catch(err => {
       reject(err);
-    }, { inlineDocuments: true });
+    });
   });
-  return result;
 }
 
 let productNames = await getProductNames();
@@ -270,7 +266,7 @@ var MyCustomVuePage = MyCustomVuePage || (() => {
       };
 
       const app = typeof $ui !== 'undefined' ?
-        $ui.getAjax() :
+        $app :
         new Simplicite.Ajax(params.root, 'uipublic');
 
       const vue = Vue.createApp({
@@ -283,10 +279,10 @@ var MyCustomVuePage = MyCustomVuePage || (() => {
       });
 
       // Load data
-      product.search(function() {
-        data.products = product.list;
+      prd.search().then(rows => {
+        data.products = rows;
         vue.mount("#mycustomvuepage");
-      }, null, { inlineDocs: true });
+      });
 
     } catch(e) {
       $('#mycustomvuepage').text(`Error: ${e.message}`);
