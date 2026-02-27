@@ -463,8 +463,8 @@ When connecting over SSH, only secured SSH keys should be used.
 
 ### SIM access
 
-If you don't use then, disable the UI and the APIs access of the SIM
+If you don't use them, disable the UI and the APIs access of the SIM
 (the UI relies on the APIs so disabling APIs and not the UI does not make sense).
 
-If you have disabled the UI and the API you are still able to manage your instances using the CLI from a terminal over SSH
-(some advanced features of the SIM are not available on the UI or the APIs anyway).
+If you have disabled the UI and the API access you are still able to manage your instances using the CLI from a terminal over SSH
+(some advanced features of the SIM are not available thru the UI or the APIs anyway).
