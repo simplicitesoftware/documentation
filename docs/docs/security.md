@@ -373,6 +373,13 @@ JAR to the platform otherwise (e.g. by copying it into the `WEB-INF/lib` dir or 
 
 :::
 
+:::note
+
+If you don't want to depend **only** on a JVM setting for disabling the compilation capabilities of the platform
+you can **also** remove the `WEB-INF/lib/ecj-c.y.z.jar` JAR. Don't do it if the compilation is not disabled as described above
+
+:::
+
 #### Websockets
 
 The `/ui/<events|lsp|...>` endpoints provides websocket services to provide client-side access to some server-side services: logs, LSP, etc.
