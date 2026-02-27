@@ -373,7 +373,7 @@ JAR to the platform otherwise (e.g. by copying it into the `WEB-INF/lib` dir or 
 
 :::
 
-:::note
+:::tip
 
 If you don't want to depend **only** on a JVM setting for disabling the compilation capabilities of the platform
 you can **also** remove the compiler JAR (`WEB-INF/lib/ecj-<x.y.z>.jar`) from the webapp.
