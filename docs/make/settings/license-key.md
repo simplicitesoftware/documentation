@@ -18,11 +18,11 @@ Using the generic web UI
 This manual is generic for Simplicité instances, always refer to your app's instructions first.
 :::
 
-### 1) Connect to your app
+### 1 - Connect to your app
 
 You should connect as the `designer` super-user (_or any user that has rights on the `LicenseKey` meta-object_).
 
-### 2) Use the right scope
+### 2 - Use the right scope
 
 Check the you are on the **“Simplicité Administrator”** scope
 
@@ -31,11 +31,11 @@ Sometimes, **if the license is expired, the scope selector might not be accessib
 the trick is to use the address bar to change scope, by adding `/ui?scope=Home` to your app’s URL.
 :::
 
-### 3) Access the **License Key** Object
+### 3 - Access the **License Key** Object
 
 - Go to _Settings > License key_
 
-### 4) Delete old key
+### 4 - Delete old key
 
 - delete the old key (see image in #3)
 

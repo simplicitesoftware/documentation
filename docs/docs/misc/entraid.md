@@ -17,31 +17,31 @@ Prerequisites
 Tutorial
 --------
 
-### 1) New app registration
+### 1 - New app registration
 
 ![New app registration](./img/entraid/app_reg.png)
 
-### 2) Register
+### 2 - Register
 
 ![Register](./img/entraid/register.png)
 
-### 3) Locate some of the endpoint data
+### 3 - Locate some of the endpoint data
 
 ![endpoint](./img/entraid/endpoint.png)
 
 NB: depending on the "supported account types" selected on step 2, your authorisation and token URLs might or might not contain the tenant ID
 
-### 4) Generate and save secret
+### 4 - Generate and save secret
 
 **Warning:** The secret value only shows once, make sure to copy it
 
 ![secret](./img/entraid/secret.png)
 
-### 5) Authorise user on your app (add claims)
+### 5 - Authorise user on your app (add claims)
 
 ![authorise](./img/entraid/authorize.png)
 
-### 6) Add Azure as an Authentication Provider through the `AUTH_PROVIDERS` System Parameter
+### 6 - Add Azure as an Authentication Provider through the `AUTH_PROVIDERS` System Parameter
 
 For [security reasons](../security.md#secrets) we recommend transmitting secrets to the platform as environment variables.
 
@@ -85,7 +85,7 @@ To avoid Simplicité mapping account pictures you can map `picture` to `none` in
 
 :::
 
-### 7) Implement some group attribution
+### 7 - Implement some group attribution
 
 **_This step needs customisation to fit your own scenario_**
 
@@ -113,7 +113,7 @@ public class PlatformHooks extends com.simplicite.util.engine.PlatformHooksInter
 
 ```
 
-### 8) Add and map custom claims
+### 8 - Add and map custom claims
 
 You can add custom JWT claims and map them to user fields.
 ![optional claims](./img/entraid/claims.png)
