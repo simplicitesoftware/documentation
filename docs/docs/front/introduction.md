@@ -63,7 +63,9 @@ Simplicité's interface consists of four main sections:
 - **HEADER**: Global navigation, search, shortcuts, and user info
 - **MENU**: Application sections with sub-menus and categories
 - **WORK**: Main content area for forms, lists, and dynamic content
-- **FOOTER**: Legal mentions and accessibility features
+- **FOOTER**: Static footer baseline
+  - to display legal mentions and accessibility features
+  - an optional resource named `FOOTER_ADDON` can be defined to place specific contents on a footer 'dropup' panel
 
 Documentation Structure
 -----------------------
