@@ -24,11 +24,12 @@ for considered Simplicité version.
 :::
 
 Note that it is also still possible to deploy it as managed application container(s) on a wide range of platforms as a service (**PaaS**) such as
-CloudFoundry flavor (see. [this document](/docs/operation/cloudfoundry) for details),
-AWS ElasticBeanstalk (see. [this document](/docs/operation/aws-elasticbeanstalk) for details),
-Heroku (see. [this document](/docs/operation/heroku) for details),
-Openshift (see. [this document](/docs/operation/openshift) for details),
-etc.
+
+- CloudFoundry flavor (see. [this document](/docs/operation/cloudfoundry) for details),
+- AWS ElasticBeanstalk (see. [this document](/docs/operation/aws-elasticbeanstalk) for details),
+- Heroku (see. [this document](/docs/operation/heroku) for details),
+- Openshift (see. [this document](/docs/operation/openshift) for details),
+- etc.
 
 Custom deployments
 ------------------

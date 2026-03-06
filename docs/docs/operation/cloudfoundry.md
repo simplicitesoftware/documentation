@@ -73,7 +73,7 @@ cf push <instance name>
 Once deployed the instance UI will be available on `http://<instance name>.mybluemix.net`.
 This URL is noted `<instance base URL>` in the commands below.
 
-You can connect using the `designer` user account (default password is `designer` as shown in the commands below).
+You can connect using the `designer` user account.
 
 ### Load the demo application
 
@@ -82,19 +82,19 @@ Optionally, the demo application configuration package and the associated test d
 Import the demo application configuration on the instance using the following commands:
 
 ```text
-curl -u designer:designer --form service=zipimport --form  url=https://www.simplicite.io/resources/modules/demo-app.zip <instance base URL>/io
+curl -u <credentials> --form service=zipimport --form  url=https://www.simplicite.io/resources/modules/demo-app.zip <instance base URL>/io
 ```
 
 Then clear the cache using the following command:
 
 ```text
-curl -u designer:designer --form service=clearcache <instance base URL>/io
+curl -u <credentials> --form service=clearcache <instance base URL>/io
 ```
 
 Then load demo app data using the following command:
 
 ```text
-curl -u designer:designer --form service=zipimport --form  url=https://www.simplicite.io/resources/modules/demo-data.zip <instance base URL>/io
+curl -u <credentials> --form service=zipimport --form  url=https://www.simplicite.io/resources/modules/demo-data.zip <instance base URL>/io
 ```
 
 ### Unprovision the instance
@@ -165,7 +165,7 @@ cf push <instance name>
 Once deployed the instance UI will be available on `http://<instance name>.cfapps.io`.
 This URL is noted `<instance base URL>` in the commands below.
 
-You can connect using the `designer` user account (default password is `designer` as shown in the commands below).
+You can connect using the `designer` user account.
 
 ### Load the demo application
 
@@ -174,19 +174,19 @@ Optionally, the demo application configuration package and the associated test d
 Import the demo application configuration on the instance using the following commands:
 
 ```text
-curl -u designer:designer --form service=zipimport --form  url=https://www.simplicite.io/resources/modules/demo-app.zip <instance base URL>/io
+curl -u <credentials> --form service=zipimport --form  url=https://www.simplicite.io/resources/modules/demo-app.zip <instance base URL>/io
 ```
 
 Then clear the cache using the following command:
 
 ```text
-curl -u designer:designer --form service=clearcache <instance base URL>/io
+curl -u <credentials> --form service=clearcache <instance base URL>/io
 ```
 
 Then load demo app data using the following command:
 
 ```text
-curl -u designer:designer --form service=zipimport --form  url=https://www.simplicite.io/resources/modules/demo-data.zip <instance base URL>/io
+curl -u <credentials> --form service=zipimport --form  url=https://www.simplicite.io/resources/modules/demo-data.zip <instance base URL>/io
 ```
 
 ### Unprovision the instance

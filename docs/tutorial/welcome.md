@@ -9,10 +9,30 @@ Welcome to the Simplicité Tutorial
 Getting Started
 ---------------
 
-Before beginning the tutorials, you'll need:
+There are two basic requirements to use the platform:
 
-- A Simplicité trial instance (contact us to get a one-month trial)
+- A Simplicité instance
 - An up to date browser
+
+### Getting an instance
+
+There are two main ways of spawning a Simplicité instance:
+
+- [contact us](https://www.simplicite.fr/en/contact) with a valid identity to get access to a temporary instance (one-month trial)
+- starting a container with our private Docker image
+  1. [contact us](https://www.simplicite.fr/en/contact) to contractualise and get registry credentials)
+  2. get a VPS
+  3. follow the [docker tutorial](/docs/operation/docker-tutorial) (mono-instance) or the [portainer tutorial](/docs/operation/portainer) (multi-instance)
+
+### Default credentials
+
+The default user login is **designer**, which is used for all "Maker" tasks: designing the database, the architecture, the forms, the UI, etc. 
+It is, historically, a larger scope than what we understand by "designer" in the tech industry nowadays.
+
+Default credentials:
+
+- **default login :** `designer`
+- **default password :** `simplicite`
 
 Tutorial Structure
 ------------------
