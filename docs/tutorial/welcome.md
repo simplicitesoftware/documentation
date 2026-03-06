@@ -26,7 +26,7 @@ There are two main ways of spawning a Simplicité instance:
 
 ### Default credentials
 
-The default user login is **designer**, which is used for all "Maker" tasks: designing the database, the architecture, the forms, the UI, etc. 
+The default user login is **designer**, which is used for all "Maker" tasks: designing the database, the architecture, the forms, the UI, etc.
 It is, historically, a larger scope than what we understand by "designer" in the tech industry nowadays.
 
 Default credentials:
