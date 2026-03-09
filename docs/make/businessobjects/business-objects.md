@@ -83,6 +83,7 @@ Read more
 - [Select objects](/docs/core/objects/select-objects)
 - [Service objects](/docs/core/objects/service-objects)
 - [Custom service objects](/docs/integration/remote/custom)
+- [Contextual helps](/make/businessobjects/contextual-help)
 
 <!--
 Business object Hooks
