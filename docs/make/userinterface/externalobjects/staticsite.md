@@ -6,96 +6,85 @@ title: Static Web Site
 Static Web Site
 ===============
 
-What is a Static Web Site?
---------------------------
+Introduction
+------------
 
-Simplicité's [External Objects](/make/userinterface/externalobjects/uicomponent) allow you to create **Static Web Site** objects;
-standalone web pages used to display elements without necessarily being logged nor necessarily interacting with any feature from Simplicité's backend.
+An External Object of nature **Static Web Site** is a standalone page designed primarily for display.
+It has access to Simplicité's backend, but with restricted capabilities — suited for content that
+does not require deep interaction with business data (read-heavy, public-facing, or informational pages).
 
-In other terms it is a static site that you create using either the native web stack (HTML, CSS, JavaScript)
-or any popular web frameworks (Vue.js, React Angular, etc.).
+For interactions that require more backend access (creating or modifying records, advanced API calls),
+use a [Web Page](/make/userinterface/externalobjects/webpage) instead.
 
 :::tip
 
-If the static site interacts with Simplicité's backend it is **highly** recommended
-to use [our simplified JavaScript client lib](https://www.npmjs.com/package/simplicite) especially if it is based on a web framework.
+If the page interacts with Simplicité's API, use the [official JavaScript client library](https://www.npmjs.com/package/simplicite).
+It is compatible with any web framework (Vue.js, React, Angular, etc.).
 
 :::
 
-How to create
+For the shared architecture (resources, Java class, rights model), see [External Objects](/make/userinterface/externalobjects/basic).
+
+Configuration
 -------------
 
-The creation process is similar to the one for any _External Object_:
+| Field | Description |
+| ----- | ----------- |
+| Code | Object's unique identifier. Convention: `ModulePrefix` + `ObjectName` |
+| Nature | Must be set to **Static Web Site** |
+| Class | Java class extended by this object. Typically left empty or set to `StaticSiteExternalObject` |
+| Configuration | Optional JSON for custom constants or configuration values, parsed in the Java class |
+| UI Widget | Must be set to **No** for Static Web Sites |
+| Module | Module this object belongs to. Determines the object's namespace and governs its packaging and deployment within the application |
 
-1. Go to _User Interface > External Objects > Show all_, and then click **Create**
+Resources
+---------
 
-2. During the form's filling, ensure you select _Static Web Site_ as **Nature**.
-   - **UI Widget** should be set as **No**
-   - Ensure you assign the right **Module Name** for your object.
-   > Example values:
-   > ![](img/staticsite/staticsite_createform.png)
+Three resources define the front-end of the page. All logic and rendering is handled client-side —
+there is no required Java backend implementation for a Static Web Site.
 
-3. Click **Save**.
+### HTML
 
-   ![](img/staticsite/staticsite_createresources.png)
-
-4. From the updated object's form, click **Create Resources** to create the web [Resources](/make/userinterface/resources).
-   - Ensure **CLASS** **HTML** and **STYLES** well appear in the _Resources_ tab.
-   > Created Resources:
-   > ![](img/staticsite/staticsite_resources.png)
-
-Usage
------
-
-As a _Static Web Page_ isn't necessarily interacting with Simplicité's API or backend, you only have the 3 resources to worry about.
-For the development specific to Simplicité refer to the [JSdoc](https://platform.simplicite.io/current/jsdoc/global.html).
-
-**HTML**:
-
-- Content of your page, declared in a `.html` file
-- Embedded (DOM context) in a `<div id="bs-main" class="container">...</div>`.
-- Use dynamic instantiation for your DOM content (within `CLASS` resource) and only declare the "anchors" and layout placeholders here.
-  > This ensure that all the interactions and method are referenced and avoids adding more complexity or logic to the workflow.
+Structure and content of the page, embedded within a `<div id="bs-main" class="container">...</div>`.
+Declare layout anchors and placeholders here; populate them dynamically from `CLASS`.
 
 ```html
-<div id="trnstaticpage">
-    <!-- Your elements here -->
+<div id="myStaticPage">
+    <!-- Layout anchors -->
 </div>
 ```
 
-**STYLES**:
+### STYLES
 
-- Stylesheet of your page, declaring all styles for your component.
-- Using CSS or LESS.
+Stylesheet for the page. Accepts CSS or LESS syntax.
 
 ```css
-#trnstaticpage {
-	/* Custom styles */
+#myStaticPage {
+    /* Custom styles */
 }
 ```
 
-**CLASS**:
+### CLASS
 
-- JavaScript where you declare all of your component's behavior and interactions.
-- Most happens in the `async render(){ ... }` method.
-- Access your HTML using `const $content = this.ctn;` and then `$content.html(...)`.
-  > You can also use more classic ways to access your elements like `document.getElementById()` or `$(<element-identifier>)`.
-  Ensure your HTML content matches the logic you are using !
-- Access public elements of Simplicité (in case of specific needs) using `getApp()` or `$app`.
-  > From this entry point you can use few features and access limited objects from your instance's DB & models.
+JavaScript file containing rendering logic. The main entry point is the `async render()` method.
+Access the HTML container via `this.ctn`, and Simplicité's app instance via `getApp()` or `$app`.
 
 ```javascript
-Simplicite.UI.ExternalObjects.TrnStaticPage = class extends Simplicite.UI.ExternalObject {
-	async render(params, data = {}) {
-		// $('#trnstaticpage').append('Hello world!');
+Simplicite.UI.ExternalObjects.MyStaticPage = class extends Simplicite.UI.ExternalObject {
+    async render(params, data = {}) {
         const $content = this.ctn;
-        $content.html("Hello World !");
-	}
+        $content.html("Hello World!");
+    }
 };
 ```
 
-Read More
----------
+See [Resources](/make/userinterface/resources) for details on creating and editing resource files.
 
+Related
+-------
+
+- [External Objects overview](/make/userinterface/externalobjects/basic)
+- [Web Page](/make/userinterface/externalobjects/webpage) — for full backend interaction
+- [Resources](/make/userinterface/resources)
 - [JSDoc](https://platform.simplicite.io/current/jsdoc/global.html)
-- [StaticSiteExternalObject](https://platform.simplicite.io/current/javadoc/com/simplicite/webapp/web/StaticSiteExternalObject.html) (javadoc)
+- [StaticSiteExternalObject](https://platform.simplicite.io/current/javadoc/com/simplicite/webapp/web/StaticSiteExternalObject.html)

@@ -6,154 +6,97 @@ title: Web Page
 Web Page
 ========
 
-What is a Web Page?
--------------------
+Introduction
+------------
 
-A **Web Page** in Simplicité, is a type of [External Object](/make/userinterface/externalobjects/uicomponent) that aims to be
-rendered as an interactive standalone page. Thus it is free of any peculiar interface constraints, and is supposed to be accessible to any user.
+An External Object of nature **Web Page** is a standalone page with full access to Simplicité's backend.
+Unlike a [Static Web Site](/make/userinterface/externalobjects/staticsite), a Web Page can read and modify
+business data, call internal APIs, and integrate tightly with the application's logic.
 
-The specificity (which differentiates it from a [Static Web Site](/make/userinterface/externalobjects/staticsite))
-is that such object is allowed and meant to interact with Simplicité's backend.
+It is suited for custom interfaces that need to behave like a full application page:
+forms, dashboards, data entry tools, or any scenario requiring complete backend interaction.
 
-External objects of this type are exclusively rendered in the **public** zone, which means they can't be embedded within Simplicité's
-interfaces and are thus meant to be rendered at `https://<your-instance-name>/ext/<object-name>`, by default accessible to any user.
+For the shared architecture (resources, Java class, rights model), see [External Objects](/make/userinterface/externalobjects/basic).
 
-How to create
+Configuration
 -------------
 
-The creation process is similar to the one for any _External Object_:
+| Field | Description |
+| ----- | ----------- |
+| Code | Object's unique identifier. Convention: `ModulePrefix` + `ObjectName` |
+| Nature | Must be set to **Web Page** |
+| Class | Java class extending `WebPageExternalObject`. The `displayBody` method is the main entry point for server-side rendering |
+| Configuration | Optional JSON for custom constants or configuration values, parsed in the Java class |
+| UI Widget | Must be set to **No** for Web Pages |
+| Module | Module this object belongs to. Determines the object's namespace and governs its packaging and deployment within the application |
 
-1. Go to _User Interface > External Objects > Show all_, and then click **Create**
+Architecture
+------------
 
-2. During the form's filling, ensure you select _Web Page_ as **Nature**.
-   - **UI Widget** should be set as **No**
-   - Ensure you assign the right **Module Name** for your object.
-     > Example values:
-     > ![](img/webpage/webpage_createform.png)
+Web Pages use the same three front-end resources as all External Objects (`HTML`, `STYLES`, `CLASS`),
+plus a Java class that serves as the back-end entry point.
 
-3. Click **Save**.
+### Java class
 
-   ![](img/webpage/webpage_createresource.png)
-
-4. From the updated object's form, click **Create Resources** to create the web [Resources](/make/userinterface/resources).
-   - Ensure **CLASS** **HTML** and **STYLES** well appear in the _Resources_ tab.
-     > Created Resources:
-    > ![](img/webpage/webpage_resources.png)
-
-   ![](img/webpage/webpage_editcode.png)
-
-5. Finally, click **Edit Code** to create the custom _Java class_ code for your object.
-   - You should see the **Class** field empty.
-   - **Source Code** field should have the `<your-object-code>.java` file referenced.
-     > Result Form:
-     > ![](img/webpage/webpage_javasource.png)
-
-The code for your webpage shall look like this by default:
+The Java class extends `WebPageExternalObject` and implements the `displayBody` method,
+which controls what is sent to the browser. The typical pattern calls the `CLASS` resource's `render` function:
 
 ```java
-package com.simplicite.extobjects._; // replace _ with <module-name>
-
-import java.util.*;
+package com.simplicite.extobjects.MyModule;
 
 import com.simplicite.util.*;
-import com.simplicite.util.exceptions.*;
 import com.simplicite.util.tools.*;
 
-/**
- * Standalone basic web page external object _
- */
-public class _ extends com.simplicite.webapp.web.WebPageExternalObject { // replace _ with <object-code>
+public class MyWebPage extends com.simplicite.webapp.web.WebPageExternalObject {
     private static final long serialVersionUID = 1L;
 
-    /**
-     * Body part of the page
-     * @param params Request parameters
-     */
     @Override
     public String displayBody(Parameters params) {
         try {
-            // Call the render JavaScript function implemented in the SCRIPT resource
             return javascript(getName() + ".render();");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             AppLog.error(null, e, getGrant());
             return e.getMessage();
         }
     }
 }
-
 ```
 
-Usage
------
-
-Using _Web Page_ external objects, you have two logics to implement:
-
-1. **Client-Side logic:** using the created web-resources, implement your object as you would for any native web-page.
-   - **HTML:** holds the content of your page, embedded in a `<div id="bs-main" class="container">...</div>`,
-     and accessible from scripts by `const $content = this.ctn;`.
-   - **STYLES:** where you define the stylesheet declaring all styles for your component. Using either CSS or LESS syntax.
-   - **CLASS:** the javascript file where you declare all of your component's behavior and interactions, within the `async render(){ ... }`
-     method. Which you can refine or extend by using server-side logic by calling `this. server()`
-     that references a custom method in the _Java Code_.
-
-2. **Server-Side logic:** here is defined your object's instantiation and global setup, in a class extending `com.simplicite.webapp.web.WebPageExternalObject`.
-   - Most of it is declared within the `public Object displayBody(Parameters params){ ... }`.
-   - Your page is rendered by referencing the **CLASS** resource through `javascript(getName() + ".render();");`
-   - **Other Possible Structure**
-     - Your page is implemented using the `com.simplicite.webapp.web.BootstrapWebPage` class with `new BootstrapWebPage(params.getRoot(), getDisplay())`.
-     - Your **CLASS** javascript code is called using `String render = getName() + ".render(params.toJsonObject().toString())"`
-       then `wp.setReady(render)` and `return wp.toString()`.
-     - You can pass other types of resources to your _client-side_ scripts by putting them into the `params`
-       variable that you pass to `String render` as follows; `params.toJSONObject().put("<usableName>", HTMLTool.getResourceImageUrl(this, "<resource-name>"))`.
-     - It's also here that you load your web-resources using the **BootstrapWebPage** embedded methods:
-       - **CLASS** with `BootstrapWebPage.appendJSInclude(HTMLTool.getResourceJSURL(this, "CLASS"))`
-       - **STYLES** with `BootstrapWebPage.appendCSSInclude(HTMLTool.getResourceCSSURL(this, "STYLES"))`
-       - **HTML** with `BootstrapWebPage.append(HTMLTool.getResourceHTMLContent(this, "HTML"))`.
-
-<details>
-<summary>Code Example</summary>
+For more complex setups (passing data from server to client, loading additional resources),
+use `BootstrapWebPage` to build the response programmatically:
 
 ```java
 @Override
 public Object display(Parameters params) {
-    // Bootstrap page
     BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), getDisplay());
-
-    wp.appendAjax(true);
 
     wp.appendJSInclude(HTMLTool.getResourceJSURL(this, "CLASS"));
     wp.appendCSSInclude(HTMLTool.getResourceCSSURL(this, "STYLES"));
     wp.appendHTML(HTMLTool.getResourceHTMLContent(this, "HTML"));
 
     JSONObject p = params.toJSONObject();
-
-    String imageResource = HTMLTool.getResourceImageURL(this, "IMAGE");
-
-    p.put("customImage", imageResource); // Add IMAGE image to params
-
-    wp.setReady(this.getName() + ".render(" + p.toString() + ");");
+    wp.setReady(getName() + ".render(" + p.toString() + ");");
 
     return wp.toString();
 }
 ```
 
-</details>
+### Front-end resources
 
-Read More
----------
+The `CLASS` resource receives control after the Java class triggers `render()`.
+From there, the same patterns as other External Object types apply:
+access the container via `this.ctn`, interact with the backend via `getApp()` or the Ajax API.
 
-**JavaDoc links**:
+See [Resources](/make/userinterface/resources) for details on creating and editing resource files.
 
+Related
+-------
+
+- [External Objects overview](/make/userinterface/externalobjects/basic)
+- [Static Web Site](/make/userinterface/externalobjects/staticsite) — for display-focused, restricted-access pages
+- [Resources](/make/userinterface/resources)
+- [JavaScript development](/docs/front/javascript-dev)
+- [Ajax Library](/docs/front/lib-ajax)
+- [JSDoc](https://platform.simplicite.io/current/jsdoc/global.html)
 - [BootstrapWebPage](https://platform.simplicite.io/current/javadoc/com/simplicite/webapp/web/BootstrapWebPage.html)
 - [WebPageExternalObject](https://platform.simplicite.io/current/javadoc/com/simplicite/webapp/web/WebPageExternalObject.html)
-
-**Other documentation**:
-
-- [Resources](/make/userinterface/resources)
-- [Static Web Sites](/make/userinterface/externalobjects/staticsite)
-
-**JS Dev**:
-
-- [JavaScript Development](/docs/front/javascript-dev).
-- [Ajax Library](/docs/front/lib-ajax).
