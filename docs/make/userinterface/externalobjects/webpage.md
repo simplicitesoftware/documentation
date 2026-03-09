@@ -95,7 +95,7 @@ Related
 - [External Objects overview](/make/userinterface/externalobjects/basic)
 - [Static Web Site](/make/userinterface/externalobjects/staticsite) — for display-focused, restricted-access pages
 - [Resources](/make/userinterface/resources)
-- [JavaScript development](/docs/front/javascript-dev)
+- [In-platform Development](/docs/front/platform-dev)
 - [Ajax Library](/docs/front/lib-ajax)
 - [JSDoc](https://platform.simplicite.io/current/jsdoc/global.html)
 - [BootstrapWebPage](https://platform.simplicite.io/current/javadoc/com/simplicite/webapp/web/BootstrapWebPage.html)

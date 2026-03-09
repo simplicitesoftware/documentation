@@ -1,10 +1,10 @@
 ---
 sidebar_position: 10
-title: External Objects
+title: Basic
 ---
 
-External Objects
-================
+Basic
+=====
 
 Introduction
 ------------

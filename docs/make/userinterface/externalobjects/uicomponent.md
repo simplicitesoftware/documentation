@@ -60,5 +60,5 @@ Related
 - [External Objects overview](/make/userinterface/externalobjects/basic)
 - [Resources](/make/userinterface/resources)
 - [Standard Widgets](/docs/misc/widgets)
-- [JavaScript development](/docs/front/javascript-dev)
-- [Code examples for custom components](/docs/front/ui-component)
+- [In-platform Development](/docs/front/platform-dev)
+- [Code examples for custom components](/docs/front/custom-components)
