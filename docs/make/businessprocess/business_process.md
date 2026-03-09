@@ -94,7 +94,7 @@ the necessary permissions for activities and transitions.
 
 To configure Actors:
 
-- Use Insert Actor or Create Actor
+- Use Insert Actor or Create Actor by right clicking on the model
 - Select the appropriate Group
 
 At least one Actor must be defined, otherwise the workflow cannot be executed.
@@ -111,7 +111,7 @@ This means there is no need to manually assign permissions for each activity or 
 Creating Activities (6.3+ Guided Configuration)
 -----------------------------------------------
 
-In version 6.3+, activity creation is simplified through a guided screen.
+In version 6.3+, activity creation is simplified through a guided screen. Right click in the model diagram and select "Create Activity" or "Insert Activity".
 
 ![](img/businessprocess/screenflow1.png)
 
@@ -253,7 +253,7 @@ Transitions define navigation between activities.
 They can be created:
 
 - Via Activity Link menu
-- Directly in the process diagram
+- Directly in the process diagram, by clicking on the "Link" button in the sidebar.
 
 ### Transition Properties
 
