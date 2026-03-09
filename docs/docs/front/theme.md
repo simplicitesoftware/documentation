@@ -3,209 +3,85 @@ sidebar_position: 10
 title: Theme Editor
 ---
 
-Theme Editor Overview
-===================
+Theme Editor
+============
 
-:::warning
-This documentation is part of the **Frontend Development** category, designed to guide you through frontend customization within Simplicité.
-:::
+Introduction
+------------
 
-The **Theme Editor** enables visual customization of your Simplicité instance for both designer and user interfaces.
+The Theme Editor is the built-in tool for customizing the visual appearance of a Simplicité instance.
+It controls colors, typography, spacing, borders, and interactive states across all interface elements.
+Changes made in the editor are compiled into a CSS stylesheet applied to the entire interface.
 
-![](img/theme/simplicite-mazette-form.png)
-
-Accessing the Theme Editor
---------------------------
-
-1. Navigate to **User Interface > Themes**
-2. Select a theme
-3. Click the **Preview** button
-
-![](img/theme/theme-editor-overview.png)
-
-Default Themes
---------------
-
-Simplicité includes several predefined themes:
-
-**ThemeAdmin**: Dark mode for administrators
-<details>
-<summary>Preview</summary>
-
-![](img/theme/theme-admin-overview.png)
-</details>
-
-**ThemeDesign**: Light mode alternative
-<details>
-<summary>Preview</summary>
-
-![](img/theme/theme-design-overview.png)
-</details>
-
-**ThemeEtat**: DSFR (French government) compliant
-<details>
-<summary>Preview</summary>
-
-![](img/theme/theme-etat-overview.png)
-</details>
-
-Creating a Theme
-----------------
-
-1. Click **Create** in **User Interface > Themes**
-2. Select a base theme:
-   - **Dark Base**: Minimal dark foundation
-   - **Light Base**: Minimal light foundation
-   - **Default Base**: Refined light foundation
-3. Choose name and module
-
-:::warning
-
-Base themes are building blocks, not for direct use. Create custom themes extending them.
-
-:::
-
-Theme Files
+Theme files
 -----------
 
-After creation, three files are generated:
+Each theme is backed by three files:
 
-1. **constants.less**: Theme Editor values as Less constants
-2. **addons.less**: Custom style overrides
-3. **themeName_gen.css**: Compiled final stylesheet
+| File | Role |
+| ---- | ---- |
+| `constants.less` | Theme variables as Less constants — values set in the editor are written here |
+| `addons.less` | Custom style overrides — edit this file to extend beyond what the editor exposes |
+| `theme_gen.css` | Compiled final stylesheet — do not edit directly |
 
-Theme Editor Interface
+To customize beyond what the Theme Editor exposes, use `addons.less`.
+See [Complementary Styles](/docs/front/styles) for details.
+
+Creating a theme
+----------------
+
+1. Navigate to **User Interface > Themes** and click **Create**
+2. Select a base theme: **Dark**, **Light**, or **Default**
+3. Set a name and assign to a module
+
+:::warning
+
+Base themes are building blocks, not intended for direct use. Always create a custom theme that extends one of them.
+
+:::
+
+Using the Theme Editor
 ----------------------
 
-![](img/theme/theme-editor-parts.png)
+1. Navigate to **User Interface > Themes**
+2. Open a theme and click **Preview**
 
 The editor has three sections:
 
-1. **Interface Preview**: Live visualization
-2. **Values Menu**: Style controls
-3. **DOM Path**: Structural element view
+| Section | Role |
+| ------- | ---- |
+| **Interface Preview** | Live visualization. Navigate tabs (Home, Buttons, Panels, Form, List, Dialog) to preview different elements |
+| **Values Menu** | Style controls organized by interface area. Adjust background, text, border, and hover states per element |
+| **DOM Path Viewer** | Displays the DOM path of the element hovered in the Preview, in Less format — useful for targeting elements in `addons.less` |
 
-### 1. Interface Preview
+### Style areas
 
-Navigate through tabs to preview different UI elements:
+The Values Menu covers the following interface areas:
 
-**Home**: Header and menu elements
-<details>
-<summary>Preview</summary>
+| Area | Controls |
+| ---- | -------- |
+| Base | Background color, fonts, spacing fundamentals |
+| Main | Header, footer, navigation breadcrumb |
+| Menu | Main navigation menu, active/inactive states |
+| Panel | Top-level panel container, header, footer |
+| Sub-panel | Nested panels within main panels |
+| Tabs | Tab navigation and active states |
+| Field | Input labels, inputs, readonly states, foreign key references |
+| List | Table headers, rows, filter bar |
+| Dialog | Modal container, header, footer |
 
-![](img/theme/theme-editor-preview-home.png)
-</details>
+Applying a theme
+----------------
 
-**Buttons**: All button types with customizable properties
-<details>
-<summary>Preview</summary>
+Themes are applied at the view level:
 
-![](img/theme/theme-editor-preview-buttons.png)
-</details>
+1. Navigate to **User Interface > Views > Home Pages**
+2. Open the target view
+3. Set your custom theme in the view configuration
+4. Clear the cache to apply changes
 
-**Panels**: Structural elements (Panels, Sub-Panels, Tabs)
-<details>
-<summary>Preview</summary>
+Related
+-------
 
-![](img/theme/theme-editor-preview-panels.png)
-</details>
-
-**Form**: Field types and inputs
-<details>
-<summary>Preview</summary>
-
-![](img/theme/theme-editor-preview-form.png)
-</details>
-
-**List**: Table-format data display
-<details>
-<summary>Preview</summary>
-
-![](img/theme/theme-editor-preview-list.png)
-</details>
-
-**Dialog**: Pop-up interfaces
-<details>
-<summary>Preview</summary>
-
-![](img/theme/theme-editor-preview-dialog.png)
-</details>
-
-### 2. Style Values Menu
-
-Organized by Preview tabs, the menu controls:
-
-1. **Background**: Color and opacity
-2. **Text**: Font size, color, weight
-3. **Border**: Color, opacity, radius, width
-4. **Hover**: Interactive element states
-
-#### Base Settings
-
-![](img/theme/theme-editor-style-base.png)
-
-Controls fundamental styles: background color, fonts, spacing.
-
-#### Main Elements
-
-![](img/theme/theme-editor-style-main.png)
-
-Configures header, footer, and navigation breadcrumb.
-
-#### Menu
-
-![](img/theme/theme-editor-style-menu.png)
-
-Styles main menu, including active/inactive states.
-
-#### Panel
-
-![](img/theme/theme-editor-style-panel.png)
-
-Top-level panel styles (container, header, footer).
-
-#### Sub-panel
-
-![](img/theme/theme-editor-style-subpanel.png)
-
-Nested panel styles within main panels.
-
-#### Tabs
-
-![](img/theme/theme-editor-style-tabs.png)
-
-Tab organization and navigation styles.
-
-#### Field
-
-![](img/theme/theme-editor-style-field.png)
-
-Input field styles (labels, inputs, readonly, references).
-
-#### List
-
-![](img/theme/theme-editor-style-list.png)
-
-Table component customization (headers, rows, filters).
-
-#### Dialog
-
-![](img/theme/theme-editor-style-dialog.png)
-
-Modal dialog styles (container, header, footer).
-
-### 3. DOM Path Viewer
-
-Displays element structure for:
-
-- Understanding layouts
-- Defining custom styles
-- Ensuring consistency
-
-**Usage**: Hover over Preview elements to see their DOM path in Less format.
-
-**Common paths**:
-
-- Home: `div.main > div.simplicite.wrapper > ... > element.class`
-- Form: `div.objform > div.card > ... > element.class`
-- List: `div.objlist > div.card.panel-list > ... > element.class`
+- [Complementary Styles](/docs/front/styles) — extending themes via `addons.less`
+- [Themes configuration](/make/userinterface/themes)

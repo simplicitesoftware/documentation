@@ -3,86 +3,66 @@ sidebar_position: 0
 title: Introduction
 ---
 
-Introduction to Frontend Dev
-============================
+Frontend Development
+====================
 
-:::warning
-This documentation is part of the **Frontend Development** category, designed to guide you through frontend customization within Simplicité.
-:::
+Simplicité supports two distinct frontend development scenarios. Understanding which one applies
+to your project determines which tools, APIs, and pages are relevant.
 
-This guide covers Simplicité's tools for customizing UIs and implementing custom designs while maintaining access to all back-office features.
+The two scenarios
+-----------------
 
-Target Users
+### In-platform customization
+
+You are working inside a Simplicité instance — customizing its interface, building components embedded in views,
+or creating pages backed by the platform's backend.
+
+This covers:
+
+- Theming and visual identity (Theme Editor, complementary styles)
+- Custom components and pages built as External Objects (HTML, CSS, JavaScript resources + optional Java class)
+- The in-platform JavaScript API (`$app`, `$ui`, `$view`) for interacting with the backend from resources
+
+Relevant pages: [Theme Editor](/docs/front/theme), [Complementary Styles](/docs/front/styles),
+[In-platform Development](/docs/front/platform-dev), [Ajax Library](/docs/front/lib-ajax),
+[Custom Components & Pages](/docs/front/custom-components)
+
+### NPM library projects
+
+You are building an application that connects to a Simplicité backend from outside the platform —
+standalone frontends, server-side integrations, or framework-based projects (Vue.js, React, Angular, etc.).
+
+This covers:
+
+- Authentication and session management via the NPM package
+- CRUD operations on Business Objects
+- Standalone project setup
+
+Relevant pages: [NPM Library](/docs/front/npm-lib)
+
+---
+
+Both scenarios share the same underlying JavaScript API. The [NPM package](https://www.npmjs.com/package/simplicite)
+and the in-platform Ajax library expose the same core interface — the context of use differs, not the API itself.
+
+UI structure
 ------------
 
-These functionalities are primarily for **web designers** and **frontend developers** who need to address requirements
-beyond Simplicité's default interface. The concepts involve:
-
-- **HTML**, **CSS**, and **JavaScript**
-- Web frameworks and CSS preprocessors
-
-Use Cases
----------
-
-### Visual Identity & Design Guidelines
-
-![](img/introduction/identity-guidelines.png)
-
-When integrating Simplicité into systems with distinct design guidelines (e.g., government or corporate designs),
-you can customize the UI to ensure familiarity and compliance.
-
-![](img/introduction/dsfr-simplicite.png)
-
-### Client-Oriented Interfaces
-
-![](img/introduction/client-oriented-webpage.png)
-
-For client-facing solutions, create custom front-ends tailored to end-users. For example:
-
-- Product catalogs with video previews
-- Custom ordering interfaces
-- Minimalist user-friendly pages
-
-![](img/introduction/order-internal-page.png)
-![](img/introduction/order-external-page.png)
-
-### Specific Web Technologies
-
-If your team uses specific frameworks (Vue.js, Mustache, etc.), Simplicité allows you to design interfaces using your preferred tools.
-
-![](img/introduction/vue-webpage.png)
-![](img/introduction/mustache-webpage.png)
-
-UI Structure
-------------
-
-Simplicité's interface consists of four main sections:
+When customizing within the platform, Simplicité's interface is organized into four zones:
 
 ![](img/introduction/disposition-schema.png)
 
-- **HEADER**: Global navigation, search, shortcuts, and user info
-- **MENU**: Application sections with sub-menus and categories
-- **WORK**: Main content area for forms, lists, and dynamic content
-- **FOOTER**: Static footer baseline
-  - to display legal mentions and accessibility features
-  - an optional resource named `FOOTER_ADDON` can be defined to place specific contents on a footer 'dropup' panel
+| Zone | Role |
+| ---- | ---- |
+| **HEADER** | Global navigation, search, shortcuts, user info |
+| **MENU** | Application sections, sub-menus, domains |
+| **WORK** | Main content area — forms, lists, External Objects |
+| **FOOTER** | Static footer. Accepts an optional `FOOTER_ADDON` resource for custom content |
 
-Documentation Structure
------------------------
+Related
+-------
 
-This documentation follows a progressive learning path:
-
-1. [Theme Editor](/docs/front/theme) - Customize themes and styles
-2. [Complementary Styles](/docs/front/styles) - Advanced theme customization with addon.less
-3. [JavaScript Development](/docs/front/javascript-dev) - NPM Library and External Objects
-4. [Ajax Library](/docs/front/lib-ajax) - Core functions for navigating Simplicité concepts
-5. [Custom UI Components](/docs/front/ui-component) - Create custom widgets
-6. [External Webpages](/docs/front/web-page) - Build standalone pages communicating with Simplicité
-
-### Related Resources
-
-- [External Objects Tutorial](/tutorial/enhancing/external-object.md)
+- [External Objects](/make/userinterface/externalobjects/basic)
+- [NPM JavaScript API reference](https://simplicitesoftware.github.io/javascript-api/)
+- [JSDoc](https://platform.simplicite.io/current/jsdoc/global.html)
 - [Responsive UI](/docs/ui/responsive)
-- [Custom Disposition](/docs/core/disposition-code-examples)
-- [Core JavaScript](/docs/core/javascript-code-examples)
-- [NPM JavaScript API](https://simplicitesoftware.github.io/javascript-api/)

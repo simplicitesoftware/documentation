@@ -87,12 +87,6 @@ Manipulating Business Objects
 | `list`    | Search result array of items                                   |
 | `metadata`| Meta data (name, instance, fields)                             |
 
-:::tip
-
-Always manipulate Business Objects within a `search()` method to ensure data is properly loaded.
-
-:::
-
 ### Field Access Example
 
 ```javascript
