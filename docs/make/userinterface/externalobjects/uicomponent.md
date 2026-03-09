@@ -42,13 +42,13 @@ Configuration
 
 The `Settings` field accepts a JSON value and serves two distinct purposes:
 
-**1. Predefined widget setup**
+#### 1. Predefined widget setup
 
 When the `Class` field references a Simplicité standard widget class, `Settings` holds the JSON structure
 expected by that widget to declare its behavior and display options — without requiring custom code.
 Refer to the [Standard Widgets](/docs/misc/widgets) documentation for the expected format per widget type.
 
-**2. Custom constants**
+#### 2. Custom constants
 
 When building a fully custom component, `Settings` can hold any JSON structure you define
 (colors, titles, endpoint paths, feature flags, etc.). These values are then parsed in your Java class
