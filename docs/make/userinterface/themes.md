@@ -6,199 +6,90 @@ title: Themes
 Themes
 ======
 
-What is a Theme?
-----------------
+Introduction
+------------
 
-A theme is an object that defines the visual & graphics styles of a Simplicité's native interface.
-You create it through the embedded **Theme Editor**, and you then have the possibility to refine
-it by adding a custom stylesheet (written in LESS or CSS) that will define styles applied globally over your interfaces.
+A Theme defines the visual styles of a Simplicité native interface — colors, typography, spacing, borders,
+and interactive states. Themes are created and edited through the built-in **Theme Editor**, and can be extended
+with a custom `addons.less` stylesheet for styles the editor doesn't expose.
 
-A theme has to be associated to a [scope](/make/userinterface/views/home-page#scopes).
+A theme must be associated to a [scope](/make/userinterface/views/home-page#scopes) to take effect.
+
+Configuration
+-------------
+
+| Field             | Description                                                                                                 |
+| ----------------- | ----------------------------------------------------------------------------------------------------------- |
+| Name              | Unique name for the Theme, which helps in identifying it & hinting its usage/purpose.                       |
+| Base theme        | The fallback tone/palette for the theme, between light/dark & default.                                      |
+| Constants         | LESS variables that were set from the Theme-Editor.                                                         |
+| Addon styles      | Custom file of your choice that is gonna be merged to "constants" to define the final theme.                |
+| Compact           | Defines if by default the UI appears as compacted or not. Doesn't prevent the user from switching manually. |
+| Logo scope        | Image file, it's the logo displayed in the "scope" dropdown menu in the header.                             |
+| Favicon           | Image file, it's the one displayed as page's favicon.                                                       |
+| Header logo       | Image file (**.svg** recommended), displayed in the header's left-side.                                     |
+| Code editor theme | Theme to use for the code-editor (designer & embedded), ensure it's in the list below (*).                  |
+| HTML editor theme | Theme to use for the Quill HTML editor (longstring typed fields with HTML rendering), "Snow" / "Bubble".    |
+| Module Name       | Define the [module](/make/project/module) to which the theme belongs.                                       |
+
+:::note[(*)]
+
+**Light:**
+chrome, clouds, crimson_editor, dawn, dreamwaver, eclipse, github, iplastic, katzenmilch,
+kuroir, solarized_light, sqlserver, textmate, tomorrow, xcode.
+
+**Dark:**
+ambiance, chaos, clouds_midnight, cobalt, dracula,gob, gruvbox,idle_fingers, kr_theme, merbivore, merbivore_soft,
+mono_industrial, monokai, pastel_on_dark, solarized_dark, terminal, tomorrow_night, tomorrow_night_blue,
+tomorrow_night_bright, tomorrow_night_eighties, twilight, vibrant_ink.
+
+:::
 
 Theme Editor
 ------------
 
-Simplicité provides an embedded tool to create your themes' styles: the **Theme Editor**.
-In which you can select the styles of all Simplicité's native elements and preview theme before applying.
+The Theme Editor is accessible from the theme's form via the **Preview** button.
+It provides a live preview of the interface with three working areas:
 
-The tool is composed of 3 parts, each representing a core feature:
+| Section | Role |
+| ------- | ---- |
+| **Editing Area** | Live preview of the interface, organized by tabs (Home, Buttons, Panels, Form, List, Dialog). Click any customizable element to load its properties in the Theme Palette. Hover elements to reveal their DOM path in the Class Path |
+| **Theme Palette** | Controls for the selected element — color pickers, sliders. Changes are reflected immediately in the Editing Area. Organized by style groups |
+| **Class Path** | Displays the DOM path of the currently hovered element in Less format, useful for writing targeted overrides in `addons.less` |
 
-- **(1) Editing Area:** in which you can see the live-result of your theme.
-  - It is organized in tabs that regroups elements that have similar styles, or that exists in similar zones of your interfaces.
-  - By clicking on any element that is customizable from the tool, you'll have its attribute displayed in the _Theme Palette_.
-  - Hovering on specific elements will display their DOM-location in the _Class Path_, only if they are a part of a class that has global styles.
-  ![](img/themes/themes_preview_area.png)
+### Style areas
 
-- **(2) Theme Palette:** where you will make all of your changes through color pickers and sliders, triggering the live-preview on the _Editing Area_.
-  - It is organized by groups of styles, either that appears in same configurations, or that are a part of the same element.
-  - The _Buttons_ are the only elements that you can't style here, you can go to _Editing Area > Buttons_ in order to specify their styles.
-  ![](img/themes/themes_preview_palette.png)
+The Theme Palette covers the following interface areas:
 
-- **(3) Class path:** which displays the currently hovered element's path through the DOM,
-  allowing you to know what is the element's _html class_ and where it is located in the DOM.
-  ![](img/themes/themes_preview_classpath.png)
+| Area | Controls |
+| ---- | -------- |
+| Base | Background color, fonts, spacing fundamentals |
+| Main | Header, footer, navigation breadcrumb |
+| Menu | Main navigation menu, active/inactive states |
+| Panel | Top-level panel container, header, footer |
+| Sub-panel | Nested panels within main panels |
+| Tabs | Tab navigation and active states |
+| Field | Input labels, inputs, readonly states, foreign key references |
+| List | Table headers, rows, filter bar |
+| Dialog | Modal container, header, footer |
 
-Creating a Theme
+Extending with custom styles
+----------------------------
+
+For styles not covered by the Theme Editor, use the `addons.less` file attached to the theme.
+This stylesheet is applied on top of the generated theme CSS and accepts standard Less or CSS syntax.
+
+See [Complementary Styles](/docs/front/styles) for usage patterns and examples.
+
+Applying a theme
 ----------------
 
-Start by creating the theme object by going to _User Interface > Themes_ and clicking on **Create** in the workspace's header.
+Themes are applied at the view level. A theme can be assigned to any
+[Home Page](/make/userinterface/views/home-page) view via the view's **Theme Name** field.
 
-![](img/themes/themes_create.png)
+Related
+-------
 
-1. Setup your object.
-    - Enter a valid and unique **Name** for your theme
-    - Select the **Module Name** to associate your theme to.
-    - Choose your **Base theme**, which will define the base values for your elements, within the list; _Default_, _Light_, _Dark_.
-      Those are gonna be mostly override by your future choices.
-      > Example values:
-      > ![](img/themes/themes_form.png)
-
-    - Scroll down and select the **HTML editor theme** style, which is recommended to match your _Base theme_.
-    ![](img/themes/themes_form_bis.png)
-
-2. _Save_ your object.
-
-3. Click on **Preview** to open the _Theme Editor_
-    ![](img/themes/themes_form_ter.png)
-    - Here you can freely define styles for elements that you wish to customize.
-    - Click **Compile** to make sure your modifications appear in the live preview.
-    - Click **Save** to apply the changes to your theme object.
-    ![](img/themes/themes_preview.png)
-
-4. _(optional)_ If you have more specific styles in mind, you can then add them through the `addons.less` stylesheet.
-    - Click **Edit** next to the **Addon styles** field to open the stylesheet in the _Code Editor_.
-    ![](img/themes/themes_addons.png)
-    - Implement your styles, and click **Save** and **Close** to come back to your theme's form.
-    - Click **Save** to apply those last styles.
-      > It is possible that you see some issues here from your `addon.less` files that might be caused by syntax errors.
-      > If you have doubts or need a quick reminder for _Less_ features.
-
-Usage
------
-
-Once that you created your theme, you can use it on any **View** that is of type [Home page](/make/userinterface/views/home-page)
-by applying it from the view's form:
-
-1. Open your view's form at _User Interface > Views > Home page_.
-
-2. Go to the _Home page_ tab-item.
-   ![](img/themes/themes_view_tab.png)
-
-3. Through the field _Theme Name_, select the theme you want to apply.
-   ![](img/themes/themes_view_fields.png)
-
-4. **Save** & **Clear your cache**. When connecting back to your session and opening the targeted _Home Page_ you'll see the applied theme.
-
-Less breakthrough
------------------
-
-### What is Less?
-
-Leaner CSS (Less), is a dynamic preprocessor style sheet language that extends the capabilities of CSS.
-It introduces features like variables, nesting, mixins and functions.
-Thus making style sheets more maintainable, customizable and easier to scale.
-
-### Key Features
-
-_Variables:_ Store reusable values for colors, fonts or dimensions:
-
-<details>
-<summary>Code Snippet</summary>
-
-```less
-@primary-color: #3498db;
-body {
-    color: @primary-color;
-}
-```
-
-</details>
-
-_Nesting:_ Write styles in a structured & hierarchical way. Allowing to specify depending on contexts when it's needed.
-Below are shown two ways to use nesting, and shows a use case where items with same class
-have different styles depending on their parent:
-
-<details>
-<summary>Code Snippet</summary>
-
-```less
-.container {
-    .header {
-        .box {
-            background-color: red;
-        }
-    }
-    .body > .box {
-        background-color: blue;
-    }
-}
-```
-
-</details>
-
-:::warning
-The nesting `.parent > .child` and `.parent .child` have different meanings: **">"** targets
-only the _direct .child_, otherwise _all .child_ are targeted.
-:::
-
-_Interactions Nesting:_ Similar to element and context nesting, this feature allows dynamic handling of interaction states for elements:
-
-<details>
-<summary>Code Snippet</summary>
-
-```less
-body {
-    .container {
-        .box {
-            background-color: yellow;
-            transition: background-color 0.5s ease;
-
-            &:hover {
-                background-color: orange;
-            }
-            &:active {
-                background-color: red;
-            }
-        }
-    }
-}
-```
-
-</details>
-
-_Mixins:_ Define reusable style blocks for consistency:
-
-<details>
-<summary>Code Snippet</summary>
-
-```less
-.rounded-corners(@radius: 0.5rem) {
-    border-radius: @radius;
-}
-div {
-    .rounded-corners(1rem);
-}
-```
-
-</details>
-
-_Functions:_ Perform calculations and color operations directly in your styles:*
-
-<details>
-<summary>Code Snippet</summary>
-
-```less
-@primary-color: #3498db;
-body {
-    color: darken(@primary-color, 16%);
-}
-```
-
-</details>
-
-> **Note:** Most of the described features are also available in regular CSS.
-
-Read more
----------
-
-- [Styles](/docs/front/styles) using `addon.less`.
+- [Home Pages](/make/userinterface/views/home-page)
+- [Complementary Styles](/docs/front/styles)
+- [Theme Editor](/docs/front/theme)
