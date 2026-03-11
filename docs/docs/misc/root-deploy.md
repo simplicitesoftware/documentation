@@ -30,7 +30,6 @@ The license key context path must be `/` or `*`.
 ### Embedded work and dbdoc folders
 
 When using &quot;exploded&quot; deployment  it is possible to embed the work and dbdoc folders in the `WEB-INF` folder.
-This approach is, for instance required, when deployng on CloudFoundry.
 
 To do so the default `dataDir` environment entry if defined in the `WEB-INF/web.xml` file must be changed to:
 
