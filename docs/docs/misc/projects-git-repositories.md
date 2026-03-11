@@ -46,9 +46,7 @@ copy the content of the `app` in your Tomcat's `webapps` folder and start Tomcat
 
 :::note
 
-The instance templates are used by our [instance manager](https:/docs/misc/manager) and by our [Docker container](/docs/operation/docker)
-and other PaaS containers ([Bluemix](/docs/operation/cloudfoundry), [Pivotal](/docs/operation/cloudfoundry),
-[Heroku](/docs/operation/heroku), [OpenShift](/docs/operation/openshift), ...)
+The instance templates are used by our [instance manager](https:/docs/misc/manager) and by our [Docker container](/docs/operation/docker).
 
 :::
 
