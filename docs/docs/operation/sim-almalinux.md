@@ -768,7 +768,7 @@ The global settings are set as environment variables in the `<manager home>/conf
 - `APPS_DEFAULTDATABASE` (optional) default database type (one of above list items, defaults to `hsqldb`)
 - `APPS_MAXINSTANCES` maximum number of instances, `0` means no limit (defaults to `0`)
 - `APPS_ALLOWAPI` (optional) allow API usage (`yes/no`, defaults to `yes`)
-- `APPS_ALLOWUI` (optional) allow UI usage (`yes/no`, defaults to `yes`), requires API usage to be allowed)
+- `APPS_ALLOWUI` (optional) allow UI usage (`yes/no`, defaults to `yes`), requires API usage to be allowed
 - `APPS_ALLOWDOWNLOAD` (optional) allow download of instances (`yes/no`, defaults to `yes`)
 - `APPS_DEFAULTPROTECTED` (optional) create instances protected by default? (`yes/no`, defaults to `no`)
 - `APPS_DEFAULTAUTOSAVE` (optional) create instances auto-saved by default? (`yes/no`, defaults to `no`)
