@@ -958,6 +958,40 @@ public static String getTargetMetaObject(Grant g, String object, String field, S
 }
 ```
 
+### Meta-data
+
+- `preMetadata`: useful to change the object definition for the front-end during meta-data generation
+- `postMetadata`: to restore the object definition for the back-end, to reset some constraint impact, init hooks...
+
+```java
+/**
+ * Hook called before exporting metadata to front.
+ * Useful to change the object definition for front-end.
+ * @param context usage context ObjectDB.CONTEXT_*
+ * @param row optional record
+ */
+public void preMetadata(int context, String[] row) {
+    if (context==ObjectDB.CONTEXT_LIST && row!=null) {
+        // Condition to show a cell value on list
+        boolean cond = getFieldValue("myField2", row).equals("X");
+        getField("myField1").setVisibility(cond ? ObjectField.VIS_BOTH : ObjectField.VIS_HIDDEN);
+    }
+}
+
+/**
+ * Hook called after exporting metadata to front.
+ * Useful to restore object definition in the back-end after constraints, object hooks...
+ * @param context usage context ObjectDB.CONTEXT_*
+ * @param row optional record
+ */
+public void postMetadata(int context, String[] row) {
+    if (context==ObjectDB.CONTEXT_LIST && row==null) {
+        // Restore rule to show the column in list
+        getField("myField1").setVisibility(ObjectField.VIS_BOTH);
+    }
+}
+```
+
 Inheritance
 -----------
 
