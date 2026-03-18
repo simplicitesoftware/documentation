@@ -38,14 +38,30 @@ To add this business rule, override the `postValidate` hook by following the ste
    > The `postValidate` hook is called after the platform's `validate()` and is used to to add validation rules. For more information, see [Hooks](/docs/core/objects/businessobject-code-hooks#pre-and-post-validation-hooks)
 
    ```java
-   @Override
-   public List<String> postValidate() {
-       List<String> msgs = new ArrayList<String>();
-       if (getField("trnOrdQuantity").getInt(0) <= 0){
-           // Add an error message
-           msgs.add(Message.formatError("Invalid quantity", null, "trnOrdQuantity"));
-       }
-      return msgs;
+   package com.simplicite.objects.Training;
+
+   import java.util.*;
+
+   import com.simplicite.util.*;
+   import com.simplicite.util.exceptions.*;
+   import com.simplicite.util.tools.*;
+
+   /**
+   * Business object TrnOrder
+   */
+   public class TrnOrder extends ObjectDB {
+      private static final long serialVersionUID = 1L;
+      
+      @Override
+      public List<String> postValidate() {
+         List<String> msgs = new ArrayList<String>();
+         if (getField("trnOrdQuantity").getInt(0) <= 0){
+            // Add an error message
+            msgs.add(Message.formatError("Invalid quantity", null, "trnOrdQuantity"));
+         }
+         return msgs;
+      }	
+
    }
    ```
 

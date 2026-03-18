@@ -11,6 +11,7 @@ import ReleasesIcon from "@site/static/img/releases.svg";
 import ForumIcon from "@site/static/img/forum.svg";
 import GithubIcon from "@site/static/img/github.svg";
 import TrialIcon from "@site/static/img/trial.svg";
+import FaqIcon from "@site/static/img/faq.svg";
 
 // Replace the Icons object with your imported SVGs
 const Icons = {
@@ -19,6 +20,7 @@ const Icons = {
   releases: <ReleasesIcon className={styles.icon} />,
   forum: <ForumIcon className={styles.icon} />,
   github: <GithubIcon className={styles.icon} />,
+  faq: <FaqIcon className={styles.icon} />,
   trial: <TrialIcon className={styles.icon} />,
 };
 
@@ -114,6 +116,12 @@ export default function Home() {
                 description="Access example projects and implementations"
                 href="https://github.com/simplicitesoftware/"
                 icon={Icons.github}
+              />
+              <ResourceLink
+                title="FAQ"
+                description="Frequently asked questions and answers"
+                href="/docs/faq"
+                icon={Icons.faq}
               />
               <ResourceLink
                 title="Get Trial Access"

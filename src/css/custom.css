@@ -136,6 +136,36 @@
   }
 }
 
+.header-faq-link::before {
+  content: '';
+  width: 25px;
+  height: 25px;
+  display: flex;
+  background-color: var(--ifm-navbar-link-color);
+  mask-image: url("/img/faq.svg");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+.header-faq-link:hover::before {
+  background-color: var(--ifm-navbar-link-hover-color);
+}
+
+.header-forum-link::before {
+  content: '';
+  width: 25px;
+  height: 25px;
+  display: flex;
+  background-color: var(--ifm-navbar-link-color);
+  mask-image: url("/img/forum.svg");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+.header-forum-link:hover::before {
+  background-color: var(--ifm-navbar-link-hover-color);
+}
+
 .header-deepwiki-link::before {
   content: '';
   width: 22px;

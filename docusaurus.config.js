@@ -97,18 +97,30 @@ const config = {
             sidebarId:"versionSidebar",
             position: "left",
           },
-          /*{
-            href: 'https://www.npmjs.com/package/simplicite',
+          {
+            to: '/docs/faq',
             position: 'right',
-            className: 'header-npm-link',
-            'aria-label': 'NPM Simplicité API package',
-          },*/
+            className: 'header-faq-link',
+            'aria-label': 'FAQ'
+          },
+          {
+            href: 'https://community.simplicite.io',
+            position: 'right',
+            className: 'header-forum-link',
+            'aria-label': 'Community Forum'
+          },
           {
             href: 'https://github.com/simplicitesoftware/documentation',
             position: 'right',
             className: 'header-github-link',
             'aria-label': 'GitHub repository',
-          }/*,
+          },
+          /*{
+            href: 'https://www.npmjs.com/package/simplicite',
+            position: 'right',
+            className: 'header-npm-link',
+            'aria-label': 'NPM Simplicité API package',
+          },
           {
             href: 'https://deepwiki.com/simplicitesoftware/documentation',
             position: 'right',
