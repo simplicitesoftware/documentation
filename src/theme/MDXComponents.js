@@ -8,6 +8,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons"; // Import all solid ico
 import VersionsTable from "@site/src/components/VersionsTable";
 import PlatformBlock from "@site/src/components/PlatformBlock";
 import Roadmap from "@site/src/components/Roadmap";
+import FeaturesMap from "@site/src/components/FeaturesMap";
 
 library.add(fab, fas); // Add all icons to the library so you can use them without importing them individually.
 
@@ -19,4 +20,5 @@ export default {
   PlatformBlock: PlatformBlock,
   VersionsTable: VersionsTable,
   Roadmap: Roadmap,
+  FeaturesMap: FeaturesMap,
 };

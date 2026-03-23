@@ -1,0 +1,174 @@
+  - Simplicité
+    - Web App (Use)
+      - Lists
+        - Multi-column ordering
+        - Pagination
+        - List search
+          - Advanced Search
+          - Predefined Search
+          - Saved Search
+        - List preferences
+          - List action visibility preference
+          - List field visibility preference
+          - List field order preference
+        - List exports
+          - CSV List Export
+          - Excel List Export
+          - PDF List Export
+          - Custom List Export
+        - Bulk actions
+          - Bulk edit
+          - Bulk delete
+          - Merge
+          - Custom list actions
+        - Group by
+        - Cards mosaic
+        - Create on list
+        - Update on list
+      - Forms
+        - Fields
+          - Text fields
+            - Short text fields
+            - Long text fields
+            - Code text fields
+            - Markdown text fields
+            - Rich text fields
+            - Validated text fields
+            - Grid text fields
+          - Number fields
+            - Integer number fields
+            - Decimal number fields
+            - Monetary number fields
+            - Progress bar number fields
+            - Stars number fields
+            - Calculator number fields
+          - Date/Time fields
+          - Enum fields
+            - Select box enum fields
+            - Radio button enum fields
+            - Checkbox enum fields
+            - Pillbox enum fields
+            - Boolean enum fields
+          - File fields
+            - Single file fields
+            - Multi file fields
+            - Image file fields
+          - Special fields
+            - URL fields
+            - Phone number fields
+          - Referenced object
+        - Templates
+        - Permalinks
+        - Child lists
+          - Panel
+          - Virtual link
+          - Association
+          - Pillbox
+          - Inlined object
+      - Search
+        - Global search
+        - Object search
+          - <span data-doc="/docs/ui/search-syntax">Advanced query search</span>
+          - Date / Period search
+          - <span data-doc="/docs/ui/search-syntax#geographical-search">Geographical search</span>
+          - Predefined search
+          - Saved search
+        - Menu search
+        - Form search
+        - Modeler search
+        - User filters
+      - State Models
+        - Kanban
+        - Metrics
+      - Visual navigation
+        - Calendar
+        - Gantt
+        - Modeler
+        - Tree
+        - Custom Component
+      - Reporting
+        - Pivot tables
+          - Pivot table axes user preferences
+          - Pivot table user graphs
+          - Pivot table exports
+            - CSV pivot table export
+            - JSON pivot table export
+            - XML pivot table export
+            - Excel pivot table export
+        - Select Objects
+      - Historization
+        - Undo / Redo
+        - Object historisation
+          - Child objects historisation
+      - Collaboration
+        - App chat
+        - Object chat
+        - User tagging
+        - Notifications
+      - Business Processes
+      - Adaptable UI
+        - WCAG Compliance
+        - Themes
+        - Internationalization
+        - Compact mode
+        - Zoom
+      - User Management
+        - Groups
+        - Scopes
+        - Multi SSO
+    - Development environment (Make)
+      - Visual development
+        - Class diagrams
+        - State diagrams
+        - Activity diagrams
+      - Configuration-first
+        - Delegated maintenance load
+        - Backward compatibility
+        - Don't reinvent the wheel
+      - Technical stack
+        - Java
+        - Tomcat
+        - Bootstrap
+        - jQuery
+        - Relational databases
+          - HSQLDB
+          - MySQL / MariaDB
+          - PostgreSQL
+          - Oracle Database
+          - Microsoft SQL Server
+        - Docker
+      - Developement
+        - Back-end
+        - Front-end
+        - Module system
+          - Re-usability
+          - Maven project
+          - Git repository
+      - Integrations
+        - Authentication
+          - OAuth2 / OpenIDConnect
+            - Google Authentication
+            - France Connect Authentication
+            - Microsoft Authentication
+            - LinkedIn Authentication
+          - SAML
+          - LDAP
+          - Custom Authentication
+          - Internal Authentication
+        - Apps
+        - Data sources
+      - Endpoints
+        - /ui
+        - /api
+        - /rest
+        - /io
+        - /git
+        - /health
+        - /ping
+        - /maven
+      - App Store
+        - Simplicité stores
+          - Demo apps
+          - Extra integrations
+          - Extra modules
+        - Internal stores
