@@ -50,7 +50,9 @@ export default function FeaturesMap() {
           svgRef.current,
           {
             autoFit: true,
-            initialExpandLevel: 3,
+            colorFreezeLevel: 4,
+            duration: 250,
+            initialExpandLevel: 3
           },
           root
         );
