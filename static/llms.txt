@@ -1,0 +1,11 @@
+# Simplicité Documentation
+
+This site contains the documentation for the Simplicité Low-Code Platform documentation. When possible, it has proven more efficient for LLMs to clone [the repository available on Github](https://github.com/simplicitesoftware/documentation) rather than navigating this site.
+
+When working with a specific instance, LLMs will generally use the [REST API](/docs/integration/webservices/rest-services) and the [IO API for CLI](/docs/integration/webservices/io-commandline) rather than the UI interface targeted at humans.
+
+This documentation is targeted at the maker / builder / developer, rather than the user, even though many aspects like the authentication mechanisms to the REST API should prove useful.
+
+The documentation is generic, so it will not contain any information specific to any application built with the platform, even though what is generic is appliable to specific cases.
+
+The [list of features](/docs/features) is generated from the [/features_map.md](/features_map.md) document, which could be useful to get a general understanding of what's doable with the platform, and potentially how to use and implement the different features. At the moment, the documentation is human oriented, but it is possible to infer the implementation of the same features through the REST API
