@@ -3,8 +3,20 @@ sidebar_position: 140
 title: FAQ
 ---
 
+Getting Help  - FAQ
+============
+
+General support
+---------------
+
+Having trouble using Simplicité or getting started?
+
+- Join our community forum at [community.simplicite.io](https://community.simplicite.io) to get help from the Simplicité team.
+- See the [tutorial](/tutorial/welcome) for a step-by-step guide to get started.
+- Search the following FAQ for answers to frequently asked questions.
+
 Frequently Asked Questions
-==========================
+--------------------------
 
 This FAQ consolidates commonly recurring questions from community threads and documentation.
 
