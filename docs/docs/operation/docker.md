@@ -133,8 +133,9 @@ Exposed ports
 The prebuilt images are configured to exposes the following ports for different usage:
 
 - Tomcat HTTP port `8080` for direct access or to be exposed directly as an HTTP endpoint
-or through an **HTTP** reverse proxy endpoint (Apache, NGINX, ...)
-- Tomcat secure HTTP port `8443` to be exposed through an **HTTPS** reverse proxy endpoint (Apache, NGINX, ...)
+  or through an **HTTP** reverse proxy endpoint (Apache, NGINX, Traefik, etc.)
+  or through an **HTTPS** reverse proxy endpoint providing the required HTTP headers (see bellow)
+- Tomcat secure HTTP port `8443` to be exposed through an **HTTPS** reverse proxy endpoint (Apache, NGINX, Traefik, etc.)
 - Tomcat SSL port `8444` to be exposed directly as an HTTPS endpoint, Note that this requires an additional `-e` flag
   and to mount (or replace) the appropriate JKS certificate (see below)
 - Tomcat AJP port `8009` to be exposed through an HTTP/HTTPS reverse proxy (Apache), this requires an additional `-e` flag (see below)
@@ -143,11 +144,14 @@ or through an **HTTP** reverse proxy endpoint (Apache, NGINX, ...)
 - Tomcat JMX port `1099` for connecting a JMX monitoring tool on Tomcat (Tomcat is started with additional JVM options) and `1098`
   for RMI communication, this requires an additional `-e` flag (see below)
 
-> **Warning**: If you expose the HTTP port `8080` through an HTTPS reverse proxy endpoint
-> or if you expose the secure HTTPS port through an HTTP reverse proxy endpoint
-> it will result in unexpected and unwanted behaviors.
+:::warning
 
-The typical configuration using the above ports are the following:
+If you use the `8080` port with an HTTPS endpoint (without the required HTTP headers)
+or the `8443` port with an HTTP endpoint it will not work as expected.
+
+:::
+
+The usual configuration using the above ports are the following:
 
 With an HTTP reverse proxy:
 
@@ -530,7 +534,7 @@ E.g. content of `JAVA_OPTS`:
 
 ### Run behind a reverse proxy {#reverseproxy}
 
-The exposed HTTP ports `8080`/`8443` are designed to be used with an HTTP/HTTPS reverse proxy such as NGINX, Traefik, Apache, Lighttpd, ...:
+The exposed HTTP ports `8080`/`8443` are designed to be used with an HTTP/HTTPS reverse proxy such as NGINX, Traefik, Apache, etc.:
 
 - `8080` **must** be used for **HTTP** endpoints and **could** be used for **HTTPS** endpoints if the reverse proxy provides the required HTTP headers
   (see [the documentation of the `RemoteIpValve` Tomcat valve for details](https://tomcat.apache.org/tomcat-9.0-doc/api/org/apache/catalina/valves/RemoteIpValve.html))
