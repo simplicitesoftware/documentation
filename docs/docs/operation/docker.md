@@ -530,12 +530,18 @@ E.g. content of `JAVA_OPTS`:
 
 ### Run behind a reverse proxy {#reverseproxy}
 
-the exposed HTTP ports `8080`/`8443` are designed to be used with an HTTP/HTTPS reverse proxy such as NGINX, Traefik, Apache, Lighttpd, ...:
+The exposed HTTP ports `8080`/`8443` are designed to be used with an HTTP/HTTPS reverse proxy such as NGINX, Traefik, Apache, Lighttpd, ...:
 
-- `8080` **must** be used for **HTTP** endpoints
-- `8443` **must** be used for **HTTPS** endpoints
+- `8080` **must** be used for **HTTP** endpoints and **could** be used for **HTTPS** endpoints if the reverse proxy provides the required HTTP headers
+  (see [the documentation of the `RemoteIpValve` Tomcat valve for details](https://tomcat.apache.org/tomcat-9.0-doc/api/org/apache/catalina/valves/RemoteIpValve.html))
+- `8443` **should** be used for **HTTPS** endpoints not providing the required HTTP headers
 
-> **Warning**: If you use the `8080` port with an HTTPS endpoint or the `8443` port with an HTTP endpoint it will not work as expected.
+:::warning
+
+If you use the `8080` port with an HTTPS endpoint (without the required HTTP headers)
+or the `8443` port with an HTTP endpoint it will not work as expected.
+
+:::
 
 The exposed AJP port `8009` is designed to be used with a Apache reverse proxy (for both HTTP and HTTPS endpoints).
 
