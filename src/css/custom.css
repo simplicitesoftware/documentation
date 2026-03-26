@@ -29,6 +29,12 @@
   --mermaid-rect-green-200: #0F2D1D;
 }
 
+[data-theme='light'] .markmap{
+  --markmap-text-color: var(--ifm-color-content);
+}
+[data-theme='dark'] .markmap{
+  --markmap-text-color: var(--ifm-color-content);
+}
 [data-theme='light'] .DocSearch {
   /* --docsearch-primary-color: var(--ifm-color-primary); */
   /* --docsearch-text-color: var(--ifm-font-color-base); */
