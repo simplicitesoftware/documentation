@@ -398,10 +398,12 @@ As of version 6, the `/ui/sse` endpoint provides a service to push messages from
 
 ### Sensitive components
 
-Some components may be too sensitive, especially in production, and may be deleted if not used:
+Some components may be too "sensitive", especially in production. They can be safely deleted if not used:
 
-- Some technical UI components (e.g. the database accès `DBAccess` external object) which are, by default, only granted to administrator profile.
-- The `SQLScript` adapter (note that it is anyway restricted to the operation profile)
+- Some technical UI components (e.g. the database access `DBAccess` external object, the log viewer `LogAccess` external object, etc.)
+  (note that they are, by default, only granted to administrator/operation profile).
+- The `SQLScript` adapter (note that it is anyway restricted to the operation profile).
+- Etc.
 
 Securing your infrastructure
 ----------------------------
