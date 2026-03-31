@@ -396,6 +396,13 @@ As of version 6, the `/ui/sse` endpoint provides a service to push messages from
 - The standard SSE protocol uses HTTP GET **asynchronous** so the infrastructure must support this without breaking the socket
 - Otherwise, the parameter `USE_SSE` must be set to `no` to disabled this SSE feature: the UI will use polling to refresh some UI data
 
+### Sensitive components
+
+Some components may be too sensitive, especially in production, and may be deleted if not used:
+
+- Some technical UI components (e.g. the database accès `DBAccess` external object) which are, by default, only granted to administrator profile.
+- The `SQLScript` adapter (note that it is anyway restricted to the operation profile)
+
 Securing your infrastructure
 ----------------------------
 
