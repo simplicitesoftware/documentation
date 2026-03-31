@@ -44,6 +44,49 @@ Extra sources of documentation and examples:
 
 :::
 
+Hook execution order
+---------------------------
+
+The table below summarizes the **most common CRUD lifecycle**
+
+| Phase | Hooks (typical order) | When it runs | Applies to |
+| ----- | --------------------- | ------------ | ---------- |
+| Object definition loaded | `preLoad` → `load` → `postLoad` | Once, when the object definition is loaded | All contexts |
+| Open form (UI) | `initCreate` / `initUpdate` / `initCopy` | When the user opens a form in the corresponding mode | Create / Update / Copy |
+| Validate (UI) | `preValidate` → `validate` → `postValidate` | When the user clicks **Save** (before persistence) | Create / Update / Copy |
+| Pre-persist business rules | `preSave` → (`preCreate` \| `preUpdate` \| `preDelete`) | Right before the persistence operation | Create / Update / Delete |
+| Persistence operation | `create` \| `update` \| `delete` | The persistence operation itself | Create / Update / Delete |
+| Post-persist business rules | (`postCreate` \| `postUpdate` \| `postDelete`) → `postSave` | Right after persistence | Create / Update / Delete |
+
+The table below lists the **other commonly used hooks**
+
+| Phase | Hooks (typical order) | When it runs | Applies to |
+| ----- | --------------------- | ------------ | ---------- |
+| Rights checks (object CRUD) | `isOpenEnable` / `isCreateEnable` / `isCopyEnable` / `isUpdateEnable` / `isDeleteEnable` | When checking permissions / building available actions | Open / Create / Copy / Update / Delete |
+| Rights checks (custom actions) | `isActionEnable` | When checking whether an action is allowed (globally or per-record) | Custom actions |
+| Rights checks (publications) | `isPrintTemplateEnable` | When checking whether a publication is allowed | Publications |
+| Rights checks (state transitions) | `isStateTransitionEnable` | When building the list of available transitions | State transitions |
+| Linked panels visibility (UI) | `canReference` | When deciding whether to show a linked object panel | UI panels |
+| Bulk update availability (UI) | `canUpdateAll` | When deciding whether bulk update is allowed | UI lists |
+| Historization | `isHistoric` | When deciding whether to historize a change | Historized objects |
+| Open delete confirm (UI) | `initDelete` | When the user opens the delete confirmation dialog | Delete |
+| List displayed (UI) | `initList` | When a list is displayed | Lists |
+| Search form displayed (UI) | `initSearch` | When the search form is displayed | Search |
+| Reference picker displayed (UI) | `initRefSelect` / `initDataMapSelect` | When a reference lookup popup is displayed | Reference lookups |
+| Action confirm displayed (UI) | `initAction` | When an action confirmation dialog is displayed | Custom actions |
+| UI outputs prepared | `initExport` / `initCrosstab` / `initGraph` / `initAgenda` / `initPrintTemplate` | Before displaying/exporting an export/pivot/chart/agenda/publication | Exports / pivots / graphs / agendas / publications |
+| Select record(s) | `preSelect` → `postSelect` | Around record selection | Lists / forms / copy |
+| Search execution | `preSearch` → `postSearch` | Around the search core method | Lists / exports / publications / graphs |
+| Bulk update / bulk delete | `preUpdateAll` → `postUpdateAll`, `preDeleteAll` → `postDeleteAll` | Around bulk operations | Bulk update / bulk delete |
+| Import | `preImport` → `postImport` | Around import processing | Imports |
+| Export guard + hooks | `isExportAllowed`, `preExport` → `postExport`, `getExportFileName` | Before and around export generation | Exports |
+| Alerts | `preAlert` → `postAlert` | Around alert sending | Alerts |
+| Predefined searches | `preSavePredefinedSearch` / `postSavePredefinedSearch` / `getPredefinedSearches` | When saving or listing predefined searches | Predefined searches |
+| UI helpers | `getUserKeyLabel`, `getStyle`, `getHelp`, `getCtxHelp` | When rendering labels/styles/help | UI |
+| Redirection | `getTargetObject` | When redirecting a record to another object/form | UI navigation |
+| Meta-object link | `getTargetMetaObject` | When resolving the target of a meta-object link | Meta-object links |
+| Front-end metadata generation | `preMetadata` → `postMetadata` | Around metadata export to the front-end | UI metadata |
+
 Object definition and right-related hooks
 -----------------------------------------
 
