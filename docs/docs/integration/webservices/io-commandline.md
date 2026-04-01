@@ -100,8 +100,8 @@ And for the users having a responsibility on the `ADMIN` group:
 - As of **version 6.3**, `moduleinit`: create a new module and initialize its Git repository
   with mandatory `<extra parameters>` = `--form module=<module name>` and optional `--form version=<module version> --form desc=<module description>`.
   And other optional forces an initial commit `--form commitmessage="My initial commit message" --form commitformat=<xml(default)|json> --form commitexploded=<true|false(default)>`
-- As of **version 6.3**, `moduleaudit`: audit the configuration of an existing module
-  with mandatory `<extra parameters>` = `--form module=<module name>`
+- As of **version 6.3**, `moduleaudit`: audit the configuration of an existing module or of all modules
+  with optional `<extra parameters>` = `--form module=<module name>`, if omitted the audit will be done on all modules
 
 - An optional extra parameter can be set to get processing logs or not: `--form log=<true|false>` (defaults to `false`)
 - An optional extra parameter can be set to indicate processing logs output format: `--form output=<plain|xml>` (defaults to `plain`)
