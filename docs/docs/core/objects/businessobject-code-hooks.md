@@ -52,8 +52,8 @@ The table below summarizes the **most common CRUD lifecycle**
 | Phase | Hooks (typical order) | When it runs | Applies to |
 | ----- | --------------------- | ------------ | ---------- |
 | Object definition loaded | `preLoad` → `load` → `postLoad` | Once, when the object definition is loaded | All contexts |
-| Open form (UI) | `initCreate` / `initUpdate` / `initCopy` | When the user opens a form in the corresponding mode | Create / Update / Copy |
-| Validate (UI) | `preValidate` → `validate` → `postValidate` | When the user clicks **Save** (before persistence) | Create / Update / Copy |
+| Open / prepare form | `initCreate` / `initUpdate` / `initCopy` | When a create/update/copy flow starts (often opening a form; also other entry points such as API) | Create / Update / Copy |
+| Validate before persist | `preValidate` → `validate` → `postValidate` | Before persistence when values are validated (e.g. **Save** in UI, or equivalent in services) | Create / Update / Copy |
 | Pre-persist business rules | `preSave` → (`preCreate` \| `preUpdate` \| `preDelete`) | Right before the persistence operation | Create / Update / Delete |
 | Persistence operation | `create` \| `update` \| `delete` | The persistence operation itself | Create / Update / Delete |
 | Post-persist business rules | (`postCreate` \| `postUpdate` \| `postDelete`) → `postSave` | Right after persistence | Create / Update / Delete |
@@ -83,9 +83,51 @@ The table below lists the **other commonly used hooks**
 | Alerts | `preAlert` → `postAlert` | Around alert sending | Alerts |
 | Predefined searches | `preSavePredefinedSearch` / `postSavePredefinedSearch` / `getPredefinedSearches` | When saving or listing predefined searches | Predefined searches |
 | UI helpers | `getUserKeyLabel`, `getStyle`, `getHelp`, `getCtxHelp` | When rendering labels/styles/help | UI |
-| Redirection | `getTargetObject` | When redirecting a record to another object/form | UI navigation |
+| Redirection | `getTargetObject` | When resolving redirect to another object/form (UI or services) | Navigation / integrations |
 | Meta-object link | `getTargetMetaObject` | When resolving the target of a meta-object link | Meta-object links |
 | Front-end metadata generation | `preMetadata` → `postMetadata` | Around metadata export to the front-end | UI metadata |
+
+### Hooks for standard CRUD REST requests {#hooks-by-rest-request}
+
+The lists below come from [platform hook logs](#trace-hooks) on a business object via the REST API.
+
+| Method | REST endpoint | Hooks (subsection) |
+| ------------------- | ---------------- | ------------------ |
+| `GET` (list / count) | `GET /api/rest/{Object}` | [`GET`](#rest-get-list) |
+| `POST` (create) | `POST /api/rest/{Object}/_` | [`POST`](#rest-post-create) |
+| `PUT` (update) | `PUT /api/rest/{Object}/{row_id}` | [`PUT`](#rest-put-update) |
+| `DELETE` (delete) | `DELETE /api/rest/{Object}/{row_id}` | [`DELETE`](#rest-delete) |
+
+#### `GET` — list / count {#rest-get-list}
+
+1. `preLoad` → `postLoad`
+2. `getCount` → `preCount` → `preSearch` → `postSearchRow` → `postSearch`  
+   - `postSearchRow` repeats **once per row** in the result set.
+
+#### `POST` — create {#rest-post-create}
+
+1. `preLoad` → `postLoad`
+2. `preSelect` → `postSelect`
+3. `initCreate` → `preValidate` → `postValidate` → `preSave` → `preCreate`
+4. `getUserKeyLabel` → `isHistoric` → `canCopy` → `postCreate` → `postSave`
+5. `preSelect` → `preSearch` → `postSearchRow` → `postSearch` → `postSelect`
+6. `initUpdate`
+
+#### `PUT` — update {#rest-put-update}
+
+1. `preLoad` → `postLoad`
+2. `preSelect` → `preSearch` → `postSearchRow` → `postSearch` → `postSelect`
+3. `initUpdate` → `preValidate` → `postValidate` → `preSave` → `preUpdate`
+4. `getUserKeyLabel` → `isHistoric` → `postUpdate` → `postSave` → `getTargetObject`
+5. `preSelect` → `preSearch` → `postSearchRow` → `postSearch` → `postSelect`
+6. `initUpdate`
+
+#### `DELETE` — delete {#rest-delete}
+
+1. `preLoad` → `postLoad`
+2. `preSelect` → `preSearch` → `postSearchRow` → `postSearch` → `postSelect`
+3. `initDelete` → `preSelect` → `preSearch` → `postSearchRow` → `postSearch` → `postSelect`
+4. `preDelete` → `getUserKeyLabel` → `postDelete` → `isUndoable`
 
 Object definition and right-related hooks
 -----------------------------------------
