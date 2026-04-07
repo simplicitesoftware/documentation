@@ -18,21 +18,21 @@
     "write-heading-ids": "docusaurus write-heading-ids"
   },
   "dependencies": {
-    "@docusaurus/core": "3.9.2",
-    "@docusaurus/faster": "3.9.2",
-    "@docusaurus/preset-classic": "3.9.2",
-    "@docusaurus/theme-mermaid": "^3.9.2",
-    "@docusaurus/theme-search-algolia": "3.9.2",
+    "@docusaurus/core": "3.10.0",
+    "@docusaurus/faster": "3.10.0",
+    "@docusaurus/preset-classic": "3.10.0",
+    "@docusaurus/theme-mermaid": "3.10.0",
+    "@docusaurus/theme-search-algolia": "3.10.0",
     "@fortawesome/fontawesome-svg-core": "7.2.0",
     "@fortawesome/free-brands-svg-icons": "7.2.0",
     "@fortawesome/free-solid-svg-icons": "7.2.0",
-    "@fortawesome/react-fontawesome": "3.2.0",
+    "@fortawesome/react-fontawesome": "3.3.0",
     "@mdx-js/react": "3.1.1",
-    "baseline-browser-mapping": "2.10.0",
+    "baseline-browser-mapping": "2.10.16",
     "clsx": "2.1.1",
     "docusaurus-plugin-image-zoom": "3.0.1",
-    "markmap-lib": "^0.18.12",
-    "markmap-view": "^0.18.12",
+    "markmap-lib": "0.18.12",
+    "markmap-view": "0.18.12",
     "prism-react-renderer": "2.4.1",
     "prismjs": "1.30.0",
     "react": "19.2.4",
@@ -40,10 +40,10 @@
     "simplicite-documentation": "file:"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.9.2",
-    "@docusaurus/types": "3.9.2",
-    "markdownlint-cli2": "0.21.0",
-    "npm-check-updates": "19.6.3"
+    "@docusaurus/module-type-aliases": "3.10.0",
+    "@docusaurus/types": "3.10.0",
+    "markdownlint-cli2": "0.22.0",
+    "npm-check-updates": "20.0.0"
   },
   "browserslist": {
     "production": [

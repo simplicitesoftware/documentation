@@ -157,8 +157,8 @@ const config = {
         }
       }
     }),
-    "future": {
-      experimental_faster: true,
+    future: {
+      faster: true,
       "v4": {
         "removeLegacyPostBuildHeadAttribute": true
       }
