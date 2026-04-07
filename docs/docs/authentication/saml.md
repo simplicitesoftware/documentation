@@ -51,7 +51,7 @@ Application settings
 --------------------
 
 :::note
-This section is **depprecated** as of version 4.0.P23 for which the authentication providers configuration
+This section is **deprecated** as of version 4.0.P23 for which the authentication providers configuration
 is done using the `AUTH_PROVIDERS` JSON system parameters. See [this document](/docs/authentication/auth-providers) for details.
 :::
 
