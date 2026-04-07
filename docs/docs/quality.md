@@ -15,12 +15,12 @@ Dependencies
 ### Dependencies upgrade policy
 
 Except in case of a critical ("zero-day") vulnerability which may be actually exploited in the context of Simplicité,
-the third party components are **only** upgraded on the `master` branch (development = alpha).
+the third party components are **only** upgraded on the main branch (development = alpha).
 
-By default, the `prerelease` (beta) and `release` branches (and the legacy maintenance versions branches) keep their dependencies
-**as they were** at the time the `master` branch was pushed on these branches.
+By default, the released branches (and the legacy maintenance versions branches) keep their dependencies
+**as they were** at the time the main branch was pushed on these branches.
 
-On the `master` branch:
+On the main branch:
 
 - The up-to date check is done at least once a week.
 - All newer version of the components are upgraded as soon as they are available.
@@ -39,13 +39,13 @@ The JavaScript dependencies up-to-date check is done using the [npm check update
 
 #### Java dependencies audit
 
-As of version 4.0, a dependencies security audit using Apache Maven and its [dependency check plugin](https://jeremylong.github.io/DependencyCheck/dependency-check-maven/index.html).
+A dependencies security audit using Apache Maven and its [dependency check plugin](https://jeremylong.github.io/DependencyCheck/dependency-check-maven/index.html).
 
 It is done at each build of each version for each branch.
 
 #### JavaScript dependencies audit
 
-As of version 5, a dependencies security audit using the [npm audit tool](https://docs.npmjs.com/cli/v6/commands/npm-audit).
+A dependencies security audit using the [npm audit tool](https://docs.npmjs.com/cli/v6/commands/npm-audit).
 
 It is done at each build of each version for each branch.
 
@@ -54,7 +54,7 @@ Platform code quality
 
 ### Linters
 
-The code style is analysed at least at each `master` branch build using the following linters:
+The code style is analyzed on all current and maintained branches using the following linters:
 
 - **Java** using [Checkstyle](https://checkstyle.sourceforge.io)
 - **JavaScript** using [ESLint](https://eslint.org)
@@ -71,8 +71,6 @@ The whole code (Java, JavaScript and styles) is regularly checked using the [Son
 - All issues classified as "blocker, critical or major vulnerability" are resolved as soon as possible.
 - All other issues (classified "minor or info vulnerability" or "code smell") are looked after with lower priority.
 
-The SonarQube analysis is done on the `master` branch at least prior to pushing it to the `prerelease` branch.
-
 External audits
 ---------------
 
@@ -81,7 +79,7 @@ Various audits are done, by external consulting firms, on a regular basis to det
 These audit can be done at several levels depending on the context:
 
 - Intrusion tests
-- Generic UI vulnerabilites detection (e.g. XSS, SQL injection, etc.)
+- Generic UI vulnerabilities detection (e.g. XSS, SQL injection, etc.)
 - Technical platform security checks (e.g. Docker images vulnerabilities analysis)
 - Etc.
 
@@ -94,9 +92,9 @@ Docker images
 
 The "server" images `registry.simplicite.io/server`, from which the "platform" images `registry.simplicite.io/platform` are built,
 are rebuilt on a regular basis, in general for each new platform revision, using the up-to-date official base images
-of various OS flavors (CentOS, AlmaLinux, Alpine Linux, ...).
+of various OS flavors (AlmaLinux, Alpine Linux, ...) and using up-to-date OpenJDK JVMs and up-to-date Tomcat servers.
 
-The "platform" images `registry.simplicite.io/platform` are rebuilt each time a platform upgrade (revision, minor or major version)
+The "platform" images `registry.simplicite.io/platform` are built each time a platform upgrade (revision, minor or major version)
 is made available on the considered branch.
 
 See this [GitHub repository](https://github.com/simplicitesoftware/docker) for more details on the way the various variants of images are built.
