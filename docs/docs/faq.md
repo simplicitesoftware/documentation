@@ -46,7 +46,6 @@ Please consult the [compatibility tables](/docs/compatibility) for supported pla
 
 For details on some specific installation/operation requirements, please refer to the miscellaneous documentation.
 
-
 Usage
 -----
 
