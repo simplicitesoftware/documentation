@@ -20,8 +20,25 @@ Frequently Asked Questions
 
 This FAQ consolidates commonly recurring questions from community threads and documentation.
 
-General / Installation / Operation
-----------------------------------
+Versions
+--------
+
+### Which version should I use?
+
+If you start a **new project** make sure to **always** use the [current version](/versions),
+avoid using any legacy major or minor versions even if it is still in its long term maintenance (LTS).
+
+If you plan to work on an **existing project** using a legacy major version make sure to upgrade
+to the current maintenance revision of its latest minor version (and if the considered major version is not maintained anymore
+make sure to upgrade to a maintained major version). Anyway you should also consider upgrading to the current
+major version.
+
+### What is the current maintenance status of major version `x` or minor version `x.y`?
+
+Please review [this document](/versions/versioning.md) as well as the [release notes](/versions) for the considered version.
+
+Installation / Operation
+------------------------
 
 ### Is it possible to use the _foo_ database, the _bar_ application server, the _baz_ JVM version, etc.?
 
@@ -29,12 +46,6 @@ Please consult the [compatibility tables](/docs/compatibility) for supported pla
 
 For details on some specific installation/operation requirements, please refer to the miscellaneous documentation.
 
-Versions
---------
-
-### What is the current maintenance status of version `x.y`?
-
-Please review [this document](/versions/versioning.md) as well as the latest release notes for the version in question.
 
 Usage
 -----
@@ -42,6 +53,7 @@ Usage
 ### Where can I find general usage documentation for the generic web user interface?
 
 Comprehensive information is available in the user interface documentation.
+Starting with [this document](/front/ui/basic-usage.md).
 
 Design
 ------
