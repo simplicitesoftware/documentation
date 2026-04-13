@@ -25,7 +25,7 @@ Versions
 
 ### Which version should I use?
 
-If you start a **new project** make sure to **always** use the [current version](/versions),
+If you start a **new project** make sure to **always** use the [current version](/versions/),
 avoid using any legacy major or minor versions even if it is still in its long term maintenance (LTS).
 
 If you plan to work on an **existing project** using a legacy major version make sure to upgrade
@@ -35,7 +35,7 @@ major version.
 
 ### What is the current maintenance status of major version `x` or minor version `x.y`?
 
-Please review [this document](/versions/versioning.md) as well as the [release notes](/versions) for the considered version.
+Please review [this document](/versions/versioning.md) as well as the [release notes](/versions/) for the considered version.
 
 Installation / Operation
 ------------------------
@@ -52,7 +52,7 @@ Usage
 ### Where can I find general usage documentation for the generic web user interface?
 
 Comprehensive information is available in the user interface documentation.
-Starting with [this document](/front/ui/basic-usage.md).
+Starting with [this document](/docs/ui/basic-usage.md).
 
 Design
 ------
