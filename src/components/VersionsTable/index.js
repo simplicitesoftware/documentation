@@ -148,7 +148,7 @@ export default function VersionsTable({
                         <th>Status</th>
                         <th>Support Type</th>
                         <th>Initial Release Date</th>
-                        <th>Last Build Date</th>
+                        <th>Last Revision - Build Date</th>
                         <th>Maintenance End Date</th>
                     </tr>
                 </thead>
@@ -190,7 +190,11 @@ export default function VersionsTable({
                     ))}
                 </tbody>
             </table>
-            <span><b>(*) Important </b>⚠️ Maintained versions should not be used for **new projects** (or projects still in active implementation phase). Using the current release is <i>always</i> the best option 😉</span>
+            <span>
+                <b>(*) Important </b>:
+                ⚠️ Maintained versions should not be used for <b>new projects</b> (or projects still in active implementation phase).
+                <br/>Using (or upgrading to) the current release is <i>always</i> the best option 😉.
+            </span>
         </div>
     )
 }
