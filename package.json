@@ -28,22 +28,22 @@
     "@fortawesome/free-solid-svg-icons": "7.2.0",
     "@fortawesome/react-fontawesome": "3.3.0",
     "@mdx-js/react": "3.1.1",
-    "baseline-browser-mapping": "2.10.16",
+    "baseline-browser-mapping": "2.10.19",
     "clsx": "2.1.1",
     "docusaurus-plugin-image-zoom": "3.0.1",
     "markmap-lib": "0.18.12",
     "markmap-view": "0.18.12",
     "prism-react-renderer": "2.4.1",
     "prismjs": "1.30.0",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
     "simplicite-documentation": "file:"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.10.0",
     "@docusaurus/types": "3.10.0",
     "markdownlint-cli2": "0.22.0",
-    "npm-check-updates": "20.0.0"
+    "npm-check-updates": "21.0.0"
   },
   "browserslist": {
     "production": [
