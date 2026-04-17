@@ -37,7 +37,7 @@ public class TrnWebService extends com.simplicite.webapp.services.RESTServiceExt
 	 */
 	@Override
 	public Object get(Parameters params) throws HTTPException {
-		ObjectDB supplier = new ObjectDB();
+		ObjectDB supplier = null;
 		try {
 			supplier = borrowAPIObject("TrnSupplier"); // Borrow an API object instance from the pool (ZZZ must be returned, see below)
 
@@ -73,7 +73,8 @@ public class TrnWebService extends com.simplicite.webapp.services.RESTServiceExt
 
 			return results;
 		} finally {
-			returnAPIObject(supplier); // Return the API object instance to the pool
+			if (supplier != null)
+				returnAPIObject(supplier); // Return the API object instance to the pool
 		}
 	}
 
