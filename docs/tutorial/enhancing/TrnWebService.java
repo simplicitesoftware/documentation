@@ -93,7 +93,7 @@ public class TrnWebService extends com.simplicite.webapp.services.RESTServiceExt
 			obj = borrowAPIObject("TrnProduct");  // Borrow an API object instance from the pool (ZZZ MUST be returned, see below)
 			return obj.getTool().count(filters);
 		} finally {
-			returnAPIObject(obj); // Return the API object instance to the pool
+			if (obj != null)returnAPIObject(obj); // Return the API object instance to the pool
 		}
 	}
 }
