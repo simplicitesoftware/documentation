@@ -17,6 +17,14 @@ by using functional keys instead of technical IDs...
 
 [Learn more](/make/project/datasets)
 
+:::warning
+
+From version 6.3 of Simplicité, Datasets' functionning has been modified.
+Thus this part of the tutorial must be done following the described process in the [Dataset documentation](/make/project/datasets).
+It should be done using only the dataset's **Data export specifications** panel.
+
+:::
+
 Configuring an "export order" for the objects
 ---------------------------------------------
 
