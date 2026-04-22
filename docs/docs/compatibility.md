@@ -65,9 +65,9 @@ The following table only indicates the **LTS (Long Term Support)** JVM versions.
 
 | ![](https://platform.simplicite.io/logos/logo125.png) | JVM 1.8 | JVM 11  | JVM 17  | JVM 21  | JVM 25  |
 |:-----------------------------------------------------:|---------|---------|---------|---------|---------|
-| Alpha 7.0                                             | no      | no      | yes (1) | yes (1) | **yes** |
+| Alpha 7.0                                             | no      | no      | no      | yes (1) | **yes** |
 | Current **6.3**                                       | no      | no      | yes (1) | **yes** | yes (1) |
-| Legacy 6.x                                            | no      | yes (1) | yes (1) | **yes** | yes (1) |
+| Legacy 6.x                                            | no      | no      | yes (1) | **yes** | yes (1) |
 | Maintained **5.3** and legacy 5.x                     | no      | yes (1) | **yes** | yes (1) | yes (1) |
 | Legacy 4.0                                            | no      | yes (1) | **yes** | yes (1) | yes (1) |
 | Legacy 3.2                                            | yes (1) | **yes** | yes (1) | yes (1) | yes (1) |
