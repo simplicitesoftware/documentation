@@ -28,7 +28,7 @@
     "@fortawesome/free-solid-svg-icons": "7.2.0",
     "@fortawesome/react-fontawesome": "3.3.1",
     "@mdx-js/react": "3.1.1",
-    "baseline-browser-mapping": "2.10.20",
+    "baseline-browser-mapping": "2.10.21",
     "clsx": "2.1.1",
     "docusaurus-plugin-image-zoom": "3.0.1",
     "markmap-lib": "0.18.12",
