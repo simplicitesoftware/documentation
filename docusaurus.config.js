@@ -16,11 +16,6 @@ const config = {
   organizationName: "simplicitesoftware", // Usually your GitHub org/user name.
   projectName: "documentation", // Usually your repo name.
   onBrokenLinks: "throw",
-  markdown: {
-    hooks: {
-      onBrokenMarkdownLinks: "throw",
-    },
-  },
   onBrokenAnchors: "throw",
 
   // Even if you don't use internationalization, you can use this field to set
@@ -32,6 +27,9 @@ const config = {
   },
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: "throw"
+    },
   },
   themes: ["@docusaurus/theme-mermaid"],
   presets: [
