@@ -65,6 +65,33 @@ This initialization-related platform hook is called only once, it is not re-call
 
 :::
 
+Custom end-point URL hook
+-------------------------
+
+Allows to override the default URL based on the hostname, for specific inter-nodes communication in a cluster (e.g. Kubernetes),
+or behind a load balancer/reverse proxy. For example:
+
+```java
+@Override
+public String getEndPointURL() {
+	// Example to use an environment variable for the endpoint URL
+	String url = System.getenv("MY_CLUSTER_ENDPOINT_URL");	
+	if (!Tool.isEmpty(url))
+		return url;
+	// Example to use the IP address and port
+	String ip = Platform.getEndpointHostIP();
+	if (!Tool.isEmpty(ip))
+		return "http://" + ip + ":" + Platform.getEndpointPort();
+	// Default URL based on the hostname
+	return super.getEndPointURL();
+}
+```
+
+The returned URL is used to ping and notify nodes each other in a cluster:
+
+- Clear-cache, invalidate user's sessions, count sessions, etc.
+- Identify the instance having the `CRON_LOCK` to execute unique jobs.
+
 Authentication hooks
 --------------------
 
