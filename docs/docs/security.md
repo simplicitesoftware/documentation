@@ -1,5 +1,5 @@
 ---
-sidebar_position: 110
+sidebar_position: 200
 title: Security guidelines
 ---
 
