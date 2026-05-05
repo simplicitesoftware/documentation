@@ -254,7 +254,7 @@ The platform code implements such CRCF protection in all page with forms.
 
 ### IDOR sensibility
 
-Simplicité uses technical row ID for all the business and configuration objects that are database sequences thus incremental integers.
+The platform uses technical row ID for all the business and configuration objects. These row IDs are database sequences, thus incremental integers.
 Although these row IDs are visible in the HTTP requests, they **are not vulnerable** to [IDOR attacks](https://en.wikipedia.org/wiki/Insecure_direct_object_reference).
 
 As a matter for fact Simplicité **always** checks that the requesting user has access to the requested business object's record
@@ -262,8 +262,11 @@ denoted by the passed row ID (which is the prime prevention described by the [OS
 
 In other words, forging custom HTTP request by guessing possible row IDs does not give any unallowed access.
 
-However, the resources configuration object is, by construction, public (it is dedicated to HTML, JS, CSS, ... files),
+Note that the resources' configuration object is, by construction, public (it is primarily dedicated to HTML, JS, CSS, ... files),
 therefore you **must** avoid to put any sensible business file in a resource record as they can be discovered by row ID guessing.
+
+And, if you need to expose some business objects publicly thru HTTP requests using the row ID, make sure to implement a dedicated alternate
+access enforcement mechanism (e.g. one time codes).
 
 ### Low level tools
 
