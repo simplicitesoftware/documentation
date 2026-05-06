@@ -156,6 +156,9 @@ const config = {
       }
     }),
     future: {
+      v4: {
+        fasterByDefault: true
+      },
       faster: true,
       "v4": {
         "removeLegacyPostBuildHeadAttribute": true
