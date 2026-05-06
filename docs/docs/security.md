@@ -1,5 +1,5 @@
 ---
-sidebar_position: 110
+sidebar_position: 200
 title: Security guidelines
 ---
 
@@ -251,6 +251,22 @@ Note that it is recommended to set such an upload size limit at Tomcat level and
 If a **custom** page with a form is implemented, ensure to implement a CRCF protection mechanism.
 
 The platform code implements such CRCF protection in all page with forms.
+
+### IDOR sensibility
+
+The platform uses technical row ID for all the business and configuration objects. These row IDs are database sequences, thus incremental integers.
+Although these row IDs are visible in the HTTP requests, they **are not vulnerable** to [IDOR attacks](https://en.wikipedia.org/wiki/Insecure_direct_object_reference).
+
+As a matter for fact Simplicité **always** checks that the requesting user has access to the requested business object's record
+denoted by the passed row ID (which is the prime prevention described by the [OSWASP](https://owasp.org/www-community/attacks/insecure_direct_object_reference#how-to-prevent)).
+
+In other words, forging custom HTTP request by guessing possible row IDs does not give any unallowed access.
+
+Note that the resources' configuration object is, by construction, public (it is primarily dedicated to HTML, JS, CSS, ... files),
+therefore you **must** avoid to put any sensible business file in a resource record as they can be discovered by row ID guessing.
+
+And, if you need to expose some business objects publicly thru HTTP requests using the row ID, make sure to implement a dedicated alternate
+access enforcement mechanism (e.g. one time codes).
 
 ### Low level tools
 

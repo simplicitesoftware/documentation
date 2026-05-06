@@ -1,5 +1,5 @@
 ---
-sidebar_position: 180
+sidebar_position: 210
 title: GDPR guidelines
 ---
 
