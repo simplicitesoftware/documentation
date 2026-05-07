@@ -203,8 +203,8 @@ export default function VersionsTable({
                 <b>Notes</b>:
                 <ul>
                     <li>✴️ See the <a href="versions/versioning">versioning strategy</a> for more information on the "Not defined yet" dates.
-                    <br/>The general principle is that the LTS maintenance of a given major version lasts 3 years starting from the initial release date of the next major version.
-                    <br/>For instance, major version 7 being scheduled for release by the end of 2026, major version 6 LTS maintenance will last until end of 2029.</li>
+                    <br/>The general principle is that the LTS maintenance of a given major version lasts <b>3 years</b> starting from the initial release date of the next major version
+                    (<i>for instance, major version 7 being scheduled for release by the end of 2026, major version 6 LTS maintenance will last until end of 2029</i>).</li>
                     <li>⚠️ Maintained versions should not be used for <b>new projects</b> (or projects still in active implementation phase).
                     <br/>Using (or upgrading to) the current release is <i>always</i> the best option 😉.</li>
                 </ul>
