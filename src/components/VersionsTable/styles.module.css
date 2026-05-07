@@ -3,6 +3,7 @@
     --red_overlay: rgba(253, 175, 179, 0.5); /*#fdafb3*/
     --green_overlay: rgba(188, 247, 215, 0.5); /*#bcf7d7*/
     --purple_overlay: rgba(247, 216, 248, 0.5) ; /*#f7d8f8*/
+    --orange_overlay: rgba(221, 229, 185, 0.5); /*#ddc99b*/
 }
 
 [data-theme='dark'] { /* Color Palette - Dark */
@@ -10,6 +11,7 @@
     --red_overlay: rgba(102, 29, 29, 0.33); /*#661d1d*/
     --green_overlay: rgba(30, 90, 57, 0.33); /*#1e5a39*/
     --purple_overlay: rgba(102, 74, 99, 0.33); /*#664a63*/
+    --orange_overlay: rgba(127, 117, 95, 0.33); /*#795737*/
 }
 
 .releaseNote {
@@ -22,7 +24,7 @@
 
 table {
     .alpha, .beta, .beta-rc {
-        background: var(--blue_overlay) !important;
+        background: var(--orange_overlay) !important;
     }
 
     .shortterm, .longterm {

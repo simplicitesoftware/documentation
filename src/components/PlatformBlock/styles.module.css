@@ -39,10 +39,12 @@
     --red_bg: #fdafb3;
     --green_bg: #bcf7d7;
     --purple_bg: #f7d8f8;
+    --orange_bg: #ddc99b;
     --blue_txt: #222066;
     --red_txt: #64161a;
     --green_txt: #235e3e;
     --purple_txt: #5e3f5f;
+    --orange_txt: #5d3a1c;
     --default_bg: #171717;
     --default_txt: #f3f1ee;
     --default_fade_bg: rgba(23, 23, 23, 0.1);
@@ -54,10 +56,12 @@
     --red_bg: #661d1d;
     --green_bg: #1e5a39;
     --purple_bg: #664a63;
+    --orange_bg: #61480f;
     --blue_txt: #b7b7fe;
     --red_txt: #ffb6b6;
     --green_txt: #b7f3d2;
     --purple_txt: #ffe3fc;
+    --orange_txt: #fddcbe;
     --default_bg: #f3f1ee;
     --default_txt: #171717;
     --default_fade_bg: rgba(243, 241, 238, 0.1);
@@ -254,8 +258,8 @@
     Specificities
  * ---------------- */
 .alpha, .beta, .beta-rc {
-  background: var(--blue_bg);
-  color: var(--blue_txt);
+  background: var(--orange_bg);
+  color: var(--orange_txt);
 }
 .shortterm, .longterm {
   background: var(--purple_bg);

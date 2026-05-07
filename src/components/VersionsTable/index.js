@@ -25,14 +25,17 @@ export default function VersionsTable({
                 break;
             case "active":
                 switch (st) {
+                    case "to_be_defined":
+                        maintenance = "✴️ Not defined yet";
+                        break;
                     case "shortterm":
-                        maintenance = "☑️ Maintained (*)";
+                        maintenance = "☑️ Maintained";
                         break;
                     case "longterm":
-                        maintenance = "☑️ Maintained (*)";
+                        maintenance = "☑️ Maintained";
                         break;
                     default:
-                        maintenance = "N/A";
+                        maintenance = "❓ Unknown";
                         break;
                 }
                 break;
@@ -40,7 +43,7 @@ export default function VersionsTable({
                 maintenance = "❌ Expired";
                 break;
             default:
-                maintenance = "N/A";
+                maintenance = "❓ Unknown";
                 break;
         }
         return maintenance;
@@ -49,6 +52,9 @@ export default function VersionsTable({
     function prettierSupport(st) {
         let support;
         switch (st) {
+            case "to_be_defined":
+                support = "✴️ Not defined yet";
+                break;
             case "shortterm":
                 support = "⌛ Short Term (STS)";
                 break;
@@ -56,7 +62,7 @@ export default function VersionsTable({
                 support = "📅 Long Term (LTS)";
                 break;
             default:
-                support = "N/A";
+                support = "❓ Unknown";
                 break;
         }
         return support;
@@ -74,7 +80,10 @@ export default function VersionsTable({
     }
 
     function prettierDate(date) {
-        if (!date) return 'N/A';
+        if (!date)
+            return '❓ Unknown';
+        if (date === "to_be_defined")
+            return '✴️ Not defined yet (see notes)';
 
         try {
             const d = new Date(date);
@@ -148,7 +157,7 @@ export default function VersionsTable({
                         <th>Status</th>
                         <th>Support Type</th>
                         <th>Initial Release Date</th>
-                        <th>Last Revision - Build Date</th>
+                        <th>Last Revision</th>
                         <th>Maintenance End Date</th>
                     </tr>
                 </thead>
@@ -181,19 +190,24 @@ export default function VersionsTable({
                                 {prettierDate(v.releaseDate)}
                             </td>
                             <td className={styles.releaseCell}>
-                                {v.latestPatch} - {prettierDate(v.patchDate)}
+                                {v.latestPatch} ({prettierDate(v.patchDate)})
                             </td>
                             <td>
                                 {prettierDate(v.endDate)}
                             </td>
                         </tr>
-                    ))}
+                    ))} 
                 </tbody>
             </table>
             <span>
-                <b>(*) Important </b>:
-                ⚠️ Maintained versions should not be used for <b>new projects</b> (or projects still in active implementation phase).
-                <br/>Using (or upgrading to) the current release is <i>always</i> the best option 😉.
+                <b>Notes</b>:
+                <ul>
+                    <li>✴️ See the <a href="versions/versioning">versioning strategy</a> for more information on the "Not defined yet" dates.
+                    <br/>The general principle is that the LTS maintenance of a given major version lasts <b>3 years</b> starting from the initial release date of the next major version
+                    (<i>for instance, major version 7 being scheduled for release by the end of 2026, major version 6 LTS maintenance will last until end of 2029</i>).</li>
+                    <li>⚠️ Maintained versions should not be used for <b>new projects</b> (or projects still in active implementation phase).
+                    <br/>Using (or upgrading to) the current release is <i>always</i> the best option 😉.</li>
+                </ul>
             </span>
         </div>
     )

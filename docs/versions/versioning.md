@@ -24,8 +24,8 @@ Unreleased (alpha and beta) version's numbers can be subject to change if a majo
 
 ### Maintenance strategy {#maintenance}
 
-1. When a new **minor** version is released, the previous minor version enters a **Short Term Support (STS) maintenance period (3 months)**
-2. When a new **major** version is released, the last minor version enters a **Long Term Support (LTS) maintenance period (3 years)**
+1. When a new **minor** version is released, the previous minor version enters a **Short Term Support (STS) maintenance period** for **3 months**
+2. When a new **major** version is released, the last minor version enters a **Long Term Support (LTS) maintenance period** for **3 years**
 3. Thus, some parameters of version `n` are definitively fixed once version `n+1` is released:
    - **support type**: if `n+1` becomes major, then `n` becomes LTS.
    - **maintenance end date**: depends on the release date of `n+1` and if it falls under the major/minor category

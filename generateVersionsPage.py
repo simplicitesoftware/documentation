@@ -104,9 +104,9 @@ def versions_array(versions):
     v = []
     for version, data in versions.items():
         if data['support_type'] == None:
-            data['support_type'] = "N/A"
+            data['support_type'] = "to_be_defined"
         if data['initial_release_date'] == None:
-            data['initial_release_date'] = "N/A"
+            data['initial_release_date'] = "to_be_defined"
 
         version_obj = {
             'version': version,
@@ -121,7 +121,7 @@ def versions_array(versions):
         if 'maintenance_end_date' in data:
             version_obj['endDate'] = data['maintenance_end_date']
         else:
-            version_obj['endDate'] = "N/A"
+            version_obj['endDate'] = "to_be_defined"
 
         v.append(version_obj)
     return v
@@ -192,7 +192,7 @@ def prettier_anchor(version, maintenance, supportType):
         elif supportType == "shortterm":
             anchor = f"☑️ {version} STS"
         else:
-            anchor = f"N/A"
+            anchor = f"to_be_defined"
     elif maintenance == "expired":
         anchor = f"❌ {version}"
         if supportType == "longterm":

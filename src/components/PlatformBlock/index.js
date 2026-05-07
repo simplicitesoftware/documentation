@@ -139,10 +139,7 @@ export default function PlatformBlock({
         <div className={styles.blockHeader}>
           <h1>Version {version}</h1>
           <div className={styles.releases}>
-            <span className={styles.releaseItem}>Current: <b>{release}</b> on <b>{prettierDate(lastDate)}</b> </span>
-            {firstDate!=null &&
-              <span className={styles.releaseItem}>First released on <b>{prettierDate(firstDate)}</b></span>
-            }
+            <span className={styles.releaseItem}>Last revision: <b>{release}</b> released on <b>{prettierDate(lastDate)}</b></span>
           </div>
         </div>
         <div className={styles.blockBody}>

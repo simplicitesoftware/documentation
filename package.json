@@ -35,15 +35,15 @@
     "markmap-view": "0.18.12",
     "prism-react-renderer": "2.4.1",
     "prismjs": "1.30.0",
-    "react": "19.2.5",
-    "react-dom": "19.2.5",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
     "simplicite-documentation": "file:"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.10.1",
     "@docusaurus/types": "3.10.1",
     "markdownlint-cli2": "0.22.1",
-    "npm-check-updates": "22.1.0"
+    "npm-check-updates": "22.1.1"
   },
   "browserslist": {
     "production": [
