@@ -157,7 +157,7 @@ export default function VersionsTable({
                         <th>Status</th>
                         <th>Support Type</th>
                         <th>Initial Release Date</th>
-                        <th>Last Revision - Build Date</th>
+                        <th>Last Revision</th>
                         <th>Maintenance End Date</th>
                     </tr>
                 </thead>
@@ -190,7 +190,7 @@ export default function VersionsTable({
                                 {prettierDate(v.releaseDate)}
                             </td>
                             <td className={styles.releaseCell}>
-                                {v.latestPatch} - {prettierDate(v.patchDate)}
+                                {v.latestPatch} ({prettierDate(v.patchDate)})
                             </td>
                             <td>
                                 {prettierDate(v.endDate)}
