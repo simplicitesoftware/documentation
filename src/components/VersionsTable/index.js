@@ -26,10 +26,10 @@ export default function VersionsTable({
             case "active":
                 switch (st) {
                     case "shortterm":
-                        maintenance = "☑️ Maintained (*)";
+                        maintenance = "☑️ Maintained";
                         break;
                     case "longterm":
-                        maintenance = "☑️ Maintained (*)";
+                        maintenance = "☑️ Maintained";
                         break;
                     default:
                         maintenance = "N/A";
@@ -187,13 +187,16 @@ export default function VersionsTable({
                                 {prettierDate(v.endDate)}
                             </td>
                         </tr>
-                    ))}
+                    ))} 
                 </tbody>
             </table>
             <span>
-                <b>(*) Important </b>:
-                ⚠️ Maintained versions should not be used for <b>new projects</b> (or projects still in active implementation phase).
-                <br/>Using (or upgrading to) the current release is <i>always</i> the best option 😉.
+                <b>Notes</b>:
+                <ul>
+                    <li>ℹ️ See the <a href="versions/versioning">versioning strategy</a> for more information on the "Not yet defined" dates.</li>
+                    <li>⚠️ Maintained versions should not be used for <b>new projects</b> (or projects still in active implementation phase).
+                    <br/>Using (or upgrading to) the current release is <i>always</i> the best option 😉.</li>
+                </ul>
             </span>
         </div>
     )

@@ -121,7 +121,7 @@ def versions_array(versions):
         if 'maintenance_end_date' in data:
             version_obj['endDate'] = data['maintenance_end_date']
         else:
-            version_obj['endDate'] = "N/A"
+            version_obj['endDate'] = "Not yet defined (see notes)"
 
         v.append(version_obj)
     return v
