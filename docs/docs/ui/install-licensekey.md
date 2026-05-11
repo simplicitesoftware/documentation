@@ -49,11 +49,17 @@ is to use the address bar to change scope, by adding `/ui?scope=Home` to your ap
 Using a generic service
 -----------------------
 
+### Using the I/O interface
+
 Call a service interface: I/O (preferred) or API to create or update the license key record
 (see [integration interfaces](/docs/integration/webservices/io-commandline) for details).
 
 Example using the I/O service interface:
 
-```shell
-curl -u designer:mydesignerpassword --form service=xmlimport --form file=@/my/path/to/license.xml http(s)//myhost[:myport][/mycontextroot]/io
+```text
+curl -u <user, e.g. designer>:<user password> --form service=xmlimport --form file=@/<path to>/license.xml http(s)//<host name>[:myport][/<contextr root>]/io
 ```
+
+### Using the API
+
+You can also call the API for the `LicenseKey` system object using an authentication token corresponding to a user granted for create/update on this system object.
