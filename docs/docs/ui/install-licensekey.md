@@ -62,4 +62,5 @@ curl -u <user, e.g. designer>:<user password> --form service=xmlimport --form fi
 
 ### Using the API
 
-You can also call the API for the `LicenseKey` system object using an authentication token corresponding to a user granted for create/update on this system object.
+You can also call the API for the `LicenseKey` system object using an authentication token corresponding to a user granted
+for create/update on this system object.
