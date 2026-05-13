@@ -310,20 +310,24 @@ to all responses by setting the `HTTP_HEADER` system parameter.
 
 The following example, that should be adapted to specific needs, does the following:
 
-- The CSP policy is tailored to Simplicité's working
-- STS should be set, 1year is generally considered a good value
-- iframes limited to those of same origin
-- deactivated XSS protection (a CORS policy is a better approach and **must be implemented**)
-- specified Referrer-Policy
+- The CSP policy can be tailored to Simplicité's internal needs.
+  However `https://tile.openstreetmap.org` should be added in the `img-src` section when using OpenStreetMaps maps
+  and `https://platform.simplicite.io` should be added in the `connect-src`section for up-to-date version check.
+- STS should be set, 1 year is generally considered a good value
+- iframes limited to those of same origin (only needed if some custom components uses iframes, Simplicité itself does not use them)
+- deactivated XSS protection because a proper CORS policy is a better approach and thus **must be implemented**
+- specified referrer policy
+- specified permissions policy
 
 ```json
 {
-    "Content-Security-Policy": "default-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:",
+    "Content-Security-Policy": "default-src 'self'; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self'",
     "Strict-Transport-Security": "max-age=31536000",
     "X-Content-Type-Options": "nosniff",
     "X-Frame-Options": "SAMEORIGIN",
     "X-XSS-Protection": "0",
-    "Referrer-Policy": "strict-origin-when-cross-origin"
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "unload=(self)"
 }
 ```
 
