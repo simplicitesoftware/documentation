@@ -306,13 +306,15 @@ of the non-expired user tokens **should** also be disabled
 ### Custom HTTP headers
 
 Although it should rather be done at the reverse proxy level (or at Tomcat level), it is possible to add custom HTTP headers
-to all responses by setting the `HTTP_HEADER` system parameter.
+to all responses by setting the `HTTP_HEADERS` system parameter.
 
 The following example, that should be adapted to specific needs, does the following:
 
-- The CSP policy can be tailored to Simplicité's internal needs.
-  However `https://tile.openstreetmap.org` should be added in the `img-src` section when using OpenStreetMaps maps
-  and `https://platform.simplicite.io` should be added in the `connect-src`section for up-to-date version check.
+- The CSP policy is, by default, tailored to Simplicité's **internal** needs but it can be customized for the application's actual needs by:
+  - Adding `https://platform.simplicite.io` in the `connect-src` section for up-to-date platform version check
+  - Adding `https://tile.openstreetmap.org` in the `img-src` section if using OpenStreetMaps maps
+  - Adding `https://view.officeapps.live.com` in the `frame-src` section if using the Office documents previews
+  - etc.
 - STS should be set, 1 year is generally considered a good value
 - iframes limited to those of same origin (only needed if some custom components uses iframes, Simplicité itself does not use them)
 - deactivated XSS protection because a proper CORS policy is a better approach and thus **must be implemented**
