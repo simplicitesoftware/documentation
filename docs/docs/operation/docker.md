@@ -134,7 +134,7 @@ The prebuilt images are configured to exposes the following ports for different 
 
 - Tomcat HTTP port `8080` for direct access or to be exposed directly as an HTTP endpoint
   or through an **HTTP** reverse proxy endpoint (Apache, NGINX, Traefik, etc.)
-  or through an **HTTPS** reverse proxy endpoint providing the required HTTP headers (see bellow)
+  or through an **HTTPS** reverse proxy endpoint providing the required HTTP headers (see below)
 - Tomcat secure HTTP port `8443` to be exposed through an **HTTPS** reverse proxy endpoint (Apache, NGINX, Traefik, etc.)
 - Tomcat SSL port `8444` to be exposed directly as an HTTPS endpoint, Note that this requires an additional `-e` flag
   and to mount (or replace) the appropriate JKS certificate (see below)
@@ -437,7 +437,7 @@ sudo docker run (...) -name <myapp>\
 ### Add remote Git credentials {#gitcredentials}
 
 If you use a remote Git repositories managements platform such as GitHub or GitLab you can use remote SSH URIs and provide credentials as SSH keys,
-see bellow.
+see below.
 
 If you prefer HTTP(S) remote URIs you can pass a username and password using `-e REMOTE_GIT_USERNAME=<username> -e REMOTE_GIT_PASSWORD=<password>`.
 

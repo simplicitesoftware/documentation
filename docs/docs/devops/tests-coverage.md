@@ -22,9 +22,9 @@ The JaCoCo agent exec file is generated at the location denoted by the `JACOCO_D
 defaults to `/usr/local/tomcat/webapps/ROOT/WEB-INF/dbdoc/content/jacoco/jacoco.exec`.
 You must ensure persistence for the above `jacoco` folder (which is the case if you already ensure the persistence of the `dbdoc` folder),
 for instance by mounting a dedicated volume. This is also useful for report generation as this default folder
-is also the default location for report files, see bellow.
+is also the default location for report files, see below.
 
-To be able to generate a human-readable report (see bellow) you must also mount the `src` and `bin` folders
+To be able to generate a human-readable report (see below) you must also mount the `src` and `bin` folders
 located in the `/usr/local/tomcat/webapps/ROOT/WEB-INF` folder because both of them are used by the report generation process.
 
 By default, the exec file is appended when restarting the container, but you can change this
@@ -40,9 +40,9 @@ You can use the import specification mechanism to automate the modules import an
 You can do the same manually for "traditional" Tomcat deployments.
 
 Download the [JaCoCo tool](https://repo1.maven.org/maven2/org/jacoco/jacoco/0.8.12/jacoco-0.8.12.zip)
-and unzip it somewhere accessible to Tomcat (noted `<path>` bellow).
+and unzip it somewhere accessible to Tomcat (noted `<path>` below).
 
-Add following option to JVM arguments when starting Tomcat (in the example bellow only one module is monitored noted `<module>`):
+Add following option to JVM arguments when starting Tomcat (in the example below only one module is monitored noted `<module>`):
 
 ```text
 -javaagent:<path>/jacoco-0.8.12/lib/jacocoagent.jar=destfile=<path>/jacoco.exec,includes=com.simplicite.*.<module>.*
@@ -53,7 +53,7 @@ Generate a human-readable report
 
 Note that **in all cases** (Docker ou manual) the above agent's `jacococ.exec` exec file is generated only **when the JVM is shut down**.
 
-This means you **must** stop the JVM **before** generating the report as explained bellow.
+This means you **must** stop the JVM **before** generating the report as explained below.
 
 ### Using Docker images
 

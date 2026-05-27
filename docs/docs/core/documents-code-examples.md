@@ -177,7 +177,7 @@ bytes[] bytes = xls.generateToByteArray();
 Word(R) sheet using Docx4j
 --------------------------
 
-In the bellow example we add HTML fragments to a Word(R) document.
+In the below example we add HTML fragments to a Word(R) document.
 
 ### Create a basic document
 

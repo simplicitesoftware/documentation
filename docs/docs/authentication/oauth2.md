@@ -245,7 +245,7 @@ Example:
 	}
 ```
 
-As of version 5, it is possible to proceed with additional JWT token processing using `jwt_*` settings described bellow.
+As of version 5, it is possible to proceed with additional JWT token processing using `jwt_*` settings described below.
 
 Token validation
 -----------------
@@ -440,7 +440,7 @@ public void preLoadGrant(Grant g) {
 		ObjectDB usr = null;
 		try {
 			// Create user if not exists
-			// ZZZ An isolated object **MUST** be explicitly destroyed in the finally block (see bellow) ZZZ
+			// ZZZ An isolated object **MUST** be explicitly destroyed in the finally block (see below) ZZZ
 			usr = Grant.getSystemAdmin().getIsolatedObject("User");
 			usr.setRowId(ObjectField.DEFAULT_ROW_ID);
 			usr.resetValues(true);

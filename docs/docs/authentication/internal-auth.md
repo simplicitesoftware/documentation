@@ -40,7 +40,7 @@ or any abusive number of attempts to log in using the internal authentication.
 
 A typical implementation relies on the `preAuth` and `postAuth` platform hooks.
 
-The simple example bellow quarantines a login for a configurable number of minutes after
+The simple example below quarantines a login for a configurable number of minutes after
 a configurable number of failed login:
 
 ```java

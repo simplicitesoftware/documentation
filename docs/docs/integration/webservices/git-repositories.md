@@ -121,7 +121,7 @@ make sure to create/clone **non bare** repositories and make sure to have these 
 
 ### Branches
 
-You can specify the branch to use in the origin definition (or in the remotes definitions, see bellow):
+You can specify the branch to use in the origin definition (or in the remotes definitions, see below):
 
 ```json
 {

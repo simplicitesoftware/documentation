@@ -63,14 +63,14 @@ The following actions are triggered by a system-level task scheduler (cron table
 Note that the automatic backup can be configured to export the backup files to a remote storage.
 Otherwise the backup files are only stored locally on the SIM server.
 
-Implementing pre/post action hooks (see bellow) allow you to customize the standard features of the SIM.
+Implementing pre/post action hooks (see below) allow you to customize the standard features of the SIM.
 
 UI usage
 --------
 
 The instances manager UI is available on `<base URL>/ui`.
 
-The UI offers uses the API documented bellow and thus offers equivalent - but somehow limited by a simplified user experience - services.
+The UI offers uses the API documented below and thus offers equivalent - but somehow limited by a simplified user experience - services.
 
 To create a new instance, enter an instance name (or leave empty for an automatic name) then select the version from the **_Create_** button:
 
@@ -88,7 +88,7 @@ The API services are using HTTP `GET` methods only and URL-encoded parameters on
 For all API services, you can get a pretty printed JSON response by appending `&prettyprint=true`.
 
 By default the authentication method is HTTP basic auth (username + password), but client certificate authentication can also be used.
-The examples bellow are using the `curl` command HTTP client, `<credentials>` is thus either:
+The examples below are using the `curl` command HTTP client, `<credentials>` is thus either:
 
 - `-u <username>:<password>` for username & password authentication method
 - `--cert-type pem --cert <path to your PEM client certificate file> --key <path to your PEM certificate key file>`
