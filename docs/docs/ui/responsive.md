@@ -281,6 +281,7 @@ Options can be changed in :
 | title                           | form title                                                              | userkey label                              |
 | titleMax                        | form title max length (ellipsis)                                        | 120                                        |
 | values                          | fields values                                                           | result of get service                      |
+| onread\(ctn,obj,index,cbk\)     | handler after read form, cbk() to resolve                               |                                            |
 | beforesave\(ctn,obj,index,cbk\) | handler before save the form, cbk(true/false) to continue, stop save    |                                            |
 | aftersave\(ctn,obj,index,msgs\) | handler after save the form, cbk(true/false) to continue, stop          |                                            |
 | onsave\(ctn,obj,cbk\)           | handler to save the form                                                | engine.saveForm                            |
@@ -777,8 +778,8 @@ Simplicite.UI.BusinessObjects.myObject = class extends Simplicite.UI.BusinessObj
  * @function
  */
 onLoad(locals) {
-    // empty by default
-    super.onLoad(locals);
+	// empty by default
+	super.onLoad(locals);
 }
 
 /**
@@ -789,8 +790,8 @@ onLoad(locals) {
  * @function
  */
 beforeLoadForm(ctn, obj, p) {
-    // empty by default
-    super.beforeLoadForm(ctn, obj, p);
+	// empty by default
+	super.beforeLoadForm(ctn, obj, p);
 }
 
 /**
@@ -801,8 +802,8 @@ beforeLoadForm(ctn, obj, p) {
  * @function
  */
 noRowFound(ctn, obj, rowId) {
-    // default implementation
-    super.noRowFound(ctn, obj, rowId);
+	// default implementation
+	super.noRowFound(ctn, obj, rowId);
 }
 
 /**
@@ -813,8 +814,8 @@ noRowFound(ctn, obj, rowId) {
  * @function
  */
 preLoadForm(ctn, obj, p) {
-    // empty by default
-    super.preLoadForm(ctn, obj, p);
+	// empty by default
+	super.preLoadForm(ctn, obj, p);
 }
 
 /**
@@ -826,8 +827,8 @@ preLoadForm(ctn, obj, p) {
  * @function
  */
 displayForm(ctn, obj, p, cbk) {
-    // default implementation
-    super.displayForm(ctn, obj, p, cbk);
+	// default implementation
+	super.displayForm(ctn, obj, p, cbk);
 }
 
 /**
@@ -838,8 +839,8 @@ displayForm(ctn, obj, p, cbk) {
  * @function
  */
 onLoadForm(ctn, obj, p) {
-    // empty by default
-    super.onLoadForm(ctn, obj, p);
+	// empty by default
+	super.onLoadForm(ctn, obj, p);
 }
 
 /**
@@ -850,8 +851,45 @@ onLoadForm(ctn, obj, p) {
  * @function
  */
 onUnloadForm(ctn, obj, p) {
-    // empty by default
-    super.onUnloadForm(ctn, obj, p);
+	// empty by default
+	super.onUnloadForm(ctn, obj, p);
+}
+
+/**
+ * Front hook when object form is read
+ * @param ctn Form container
+ * @param obj Object (same as this)
+ * @param p Form parameters
+ * @param cbk callback() must be called to resolve promise
+ * @function
+ */
+onReadForm(ctn, obj, p, cbk) {
+	// empty by default
+	super.onReadForm(ctn, obj, p, cbk);
+}
+
+/**
+ * Front hook before calling Ajax object.save()
+ * @param ctn Form container
+ * @param obj Object (same as this)
+ * @param index record index (edit list)
+ * @param cbk callback(true|false) (must return 'true' to continue or 'false' to stop/reject promise)
+ */
+beforeSave(ctn, obj, index, cbk) {
+	// empty by default
+	super.beforeSave(ctn, obj, index, cbk);
+}
+
+/**
+ * Front hook after calling Ajax object.save()
+ * @param ctn Form container
+ * @param obj Object (same as this)
+ * @param index record index (edit list)
+ * @param cbk callback(true|false) (must return 'true' to continue or 'false' to stop/reject promise)
+ */
+afterSave(ctn, obj, index, cbk) {
+	// empty by default
+	super.afterSave(ctn, obj, index, cbk);
 }
 
 /**
@@ -862,8 +900,8 @@ onUnloadForm(ctn, obj, p) {
  * @function
  */
 beforeLoadList(ctn, obj, p) {
-    // empty by default
-    super.beforeLoadList(ctn, obj, p);
+	// empty by default
+	super.beforeLoadList(ctn, obj, p);
 }
 
 /**
@@ -874,8 +912,8 @@ beforeLoadList(ctn, obj, p) {
  * @function
  */
 preLoadList(ctn, obj, p) {
-    // empty by default
-    super.preLoadList(ctn, obj, p);
+	// empty by default
+	super.preLoadList(ctn, obj, p);
 }
 
 /**
@@ -887,8 +925,8 @@ preLoadList(ctn, obj, p) {
  * @function
  */
 displayList(ctn, obj, p, cbk) {
-    // default implementation
-    super.displayList(ctn, obj, p, cbk);
+	// default implementation
+	super.displayList(ctn, obj, p, cbk);
 }
 
 /**
@@ -902,8 +940,8 @@ displayList(ctn, obj, p, cbk) {
  * @function
  */
 displayListRow(ctn, row, obj, id, p, cbk) {
-    // default implementation
-    super.displayListRow(ctn, row, obj, id, p, cbk);
+	// default implementation
+	super.displayListRow(ctn, row, obj, id, p, cbk);
 }
 
 /**
@@ -916,8 +954,8 @@ displayListRow(ctn, row, obj, id, p, cbk) {
  * @function
  */
 onLoadListRow(ctn, obj, id, item, row) {
-    // empty by default
-    super.onLoadListRow(ctn, obj, id, item, row);
+	// empty by default
+	super.onLoadListRow(ctn, obj, id, item, row);
 }
 
 /**
@@ -930,8 +968,8 @@ onLoadListRow(ctn, obj, id, item, row) {
  * @function
  */
 onUnloadListRow(ctn, obj, id, item, row) {
-    // empty by default
-    super.onUnloadListRow(ctn, obj, id, item, row);
+	// empty by default
+	super.onUnloadListRow(ctn, obj, id, item, row);
 }
 
 /**
@@ -942,8 +980,8 @@ onUnloadListRow(ctn, obj, id, item, row) {
  * @function
  */
 onLoadList(ctn, obj, p) {
-    // empty by default
-    super.onLoadList(ctn, obj, p);
+	// empty by default
+	super.onLoadList(ctn, obj, p);
 }
 
 /**
@@ -954,8 +992,8 @@ onLoadList(ctn, obj, p) {
  * @function
  */
 onUnloadList(ctn, obj, p) {
-    // empty by default
-    super.onUnloadList(ctn, obj, p);
+	// empty by default
+	super.onUnloadList(ctn, obj, p);
 }
 
 /**
@@ -966,8 +1004,8 @@ onUnloadList(ctn, obj, p) {
  * @function
  */
 beforeLoadSearch(ctn, obj, p) {
-    // empty by default
-    super.beforeLoadSearch(ctn, obj, p);
+	// empty by default
+	super.beforeLoadSearch(ctn, obj, p);
 }
 
 /**
@@ -979,8 +1017,8 @@ beforeLoadSearch(ctn, obj, p) {
  * @function
  */
 displaySearch(ctn, obj, p, cbk) {
-    // default implementation
-    super.displaySearch(ctn, obj, p, cbk);
+	// default implementation
+	super.displaySearch(ctn, obj, p, cbk);
 }
 
 /**
@@ -991,8 +1029,8 @@ displaySearch(ctn, obj, p, cbk) {
  * @function
  */
 onLoadSearch(ctn, obj, p) {
-    // empty by default
-    super.onLoadSearch(ctn, obj, p);
+	// empty by default
+	super.onLoadSearch(ctn, obj, p);
 }
 
 /**
@@ -1003,8 +1041,8 @@ onLoadSearch(ctn, obj, p) {
  * @function
  */
 onUnloadSearch(ctn, obj, p) {
-    // empty by default
-    super.onUnloadSearch(ctn, obj, p);
+	// empty by default
+	super.onUnloadSearch(ctn, obj, p);
 }
 
 /**
@@ -1015,8 +1053,8 @@ onUnloadSearch(ctn, obj, p) {
  * @function
  */
 beforeLoadSummary(ctn, obj, p) {
-    // empty by default
-    super.beforeLoadSummary(ctn, obj, p);
+	// empty by default
+	super.beforeLoadSummary(ctn, obj, p);
 }
 
 /**
@@ -1028,8 +1066,8 @@ beforeLoadSummary(ctn, obj, p) {
  * @function
  */
 displaySummary(ctn, mo, obj, cbk) {
-    // default implementation
-    super.displaySummary(ctn, mo, obj, cbk);
+	// default implementation
+	super.displaySummary(ctn, mo, obj, cbk);
 }
 
 /**
@@ -1041,8 +1079,8 @@ displaySummary(ctn, mo, obj, cbk) {
  * @function
  */
 onloadSummary(ctn, mo, obj, p) {
-    // empty by default
-    super.onloadSummary(ctn, mo, obj, p);
+	// empty by default
+	super.onloadSummary(ctn, mo, obj, p);
 }
 
 /**
@@ -1054,8 +1092,8 @@ onloadSummary(ctn, mo, obj, p) {
  * @function
  */
 beforeLoadAgenda(ctn, obj, agd, p) {
-    // empty by default
-    super.beforeLoadAgenda(ctn, obj, agd, p);
+	// empty by default
+	super.beforeLoadAgenda(ctn, obj, agd, p);
 }
 
 /**
@@ -1067,8 +1105,8 @@ beforeLoadAgenda(ctn, obj, agd, p) {
  * @function
  */
 onLoadAgenda(ctn, obj, agd, p) {
-    // empty by default
-    super.onLoadAgenda(ctn, obj, agd, p);
+	// empty by default
+	super.onLoadAgenda(ctn, obj, agd, p);
 }
 
 /**
@@ -1080,8 +1118,8 @@ onLoadAgenda(ctn, obj, agd, p) {
  * @function
  */
 onUnloadAgenda(ctn, obj, agd, p) {
-    // empty by default
-    super.onUnloadAgenda(ctn, obj, agd, p);
+	// empty by default
+	super.onUnloadAgenda(ctn, obj, agd, p);
 }
 
 /**
@@ -1092,8 +1130,8 @@ onUnloadAgenda(ctn, obj, agd, p) {
  * @function
  */
 beforeLoadTimesheet(ctn, obj, p) {
-    // empty by default
-    super.beforeLoadTimesheet(ctn, obj, p);
+	// empty by default
+	super.beforeLoadTimesheet(ctn, obj, p);
 }
 
 /**
@@ -1104,8 +1142,8 @@ beforeLoadTimesheet(ctn, obj, p) {
  * @function
  */
 onLoadTimesheet(ctn, obj, ts) {
-    // empty by default
-    super.onLoadTimesheet(ctn, obj, ts);
+	// empty by default
+	super.onLoadTimesheet(ctn, obj, ts);
 }
 
 /**
@@ -1116,8 +1154,8 @@ onLoadTimesheet(ctn, obj, ts) {
  * @function
  */
 onUnloadTimesheet(ctn, obj, ts) {
-    // empty by default
-    super.onUnloadTimesheet(ctn, obj, ts);
+	// empty by default
+	super.onUnloadTimesheet(ctn, obj, ts);
 }
 
 }; // class Simplicite.UI.BusinessObjects.MyObject
