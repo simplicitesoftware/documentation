@@ -35,8 +35,8 @@
     "markmap-view": "0.18.12",
     "prism-react-renderer": "2.4.1",
     "prismjs": "1.30.0",
-    "react": "19.2.6",
-    "react-dom": "19.2.6",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
     "simplicite-documentation": "file:"
   },
   "devDependencies": {
