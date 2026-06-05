@@ -145,7 +145,8 @@ export default function VersionsTable({
 
     // if (loading) return <div>Loading versions data...</div>;
     // if (err) return <div>Error loading data: {err.message}</div>;
-    if (!versions || versions.size === 0) return <div>No version data available</div>;
+    if (!versions || versions.size === 0)
+        return <div>No version data available</div>;
 
     return (
         <div className={styles.versionsTableContainer}>
@@ -167,7 +168,7 @@ export default function VersionsTable({
                             <td>
                                 <a
                                     href={`#${v.version}`}
-                                    onClick={(e) => scrollToBlock(v.version,e)}
+                                    onClick={(e) => scrollToBlock(v.version, e)}
                                 >
                                     {v.version}
                                 </a>
