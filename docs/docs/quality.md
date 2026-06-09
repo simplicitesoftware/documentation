@@ -14,11 +14,11 @@ Dependencies
 
 ### Dependencies upgrade policy
 
-Except in case of a critical ("zero-day") vulnerability which may be actually exploited in the context of Simplicité,
-the third party components are **only** upgraded on the main branch (development = alpha).
+Except in case of a critical (e.g. "zero-day") vulnerability which may be actually exploited in the context of Simplicité,
+the third party components are only upgraded on the main branch (during the development phase = alpha and testing phase = beta).
 
 By default, the released branches (and the legacy maintenance versions branches) keep their dependencies
-**as they were** at the time the main branch was pushed on these branches.
+as they were at the time the main branch was pushed on these branches in order to minimize the compatibility breaking changes or deprecations.
 
 On the main branch:
 
@@ -70,6 +70,16 @@ The whole code (Java, JavaScript and styles) is regularly checked using the [Son
 - Any new "security hotspot" are reviewed as soon as they are raised.
 - All issues classified as "blocker, critical or major vulnerability" are resolved as soon as possible.
 - All other issues (classified "minor or info vulnerability" or "code smell") are looked after with lower priority.
+
+Platform testing
+----------------
+
+The platform code is tested against low-level unit tests all along its development process.
+
+Each time a revision is due to be released a series of representative business applications scenarii are tested to
+ensure the consistency of the end-to-end behavior of the platform.
+
+Performance tests are also done each time a revision includes changes that may impact the performances of the platform.
 
 External audits
 ---------------
