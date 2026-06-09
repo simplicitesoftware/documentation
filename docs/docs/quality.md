@@ -7,7 +7,7 @@ Quality
 =======
 
 See [this document](/versions/versioning) for details on the platform's versioning strategies and the the [security guidelines](/docs/security)
-for more details on how to secure your deployments.
+for more details on how to secure deployments.
 
 Dependencies
 ------------

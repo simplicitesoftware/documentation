@@ -145,7 +145,7 @@ For instance it can be used to:
 - Add a filtering search spec based on the user's rights
 - Change default field behavior (visibility, updatability, ...) depending on user's rights or depending on the instance
   name (e.g. the instance used by webservices - name is prefixed by `api_` - may hide or make non updatable one field
-  which is visible or updatble to UI users)
+  which is visible or updatable to UI users)
 
 :::warning
 
@@ -460,7 +460,7 @@ These `preValidate` and `postValidate` hooks are called before and after the gen
 is made by the engine.
 
 The generic validation is made before saving a record (creation or update). It only checks the
-compliance of submitted date in regards to the object definition (e.g. it checks the type of the fileds, checks
+compliance of submitted date in regards to the object definition (e.g. it checks the type of the fields, checks
 value of the mandatory fields, apply regular expression checks, ...).
 
 If you have some additional validation logic to add to your business object, such as setting a mandatory
@@ -742,7 +742,7 @@ The `isExportAllowed` hook is called before exporting data to deny or confirm th
 
 **Examples:**
 
-```java
+```simplicite-java
 @Override
 public String isExportAllowed(String mode, String media, String rowId) {
     // List export by a non-admin user
@@ -1097,7 +1097,7 @@ public String postCreate() {
 Trace Hooks
 -----------
 
-As of Simplicité v6.0, hooks traces are activable through the `traceHooks` method to facilitate debugging, lifecycle understanding, etc.
+As of Simplicité v6.0, hooks traces are enabled through the `traceHooks` method to facilitate debugging, lifecycle understanding, etc.
 
 ```java
 @Override

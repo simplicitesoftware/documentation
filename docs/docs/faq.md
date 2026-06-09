@@ -161,7 +161,7 @@ Two common causes:
 - **Record selection/permissions**: the record that carries the document may not be correctly
   **selected/loaded** when the mail API attempts to read the document field, or the grant may
   lack read rights.
-  Verify `select(rowId)` (or the equivalent in your flow) before attaching the document, and
+  Verify `select(rowId)` (or the equivalent) before attaching the document, and
   check permissions.
 
 - **See also**:
@@ -189,7 +189,7 @@ SSO / OpenID Connect / Azure AD
 
 - **Redirect URI** (application side): typically `<base URL>/oauth2callback` (see docs).
 - **Logout**: there are two URLs depending on the chosen flow:
-  - the logout URL to configure in Simplicité is your IdP’s logout URL
+  - the logout URL to configure in Simplicité is the IdP’s logout URL
   - the logout URL to configure in the IdP to return to the app is typically `<base URL>/logout`
 
 - **See also**:
