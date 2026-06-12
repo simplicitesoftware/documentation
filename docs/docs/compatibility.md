@@ -102,7 +102,8 @@ Only these up-to-date releases are tested and supported.
 The recommended webapp implementations are :
 
 - **Webapp 6.1** (JakartaEE): Apache Tomcat&reg; 11.0.x
-- **Webapp 4.0** (JEE): Apache Tomcat&reg; 9.0.x
+- **Webapp 4.0** (JEE): Apache Tomcat&reg; 9.0.x (and 9.1.x after March 2027,
+  see [this page](https://tomcat.apache.org/tomcat-9.0.x-eos.html#:~:text=The%20Apache%20Tomcat%C2%AE%20team,end%20on%2031%20March%202027.) for details)
 
 :::tip
 
