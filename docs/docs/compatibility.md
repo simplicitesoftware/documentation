@@ -118,7 +118,7 @@ Databases
 | ![](https://platform.simplicite.io/logos/logo125.png) | PostgreSQL | MySQL | Oracle   | SQLServer |
 |:-----------------------------------------------------:|------------|-------|----------|-----------|
 | Alpha 7.0                                             | 18+        | 9+    | 23ai+    | 2025+     |
-| Current **6.2** and legacy 6.x                        | 13+        | 8+    | 19c+     | 2019+     |
+| Current **6.3** and legacy 6.x                        | 13+        | 8+    | 19c+     | 2019+     |
 | Maintained **5.3** and legacy 5.x                     | 13+        | 8+    | 19c+     | 2019+     |
 | Legacy 4.0                                            | 10+        | 5.5+  | 12c+     | 2016+     |
 | Legacy 3.2                                            | 9+         | 5.1+  | 11g+     | 2012+     |
