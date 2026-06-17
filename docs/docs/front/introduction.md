@@ -23,9 +23,9 @@ This covers:
 - Custom components and pages built as External Objects (HTML, CSS, JavaScript resources + optional Java class)
 - The in-platform JavaScript API (`$app`, `$ui`, `$view`) for interacting with the backend from resources
 
-Relevant pages: [Theme Editor](/docs/front/theme), [Complementary Styles](/docs/front/styles),
-[In-platform Development](/docs/front/platform-dev), [Ajax Library](/docs/front/lib-ajax),
-[Custom Components & Pages](/docs/front/custom-components)
+Relevant pages: [Basic code examples](/docs/front/basic-code-examples), [Theme Editor](/docs/front/theme),
+[Complementary Styles](/docs/front/styles), [In-platform Development](/docs/front/platform-dev),
+[Ajax Library](/docs/front/lib-ajax), [Custom Components & Pages](/docs/front/custom-components)
 
 ### NPM library projects
 

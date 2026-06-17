@@ -7,6 +7,7 @@ Custom action examples
 ======================
 
 Please refer to [basic code examples](/docs/core/basic-code-examples) document for naming conventions and logging strategies.
+For client-side JavaScript custom actions, see [Basic code examples (front-end)](/docs/front/basic-code-examples#client-side-custom-actions).
 
 Server-side custom action
 --------------------------
@@ -182,41 +183,17 @@ A client-side action corresponds to an action with a value in the _URL_ field.
 ### Plain URL
 
 When _URL_ contains a plain URL (that can be either absolute or relative),
-the platform UI will call this URL appending the `object`, `inst` and `row_id` URL parameters.
+the platform UI will call this URL.
 
 ### JavaScript statement pseudo-URL
 
-When _URL_ contains a client-side **JavaScript** statement pseudo-URL (starting with `javascript:`), the platform will run this JavaScript statement after
-having substituted the `[object]`, `[inst]` and `[row_id]` tags.
+When _URL_ contains a client-side **JavaScript** statement pseudo-URL (starting with `javascript:`), the platform runs the statement in the UI context.
 
-For instance, let's say you have created the default client JavaScript resources `SCRIPT` resource for your `MyObject` business object like this:
-
-```javascript
-var MyObject = (function() {
-	function test(inst, row_id) {
-		return $ui.alert({ content: "Using instance " + inst + (row_id ? " and row ID " + row_id : "") });
-	}
-	return { myCustomAction: test };
-})();
-```
-
-Then you can configure a custom action for `MyObject` to call this `myCustomAction` function with this value in the _URL_ field:
-
-```javascript
-javascript:return [object].myCustomAction('[inst]', [row_id])
-```
-
-Attention, due to the way the UI runs the JavaScript statement, you **must** only use simple quotes `'` in it
-(this limitation does not apply to the content of the `SCRIPT` resource).
-
-The javascript statement also supports front parameter `app`, `grant` and `obj` when the server side substitution is not required:
-
-```javascript
-javascript:return obj.getName().myCustomAction(obj.getInstanceName(), obj.getRowId())
-```
+Implement the handler in the business object's `CLASS` resource and configure the action _URL_ accordingly — see
+[Basic code examples — Client-side custom actions](/docs/front/basic-code-examples#client-side-custom-actions).
 
 :::note
-These client-side custom actions are **not available** through the webservices APIs.
+Client-side custom actions are **not available** through the webservices APIs.
 :::
 
 Asynchronous action launched by the UI with tracking
