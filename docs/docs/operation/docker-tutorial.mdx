@@ -696,9 +696,10 @@ You can obtain a free **signed** certificate from the **LetsEncrypt** service, t
 
 1. Install `cerbot` CLI:
 
-```bash
-sudo dnf -y install epel-release && sudo dnf -y install certbot && sudo dnf clean all
-```
+   ```bash
+   sudo dnf -y install epel-release && sudo dnf -y install certbot && sudo dnf clean all
+   ```
+
 2. Add this to the HTTP server config in `nginx.conf` (before the `location / {...}` block):
 
    ```nginx
@@ -711,7 +712,7 @@ sudo dnf -y install epel-release && sudo dnf -y install certbot && sudo dnf clea
 
 3. Comment the HTTPS config in the `nginx.conf` file.
 
->4. Create a `.well-known` dir:
+4. Create a `.well-known` dir:
 
    ```shell
    mkdir .well-known
