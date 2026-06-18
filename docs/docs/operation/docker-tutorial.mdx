@@ -90,13 +90,13 @@ This step is not required but provides various useful tools and aliases on your 
 <TabItem value="almalinux" label="AlmaLinux 8, 9 or 10">
 ```shell
 sudo dnf -y install vim-enhanced git wget curl zip unzip && sudo dnf clean all
-sudo dnf -y install epel-release && sudo dnf -y install certbot htop && sudo dnf clean all
+sudo dnf -y install epel-release && sudo dnf -y install htop && sudo dnf clean all
 ```
 </TabItem>
 <TabItem value="centos" label="CentOS 7">
 ```shell
 sudo yum -y install vim-enhanced git wget curl zip unzip && sudo yum clean all
-sudo yum -y install epel-release && sudo yum -y install certbot htop && sudo yum clean all
+sudo yum -y install epel-release && sudo yum -y install htop && sudo yum clean all
 ```
 </TabItem>
 </Tabs>
@@ -694,7 +694,12 @@ openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt
 
 You can obtain a free **signed** certificate from the **LetsEncrypt** service, there are some steps to go thru:
 
-1. Add this to the HTTP server config in `nginx.conf` (before the `location / {...}` block):
+1. Install `cerbot` CLI:
+
+```bash
+sudo dnf -y install epel-release && sudo dnf -y install certbot && sudo dnf clean all
+```
+2. Add this to the HTTP server config in `nginx.conf` (before the `location / {...}` block):
 
    ```nginx
    (...)
@@ -704,15 +709,15 @@ You can obtain a free **signed** certificate from the **LetsEncrypt** service, t
    (...)
    ```
 
-2. Comment the HTTPS config in the `nginx.conf` file.
+3. Comment the HTTPS config in the `nginx.conf` file.
 
-3. Create a `.well-known` dir:
+>4. Create a `.well-known` dir:
 
    ```shell
    mkdir .well-known
    ```
 
-4. Add a new volume mapping to the `simplicite` service in the `docker-compose.yml` file:
+5. Add a new volume mapping to the `simplicite` service in the `docker-compose.yml` file:
 
    ```yaml
    (...)
@@ -720,17 +725,17 @@ You can obtain a free **signed** certificate from the **LetsEncrypt** service, t
    (...)
    ```
 
-5. Restart
+6. Restart
 
-6. Request the LetEncrypt certificate by:
+7. Request the LetEncrypt certificate by:
 
    ```shell
    sudo certbot certonly --webroot -w . -d <myhostname>
    ```
 
-7. Uncomment the HTTPS config  in the `nginx.conf` file.
+8. Uncomment the HTTPS config  in the `nginx.conf` file.
 
-8. Change the certificate and key volume mappings in the `docker-compose.yml` file to:
+9. Change the certificate and key volume mappings in the `docker-compose.yml` file to:
 
    ```yaml
    (...)
@@ -739,7 +744,7 @@ You can obtain a free **signed** certificate from the **LetsEncrypt** service, t
    (...)
    ```
 
-9. Restart
+10. Restart
 
 Thee above last 3 steps are not required when you renew the certificate by `sudo certbot renew`.
 
