@@ -183,6 +183,7 @@ Options can be changed in :
 | fixedFilters                       | optional fixed filters - override filters and not updatable by user     |                                            |
 | forceSearch                        | show the search dialog when the list is opened                          |                                            |
 | showFilters                        | show each user filter on top of list                                    | true if PANEL_FILTER=yes                   |
+| showFixedFilters                   | show each fixed filter on top of list                                   | true if PANEL_FIXED_FILTER=yes             |
 | showSearchInlined                  | show/hide the inlined search by columns                                 | false                                      |
 | showIndex                          | show the fulltext search                                                | metadata.indexable                         |
 | indexRequest                       | current index search request                                            |                                            |

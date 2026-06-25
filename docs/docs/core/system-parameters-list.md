@@ -1222,17 +1222,6 @@ Max lock duration in seconds of inactive object with a blocking timestamp. This 
 
 Specify the object of user management  (header user icon access) or none for no access
 
-`PANEL_CHAR_MAX`
-----------------
-
-### Default value
-
-`110`
-
-### Description
-
-Panels tab max length in char
-
 `PANEL_FILTER`
 --------------
 
@@ -1242,7 +1231,18 @@ Panels tab max length in char
 
 ### Description
 
-Yes/No Show the object filter in panels
+Yes/No to show the object filters on list
+
+`PANEL_FIXED_FILTER`
+--------------------
+
+### Default value
+
+`yes`
+
+### Description
+
+Yes/No to show the object fixed filters in list
 
 `PASSWORD_VALIDATION_REGEXP`
 ----------------------------
