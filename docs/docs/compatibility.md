@@ -44,7 +44,7 @@ The minor version in **bold** are the current and maintained Simplicité minor v
 
 Any OS on which a suitable Java JVM is officially available. This includes:
 
-- all current **Linux distributions** (RedHat&reg;, CentOS&reg;, Fedora&reg;, Debian&reg;, Ubuntu&reg;, etc.) and some proprietary UNIX (e.g. Solaris&reg;),
+- all current **Linux distributions** (RedHat&reg;, Fedora&reg;, AlmaLinun&reg;, RockyLinux&reg;, Debian&reg;, Ubuntu&reg;, etc.) and some proprietary UNIX,
 - all current Microsoft **Windows&reg;** versions,
 - all current **MacOS&reg;** versions,
 - etc.
