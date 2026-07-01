@@ -204,11 +204,12 @@ Crée une homepage avec les applications en développements, les sauvegardes des
 Answer business questions
 -------------------------------
 
-Once the app is built, the MCP server can answer business questions directly from the IDE.
+Once the app is built, the MCP server can answer business questions directly from the chat.
 
-```text
+```markdown
 Quel serveur héberge le plus d'applications en production ?
 Quelle application a connu le plus de changements de statut récents ?
+ 
 Parmi nos serveurs, lesquels tournent sur un OS qui arrive en fin de support ?
 Y a-t-il des CVE critiques récentes concernant les OS de nos serveurs ?
 ```
@@ -220,13 +221,15 @@ Simplicité records with its own knowledge (e.g. OS end-of-life dates, recent CV
 
 :::
 
-The rest is up to you
+Next steps
 -------------------------------
 
-You can now expand the capabilities of this application. Here are few examples:
+The capabilities of this application can be further expanded depending on specific infrastructure needs. Potential enhancements include:
 
-- Custom action: **Ping server**
-- Create a **Host** business object
-- **Deploiement** state model
-- Group and reponsibilities handling
-- ...
+- **Infrastructure extension**: Creation of a Host business object to track cloud providers or physical datacenters.
+
+- **Lifecycle management**: Implementation of a Déploiement state model to orchestrate staging, validation, and production environments.
+
+- **Access control**: Integration of custom user groups and specific responsibilities to restrict modifications to infrastructure components.
+
+- **Automation**: Configuration of automated actions to verify server availability or trigger backup routines.

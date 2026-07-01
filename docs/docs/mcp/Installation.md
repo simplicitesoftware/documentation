@@ -4,7 +4,7 @@ title: MCP Server configuration
 ---
 
 :::danger[Warning]
-The Simplicite MCP Server is a [v7 feature](../../versions/release-notes/v7-0.md). It is still in **ALPHA**.
+The Simplicite MCP Server is a [v7 feature](../../versions/release-notes/v7-0.md). It is still in **ALPHA**, features will be added and improved
 This documentation is also in its early redaction stage.
 :::
 
