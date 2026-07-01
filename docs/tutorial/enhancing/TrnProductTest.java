@@ -1,10 +1,15 @@
 package com.simplicite.tests.Training;
 
+// Up to v6 (JUnit 4)
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+import org.junit.Test;
+// From v7 (JUnit 6)
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+//import static org.junit.jupiter.api.Assertions.fail;
+//import org.junit.jupiter.api.Test;
 
 import org.json.JSONObject;
-import org.junit.Test;
 
 import com.simplicite.util.Grant;
 import com.simplicite.util.ObjectDB;

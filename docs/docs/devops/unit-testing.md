@@ -28,10 +28,14 @@ For instance:
 ```simplicite-java
 package com.simplicite.tests.MyModule;
 
+// Up to v6 (JUnit 4)
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-
 import org.junit.Test;
+// From v7 (JUnit 6)
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+//import static org.junit.jupiter.api.Assertions.fail;
+//import org.junit.jupiter.api.Test;
 
 import org.json.JSONObject;
 
@@ -43,7 +47,6 @@ import com.simplicite.util.ObjectField;
  * Unit tests example
  */
 public class MyTests {
-
 	public Grant getGrant() {
 		// Using the system is dangerous
 		return Grant.getSystemAdmin();
@@ -94,8 +97,13 @@ For instance:
 ```java
 package com.simplicite.tests.MyModule;
 
+// Up to v6 (JUnit 4)
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+// From v7 (JUnit 6)
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+//import org.junit.jupiter.api.Test;
+
 /**
  * Local unit tests example
  */
