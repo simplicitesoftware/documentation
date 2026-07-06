@@ -260,7 +260,7 @@ Although these row IDs are visible in the HTTP requests, they **are not vulnerab
 As a matter for fact Simplicité **always** checks that the requesting user has access to the requested business object's record
 denoted by the passed row ID (which is the prime prevention described by the [OSWASP](https://owasp.org/www-community/attacks/insecure_direct_object_reference#how-to-prevent)).
 
-In other words, forging custom HTTP request by guessing possible row IDs does not give any unallowed access.
+In other words, forging custom HTTP request by guessing possible row IDs does not give any not allowed access.
 
 Note that the resources' configuration object is, by construction, public (it is primarily dedicated to HTML, JS, CSS, ... files),
 therefore you **must** avoid to put any sensible business file in a resource record as they can be discovered by row ID guessing.
