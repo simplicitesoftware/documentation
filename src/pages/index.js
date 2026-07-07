@@ -90,7 +90,7 @@ export default function Home() {
             <DocSection
               title="Release Notes"
               description="Latest updates, changes, and improvements."
-              link="/versions/release-notes/v6-2"
+              link="/versions/release-notes/v6-3"
               icon={Icons.releases}
             />
           </div>
