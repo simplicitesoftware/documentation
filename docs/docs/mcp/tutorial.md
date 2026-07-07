@@ -21,18 +21,21 @@ Time taken for each section is written for Claude Desktop Sonnet 5 Medium effort
 
 ---
 
-Create the application skeleton
+1\. Create the application skeleton
 ------------------------------------
 
 ```text
-Je veux créer une application de gestion d'infrastructure IT appelée InfraTrack sur Simplicité. Elle suit des applications métiers, les serveurs sur lesquels elles tournent, 
-et les sauvegardes associées au applications. Une application peut être déployées sur plusieurs serveurs et un serveur peut avoir plusieurs applications.
+On veut créer une application de gestion d'infrastructure IT appelée InfraTrack sur Simplicité. Elle suit des applications métiers, les serveurs sur lesquels elles tournent, 
+et les sauvegardes associées aux applications. Une application peut être déployée sur plusieurs serveurs et un serveur peut avoir plusieurs applications.
+Une application a un statut: en développement, en production, en maintenance, arrêtée
 
 ! Important! Contraintes:
+- Format pivot obligatoire
 - Pas de templates/aires, pas de traductions d'aires
-- Une seule énumération: décrivant un état, seulement les traductions françaises
+- Pas de règles métier pour l'instant, seulement le squelette
+- Une seule énumération (statut de l'application), pas de modèle d'état
 - Grant Admin uniquement (à créer)
-- Tout en français
+- Tout en français (pas besoin de remplir les libellés ENU)
 ```
 
 ⏱ ~2 min
@@ -47,14 +50,14 @@ which allows the LLM to plan and check each step of the process when generating.
 
 ---
 
-Validate the architecture
+2\. Validate the architecture
 ------------------------------
 
 ```text
 J'ai entendu parler de modèles d'urbanisation DSI, comme TOGAF ou Archimate, est-ce que ça fait sens dans notre besoin ?
 ```
 
-⏱ ~1 min
+⏱ ~15 sec
 
 :::tip[Expected result]
 
@@ -64,12 +67,14 @@ The LLM explains why these frameworks are not relevant here, consistent answer o
 
 ---
 
-Creation
+3\. Creation
 -----
 
 ```text
 Le pivot me convient, génère le module dans Simplicité.
 ```
+
+Explication plus en détail du format pivot.
 
 ⏱ ~7 min
 
@@ -79,7 +84,7 @@ The module is created, objects are fully configured
 
 :::
 
-Add a state model
+4\. Add a state model
 ----------------------
 
 ```text
@@ -90,14 +95,14 @@ Crée une machine d'état pour le statut d'application. Propose des transitions 
 
 ---
 
-Improve the form layout
+5\. Improve the form layout
 ----------------------------
 
 ```text
 Le formulaire pour une application n'est pas très pratique, les champs sont dans tout les sens. Améliore le
 ```
 
-⏱ ~2 min
+⏱ ~3 min
 
 :::tip[Expected result]
 
@@ -107,7 +112,7 @@ Template creation for Application business object
 
 ---
 
-Enable change log
+6\. Enable change log
 ----------------------
 
 ```text
@@ -124,7 +129,7 @@ Change log on the Application object. State changes are now tracked and visible 
 
 ---
 
-Add a business rule constraint
+7\. Add a business rule constraint
 ------------------------------------
 
 ```text
@@ -142,7 +147,7 @@ The state transition is blocked if the field is empty.
 
 ---
 
-Enforce a transition rule in code
+8\. Enforce a transition rule in code
 --------------------------------------
 
 ```text
@@ -166,14 +171,14 @@ The error message includes the number of servers involved.
 
 ---
 
-Validate a field value
+9\. Validate a field value
 ---------------------------
 
 ```text
 On peut mettre n'importe quoi dans le champ Adresse IP. Fais en sorte de vérifier cela
 ```
 
-⏱ ~2 min
+⏱ ~1 min
 
 :::tip[Expected result]
 
@@ -183,25 +188,35 @@ Validation on the Adresse IP field of the Serveur object. Invalid input is block
 
 ---
 
-Create a pivot table
+10\. Create a pivot table
 -------------------------
 
 ```text
 Crée le tableau croisé Application par Serveur
 ```
 
+⏱ ~1 min
+
+:::tip[Expected result]
+
+Ask the LLM to create some test data to have some values to look at in the pivot table
+
+:::
+
 ---
 
-Create a home page
+11\. Create a home page
 ------------------------
 
 ```text
 Crée une homepage avec les applications en développements, les sauvegardes des 3 derniers mois, le tableau croisé Application x Serveurs et un compteur avec: app en production, serveurs
 ```
 
+⏱ ~2 min
+
 ---
 
-Answer business questions
+12\. Answer business questions
 -------------------------------
 
 Once the app is built, the MCP server can answer business questions directly from the chat.
