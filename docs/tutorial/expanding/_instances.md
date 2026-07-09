@@ -55,7 +55,7 @@ Therefore, when using an instance in scripts, it should be kept in mind:
 // loading a temporary instance
 ObjectDB product = getGrant().getTmpObject("TrnProduct");
 // block synchronized to prevent concurrent use of this instance by another thread
-synchronized(product.getLock()){
+synchronized (product.getLock()) {
     // resetting potential searches already set on the instance
     product.resetFilters();
     // positioning of a filter
@@ -113,9 +113,9 @@ public String postUpdate() {
 	String objname="TrnProduct";
 	boolean[] oldcrud = g.changeAccess(objname, true, true, true, false);
 	ObjectDB prd = g.getTmpObject(objname);
-	if("PROCESSING".equals(getOldStatus()) && "VALIDATED".equals(getStatus())){
+	if ("PROCESSING".equals(getOldStatus()) && "VALIDATED".equals(getStatus())) {
 		try{
-			synchronized(prd.getLock()){
+			synchronized (prd.getLock()) {
 				// select = load into the instance the values in the database corresponding to a technical key (id)
 				prd.select(getFieldValue("trnOrdPrdId"));
 				// read the quantity ordered on the current instance and the stock of the product on the loaded instance
@@ -126,9 +126,11 @@ public String postUpdate() {
 				// write the instances data into the database
 				prd.getTool().validateAndSave();
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			AppLog.error(e.getMessage(), e, g);
-		} finally {
+		}
+		finally {
 			g.changeAccess(objname, oldcrud);
 		}
 	}

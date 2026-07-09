@@ -116,7 +116,6 @@ Without pagination:
 ```simplicite-java
 ObjectDB o = getGrant().getTmpObject("myObject");
 synchronized (o.getLock()) {
-
 	// Place filters if needed
 	o.resetFilters(); // remove all previous filters
 	o.setFieldFilter("myFkField", this.getRowId()); // Foreign key
