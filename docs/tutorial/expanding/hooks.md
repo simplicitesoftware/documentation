@@ -138,9 +138,9 @@ To add this business rule, override the `postUpdate` hook by following the steps
        // Get the TrnProduct's temporary instance
        ObjectDB prd = g.getTmpObject("TrnProduct");
        // Pending -> Validated state transition
-       if ("P".equals(getOldStatus()) && "V".equals(getStatus())){
+       if ("P".equals(getOldStatus()) && "V".equals(getStatus())) {
            try {
-               synchronized(prd.getLock()){
+               synchronized (prd.getLock()) {
                    // select = load into the instance the values in the database corresponding to a technical key (id)
                    prd.select(getFieldValue("trnOrdPrdId"));
                    // read the quantity ordered on the current instance and the stock of the product on the loaded instance
@@ -151,7 +151,8 @@ To add this business rule, override the `postUpdate` hook by following the steps
                    // write the instances data into the database
                    prd.getTool().validateAndSave();
                }
-           } catch (ValidateException | SaveException e) {
+           }
+           catch (ValidateException | SaveException e) {
                AppLog.error(e, g);
            }
        }

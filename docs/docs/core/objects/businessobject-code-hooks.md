@@ -592,8 +592,7 @@ public String postSave() {
     // Update a data of a linked object after
     if (getOldStatus() == "VALIDATED" && getStatus() == "DELIVERED") {
         ObjectDB obj = getGrant().getTmpObject("MyLinkedObject");
-        synchronized(obj){
-            obj.getLock();
+        synchronized (obj.getLock()) {
             obj.select(getField("objMyLinkedObjectMyObjectId").getValue());
             obj.getField("otherObjField1").setValue("value");
             try {
@@ -601,9 +600,7 @@ public String postSave() {
             } catch (SaveException|ValidateException e) {
                 AppLog.error(e, getGrant());
             }
-
         }
-
     }
     return super.postSave();
 }
@@ -845,8 +842,7 @@ public String postSave() {
         // Add attachments from a child object with a document field
         List<DocumentDB> att = new ArrayList();
         ObjectDB a = g.getTmpObject("MyObjectAttachment");
-        synchronized(a){
-            a.getLock();
+        synchronized (a.getLock()) {
             a.resetFilters();
             a.setFieldFilter("MyObject_FK", getRowId());
             for (String[] row : a.search()) {

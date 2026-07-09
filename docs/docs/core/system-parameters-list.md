@@ -344,6 +344,10 @@ Content directory. Relative to `PROJECT_DIR` or absolute path.
 `CONVERT_WILDCARDS`
 -------------------
 
+> **Deprecated** as of version 7
+> The `LIKE` operator now automatically converts wildcards
+> use the syntax `\*`,`\%` and `\?`,`\_` to escape wildcards in search filter
+
 ### Default value
 
 `yes`

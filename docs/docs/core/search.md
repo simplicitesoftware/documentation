@@ -93,10 +93,10 @@ Searching programmatically
 ```java
 try{
 	ObjectDB o = getGrant().getTmpObject("MyObject");
-	synchronized(o.getLock()){
+	synchronized (o.getLock()) {
 		for(String[] row : o.getTool().search(Map.of(
 			"myField", "is not null"
-		))){
+		))) {
 			o.setValues(row);
 			// do something
 		}

@@ -105,19 +105,18 @@ Display a message to the user if the chosen supplier does not have a product in 
 		Message m = new Message();
 		AppLog.info("DEBUG contex:"+context.toJSONObject(), getGrant());
 		String step = context.getActivity().getStep();
-		if("PRDSEL".equals(step)){
+		if ("PRDSEL".equals(step)) {
 			ObjectDB prd = getGrant().getTmpObject("TrnProduct");
-			synchronized(prd.getLock()){
+			synchronized (prd.getLock()) {
 				prd.setFieldFilter("trnProSupId",context.getDataValue("Field", "row_id"));
 				prd.setFieldFilter("trnProStock", 0);
 				List<String[]> rows = prd.search();
-				if (Tool.isEmpty(rows)){
+				if (Tool.isEmpty(rows)) {
 					AppLog.info("DEBUG empty", getGrant());
 					m.raiseError("TRN_ERR_QTE_NEG");
 					return m;
 				}
 			}
-
 		}
 		return super.preValidate(context);
 	}
