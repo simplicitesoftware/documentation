@@ -17,7 +17,7 @@ you will build **InfraTrack**, an IT infrastructure management app that tracks b
 
 Each section gives the exact prompt to use and the expected outcome.
 Constraints are kept minimal to reduce the number of tool calls and keep the demo fast.
-Time taken for each section is written for Claude Desktop Sonnet 5 Medium effort Thinking disallowed.
+Time taken for each section is written for Claude Code using Sonnet 5 model with Medium effort.
 
 ---
 
@@ -28,6 +28,8 @@ Time taken for each section is written for Claude Desktop Sonnet 5 Medium effort
 On veut créer une application de gestion d'infrastructure IT appelée InfraTrack sur Simplicité. Elle suit des applications métiers, les serveurs sur lesquels elles tournent, 
 et les sauvegardes associées aux applications. Une application peut être déployée sur plusieurs serveurs et un serveur peut avoir plusieurs applications.
 Une application a un statut: en développement, en production, en maintenance, arrêtée
+
+Crée aussi un scope InfraAdmin qui porte la responsabilité administrateur.
 
 ! Important! Contraintes:
 - Format pivot obligatoire
@@ -76,7 +78,7 @@ Le pivot me convient, génère le module dans Simplicité.
 
 Explication plus en détail du format pivot.
 
-⏱ ~7 min
+⏱ ~4 min
 
 :::tip[Expected result]
 
@@ -99,7 +101,7 @@ Crée une machine d'état pour le statut d'application. Propose des transitions 
 ----------------------------
 
 ```text
-Le formulaire pour une application n'est pas très pratique, les champs sont dans tout les sens. Améliore le
+Le formulaire pour une application n'est pas très pratique, les champs sont dans tout les sens. Améliore le, en créant une zone avec les informations générales, et une zone avec la description.
 ```
 
 ⏱ ~3 min
@@ -154,11 +156,7 @@ The state transition is blocked if the field is empty.
 Empêche de passer une application à "Arrêtée" si elle est encore déployée sur au moins un serveur. Affiche un message d'erreur qui indique le nombre de serveurs concernés.
 ```
 
-⏱ ~3 min
-
-:::note
-
-A bug causing a very long wait has been observed twice during testing. If Claude appears stuck, resend the prompt.
+⏱ ~2 min
 
 :::
 
