@@ -15,9 +15,16 @@ if required, search SQL-like wildcards:
 - `*` or `%`: any group of characters
 - `_` (underscore): any single character
 
-Date fields search filter syntax is `YYYY-MM-DD`
+And the following escape sequences to search for literal characters:
 
-Datetime fields search filter syntax is `YYYY-MM-DD hh:mm:ss`
+- `\*`: literal asterisk
+- `\%`: literal percent
+- `\_`: literal underscore
+
+Date and datetime fields search syntax:
+
+- Date fields search filter syntax is `YYYY-MM-DD`
+- Datetime fields search filter syntax is `YYYY-MM-DD hh:mm:ss`
 
 An advanced syntax is also available for most field types to proceed with more complex
 searches: its syntax uses SQL-like statements (see below).

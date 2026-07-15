@@ -31,7 +31,7 @@ For those new to Simplicité, begin with:
 Additional Resources
 --------------------
 
-- [Release Notes](/versions/release-notes/v6-2.md): Latest platform updates and changes
+- [Release Notes](/versions/release-notes/v6-3.md): Latest platform updates and changes
 
 ---
 
