@@ -136,7 +136,7 @@ Néanmoins nous travaillons sur le fait de permettre aux utilisateurs de conform
 | 7.1 | Chaque script est-il, si nécessaire, compatible avec les technologies d'assistance ? | <rgaa-nc>**Non Conforme**</rgaa-nc>, travail en cours. |
 | 7.2 | Pour chaque script ayant une alternative, cette alternative est-elle pertinente ? | <rgaa-na>**Non Applicable**</rgaa-na>, les scripts n'ont pas d'alternatives en l'état. |
 | 7.3 | Chaque script est-il contrôlable par le clavier et par tout dispositif de pointage ? | <rgaa-c>**Conforme**</rgaa-c>, les scripts des menus principal et secondaire, ainsi que ceux des menus déroulants, sont tous contrôlables au clavier par l'utilisateur. Et leur utilisation respecte la norme WAI-ARIA "flèches directionnelles pour naviguer, touche espace pour activer". |
-| 7.4 | Pour chaque script qui initie un changement de contexte, l'utilisateur est-il averti ou en a-t-il le contrôle ? | <rgaa-na>**Non Applicable**</rgaa-na>, aucun changement de contextefait par script, uniquement des actions de navigations. |
+| 7.4 | Pour chaque script qui initie un changement de contexte, l'utilisateur est-il averti ou en a-t-il le contrôle ? | <rgaa-na>**Non Applicable**</rgaa-na>, aucun changement de contexte fait par script, uniquement des actions de navigations. |
 | 7.5 | Dans chaque page web, les messages de statut sont-ils correctement restitués par les technologies d'assistance ? | <rgaa-nc>**Non Conforme**</rgaa-nc> |
 
 ### 8. Éléments obligatoires
@@ -180,7 +180,7 @@ Néanmoins nous travaillons sur le fait de permettre aux utilisateurs de conform
 | 10.11 | Pour chaque page web, les contenus peuvent-ils être présentés sans perte d’information ou de fonctionnalité et sans avoir recours soit à un défilement vertical pour une fenêtre ayant une hauteur de 256 px, soit à un défilement horizontal pour une fenêtre ayant une largeur de 320 px ? | <rgaa-c>**Conforme**</rgaa-c>, sur petit écran les éléments s'empilent et donc respecte le besoin d'accessibilité et de scroll vertical uniquement. De plus les comportements de certains composants sont adapté correctement au responsive (listes, barres d'actions, menus). |
 | 10.12 | Dans chaque page web, les propriétés d’espacement du texte peuvent-elles être redéfinies par l’utilisateur sans perte de contenu ou de fonctionnalité ? | <rgaa-c>**Conforme**</rgaa-c>, possibilité d'utiliser le zoom interne (pas celui du navigateur), qui déclenche les mêmes comportements que le responsive évoqué dans le critère `10.12`. |
 | 10.13 | Dans chaque page web, les contenus additionnels apparaissant à la prise de focus ou au survol d’un composant d’interface sont-ils contrôlables par l’utilisateur ? | <rgaa-c>**Conforme**</rgaa-c>, les éléments comme les tooltips sont les seuls de ce genre, et ces derniers peuvent être fermer en tabulant en dehors de leur élément déclencheur. |
-| 10.14 | Dans chaque page web, les contenus additionnels apparaissant via les styles CSS uniquement peuvent-ils être rendus visibles au clavier et par tout dispositif de pointage ? | <rgaa-na>**Non Applicable**</rgaa-na>, par défaut aucun contenus n'est affiché par CSS uniquement. |
+| 10.14 | Dans chaque page web, les contenus additionnels apparaissant via les styles CSS uniquement peuvent-ils être rendus visibles au clavier et par tout dispositif de pointage ? | <rgaa-na>**Non Conforme**</rgaa-na>, travail en cours. |
 
 :::info
 

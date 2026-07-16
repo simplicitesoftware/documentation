@@ -125,6 +125,8 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 - **Templates** : _to evaluate_
 - **Permalinks** : _to evaluate_
 - <rgaa-pc>**Child lists (*)** : PC</rgaa-pc>
+- **Custom action with confirm fields** : _to evaluate_
+- **Publications HTML to PDF** : _to evaluate_
 
 #### Search
 
@@ -154,9 +156,10 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 
 #### List Search
 
-- **Advanced Search** : _to evaluate_
-- **Predefined Search** : _to evaluate_
-- **Saved Search** : _to evaluate_
+- <rgaa-nc>**Search dialog** : NC</rgaa-nc>
+- <rgaa-nc>**Predefined Search** : NC</rgaa-nc>
+- <rgaa-nc>**Global Search** : NC</rgaa-nc>
+- **Search Form** : _to evaluate_
 
 #### Fields
 
@@ -211,7 +214,10 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 - **Date/Period search** : _to evaluate_
 - **Date/Period search** : _to evaluate_
 - <rgaa-nc>**Geographical search** : NC</rgaa-nc>
-- **Predefined Search** : _to evaluate_
+- <rgaa-pc>**Predefined Search** : PC</rgaa-pc>
+  - Predefined searches are basically lists available mostly from homepages, specific because they  
+    use a predefined set of filters. But their behavior/features are the same as a regular list.
+  - Thus they have to follow the rules & settings associated with their "" object.
 - **Saved Search** : _to evaluate_
 
 ### Meta Model compliance
