@@ -85,7 +85,7 @@ This part is based on Simplicité's [Feature Map](/docs/features), more precisel
 
 **Raw hints** (while no proper guide is possible)
 
-- Set `left.collapsible: false` in the sysparam `MENU_TOP`
+- Set `left.collapse: "none"` in the sysparam `MENU_SETTINGS`
 - If you have Business Objects with a status, make sure you disable both the metrics and trays.
 
 ### Main components & first-depth features

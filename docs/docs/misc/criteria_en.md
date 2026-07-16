@@ -16,4 +16,4 @@ Note however that this remains a translation, and some notions may be lost or bl
 
 :::
 
-Postponing this until the `criteria.md` part is fully verified_
+Postponing this until the `criteria.md` part is fully verified
