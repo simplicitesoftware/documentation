@@ -184,3 +184,44 @@
 .header-deepwiki-link:hover::before {
   background-color: var(--ifm-navbar-link-hover-color);
 }
+
+/* RGAA specific tags */
+rgaa-pc, rgaa-c, rgaa-nc, rgaa-na {
+  padding: 0.2rem 0.5rem;
+}
+[data-theme='dark'] {
+  rgaa-pc {
+    background-color: darkorange;
+    color: cornsilk;
+  }
+  rgaa-c {
+    background-color: darkgreen;
+    color: lightgreen;
+  }
+  rgaa-nc {
+    background-color: darkred;
+    color: lightpink;
+  }
+  rgaa-na {
+    background-color: dimgrey;
+    color: lightgrey;
+  }
+}
+[data-theme='light'] {
+  rgaa-pc {
+    background-color: cornsilk;
+    color: darkorange;
+  }
+  rgaa-c {
+    background-color: lightgreen;
+    color: darkgreen;
+  }
+  rgaa-nc {
+    background-color: lightpink;
+    color: darkred;
+  }
+  rgaa-na {
+    background-color: lightgrey;
+    color: dimgrey;
+  }
+}
