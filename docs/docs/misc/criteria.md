@@ -229,7 +229,7 @@ Mention des 2 fonctionnements pour le fil d'arianne.
 
 | Critère | Intitulé | Positionnement Simplicité |
 | ------- | -------- | ------------------------- |
-| 13.1 | Pour chaque page web, l’utilisateur a-t-il le contrôle de chaque limite de temps modifiant le contenu ? | **Non Conforme / Non Applicable**, travail en cours. |
+| 13.1 | Pour chaque page web, l’utilisateur a-t-il le contrôle de chaque limite de temps modifiant le contenu ? | <rgaa-na>**Non Applicable ??**</rgaa-na> |
 | 13.2 | Dans chaque page web, l’ouverture d’une nouvelle fenêtre ne doit pas être déclenchée sans action de l’utilisateur. Cette règle est-elle respectée ? | <rgaa-c>**Conforme**</rgaa-c>, toutes les ouvertures de fenêtres ou modales ne sont déclenchées que sur action de l'utilisateur. |
 | 13.3 | Dans chaque page web, chaque document bureautique en téléchargement possède-t-il, si nécessaire, une version accessible ? | <rgaa-nc>**Non Conforme**</rgaa-nc>, travail en cours. |
 | 13.4 | Pour chaque document bureautique ayant une version accessible, cette version offre-t-elle la même information ? | <rgaa-na>**Non Applicable**</rgaa-na>, pas de document bureautique avec une version accessible. |
@@ -293,6 +293,7 @@ Les comportements inhibés sont :
 - Layout Masonry des listes
 - Préférences de liste
 - Mode compacte
+- Recherche prédéfinie (depuis la fenêtre de recherche d'une liste)
 
 :::warning
 

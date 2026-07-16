@@ -31,7 +31,11 @@ Simplicité embedds 2 different flags related to web-accessibility and RGAA-comp
 
 ### User-level `a11y-mode`
 
+> TODO
+
 ### Designer `A11Y_MODE` sysparam
+
+> TODO
 
 Guide per component
 -------------------
@@ -158,8 +162,9 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 
 - <rgaa-nc>**Search dialog** : NC</rgaa-nc>
 - <rgaa-nc>**Predefined Search** : NC</rgaa-nc>
+- <rgaa-nc>**Sort Order** : NC</rgaa-nc>
 - <rgaa-nc>**Global Search** : NC</rgaa-nc>
-- **Search Form** : _to evaluate_
+- <rgaa-nc>**Search Form** : NC</rgaa-nc>
 
 #### Fields
 
