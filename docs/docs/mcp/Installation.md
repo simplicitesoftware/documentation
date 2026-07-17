@@ -147,7 +147,7 @@ Since OAuth2.1 is currently not supported by Simplicité, HTTP transport is brid
 
 ![MCP Config in Cursor](./img/mcp_cursor_config.gif)
 
-### For Claude Desktop
+### For Claude Desktop/Claude Code
 
 `Claude Desktop --> Settings --> Developer --> Edit Config --> claude_desktop_config.json`
 
@@ -169,6 +169,13 @@ Since OAuth2.1 is currently not supported by Simplicité, HTTP transport is brid
   }
 }
 ```
+
+:::tip[]
+
+When using Claude, be careful to alloww the tools initialisation, instead of tools discovery
+This will allow a better contextualization.
+
+:::
 
 ### For Gemini CLI
 
