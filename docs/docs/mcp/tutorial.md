@@ -12,6 +12,12 @@ MCP Server Demo — Building InfraTrack
 
 :::
 
+:::note[Demonstration]
+
+A [Video Demonstration](https://vimeo.com/1210547112?share=copy&fl=sv&fe=ci) is available
+
+:::
+
 This tutorial walks through a live demo of the Simplicité MCP server. Using only natural-language prompts sent to Claude in your IDE,
 you will build **InfraTrack**, an IT infrastructure management app that tracks business applications, the servers they run on, and associated backups.
 
