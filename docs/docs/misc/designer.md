@@ -159,9 +159,9 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 - <rgaa-c>**Search dialog** : C</rgaa-c>
 - <rgaa-nc>**Predefined Search** : NC</rgaa-nc>
 - <rgaa-c>**Sort Order** : C</rgaa-c>
-- <rgaa-nc>**Global Search** : NC</rgaa-nc>
+- <rgaa-c>**Global Search** : C</rgaa-c>
 - <rgaa-pc>**Search Form** : PC</rgaa-pc>
-  - Only the "top" position (``) guarantees this feature's compliancy.
+  - Only the "top" position (`obo_tpl_search_pos`) guarantees this feature's compliancy with the additional use of `a11y-mode`.
 
 #### Fields
 
