@@ -45,7 +45,6 @@ Guide per component
 ### Lists
 
 > TODO
-> _Proper version incoming after looking up all "base" features & components_
 
 **Raw hints** (while no proper guide is possible)
 
@@ -58,7 +57,6 @@ Guide per component
 ### Forms
 
 > TODO
-> _Proper version incoming after looking up all "base" features & components_
 
 **Raw hints** (while no proper guide is possible)
 
@@ -71,7 +69,6 @@ Guide per component
 ### Business Process
 
 > TODO
-> _Proper version incoming after looking up all "base" features & components_
 
 Features' Compliance
 --------------------
@@ -85,7 +82,6 @@ This part is based on Simplicité's [Feature Map](/docs/features), more precisel
 ### Menu
 
 > TODO
-> _Proper version incoming after looking up all "base" features & components_
 
 **Raw hints** (while no proper guide is possible)
 
@@ -126,7 +122,7 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 - <rgaa-pc>**Fields (*)** : PC</rgaa-pc>
   - Most of regular typed fields and the shared structure of those we generate are compliant. But some specific types (ace, gridtext, quill, etc) aren't.
   - The addons available for regular typed fields (string, int, longstring, boolean, enum, etc) are all compliant.
-- **Templates** : _to evaluate_
+- <rgaa-pc>**Templates** : PC</rgaa-pc>
 - **Permalinks** : _to evaluate_
 - <rgaa-pc>**Child lists (*)** : PC</rgaa-pc>
 - **Custom action with confirm fields** : _to evaluate_
@@ -160,7 +156,7 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 
 #### List Search
 
-- <rgaa-nc>**Search dialog** : NC</rgaa-nc>
+- <rgaa-c>**Search dialog** : C</rgaa-c>
 - <rgaa-nc>**Predefined Search** : NC</rgaa-nc>
 - <rgaa-nc>**Sort Order** : NC</rgaa-nc>
 - <rgaa-nc>**Global Search** : NC</rgaa-nc>
@@ -185,7 +181,8 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
     (or explicitly marking decorative images),which falls outside what the platform can guarantee
     Complex images (charts, diagrams, infographics) can't be made compliant through alt text alone.  
   — make sure your application has no need for them, or plan a separate accessible alternative if it does.
-- **Referenced Object** : _to evaluate_
+- <rgaa-pc>**Referenced Object** : PC</rgaa-pc>
+  - the autocomplete dropdown can constitute a NC, so make sure you disable it thus forcing users to use the "search" addon.
 
 #### Fields related features
 
@@ -200,10 +197,12 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 
 - <rgaa-c>**Panel** : C</rgaa-c>
   - By nature Simplicité's panel & sub-panels are compliant
-- **Virtual link** : _to evaluate_
+- <rgaa-c>**Virtual link** : C</rgaa-c>
+  - A virtual link is displayed as an embedded list, thus its compliance is related to the [list's](#lists-1).
 - **Association** : _to evaluate_
-- **Pillbox** : _to evaluate_
-- **Inlined object** : _to evaluate_
+- <rgaa-nc>**Pillbox** : NC</rgaa-nc>
+- <rgaa-c>**Inlined object** : C</rgaa-c>
+  - An inlined object is displayed as several form elements, thus its compliance is related to the [form's](#forms-1).
 
 #### Bulk Actions
 
@@ -225,7 +224,13 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
   - Thus they have to follow the rules & settings associated with their "" object.
 - **Saved Search** : _to evaluate_
 
-### Meta Model compliance
+#### Templates
+
+- <rgaa-c>**Field Area** : C</rgaa-c>
+- <rgaa-c>**Columns** : C</rgaa-c>
+- <rgaa-c>**Tabs** : C</rgaa-c>
+
+### Behavioral & cross-cutting features
 
 Below are detailed some of the features that aren't visual components, but that results in specific usages for components that are mentionned above.  
 The aim is to tackle down few specific features that needs to pay more attention regarding the components they use (lists, forms, modals/dialogs).
