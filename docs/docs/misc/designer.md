@@ -158,9 +158,10 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 
 - <rgaa-c>**Search dialog** : C</rgaa-c>
 - <rgaa-nc>**Predefined Search** : NC</rgaa-nc>
-- <rgaa-nc>**Sort Order** : NC</rgaa-nc>
+- <rgaa-c>**Sort Order** : C</rgaa-c>
 - <rgaa-nc>**Global Search** : NC</rgaa-nc>
-- <rgaa-nc>**Search Form** : NC</rgaa-nc>
+- <rgaa-pc>**Search Form** : PC</rgaa-pc>
+  - Only the "top" position (``) guarantees this feature's compliancy.
 
 #### Fields
 
@@ -169,6 +170,8 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
   - This type of fields have many possible _renderings_, including some that are not compliant because of their advanced complexity ;  
     None / Expression / Fixed font / HTML / CSS / SQL / Markdown / JSON / Text editor / Grid / Count characters / Javascript
 - <rgaa-c>**Number fields** : C</rgaa-c>
+  - This type of fields have many possible _renderings_, including some that are not compliant ;
+    Progress-bars / Stars / Slider / With calculator
 - <rgaa-nc>**Date/Time fields** : NC</rgaa-nc>
 - <rgaa-c>**Enum fields** : C</rgaa-c>
 - **File fields** : _to evaluate_
@@ -181,8 +184,7 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
     (or explicitly marking decorative images),which falls outside what the platform can guarantee
     Complex images (charts, diagrams, infographics) can't be made compliant through alt text alone.  
   — make sure your application has no need for them, or plan a separate accessible alternative if it does.
-- <rgaa-pc>**Referenced Object** : PC</rgaa-pc>
-  - the autocomplete dropdown can constitute a NC, so make sure you disable it thus forcing users to use the "search" addon.
+- <rgaa-c>**Referenced Object** : C</rgaa-c>
 
 #### Fields related features
 
