@@ -72,7 +72,7 @@ sur lesquelles la plateforme n'a aucune meta-information, ni conscience du conte
 Par conséquent il incombe aux utilisateurs de renseigner eux-même le `alt` dans le cas d'une image porteuse d'information.  
 La responsabilité de la plateforme ne porte que sur les images que cette dernière positionne dans l'interface par défaut.  
 
-Néanmoins nous travaillons sur le fait de permettre aux utilisateurs de conformiser simplement tout type d'image.
+Néanmoins nous travaillons sur le fait de permettre aux utilisateurs de conformiser simplement tout type d'image.  
 
 :::
 
@@ -181,15 +181,6 @@ Néanmoins nous travaillons sur le fait de permettre aux utilisateurs de conform
 | 10.12 | Dans chaque page web, les propriétés d’espacement du texte peuvent-elles être redéfinies par l’utilisateur sans perte de contenu ou de fonctionnalité ? | <rgaa-c>**Conforme**</rgaa-c>, possibilité d'utiliser le zoom interne (pas celui du navigateur), qui déclenche les mêmes comportements que le responsive évoqué dans le critère `10.12`. |
 | 10.13 | Dans chaque page web, les contenus additionnels apparaissant à la prise de focus ou au survol d’un composant d’interface sont-ils contrôlables par l’utilisateur ? | <rgaa-c>**Conforme**</rgaa-c>, les éléments comme les tooltips sont les seuls de ce genre, et ces derniers peuvent être fermer en tabulant en dehors de leur élément déclencheur. |
 | 10.14 | Dans chaque page web, les contenus additionnels apparaissant via les styles CSS uniquement peuvent-ils être rendus visibles au clavier et par tout dispositif de pointage ? | <rgaa-na>**Non Conforme**</rgaa-na>, travail en cours. |
-
-:::info
-
-Clarification sur les critères `10.2` et `10.3`.  
-Mention du flag d'accessibilité et de ses impacts futurs (10.4, 10.5, et autres thématiques).  
-Mention du caractère "deprecated" du thème et son remplacement par un thème RGAA (voir directement par le flag).  
-Mention des 2 fonctionnements pour le fil d'arianne.  
-
-:::
 
 ### 11. Formulaires
 
