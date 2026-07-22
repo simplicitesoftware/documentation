@@ -264,37 +264,6 @@ l'objectif est de rappeler les comportements récurrents dans les sites webs, et
 
 ### PDF et autres documents
 
-> TODO
-> _investigate current RGAA-compliancy_
-
-Mode accessible
----------------
-
-Un mode accessible est accessible en runtime pour n'importe quelle application le permettant, afin d'inhiber certains  
-comportements UX/UI (ainsi que certaines fonctionnalités) non structurant pour l'utilisation d'une application,  
-mais qui limiteraient ou même bloqueraient des utilisateurs se servant de technologies d'assistances.
-
-Les comportements inhibés sont :
-
-- En-tête de liste et de formulaires "flottant/sticky"
-- Couleurs personnalisées de boutons d'actions/états (pourrait être laissé tel quel à charge des designers ?)
-- Zones de travails multiples
-- Possibilité de fermer/ouvrir le menu
-- Fil d'arianne (?)
-- Layout Masonry des listes
-- Préférences de liste
-- Mode compacte
-- Recherche prédéfinie (depuis la fenêtre de recherche d'une liste)
-
-:::warning
-
-Cela n'a aucun effet sur les fonctionnalités indiquées comme _Non Conforme_ [dans ce tableau](/unlisted/designer#features-compliance).  
-
-Il n'a pour vocation que d'inhiber des comportements socles/natifs non paramétrables ou trop spécifiques, afin de permettre  
-aux utilisateurs en situation de handicap une utilisation normale et adaptée de l'application.  
-
-:::
-
 Resources et références
 -----------------------
 

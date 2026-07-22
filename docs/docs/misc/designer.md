@@ -27,15 +27,52 @@ and others are just not RGAA-conformant for now.
 A11y Flags
 ---------
 
+Un mode accessible est accessible en runtime pour n'importe quelle application le permettant, afin d'inhiber certains  
+comportements UX/UI (ainsi que certaines fonctionnalités) non structurant pour l'utilisation d'une application,  
+mais qui limiteraient ou même bloqueraient des utilisateurs se servant de technologies d'assistances.
+
+Les comportements inhibés sont :
+
 Simplicité embedds 2 different flags related to web-accessibility and RGAA-compliance :
 
 ### User-level `a11y-mode`
 
-> TODO
+When connected to a Simplicité application, if the `USE_A11Y_MODE` system parameter was kept to "yes" by the designer,  
+then end-users can toggle the **Accessibility Mode** by clicking on the `universal-access-circle` button in the user dropdown
+
+![Toggle accessibility mode](img/a11y/toggle.png)
+
+Its purpose is to inhibate and adapt specific UX/UI behaviors or optional-features that might block or limit users using  
+Assistive Technologies to properly use a Simplicité application.
+
+Here is the list of the handled features :  
+
+- Form & List "float/sticky" headers
+- Customized colors for action/state buttons (could trust designer but 0 risks)
+- Splittable work areas
+- Compact mode
+- Collapse menu toggle
+- Masonry layout for lists
+- List preferences
+- Menu "trays" and "metrics" from StatusObjects
+- Preset search (from the search dialog)
+
+:::warning
+
+This mode doesn't do anything for the **Non-Compliant** features/components listed [below](/unlisted/designer#features-compliance).  
+
+:::
 
 ### Designer `A11Y_MODE` sysparam
 
-> TODO
+:::warning
+
+This feature is still in development, thus cannot be used or trusted to the fullest for now.
+
+:::
+
+As a designer, you can trigger the "Development Helper" through the system parameter `A11Y_MODE` (true|false)  
+to help you with dissociating RGAA compliant and non-compliant features.
 
 Guide per component
 -------------------
@@ -44,9 +81,7 @@ Guide per component
 
 ### Lists
 
-> TODO
-
-**Raw hints** (while no proper guide is possible)
+**Raw hints** (while no proper guide is available)
 
 - Disable docked search
 - Disable the list mosaic
@@ -56,9 +91,7 @@ Guide per component
 
 ### Forms
 
-> TODO
-
-**Raw hints** (while no proper guide is possible)
+**Raw hints** (while no proper guide is available)
 
 - When creating a form, never split "label" and "input"
   - stick to the "label + input" rendering when setting this in the template-editor
@@ -67,8 +100,6 @@ Guide per component
 - Instead of a date/time type, use a simple text with a date formating
 
 ### Business Process
-
-> TODO
 
 Features' Compliance
 --------------------
@@ -81,9 +112,7 @@ This part is based on Simplicité's [Feature Map](/docs/features), more precisel
 
 ### Menu
 
-> TODO
-
-**Raw hints** (while no proper guide is possible)
+**Raw hints** (while no proper guide is available)
 
 - Set `left.collapse: "none"` in the sysparam `MENU_SETTINGS`
 - If you have Business Objects with a status, make sure you disable both the metrics and trays.
@@ -296,14 +325,6 @@ Vertical navigation in a page of list:
   - records of current page
 - `TAB` to visit focusable cells of rows: long text, markdown content, textarea... are focusable to be scrollable with arrow keys
 - `ENTER` : to open the record (only if the form access is permitted for this line)
-
-### Widgets
-
-`select2`:
-
-- extends the common `<select>` with icons and colored contents
-- uses common `TAB` `ENTER` and `UP` `DOWN` to choose a value
-- uses `DEL` to clean the value, also improved with `ENTER` on the remove icon
 
 ### Shortcuts
 
