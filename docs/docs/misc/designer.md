@@ -27,18 +27,12 @@ and others are just not RGAA-conformant for now.
 A11y Flags
 ---------
 
-Un mode accessible est accessible en runtime pour n'importe quelle application le permettant, afin d'inhiber certains  
-comportements UX/UI (ainsi que certaines fonctionnalités) non structurant pour l'utilisation d'une application,  
-mais qui limiteraient ou même bloqueraient des utilisateurs se servant de technologies d'assistances.
-
-Les comportements inhibés sont :
-
 Simplicité embedds 2 different flags related to web-accessibility and RGAA-compliance :
 
 ### User-level `a11y-mode`
 
-When connected to a Simplicité application, if the `USE_A11Y_MODE` system parameter was kept to "yes" by the designer,  
-then end-users can toggle the **Accessibility Mode** by clicking on the `universal-access-circle` button in the user dropdown
+When connected to a Simplicité application, end-users can toggle the **Accessibility Mode** by clicking on the  
+`universal-access-circle` button in the user dropdown.
 
 ![Toggle accessibility mode](img/a11y/toggle.png)
 
@@ -88,6 +82,7 @@ Guide per component
 - Disable preferences
 - Disable some actions on list (create, edit)
 - Disable bulk update
+- Only one list per object is allowed on a same view
 
 ### Forms
 
@@ -137,7 +132,7 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 
 - <rgaa-c>**Multi-column ordering** : C</rgaa-c>
 - <rgaa-c>**Pagination** : C</rgaa-c>
-- <rgaa-nc>**List Search (*)** : NC</rgaa-nc>
+- <rgaa-nc>**List Search (\*)** : NC</rgaa-nc>
 - <rgaa-nc>**List Preferences** : NC</rgaa-nc>
 - **List Exports** : _to evaluate_
 - <rgaa-nc>**Bulk Actions** : NC</rgaa-nc>
@@ -148,19 +143,19 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 
 #### Forms
 
-- <rgaa-pc>**Fields (*)** : PC</rgaa-pc>
+- <rgaa-pc>**Fields (\*)** : PC</rgaa-pc>
   - Most of regular typed fields and the shared structure of those we generate are compliant. But some specific types (ace, gridtext, quill, etc) aren't.
   - The addons available for regular typed fields (string, int, longstring, boolean, enum, etc) are all compliant.
 - <rgaa-pc>**Templates** : PC</rgaa-pc>
 - **Permalinks** : _to evaluate_
-- <rgaa-pc>**Child lists (*)** : PC</rgaa-pc>
+- <rgaa-pc>**Child lists (\*)** : PC</rgaa-pc>
 - **Custom action with confirm fields** : _to evaluate_
 - **Publications HTML to PDF** : _to evaluate_
 
 #### Search
 
 - **Global Search** : _to evaluate_
-- **Object Search (*)** : _to evaluate_
+- **Object Search (\*)** : _to evaluate_
 - <rgaa-c>**Menu Search** : C</rgaa-c>
 - <rgaa-nc>**Form Search** : NC</rgaa-nc>
 - **Modeler Search** : _to evaluate_
