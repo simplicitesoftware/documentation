@@ -144,7 +144,8 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 #### Forms
 
 - <rgaa-pc>**Fields (\*)** : PC</rgaa-pc>
-  - Most of regular typed fields and the shared structure of those we generate are compliant. But some specific types (ace, gridtext, quill, etc) aren't.
+  - Most of regular typed fields and the shared structure of those we generate are compliant.  
+    But some specific types (ace, gridtext, quill, sliders, stars, etc) aren't.
   - The addons available for regular typed fields (string, int, longstring, boolean, enum, etc) are all compliant.
 - <rgaa-pc>**Templates** : PC</rgaa-pc>
 - **Permalinks** : _to evaluate_
@@ -189,16 +190,22 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 
 #### Fields
 
-- <rgaa-c>**Text fields** : C</rgaa-c>
+- <rgaa-pc>**Text fields** : PC</rgaa-pc>
+  - The `QRCode` and `Icon picker` renderings are not compliant.
+- <rgaa-nc>**Validated Text fields** : NC</rgaa-nc>
+  - Working on it. The validation should be announced properly and an help/suggestion should be offered.
+- <rgaa-c>**Boolean fields** : C</rgaa-c>
+  - All renderings are compliant for these fields.
 - <rgaa-pc>**LongText fields** : PC</rgaa-pc>
   - This type of fields have many possible _renderings_, including some that are not compliant because of their advanced complexity ;  
     None / Expression / Fixed font / HTML / CSS / SQL / Markdown / JSON / Text editor / Grid / Count characters / Javascript
-- <rgaa-c>**Number fields** : C</rgaa-c>
+- <rgaa-pc>**Number fields** : PC</rgaa-pc>
   - This type of fields have many possible _renderings_, including some that are not compliant ;
-    Progress-bars / Stars / Slider / With calculator
+    Progress-bars / Stars / With calculator
 - <rgaa-nc>**Date/Time fields** : NC</rgaa-nc>
+  - Working on the following alternative ; Text field.s with date formatting (dropping the modal)
 - <rgaa-c>**Enum fields** : C</rgaa-c>
-- **File fields** : _to evaluate_
+- <rgaa-c>**File fields** : C</rgaa-c>
 - <rgaa-nc>**Special fields** : NC</rgaa-nc>
   - Here are the fields' types that we include in this category : URL / Email / Phone / Color / Coordinates / Password / Notepad
   - In this list, only the types `URL`, `Email`, `Phone` and `Password` are RGAA-compliant.
@@ -232,17 +239,18 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 
 #### Bulk Actions
 
-- **Bulk Edit** : _to evaluate_
-- **Bulk Delete** : _to evaluate_
-- **Bulk Delete** : _to evaluate_
+- <rgaa-nc>**Bulk Edit** : NC</rgaa-nc>
+- <rgaa-c>**Bulk Delete** : C</rgaa-c>
 - **Merge** : _to evaluate_
-- **Custom List Actions** : _to evaluate_
+- <rgaa-pc>**Custom List Actions** : PC</rgaa-pc>
 
 #### Object Search
 
 - **Advanced query search** : _to evaluate_
-- **Date/Period search** : _to evaluate_
-- **Date/Period search** : _to evaluate_
+- <rgaa-nc>**Date/Period search** : NC</rgaa-nc>
+  - Using Datetime fields so not compliant
+- <rgaa-nc>**Date/Period search** : NC</rgaa-nc>
+  - Using Datetime fields so not compliant
 - <rgaa-nc>**Geographical search** : NC</rgaa-nc>
 - <rgaa-pc>**Predefined Search** : PC</rgaa-pc>
   - Predefined searches are basically lists available mostly from homepages, specific because they  
@@ -265,11 +273,11 @@ The aim is to tackle down few specific features that needs to pay more attention
   - The feature itself is compliant, but the embedded lists have few flaws that prevent their usage in apps that should be compliant.
   - If you disable the filters in those lists, then it's RGAA-compliant.
   - If you enable them, then you're gonna have non-compliances on the filters (focus-restitution, dialog opening etc).
-- <rgaa-c>**List of values : C</rgaa-c>
-- <rgaa-pc>**Static text : PC</rgaa-pc>
+- <rgaa-c>**List of values** : C</rgaa-c>
+- <rgaa-pc>**Static text** : PC</rgaa-pc>
   - If the content is purely textual then the usage of this component is RGAA-compliant
   - If you use it with custom HTML, you have to ensure by yourself that it follows WAI-ARIA rules
-- <rgaa-pc>**Actions : PC</rgaa-pc>
+- <rgaa-pc>**Actions** : PC</rgaa-pc>
   - If you want to customize your action (background, color, icon), you have to use contrasted enough colors.  
     For such thing you can refer to Simplicité's inner contrast tool, and ensure you stick to monochrome icons.
 
