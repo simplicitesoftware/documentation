@@ -10,7 +10,7 @@ description: How to manually import and update a module.
 Manual Module Import
 --------------------
 
-1. Log in with **ADMIN** permissions.
+1. Log in with **ADMIN** rights.
 2. From the left sidebar, navigate to **Project > Modules**.
 
    ![Project Modules Navigation](img/module/import_module1_.png)
@@ -47,4 +47,3 @@ Manual Module Import
 11. Click **Clear all sessions and server caches**.
 
     ![Clear All Caches](img/module/import_module7_.png)
-    
