@@ -31,11 +31,42 @@ Simplicité embedds 2 different flags related to web-accessibility and RGAA-comp
 
 ### User-level `a11y-mode`
 
-> TODO
+When connected to a Simplicité application, end-users can toggle the **Accessibility Mode** by clicking on the  
+`universal-access-circle` button in the user dropdown.
+
+![Toggle accessibility mode](img/a11y/toggle.png)
+
+Its purpose is to inhibate and adapt specific UX/UI behaviors or optional-features that might block or limit users using  
+Assistive Technologies to properly use a Simplicité application.
+
+Here is the list of the handled features :  
+
+- Form & List "float/sticky" headers
+- Customized colors for action/state buttons (could trust designer but 0 risks)
+- Splittable work areas
+- Compact mode
+- Collapse menu toggle
+- Masonry layout for lists
+- List preferences
+- Menu "trays" and "metrics" from StatusObjects
+- Preset search (from the search dialog)
+
+:::warning
+
+This mode doesn't do anything for the **Non-Compliant** features/components listed [below](/unlisted/designer#features-compliance).  
+
+:::
 
 ### Designer `A11Y_MODE` sysparam
 
-> TODO
+:::warning
+
+This feature is still in development, thus cannot be used or trusted to the fullest for now.
+
+:::
+
+As a designer, you can trigger the "Development Helper" through the system parameter `A11Y_MODE` (true|false)  
+to help you with dissociating RGAA compliant and non-compliant features.
 
 Guide per component
 -------------------
@@ -44,21 +75,18 @@ Guide per component
 
 ### Lists
 
-> TODO
-
-**Raw hints** (while no proper guide is possible)
+**Raw hints** (while no proper guide is available)
 
 - Disable docked search
 - Disable the list mosaic
 - Disable preferences
 - Disable some actions on list (create, edit)
 - Disable bulk update
+- Only one list per object is allowed on a same view
 
 ### Forms
 
-> TODO
-
-**Raw hints** (while no proper guide is possible)
+**Raw hints** (while no proper guide is available)
 
 - When creating a form, never split "label" and "input"
   - stick to the "label + input" rendering when setting this in the template-editor
@@ -67,8 +95,6 @@ Guide per component
 - Instead of a date/time type, use a simple text with a date formating
 
 ### Business Process
-
-> TODO
 
 Features' Compliance
 --------------------
@@ -81,9 +107,7 @@ This part is based on Simplicité's [Feature Map](/docs/features), more precisel
 
 ### Menu
 
-> TODO
-
-**Raw hints** (while no proper guide is possible)
+**Raw hints** (while no proper guide is available)
 
 - Set `left.collapse: "none"` in the sysparam `MENU_SETTINGS`
 - If you have Business Objects with a status, make sure you disable both the metrics and trays.
@@ -108,7 +132,7 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 
 - <rgaa-c>**Multi-column ordering** : C</rgaa-c>
 - <rgaa-c>**Pagination** : C</rgaa-c>
-- <rgaa-nc>**List Search (*)** : NC</rgaa-nc>
+- <rgaa-nc>**List Search (\*)** : NC</rgaa-nc>
 - <rgaa-nc>**List Preferences** : NC</rgaa-nc>
 - **List Exports** : _to evaluate_
 - <rgaa-nc>**Bulk Actions** : NC</rgaa-nc>
@@ -119,19 +143,19 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 
 #### Forms
 
-- <rgaa-pc>**Fields (*)** : PC</rgaa-pc>
+- <rgaa-pc>**Fields (\*)** : PC</rgaa-pc>
   - Most of regular typed fields and the shared structure of those we generate are compliant. But some specific types (ace, gridtext, quill, etc) aren't.
   - The addons available for regular typed fields (string, int, longstring, boolean, enum, etc) are all compliant.
 - <rgaa-pc>**Templates** : PC</rgaa-pc>
 - **Permalinks** : _to evaluate_
-- <rgaa-pc>**Child lists (*)** : PC</rgaa-pc>
+- <rgaa-pc>**Child lists (\*)** : PC</rgaa-pc>
 - **Custom action with confirm fields** : _to evaluate_
 - **Publications HTML to PDF** : _to evaluate_
 
 #### Search
 
 - **Global Search** : _to evaluate_
-- **Object Search (*)** : _to evaluate_
+- **Object Search (\*)** : _to evaluate_
 - <rgaa-c>**Menu Search** : C</rgaa-c>
 - <rgaa-nc>**Form Search** : NC</rgaa-nc>
 - **Modeler Search** : _to evaluate_
@@ -158,9 +182,10 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 
 - <rgaa-c>**Search dialog** : C</rgaa-c>
 - <rgaa-nc>**Predefined Search** : NC</rgaa-nc>
-- <rgaa-nc>**Sort Order** : NC</rgaa-nc>
-- <rgaa-nc>**Global Search** : NC</rgaa-nc>
-- <rgaa-nc>**Search Form** : NC</rgaa-nc>
+- <rgaa-c>**Sort Order** : C</rgaa-c>
+- <rgaa-c>**Global Search** : C</rgaa-c>
+- <rgaa-pc>**Search Form** : PC</rgaa-pc>
+  - Only the "top" position (`obo_tpl_search_pos`) guarantees this feature's compliancy with the additional use of `a11y-mode`.
 
 #### Fields
 
@@ -169,6 +194,8 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
   - This type of fields have many possible _renderings_, including some that are not compliant because of their advanced complexity ;  
     None / Expression / Fixed font / HTML / CSS / SQL / Markdown / JSON / Text editor / Grid / Count characters / Javascript
 - <rgaa-c>**Number fields** : C</rgaa-c>
+  - This type of fields have many possible _renderings_, including some that are not compliant ;
+    Progress-bars / Stars / Slider / With calculator
 - <rgaa-nc>**Date/Time fields** : NC</rgaa-nc>
 - <rgaa-c>**Enum fields** : C</rgaa-c>
 - **File fields** : _to evaluate_
@@ -181,8 +208,7 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
     (or explicitly marking decorative images),which falls outside what the platform can guarantee
     Complex images (charts, diagrams, infographics) can't be made compliant through alt text alone.  
   — make sure your application has no need for them, or plan a separate accessible alternative if it does.
-- <rgaa-pc>**Referenced Object** : PC</rgaa-pc>
-  - the autocomplete dropdown can constitute a NC, so make sure you disable it thus forcing users to use the "search" addon.
+- <rgaa-c>**Referenced Object** : C</rgaa-c>
 
 #### Fields related features
 
@@ -294,14 +320,6 @@ Vertical navigation in a page of list:
   - records of current page
 - `TAB` to visit focusable cells of rows: long text, markdown content, textarea... are focusable to be scrollable with arrow keys
 - `ENTER` : to open the record (only if the form access is permitted for this line)
-
-### Widgets
-
-`select2`:
-
-- extends the common `<select>` with icons and colored contents
-- uses common `TAB` `ENTER` and `UP` `DOWN` to choose a value
-- uses `DEL` to clean the value, also improved with `ENTER` on the remove icon
 
 ### Shortcuts
 
