@@ -50,10 +50,12 @@ Here is the list of the handled features :
 - List preferences
 - Menu "trays" and "metrics" from StatusObjects
 - Preset search (from the search dialog)
+- Top Menu
 
 :::warning
 
 This mode doesn't do anything for the **Non-Compliant** features/components listed [below](/unlisted/designer#features-compliance).  
+Plus even with this safety net, you **SHOULD** disable the features explicited as non-compliant in [those guides](#guide-per-component).  
 
 :::
 
@@ -67,6 +69,8 @@ This feature is still in development, thus cannot be used or trusted to the full
 
 As a designer, you can trigger the "Development Helper" through the system parameter `A11Y_MODE` (true|false)  
 to help you with dissociating RGAA compliant and non-compliant features.
+
+### User `A11Y_OVERRIDE` parameter
 
 Guide per component
 -------------------
@@ -96,6 +100,19 @@ Guide per component
 
 ### Business Process
 
+**Raw hints** (while no proper guide is available)
+
+- for `pcs_road_render`, only the _Minimal informations_ versions of each direction should be used  
+
+### Menu
+
+**Raw hints** (while no proper guide is available)
+
+- Set `left.collapse: "none"` in the sysparam `MENU_SETTINGS`
+- Use only the left menu, setting `top.active = false` in the sysparam `MENU_SETTINGS`
+- If you have Business Objects with a status, make sure you disable both the metrics and trays.
+- While the "left-only" is handled by the use `a11y-mode`, it's recommended to properly disable it while developping the application.
+
 Features' Compliance
 --------------------
 
@@ -104,13 +121,6 @@ Features' Compliance
 This part is based on Simplicité's [Feature Map](/docs/features), more precisely narrowed to the **Web App (use)** branch of features.  
 
 :::
-
-### Menu
-
-**Raw hints** (while no proper guide is available)
-
-- Set `left.collapse: "none"` in the sysparam `MENU_SETTINGS`
-- If you have Business Objects with a status, make sure you disable both the metrics and trays.
 
 ### Main components & first-depth features
 
@@ -132,14 +142,15 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 
 - <rgaa-c>**Multi-column ordering** : C</rgaa-c>
 - <rgaa-c>**Pagination** : C</rgaa-c>
-- <rgaa-nc>**List Search (\*)** : NC</rgaa-nc>
+- <rgaa-pc>**List Search (\*)** : PC</rgaa-pc>
+  - explain why ...
 - <rgaa-nc>**List Preferences** : NC</rgaa-nc>
 - **List Exports** : _to evaluate_
 - <rgaa-nc>**Bulk Actions** : NC</rgaa-nc>
 - <rgaa-c>**Group-by** : C</rgaa-c>
 - <rgaa-nc>**Cards Mosaic** : NC</rgaa-nc>
-- **Create on list** : _to evaluate_
-- **Update on list** : _to evaluate_
+- <rgaa-nc>**Create on list** : NC</rgaa-nc>
+- <rgaa-nc>**Update on list** : NC</rgaa-nc>
 
 #### Forms
 
