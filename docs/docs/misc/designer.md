@@ -27,14 +27,23 @@ and others are just not RGAA-conformant for now.
 A11y Flags
 ---------
 
-Simplicité embedds 2 different flags related to web-accessibility and RGAA-compliance :
+Simplicité embedds several features related to web-accessibility and RGAA-compliance.  
 
-### User-level `a11y-mode`
+:::warning
+
+Those are still in development, thus cannot guarantee a complete success by themselves.  
+Simplicité being a low-code platform with a lot of features and capacities, it's required to  
+follow the [guides](#guide-per-component) with attention if you have strict RGAA-compliance requirements.  
+
+:::
+
+### Runtime `a11y-mode`
 
 When connected to a Simplicité application, end-users can toggle the **Accessibility Mode** by clicking on the  
-`universal-access-circle` button in the user dropdown.
+`.btn-a11y-mode` button in the user dropdown.
 
-![Toggle accessibility mode](img/a11y/toggle.png)
+![Toggle accessibility mode - disabled](img/a11y/toggle-off.png)
+![Toggle accessibility mode - enabled](img/a11y/toggle-on.png)
 
 Its purpose is to inhibate and adapt specific UX/UI behaviors or optional-features that might block or limit users using  
 Assistive Technologies to properly use a Simplicité application.
@@ -42,12 +51,11 @@ Assistive Technologies to properly use a Simplicité application.
 Here is the list of the handled features :  
 
 - Form & List "float/sticky" headers
-- Customized colors for action/state buttons (could trust designer but 0 risks)
+- Customized colors for action/state buttons
 - Splittable work areas
 - Compact mode
 - Collapse menu toggle
 - Masonry layout for lists
-- List preferences
 - Menu "trays" and "metrics" from StatusObjects
 - Preset search (from the search dialog)
 - Top Menu
@@ -59,18 +67,40 @@ Plus even with this safety net, you **SHOULD** disable the features explicited a
 
 :::
 
-### Designer `A11Y_MODE` sysparam
+### Designer `A11Y_DEV` sysparam
 
-:::warning
-
-This feature is still in development, thus cannot be used or trusted to the fullest for now.
-
-:::
-
-As a designer, you can trigger the "Development Helper" through the system parameter `A11Y_MODE` (true|false)  
+As a designer, you can trigger the "Development Helper" through the system parameter `A11Y_DEV` (yes|no)  
 to help you with dissociating RGAA compliant and non-compliant features.
 
+![A11Y_DEV system parameter](img/a11y/dev.png)
+
+Once activated, all fields are granted an `universal-access-circle` icon next to their label, which carries the information for  
+the RGAA-compliance of the related feature :  
+
+- **Non-Evaluated** (text-color) ; the feature has not been through complete tests with RGAA criteria for now.
+- **Non-Compliant** (danger-color) ; the feature should not be used at all (if you have strict compliance requirements).
+- **Partially-Compliant** (warning-color) ; the feature can be used but additional conditions and setting steps are required to ensure its compliance.
+- **Compliant** (success-color) ; the feature can be used without any question regarding RGAA compliance criteria.
+- if nothing shows, then the feature is just not concerned by RGAA tests and criteria, thus can be used freely.
+
+![A11Y_DEV icons meaning](img/a11y/icons.png)
+
 ### User `A11Y_OVERRIDE` parameter
+
+You can then act on an intermediate level to toggle specific components/features for some users if they ask for it  
+in knowledge of what that can/cannot use.  
+
+This is only working on specific components that couldn't be complianced because of their complexity/dependences :  
+
+- Date pickers (flatpickr is not compliant)
+- HTML Editor (quill is not compliant)
+- Code editors (ace is not compliant)
+- Trays (because are drag-and-drop only)
+- Menu Top (because chained popups aren't compliant, keyboard nav and screen-reader)
+- Custom Colors (safety net for contrasts of action & enum elements)
+- User Guides (because popup-oriented processes aren't compliant, keyboard nav and screen-reader)
+
+![A11Y_OVERRIDE user parameter](img/a11y/user.png)
 
 Guide per component
 -------------------
