@@ -33,7 +33,7 @@ Simplicité embedds several features related to web-accessibility and RGAA-compl
 
 Those are still in development, thus cannot guarantee a complete success by themselves.  
 Simplicité being a low-code platform with a lot of features and capacities, it's required to  
-follow the [guides](#guide-per-component) with attention if you have strict RGAA-compliance requirements.  
+follow the [guides](#guide-per-component) if you have strict RGAA-compliance requirements.  
 
 :::
 
@@ -42,8 +42,8 @@ follow the [guides](#guide-per-component) with attention if you have strict RGAA
 When connected to a Simplicité application, end-users can toggle the **Accessibility Mode** by clicking on the  
 `.btn-a11y-mode` button in the user dropdown.
 
-![Toggle accessibility mode - disabled](img/a11y/toggle-off.png)
-![Toggle accessibility mode - enabled](img/a11y/toggle-on.png)
+<img src={require('./img/a11y/toggle-off.png').default} alt="Toggle accessibility mode - disabled" width="300" />
+<img src={require('./img/a11y/toggle-on.png').default} alt="Toggle accessibility mode - enabled" width="300" />
 
 Its purpose is to inhibate and adapt specific UX/UI behaviors or optional-features that might block or limit users using  
 Assistive Technologies to properly use a Simplicité application.
