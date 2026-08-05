@@ -95,7 +95,7 @@ Built-in server configuration
 The MCP endpoint is exposed as a servlet at:
 
 ```text
-YOUR_URL/mcp
+YOUR_URL/api/mcp
 ```
 
 :::warning
@@ -110,18 +110,46 @@ To expose it, the `FEATURE_FLAG` `System Parameter` needs to be updated:
 
 :::
 
+### Authentication
+
+Two authentication modes are available to connect a client to the MCP endpoint:
+
+- **OAuth2 (recommended)** — the LLM client authenticates as a Simplicité user through a standard OAuth2 authorization flow.
+  There is no token to generate, copy, or renew manually, and the client can be revoked at any time from the back-office.
+- **Bearer token** — a Simplicité user token is passed directly (via the `Authorization` header, or through the STDIO bridge
+  for clients that don't support HTTP transport, as described in the sections below). Quicker to set up for a one-off test,
+  but the token has to be generated and rotated by hand.
+
+Prefer OAuth2 whenever the client supports it.
+
+#### Registering an OAuth2 client (Application externe)
+
+As dynamic client registration is not supported yet, each OAuth2 client must be pre-registered in the back-office:
+
+1. Go to `Habilitation --> Applications externes` and create a new record.
+2. Fill in:
+   - **Nom**: a name identifying the client (e.g. `MISTRAL_OAUTH`, `VSCODE_OAUTH`)
+   - **Redirect URI**: the callback URL provided by the client
+   - **Scopes**: check at least `OpenID`
+3. Save. The **Client ID** and **Client secret** are generated, the secret is only ever shown once — copy it and store it securely.
+
+![Application externe OAuth2 configuration](./img/external_app.png)
+
+The generated **Client ID**/**Client secret** pair can then be used to configure OAuth2 in the LLM client.
+
 ### For Visual Studio Code Copilot
 
 ![MCP Config Visual Studio Code](./img/mcp_vsc_config.gif)
 
 `Extensions --> MCP Servers --> Show Configuration (JSON)`
 
-Enter `http://your_url/mcp` (or `https://your_instance.simplicite.io/mcp`)
+Enter `http://your_url/api/mcp` (or `https://your_instance.simplicite.io/mcp`)
 
 VSC should then open `something_something/AppData/Roaming/Code/User/mcp.json`
 
 The json needs to be updated to handle authorization.
-Since OAuth2.1 is currently not supported by Simplicité, HTTP transport is bridged to STDIO using `@nimbletools/mcp-http-bridge`.
+
+If using a Bearer token instead of OAuth2 (see [Authentication](#authentication)), HTTP transport needs to be bridged to STDIO using `@nimbletools/mcp-http-bridge`.
 
 ```json
 {
@@ -133,7 +161,7 @@ Since OAuth2.1 is currently not supported by Simplicité, HTTP transport is brid
 				"-y",
 				"@nimbletools/mcp-http-bridge",
 				"--endpoint",
-				"YOUR_ENDPOINT/mcp",
+				"YOUR_ENDPOINT/api/mcp",
 				"--token",
 				"YOUR_TOKEN"
 				]
@@ -149,6 +177,12 @@ Since OAuth2.1 is currently not supported by Simplicité, HTTP transport is brid
 
 ### For Claude Desktop/Claude Code
 
+**With OAuth:**
+
+![Option -> Connectors -> Add](./img/claude_oauth.png)
+
+**WIth Bearer Token:**
+
 `Claude Desktop --> Settings --> Developer --> Edit Config --> claude_desktop_config.json`
 
 ```json
@@ -161,7 +195,7 @@ Since OAuth2.1 is currently not supported by Simplicité, HTTP transport is brid
           "-y",
           "@nimbletools/mcp-http-bridge",
           "--endpoint",
-          "YOUR_ENDPOINT/mcp",
+          "YOUR_ENDPOINT/api/mcp",
           "--token",
           "YOUR_TOKEN"
           ]
@@ -182,7 +216,7 @@ This will allow a better contextualization.
 Gemini CLI supports HTTP transport natively. The server can be added using the following command:
 
 ```bash
-gemini mcp add "Simplicité Java MCP Server" http://YOUR_URL/mcp --transport http --header "Authorization: Bearer YOUR_TOKEN"
+gemini mcp add "Simplicité Java MCP Server" http://YOUR_URL/api/mcp --transport http --header "Authorization: Bearer YOUR_TOKEN"
 ```
 
 Or by manually editing `.gemini/settings.json`:
@@ -191,7 +225,7 @@ Or by manually editing `.gemini/settings.json`:
 {
   "mcpServers": {
     "Simplicité Java MCP Server": {
-      "url": "http://YOUR_URL/mcp",
+      "url": "http://YOUR_URL/api/mcp",
       "type": "http",
       "headers": {
         "Authorization": "Bearer YOUR_TOKEN"
@@ -244,7 +278,7 @@ In a terminal:
 
 Select `Streamable HTTP` as Transport Type
 
-Select `YOUR_URL/mcp` as URL
+Select `YOUR_URL/api/mcp` as URL
 
 In `Authentification`, select `Custom headers` and enter:
 
