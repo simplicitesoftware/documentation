@@ -406,11 +406,23 @@ services:
     (...)
 ```
 
-:::warning
-At the moment, there seems to be no way of routing VSCode's JPDA packets over traefik.
-Our only option is thus to expose the port directly, without going through traefik.
-Remember that there is a firewall installed, and it might need configuration.
-:::
+Remember that a firewall was installed so you will not be able to connect directly to the exposed port.
+Rather than opening a port for JPDA, the recommended approach is to open a SSH tunnel:
+
+```shell
+ssh -L 8001:localhost:8001 user@portainer-server
+```
+
+<details>
+<summary>Why don't we route debugging connections through Traefik instead?</summary>
+
+Remote Java debugging (JDWP) uses a plain TCP protocol and, in its standard implementation, does not support TLS or initiate a TLS handshake.
+Because Traefik relies on TLS metadata (such as SNI) to securely route TCP connections on a shared entrypoint,
+it cannot distinguish or terminate JDWP traffic. As a result, exposing the debugger through the standard HTTPS/TLS infrastructure is not possible.
+The standard approach for secure remote Java debugging is to use an SSH tunnel,
+which forwards a local TCP port to the remote JDWP port over an encrypted and authenticated SSH connection, without exposing the debugger to the network.
+
+</details>
 
 ### VSCode tools
 

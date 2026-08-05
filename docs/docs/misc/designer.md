@@ -27,15 +27,80 @@ and others are just not RGAA-conformant for now.
 A11y Flags
 ---------
 
-Simplicité embedds 2 different flags related to web-accessibility and RGAA-compliance :
+Simplicité embedds several features related to web-accessibility and RGAA-compliance.  
 
-### User-level `a11y-mode`
+:::warning
 
-> TODO
+Those are still in development, thus cannot guarantee a complete success by themselves.  
+Simplicité being a low-code platform with a lot of features and capacities, it's required to  
+follow the [guides](#guide-per-component) if you have strict RGAA-compliance requirements.  
 
-### Designer `A11Y_MODE` sysparam
+:::
 
-> TODO
+### Runtime `a11y-mode`
+
+When connected to a Simplicité application, end-users can toggle the **Accessibility Mode** by clicking on the  
+`.btn-a11y-mode` button in the application's header.
+
+![Toggle accessibility mode - disabled](img/a11y/toggle-off.png)
+![Toggle accessibility mode - enabled](img/a11y/toggle-on.png)
+
+Its purpose is to inhibate and adapt specific UX/UI behaviors or optional-features that might block or limit users using  
+Assistive Technologies to properly use a Simplicité application.
+
+Here is the list of the handled features :  
+
+- Form & List "float/sticky" headers
+- Customized colors for action/state buttons
+- Splittable work areas
+- Compact mode
+- Collapse menu toggle
+- Masonry layout for lists
+- Menu "trays" and "metrics" from StatusObjects
+- Preset search (from the search dialog)
+- Top Menu
+
+:::warning
+
+This mode doesn't do anything for the **Non-Compliant** features/components listed [below](/unlisted/designer#features-compliance).  
+Plus even with this safety net, you **SHOULD** disable the features explicited as non-compliant in [those guides](#guide-per-component).  
+
+:::
+
+### Designer `A11Y_DEV` sysparam
+
+As a designer, you can trigger the "Development Helper" through the system parameter `A11Y_DEV` (yes|no)  
+to help you with dissociating RGAA compliant and non-compliant features.
+
+![A11Y_DEV system parameter](img/a11y/dev.png)
+
+Once activated, all fields are granted an `universal-access-circle` icon next to their label, which carries the information for  
+the RGAA-compliance of the related feature :  
+
+- **Non-Evaluated** (text-color) ; the feature has not been through complete tests with RGAA criteria for now.
+- **Non-Compliant** (danger-color) ; the feature should not be used at all (if you have strict compliance requirements).
+- **Partially-Compliant** (warning-color) ; the feature can be used but additional conditions and setting steps are required to ensure its compliance.
+- **Compliant** (success-color) ; the feature can be used without any question regarding RGAA compliance criteria.
+- if nothing shows, then the feature is just not concerned by RGAA tests and criteria, thus can be used freely.
+
+![A11Y_DEV icons meaning](img/a11y/icons.png)
+
+### User `A11Y_OVERRIDE` parameter
+
+You can then act on an intermediate level to toggle specific components/features for some users if they ask for it  
+in knowledge of what that can/cannot use.  
+
+This is only working on specific components that couldn't be complianced because of their complexity/dependences :  
+
+- Date pickers (flatpickr is not compliant)
+- HTML Editor (quill is not compliant)
+- Code editors (ace is not compliant)
+- Trays (because are drag-and-drop only)
+- Menu Top (because chained popups aren't compliant, keyboard nav and screen-reader)
+- Custom Colors (safety net for contrasts of action & enum elements)
+- User Guides (because popup-oriented processes aren't compliant, keyboard nav and screen-reader)
+
+![A11Y_OVERRIDE user parameter](img/a11y/user.png)
 
 Guide per component
 -------------------
@@ -44,34 +109,37 @@ Guide per component
 
 ### Lists
 
-> TODO
-> _Proper version incoming after looking up all "base" features & components_
-
-**Raw hints** (while no proper guide is possible)
+**Raw hints** (while no proper guide is available)
 
 - Disable docked search
 - Disable the list mosaic
-- Disable preferences
-- Disable some actions on list (create, edit)
+- Disable Edit on list
 - Disable bulk update
+- Disable row-
 
 ### Forms
 
-> TODO
-> _Proper version incoming after looking up all "base" features & components_
-
-**Raw hints** (while no proper guide is possible)
+**Raw hints** (while no proper guide is available)
 
 - When creating a form, never split "label" and "input"
   - stick to the "label + input" rendering when setting this in the template-editor
 - When using longstring fields, stick to regular rendering
-- Disable form's search
 - Instead of a date/time type, use a simple text with a date formating
 
 ### Business Process
 
-> TODO
-> _Proper version incoming after looking up all "base" features & components_
+**Raw hints** (while no proper guide is available)
+
+- for `pcs_road_render`, only the _Minimal informations_ versions of each direction should be used  
+
+### Menu
+
+**Raw hints** (while no proper guide is available)
+
+- Set `left.collapse: "none"` in the sysparam `MENU_SETTINGS`
+- Use only the left menu, setting `top.active = false` in the sysparam `MENU_SETTINGS`
+- If you have Business Objects with a status, make sure you disable both the metrics and trays.
+- While the "left-only" is handled by the use `a11y-mode`, it's recommended to properly disable it while developping the application.
 
 Features' Compliance
 --------------------
@@ -81,16 +149,6 @@ Features' Compliance
 This part is based on Simplicité's [Feature Map](/docs/features), more precisely narrowed to the **Web App (use)** branch of features.  
 
 :::
-
-### Menu
-
-> TODO
-> _Proper version incoming after looking up all "base" features & components_
-
-**Raw hints** (while no proper guide is possible)
-
-- Set `left.collapse: "none"` in the sysparam `MENU_SETTINGS`
-- If you have Business Objects with a status, make sure you disable both the metrics and trays.
 
 ### Main components & first-depth features
 
@@ -112,30 +170,31 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 
 - <rgaa-c>**Multi-column ordering** : C</rgaa-c>
 - <rgaa-c>**Pagination** : C</rgaa-c>
-- <rgaa-nc>**List Search (*)** : NC</rgaa-nc>
-- <rgaa-nc>**List Preferences** : NC</rgaa-nc>
+- <rgaa-pc>**List Search (\*)** : PC</rgaa-pc>
+- <rgaa-c>**List Preferences** : C</rgaa-c>
 - **List Exports** : _to evaluate_
 - <rgaa-nc>**Bulk Actions** : NC</rgaa-nc>
 - <rgaa-c>**Group-by** : C</rgaa-c>
 - <rgaa-nc>**Cards Mosaic** : NC</rgaa-nc>
-- **Create on list** : _to evaluate_
-- **Update on list** : _to evaluate_
+- <rgaa-pc>**Create on list** : PC</rgaa-pc>
+- <rgaa-nc>**Update on list** : NC</rgaa-nc>
 
 #### Forms
 
-- <rgaa-pc>**Fields (*)** : PC</rgaa-pc>
-  - Most of regular typed fields and the shared structure of those we generate are compliant. But some specific types (ace, gridtext, quill, etc) aren't.
+- <rgaa-pc>**Fields (\*)** : PC</rgaa-pc>
+  - Most of regular typed fields and the shared structure of those we generate are compliant.  
+    But some specific types (ace, gridtext, quill, sliders, stars, etc) aren't.
   - The addons available for regular typed fields (string, int, longstring, boolean, enum, etc) are all compliant.
-- **Templates** : _to evaluate_
+- <rgaa-pc>**Templates** : PC</rgaa-pc>
 - **Permalinks** : _to evaluate_
-- <rgaa-pc>**Child lists (*)** : PC</rgaa-pc>
-- **Custom action with confirm fields** : _to evaluate_
+- <rgaa-pc>**Child lists (\*)** : PC</rgaa-pc>
+- <rgaa-c>**Custom action with confirm fields** : C</rgaa-c>
 - **Publications HTML to PDF** : _to evaluate_
 
 #### Search
 
 - **Global Search** : _to evaluate_
-- **Object Search (*)** : _to evaluate_
+- **Object Search (\*)** : _to evaluate_
 - <rgaa-c>**Menu Search** : C</rgaa-c>
 - <rgaa-nc>**Form Search** : NC</rgaa-nc>
 - **Modeler Search** : _to evaluate_
@@ -160,22 +219,32 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 
 #### List Search
 
-- <rgaa-nc>**Search dialog** : NC</rgaa-nc>
+- <rgaa-c>**Search dialog** : C</rgaa-c>
 - <rgaa-nc>**Predefined Search** : NC</rgaa-nc>
-- <rgaa-nc>**Sort Order** : NC</rgaa-nc>
-- <rgaa-nc>**Global Search** : NC</rgaa-nc>
-- <rgaa-nc>**Search Form** : NC</rgaa-nc>
+- <rgaa-c>**Sort Order** : C</rgaa-c>
+- <rgaa-c>**Global Search** : C</rgaa-c>
+- <rgaa-pc>**Search Form** : PC</rgaa-pc>
+  - Only the "top" position (`obo_tpl_search_pos`) guarantees this feature's compliancy with the additional use of `a11y-mode`.
 
 #### Fields
 
-- <rgaa-c>**Text fields** : C</rgaa-c>
+- <rgaa-pc>**Text fields** : PC</rgaa-pc>
+  - The `QRCode` and `Icon picker` renderings are not compliant.
+- <rgaa-nc>**Validated Text fields** : NC</rgaa-nc>
+  - Working on it. The validation should be announced properly and an help/suggestion should be offered.
+- <rgaa-c>**Boolean fields** : C</rgaa-c>
+  - All renderings are compliant for these fields.
 - <rgaa-pc>**LongText fields** : PC</rgaa-pc>
   - This type of fields have many possible _renderings_, including some that are not compliant because of their advanced complexity ;  
     None / Expression / Fixed font / HTML / CSS / SQL / Markdown / JSON / Text editor / Grid / Count characters / Javascript
-- <rgaa-c>**Number fields** : C</rgaa-c>
-- <rgaa-nc>**Date/Time fields** : NC</rgaa-nc>
+- <rgaa-pc>**Number fields** : PC</rgaa-pc>
+  - This type of fields have many possible _renderings_, including some that are not compliant ;
+    Progress-bars / Stars / With calculator
+- <rgaa-pc>**Date/Time fields** : NC</rgaa-pc>
+  - the `flatpickr` modal is usable, and arguably accessible, but doesn't comply to all RGAA criteria yet
+    although the `a11y-mode` replaces those calendars by plain text inputs with a hint on the date-format.
 - <rgaa-c>**Enum fields** : C</rgaa-c>
-- **File fields** : _to evaluate_
+- <rgaa-c>**File fields** : C</rgaa-c>
 - <rgaa-nc>**Special fields** : NC</rgaa-nc>
   - Here are the fields' types that we include in this category : URL / Email / Phone / Color / Coordinates / Password / Notepad
   - In this list, only the types `URL`, `Email`, `Phone` and `Password` are RGAA-compliant.
@@ -185,7 +254,7 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
     (or explicitly marking decorative images),which falls outside what the platform can guarantee
     Complex images (charts, diagrams, infographics) can't be made compliant through alt text alone.  
   — make sure your application has no need for them, or plan a separate accessible alternative if it does.
-- **Referenced Object** : _to evaluate_
+- <rgaa-c>**Referenced Object** : C</rgaa-c>
 
 #### Fields related features
 
@@ -200,24 +269,27 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 
 - <rgaa-c>**Panel** : C</rgaa-c>
   - By nature Simplicité's panel & sub-panels are compliant
-- **Virtual link** : _to evaluate_
+- <rgaa-c>**Virtual link** : C</rgaa-c>
+  - A virtual link is displayed as an embedded list, thus its compliance is related to the [list's](#lists-1).
 - **Association** : _to evaluate_
-- **Pillbox** : _to evaluate_
-- **Inlined object** : _to evaluate_
+- <rgaa-nc>**Pillbox** : NC</rgaa-nc>
+- <rgaa-c>**Inlined object** : C</rgaa-c>
+  - An inlined object is displayed as several form elements, thus its compliance is related to the [form's](#forms-1).
 
 #### Bulk Actions
 
-- **Bulk Edit** : _to evaluate_
-- **Bulk Delete** : _to evaluate_
-- **Bulk Delete** : _to evaluate_
+- <rgaa-nc>**Bulk Edit** : NC</rgaa-nc>
+- <rgaa-c>**Bulk Delete** : C</rgaa-c>
 - **Merge** : _to evaluate_
-- **Custom List Actions** : _to evaluate_
+- <rgaa-pc>**Custom List Actions** : PC</rgaa-pc>
 
 #### Object Search
 
 - **Advanced query search** : _to evaluate_
-- **Date/Period search** : _to evaluate_
-- **Date/Period search** : _to evaluate_
+- <rgaa-nc>**Date/Period search** : NC</rgaa-nc>
+  - Using Datetime fields (search ≠ form) so not compliant
+- <rgaa-nc>**Date/Period search** : NC</rgaa-nc>
+  - Using Datetime fields (search ≠ form) so not compliant
 - <rgaa-nc>**Geographical search** : NC</rgaa-nc>
 - <rgaa-pc>**Predefined Search** : PC</rgaa-pc>
   - Predefined searches are basically lists available mostly from homepages, specific because they  
@@ -225,7 +297,13 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
   - Thus they have to follow the rules & settings associated with their "" object.
 - **Saved Search** : _to evaluate_
 
-### Meta Model compliance
+#### Templates
+
+- <rgaa-c>**Field Area** : C</rgaa-c>
+- <rgaa-c>**Columns** : C</rgaa-c>
+- <rgaa-c>**Tabs** : C</rgaa-c>
+
+### Behavioral & cross-cutting features
 
 Below are detailed some of the features that aren't visual components, but that results in specific usages for components that are mentionned above.  
 The aim is to tackle down few specific features that needs to pay more attention regarding the components they use (lists, forms, modals/dialogs).
@@ -234,11 +312,11 @@ The aim is to tackle down few specific features that needs to pay more attention
   - The feature itself is compliant, but the embedded lists have few flaws that prevent their usage in apps that should be compliant.
   - If you disable the filters in those lists, then it's RGAA-compliant.
   - If you enable them, then you're gonna have non-compliances on the filters (focus-restitution, dialog opening etc).
-- <rgaa-c>**List of values : C</rgaa-c>
-- <rgaa-pc>**Static text : PC</rgaa-pc>
+- <rgaa-c>**List of values** : C</rgaa-c>
+- <rgaa-pc>**Static text** : PC</rgaa-pc>
   - If the content is purely textual then the usage of this component is RGAA-compliant
   - If you use it with custom HTML, you have to ensure by yourself that it follows WAI-ARIA rules
-- <rgaa-pc>**Actions : PC</rgaa-pc>
+- <rgaa-pc>**Actions** : PC</rgaa-pc>
   - If you want to customize your action (background, color, icon), you have to use contrasted enough colors.  
     For such thing you can refer to Simplicité's inner contrast tool, and ensure you stick to monochrome icons.
 
@@ -289,14 +367,6 @@ Vertical navigation in a page of list:
   - records of current page
 - `TAB` to visit focusable cells of rows: long text, markdown content, textarea... are focusable to be scrollable with arrow keys
 - `ENTER` : to open the record (only if the form access is permitted for this line)
-
-### Widgets
-
-`select2`:
-
-- extends the common `<select>` with icons and colored contents
-- uses common `TAB` `ENTER` and `UP` `DOWN` to choose a value
-- uses `DEL` to clean the value, also improved with `ENTER` on the remove icon
 
 ### Shortcuts
 

@@ -72,7 +72,7 @@ sur lesquelles la plateforme n'a aucune meta-information, ni conscience du conte
 Par conséquent il incombe aux utilisateurs de renseigner eux-même le `alt` dans le cas d'une image porteuse d'information.  
 La responsabilité de la plateforme ne porte que sur les images que cette dernière positionne dans l'interface par défaut.  
 
-Néanmoins nous travaillons sur le fait de permettre aux utilisateurs de conformiser simplement tout type d'image.
+Néanmoins nous travaillons sur le fait de permettre aux utilisateurs de conformiser simplement tout type d'image.  
 
 :::
 
@@ -182,15 +182,6 @@ Néanmoins nous travaillons sur le fait de permettre aux utilisateurs de conform
 | 10.13 | Dans chaque page web, les contenus additionnels apparaissant à la prise de focus ou au survol d’un composant d’interface sont-ils contrôlables par l’utilisateur ? | <rgaa-c>**Conforme**</rgaa-c>, les éléments comme les tooltips sont les seuls de ce genre, et ces derniers peuvent être fermer en tabulant en dehors de leur élément déclencheur. |
 | 10.14 | Dans chaque page web, les contenus additionnels apparaissant via les styles CSS uniquement peuvent-ils être rendus visibles au clavier et par tout dispositif de pointage ? | <rgaa-na>**Non Conforme**</rgaa-na>, travail en cours. |
 
-:::info
-
-Clarification sur les critères `10.2` et `10.3`.  
-Mention du flag d'accessibilité et de ses impacts futurs (10.4, 10.5, et autres thématiques).  
-Mention du caractère "deprecated" du thème et son remplacement par un thème RGAA (voir directement par le flag).  
-Mention des 2 fonctionnements pour le fil d'arianne.  
-
-:::
-
 ### 11. Formulaires
 
 | Critère | Intitulé | Positionnement Simplicité |
@@ -272,37 +263,6 @@ Par conséquent, des liens sont présents pour représenter sémantiquement tout
 l'objectif est de rappeler les comportements récurrents dans les sites webs, et permettre une différenciation claire avec les boutons.
 
 ### PDF et autres documents
-
-> TODO
-> _investigate current RGAA-compliancy_
-
-Mode accessible
----------------
-
-Un mode accessible est accessible en runtime pour n'importe quelle application le permettant, afin d'inhiber certains  
-comportements UX/UI (ainsi que certaines fonctionnalités) non structurant pour l'utilisation d'une application,  
-mais qui limiteraient ou même bloqueraient des utilisateurs se servant de technologies d'assistances.
-
-Les comportements inhibés sont :
-
-- En-tête de liste et de formulaires "flottant/sticky"
-- Couleurs personnalisées de boutons d'actions/états (pourrait être laissé tel quel à charge des designers ?)
-- Zones de travails multiples
-- Possibilité de fermer/ouvrir le menu
-- Fil d'arianne (?)
-- Layout Masonry des listes
-- Préférences de liste
-- Mode compacte
-- Recherche prédéfinie (depuis la fenêtre de recherche d'une liste)
-
-:::warning
-
-Cela n'a aucun effet sur les fonctionnalités indiquées comme _Non Conforme_ [dans ce tableau](/unlisted/designer#features-compliance).  
-
-Il n'a pour vocation que d'inhiber des comportements socles/natifs non paramétrables ou trop spécifiques, afin de permettre  
-aux utilisateurs en situation de handicap une utilisation normale et adaptée de l'application.  
-
-:::
 
 Resources et références
 -----------------------
