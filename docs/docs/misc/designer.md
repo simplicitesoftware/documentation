@@ -40,10 +40,10 @@ follow the [guides](#guide-per-component) if you have strict RGAA-compliance req
 ### Runtime `a11y-mode`
 
 When connected to a Simplicité application, end-users can toggle the **Accessibility Mode** by clicking on the  
-`.btn-a11y-mode` button in the user dropdown.
+`.btn-a11y-mode` button in the application's header.
 
-<img src={require('./img/a11y/toggle-off.png').default} alt="Toggle accessibility mode - disabled" width="300" />
-<img src={require('./img/a11y/toggle-on.png').default} alt="Toggle accessibility mode - enabled" width="300" />
+![Toggle accessibility mode - disabled](img/a11y/toggle-off.png)
+![Toggle accessibility mode - enabled](img/a11y/toggle-on.png)
 
 Its purpose is to inhibate and adapt specific UX/UI behaviors or optional-features that might block or limit users using  
 Assistive Technologies to properly use a Simplicité application.
@@ -113,10 +113,9 @@ Guide per component
 
 - Disable docked search
 - Disable the list mosaic
-- Disable preferences
-- Disable some actions on list (create, edit)
+- Disable Edit on list
 - Disable bulk update
-- Only one list per object is allowed on a same view
+- Disable row-
 
 ### Forms
 
@@ -125,7 +124,6 @@ Guide per component
 - When creating a form, never split "label" and "input"
   - stick to the "label + input" rendering when setting this in the template-editor
 - When using longstring fields, stick to regular rendering
-- Disable form's search
 - Instead of a date/time type, use a simple text with a date formating
 
 ### Business Process
@@ -173,13 +171,12 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 - <rgaa-c>**Multi-column ordering** : C</rgaa-c>
 - <rgaa-c>**Pagination** : C</rgaa-c>
 - <rgaa-pc>**List Search (\*)** : PC</rgaa-pc>
-  - explain why ...
-- <rgaa-nc>**List Preferences** : NC</rgaa-nc>
+- <rgaa-c>**List Preferences** : C</rgaa-c>
 - **List Exports** : _to evaluate_
 - <rgaa-nc>**Bulk Actions** : NC</rgaa-nc>
 - <rgaa-c>**Group-by** : C</rgaa-c>
 - <rgaa-nc>**Cards Mosaic** : NC</rgaa-nc>
-- <rgaa-nc>**Create on list** : NC</rgaa-nc>
+- <rgaa-pc>**Create on list** : PC</rgaa-pc>
 - <rgaa-nc>**Update on list** : NC</rgaa-nc>
 
 #### Forms
@@ -191,7 +188,7 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 - <rgaa-pc>**Templates** : PC</rgaa-pc>
 - **Permalinks** : _to evaluate_
 - <rgaa-pc>**Child lists (\*)** : PC</rgaa-pc>
-- **Custom action with confirm fields** : _to evaluate_
+- <rgaa-c>**Custom action with confirm fields** : C</rgaa-c>
 - **Publications HTML to PDF** : _to evaluate_
 
 #### Search
@@ -243,8 +240,9 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 - <rgaa-pc>**Number fields** : PC</rgaa-pc>
   - This type of fields have many possible _renderings_, including some that are not compliant ;
     Progress-bars / Stars / With calculator
-- <rgaa-nc>**Date/Time fields** : NC</rgaa-nc>
-  - Working on the following alternative ; Text field.s with date formatting (dropping the modal)
+- <rgaa-pc>**Date/Time fields** : NC</rgaa-pc>
+  - the `flatpickr` modal is usable, and arguably accessible, but doesn't comply to all RGAA criteria yet
+    although the `a11y-mode` replaces those calendars by plain text inputs with a hint on the date-format.
 - <rgaa-c>**Enum fields** : C</rgaa-c>
 - <rgaa-c>**File fields** : C</rgaa-c>
 - <rgaa-nc>**Special fields** : NC</rgaa-nc>
@@ -289,9 +287,9 @@ that are enlisted below as **C**, or to make sure the **PC** features that are u
 
 - **Advanced query search** : _to evaluate_
 - <rgaa-nc>**Date/Period search** : NC</rgaa-nc>
-  - Using Datetime fields so not compliant
+  - Using Datetime fields (search ≠ form) so not compliant
 - <rgaa-nc>**Date/Period search** : NC</rgaa-nc>
-  - Using Datetime fields so not compliant
+  - Using Datetime fields (search ≠ form) so not compliant
 - <rgaa-nc>**Geographical search** : NC</rgaa-nc>
 - <rgaa-pc>**Predefined Search** : PC</rgaa-pc>
   - Predefined searches are basically lists available mostly from homepages, specific because they  
