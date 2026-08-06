@@ -126,7 +126,7 @@ Prefer OAuth2 whenever the client supports it.
 
 As dynamic client registration is not supported yet, each OAuth2 client must be pre-registered in the back-office:
 
-1. Go to `Habilitation --> Applications externes` and create a new record.
+1. Go to `User and Rights --> External applications` and create a new record.
 2. Fill in:
    - **Nom**: a name identifying the client (e.g. `MISTRAL_OAUTH`, `VSCODE_OAUTH`)
    - **Redirect URI**: the callback URL provided by the client
