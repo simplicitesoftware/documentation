@@ -132,3 +132,19 @@ A colored indicator in the editor header displays the current status of the Java
 | `red`    | Error          |
 | `blue`   | Processing     |
 | `green`  | Ready/Done     |
+
+### Multiple tab search
+
+Using the shortcut `Shift-Ctrl-F` or `Shift-Cmd-F`, or navigating to the **Search** tab on the editor's left panel,
+you can access the following search interface :
+
+![Multisearch UI](img/codeeditor/multisearch-ui.png)
+
+**A.** tabbed access to the search dialog  
+**B.** main input (searched value)  
+**C.** match-case / whole-word / regexp / previous-match / next-match  
+**D.** input for replace value + applying buttons (replace-one, replace-all)  
+**E.** include file input, using only simple regexp with `*` and/or `?` chars  
+**F.** list of files with 1+ occurence of search. Dropdown when clicking the row.  
+**G.** clicking the occurence opens the file in editor and redirects cursor to the line.  
+**H.** replace-all feature for the targeted file, with occurences count.
