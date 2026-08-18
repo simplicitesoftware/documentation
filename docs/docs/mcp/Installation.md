@@ -35,7 +35,6 @@ Finally, get_skill is the contextualization tool: it loads a targeted prompt int
 | `get_ai_doc` | Discovery | Compact, LLM-optimized documentation for a module, object, or enum (fields, states, actions, hooks). Preferred over `get_md_documentation`. |
 | `get_md_documentation` | Discovery | Human-readable Markdown description of a module. More verbose than `get_ai_doc` — use only when more detail is needed. |
 | `get_physical_mapping` | Discovery | Physical database mapping of a module. |
-| `get_openapi` | Discovery | Full OpenAPI 3.x spec for a module. Use only when API endpoint details are needed. |
 | `find_object_by_name` | Discovery | Resolves a user-friendly name to the technical object code. Call first when the technical name is uncertain. |
 | `get_object_code` | Designer | Retrieves the full Java source of a business object. Always call before editing. |
 | `set_object_code` | Designer | Replaces the full Java source of a business object. |
@@ -47,7 +46,7 @@ Finally, get_skill is the contextualization tool: it loads a targeted prompt int
 | `update_record` | CRUD | Updates an existing record by `row_id`. |
 | `delete_record` | CRUD | Deletes a record (irreversible). |
 | `call_action` | CRUD | Invokes a business logic action on an object or record. Prefer over manual field updates when an action exists. |
-| `get_skill` | Contextualization | Loads a targeted business prompt into the LLM's context based on the request type. Requires the `MCP Server` module. |
+| `get_skill` | Contextualization | Loads a targeted business prompt into the LLM's context based on the request type. |
 
 Intended Workflow
 --------
@@ -76,10 +75,6 @@ accomplish the same thing — and without guidance, the LLM may take incorrect p
 
 Skills solve this problem. Each skill is a targeted prompt that gives the LLM the right approach for a given type of request,
 avoiding the trial-and-error exploration phase.
-
-To use get_skill, the MCP Server module must be installed from the AppStore (under Tools). This module exposes a McpPrompt object that stores skills.
-A starter dataset is provided, covering mainly maker needs (BUSINESS_OBJECT_CREATION, CROSSTAB, STATE_MODEL_CREATOR, etc.),
-along with a business skill example — CRM_CONTACTS, an agent that fills in demo contacts from a customer request written in natural language.
 
 Improving over time
 --------
