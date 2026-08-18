@@ -1,8 +1,8 @@
 ---
 sidebar_position: 20
-title: Criteria
+title: Compliance
 unlisted: true
-slug: /unlisted/criteria
+slug: /unlisted/compliance
 ---
 
 Détail des critères
@@ -11,7 +11,7 @@ Détail des critères
 :::info
 
 Afin d'être cohérent avec la langue de rédaction du RGAA, ce document est écrit en **français**.
-Une version **anglaise** est disponible [en cliquant ici](/unlisted/criteria_en) ; il s'agit d'une traduction,
+Une version **anglaise** est disponible [en cliquant ici](/unlisted/compliance_en) ; il s'agit d'une traduction,
 certaines notions du référentiel peuvent y perdre en précision.
 
 :::

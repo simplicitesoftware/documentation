@@ -12,7 +12,7 @@ Create conform applications with Simplicité
 
 Digital accessibility is a continuous work in our R&D, yet not all of our features are conform to RGAA standards, but we're working on it continuously.
 
-Please refer to [this document](/unlisted/criteria) to know more about our position on each criteria, and check the list of most impacted components.
+Please refer to [this document](/unlisted/compliance) to know more about our position on each criteria, and check the list of most impacted components.
 
 :::
 
