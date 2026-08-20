@@ -59,11 +59,12 @@ Here is the list of the handled features :
 - Menu "trays" and "metrics" from StatusObjects
 - Preset search (from the search dialog)
 - Top Menu
+- Datetime fields picker is removed (replaced by a format help)
+- Fields using aceeditor inputs become simple textareas
 
 :::warning
 
-This mode doesn't do anything for the **Non-Compliant** features/components listed [below](/unlisted/designer#features-compliance).  
-Plus even with this safety net, you **SHOULD** disable the features explicited as non-compliant in [those guides](#guide-per-component).  
+Even with this safety net, you **SHOULD** disable the features explicited as non-compliant in [those guides](#guide-per-component).  
 
 :::
 
@@ -105,7 +106,31 @@ This is only working on specific components that couldn't be complianced because
 Guide per component
 -------------------
 
-### Links
+### Actions
+
+**Raw hints** (while no proper guide is available)
+
+- Better not to use icons
+- If using custom background and colors ensure the contrast is enough
+  AND that the background is contrasted enough with the application's header background color
+
+### Business Objects
+
+**Raw hints** (while no proper guide is available)
+
+- Put the visible identifier field in very first position (order)
+- Disable bookmarks
+- Disable historics
+- Disable prints
+- Disable social posts
+
+### Domains
+
+**Raw hints** (while no proper guide is available)
+
+### Fields
+
+**Raw hints** (while no proper guide is available)
 
 ### Lists
 
@@ -115,7 +140,6 @@ Guide per component
 - Disable the list mosaic
 - Disable Edit on list
 - Disable bulk update
-- Disable row-
 
 ### Forms
 
@@ -141,12 +165,17 @@ Guide per component
 - If you have Business Objects with a status, make sure you disable both the metrics and trays.
 - While the "left-only" is handled by the use `a11y-mode`, it's recommended to properly disable it while developping the application.
 
+### Links
+
+**Raw hints** (while no proper guide is available)
+
 Features' Compliance
 --------------------
 
 :::warning
 
 This part is based on Simplicité's [Feature Map](/docs/features), more precisely narrowed to the **Web App (use)** branch of features.  
+Even though it extends sometimes to a wider spectrum of features/components, in order to cover all possible needs.
 
 :::
 
@@ -165,6 +194,16 @@ If one application's requirements regarding RGAA compliance are strict, it is hi
 that are enlisted below as **C**, or to make sure the **PC** features that are used do follow the mentionned requirements.
 
 :::
+
+#### Business Objects
+
+- <rgaa-pc>**Constraints** : PC</rgaa-pc>
+- <rgaa-c>**Contextual Help** : C</rgaa-c>
+- <rgaa-nc>**Pivot Tables** : NC</rgaa-nc>
+- <rgaa-nc>**Agendas** : NC</rgaa-nc>
+- <rgaa-nc>**Place Maps** : NC</rgaa-nc>
+- <rgaa-nc>**Time Sheets** : NC</rgaa-nc>
+- <rgaa-nc>**Tree views** : NC</rgaa-nc>
 
 #### Lists
 
