@@ -348,6 +348,25 @@ responsibility — see [Custom HTML](#custom-html).
 
 <!-- TODO: raw hints and settings -->
 
+### Widgets
+
+<!-- TODO: quick explanation on ExternalObject usage & exception for those -->
+
+#### Counters
+
+<rgaa-nc>Not Compliant</rgaa-nc>
+<!-- TODO: hints and settings -->
+
+#### Carousel
+
+<rgaa-nc>Not Compliant</rgaa-nc>
+<!-- TODO: hints and settings -->
+
+#### Cards
+
+<rgaa-nc>Not Compliant</rgaa-nc>
+<!-- TODO: hints and settings -->
+
 Appendix: keyboard accessibility
 --------------------------------
 
