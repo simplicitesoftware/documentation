@@ -119,7 +119,7 @@ Do not start from a blank page. Let the agent write the first draft.
    description matches how someone would actually phrase the request, and the steps reflect
    what really worked rather than what the agent tried first.
 
-Writing the description {#writing-the-description}
+Writing the description
 ----------
 
 The body of a skill only matters if the description gets it loaded. Write the description
@@ -153,4 +153,4 @@ Troubleshooting
 | Skill does not appear in `get_skill("?")` at all | No `Permission` for the user's group |
 | Skill appears in the catalog but the agent never loads it | The description does not overlap with how requests are actually phrased. Rewrite it with the user's vocabulary. |
 | Edits to a static prompt have no effect | Static prompts compile at server startup. Restart, or move the content to a skill while iterating. |
-| Static prompt works for designers but not standard users | Static prompts compile separately per access profile. Check the permission covers the standard profile group too. |
+| Static prompt works for designers but not standard users | Static prompts compile separately per access profile. Check the grant covers the standard profile group too. |
