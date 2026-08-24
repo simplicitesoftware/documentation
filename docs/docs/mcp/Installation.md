@@ -75,6 +75,7 @@ accomplish the same thing — and without guidance, the LLM may take incorrect p
 
 Skills solve this problem. Each skill is a targeted prompt that gives the LLM the right approach for a given type of request,
 avoiding the trial-and-error exploration phase.
+To understand better when to use them, see [the following documentation](./write_skill.md).
 
 Improving over time
 --------

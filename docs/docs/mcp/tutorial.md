@@ -1,6 +1,6 @@
 ---
 sidebar_position: 95
-title: MCP Tutorial
+title: Create a module with the MCP server
 ---
 
 MCP Server Demo — Building InfraTrack
