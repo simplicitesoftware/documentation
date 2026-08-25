@@ -15,11 +15,11 @@ instruction invisible until it is too late to matter.
 Which mode do I need?
 -------
 
-> **Does this apply to every task the agent will ever do, and is it finished?**
+> **Does this apply to every task the agent will ever do ?** : **static**
 >
-> Yes to both: **static**. Anything else: **skill**.
+> **Does this apply to a specific use ?** : **skill**
 
-Most content belongs in a skill. Static is the exception, not the default.
+Most content belongs in a skill.
 
 Skill mode (`STARTER`)
 --------
@@ -54,30 +54,73 @@ Static prompts are compiled into the server's instructions once, at server start
 compiled separately for the designer and standard access profiles. Editing the content of a
 static prompt does nothing until that compilation is redone, which means a **server restart**.
 
-That restart requirement makes static the wrong home for anything you are still iterating
-on. Draft as a skill, promote to static once the wording has settled.
+That one-shot compilation also changes how permissions behave for static prompts, in a way that
+is easy to get wrong — see [Permissions](#permissions).
 
 Because it costs context on every request, a static prompt should be short and should be
 reserved for instructions that genuinely apply to everything: a house rule, a standing
 constraint, something you cannot trust a catalog lookup to surface in time.
 
-Access grants apply to both modes
+Permissions
 --------
+
+A prompt's audience is controlled by the platform's standard group permissions.
+
+### Permissions restrict, they do not publish
+
+| Permissions on the prompt | Who sees it |
+| --- | --- |
+| None | Everyone |
+| One or more | Only the groups named, and only those with `hasRead` true |
 
 :::caution
 
-An active `McpPrompt` is not enough on its own. It also needs at least one `McpPromptAccess`
-grant with `hasRead=true` for a group your intended users belong to. With no grant, the
-prompt is invisible to everyone, designers included.
+Adding the **first** permission flips a prompt from public to private. A prompt everyone could
+use becomes reserved to the single group you just named, and nobody else keeps access. That is
+intended, but it makes the first grant a far bigger change than any grant you add afterwards.
 
-This is the most common reason a new prompt "doesn't show up."
+:::
+
+If the ACL cannot be read at all, access is denied rather than granted.
+
+### Where the check happens
+
+Both modes are filtered, but not at the same moment.
+
+| | Skill | Static |
+| --- | --- | --- |
+| Evaluated | On every `get_skill` call | Once, when the MCP server is built |
+| Against | The calling user's own grant | The grant of whoever triggered that build |
+| Granularity | Per user | Per access profile (`designer` / `standard`) |
+
+For skills the check is exact. `get_skill("?")` hides what the caller may not read, and asking
+for a restricted skill by name is refused.
+
+For static prompts it is not. The instructions are compiled once per access profile and reused
+for everyone on that profile, which has three consequences:
+
+- Every user of a profile receives the **same** instructions, whatever their groups.
+- A static prompt can only reliably separate what the profile already separates: designers and
+  administrators on one side, everyone else on the other. A finer split (two business
+  departments for example) will not hold.
+- If the first user to open a profile is not in a granted group, **no** user of that profile
+  gets the prompt until the next restart.
+
+:::tip
+
+What this means in practice for a static prompt:
+
+- Meant for everyone → leave it without permissions.
+- Meant for designers → grant `DESIGNER` and `ADMIN`.
+- Meant for business users → restrict it explicitly. Left without permissions it also lands in
+  the designers' context, where business instructions usually contradict the designer prompt.
 
 :::
 
 Ordering
 ----------
 
-`mcpProOrder` does two unrelated things depending on the mode:
+`mcpProOrder` does two things depending on the mode:
 
 | Mode | What `mcpProOrder` controls |
 | --- | --- |
@@ -150,7 +193,8 @@ Troubleshooting
 
 | Symptom | Likely cause |
 | --- | --- |
-| Skill does not appear in `get_skill("?")` at all | No `Permission` for the user's group |
+| Skill does not appear in `get_skill("?")` at all | The prompt has permissions and none of them covers the user's group. A prompt with _no_ permission is visible to everyone, so absence of a grant is never the cause. |
+| A prompt reaches users who should not see it | It has no permission at all. Permissions restrict; without one it is public. |
 | Skill appears in the catalog but the agent never loads it | The description does not overlap with how requests are actually phrased. Rewrite it with the user's vocabulary. |
 | Edits to a static prompt have no effect | Static prompts compile at server startup. Restart, or move the content to a skill while iterating. |
-| Static prompt works for designers but not standard users | Static prompts compile separately per access profile. Check the grant covers the standard profile group too. |
+| Static prompt works for designers but not standard users | Instructions compile once per access profile, against the grant of whoever triggered that build. Grant a group covering _every_ user of the standard profile, then restart. |
