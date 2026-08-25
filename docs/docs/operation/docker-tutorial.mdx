@@ -263,7 +263,7 @@ sudo systemctl status docker
 podman login registry.simplicite.io
 ```
 </TabItem>
-<TabItem value="alamlinux8-centos-debian" label="AlmaLinux 8 or CentOS 7 or Debian">
+<TabItem value="alamlinux8-centos-debian" label="AlmaLinux 8/9/10 or CentOS 7 or Debian">
 ```shell
 sudo docker login registry.simplicite.io
 ```
@@ -281,17 +281,15 @@ To test if everything works fine you can try starting a Tomcat-only ephemeral co
 <Tabs>
 <TabItem value="almalinux9-almalinux10" label="AlmaLinux 9 or 10">
 ```shell
-podman run -it --rm -p 80:8080 registry.simplicite.io/server:<tag>
+podman run -it --rm -p 80:8080 registry.simplicite.io/server:latest
 ```
 </TabItem>
 <TabItem value="almalinux8-centos-debian" label="AlmaLinux 8 or CentOS 7 or Debian">
 ```shell
-sudo docker run -it --rm -p 80:8080 registry.simplicite.io/server:<tag>
+sudo docker run -it --rm -p 80:8080 registry.simplicite.io/server:latest
 ```
 </TabItem>
 </Tabs>
-
-Where `<tag>` is one of the available tags. E.g. `6-latest` = `6` or `5-latest` = `5`, etc.
 
 ### Docker compose
 

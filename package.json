@@ -28,7 +28,7 @@
     "@fortawesome/free-solid-svg-icons": "7.3.1",
     "@fortawesome/react-fontawesome": "3.5.0",
     "@mdx-js/react": "3.1.1",
-    "baseline-browser-mapping": "2.11.15",
+    "baseline-browser-mapping": "2.11.19",
     "clsx": "2.1.1",
     "docusaurus-plugin-image-zoom": "3.0.1",
     "markmap-lib": "0.18.12",
@@ -43,7 +43,7 @@
     "@docusaurus/module-type-aliases": "3.10.2",
     "@docusaurus/types": "3.10.2",
     "markdownlint-cli2": "0.23.2",
-    "npm-check-updates": "23.0.2"
+    "npm-check-updates": "23.1.0"
   },
   "browserslist": {
     "production": [

@@ -97,6 +97,21 @@ the compliance of the underlying feature, along with the settings required to ke
 
 ![A11Y_DEV icons meaning](img/a11y/icons.png)
 
+Significations for each icon (examples):
+
+- **Timestamp** has text-light colored icon -> non-applicable, `fld_compliance = NA`
+- **Bulk update** has danger colored icon -> non-compliant, `fld_compliance = NC`
+- **Copy enabled** has warning-colored icon -> partially-compliant, `fld_compliance = PC`
+- **Bulk delete** has success-colored icon -> compliant, `fild_compliance = C`
+
+If _no icon is visible_ then no verdict was given, assume that the feature/component was not evaluated yet,
+thus can be Precautiously be considered as _Non-Compliant_.
+
+For the _Partially Compliant_ features, a specific help is joined (same mechanism as the regular field-help)
+with the purpose of giving all required informations about the use and necessary precautions when using the feature.
+
+![A11Y_DEV partially-compliant help](img/a11y/pc-help.png)
+
 Keep it on for the whole design phase: it gives you the verdict at the moment you make the choice,
 which is cheaper than auditing afterwards.
 
@@ -179,14 +194,16 @@ Settings that apply to the object as a whole, whatever its views.
 | Feature | Status | Context | Setting | Notes |
 | --- | --- | --- | --- | --- |
 | Visible identifier field | — | Field | `obf_order` | Put the visible identifier field first in the order |
-| Bookmarks | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_btn_bookmark = no` | |
+| Bookmarks | <rgaa-c>C</rgaa-c> | Business Object | — | |
 | Historics | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_historic = no` | |
 | Prints | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_printable = no` | |
-| Social posts | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_social = no` | |
-| Constraints | <rgaa-pc>PC</rgaa-pc> | Business Object | — | |
+| Social posts | <rgaa-pc>PC</rgaa-pc> | Business Object | — | Relying on users not to use other language than the declared and supported one. |
+| Constraints | <rgaa-c>C</rgaa-c> | Business Object | — | |
 | Contextual help | <rgaa-c>C</rgaa-c> | Business Object | — | |
 | Copy | <rgaa-c>C</rgaa-c> | Business Object | — | `obo_copy` |
 | Export | <rgaa-c>C</rgaa-c> | Business Object | — | `obo_export` |
+
+<!-- TODO: Complete the features from notes & observations -->
 
 Alternative views are all <rgaa-nc>Non-Compliant</rgaa-nc> and must not be enabled: pivot tables,
 agendas, place maps, time sheets and tree views.
@@ -199,20 +216,21 @@ Set in the **List** section of the business object settings.
 
 | Feature | Status | Context | Setting | Notes |
 | --- | --- | --- | --- | --- |
-| Multi-column ordering | <rgaa-c>C</rgaa-c> | — | — | |
-| Pagination | <rgaa-c>C</rgaa-c> | — | — | |
-| Group-by | <rgaa-c>C</rgaa-c> | — | — | |
-| List preferences | <rgaa-c>C</rgaa-c> | — | — | |
-| List of values | <rgaa-c>C</rgaa-c> | — | — | |
-| List filtering | <rgaa-c>C</rgaa-c> | — | — | |
+| Multi-column ordering | <rgaa-c>C</rgaa-c> | Business Object | — | |
+| Pagination | <rgaa-c>C</rgaa-c> | Business Object | — | |
+| Group-by | <rgaa-c>C</rgaa-c> | Business Object | — | |
+| List preferences | <rgaa-c>C</rgaa-c> | Business Object | — | |
+| List of values | <rgaa-c>C</rgaa-c> | Business Object | — | |
+| List filtering | <rgaa-c>C</rgaa-c> | Business Object | — | |
 | Docked search | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_search_docked = no` | |
 | Cards mosaic | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_minifiable = no` | |
 | Create on list | <rgaa-pc>PC</rgaa-pc> | Business Object | `obo_list_edit`, `obo_btn_listedit` | |
 | Update on list | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_list_edit = no` | |
 | Bulk edit | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_btn_updall = no`, `obo_list_edit = no` | |
-| Bulk delete | <rgaa-c>C</rgaa-c> | — | — | |
+| Bulk delete | <rgaa-c>C</rgaa-c> | Business Object | — | |
 | Custom list actions | <rgaa-pc>PC</rgaa-pc> | Action | — | See [Actions](#actions) |
-| List search | <rgaa-pc>PC</rgaa-pc> | — | — | See [Search](#search) |
+| List search | <rgaa-pc>PC</rgaa-pc> | Business Object | — | See [Search](#search) |
+| Row reordering | <rgaa-nc>NC</rgaa-nc> | Business Object | — | |
 
 <!-- TODO: In practice — screenshots of the List section, OK/NOK -->
 
@@ -231,6 +249,8 @@ Set in the **Form** section of the business object settings. The layout itself i
 | Fields | <rgaa-pc>PC</rgaa-pc> | Field | `fld_rendering` | See [Fields](#fields) |
 | Child lists | <rgaa-pc>PC</rgaa-pc> | Link | — | See below |
 
+<!-- TODO: Complete the features from notes & observations -->
+
 #### Child lists
 
 | Feature | Status | Context | Setting | Notes |
@@ -239,6 +259,8 @@ Set in the **Form** section of the business object settings. The layout itself i
 | Virtual link | <rgaa-c>C</rgaa-c> | Link | — | Rendered as an embedded list — follow the [Lists](#lists) rules |
 | Inlined object | <rgaa-c>C</rgaa-c> | Link | — | Rendered as form elements — follow the Forms rules |
 | Pillbox | <rgaa-nc>NC</rgaa-nc> | Link | — | |
+
+<!-- TODO: Complete the features from notes & observations -->
 
 <!-- TODO: In practice — screenshots of the Template Editor, OK/NOK -->
 
@@ -262,6 +284,8 @@ the field form.
 | Referenced object | <rgaa-c>C</rgaa-c> | Field | — | |
 | Special | <rgaa-nc>NC</rgaa-nc> | Field | — | Only URL, Email, Phone and Password are compliant. Color, Coordinates and Notepad are NC |
 
+<!-- TODO: Complete the features from notes & observations -->
+
 All addons available on regular typed fields — string, int, longstring, boolean, enum — are compliant.
 
 #### Field-related features
@@ -270,6 +294,8 @@ All addons available on regular typed fields — string, int, longstring, boolea
 | --- | --- | --- | --- | --- |
 | Copy to clipboard | <rgaa-c>C</rgaa-c> | Field | — | |
 | Simple help | <rgaa-pc>PC</rgaa-pc> | Field | — | Text-only content is compliant. See [Custom HTML](#custom-html) |
+
+<!-- TODO: Complete the features from notes & observations -->
 
 Both the "label + input + help" and "label + input" displays render help compliantly.
 
