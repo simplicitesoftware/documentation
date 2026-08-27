@@ -98,7 +98,7 @@ YOUR_URL/api/mcp
 
 :::warning
 
-To expose it, the `FEATURE_FLAG` `System Parameter` needs to be updated:
+To expose it, the `FEATURE_FLAG` _System Parameter_ needs to be updated:
 
 ```json
 {
@@ -146,7 +146,7 @@ Enter `http://your_url/api/mcp` (or `https://your_instance.simplicite.io/mcp`)
 
 VSC should then open `something_something/AppData/Roaming/Code/User/mcp.json`
 
-The json needs to be updated to handle authorization.
+The JSON needs to be updated to handle authorization.
 
 If using a Bearer token instead of OAuth2 (see [Authentication](#authentication)), HTTP transport needs to be bridged to STDIO using `@nimbletools/mcp-http-bridge`.
 
