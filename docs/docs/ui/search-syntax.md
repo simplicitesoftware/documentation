@@ -170,7 +170,7 @@ JSON Filters are used in several contexts: API endpoint, link filters, widgets, 
 
 ### Order of null values
 
-As of v7.0, when a list is sorted on a field, null values can be forced first or last using a filter 
+As of v7.0, when a list is sorted on a field, null values can be forced first or last using a filter
 named `nulls__<field name>` alongside the corresponding `order__<field name>` filter.
 
 Accepted values:
