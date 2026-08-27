@@ -350,7 +350,7 @@ contrast with the header background, not only with its own label.
 
 | Feature | Status | Context | Setting | Notes |
 | --- | --- | --- | --- | --- |
-| Left menu | <rgaa-c>C</rgaa-c> | System parameter | `MENU_SETTINGS` — `left.collapse: "none"` | |
+| Left menu | <rgaa-c>C</rgaa-c> | System parameter | — | |
 | Top menu | <rgaa-nc>NC</rgaa-nc> | System parameter | `MENU_SETTINGS` — `top.active = false` | Chained popups break keyboard navigation |
 | Trays | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_tray = no` | Drag-and-drop only. Applies to every object with a status |
 | Metrics | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_dashboard = none` | Applies to every object with a status |
