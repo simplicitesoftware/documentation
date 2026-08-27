@@ -149,6 +149,8 @@ JSON Filters are used in several contexts: API endpoint, link filters, widgets, 
   "field1" : ">=1000 and <=5000",
   // ordered field
   "order__field2" : -1,
+  // order of nulls for an ordered field: "first", "last" or null (since 7.0)
+  "nulls__field2" : "first",
   // date range
   "dmin___date1" : "2021-01-01",
   "dmax___date2" : "2023-12-31 15:35:00",
@@ -164,4 +166,31 @@ JSON Filters are used in several contexts: API endpoint, link filters, widgets, 
   // meta-object
   "mofield": "User#%martin%"
 }
+```
+
+### Order of null values
+
+As of v7.0, when a list is sorted on a field, null values can be forced first or last using a filter 
+named `nulls__<field name>` alongside the corresponding `order__<field name>` filter.
+
+Accepted values:
+
+- `"first"`: null values come first
+- `"last"`: null values come last
+- `null`: reset and let the database decide (default order for the field)
+
+Front-end example:
+
+```javascript
+const list = await obj.search({
+  order__myField: -1,
+  nulls__myField: "first"
+})
+```
+
+Back-end example:
+
+```java
+obj.getField("myField").setOrder(-1);
+obj.getField("myField").setOrderNulls("first");
 ```
