@@ -11,24 +11,26 @@ This documentation is also in its early redaction stage.
 MCP Server
 ==========
 
-An MCP Server is a lightweight bridge that exposes an application's capabilities as a set of callable tools, following the Model Context Protocol.
+An MCP Server is a lightweight bridge that exposes an application's capabilities as a set of callable tools, following the Model Context Protocol
+designed to add relevant context to AI models (LLM).
+
 In Simplicité's case, this means any MCP-compatible LLM can connect to a running Simplicité instance and interact with it autonomously:
 exploring a module's structure, reading and writing business objects, managing records, and even editing server-side Java code,
 all through natural-language requests instead of manual configuration or scripting.
 
 Presentation
-----------
+------------
 
 The Simplicité MCP Server exposes a set of tools to any compatible LLM, organized into three categories, enabling it to interact with a Simplicité
- application autonomously.
+application autonomously.
 
-Discovery tools (get_ai_doc, get_md_documentation, find_object_by_name) let the LLM navigate a module: understand its structure, identify business
+Discovery tools (`get_ai_doc`, `get_md_documentation`, `find_object_by_name`) let the LLM navigate a module: understand its structure, identify business
 objects, and orient itself before acting.
 
-Manipulation tools cover standard CRUD operations as well as designer-oriented functions such as set_object_code, edit_object_code,
-and add_fields_to_object, which allow direct modification of a business object's configuration or code.
+Manipulation tools cover standard CRUD operations as well as designer-oriented functions such as `set_object_code`, `edit_object_code`,
+and `add_fields_to_object`, which allow direct modification of a business object's configuration or code.
 
-Finally, get_skill is the contextualization tool: it loads a targeted prompt into the LLM's context based on the nature of the request.
+Finally, `get_skill` is the contextualization tool: it loads a targeted prompt into the LLM's context based on the nature of the request.
 
 | Tool | Category | Description |
 | :--- | :--- | :--- |
@@ -49,15 +51,15 @@ Finally, get_skill is the contextualization tool: it loads a targeted prompt int
 | `get_skill` | Contextualization | Loads a targeted business prompt into the LLM's context based on the request type. |
 
 Intended Workflow
---------
+-----------------
 
 To interact effectively with Simplicité, the LLM should follow this lifecycle:
 
 1. **Discovery**:
    - Call `get_ai_doc(name, type="module")` to explore a module's objects, then `get_ai_doc(name, type="object", sections=[...])`
-   to get fields, states, actions, or hooks for a specific object. Fall back to `get_md_documentation` only if more detail is needed.
+     to get fields, states, actions, or hooks for a specific object. Fall back to `get_md_documentation` only if more detail is needed.
    - To create or edit Java logic, first call `get_object_code` to read the current source,
-   then use `edit_object_code` for targeted changes or `set_object_code` for full rewrites.
+     then use `edit_object_code` for targeted changes or `set_object_code` for full rewrites.
 2. **Identification**:
    - If the technical object name is uncertain, resolve it with `find_object_by_name` first.
    - Use `search_records` with filters to locate specific records and retrieve their `row_id`.
@@ -68,7 +70,7 @@ To interact effectively with Simplicité, the LLM should follow this lifecycle:
    - Trigger business logic with `call_action` rather than manual field updates when an action exists for the operation.
 
 Guiding the LLM towards best practices
--------
+--------------------------------------
 
 In theory, an LLM could handle any request by freely combining discovery and manipulation tools. In practice, Simplicité often offers several ways to
 accomplish the same thing — and without guidance, the LLM may take incorrect paths or produce inconsistent, even non-functional results.
@@ -78,7 +80,7 @@ avoiding the trial-and-error exploration phase.
 To understand better when to use them, see [the following documentation](./write_skill.md).
 
 Improving over time
---------
+-------------------
 
 When an LLM handles a request, it either succeeds on the first try or requires several attempts.
 In the latter case, it is asked to write the skill itself for that type of request.
@@ -86,7 +88,7 @@ The skill is then stored in McpPrompt and becomes immediately available for all 
 The system therefore becomes more reliable the more it is used.
 
 Built-in server configuration
----------------
+-----------------------------
 
 The MCP endpoint is exposed as a servlet at:
 
@@ -112,22 +114,23 @@ Two authentication modes are available to connect a client to the MCP endpoint:
 
 - **OAuth2 (recommended)** — the LLM client authenticates as a Simplicité user through a standard OAuth2 authorization flow.
   There is no token to generate, copy, or renew manually, and the client can be revoked at any time from the back-office.
-- **Bearer token** — a Simplicité user token is passed directly (via the `Authorization` header, or through the STDIO bridge
+- **Bearer token** — a Simplicité API user token is passed directly (via the `Authorization` header, or through the STDIO bridge
   for clients that don't support HTTP transport, as described in the sections below). Quicker to set up for a one-off test,
   but the token has to be generated and rotated by hand.
 
 Prefer OAuth2 whenever the client supports it.
 
-#### Registering an OAuth2 client (Application externe)
+#### Registering an OAuth2 client (external application)
 
-As dynamic client registration is not supported yet, each OAuth2 client must be pre-registered in the back-office:
+As dynamic client registration is not supported yet, each OAuth2 client must be pre-registered in the instance as a dedicated external application
 
-1. Go to `User and Rights --> External applications` and create a new record.
+1. Go to _User and Rights > External applications_ and create a new record.
 2. Fill in:
-   - **Nom**: a name identifying the client (e.g. `MISTRAL_OAUTH`, `VSCODE_OAUTH`)
+   - **Name**: a name identifying the client (e.g. `MISTRAL_OAUTH`, `VSCODE_OAUTH`)
    - **Redirect URI**: the callback URL provided by the client
    - **Scopes**: check at least `OpenID`
 3. Save. The **Client ID** and **Client secret** are generated, the secret is only ever shown once — copy it and store it securely.
+   You can however regenerate it if needed.
 
 ![Application externe OAuth2 configuration](./img/external_app.png)
 
@@ -173,11 +176,11 @@ If using a Bearer token instead of OAuth2 (see [Authentication](#authentication)
 
 ### For Claude Desktop/Claude Code
 
-**With OAuth:**
+#### With OAuth
 
 ![Option -> Connectors -> Add](./img/claude_oauth.png)
 
-**WIth Bearer Token:**
+#### WIth Bearer Token
 
 `Claude Desktop --> Settings --> Developer --> Edit Config --> claude_desktop_config.json`
 
