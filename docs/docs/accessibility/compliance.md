@@ -1,18 +1,36 @@
 ---
 sidebar_position: 20
 title: Compliance
-unlisted: true
-slug: /unlisted/compliance
 ---
 
 Détail des critères
 ===================
 
-:::info
+:::warning
 
-Afin d'être cohérent avec la langue de rédaction du RGAA, ce document est écrit en **français**.
-Une version **anglaise** est disponible [en cliquant ici](/unlisted/compliance_en) ; il s'agit d'une traduction,
-certaines notions du référentiel peuvent y perdre en précision.
+**[English below]**
+
+Afin de rester cohérent avec la langue de rédaction du RGAA, ce document est écrit en **français**. Une version **anglaise** est en cours de traduction.
+
+Ce document est en cours de rédaction. Nos travaux sur l'accessibilité numérique étant toujours en cours, les positionnements et les explications
+qu'il contient sont susceptibles d'évoluer d'ici la sortie de la version 7.
+
+Ce document porte exclusivement sur la version 7 de la plateforme. Il ne décrit pas la version 6.3.
+
+Plusieurs critères relèvent en tout ou partie du travail du designer. Les règles de conception et de paramétrage correspondantes font l'objet d'un
+document dédié, en cours de rédaction, qui sera publié et référencé ici dès qu'il sera disponible.
+
+---
+
+To stay consistent with the language the RGAA is written in, this document is written in **French**. An **English** version is being translated.
+
+This document is a work in progress. Our accessibility work is ongoing, so the positions and explanations it contains may still
+change before version 7 is released.
+
+This document covers version 7 of the platform only. It does not describe version 6.3.
+
+Several criteria depend, wholly or in part, on the designer's work. The corresponding design and configuration rules are covered
+in a dedicated document, currently being written, which will be published and linked here as soon as it is available.
 
 :::
 
@@ -105,7 +123,7 @@ La conformité d'une application livrée résulte de trois contributions distinc
 | Acteur | Responsabilité |
 | ------ | -------------- |
 | **La plateforme** | Rendre accessibles tous les composants natifs et fournir aux designers les mécanismes permettant de conformer leurs contenus. |
-| **Le designer** | Utiliser ces mécanismes correctement : libellés pertinents, alternatives textuelles des images métier, contrastes des thèmes personnalisés, conformité des objets externes. Les règles et bonnes pratiques sont détaillées dans [l'aide aux designers](/unlisted/designer). |
+| **Le designer** | Utiliser ces mécanismes correctement : libellés pertinents, alternatives textuelles des images métier, contrastes des thèmes personnalisés, conformité des objets externes. Les règles et bonnes pratiques sont détaillées dans l'aide aux designers. |
 | **L'utilisateur final** | Renseigner les alternatives des contenus qu'il dépose (images, documents) lorsque l'application le lui permet. |
 
 Certains éléments échappent structurellement à toute vérification par la plateforme : code des objets
@@ -118,7 +136,7 @@ Fonctionnalités d'accessibilité de la plateforme
 Au-delà de la mise en conformité des composants, la plateforme fournit quatre dispositifs dédiés,
 agissant à trois niveaux : l'utilisateur final, l'administrateur et le designer. Plusieurs
 positionnements du présent document en dépendent explicitement. Leur mise en œuvre est détaillée dans
-[l'aide aux designers](/unlisted/designer).
+l'aide aux designers.
 
 ### Le mode d'accessibilité (`a11y-mode`)
 
@@ -142,7 +160,7 @@ Les comportements pris en charge sont :
 :::warning
 
 Ce mode est un filet de sécurité sur des fonctionnalités non structurantes. Il ne corrige pas les
-composants identifiés comme non conformes dans [l'aide aux designers](/unlisted/designer) : une
+composants identifiés comme non conformes dans l'aide aux designers : une
 application soumise à une exigence stricte de conformité doit désactiver ces composants à la
 conception, indépendamment de l'activation du mode par l'utilisateur.
 
@@ -237,7 +255,7 @@ socle — soit **80,3 %** des critères applicables.
 
 Cet indicateur mesure la couverture du socle, et non la conformité d'une application livrée. Cette
 dernière dépend également des choix de conception du designer et de son respect des règles fournies
-dans [l'aide aux designers](/unlisted/designer) : une application construite sur un socle conforme peut
+dans l'aide aux designers : une application construite sur un socle conforme peut
 ne pas l'être, et l'écart se situe alors dans les critères de périmètre **Partagé** ou **Designer**.
 
 Thématiques
@@ -339,9 +357,9 @@ entièrement du designer.
 
 | Critère | Intitulé | Statut | Périmètre | Justification |
 | ------- | -------- | ------ | --------- | ------------- |
-| 7.1 | Chaque script est-il, si nécessaire, compatible avec les technologies d'assistance ? | <rgaa-nc>**Non Conforme**</rgaa-nc> | Socle | Ce critère est transversal à l'ensemble de l'interface : dans une application monopage, la quasi-totalité des composants est produite ou pilotée par des scripts. Les composants du socle ont fait l'objet d'un travail systématique sur les rôles, états et propriétés WAI-ARIA, et la majorité d'entre eux satisfait le critère. Certains composants complexes ou reposant sur des bibliothèques tierces — éditeurs de texte enrichi, éditeurs de code, sélecteurs de date — ne peuvent en revanche pas être déclarés compatibles en l'état. Le critère étant global, la présence de ces composants suffit à le placer en non-conformité. Les dispositifs `a11y-mode` et `A11Y_OVERRIDE` permettent de les neutraliser, et [l'aide aux designers](/unlisted/designer) précise, composant par composant, ceux qu'une application soumise à une exigence stricte doit écarter. |
+| 7.1 | Chaque script est-il, si nécessaire, compatible avec les technologies d'assistance ? | <rgaa-nc>**Non Conforme**</rgaa-nc> | Socle | Ce critère est transversal à l'ensemble de l'interface : dans une application monopage, la quasi-totalité des composants est produite ou pilotée par des scripts. Les composants du socle ont fait l'objet d'un travail systématique sur les rôles, états et propriétés WAI-ARIA, et la majorité d'entre eux satisfait le critère. Certains composants complexes ou reposant sur des bibliothèques tierces — éditeurs de texte enrichi, éditeurs de code, sélecteurs de date — ne peuvent en revanche pas être déclarés compatibles en l'état. Le critère étant global, la présence de ces composants suffit à le placer en non-conformité. Les dispositifs `a11y-mode` et `A11Y_OVERRIDE` permettent de les neutraliser, et l'aide aux designers précise, composant par composant, ceux qu'une application soumise à une exigence stricte doit écarter. |
 | 7.2 | Pour chaque script ayant une alternative, cette alternative est-elle pertinente ? | <rgaa-na>**Non Applicable**</rgaa-na> | Socle | Aucun script du socle ne dispose d'une alternative au sens du référentiel : l'accessibilité est recherchée dans le composant lui-même plutôt que par une version de remplacement. Le critère, conditionné à l'existence d'une alternative, est donc sans objet. |
-| 7.3 | Chaque script est-il contrôlable par le clavier et par tout dispositif de pointage ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Tous les déclencheurs de script sont atteignables et actionnables au clavier comme au pointeur : accès, déclenchement, validation, annulation et sortie. Les composants de navigation — menu principal, menu secondaire, menus déroulants — suivent les modèles de conception WAI-ARIA correspondants, avec navigation aux flèches directionnelles et activation par `Entrée` ou `Espace`. L'ensemble des raccourcis clavier est documenté dans [l'aide aux designers](/unlisted/designer). |
+| 7.3 | Chaque script est-il contrôlable par le clavier et par tout dispositif de pointage ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Tous les déclencheurs de script sont atteignables et actionnables au clavier comme au pointeur : accès, déclenchement, validation, annulation et sortie. Les composants de navigation — menu principal, menu secondaire, menus déroulants — suivent les modèles de conception WAI-ARIA correspondants, avec navigation aux flèches directionnelles et activation par `Entrée` ou `Espace`. L'ensemble des raccourcis clavier est documenté dans l'aide aux designers. |
 | 7.4 | Pour chaque script qui initie un changement de contexte, l'utilisateur est-il averti ou en a-t-il le contrôle ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Aucun changement de contexte n'est déclenché par la prise de focus ni par la modification de la valeur d'un champ : la saisie dans un formulaire ne provoque aucune action applicative. Les ouvertures de modales, les changements de zone de travail et les navigations résultent tous d'une action explicite de l'utilisateur. |
 | 7.5 | Dans chaque page web, les messages de statut sont-ils correctement restitués par les technologies d'assistance ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Les messages de statut sont porteurs de rôles adaptés à leur nature : `alert` pour les messages d'erreur et les avertissements requérant une attention immédiate, `progressbar` pour les indicateurs de chargement, `status` et `log` pour les retours d'information non urgents et les messages successifs. |
 
@@ -395,7 +413,7 @@ entièrement du designer.
 | 11.1 | Chaque champ de formulaire a-t-il une étiquette ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Tous les contextes de saisie sont couverts — formulaire d'objet, recherche, saisie en liste, modales de confirmation. L'étiquette est portée soit par un élément `label` associé au champ, soit par un nom accessible équivalent lorsque l'intitulé visible ne peut pas être associé structurellement. |
 | 11.2 | Chaque étiquette associée à un champ de formulaire est-elle pertinente ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | L'étiquette reprend l'intitulé du champ tel que défini dans le modèle de données. Sa pertinence dépend donc de la qualité des libellés retenus par le designer. |
 | 11.3 | Dans chaque formulaire, chaque étiquette associée à un champ de formulaire ayant la même fonction et répétée plusieurs fois dans une même page ou dans un ensemble de pages est-elle cohérente ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Les champs de même fonction reproduits dans plusieurs contextes — champ de recherche d'une liste, recherche globale, sélecteur d'objet lié — reçoivent des étiquettes identiques, générées par le même mécanisme. En saisie sur liste, chaque champ reçoit un nom accessible reprenant la ligne concernée, ce qui le distingue de ses homologues sans rompre la cohérence des intitulés. |
-| 11.4 | Dans chaque formulaire, chaque étiquette de champ et son champ associé sont-ils accolés ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Le rendu par défaut place l'étiquette au contact de son champ. Ce placement peut être défaits par une mise en page de formulaire qui dissocierait les deux ; [l'aide aux designers](/unlisted/designer) proscrit cette pratique. |
+| 11.4 | Dans chaque formulaire, chaque étiquette de champ et son champ associé sont-ils accolés ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Le rendu par défaut place l'étiquette au contact de son champ. Ce placement peut être défaits par une mise en page de formulaire qui dissocierait les deux ; l'aide aux designersproscrit cette pratique. |
 | 11.5 | Dans chaque formulaire, les champs de même nature sont-ils regroupés, si nécessaire ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Les boutons radio et les cases à cocher de même nature sont regroupés structurellement dans l'ensemble des contextes de saisie. |
 | 11.6 | Dans chaque formulaire, chaque regroupement de champs de même nature a-t-il une légende ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Le regroupement est doté d'une légende, portée soit par un élément `legend`, soit par le nom accessible du conteneur lorsque celui-ci porte un rôle de groupe. |
 | 11.7 | Dans chaque formulaire, chaque légende associée à un regroupement de champs de même nature est-elle pertinente ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | La légende reprend l'intitulé du champ dont les options constituent le groupe. Même réserve que pour le critère `11.2`. |
@@ -418,7 +436,7 @@ entièrement du designer.
 | 12.6 | Les zones de regroupement de contenus présentes dans plusieurs pages web (zones d'en-tête, de navigation principale, de contenu principal, de pied de page et de moteur de recherche) peuvent-elles être atteintes ou évitées ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Chaque zone est délimitée par l'élément de structure correspondant et atteignable par un lien d'évitement dédié. Des raccourcis clavier documentés permettent en outre de rejoindre directement le menu, la recherche globale, la première liste visible ou la zone suivante. |
 | 12.7 | Dans chaque page web, un lien d'évitement ou d'accès rapide à la zone de contenu principal est-il présent ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Des liens d'évitement sont présents en tête de document vers la zone de travail ainsi que vers l'en-tête, le menu principal et le pied de page. |
 | 12.8 | Dans chaque page web, l'ordre de tabulation est-il cohérent ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | L'ordre de tabulation suit l'ordre de lecture du document. Les composants déplacés visuellement le sont sans dissociation de leur position dans l'arbre du document, et la restitution du focus après fermeture d'une modale ramène sur l'élément déclencheur. |
-| 12.9 | Dans chaque page web, la navigation ne doit pas contenir de piège au clavier. Cette règle est-elle respectée ? | <rgaa-c>**Conforme**</rgaa-c> | Socle configuré | _Sous réserve de la neutralisation des éditeurs tiers._ Aucun composant du socle ne retient le focus. Les éditeurs de texte enrichi et de code, issus de bibliothèques tierces, constituent le cas résiduel ; ils sont neutralisés par le mode d'accessibilité et par la surcharge utilisateur, et [l'aide aux designers](/unlisted/designer) recommande de les écarter dans une application soumise à une exigence stricte. Les objets externes ne sont pas couverts. |
+| 12.9 | Dans chaque page web, la navigation ne doit pas contenir de piège au clavier. Cette règle est-elle respectée ? | <rgaa-c>**Conforme**</rgaa-c> | Socle configuré | _Sous réserve de la neutralisation des éditeurs tiers._ Aucun composant du socle ne retient le focus. Les éditeurs de texte enrichi et de code, issus de bibliothèques tierces, constituent le cas résiduel ; ils sont neutralisés par le mode d'accessibilité et par la surcharge utilisateur, et l'aide aux designer recommande de les écarter dans une application soumise à une exigence stricte. Les objets externes ne sont pas couverts. |
 | 12.10 | Dans chaque page web, les raccourcis clavier n'utilisant qu'une seule touche (lettre minuscule ou majuscule, ponctuation, chiffre ou symbole) sont-ils contrôlables par l'utilisateur ? | <rgaa-na>**Non Applicable**</rgaa-na> | Socle | Les raccourcis de la plateforme reposent sur une combinaison de touches. Les seules touches utilisées isolément — `Échap`, `Entrée`, `Tab` et les flèches directionnelles — ne sont pas des touches imprimables et n'entrent donc pas dans le champ de ce critère. |
 | 12.11 | Dans chaque page web, les contenus additionnels apparaissant au survol, à la prise de focus ou à l'activation d'un composant d'interface sont-ils si nécessaire atteignables au clavier ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Les seuls contenus concernés sont les bulles d'aide des formulaires et des listes, affichées à la prise de focus de leur élément déclencheur. |
 
@@ -467,9 +485,6 @@ contrôlé dans l'interface : contenus statiques HTML, aides de champ contenant 
 JavaScript, modèles de publication. Un contenu purement textuel y est sans risque ; dès lors qu'il
 contient du HTML, sa conformité incombe au designer.
 
-[L'aide aux designers](/unlisted/designer) recense ces points d'extension et précise, pour chacun, les
-conditions d'un usage conforme.
-
 ### Thèmes personnalisés
 
 La plateforme permet de personnaliser entièrement l'apparence de l'interface par la création de
@@ -517,9 +532,6 @@ certains liens ci-dessous pourront à terme pointer vers cette nouvelle version.
 - [Évaluation de la conformité](https://accessibilite.numerique.gouv.fr/obligations/evaluation-conformite/)
   et [modèle de déclaration d'accessibilité](https://accessibilite.numerique.gouv.fr/obligations/declaration-accessibilite/) —
   méthode d'audit et obligations déclaratives incombant à l'organisme qui exploite l'application.
-- [Aide aux designers Simplicité](/unlisted/designer) — conformité détaillée fonctionnalité par
-  fonctionnalité, règles de paramétrage à respecter et raccourcis clavier. C'est le document de
-  référence pour construire une application soumise à une exigence de conformité.
 - [Using ARIA](https://www.w3.org/TR/using-aria/), [ARIA in HTML](https://www.w3.org/TR/html-aria/) et
   [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/) — modèles de conception suivis
   par les composants interactifs du socle, notamment pour les menus, les modales et les listes.

@@ -21,7 +21,7 @@ building an application under strict compliance requirements.
 :::warning
 
 Digital accessibility is a continuous effort in our R&D: not every feature conforms to the RGAA yet.
-Our position on each of the 106 criteria is documented in [the compliance document](/unlisted/compliance).
+Our position on each of the 106 criteria is documented in _the compliance document_.
 
 :::
 
@@ -46,8 +46,8 @@ design time.
 
 End users toggle **Accessibility Mode** from the `.btn-a11y-mode` button in the application header.
 
-![Toggle accessibility mode - disabled](img/a11y/toggle-off.png)
-![Toggle accessibility mode - enabled](img/a11y/toggle-on.png)
+![Toggle accessibility mode - disabled](img/toggle-off.png)
+![Toggle accessibility mode - enabled](img/toggle-on.png)
 
 It disables or adapts interface behaviors and optional features that can block or hinder users relying
 on assistive technologies. It is absolute: when on, it applies to every affected feature at once.
@@ -84,18 +84,18 @@ dependencies:
 | Custom colors | Safety net for action and enum contrast |
 | User guides | Popup-driven flows break keyboard navigation and screen reader output |
 
-![A11Y_OVERRIDE user parameter](img/a11y/user.png)
+![A11Y_OVERRIDE user parameter](img/user.png)
 
 ### Designer `A11Y_DEV` sysparam
 
 Set the `A11Y_DEV` system parameter to `yes` to turn on the development helper.
 
-![A11Y_DEV system parameter](img/a11y/dev.png)
+![A11Y_DEV system parameter](img/dev.png)
 
 Every field then carries a `universal-access-circle` icon next to its label in the field form, reporting
 the compliance of the underlying feature, along with the settings required to keep it compliant.
 
-![A11Y_DEV icons meaning](img/a11y/icons.png)
+![A11Y_DEV icons meaning](img/icons.png)
 
 Significations for each icon (examples):
 
@@ -110,7 +110,7 @@ thus can be Precautiously be considered as _Non-Compliant_.
 For the _Partially Compliant_ features, a specific help is joined (same mechanism as the regular field-help)
 with the purpose of giving all required informations about the use and necessary precautions when using the feature.
 
-![A11Y_DEV partially-compliant help](img/a11y/pc-help.png)
+![A11Y_DEV partially-compliant help](img/pc-help.png)
 
 Keep it on for the whole design phase: it gives you the verdict at the moment you make the choice,
 which is cheaper than auditing afterwards.
@@ -471,7 +471,7 @@ Shortcuts can define further access keys.
 Resources
 ---------
 
-- [Our position on the RGAA criteria](/unlisted/compliance) — the platform's verdict on each of the
+- _Our position on the RGAA criteria_ — the platform's verdict on each of the
   106 criteria, and what is expected of you as a designer.
 - [Using ARIA](https://www.w3.org/TR/using-aria/)
 - [ARIA in HTML](https://www.w3.org/TR/html-aria/)
