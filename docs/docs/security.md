@@ -41,13 +41,15 @@ Securing application endpoints
 The Simplicité platform is designed to be secure, with nothing available without being explicitly granted.
 However, particular attention must be paid to the following aspects.
 
-There are 4 endpoints available on the Simplicité platform:
+There are 7 endpoints available on the Simplicité platform by default:
 
-- the UI endpoint
-- the API endpoint
-- the I/O endpoint
-- the Git endpoint
-- the Maven repository endpoint
+- the UI endpoint (/ui)
+- the API endpoint (/api)
+- the I/O endpoint (/io)
+- the Git endpoint (/git)
+- the health-check endpoint (/health)
+- the ping endpoint (/ping)
+- the Maven repository endpoint (/maven)
 
 All of them are secured either by the standard authentication mechanisms (Java server's auth modules, OAuth2/OpenIDConnect or SAML flows)
 that have been configured, except for the public features that are chosen to be exposed on the UI endpoint's public components (see below)
