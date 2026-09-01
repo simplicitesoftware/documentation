@@ -259,11 +259,23 @@ This hook is called when building the list of possible state transition. It may 
 ```java
 @Override
 public boolean isStateTransitionEnable(String fromStatus, String toStatus) {
-    // In this example above the transition between `PENDING` state and `VALIDATED` statuses is dynamically allowed to users of `MYGROUP`:
+    // In this example the transition between `PENDING` state and `VALIDATED` statuses is dynamically allowed if the value of the `objField1` field is `myAssertionValue`:
     if ("PENDING".equals(fromStatus) && "VALIDATED".equals(toStatus))
-        return getGrant().hasResponsibility("MYGROUP");
+        return "myAssertionValue".equals(getFieldValue("objField1"));
     return true;
 }
+```
+
+The `preStateTransition` hook is called just before pre validate hook in the case of a state transition.
+
+```java
+@Override
+public List<String> preStateTransition(String fromStatus, String toStatus)
+    List<String> msgs = new ArrayList<String>();
+    // In this example, the state transition is prevented if the value of the `objField1` field is empty:
+    if (("PENDING".equals(fromStatus) && "VALIDATED".equals(toStatus)) && Tool.isEmpty(getFieldValue("objField1")))
+        msgs.add(Message.formatError("ERR_TEST0", "Missing value for field", "objField1")); // Field error message
+    return msgs;
 ```
 
 ### Panel objects hook
