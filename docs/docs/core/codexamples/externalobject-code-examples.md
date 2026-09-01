@@ -1,6 +1,6 @@
 ---
 sidebar_position: 60
-title: Externalobject code examples
+title: External objects
 ---
 
 External object code examples
@@ -28,7 +28,7 @@ Unless explicitly mentioned otherwise the following examples are only suitable f
 and/or for versions 3.x and 4.0 **legacy UI** (still available for backward compatibility).
 
 For the 4.0 **responsive UI**'s single page custom components the implementation pattern is different,
-please refer to the dedicated section below [Responsive UI pattern](/docs/core/externalobject-code-examples#responsive-ui).
+please refer to the dedicated section below [Responsive UI pattern](/docs/core/codexamples/externalobject-code-examples#responsive-ui).
 :::
 
 ### Legacy UI
@@ -156,7 +156,7 @@ The responsive UI requires a JavaScript statement (even empty like above) to be 
 
 > **Note**: If you return a plain string it will be rendered as a **legacy page** (displayed in an iframe for backward compatibility).
 
-See [this section](/docs/core/externalobject-code-examples#responsive-ui) for other examples dedicated to the responsive UI.
+See [this section](/docs/core/codexamples/externalobject-code-examples#responsive-ui) for other examples dedicated to the responsive UI.
 
 Using resources and custom HTML/JavaScript/CSS
 ----------------------------------------------
@@ -297,7 +297,7 @@ public Object display(Parameters params) {
 Decorated standard pages includes the UI tools by default (non standard page need to include it explicitly, e.g. using `wp.appendUITools()`
 where `wp` is an instance of a sub class of `com.simplicite.webapp.web.WebPage`).
 
-The usage of the UI tools APIs itself is described in details in another [document](/docs/core/ui-tools-code-examples).
+The usage of the UI tools APIs itself is described in details in another [document](/docs/core/codexamples/ui-tools-code-examples).
 Here is just a simple **standard** page example:
 
 ```javascript

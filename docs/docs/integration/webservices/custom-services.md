@@ -66,7 +66,8 @@ The pool size can be adjusted/limited using the `WEBSERVICES_EXTOBJECTPOOL_MAXPE
 Service implementation
 ----------------------
 
-A custom service is just a plain external object (check [this document](/docs/core/externalobject-code-examples) for general principles of external objects).
+A custom service is just a plain external object
+(check [this document](/docs/core/codexamples/externalobject-code-examples) for general principles of external objects).
 
 In particular this external object needs to be granted to the user that will be calling it on the API endpoint.
 

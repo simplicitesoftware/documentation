@@ -1,6 +1,6 @@
 ---
 sidebar_position: 150
-title: Modeler code hooks
+title: Modeler
 ---
 
 SVG Modeler hooks
@@ -10,8 +10,6 @@ This document describes the **SVG Modeler** hooks that can be implemented to put
 
 None of these hooks needs to be implemented. You need to implement one or several of these hooks if you want to apply
 out some dynamic business logic that goes beyond what can be configured.
-
-To get documentation about previous version of hooks using **Canvas** on legacy UI: [Canvas code examples](/docs/core/modeler-code-hooks-legacy)
 
 Abstract
 --------

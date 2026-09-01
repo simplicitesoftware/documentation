@@ -1,6 +1,6 @@
 ---
 sidebar_position: 140
-title: UI tools code examples
+title: UI tools
 ---
 
 JavaScript UI tools code examples

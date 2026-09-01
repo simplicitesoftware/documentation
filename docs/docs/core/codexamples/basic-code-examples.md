@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-title: Basic code examples
+title: Basic code
 ---
 
 Basic code examples
@@ -86,7 +86,7 @@ Note that if the log code is omitted the `log` method is the equivalent to the d
 
 The messages are actually displayed depending on the log appenders configuration and on the log code associated configuration.
 
-Designers can [activate the hooks tracer](/docs/core/objects/businessobject-code-hooks#trace-hooks) during development phase for easier debugging or understanding.
+Designers can [activate the hooks tracer](/docs/core/hooks/businessobject-code-hooks#trace-hooks) during development phase for easier debugging or understanding.
 
 Business objects manipulation
 -----------------------------

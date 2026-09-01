@@ -1,12 +1,12 @@
 ---
 sidebar_position: 100
-title: Custom actions examples
+title: Custom actions
 ---
 
 Custom action examples
 ======================
 
-Please refer to [basic code examples](/docs/core/basic-code-examples) document for naming conventions and logging strategies.
+Please refer to [basic code examples](/docs/core/codexamples/basic-code-examples) document for naming conventions and logging strategies.
 For client-side JavaScript custom actions, see [Basic code examples (front-end)](/docs/front/basic-code-examples#client-side-custom-actions).
 
 Server-side custom action

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 30
-title: Objects code hooks
+title: Business objects
 ---
 
 Business objects hooks
@@ -36,8 +36,8 @@ However, this document organizes them into four main categories:
 
 Extra sources of documentation and examples:
 
-- [basic code examples](/docs/core/basic-code-examples)
-- [advanced code examples](/docs/core/advanced-code-examples)
+- [basic code examples](/docs/core/codexamples/basic-code-examples)
+- [advanced code examples](/docs/core/codexamples/advanced-code-examples)
 - [forum](https://communicty.simplicite.io)
 - [github](https://github.com/simplicitesoftware)
 - [Javadoc](https://platform.simplicite.io/current/javadoc/com/simplicite/util/ObjectDB.html)
@@ -228,7 +228,7 @@ public boolean isActionEnable(String[] row, String action) {
 }
 ```
 
-> See [this document](/docs/core/custom-actions-examples) for details on how to implement custom actions.
+> See [this document](/docs/core/codexamples/custom-actions-examples) for details on how to implement custom actions.
 
 ### Publication processing right enabling/disabling hook
 

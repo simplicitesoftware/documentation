@@ -1,6 +1,6 @@
 ---
 sidebar_position: 110
-title: Documents code examples
+title: Documents
 ---
 
 Document code examples

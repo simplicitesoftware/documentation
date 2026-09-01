@@ -1,6 +1,6 @@
 ---
 sidebar_position: 160
-title: Third party apis examples
+title: Third party APIs
 ---
 
 Third party APIs examples
@@ -127,7 +127,7 @@ public class Calendar implements java.io.Serializable {
 
 #### Code snippet using a business object
 
-You can now use the previous script on a business object hook and create an event. See [business object hooks code examples](/docs/core/objects/businessobject-code-hooks)
+You can now use the previous script on a business object hook and create an event. See [business object hooks code examples](/docs/core/hooks/businessobject-code-hooks)
 
 Example of a business object where event are created on google calendar. Date has to be on RFC3339 format.
 Simplicite provide method to change date to this specific format.
@@ -366,7 +366,7 @@ public class ExternalEmail implements java.io.Serializable {
 
 #### Code snippet using a business Object
 
-You can now use the previous script on a business object hook and send an email. See [business object hooks code examples](/docs/core/objects/businessobject-code-hooks)
+You can now use the previous script on a business object hook and send an email. See [business object hooks code examples](/docs/core/hooks/businessobject-code-hooks)
 
 ```Java
 ExternalEmail e = new ExternalEmail(getGrant());

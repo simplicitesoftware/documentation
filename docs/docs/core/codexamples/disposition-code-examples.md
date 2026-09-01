@@ -1,6 +1,6 @@
 ---
 sidebar_position: 70
-title: Disposition code examples
+title: Dispositions
 ---
 
 Custom disposition example

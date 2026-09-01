@@ -277,7 +277,7 @@ These tools are standard external objects that **should** be inhibited by removi
 
 ### Data encryption
 
-Built-in (see the Data Encryption part in [code examples](/docs/core/advanced-code-examples)) or third party data encryption should be used,
+Built-in (see the Data Encryption part in [code examples](/docs/core/codexamples/advanced-code-examples)) or third party data encryption should be used,
 especially when the database access is not limited to the application.
 
 ### Internal authentication

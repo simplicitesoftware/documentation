@@ -1,6 +1,6 @@
 ---
-sidebar_position: 120
-title: Advanced code examples
+sidebar_position: 20
+title: Advanced code
 ---
 
 Advanced code examples
@@ -9,7 +9,7 @@ Advanced code examples
 These examples illustrate more complex use cases for implementing business logic in Java within Simplicité. They are intended for developers
 already familiar with the basics of object modeling and Java integration.
 
-Before diving in, please refer to the [basic code examples](/docs/core/basic-code-examples) for guidelines on naming conventions and logging
+Before diving in, please refer to the [basic code](/docs/core/codexamples/basic-code-examples) for guidelines on naming conventions and logging
 strategies to ensure consistency and maintainability.
 
 Sharing parameters

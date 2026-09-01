@@ -36,6 +36,6 @@ This will open the modeler.
 :::note[Notes]
 
 - Only templates of type `ModelBusinessObject` and `ModelPhysicalObject` are displayed in the Data Models menu.
-- The behavior of custom Data Models can be customized via [modeler code hooks](/docs/core/modeler-code-hooks).
+- The behavior of custom Data Models can be customized via [modeler code hooks](/docs/core/hooks/modeler-code-hooks).
 
 :::

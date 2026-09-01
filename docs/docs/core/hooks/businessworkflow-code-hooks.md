@@ -1,6 +1,6 @@
 ---
 sidebar_position: 40
-title: Businessworkflow code hooks
+title: Business workflows
 ---
 
 Business workflow hooks

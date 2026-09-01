@@ -94,8 +94,8 @@ instance/context (e.g. `initList` vs `initForm`, main instance vs panel vs treev
 paying the cost (queries, computations) where it is not needed.
 
 - **See also**:
-  - [Business object code hooks](/docs/core/objects/businessobject-code-hooks)
-  - [Platform hooks](/docs/core/platform-hooks)
+  - [Business object code hooks](/docs/core/hooks/businessobject-code-hooks)
+  - [Platform hooks](/docs/core/hooks/platform-hooks)
 
 ### How do I hide the **Create** button in a list (often a **child list**) without breaking other buttons/actions?
 
@@ -129,9 +129,9 @@ Then combine conditions (often an OR between “current user = owner” and “u
 group/responsibility X”) to match the requirement.
 
 - **See also**:
-  - [Permissions](/docs/core/permissions)
+  - [Permissions](/make/usersrights/permissions)
   - [Expressions](/docs/core/expressions)
-  - [Custom actions examples](/docs/core/custom-actions-examples)
+  - [Custom actions examples](/docs/core/codexamples/custom-actions-examples)
 
 ### Why don’t some `initXXX` hooks run through the REST API (RESTMappedObject)?
 
@@ -143,8 +143,8 @@ invoked from multiple channels.
 
 - **See also**:
   - [REST services](/docs/integration/webservices/rest-services)
-  - [Platform hooks](/docs/core/platform-hooks)
-  - [Business object code hooks](/docs/core/objects/businessobject-code-hooks)
+  - [Platform hooks](/docs/core/hooks/platform-hooks)
+  - [Business object code hooks](/docs/core/hooks/businessobject-code-hooks)
 
 Documents / email
 -----------------
@@ -165,7 +165,7 @@ Two common causes:
   check permissions.
 
 - **See also**:
-  - [Documents code examples](/docs/core/documents-code-examples)
+  - [Documents code examples](/docs/core/codexamples/documents-code-examples)
   - [Email how-to](/docs/misc/email-howto)
   - [Logging](/docs/misc/logging)
   - [PDF publications](/docs/integration/publications/pdf)
@@ -179,7 +179,7 @@ to serve the file.
 
 - **See also**:
   - [Security](/docs/security)
-  - [Documents code examples](/docs/core/documents-code-examples)
+  - [Documents code examples](/docs/core/codexamples/documents-code-examples)
   - [External objects](/tutorial/enhancing/external-object)
 
 SSO / OpenID Connect / Azure AD
@@ -242,7 +242,7 @@ If you must trigger a reset from code, a dedicated action can call `SystemTool.r
 
 - **See also**:
   - [System parameters list](/docs/core/system-parameters-list)
-  - [Platform hooks](/docs/core/platform-hooks)
+  - [Platform hooks](/docs/core/hooks/platform-hooks)
   - [Docker operation](/docs/operation/docker)
 
 ### Performance: why can large/bulk PDF exports saturate CPU/heap, and what safeguards should I apply?
@@ -282,7 +282,8 @@ business workflow hooks, adapters, publications, and dispositions.
 
 > Are there any limitations or common pitfalls in server-side scripts that I should be aware of?
 
-**Yes.** Please refer to [this documentation](/docs/core/basic-code-examples) for important information on best practices and potential issues to avoid.
+**Yes.** Please refer to [this documentation](/docs/core/codexamples/basic-code-examples)
+for important information on best practices and potential issues to avoid.
 
 ### Integration / APIs
 

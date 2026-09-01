@@ -395,7 +395,7 @@ Bind functions to global UI events on the disposition `SCRIPT` resource:
 ### Client-side custom actions
 
 A client-side action corresponds to an action with a value in the _URL_ field.
-For plain URLs and server-side actions, see [Custom actions examples](/docs/core/custom-actions-examples).
+For plain URLs and server-side actions, see [Custom actions examples](/docs/core/codexamples/custom-actions-examples).
 
 Configure the _URL_ field with a JavaScript pseudo-URL (starting with `javascript:`).
 Define the handler as a method on the business object `CLASS`:
@@ -423,5 +423,5 @@ Client-side custom actions are **not available** through the webservices APIs.
 
 :::note
 There are many other methods in `$ui`, `$app`, and `Simplicite.UI` for widgets, exports, publications, and third-party API integration.
-Refer to the [JSDoc](https://platform.simplicite.io/current/jsdoc/global.html) and [UI tools code examples](/docs/core/ui-tools-code-examples).
+Refer to the [JSDoc](https://platform.simplicite.io/current/jsdoc/global.html) and [UI tools code examples](/docs/core/codexamples/ui-tools-code-examples).
 :::
