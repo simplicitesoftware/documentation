@@ -270,12 +270,13 @@ The `preStateTransition` hook is called just before pre validate hook in the cas
 
 ```java
 @Override
-public List<String> preStateTransition(String fromStatus, String toStatus)
+public List<String> preStateTransition(String fromStatus, String toStatus) {
     List<String> msgs = new ArrayList<String>();
     // In this example, the state transition is prevented if the value of the `objField1` field is empty:
     if (("PENDING".equals(fromStatus) && "VALIDATED".equals(toStatus)) && Tool.isEmpty(getFieldValue("objField1")))
         msgs.add(Message.formatError("ERR_TEST0", "Missing value for field", "objField1")); // Field error message
     return msgs;
+}
 ```
 
 ### Panel objects hook
