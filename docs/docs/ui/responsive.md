@@ -100,8 +100,11 @@ Then the user can be allowed to open several work areas:
 
 In accessibilty mode, this feature is disabled and the user will always work in a single work area.
 
-Each work-area has an isolated navigation tab to work on several objects at the same time: object are instantiated per navigation.
-The first one is not suffixed to be compliant with the legacy V6, the others are suffixed with the navigation uniqueId:
+Each work-area has an isolated navigation tab to work on several objects at the same time: 
+
+- Objects are instantiated per navigation.
+- The first one is not suffixed to be compliant with the legacy V6.
+- the others are suffixed with the navigation uniqueId:
 
 | Work‑area         | Navigator uniqueId | BO instance name (example) |
 |-------------------|--------------------|----------------------------|
