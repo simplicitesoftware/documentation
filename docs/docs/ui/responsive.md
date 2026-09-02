@@ -112,8 +112,11 @@ Each work-area has an isolated navigation tab to work on several objects at the 
 | 2nd area (id 1)   | `_nav1`            | `the_ajax_Client_nav1`     |
 | nth area (id n)   | `_nav<n>`          | `the_ajax_Client_nav<n>`   |
 
-In the user preferences dropdown, when both modes are available, the user can switch from single work area to multiple work areas.
-Each user navigation is stored per user/scope in a user system parameters named `WORKAREA-<MONO|MULTI> <scope> <login>`,
+In the user preferences dropdown, when both modes are available,
+the user can switch from single work area to multiple work areas.
+
+Each user navigation is stored per user/scope 
+in a user system parameter named `WORKAREA-<MONO|MULTI> <scope> <login>`,
 and will be restored in several conditions on UI reload:
 
 | Exit type            | Single work-area | Multi work-area |
@@ -125,9 +128,11 @@ and will be restored in several conditions on UI reload:
 | switch user          | home page        | restore         |
 | clear cache          | home page        | restore         |
 
-(*) The navigation JSON serialization is in best effort, because every UI component/widget states are not fully serializable.
+(*) The navigation JSON serialization is in best effort, 
+because every UI component/widget states are not fully serializable.
 
-- Restoration is useful to return to the same work area after a reload, but not to restore a previous session.
+- Restoration is useful to return to the same work area after a reload,
+  but not to restore a previous session.
 - For example, a list will restore the current filters but will lose any unsaved updates.
 
 Global properties
