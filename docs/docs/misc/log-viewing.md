@@ -38,7 +38,13 @@ period of time split over different files, or the output of different parts of t
 lnav simplicite.log tomcat.log proxy.log
 ```
 
+:::info
+lnav can also directly process compressed `.tgz` log files
+:::
+
 ### Filtering
+
+#### By log message
 
 Press tab to open the filtering panel, and enter a regex to filter or filter out logs. Filtering the following logs (Cron and Garbage collector)
 can greatly improve overall readability. You can easily deactivate a filter with the spacebar in the filtering panel (`Tab`).
@@ -47,18 +53,31 @@ can greatly improve overall readability. You can easily deactivate a filter with
 CronManager|ICORECM004|ICORECM005|MEMGC|ProcessScheduler
 ```
 
-You could also install this trigger to automatically set the filter when the
+You could also install this trigger to automatically set the filter when the Simplicité log format is detected (see below).
+
+#### By log level
+
+Use the `:set-min-log-level warning` to focus on potential problems.
 
 ### Searching
 
 Use `/` to search using a regex, or use [chronological navigation](https://docs.lnav.org/en/v0.13.1/hotkeys.html#chronological-navigation)
 to fastly navigate to the next hour for example.
 
-### Timeline view
+### High-level overviews
+
+#### Timeline view
 
 Press `i` to get a histogram view of the repartition of the error levels over time:
 
 ![timeline](img/log-viewing/lnav-timeline.png)
+
+#### Message counts
+
+Use `;.msgformats` to trigger a SQL query that will count the number of log lines that have a given log text.
+Specially usefull with `:set-min-log-level warning`
+
+![timeline](img/log-viewing/lnav-error-count.png)
 
 ### Simplicité logs parser
 
