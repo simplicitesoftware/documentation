@@ -100,7 +100,7 @@ Then the user can be allowed to open several work areas:
 
 In accessibilty mode, this feature is disabled and the user will always work in a single work area.
 
-Each work-area has an isolated navigation tab to work on several objects at the same time: 
+Each work-area has an isolated navigation tab to work on several objects at the same time:
 
 - Objects are instantiated per navigation.
 - The first one is not suffixed to be compliant with the legacy V6.
@@ -115,7 +115,7 @@ Each work-area has an isolated navigation tab to work on several objects at the 
 In the user preferences dropdown, when both modes are available,
 the user can switch from single work area to multiple work areas.
 
-Each user navigation is stored per user/scope 
+Each user navigation is stored per user/scope
 in a user system parameter named `WORKAREA-<MONO|MULTI> <scope> <login>`,
 and will be restored in several conditions on UI reload:
 
@@ -128,7 +128,7 @@ and will be restored in several conditions on UI reload:
 | switch user          | home page        | restore         |
 | clear cache          | home page        | restore         |
 
-(*) The navigation JSON serialization is in best effort, 
+(*) The navigation JSON serialization is in best effort,
 because every UI component/widget states are not fully serializable.
 
 - Restoration is useful to return to the same work area after a reload,
