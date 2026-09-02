@@ -98,6 +98,8 @@ Then the user can be allowed to open several work areas:
 - thru UI contextual menu: right-click on main menu, list row, open reference...
 - the areas can be moved by dragging the title bar, resized and closed.
 
+In accessibilty mode, this feature is disabled and the user will always work in a single work area.
+
 Each work-area has an isolated navigation tab to work on several objects at the same time: object are instantiated per navigation.
 The first one is not suffixed to be compliant with the legacy V6, the others are suffixed with the navigation uniqueId:
 
