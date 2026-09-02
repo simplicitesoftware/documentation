@@ -74,7 +74,7 @@ Press `i` to get a histogram view of the repartition of the error levels over ti
 
 #### Message counts
 
-Use `;.msgformats` to trigger a SQL query that will count the number of log lines that have a given log text. 
+Use `;.msgformats` to trigger a SQL query that will count the number of log lines that have a given log text.
 Specially usefull with `:set-min-log-level warning`
 
 ![timeline](img/log-viewing/lnav-error-count.png)
