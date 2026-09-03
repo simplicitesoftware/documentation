@@ -135,6 +135,17 @@ because component/widget states are not fully serializable:
   but not to restore the previous session literally.
 - For example, a list will restore the last filters and pagination but will lose any unsaved updates.
 
+Simplicité UI API always use selectors based on class name or data attributes in the work area container (`ctn` is always passed to the functions).
+
+- fields are now selected by their `name` attribute, which is unique per form/row, so they are not impacted by this change.
+- when IDs are required by HTML syntax (ex `<label for="myField">`), the UI will use a suffix to make IDs unique per work-area.
+  So work IDs are not deterministic anymore and should not be used in the application code.
+
+To use the multi work-area mode, the application code should:
+
+- use selector based on container context: ex `$(".myWidget", ctn)` instead of unique `$("#myWidget")`.
+- to avoid conflicts between work areas using several instances of the same component.
+
 Global properties
 -----------------
 
