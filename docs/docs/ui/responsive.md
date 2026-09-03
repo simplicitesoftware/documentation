@@ -143,7 +143,8 @@ Simplicité UI API always use selectors based on class name or data attributes i
 
 To use the multi work-area mode, the application code should:
 
-- use selector based on container context: ex `$(".myWidget", ctn)` instead of unique `$("#myWidget")`.
+- use selector based on container context: ex `$(".myWidget", ctn)` instead of `$("#myWidget")`.
+- use `$ui.getField(ctn, obj, "myField", index)` to access fields in the container instead of `$("#field_myField")`.
 - to avoid conflicts between work areas using several instances of the same component.
 
 Global properties
