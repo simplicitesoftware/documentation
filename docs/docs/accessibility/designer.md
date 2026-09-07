@@ -309,7 +309,7 @@ the field form.
 | --- | --- | --- | --- | --- |
 | Copy to clipboard | <rgaa-c>C</rgaa-c> | Field | — | |
 | Simple help | <rgaa-pc>PC</rgaa-pc> | Field | — | Text-only content is compliant. See [Custom HTML](#custom-html) |
-| Field display option | <rgaa-pc>PC</rgaa-pc> | Field | — | |
+| Field display | <rgaa-pc>PC</rgaa-pc> | Template Editor | — | Label and Input mustn't be dissociated visually, only `Label + Input` and `Label + Input + Help` are compliant. |
 
 <!-- TODO: Complete the features from notes & observations -->
 
