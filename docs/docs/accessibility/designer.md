@@ -295,14 +295,13 @@ the field form.
 | Number | <rgaa-pc>PC</rgaa-pc> | Field | `fld_rendering` | Progress bars, Stars and With calculator are NC |
 | Date / Time | <rgaa-pc>PC</rgaa-pc> | Field | — | Use a plain text field with a date format instead. `a11y-mode` replaces the picker with a plain input and a format hint |
 | Enum | <rgaa-c>C</rgaa-c> | Field | — | |
+| Enum Multi | <rgaa-pc>PC</rgaa-pc> | Field | `fld_rendering` | Only `Horizontal` and `Vertical` (HCB, VCB) are compliant renderings. |
 | File | <rgaa-c>C</rgaa-c> | Field | — | |
 | Image | <rgaa-pc>PC</rgaa-pc> | Field | — | `alt` is exposed per image. See [Complex images](#complex-images) |
 | Referenced object | <rgaa-c>C</rgaa-c> | Field | — | |
-| Special | <rgaa-nc>NC</rgaa-nc> | Field | — | Only URL, Email, Phone and Password are compliant. Color, Coordinates and Notepad are NC |
+| Special | <rgaa-pc>PC</rgaa-pc> | Field | — | Only URL, Email, Phone and Password are compliant. Color, Coordinates and Notepad are NC |
 
 <!-- TODO: Complete the features from notes & observations -->
-
-All addons available on regular typed fields — string, int, longstring, boolean, enum — are compliant.
 
 #### Field-related features
 
@@ -310,6 +309,7 @@ All addons available on regular typed fields — string, int, longstring, boolea
 | --- | --- | --- | --- | --- |
 | Copy to clipboard | <rgaa-c>C</rgaa-c> | Field | — | |
 | Simple help | <rgaa-pc>PC</rgaa-pc> | Field | — | Text-only content is compliant. See [Custom HTML](#custom-html) |
+| Field display option | <rgaa-pc>PC</rgaa-pc> | Field | — | |
 
 <!-- TODO: Complete the features from notes & observations -->
 
