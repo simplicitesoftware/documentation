@@ -54,10 +54,10 @@ To create a notification for a Validated Order, follow the steps below :
     - Group : **TRN_SUPERADMIN**
 11. Click **Save & Close**
 
-Adding the `NOTI_USER` group to the `TRN_SUPERADMIN` profile
+Adding the `NOTI_READER` group to the `TRN_SUPERADMIN` profile
 ------------------------------------------------------------
 
-To add the `NOTI_USER` group to the `TRN_SUPERADMIN` profile, follow the steps below :
+To add the `NOTI_READER` group to the `TRN_SUPERADMIN` profile, follow the steps below :
 
 1. In the **Users and rights > Groups** menu, open **TRN_SUPERADMIN**
 2. In the **Profile members** panel, click **Create**
