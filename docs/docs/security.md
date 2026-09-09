@@ -408,6 +408,11 @@ Don't do it if the compilation is not disabled as described above.
 
 :::
 
+### Document preview
+
+If it is not used or if it is considered as a potential security/confidentiality concern, the document preview feature of the UI
+should be disabled by setting the `USE_DOC_PREVIEW` system parameter to `no`.
+
 #### Websockets
 
 The `/ui/<events|lsp|...>` endpoints provides websocket services to provide client-side access to some server-side services: logs, LSP, etc.
