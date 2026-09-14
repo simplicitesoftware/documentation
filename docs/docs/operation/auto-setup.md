@@ -132,7 +132,7 @@ modules:
     version: "1.4.3"
 ```
 
-:::warn
+:::warning
 If no version is specified, the module will be re-imported at each startup, which is generally bad practice.
 :::
 
