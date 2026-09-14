@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "ncu": "npm-check-updates",
-    "lint": "markdownlint-cli2 \"docs/**/*.md\" \"docs/**/*.mdx\" README.md",
+    "lint": "markdownlint-cli2 \"docs/**/*.md\" \"docs/**/*.mdx\" README.md && node ./scripts/check-evol-comments.mjs",
     "generate-version": "python3 ./generateVersionsPage.py",
     "init-make-doc": "python3 ./scripts/init_make_doc.py",
     "docusaurus": "docusaurus",
