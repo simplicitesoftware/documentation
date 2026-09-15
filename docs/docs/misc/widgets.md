@@ -4,14 +4,14 @@ title: Widgets
 ---
 
 Widgets
-====================
+=======
 
 Widgets are easily configurable external objects, usually used to compose home pages.
 
 ![Home page example](img/widgets/home.png)
 
-How to integrate (reminder)
----------------------------
+How to integrate widgets
+------------------------
 
 This is just a reminder, as widgets just build on the existing external objects
 
