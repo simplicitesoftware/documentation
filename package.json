@@ -28,15 +28,15 @@
     "@fortawesome/free-solid-svg-icons": "7.3.1",
     "@fortawesome/react-fontawesome": "3.5.0",
     "@mdx-js/react": "3.1.1",
-    "baseline-browser-mapping": "2.11.21",
+    "baseline-browser-mapping": "2.11.24",
     "clsx": "2.1.1",
     "docusaurus-plugin-image-zoom": "3.0.1",
     "markmap-lib": "0.18.12",
     "markmap-view": "0.18.12",
     "prism-react-renderer": "2.4.1",
     "prismjs": "1.30.0",
-    "react": "19.2.8",
-    "react-dom": "19.2.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
     "simplicite-documentation": "file:"
   },
   "devDependencies": {
