@@ -1,6 +1,6 @@
 ---
-sidebar_position: 10
-title: Docker
+sidebar_position: 12
+title: Docker details
 ---
 
 Simplicité on Docker
@@ -57,22 +57,19 @@ and build a new child image adding the application package of the instance templ
 > which has access (`docker save registry.simplicite.io/<server|platform:<tag>> > simplicite-<server|platform>[-<tag>].tar`), then transfer it
 > to yor target server, then load it on this server's local docker images registry (`docker load < simplicite-<server|platform>[-<tag>].tar`)
 
-### Basic procedure on CentOS 7 {#centos}
+### Basic procedure on Almalinux {#almalinux}
 
-On an "out of the box" **CentOS 7** server you can start a clean & fresh Simplicité **sandbox** instance with the following commands in only few seconds:
+On an "out of the box" **Almalinux 8, 9 or 10** server you can start a clean & fresh
+Simplicité **sandbox** instance with the following commands in only few seconds:
 
 First, install the standard Docker service:
 
 ```shell
-sudo yum -y update
-sudo yum -y install docker
+sudo dnf -y update
+sudo dnf -y install docker
 sudo systemctl enable docker
 sudo systemctl start docker
 ```
-
-> **Note**: by default Docker is allowed to change the firewall rules to open exposed ports.
-> To disable this behavior you need to edit `/usr/lib/systemd/system/docker.service` cartridge file
-> and add `--iptables=false` to the `ExecStart` command.
 
 Then pull the platform image and run an ephemeral container from this image:
 
@@ -739,7 +736,7 @@ You can use the Docker Compose tool to start a database container and a Simplici
 The only packages you need are Docker and the Docker Compose tool:
 
 ```shell
-sudo yum install docker docker-compose
+sudo dnf install docker docker-compose-plugin
 ```
 
 Then you can enable and start the Docker daeamon and login to DockerHub with an account allowed to pull the **private** pre-built images `registry.simplicite.io/platform:<tag>`:
