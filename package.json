@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "prepare": "husky",
     "ncu": "npm-check-updates",
     "lint": "markdownlint-cli2 \"docs/**/*.md\" \"docs/**/*.mdx\" README.md && node ./scripts/check-evol-comments.mjs --severity=warn",
+    "check-links": "docusaurus build --no-minify",
     "generate-version": "python3 ./generateVersionsPage.py",
     "init-make-doc": "python3 ./scripts/init_make_doc.py",
     "docusaurus": "docusaurus",
@@ -42,6 +44,7 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.10.2",
     "@docusaurus/types": "3.10.2",
+    "husky": "^9.1.7",
     "markdownlint-cli2": "0.23.2",
     "npm-check-updates": "23.1.0"
   },
