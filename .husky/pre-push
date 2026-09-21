@@ -1,0 +1,2 @@
+echo "[pre-push] Checking for broken links/anchors (docusaurus build --no-minify)..."
+npm run check-links
