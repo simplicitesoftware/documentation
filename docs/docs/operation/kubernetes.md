@@ -42,24 +42,18 @@ kubectl cluster-info dump
 Allow use of private images
 ---------------------------
 
-The Simplicité images needs appropriate credentials on DockerHub.
+The Simplicité images needs appropriate credentials on our private Docker images registry.
 
-First sign in to DockerHub with your DockerHub account:
+First sign in to our registry with your credentials:
 
 ```text
-docker login
+docker login registry.simplicite.io
 ```
 
 Then create a secret from the created `$HOME/.docker/config.json` file by:
 
 ```text
 kubectl create secret generic regcred --from-file=.dockerconfigjson=$HOME/.docker/config.json --type=kubernetes.io/dockerconfigjson
-```
-
-Alternatively you can create the secret directly (without signin in to DockerHub) by:
-
-```text
-kubectl create secret docker-registry regcred --docker-server=https://index.docker.io/v1/ --docker-username=<your username> --docker-password=<your password> --docker-email=<your email address>
 ```
 
 Basic Simplicité sandbox example using Kompose&reg;
@@ -108,9 +102,6 @@ Deploy to cluster:
 ```text
 kubectl apply -f simplicite-deployment.yaml -f simplicite-service.yaml
 ```
-
-> **Note**: A simple `kompose up` does not work because of DockerHub credentials that needs to be added manually.
-> This may change in the future...
 
 Get the service information:
 

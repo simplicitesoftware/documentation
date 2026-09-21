@@ -739,12 +739,12 @@ The only packages you need are Docker and the Docker Compose tool:
 sudo dnf install docker docker-compose-plugin
 ```
 
-Then you can enable and start the Docker daeamon and login to DockerHub with an account allowed to pull the **private** pre-built images `registry.simplicite.io/platform:<tag>`:
+Then you can enable and start the Docker daeamon and login to our **private** to pull our pre-built images `registry.simplicite.io/platform:<tag>`:
 
 ```shell
 sudo systemctl enable docker
 sudo systemctl start docker
-sudo docker login
+sudo docker login registry.simplicite.io
 ```
 
 ### HSQLDB {#dockercompose-hsqldb}
