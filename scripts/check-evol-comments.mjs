@@ -69,26 +69,21 @@ for (const targetPath of targets) {
   }
 }
 
-if (allViolations.length === 0) {
-  process.exit(0);
-}
+const log = severity === 'error' ? console.error : console.warn;
 
 for (const {filePath, headingText, line} of allViolations) {
-  const location = line ? `${filePath}:${line}` : filePath;
+  const relPath = path.relative(rootDir, filePath);
+  const location = line ? `${relPath}:${line}` : relPath;
   const message =
     `H3 "${headingText}" must be immediately followed by <!-- evol: <id> -->`;
-  const logLine = `[check-evol-comments] ${location}: ${message}`;
-  if (severity === 'error') {
-    console.error(logLine);
-  } else {
-    console.warn(logLine);
-  }
+  log(`[check-evol-comments] ${location}: ${message}`);
 }
 
-if (severity === 'error') {
-  console.error(
-    `[check-evol-comments] ${allViolations.length} H3 heading(s) missing a required evol comment`,
-  );
+log(
+  `[check-evol-comments] total: ${allViolations.length} H3 heading(s) missing a required evol comment`,
+);
+
+if (severity === 'error' && allViolations.length > 0) {
   process.exit(1);
 }
 
