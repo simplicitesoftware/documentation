@@ -26,6 +26,19 @@ This is just a reminder, as widgets just build on the existing external objects
   - Nature: UI Page or component
   - Class: one of the available widgets class, see bellow
 
+:::note
+
+Widgets are basically external objects which means that if they are displayed alone they have a title and other
+UI-related decoration (_Close_ button, ...).
+
+This decoration can be explicitly disabled by adding `"decoration": false"` in the setting.
+It can also use a custom logic by overriding the `hasDecoration` hook.
+
+When displayed **embedded** as a view component or in an area of an object form, they are displayed **without** decoration
+(regardless of the above `"decoration"` setting or the custom logic implemented in the `hasDecoration` hook).
+
+:::
+
 Counters
 --------
 
