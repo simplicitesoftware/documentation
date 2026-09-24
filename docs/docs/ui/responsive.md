@@ -608,23 +608,28 @@ Global events
 Some common events are triggered by the UI to predefined classes.
 A specific component can implement some of then to add dynamic behaviors.
 
-| Class name                   | Trigger name                        | Occurs when                                  | Arguments                                            |
-|------------------------------|-------------------------------------|----------------------------------------------|------------------------------------------------------|
-| js-content-load              | ui.content.load                     | a common content is loaded (form, list...)   |                                                      |
-| js-content-unload            | ui.content.unload                   | a common content is unloaded                 |                                                      |
-| js-reload                    | ui.reload                           | the navigation reloads the work area         |                                                      |
-| js-notify                    | ui.notify                           | one object has been updated in the work area | `{type:create\|update\|delete, object, rowId, item}` |
-| js-resizable                 | ui.resize                           | the screen size has changed                  | width, height, reload                                |
-| js-zoom                      | ui.zoom                             | the screen zoom factor                       | percent factor                                       |
-| js-searchable                | ui.search.filters                   | the object filters have changed              | filters, object                                      |
-| js-row-selected              | ui.list.row.selected                | a list item is (un)selected                  | ids, count                                           |
-| js-ctrl-s                    | ui.key.ctrls                        | CTRL-S is pressed                            |                                                      |
-| js-field-visible             | ui.field.visible                    | a field is shown or hidden                   | field, visible                                       |
-| js-field-style               | ui.field.style                      | the field style has changed                  | back-end style, field                                |
-| js-view-visible              | ui.view.visible                     | a view is shown or hidden                    | view, visible, slide                                 |
-| js-view-filters              | ui.view.filters                     | the view filters has changed                 | filters \{ fromDate, toDate, fields... \}            |
-| js-area-visible              | ui.area.visible                     | an area is shown or hidden                   | area, visible                                        |
-| js-action-visible            | ui.action.visible                   | an action is shown or hidden                 | action, visible                                      |
+| Class name        | Trigger name          | Occurs when                                       | Arguments                                            |
+|-------------------|-----------------------|---------------------------------------------------|------------------------------------------------------|
+| js-content-load   | ui.content.load       | a common content is loaded (form, list...)        |                                                      |
+| js-content-unload | ui.content.unload     | a common content is unloaded                      |                                                      |
+| js-reload         | ui.reload             | the navigation reloads the work area              |                                                      |
+| js-notify         | ui.notify             | one object has been updated in the work area      | `{type:create\|update\|delete, object, rowId, item}` |
+| js-resizable      | ui.resize             | the screen size has changed                       | width, height, reload                                |
+| js-zoom           | ui.zoom               | the screen zoom factor                            | percent factor                                       |
+| js-searchable     | ui.search.filters     | the object filters have changed                   | filters, object                                      |
+| js-row-selected   | ui.list.row.selected  | a list item is (un)selected                       | ids, count                                           |
+| js-ctrl-s         | ui.key.ctrls          | CTRL-S is pressed                                 |                                                      |
+| js-shift-left     | ui.key.shiftleft      | SHIFT-LEFT is pressed (previous page or record)   |                                                      |
+| js-shift-left     | ui.key.ctrlshiftleft  | CTRL-SHIFT-LEFT is pressed (first page or record) |                                                      |
+| js-shift-right    | ui.key.shiftright     | SHIFT-RIGHT is pressed (next page or record)      |                                                      |
+| js-shift-right    | ui.key.ctrlshiftright | CTRL-SHIFT-RIGHT is pressed (last page or record) |                                                      |
+| js-undoredo       | ui.undoredo           | the user undo/redo stack has changed              | undo/redo state                                      |
+| js-field-visible  | ui.field.visible      | a field is shown or hidden                        | field, visible                                       |
+| js-field-style    | ui.field.style        | the field style has changed                       | back-end style, field                                |
+| js-view-visible   | ui.view.visible       | a view is shown or hidden                         | view, visible, slide                                 |
+| js-view-filters   | ui.view.filters       | the view filters has changed                      | filters \{ fromDate, toDate, fields... \}            |
+| js-area-visible   | ui.area.visible       | an area is shown or hidden                        | area, visible, slide                                 |
+| js-action-visible | ui.action.visible     | an action is shown or hidden                      | action button, visible                               |
 
 Usage samples:
 
@@ -678,6 +683,93 @@ Usage samples:
    });
    ```
 
+### Document events
+
+Those events are triggered on `document`, see [main page startup](#main-page-startup) for examples.
+
+| Trigger name        | Occurs when                                                                      | Arguments |
+|---------------------|----------------------------------------------------------------------------------|-----------|
+| ui.loaded           | the engine and the disposition `SCRIPT` are loaded, before the home page         |           |
+| ui.ready            | the UI is ready, after the home page                                             |           |
+| ui.beforeunload     | the browser is about to leave the page                                           |           |
+| ui.pagehide         | the page is hidden: stored in the back/forward cache if persisted, else unloaded | persisted |
+| ui.unload           | the page is really unloaded (reload, close...), not sent when stored in cache    |           |
+| ui.pageshow         | the page is shown: restored from the back/forward cache if persisted             | persisted |
+| ui.content.loaded   | a content has been loaded in a container                                         | container |
+| ui.content.unloaded | a container has been unloaded                                                    | container |
+| ui.dialog.loaded    | a dialog is displayed                                                            | dialog    |
+| ui.dialog.unloaded  | a dialog is removed                                                              | dialog    |
+
+```javascript
+$(document).on("ui.dialog.loaded", function(e, dialog) {
+  // customize the dialog content
+});
+```
+
+### Commands
+
+Those events can be triggered by a specific code to ask a UI component to do something.
+
+| Target            | Trigger name          | Action                                                                | Arguments                |
+|-------------------|-----------------------|-----------------------------------------------------------------------|--------------------------|
+| js-searchable     | ui.list.search        | search again with the object filters (list, calendar, crosstab, tray) | object, request, groupBy |
+| js-select-row     | ui.list.select.row    | select one row, all rows or none                                      | row ID, `all` or `none`  |
+| js-search-pos     | ui.search.pos         | show the search by column                                             | `column`                 |
+| list form         | ui.list.selectall     | select all rows                                                       |                          |
+| list form         | ui.list.selectpage    | select the rows of the current page                                   |                          |
+| list form         | ui.list.selectnone    | unselect all rows                                                     |                          |
+| list form         | ui.list.expand        | expand all group-by rows                                              |                          |
+| list form         | ui.list.collapse      | collapse all group-by rows                                            |                          |
+| list form         | ui.list.tree.expand   | expand all rows of a tree list                                        |                          |
+| list form         | ui.list.tree.collapse | collapse all rows of a tree list                                      |                          |
+| tree row          | ui.tree.open          | expand one row of a tree list                                         |                          |
+| tree row          | ui.tree.close         | collapse one row of a tree list                                       |                          |
+| group-by row      | ui.groupby.expand     | expand one group-by row                                               |                          |
+| group-by row      | ui.groupby.collapse   | collapse one group-by row                                             |                          |
+| toast             | ui.toast.close        | close a toast                                                         |                          |
+| progress bar      | ui.progressbar        | set the progress value                                                | percent                  |
+| document uploader | ui.docmulti.add       | add a document                                                        | document                 |
+| document uploader | ui.docmulti.clear     | remove all documents                                                  |                          |
+| document uploader | ui.docmulti.replace   | replace the documents                                                 | list of \{ id, name \}   |
+| notepad           | ui.notepad.init       | start a new empty comment                                             |                          |
+| bookmark button   | ui.bookmark.toggle    | toggle the bookmark icon                                              |                          |
+| bookmark item     | ui.bookmark.delete    | remove the bookmark item                                              |                          |
+
+```javascript
+// Select all rows of the list
+$(".js-select-row", ctn).trigger("ui.list.select.row", ["all"]);
+// Search again the list with the updated object filters
+$(".js-searchable", ctn).trigger("ui.list.search", [obj]);
+```
+
+### Component events
+
+| Target          | Trigger name      | Occurs when                                                 | Arguments      |
+|-----------------|-------------------|-------------------------------------------------------------|----------------|
+| field input     | ui.input          | the input value has been set by the UI                      |                |
+| color field     | ui.preview.color  | the color preview has changed                               | color          |
+| overflow bar    | ui.bar.click      | an item of the bar is clicked                               | item           |
+| bulk update     | ui.updateall.read | internal: the bulk update form returns the values to update | callback(item) |
+| split separator | ui.split.up       | internal: end of a work-area separator move                 |                |
+
+### Tray events
+
+Events triggered on the tray (kanban) container.
+
+| Trigger name        | Occurs when                                                                    | Arguments                  |
+|---------------------|--------------------------------------------------------------------------------|----------------------------|
+| ui.tray.search      | a tray column requests its items, call `done` when filled                      | tray, done                 |
+| ui.tray.append      | a card is added to a column                                                    | tray, card                 |
+| ui.tray.remove      | a card is removed from a column                                                | tray, card                 |
+| ui.tray.item.reload | a card is reloaded with up-to-date data                                        | tray, card, callback(card) |
+| ui.tray.drag        | a card drag starts                                                             | drag                       |
+| ui.tray.move        | the dragged card moves                                                         | drag, event                |
+| ui.tray.drop        | the card is dropped                                                            | drag, event                |
+| ui.tray.candrop     | asks if the card can be dropped in the column                                  | tray, card                 |
+| ui.tray.dropped     | result of the drop: saved without error, or refused (`denied` or server error) | tray, card, error          |
+| ui.tray.enable      | a column accepts the dragged card                                              | state                      |
+| ui.tray.disable     | a column refuses the dragged card                                              | state                      |
+
 Client side hooks
 -----------------
 
@@ -724,7 +816,29 @@ or the disposition `SCRIPT` to override properties or functions, for example:
         });
     });
 
-    // Bind ui.unload to document = last call
+    // Bind ui.pagehide
+    // - persisted if stored in cache
+    // - unloaded if not persisted
+    $(document).on("ui.pagehide", function(e, persisted) {
+        if (persisted) {
+            // the page is hidden
+        } else {
+            // the page is unloaded
+        }
+    });
+
+    // Bind ui.pageshow
+    // - persisted if restored from cache
+    // - reloaded if not persisted
+    $(document).on("ui.pageshow", function(e, persisted) {
+        if (persisted) {
+            // the page is restored
+        } else {
+            // the page is reloaded
+        }
+    });
+
+    // Bind ui.unload to document = last call (called on pagehide when page is not persisted)
     $(document).on("ui.unload", function() {
         // window is unloaded
     });
