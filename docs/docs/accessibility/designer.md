@@ -66,6 +66,7 @@ Handled features:
 - Ace editor inputs, replaced by plain textareas
 - User guides
 - Forcing linked objects to appear as expanded (or top-tabs)
+- Forcing theme-switch to HighContrast
 
 ### User `ACCESSIBILITY_OVERRIDE` parameter
 
@@ -85,6 +86,7 @@ dependencies:
 | Custom colors | Safety net for action and enum contrast | `customcolors` |
 | User guides | Popup-driven flows break keyboard navigation and screen reader output | `guides` |
 | Linked objects display | One of the suggested layouts is "tabs-horizontal", which is not compliant | `linkedlayout` |
+| Theme | Per default the only fully-compliant theme is [**HighContrast**](#highcontrast-theme), others are created for projects, thus not verified and potentially non-compliant | `contrasttheme` |
 
 ![ACCESSIBILITY_OVERRIDE user parameter](img/user.png)
 
@@ -280,7 +282,7 @@ the field form.
 | Long text | <rgaa-pc>PC</rgaa-pc> | Field | `fld_rendering` | Stick to the regular rendering. Expression, Fixed font, HTML, CSS, SQL, Markdown, JSON, Text editor, Grid, Count characters and Javascript are NC |
 | Number | <rgaa-pc>PC</rgaa-pc> | Field | `fld_rendering` | Progress bars, Stars and With calculator are NC |
 | Date / Time | <rgaa-pc>PC</rgaa-pc> | Field | - | Use a plain text field with a date format instead. `a11y-mode` replaces the picker with a plain input and a format hint |
-| Enum | <rgaa-c>C</rgaa-c> | Field | - | |
+| Enum | <rgaa-pc>PC</rgaa-pc> | Field | `fld_rendering` | Only `Horizontal` and `Vertical` (HCB, VCB) are compliant renderings. |
 | Enum Multi | <rgaa-pc>PC</rgaa-pc> | Field | `fld_rendering` | Only `Horizontal` and `Vertical` (HCB, VCB) are compliant renderings. |
 | File | <rgaa-c>C</rgaa-c> | Field | - | |
 | Image | <rgaa-pc>PC</rgaa-pc> | Field | - | `alt` is exposed per image. See [Complex images](#complex-images) |
@@ -294,6 +296,7 @@ the field form.
 | Copy to clipboard | <rgaa-c>C</rgaa-c> | Field | - | |
 | Simple help | <rgaa-pc>PC</rgaa-pc> | Field | - | Text-only content is compliant. See [Custom HTML](#custom-html) |
 | Field display | <rgaa-pc>PC</rgaa-pc> | Template Editor | - | Label and Input mustn't be dissociated visually, only `Label + Input` and `Label + Input + Help` are compliant. |
+| Field styles | <rgaa-nc>NC</rgaa-nc> | Templating > Field styles | - | |
 
 Both the "label + input + help" and "label + input" displays render help compliantly.
 
@@ -390,6 +393,14 @@ responsibility - see [Custom HTML](#custom-html).
 #### Timeline
 
 <rgaa-c>Compliant</rgaa-c>
+
+### Themes
+
+<!-- TODO: explanations + good practices -->
+
+#### HighContrast theme
+
+<!-- TODO: create & explain -->
 
 Appendix: keyboard accessibility
 --------------------------------
