@@ -33,7 +33,7 @@ Our position on each of the 106 criteria is documented in _the compliance docume
    compliance icon in the field form, so you get the verdict where you work rather than here.
 3. Open the relevant **[component guide](#component-guides)** when you configure a business object, a
    list, a form or a menu. Each one lists the settings to apply and the features to avoid.
-4. Check your work with `a11y-mode` enabled — but read [what it does not do](#the-limits-of-these-features)
+4. Check your work with `a11y-mode` enabled - but read [what it does not do](#the-limits-of-these-features)
    before relying on it.
 
 Platform features
@@ -101,10 +101,10 @@ the compliance of the underlying feature, along with the settings required to ke
 
 Significations for each icon (examples):
 
-- **Timestamp** has text-light colored icon -> non-applicable, `fld_compliance = NA`
-- **Bulk update** has danger colored icon -> non-compliant, `fld_compliance = NC`
-- **Copy enabled** has warning-colored icon -> partially-compliant, `fld_compliance = PC`
-- **Bulk delete** has success-colored icon -> compliant, `fild_compliance = C`
+- **Timestamp** has text-light colored icon ; non-applicable, `fld_compliance = NA`
+- **Bulk update** has danger colored icon ; non-compliant, `fld_compliance = NC`
+- **Copy enabled** has warning-colored icon ; partially-compliant, `fld_compliance = PC`
+- **Bulk delete** has success-colored icon ; compliant, `fild_compliance = C`
 
 If _no icon is visible_ then no verdict was given, assume that the feature/component was not evaluated yet,
 thus can be Precautiously be considered as _Non-Compliant_.
@@ -163,7 +163,7 @@ The `USE_COMPACT` system parameter must be set to `no`: compact mode is <rgaa-nc
 
 Several extension points let you inject markup the platform does not control: static texts, field help
 content, publication templates, JavaScript addons and external objects. Plain text is always safe. As
-soon as you write HTML, its compliance is entirely yours — see the [resources](#resources) for the
+soon as you write HTML, its compliance is entirely yours - see the [resources](#resources) for the
 WAI-ARIA rules to follow.
 
 External objects are the extreme case: their markup is written in free code and cannot be checked at
@@ -172,8 +172,8 @@ all by the platform.
 ### Complex images
 
 Charts, diagrams and infographics cannot be made compliant through alternative text alone. Either make
-sure your application does not need them, or plan an accessible alternative — a data table, a textual
-summary — alongside the image.
+sure your application does not need them, or plan an accessible alternative - a data table, a textual
+summary - alongside the image.
 
 For regular images, the `alt` attribute is exposed and editable per image. Real-world compliance then
 depends on end users writing accurate alternatives, or explicitly marking images as decorative, which
@@ -193,26 +193,26 @@ Settings that apply to the object as a whole, whatever its views.
 
 | Feature | Status | Context | Setting | Notes |
 | --- | --- | --- | --- | --- |
-| Visible identifier field | — | Field | `obf_order` | Put the visible identifier field first in the order |
-| Bookmarks | <rgaa-c>C</rgaa-c> | Business Object | — | |
+| Visible identifier field | - | Field | `obf_order` | Put the visible identifier field first in the order |
+| Bookmarks | <rgaa-c>C</rgaa-c> | Business Object | - | |
 | Historics | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_historic = no` | |
 | Prints | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_printable = no` | |
-| Social posts | <rgaa-pc>PC</rgaa-pc> | Business Object | — | Relying on users not to use other language than the declared and supported one. |
-| Constraints | <rgaa-c>C</rgaa-c> | Business Object | — | |
-| Contextual help | <rgaa-c>C</rgaa-c> | Business Object | — | |
-| Copy | <rgaa-c>C</rgaa-c> | Business Object | — | `obo_copy` |
-| Export | <rgaa-c>C</rgaa-c> | Business Object | — | `obo_export` |
+| Social posts | <rgaa-pc>PC</rgaa-pc> | Business Object | - | Relying on users not to use other language than the declared and supported one. |
+| Constraints | <rgaa-c>C</rgaa-c> | Business Object | - | |
+| Contextual help | <rgaa-c>C</rgaa-c> | Business Object | - | |
+| Copy | <rgaa-c>C</rgaa-c> | Business Object | - | `obo_copy` |
+| Export | <rgaa-c>C</rgaa-c> | Business Object | - | `obo_export` |
 
 #### Objects Rendering
 
 | Feature | Status | Context | Setting | Notes |
 | --- | --- | --- | --- | --- |
-| Searches | <rgaa-pc>PC</rgaa-pc> | User Interface | — | |
-| Publications | <rgaa-nc>NC</rgaa-nc> | User Interface | — | |
-| Pivot Tables | <rgaa-nc>NC</rgaa-nc> | User Interface | — | |
-| Agendas | <rgaa-nc>NC</rgaa-nc> | User Interface | — | |
-| Places maps | <rgaa-nc>NC</rgaa-nc> | User Interface | — | |
-| Time sheets | <rgaa-nc>NC</rgaa-nc> | User Interface | — | |
+| Searches | <rgaa-pc>PC</rgaa-pc> | User Interface | - | |
+| Publications | <rgaa-nc>NC</rgaa-nc> | User Interface | - | |
+| Pivot Tables | <rgaa-nc>NC</rgaa-nc> | User Interface | - | |
+| Agendas | <rgaa-nc>NC</rgaa-nc> | User Interface | - | |
+| Places maps | <rgaa-nc>NC</rgaa-nc> | User Interface | - | |
+| Time sheets | <rgaa-nc>NC</rgaa-nc> | User Interface | - | |
 
 #### Treeviews
 
@@ -226,21 +226,21 @@ Set in the **List** section of the business object settings.
 
 | Feature | Status | Context | Setting | Notes |
 | --- | --- | --- | --- | --- |
-| Multi-column ordering | <rgaa-c>C</rgaa-c> | Business Object | — | |
-| Pagination | <rgaa-c>C</rgaa-c> | Business Object | — | |
-| Group-by | <rgaa-c>C</rgaa-c> | Business Object | — | |
-| List preferences | <rgaa-c>C</rgaa-c> | Business Object | — | |
-| List of values | <rgaa-c>C</rgaa-c> | Business Object | — | |
-| List filtering | <rgaa-c>C</rgaa-c> | Business Object | — | |
+| Multi-column ordering | <rgaa-c>C</rgaa-c> | Business Object | - | |
+| Pagination | <rgaa-c>C</rgaa-c> | Business Object | - | |
+| Group-by | <rgaa-c>C</rgaa-c> | Business Object | - | |
+| List preferences | <rgaa-c>C</rgaa-c> | Business Object | - | |
+| List of values | <rgaa-c>C</rgaa-c> | Business Object | - | |
+| List filtering | <rgaa-c>C</rgaa-c> | Business Object | - | |
 | Docked search | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_search_docked = no` | |
 | Cards mosaic | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_minifiable = no` | |
 | Create on list | <rgaa-pc>PC</rgaa-pc> | Business Object | `obo_list_edit`, `obo_btn_listedit` | |
 | Update on list | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_list_edit = no` | |
 | Bulk edit | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_btn_updall = no`, `obo_list_edit = no` | |
-| Bulk delete | <rgaa-c>C</rgaa-c> | Business Object | — | |
-| Custom list actions | <rgaa-pc>PC</rgaa-pc> | Action | — | See [Actions](#actions) |
-| List search | <rgaa-pc>PC</rgaa-pc> | Business Object | — | See [Search](#search) |
-| Row reordering | <rgaa-nc>NC</rgaa-nc> | Business Object | — | |
+| Bulk delete | <rgaa-c>C</rgaa-c> | Business Object | - | |
+| Custom list actions | <rgaa-pc>PC</rgaa-pc> | Action | - | See [Actions](#actions) |
+| List search | <rgaa-pc>PC</rgaa-pc> | Business Object | - | See [Search](#search) |
+| Row reordering | <rgaa-nc>NC</rgaa-nc> | Business Object | - | |
 
 ### Forms
 
@@ -249,51 +249,51 @@ Set in the **Form** section of the business object settings. The layout itself i
 
 | Feature | Status | Context | Setting | Notes |
 | --- | --- | --- | --- | --- |
-| Field areas | <rgaa-c>C</rgaa-c> | Template Editor | — | |
-| Columns | <rgaa-c>C</rgaa-c> | Template Editor | — | |
-| Tabs | <rgaa-c>C</rgaa-c> | Template Editor | — | |
+| Field areas | <rgaa-c>C</rgaa-c> | Template Editor | - | |
+| Columns | <rgaa-c>C</rgaa-c> | Template Editor | - | |
+| Tabs | <rgaa-c>C</rgaa-c> | Template Editor | - | |
 | Label and input layout | <rgaa-pc>PC</rgaa-pc> | Template Editor | "label + input" display | Never split a label from its input |
-| Custom action with confirm fields | <rgaa-c>C</rgaa-c> | Action | — | |
+| Custom action with confirm fields | <rgaa-c>C</rgaa-c> | Action | - | |
 | Fields | <rgaa-pc>PC</rgaa-pc> | Field | `fld_rendering` | See [Fields](#fields) |
-| Child lists | <rgaa-pc>PC</rgaa-pc> | Link | — | See below |
+| Child lists | <rgaa-pc>PC</rgaa-pc> | Link | - | See below |
 
 #### Child lists
 
 | Feature | Status | Context | Setting | Notes |
 | --- | --- | --- | --- | --- |
-| Panel | <rgaa-c>C</rgaa-c> | Link | — | Panels and sub-panels are compliant by design |
-| Virtual link | <rgaa-c>C</rgaa-c> | Link | — | Rendered as an embedded list — follow the [Lists](#lists) rules |
-| Inlined object | <rgaa-c>C</rgaa-c> | Link | — | Rendered as form elements — follow the Forms rules |
-| Pillbox | <rgaa-nc>NC</rgaa-nc> | Link | — | |
+| Panel | <rgaa-c>C</rgaa-c> | Link | - | Panels and sub-panels are compliant by design |
+| Virtual link | <rgaa-c>C</rgaa-c> | Link | - | Rendered as an embedded list - follow the [Lists](#lists) rules |
+| Inlined object | <rgaa-c>C</rgaa-c> | Link | - | Rendered as form elements - follow the Forms rules |
+| Pillbox | <rgaa-nc>NC</rgaa-nc> | Link | - | |
 
 ### Fields
 
 The shared structure the platform generates around fields is compliant. Compliance depends on the
-type and, above all, on the **rendering** you pick — the `fld_rendering` field, labelled _Display_ in
+type and, above all, on the **rendering** you pick - the `fld_rendering` field, labelled _Display_ in
 the field form.
 
 | Type | Status | Context | Setting | Notes |
 | --- | --- | --- | --- | --- |
 | Text | <rgaa-pc>PC</rgaa-pc> | Field | `fld_rendering` | QRCode and Icon picker renderings are NC |
-| Validated text | <rgaa-nc>NC</rgaa-nc> | Field | — | Validation is not announced and no suggestion is offered |
-| Boolean | <rgaa-c>C</rgaa-c> | Field | — | Every rendering is compliant |
+| Validated text | <rgaa-nc>NC</rgaa-nc> | Field | - | Validation is not announced and no suggestion is offered |
+| Boolean | <rgaa-c>C</rgaa-c> | Field | - | Every rendering is compliant |
 | Long text | <rgaa-pc>PC</rgaa-pc> | Field | `fld_rendering` | Stick to the regular rendering. Expression, Fixed font, HTML, CSS, SQL, Markdown, JSON, Text editor, Grid, Count characters and Javascript are NC |
 | Number | <rgaa-pc>PC</rgaa-pc> | Field | `fld_rendering` | Progress bars, Stars and With calculator are NC |
-| Date / Time | <rgaa-pc>PC</rgaa-pc> | Field | — | Use a plain text field with a date format instead. `a11y-mode` replaces the picker with a plain input and a format hint |
-| Enum | <rgaa-c>C</rgaa-c> | Field | — | |
+| Date / Time | <rgaa-pc>PC</rgaa-pc> | Field | - | Use a plain text field with a date format instead. `a11y-mode` replaces the picker with a plain input and a format hint |
+| Enum | <rgaa-c>C</rgaa-c> | Field | - | |
 | Enum Multi | <rgaa-pc>PC</rgaa-pc> | Field | `fld_rendering` | Only `Horizontal` and `Vertical` (HCB, VCB) are compliant renderings. |
-| File | <rgaa-c>C</rgaa-c> | Field | — | |
-| Image | <rgaa-pc>PC</rgaa-pc> | Field | — | `alt` is exposed per image. See [Complex images](#complex-images) |
-| Referenced object | <rgaa-c>C</rgaa-c> | Field | — | |
-| Special | <rgaa-pc>PC</rgaa-pc> | Field | — | Only URL, Email, Phone and Password are compliant. Color, Coordinates and Notepad are NC |
+| File | <rgaa-c>C</rgaa-c> | Field | - | |
+| Image | <rgaa-pc>PC</rgaa-pc> | Field | - | `alt` is exposed per image. See [Complex images](#complex-images) |
+| Referenced object | <rgaa-c>C</rgaa-c> | Field | - | |
+| Special | <rgaa-pc>PC</rgaa-pc> | Field | - | Only URL, Email, Phone and Password are compliant. Color, Coordinates and Notepad are NC |
 
 #### Field-related features
 
 | Feature | Status | Context | Setting | Notes |
 | --- | --- | --- | --- | --- |
-| Copy to clipboard | <rgaa-c>C</rgaa-c> | Field | — | |
-| Simple help | <rgaa-pc>PC</rgaa-pc> | Field | — | Text-only content is compliant. See [Custom HTML](#custom-html) |
-| Field display | <rgaa-pc>PC</rgaa-pc> | Template Editor | — | Label and Input mustn't be dissociated visually, only `Label + Input` and `Label + Input + Help` are compliant. |
+| Copy to clipboard | <rgaa-c>C</rgaa-c> | Field | - | |
+| Simple help | <rgaa-pc>PC</rgaa-pc> | Field | - | Text-only content is compliant. See [Custom HTML](#custom-html) |
+| Field display | <rgaa-pc>PC</rgaa-pc> | Template Editor | - | Label and Input mustn't be dissociated visually, only `Label + Input` and `Label + Input + Help` are compliant. |
 
 Both the "label + input + help" and "label + input" displays render help compliantly.
 
@@ -301,16 +301,16 @@ Both the "label + input + help" and "label + input" displays render help complia
 
 | Feature | Status | Context | Setting | Notes |
 | --- | --- | --- | --- | --- |
-| Search dialog | <rgaa-c>C</rgaa-c> | — | — | |
-| Sort order | <rgaa-c>C</rgaa-c> | — | — | |
-| Global search | <rgaa-c>C</rgaa-c> | — | — | |
-| Menu search | <rgaa-c>C</rgaa-c> | — | — | |
+| Search dialog | <rgaa-c>C</rgaa-c> | - | - | |
+| Sort order | <rgaa-c>C</rgaa-c> | - | - | |
+| Global search | <rgaa-c>C</rgaa-c> | - | - | |
+| Menu search | <rgaa-c>C</rgaa-c> | - | - | |
 | Search form | <rgaa-pc>PC</rgaa-pc> | Business Object | `obo_tpl_search_pos = top` | Only the top position is compliant, and only with `a11y-mode` |
-| Preset search | <rgaa-nc>NC</rgaa-nc> | — | — | From the search dialog |
-| Predefined search | <rgaa-pc>PC</rgaa-pc> | — | — | Rendered as a list — follow the [Lists](#lists) rules for the underlying object |
-| Form search | <rgaa-c>C</rgaa-c> | — | — | |
-| Date / Period search | <rgaa-nc>NC</rgaa-nc> | — | — | Uses datetime fields, which behave differently in search than in a form |
-| Geographical search | <rgaa-nc>NC</rgaa-nc> | — | — | |
+| Preset search | <rgaa-nc>NC</rgaa-nc> | - | - | From the search dialog |
+| Predefined search | <rgaa-pc>PC</rgaa-pc> | - | - | Rendered as a list - follow the [Lists](#lists) rules for the underlying object |
+| Form search | <rgaa-c>C</rgaa-c> | - | - | |
+| Date / Period search | <rgaa-nc>NC</rgaa-nc> | - | - | Uses datetime fields, which behave differently in search than in a form |
+| Geographical search | <rgaa-nc>NC</rgaa-nc> | - | - | |
 
 ### Actions
 
@@ -326,8 +326,8 @@ contrast with the header background, not only with its own label.
 
 | Feature | Status | Context | Setting | Notes |
 | --- | --- | --- | --- | --- |
-| Left menu | <rgaa-c>C</rgaa-c> | System parameter | — | |
-| Top menu | <rgaa-nc>NC</rgaa-nc> | System parameter | `MENU_SETTINGS` — `top.active = false` | Chained popups break keyboard navigation |
+| Left menu | <rgaa-c>C</rgaa-c> | System parameter | - | |
+| Top menu | <rgaa-nc>NC</rgaa-nc> | System parameter | `MENU_SETTINGS` - `top.active = false` | Chained popups break keyboard navigation |
 | Trays | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_tray = no` | Drag-and-drop only. Applies to every object with a status |
 | Metrics | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_dashboard = none` | Applies to every object with a status |
 
@@ -342,7 +342,7 @@ long as those only use compliant features.
 
 | Feature | Status | Context | Setting | Notes |
 | --- | --- | --- | --- | --- |
-| Road rendering | <rgaa-pc>PC</rgaa-pc> | Business Process | `pcs_road_render = HM` or `HC` | Only the horizontal versions — complete or minimal — are compliant |
+| Road rendering | <rgaa-pc>PC</rgaa-pc> | Business Process | `pcs_road_render = HM` or `HC` | Only the horizontal versions - complete or minimal - are compliant |
 | Static/Dynamic | <rgaa-pc>PC</rgaa-pc> | Business Process | `pcs_road_static = true` | Only the static versions is compliant |
 
 ### Links
@@ -352,12 +352,12 @@ flaws that rule them out of a compliant application.
 
 | Feature | Status | Context | Setting | Notes |
 | --- | --- | --- | --- | --- |
-| Embedded list filters | <rgaa-nc>NC</rgaa-nc> | Link | — | — |
+| Embedded list filters | <rgaa-nc>NC</rgaa-nc> | Link | - | - |
 
 ### Static texts
 
 <rgaa-pc>Partially Compliant</rgaa-pc>. Plain textual content is compliant. HTML content is your
-responsibility — see [Custom HTML](#custom-html).
+responsibility - see [Custom HTML](#custom-html).
 
 ### Domains
 
@@ -455,7 +455,7 @@ Shortcuts can define further access keys.
 Resources
 ---------
 
-- [Our position on the RGAA criteria](/docs/accessibility/compliance.md) — the platform's verdict on each of the
+- [Our position on the RGAA criteria](/docs/accessibility/compliance.md) - the platform's verdict on each of the
   106 criteria, and what is expected of you as a designer.
 - [Using ARIA](https://www.w3.org/TR/using-aria/)
 - [ARIA in HTML](https://www.w3.org/TR/html-aria/)
