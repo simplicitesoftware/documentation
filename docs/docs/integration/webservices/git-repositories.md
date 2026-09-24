@@ -126,7 +126,7 @@ It is possible to specify the default format for modules commits by adding these
 ```json
 {
   (...)
-  "export" {
+  "export": {
     "format": "xml|json",
     "exploded": true|false
   },

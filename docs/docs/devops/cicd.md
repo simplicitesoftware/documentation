@@ -99,7 +99,7 @@ This section initializes the project, setting up a developpement instance and th
 	"origin": {
 		"uri": "https://gitlab.com/simplicite-gitlab-group/module-myapp"
 	},
-  "export" {
+  "export": {
     "format": "xml|json",
     "exploded": true|false
   }
@@ -275,7 +275,7 @@ Configure Maven in the module settings:
 	"origin": {
 		"uri": "https://gitlab.com/simplicite-gitlab-group/module-myapp"
 	},
-  "export" {
+  "export": {
     "format": "xml|json",
     "exploded": true|false
   },
@@ -479,7 +479,7 @@ tree -a -I \.git
 	"origin": {
 		"uri": "https://gitlab.com/simplicite-gitlab-group/module-myapp"
 	},
-  "export" {
+  "export": {
     "format": "xml|json",
     "exploded": true|false
   },
