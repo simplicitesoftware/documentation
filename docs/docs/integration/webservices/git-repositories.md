@@ -119,6 +119,21 @@ The Git repositories created/cloned by Simplicité:
 If you manually create/clone repositories used by Simplicité (which is not supposed to be done except for very specific needs)
 make sure to create/clone **non bare** repositories and make sure to have these two options activated (which is not the case by default).
 
+### Export format
+
+It is possible to specify the default format for modules commits by adding these settings:
+
+```json
+{
+  (...)
+  "export" {
+    "format": "xml|json",
+    "exploded": true|false
+  },
+  (...)
+}
+```
+
 ### Branches
 
 You can specify the branch to use in the origin definition (or in the remotes definitions, see below):
