@@ -5,7 +5,7 @@
   "scripts": {
     "prepare": "husky",
     "ncu": "npm-check-updates",
-    "lint": "markdownlint-cli2 \"docs/**/*.md\" \"docs/**/*.mdx\" README.md && node ./scripts/check-evol-comments.mjs --severity=warn",
+    "lint": "markdownlint-cli2 \"docs/**/*.md\" \"docs/**/*.mdx\" README.md && node ./scripts/check-evol-comments.mjs --severity=error",
     "check-links": "docusaurus build --no-minify",
     "generate-version": "python3 ./generateVersionsPage.py",
     "init-make-doc": "python3 ./scripts/init_make_doc.py",
