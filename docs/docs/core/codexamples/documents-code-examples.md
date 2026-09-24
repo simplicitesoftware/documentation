@@ -43,26 +43,42 @@ obj.save();
 Since V5 `DocumentDB` can access a multi-documents field:
 
 ```java
-// This DocumentDB contains many documents
-DocumentDB multiDocs = getField("myMultiDocsField").getDocuments(this, getRowId());
-// Get the list of documents
-List<DocumentDB> docs = multiDocs!=null ? multiDocs.getDocuments() : null;
+// Load all documents meta-data of the current record from DB (null if the field is not a multi-documents field)
+List<DocumentDB> docs = getField("myMultiDocsField").getListOfDocuments(this, getRowId());
 for (int i=0; docs!=null && i<docs.size(); i++) {
 	// Single document
 	DocumentDB doc = docs.get(i);
+	// Document ID and name
+	String id = doc.getId();
+	String name = doc.getName();
 	// Absolute path in DOC_DIR + relative path
 	String path = Platform.getDocDir() + "/" + doc.getPath();
+	// Content is read only on demand
+	byte[] b = doc.getBytes(true);
 	// ...
 }
 ```
 
-or without DB access to retrieve meta-data already selected:
+The same can be done in two steps, `loadDocuments` returns a `DocumentDB` container of all documents:
 
 ```java
 // This DocumentDB contains many documents
-DocumentdB multiDocs = getField("myMultiDocsField").getDocument();
+DocumentDB multiDocs = getField("myMultiDocsField").loadDocuments(this, getRowId());
 // Get the list of documents
-List<DocumentDB> docs = multiDocs !=null ? multiDocs.getDocuments() : null;
+List<DocumentDB> docs = multiDocs!=null ? multiDocs.getDocuments() : null;
+// Or get one document by its ID
+DocumentDB doc = multiDocs!=null ? multiDocs.getDocument(docId) : null;
+```
+
+> **Note**: only the documents meta-data are loaded (ID, name, path, size, MIME type...), the contents are read only when calling `getBytes`, `getInputStream`...
+
+or without DB access to retrieve meta-data already loaded:
+
+```java
+// This DocumentDB contains many documents
+DocumentDB multiDocs = getField("myMultiDocsField").getDocument();
+// Get the list of documents
+List<DocumentDB> docs = multiDocs!=null ? multiDocs.getDocuments() : null;
 // ...
 ```
 
