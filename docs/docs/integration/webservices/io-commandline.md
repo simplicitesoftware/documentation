@@ -137,22 +137,17 @@ And for the users having a responsibility on the `ADMIN` group:
   - an optional extra parameter can be set to indicate the output format: `--form zip=<true|false>` (defaults to `false`)
   - an optional extra parameter can be set to inline documents and images as Base64 strings in the XML file: `--form inlinedocs=<true|false>`
     (default is `false`, `true` does not make sense in case of ZIP export)
-- `moduleexportdata` (as of **version 4.0**): export data of all module business objects marked with an export
+- `moduleexportdata`: export data of all module business objects marked with an export
   order in **standard XML** format (restricted to users who have a responsibility on the `ADMIN` group)
   Note that this service is primarily dedicated to export small amounts of reference and/or dev/test data as a complement to the module configuration.
+- `modulecommit`: commits a module with mandatory `<extra parameters>` = `--form module=<module name>`
+  and commit message `--form message="My commit message"` and optional `--form format=<xml(default)|json> --form exploded=<true|false(default)>`
 
 :::note
+
 The standard formats are described [in this document](/docs/integration/webservices/standard-formats).
+
 :::
-
-Git
----
-
-As of **version 3.2**, to do a Git commit on a module, the command is:
-
-```text
-curl <credentials> --form service=modulecommit --form module=<module name> --form message="<commit message>" <I/O URL>
-```
 
 Others
 ------
