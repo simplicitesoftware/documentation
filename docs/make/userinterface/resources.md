@@ -56,6 +56,31 @@ Use the **Create Resources** action button in the external object's form :
 | Code     | Name of the resource                                                                         |
 | Cached?  | Tells if the resource is included in the cache or not (**No** by default)                    |
 
+Page lifecycle triggers
+-----------------------
+
+To run custom code when the UI is ready, or when a page is hidden or shown, create a **SCRIPT** resource
+and attach it to the relevant disposition. Bind the handlers to `document`:
+
+```javascript
+(function(ui, $) {
+	$(document).on("ui.ready", function() {
+		// The UI is ready, after the home page has loaded.
+	});
+
+	$(document).on("ui.pagehide", function(e, persisted) {
+		// The page is hidden; persisted is true when stored in the back/forward cache.
+	});
+
+	$(document).on("ui.pageshow", function(e, persisted) {
+		// The page is shown; persisted is true when restored from the back/forward cache.
+	});
+})(window.$ui, jQuery);
+```
+
+The `persisted` argument distinguishes a page stored in or restored from the back/forward cache
+from a page that is unloaded or reloaded.
+
 Using the Java API
 ------------------
 
