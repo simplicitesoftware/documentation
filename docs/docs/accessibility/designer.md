@@ -58,44 +58,46 @@ Handled features:
 - Customized colors for action and state buttons
 - Splittable work areas
 - Compact mode
-- Collapse menu toggle
 - Masonry layout for lists
 - Menu trays and metrics from Status Objects
 - Preset search from the search dialog
 - Top menu
 - Datetime pickers, replaced by a plain input with a format hint
 - Ace editor inputs, replaced by plain textareas
+- User guides
+- Forcing linked objects to appear as expanded (or top-tabs)
 
-### User `A11Y_OVERRIDE` parameter
+### User `ACCESSIBILITY_OVERRIDE` parameter
 
-Where `a11y-mode` is all-or-nothing, `A11Y_OVERRIDE` is a per-user parameter: each user records their
+Where `a11y-mode` is all-or-nothing, `ACCESSIBILITY_OVERRIDE` is a per-user parameter: each user records their
 own preferences, component by component, according to their needs and habits.
 
 It covers components that could not be made compliant because of their complexity or their third-party
 dependencies:
 
-| Component | Why |
-| --- | --- |
-| Date pickers | `flatpickr` is not compliant |
-| HTML editor | `quill` is not compliant |
-| Code editors | `ace` is not compliant |
-| Trays | Drag-and-drop only |
-| Top menu | Chained popups break keyboard navigation and screen reader output |
-| Custom colors | Safety net for action and enum contrast |
-| User guides | Popup-driven flows break keyboard navigation and screen reader output |
+| Component | Why | Parameter |
+| --- | --- | --- |
+| Date pickers | **flatpickr** is not compliant | `datepicker` |
+| HTML editor | **quill** is not compliant | `htmledit` |
+| Code editors | **ace** is not compliant | `codeedit` |
+| Trays | Drag-and-drop only | `trays` |
+| Top menu | Chained popups break keyboard navigation and screen reader output | `menutop` |
+| Custom colors | Safety net for action and enum contrast | `customcolors` |
+| User guides | Popup-driven flows break keyboard navigation and screen reader output | `guides` |
+| Linked objects display | One of the suggested layouts is "tabs-horizontal", which is not compliant | `linkedlayout` |
 
-![A11Y_OVERRIDE user parameter](img/user.png)
+![ACCESSIBILITY_OVERRIDE user parameter](img/user.png)
 
-### Designer `A11Y_DEV` sysparam
+### Designer `ACCESSIBILITY_DEV` sysparam
 
-Set the `A11Y_DEV` system parameter to `yes` to turn on the development helper.
+Set the `ACCESSIBILITY_DEV` system parameter to `yes` to turn on the development helper.
 
-![A11Y_DEV system parameter](img/dev.png)
+![ACCESSIBILITY_DEV system parameter](img/dev.png)
 
 Every field then carries a `universal-access-circle` icon next to its label in the field form, reporting
 the compliance of the underlying feature, along with the settings required to keep it compliant.
 
-![A11Y_DEV icons meaning](img/icons.png)
+![ACCESSIBILITY_DEV icons meaning](img/icons.png)
 
 Significations for each icon (examples):
 
@@ -117,7 +119,7 @@ which is cheaper than auditing afterwards.
 
 ### Compliance statuses
 
-The same vocabulary is used by the `A11Y_DEV` icons, by the `fld_compliance` field and by every table
+The same vocabulary is used by the `ACCESSIBILITY_DEV` icons, by the `fld_compliance` field and by every table
 in this document.
 
 | Status | Icon color | Meaning |
@@ -133,7 +135,7 @@ not a verdict.
 
 ### The limits of these features
 
-`a11y-mode` and `A11Y_OVERRIDE` are safety nets, not fixes. They neutralize behaviors that get in the
+`a11y-mode` and `ACCESSIBILITY_OVERRIDE` are safety nets, not fixes. They neutralize behaviors that get in the
 way; they do not make a **Non-Compliant** feature compliant.
 
 Two consequences. First, you must still disable the features listed as NC below, whether or not the
@@ -154,8 +156,6 @@ once. Two options:
   contrast and focus visibility with no further work.
 - Build your own theme, and validate every color with the built-in contrast checker, available at each
   customization point.
-
-<!-- TODO: mini-guide — creating a theme and associating it with the right scope -->
 
 The `USE_COMPACT` system parameter must be set to `no`: compact mode is <rgaa-nc>NC</rgaa-nc>.
 
@@ -203,10 +203,6 @@ Settings that apply to the object as a whole, whatever its views.
 | Copy | <rgaa-c>C</rgaa-c> | Business Object | — | `obo_copy` |
 | Export | <rgaa-c>C</rgaa-c> | Business Object | — | `obo_export` |
 
-<!-- TODO: Complete the features from notes & observations -->
-
-<!-- TODO: In practice — screenshots of the object settings, OK/NOK -->
-
 #### Objects Rendering
 
 | Feature | Status | Context | Setting | Notes |
@@ -217,8 +213,6 @@ Settings that apply to the object as a whole, whatever its views.
 | Agendas | <rgaa-nc>NC</rgaa-nc> | User Interface | — | |
 | Places maps | <rgaa-nc>NC</rgaa-nc> | User Interface | — | |
 | Time sheets | <rgaa-nc>NC</rgaa-nc> | User Interface | — | |
-
-<!-- TODO: Complete the features from notes & observations -->
 
 #### Treeviews
 
@@ -248,8 +242,6 @@ Set in the **List** section of the business object settings.
 | List search | <rgaa-pc>PC</rgaa-pc> | Business Object | — | See [Search](#search) |
 | Row reordering | <rgaa-nc>NC</rgaa-nc> | Business Object | — | |
 
-<!-- TODO: In practice — screenshots of the List section, OK/NOK -->
-
 ### Forms
 
 Set in the **Form** section of the business object settings. The layout itself is defined in the
@@ -265,8 +257,6 @@ Set in the **Form** section of the business object settings. The layout itself i
 | Fields | <rgaa-pc>PC</rgaa-pc> | Field | `fld_rendering` | See [Fields](#fields) |
 | Child lists | <rgaa-pc>PC</rgaa-pc> | Link | — | See below |
 
-<!-- TODO: Complete the features from notes & observations -->
-
 #### Child lists
 
 | Feature | Status | Context | Setting | Notes |
@@ -275,10 +265,6 @@ Set in the **Form** section of the business object settings. The layout itself i
 | Virtual link | <rgaa-c>C</rgaa-c> | Link | — | Rendered as an embedded list — follow the [Lists](#lists) rules |
 | Inlined object | <rgaa-c>C</rgaa-c> | Link | — | Rendered as form elements — follow the Forms rules |
 | Pillbox | <rgaa-nc>NC</rgaa-nc> | Link | — | |
-
-<!-- TODO: Complete the features from notes & observations -->
-
-<!-- TODO: In practice — screenshots of the Template Editor, OK/NOK -->
 
 ### Fields
 
@@ -301,8 +287,6 @@ the field form.
 | Referenced object | <rgaa-c>C</rgaa-c> | Field | — | |
 | Special | <rgaa-pc>PC</rgaa-pc> | Field | — | Only URL, Email, Phone and Password are compliant. Color, Coordinates and Notepad are NC |
 
-<!-- TODO: Complete the features from notes & observations -->
-
 #### Field-related features
 
 | Feature | Status | Context | Setting | Notes |
@@ -311,11 +295,7 @@ the field form.
 | Simple help | <rgaa-pc>PC</rgaa-pc> | Field | — | Text-only content is compliant. See [Custom HTML](#custom-html) |
 | Field display | <rgaa-pc>PC</rgaa-pc> | Template Editor | — | Label and Input mustn't be dissociated visually, only `Label + Input` and `Label + Input + Help` are compliant. |
 
-<!-- TODO: Complete the features from notes & observations -->
-
 Both the "label + input + help" and "label + input" displays render help compliantly.
-
-<!-- TODO: In practice — screenshots of the field form, rendering choices OK/NOK -->
 
 ### Search
 
@@ -328,11 +308,9 @@ Both the "label + input + help" and "label + input" displays render help complia
 | Search form | <rgaa-pc>PC</rgaa-pc> | Business Object | `obo_tpl_search_pos = top` | Only the top position is compliant, and only with `a11y-mode` |
 | Preset search | <rgaa-nc>NC</rgaa-nc> | — | — | From the search dialog |
 | Predefined search | <rgaa-pc>PC</rgaa-pc> | — | — | Rendered as a list — follow the [Lists](#lists) rules for the underlying object |
-| Form search | <rgaa-nc>NC</rgaa-nc> | — | — | |
+| Form search | <rgaa-c>C</rgaa-c> | — | — | |
 | Date / Period search | <rgaa-nc>NC</rgaa-nc> | — | — | Uses datetime fields, which behave differently in search than in a form |
 | Geographical search | <rgaa-nc>NC</rgaa-nc> | — | — | |
-
-<!-- TODO: In practice — screenshots of the search dialog and search form positions -->
 
 ### Actions
 
@@ -343,8 +321,6 @@ Both the "label + input + help" and "label + input" displays render help complia
 
 Use the built-in contrast checker rather than eyeballing it: an action placed in the header must
 contrast with the header background, not only with its own label.
-
-<!-- TODO: In practice — screenshots of a compliant and a non-compliant action -->
 
 ### Menu
 
@@ -358,8 +334,6 @@ contrast with the header background, not only with its own label.
 `a11y-mode` forces the left-only menu at runtime, but disable the top menu properly in your
 configuration rather than relying on it.
 
-<!-- TODO: In practice — screenshots of MENU_SETTINGS, OK/NOK -->
-
 ### Business Process
 
 <rgaa-pc>Partially Compliant</rgaa-pc>. The actions and DOM elements specific to business processes
@@ -368,9 +342,8 @@ long as those only use compliant features.
 
 | Feature | Status | Context | Setting | Notes |
 | --- | --- | --- | --- | --- |
-| Road rendering | <rgaa-pc>PC</rgaa-pc> | Business Process | `pcs_road_render = VM` or `HM` | Only the minimal versions — vertical or horizontal — are compliant |
-
-<!-- TODO: In practice — screenshots of the four road renderings -->
+| Road rendering | <rgaa-pc>PC</rgaa-pc> | Business Process | `pcs_road_render = HM` or `HC` | Only the horizontal versions — complete or minimal — are compliant |
+| Static/Dynamic | <rgaa-pc>PC</rgaa-pc> | Business Process | `pcs_road_static = true` | Only the static versions is compliant |
 
 ### Links
 
@@ -379,7 +352,7 @@ flaws that rule them out of a compliant application.
 
 | Feature | Status | Context | Setting | Notes |
 | --- | --- | --- | --- | --- |
-| Embedded list filters | <rgaa-nc>NC</rgaa-nc> | Link | — | Focus is not restored after the filter dialog closes. Disable the filters and the link becomes compliant |
+| Embedded list filters | <rgaa-nc>NC</rgaa-nc> | Link | — | — |
 
 ### Static texts
 
@@ -388,29 +361,40 @@ responsibility — see [Custom HTML](#custom-html).
 
 ### Domains
 
-<!-- TODO: raw hints and settings -->
+<!-- TODO: explanation + good practices on each -->
 
 ### Widgets
 
-<!-- TODO: quick explanation on ExternalObject usage & exception for those -->
+<!-- TODO: explanation + good practices on each -->
 
 #### Counters
 
-<rgaa-nc>Not Compliant</rgaa-nc>
-<!-- TODO: hints and settings -->
+<rgaa-c>Compliant</rgaa-c>
 
 #### Carousel
 
-<rgaa-nc>Not Compliant</rgaa-nc>
-<!-- TODO: hints and settings -->
+<rgaa-c>Compliant</rgaa-c>
 
 #### Cards
 
-<rgaa-nc>Not Compliant</rgaa-nc>
-<!-- TODO: hints and settings -->
+<rgaa-c>Compliant</rgaa-c>
+
+#### News
+
+<rgaa-c>Compliant</rgaa-c>
+
+#### Accordion
+
+<rgaa-c>Compliant</rgaa-c>
+
+#### Timeline
+
+<rgaa-c>Compliant</rgaa-c>
 
 Appendix: keyboard accessibility
 --------------------------------
+
+<!-- TODO: check if this part (fge) is still up to date -->
 
 This reference is worth copying into your own application's user documentation: end users have no
 other way of discovering these shortcuts.
@@ -471,7 +455,7 @@ Shortcuts can define further access keys.
 Resources
 ---------
 
-- _Our position on the RGAA criteria_ — the platform's verdict on each of the
+- [Our position on the RGAA criteria](/docs/accessibility/compliance.md) — the platform's verdict on each of the
   106 criteria, and what is expected of you as a designer.
 - [Using ARIA](https://www.w3.org/TR/using-aria/)
 - [ARIA in HTML](https://www.w3.org/TR/html-aria/)
