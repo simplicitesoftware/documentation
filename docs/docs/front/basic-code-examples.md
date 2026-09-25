@@ -286,7 +286,7 @@ field.ui.updatable(false);
 When displaying a list programmatically, apply filters that the user cannot change:
 
 ```javascript
-$ui.displayList(null, "MyObject", null, {
+$ui.displayList(null, "MyObject", {
     fixedFilters: {
         myObjField1: "ABC" // filter not changeable by the user
     }
@@ -338,10 +338,11 @@ $ui.alert({
 $ui.confirm({
     title: $T("CONFIRM"),
     content: "Are you sure ?",
-    callback: function(ok) {
-        if (ok) {
-            // user confirmed
-        }
+    onOk: () => {
+        // user confirmed
+    },
+    onCancel: () => {
+        // user canceled
     }
 });
 ```
@@ -351,20 +352,19 @@ $ui.confirm({
 Open standard UI pages from JavaScript:
 
 ```javascript
-// Display a record form in the WORK area
+// Display a record form in the WORK area (null container = work area)
 $ui.displayForm(null, "MyObject", rowId, {
-    nav: "add",
-    target: "work"
+    nav: "add" // add the form to the navigation history
 });
 
 // Display a list
-$ui.displayList(null, "MyObject", null, {
-    target: "work"
+$ui.displayList(null, "MyObject", {
+    nav: "add"
 });
 
-// Display a search form
-$ui.displaySearch(null, "MyObject", null, {
-    target: "work"
+// Display a search form in a popup
+$ui.displaySearch(null, "MyObject", {
+    position: "popup"
 });
 ```
 

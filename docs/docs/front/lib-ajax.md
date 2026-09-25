@@ -56,26 +56,33 @@ Accessing Simplicité Session
 
 ### Core Methods
 
-| Method                            | Returns                             | Description                                          |
-| --------------------------------- | ----------------------------------- | ---------------------------------------------------- |
-| `getApp()`                        | `Simplicite.Ajax`                   | Current Simplicité session                           |
-| `getView(cbk, name, params)`      | `Promise<Object>`                   | View definition by name                              |
-| `getGrant()`                      | `Simplicite.Ajax.Grant`             | Current user rights                                  |
-| `getUserInfo(cbk, login, params)` | `Promise<Object>`                   | User data (login, name, email, picture)              |
-| `getBusinessObject(obj, inst)`    | `Simplicite.UI.BusinessObject`      | Business object instance                             |
+| Method                              | Returns                        | Description                                 |
+|-------------------------------------|--------------------------------|---------------------------------------------|
+| `$ui.getApp()`                      | `Simplicite.Ajax`              | Current Simplicité session (same as `$app`) |
+| `$ui.getGrant()`                    | `Simplicite.Ajax.Grant`        | Current user rights (same as `$grant`)      |
+| `$app.getGrant(params)`             | `Promise<Grant>`               | Reload the user rights from the server      |
+| `$app.getView(name, params)`        | `Promise<View>`                | View definition by name                     |
+| `$app.getUserInfo(login, params)`   | `Promise<Object>`              | User data (login, name, email, picture)     |
+| `$app.getBusinessObject(obj, inst)` | `Simplicite.UI.BusinessObject` | Business object instance                    |
 
 Manipulating Business Objects
 -----------------------------
 
 ### Key Methods
 
-| Method                           | Returns                                 | Description                                      |
-|----------------------------------|-----------------------------------------|--------------------------------------------------|
-| `create(cbk, items, params)`     | `void`                                  | Create and load new item                         |
-| `getFields()`                    | `Array<Simplicite.Ajax.ObjectField>`    | All object fields                                |
-| `getField(name, id)`             | `Simplicite.Ajax.ObjectField`           | Specific field by name and ID                    |
-| `getCount(cbk, filters, params)` | `integer`                               | Row count with filters                           |
-| `getForCreate(cbk, params)`      | `void`                                  | Load default item for creation                   |
+| Method                        | Returns                              | Description                              |
+|-------------------------------|--------------------------------------|------------------------------------------|
+| `search(filters, params)`     | `Promise<Array<Object>>`             | Search items with filters                |
+| `get(rowId, params)`          | `Promise<Object>`                    | Load one item                            |
+| `getForCreate(params)`        | `Promise<Object>`                    | Load default item for creation           |
+| `getForUpdate(rowId, params)` | `Promise<Object>`                    | Load item for update                     |
+| `create(item, params)`        | `Promise<Object>`                    | Create and load new item                 |
+| `update(item, params)`        | `Promise<Object>`                    | Update and load item                     |
+| `save(item, params)`          | `Promise<Object>`                    | Create or update item                    |
+| `del(item, params)`           | `Promise<Object>`                    | Delete item (or row ID)                  |
+| `getCount(filters, params)`   | `Promise<Object>`                    | Row count with filters, set in `count`   |
+| `getFields()`                 | `Array<Simplicite.Ajax.ObjectField>` | All object fields                        |
+| `getField(name, id)`          | `Simplicite.Ajax.ObjectField`        | Specific field by name (and list row ID) |
 
 ### Business Object Structure
 
@@ -89,7 +96,11 @@ Manipulating Business Objects
 
 ### Field Access Example
 
+All these methods return a `Promise`:
+
 ```javascript
+const product = $app.getBusinessObject("DemoProduct");
+
 product.search().then(rows => {
     for (const row of rows) {
       console.log(row.demoPrdName); // Direct field access
@@ -103,17 +114,20 @@ Displaying UI Elements
 
 Display elements in the WORK area:
 
-| Method                            | Description                                          |
-|-----------------------------------|------------------------------------------------------|
-| `displayForm(ctn, obj, p, cbk)`   | Display form for object                              |
-| `displayList(ctn, obj, p, cbk)`   | Display list for object                              |
-| `displaySearch(ctn, obj, p, cbk)` | Display search form for object                       |
+| Method                                 | Description                                          |
+|----------------------------------------|------------------------------------------------------|
+| `displayForm(ctn, obj, rowId, p, cbk)` | Display form for object                              |
+| `displayList(ctn, obj, p, cbk)`        | Display list for object                              |
+| `displaySearch(ctn, obj, p, cbk)`      | Display search form for object                       |
 
 **Example**:
 
 ```javascript
+// null container = default work area
 $ui.displayForm(null, "DemoProduct", rowId, {
-    nav: "add",
-    target: "work"
+    // "add" : the form to the navigation history, 
+    // "new" : to start a new navigation
+    // unset : do not change the navigation (e.g. the form is in a view already in nav)
+    nav: "add" 
 });
 ```
