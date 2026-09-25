@@ -12,12 +12,12 @@ This documentation is part of the **Frontend Development** category, designed to
 
 :::
 
-This guide covers the Ajax Library's core methods and Simplicité's MVC architecture.
+This guide covers the core methods of the Ajax library and how they fit into Simplicité's MVC architecture.
 
 MVC Architecture
 ----------------
 
-Simplicité uses the **Model-View-Controller** pattern for organized, maintainable applications:
+Simplicité's frontend follows the **Model-View-Controller** pattern to keep applications organized and maintainable:
 
 - **Model** (`$app`): Backend data handler via `Simplicite.Ajax`
 - **View** (`$view`): UI components and rendering via `Simplicite.UI.View`
@@ -26,7 +26,7 @@ Simplicité uses the **Model-View-Controller** pattern for organized, maintainab
 Global Objects
 --------------
 
-Key objects available in Simplicité:
+The following global objects are available in Simplicité:
 
 | Object   | Type                      | Description                                    |
 |----------|---------------------------|------------------------------------------------|
@@ -41,7 +41,7 @@ Key objects available in Simplicité:
 
 ### Access Shortcuts
 
-Most objects are accessible through `$ui`:
+Most of these objects can also be reached through `$ui`:
 
 ```javascript
 $ui.app       // Same as $app
@@ -96,7 +96,7 @@ Manipulating Business Objects
 
 ### Field Access Example
 
-All these methods return a `Promise`:
+Data access methods such as `search` return a `Promise`:
 
 ```javascript
 const product = $app.getBusinessObject("DemoProduct");
@@ -112,7 +112,7 @@ product.search().then(rows => {
 Displaying UI Elements
 ----------------------
 
-Display elements in the WORK area:
+The following methods display UI elements in the work area:
 
 | Method                                 | Description                                          |
 |----------------------------------------|------------------------------------------------------|
@@ -123,11 +123,11 @@ Display elements in the WORK area:
 **Example**:
 
 ```javascript
-// null container = default work area
+// A null container means the default work area
 $ui.displayForm(null, "DemoProduct", rowId, {
-    // "add" : the form to the navigation history, 
-    // "new" : to start a new navigation
-    // unset : do not change the navigation (e.g. the form is in a view already in nav)
-    nav: "add" 
+    // "add": adds the form to the navigation history
+    // "new": starts a new navigation
+    // unset: leaves the navigation unchanged (e.g. the form is displayed in a view already in the nav)
+    nav: "add"
 });
 ```
