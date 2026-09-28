@@ -29,7 +29,7 @@ Our position on each of the 106 criteria is documented in _the compliance docume
 
 1. Read **[Cross-cutting concerns](#cross-cutting-concerns)** first. These rules apply everywhere and
    constrain everything the component guides describe.
-2. Set the `A11Y_DEV` system parameter to `yes` for the whole design phase. Every field then carries a
+2. Set the `ACCESSIBILITY_DEV` system parameter to `yes` for the whole design phase. Every field then carries a
    compliance icon in the field form, so you get the verdict where you work rather than here.
 3. Open the relevant **[component guide](#component-guides)** when you configure a business object, a
    list, a form or a menu. Each one lists the settings to apply and the features to avoid.
@@ -143,6 +143,30 @@ way; they do not make a **Non-Compliant** feature compliant.
 Two consequences. First, you must still disable the features listed as NC below, whether or not the
 mode is on. Second, do not rely on the mode during design: disable those features properly in your
 configuration, and use the mode only to verify the result.
+
+### Accessibility declarations
+
+Once everything is developped, you have the possibility to declare the accessibility of your application.  
+Without official audit, the law says that you cannot expose a guaranteed conformity score.
+
+Still you can declare an informative one using the `ACCESSIBILITY_LEVEL` system parameter as :
+
+```json
+{
+  "audit": "true|false",
+  "score":[0;100]
+}
+```
+
+From this the information is displayed in the app's footer as **Estimated accessibility : partially compliant** (for values `audit: false`, `score:60`).
+
+The following logic is :
+
+- `audit: false` means it's only an estimation made by the developers of the app.
+- `audit: true` means a real audit was conducted, and the `score` represents the official verdict of this audit.
+- `score = 100` is labelled "Fully Compliant"
+- `score >= 50` is labelled "Partially Compliant"
+- `score < 50` is labelled "Non Compliant"
 
 Cross-cutting concerns
 ----------------------
@@ -401,6 +425,11 @@ responsibility - see [Custom HTML](#custom-html).
 #### HighContrast theme
 
 <!-- TODO: create & explain -->
+
+Accessibility checklist
+-----------------------
+
+[] TODO
 
 Appendix: keyboard accessibility
 --------------------------------
