@@ -11,7 +11,7 @@ It is possible to easily activate two types of historization on business objects
 Change log
 ----------
 
-The change log allows you to log all activities done on the object (who, what changes, at what time). To enable it, you must:
+The change log records all activities done on the object (who, what changes, at what time). To enable it, the maker must:
 
 - make sure that the system parameter `LOG_ACTIVITY` is enabled ("database": true), which is the default.
 - check the "Data History: Change log" option in the business object settings.
@@ -26,7 +26,7 @@ Be sure to remove module filters to add this function.
 Child objects change logs
 ------------------------
 
-You can retrieve redo logs of child objects into the parent **Change log panel**:
+The maker can retrieve redo logs of child objects into the parent **Change log panel**:
 
 - Use the **Link option**: `Reassemble updates history?`
 
@@ -39,27 +39,27 @@ getLink("DemoProduct","demoPrdSupId").setMergeRedologs(true);
 History table
 -------------
 
-The history table allows you to record all or part of an object in an _ad hoc_ table.
+The history table records all or part of an object's data in a dedicated table.
 
-Activating the history will result in the creation of a "Historic" object  
-(e.g. `TrnProductHistoric`) in the same module as the business object,  
-with all the fields of the object to be historized, plus:
+Enabling history creates a "Historic" object (e.g. `TrnProductHistoric`) in the same module as the business object.
+It contains all the historized fields of the object, plus:
 
-- a reference to the creating record
-- the date of historization
+- a reference to the original record
+- the historization date
 - the user's login
-- **[Since 6.3]** a **summary of updates** field `row_diff`
+- **[Since 6.3]** a **summary of updates** field, `row_diff`
 
 :::note
-This calculated field `row_diff` generates, on search,  
-the difference between a record and its previous version (`row_id` based).
+The `row_diff` field is calculated on search:
+it shows the differences between a record and its previous version (based on `row_id`).
 
-It is currently used for History objects but can also be added to other objects.
+It is currently used by the History panel, but it can also be added to other objects.
 :::
 
-When `FeatureFlag.HISTORY_DIFF_MODE` is active, the History object automatically includes this field (for pre-6.3 objects).
+When `FeatureFlag.HISTORY_DIFF_MODE` is enabled, this field is automatically added to the generated Historic object.
+For Historic objects created before 6.3, add the field to the object fields manually if needed.
 
-It is activated by default, and overridable through the system parameter [FEATURE_FLAGS](/versions/release-notes/v6-3#new-featureflags):
+The flag is enabled by default and can be disabled through the [FEATURE_FLAGS](/versions/release-notes/v6-3#new-featureflags) system parameter:
 
 ```json
 {
@@ -67,12 +67,18 @@ It is activated by default, and overridable through the system parameter [FEATUR
 }
 ```
 
-A read-only function is created on this historical object, which must be granted in order to view it.
-The object is not automatically added to the model, but it is possible to add it manually.
+The `row_diff` feature can also compare sibling records of any object:
 
-It is the presence of a field in the history object that determines which changes cause historization.
-For example, if we delete the object field "description" from the `TrnProductHistoric` object,
-not only will the description not appear in the "snapshot" taken at any time, but the change in description will not create a new row in the history.
+- add the `row_diff` field to the object
+- call `setRowDiff(true)` to enable the calculation on search (e.g. in `postLoad`, for panel instances only)
+- beware: the calculation runs many SQL queries and is slow, so never use it on large searches
+
+A read-only function is created for the Historic object and must be granted for users to view it.
+The object is not added to the model automatically, but the maker can add it manually.
+
+The fields present in the Historic object determine which changes trigger historization.
+For example, if the maker removes the "description" field from `TrnProductHistoric`,
+the description no longer appears in the history snapshots, and changing the description no longer creates a new history row.
 
 ### **[Since 6.3]** New action to generate the Historic object
 
@@ -95,7 +101,7 @@ This object can be updated manually by designers.
 
 ### Conditional historization
 
-You can use the **`isHistoric` hook** to add business rules that conditionally trigger historization. This allows you to:
+The maker can use the **`isHistoric` hook** to add business rules that conditionally trigger historization. This makes it possible to:
 
 - Historize only when specific conditions are met
 - Implement custom logic to determine when a snapshot should be created
@@ -114,7 +120,7 @@ public boolean isHistoric() {
 
 ### **[Since 6.3]** Reassemble child updates history
 
-You can now display the history of child objects within the parent object's history table:
+The maker can now display the history of child objects within the parent object's history table:
 
 - Check the **"Reassemble updates history"** option in the link setting
   
@@ -143,7 +149,7 @@ The **Change Log** is a **technical tracking system** that records every single 
 
 :::danger Security Warning
 
-If you expose the Change Log to end-users, they may see **data they don't have permission to view**.
+If the maker exposes the Change Log to end-users, they may see **data they don't have permission to view**.
 
 :::
 
@@ -165,5 +171,5 @@ The **History Table** is designed for **end-users and business purposes**.
 - Respects field-level permissions and business rules
 - Safe to expose to end-users
 
-**Recommendation:** Use the History Table when you need to show change tracking to business users,
+**Recommendation:** Use the History Table when the maker needs to show change tracking to business users,
 as it provides better control over what is recorded and displayed.
