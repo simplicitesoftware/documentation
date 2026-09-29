@@ -299,7 +299,7 @@ Consider implementing an anti-brute policy by using appropriate `PlatformHooks`.
 See [this document](/docs/authentication/internal-auth#anti-brute-force-attacks) for a comprehensive example.
 
 Ensure the "god mode" (the ability to log in as any user) is disabled or restricted to the relevant users (e.g. support team).
-The principle is to set the private system parameter `GOD_MODE` to `no` and override it by user only for the relevant users.
+The principle is to set the private system parameter `GOD_MODE_USER` to `no` and override it by user only for the relevant users.
 
 If all or some users don't always use a strictly personal browser, the ability of the browser to keep track
 of the non-expired user tokens **should** also be disabled
