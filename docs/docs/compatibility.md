@@ -66,7 +66,7 @@ The following table only indicates the **LTS (Long Term Support)** JVM versions.
 
 | ![](https://platform.simplicite.io/logos/logo125.png) | JVM 1.8 | JVM 11  | JVM 17  | JVM 21  | JVM 25  |
 |:-----------------------------------------------------:|---------|---------|---------|---------|---------|
-| Alpha 7.0                                             | no      | no      | no      | yes (1) | **yes** |
+| Beta 7.0                                              | no      | no      | no      | yes (1) | **yes** |
 | Current **6.3**                                       | no      | no      | yes (1) | **yes** | yes (1) |
 | Legacy 6.x                                            | no      | no      | yes (1) | **yes** | yes (1) |
 | Maintained **5.3** and legacy 5.x                     | no      | yes (1) | **yes** | yes (1) | yes (1) |
@@ -90,7 +90,7 @@ Only these up-to-date releases are tested and supported.
 
 | ![](https://platform.simplicite.io/logos/logo125.png) | Web profile (1) | Webapp |
 |:-----------------------------------------------------:|-----------------|--------|
-| Alpha 7.0                                             | JakartaEE 11    | 6.1    |
+| Beta 7.0                                              | JakartaEE 11    | 6.1    |
 | Current **6.3** and legacy 6.x                        | JEE 8           | 4.0    |
 | Maintained **5.3** and legacy 5.x                     | JEE 8           | 4.0    |
 | Legacy 4.0                                            | JEE 8           | 4.0    |
@@ -118,7 +118,7 @@ Databases
 
 | ![](https://platform.simplicite.io/logos/logo125.png) | PostgreSQL | MySQL | Oracle   | SQLServer |
 |:-----------------------------------------------------:|------------|-------|----------|-----------|
-| Alpha 7.0                                             | 18+        | 9+    | 23ai+    | 2025+     |
+| Beta 7.0                                              | 18+        | 9+    | 23ai+    | 2025+     |
 | Current **6.3** and legacy 6.x                        | 13+        | 8+    | 19c+     | 2019+     |
 | Maintained **5.3** and legacy 5.x                     | 13+        | 8+    | 19c+     | 2019+     |
 | Legacy 4.0                                            | 10+        | 5.5+  | 12c+     | 2016+     |
@@ -140,7 +140,7 @@ Web browsers
 
 | ![](https://platform.simplicite.io/logos/logo125.png) | _ECMAScript_    | Edge (1) |Firefox (1) | Chrome (1) | Safari (1) | IE11    |
 |:-----------------------------------------------------:|-----------------|----------|------------|------------|------------|---------|
-| Alpha 7.0                                             | _ES2024 (ES15)_ | yes      | yes        | yes        | yes        | no      |
+| Beta 7.0                                              | _ES2024 (ES15)_ | yes      | yes        | yes        | yes        | no      |
 | Current **6.3** and legacy 6.x                        | _ES2022 (ES13)_ | yes      | yes        | yes        | yes        | no      |
 | Maintained **5.3** and legacy 5.x                     | _ES2020 (ES11)_ | yes      | yes        | yes        | yes        | no      |
 | Legacy 4.0                                            | _ES2015 (ES6)_  | yes      | yes        | yes        | yes        | yes (2) |
