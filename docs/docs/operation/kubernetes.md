@@ -3,8 +3,8 @@ sidebar_position: 20
 title: Kubernetes quickstart
 ---
 
-Simplicité on Kubernetes
-========================
+Simplicité quickstart on Kubernetes
+===================================
 
 :::warning
 
