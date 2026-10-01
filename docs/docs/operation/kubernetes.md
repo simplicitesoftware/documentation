@@ -1,6 +1,6 @@
 ---
 sidebar_position: 20
-title: Kubernetes
+title: Kubernetes quickstart
 ---
 
 Simplicité on Kubernetes
@@ -8,7 +8,7 @@ Simplicité on Kubernetes
 
 :::warning
 
-This document is a basic helper to start with Simplicité on Kubernetes, it is not intended to Kubernetes usual/advanced users
+This document is a "quickstart" basic helper to start with Simplicité on Kubernetes, it is not intended to Kubernetes usual/advanced users
 nor to be a state of the art template for real life deployments.
 
 :::
