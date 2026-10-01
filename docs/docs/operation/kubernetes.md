@@ -4,9 +4,14 @@ title: Kubernetes
 ---
 
 Simplicité on Kubernetes
-===============================
+========================
 
-> **Warning**: This document is a work in progress DRAFT
+:::warning
+
+This document is a basic helper to start with Simplicité on Kubernetes, it is not intended to Kubernetes usual/advanced users
+nor to be a state of the art template for real life deployments.
+
+:::
 
 Prerequisites
 -------------
@@ -118,7 +123,11 @@ simplicite   LoadBalancer   10.3.119.175   6fvb57vqjk.lb.c4.gra.k8s.ovh.net   80
 
 In the above case you can now point your browser to `http://6fvb57vqjk.lb.c4.gra.k8s.ovh.net`
 
-> **Warning**: in this sandbox example there is no persistence at all, no data survives when the container is shut down.
+:::warning
+
+In this sandbox example there is no persistence at all, no data survives when the container is shut down.
+
+:::
 
 Comprehensive example
 ---------------------
@@ -363,10 +372,14 @@ simplicite   LoadBalancer   10.3.77.200   6d9lguc0l0.lb.c4.gra.k8s.ovh.net   80:
 
 In the above case you can now point your browser to `http://6d9lguc0l0.lb.c4.gra.k8s.ovh.net`
 
-> **Note**: in the above example there is only one replica for the Simplicité deployment, you can set it to more that one but note that
-> the load balancing is done based on client IP address. If you need a better load balancing strategy
-> (e.g. a session cookie-based sticky session load balancing)
-> you need to configure an appropriate ingress (the configuration of such ingress is not specific to Simplicité, thus not described here)
+:::note
+
+in the above example there is only one replica for the Simplicité deployment, you can set it to more that one but note that
+the load balancing is done based on client IP address. If you need a better load balancing strategy
+(e.g. a session cookie-based sticky session load balancing)
+you need to configure an appropriate ingress (the configuration of such ingress is not specific to Simplicité, thus not described here)
+
+:::
 
 Kubernetes dashboard
 --------------------
