@@ -1,40 +1,23 @@
 ---
 sidebar_position: 30
-title: Change Log
+title: Historization
 ---
 
 Historization
 =============
 
-It is possible to easily activate two types of historization on business objects: the change log and the history table.
+It is possible to easily activate two types of historization on business objects: the history table and the change log.
 
-Change log
-----------
-
-The change log records all activities done on the object (who, what changes, at what time). To enable it, the maker must:
-
-- make sure that the system parameter `LOG_ACTIVITY` is enabled ("database": true), which is the default.
-- check the "Data History: Change log" option in the business object settings.
-
-:::warning
-
-Currently, it is necessary to manually create a function on the "RedoLog" system object to give access to change-logs to end users.
-Be sure to remove module filters to add this function.
-
-:::
-
-Child objects change logs
-------------------------
-
-The maker can retrieve redo logs of child objects into the parent **Change log panel**:
-
-- Use the **Link option**: `Reassemble updates history?`
-
-- Or by code:
-  
-```java
-getLink("DemoProduct","demoPrdSupId").setMergeRedologs(true);
-```
+| | History table | Change log |
+| --- | --- | --- |
+| **Role** | Business-oriented historization | Technical auditing tool |
+| **Purpose** | Give end users a safe view of how a record evolved | Track who did what and when, for troubleshooting and system analysis |
+| **What is recorded** | All or part of the object's data, in a dedicated table | Every change, with no filtering |
+| **Business rules** | Conditional historization through the `isHistoric` hook; the maker chooses which fields are historized | Fixed: every change is recorded |
+| **Permissions** | Respects field-level permissions and business rules | Shows every field change, including fields the current user cannot normally access |
+| **Child updates** | **[Since 6.3]** Child updates can be reassembled into the parent history | Child redo logs can be reassembled into the parent change log panel |
+| **Change summary** | **[Since 6.3]** `row_diff` field with a summary of updates | Each entry is the change itself (who, what, when) |
+| **Audience** | Safe to expose to end users | Technical users. Exposing it to end users can reveal restricted data |
 
 History table
 -------------
@@ -80,9 +63,9 @@ The fields present in the Historic object determine which changes trigger histor
 For example, if the maker removes the "description" field from `TrnProductHistoric`,
 the description no longer appears in the history snapshots, and changing the description no longer creates a new history row.
 
-### **[Since 6.3]** New action to generate the Historic object
+### Historic object generation
 
-A new action on object definition is available to build the history object/table:
+**[Since 6.3]**, an action on object definition is available to build the history object/table:
 
 - Specify if the history is in descending order
 - Select the fields to be historized
@@ -118,9 +101,9 @@ public boolean isHistoric() {
 };
 ```
 
-### **[Since 6.3]** Reassemble child updates history
+### Child updates history
 
-The maker can now display the history of child objects within the parent object's history table:
+**[Since v6.3]** the maker can now display the history of child objects within the parent object's history table:
 
 - Check the **"Reassemble updates history"** option in the link setting
   
@@ -128,48 +111,31 @@ The maker can now display the history of child objects within the parent object'
 
 - This will include child object changes in the parent's history view, providing a consolidated view of all related changes
 
-Change Log vs History Table: Key differences
---------------------------------------------
-
-### **Change Log (RedoLogs)** - Technical auditing tool
-
-The **Change Log** is a **technical tracking system** that records every single change made to an object.
-
-**Purpose:**
-
-- Track who did what and when at a granular level
-- Provide complete audit trail for technical troubleshooting
-- Debugging and system analysis
-
-**Key characteristics:**
-
-- Records **all** changes without filtering
-- Cannot be customized with business rules
-- **Security consideration:** Shows all field changes, even for fields the current user cannot normally access
+Change log
+----------
 
 :::danger Security Warning
-
 If the maker exposes the Change Log to end-users, they may see **data they don't have permission to view**.
-
 :::
 
-### **History Table** - Business-oriented historization
+The change log records all activities done on the object (who, what changes, at what time). To enable it, the maker must:
 
-The **History Table** is designed for **end-users and business purposes**.
+- make sure that the system parameter `LOG_ACTIVITY` is enabled ("database": true), which is the default.
+- check the "Data History: Change log" option in the business object settings.
 
-**Purpose:**
+:::warning
+Currently, it is necessary to manually create a function on the "RedoLog" system object to give access to change-logs to end users.
+Be sure to remove module filters to add this function.
+:::
 
-- Provide a safe, user-friendly view of object evolution
-- Track business-relevant changes with custom rules
-- Display change summaries without exposing restricted data
+### Child objects change logs
 
-**Key characteristics:**
+The maker can retrieve redo logs of child objects into the parent **Change log panel**:
 
-- Can be filtered using the `isHistoric` hook for business logic
-- **[Since 6.3]** Includes an **Summary of updates** field showing a summary of changes
-- **[Since 6.3]** Can reassemble child object updates for a consolidated view
-- Respects field-level permissions and business rules
-- Safe to expose to end-users
+- Use the **Link option**: `Reassemble updates history?`
 
-**Recommendation:** Use the History Table when the maker needs to show change tracking to business users,
-as it provides better control over what is recorded and displayed.
+- Or by code:
+  
+```java
+getLink("DemoProduct","demoPrdSupId").setMergeRedologs(true);
+```
