@@ -23,6 +23,8 @@ Simplicité's frontend follows the **Model-View-Controller** pattern to keep app
 - **View** (`$view`): UI components and rendering via `Simplicite.UI.View`
 - **Controller** (`$ui`): Frontend engine coordinating Model and View via `Simplicite.UI.Engine`
 
+![Simplicité front-end API layers](img/introduction/front-end-api-layers.png)
+
 Global Objects
 --------------
 
