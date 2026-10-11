@@ -105,7 +105,7 @@ modules:
   - name: "MyModule1"
   # it is possible to specify a custom location for module files
   - name: "MyModule2"
-    file: "/an/absolute/path/to/mymodule.zip"
+    file: "<absolute or relative path to>/mymodule.zip" 
   # module files can be online
   - name: "MyModule3",
     url: "https://somewhere.com/path/to/mymodule.zip"
