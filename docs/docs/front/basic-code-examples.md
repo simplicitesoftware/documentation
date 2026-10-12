@@ -283,6 +283,106 @@ field.ui.updatable(true);
 field.ui.updatable(false);
 ```
 
+Areas and actions of the form have the same kind of `ui` interface:
+
+| Accessor | Main `ui` methods |
+| -------- | ----------------- |
+| `$ui.getUIField(ctn, obj, name)` | `val()`, `val(value)`, `change(handler)`, `visible(bool)`, `required(bool)`, `updatable(bool)`, `focus()` |
+| `$ui.getUIArea(ctn, obj, nameOrPosition)` | `visible(bool, slide)` |
+| `$ui.getUIAction(ctn, obj, name)` | `visible(bool)`, `enable(bool)`, `click(handler)` |
+
+### Show/hide and required on field change
+
+Show a field and a whole area, and make another field required, depending on a field value:
+
+```javascript
+Simplicite.UI.BusinessObjects.MyObject = class extends Simplicite.UI.BusinessObject {
+    onLoadForm(ctn, obj, p) {
+        super.onLoadForm(ctn, obj, p);
+        const type = $ui.getUIField(ctn, obj, "myObjType");
+        const comment = $ui.getUIField(ctn, obj, "myObjComment");
+        const reason = $ui.getUIField(ctn, obj, "myObjReason");
+        const details = $ui.getUIArea(ctn, obj, "MyObject-Details"); // area name or position
+
+        const apply = slide => {
+            const other = type.ui.val() === "OTHER";
+            comment.ui.visible(other, slide);    // show the comment only for OTHER
+            details?.ui.visible(other, slide);   // same for a whole area
+            reason.ui.required(other);           // reason required for OTHER
+        };
+        apply(false);                            // initial state, without effect
+        type.ui.change(() => apply(true));       // then on each change
+    }
+};
+```
+
+### Read-only and computed value
+
+Lock a field and set its value when another field changes:
+
+```javascript
+onLoadForm(ctn, obj, p) {
+    super.onLoadForm(ctn, obj, p);
+    const status = $ui.getUIField(ctn, obj, "myObjStatus");
+    const closedOn = $ui.getUIField(ctn, obj, "myObjClosedOn");
+    status.ui.change(() => {
+        const closed = status.ui.val() === "CLOSED";
+        closedOn.ui.updatable(!closed);
+        if (closed && !closedOn.ui.val()) {
+            const today = new Date();
+            // service format YYYY-MM-DD
+            const closedOnDate = closedOn.convertDate(today);
+            // ui.val will convert to user format (ex DD/MM/YYYY)
+            closedOn.ui.val(closedOnDate || "");
+        }
+    });
+}
+```
+
+### Actions
+
+Hide or disable an action button, or call an action by script:
+
+```javascript
+onLoadForm(ctn, obj, p) {
+    super.onLoadForm(ctn, obj, p);
+    const validate = $ui.getUIAction(ctn, obj, "MyObjValidate");
+    validate?.ui.visible($grant.hasResponsibility("MY_MANAGER"));
+    validate?.ui.enable(obj.getFieldValue("myObjStatus") !== "VALIDATED");
+
+    // custom button calling the action with an action field
+    $('<button type="button" class="btn btn-secondary"/>').text($T("MY_ACTION"))
+        .appendTo($(".form-actionbar", ctn))
+        .on("click", async () => {
+            const res = await obj.action("MyObjValidate", { values: { myActComment: "OK" } });
+            $ui.alert({ type: "info", content: String(res) });
+        });
+}
+```
+
+### Check fields before saving
+
+Compare two fields, focus the wrong one and stop the save with `cbk(false)`:
+
+```javascript
+beforeSave(ctn, obj, index, cbk) {
+    const start = obj.getFieldValue("myObjStart"), end = obj.getFieldValue("myObjEnd");
+    if (start && end && end < start) {
+        $ui.alert({ type: "warning", content: $T("MY_END_BEFORE_START") });
+        $ui.getUIField(ctn, obj, "myObjEnd").ui.focus();
+        return cbk(false);
+    }
+    super.beforeSave(ctn, obj, index, cbk);
+}
+```
+
+:::note
+
+The UI rules improve the input, they do not secure the data: keep the same checks on server side
+(object hooks or constraints) as the services can be called without the UI.
+
+:::
+
 When displaying a list programmatically, apply filters that the user cannot change:
 
 ```javascript
@@ -357,15 +457,35 @@ $ui.displayForm(null, "MyObject", rowId, {
     nav: "add" // add the form to the navigation history
 });
 
+// Creation form with forced values
+$ui.displayForm(null, "MyObject", $app.DEFAULT_ROW_ID, { nav: "add", values: { myObjType: "OTHER" } });
+
+// Read-only form in a container of the page
+$ui.displayForm($("#myForm", ctn), "MyObject", rowId, { readonly: true });
+
 // Display a list
 $ui.displayList(null, "MyObject", {
     nav: "add"
 });
 
+// List with filters with a new navigation entry, and a fixed filter not changeable by the user
+$ui.displayList(null, "MyObject", {
+    nav: "new",
+    filters: { myObjStatus: "OPEN" },  // changeable by the user
+    fixedFilters: { myObjType: "A" }   // not changeable by the user
+});
+
+// List in a container of the page, with a callback when displayed
+$ui.displayList($("#myList", ctn), "MyObject", { fixedFilters: { myObjType: "A" } },
+    (obj, p) => console.log(obj.getName() + " list displayed"));
+
 // Display a search form in a popup
 $ui.displaySearch(null, "MyObject", {
     position: "popup"
 });
+
+// Open an external object in a container
+$ui.loadURL(ctn, $app.getExternalObjectURL("MyExternalObject", { param1: "value" }));
 ```
 
 ### Page lifecycle events
