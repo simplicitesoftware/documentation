@@ -94,8 +94,8 @@ The importspec defines an ordered list of modules to import on the instance.
 Here follows an example combining all possible module sourcing options:
 
 - **[default]** a zipped/tarballed module in the importspec dir
-- a zipped/tarballed module somewhere else on the filesystem
-- a zipped/tarballed module online
+- a zipped/tar-balled module somewhere else on the filesystem
+- a zipped/tar-balled module online
 - a git repository
 
 ```yaml
@@ -165,6 +165,12 @@ modules:
       - MyUnitTest1
       - MyUnitTest2
 ```
+
+### Advanced
+
+The `async` boolean flag may be used to force the module import to be asynchronous. This is only relevant in particular cases.
+
+The `asyncindexation` boolean flag may be used to force asynchronous re-indexation after module import
 
 ### Use cases
 
