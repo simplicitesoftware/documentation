@@ -30,16 +30,16 @@ Global Objects
 
 The following global objects are available in Simplicité:
 
-| Object   | Type                      | Description                                    |
-|----------|---------------------------|------------------------------------------------|
-| `$ui`    | `Simplicite.UI.Engine`    | Main UI Controller                             |
-| `$app`   | `Simplicite.Application`  | Ajax Service / Main Model                      |
-| `$view`  | `Simplicite.UI.View`      | View Engine / Main View                        |
-| `$grant` | `Simplicite.Ajax.Grant`   | User rights and information                    |
-| `$nav`   | `Simplicite.UI.Navigator` | Navigation controller                          |
-| `$root`  | `String`                  | Server root URL                                |
-| `$tools` | `Simplicite.UI.View`      | Bootstrap-specific methods                     |
-| `$T`     | `Function`                | Text translation shorthand                     |
+| Object   | Type                            | Description                 |
+|----------|---------------------------------|-----------------------------|
+| `$ui`    | `Simplicite.UI.Engine`          | Main UI Controller          |
+| `$app`   | `Simplicite.Application`        | Ajax Service / Main Model   |
+| `$view`  | `Simplicite.UI.View.Main`       | View Engine / Main View     |
+| `$grant` | `Simplicite.Ajax.Grant`         | User rights and information |
+| `$nav`   | `Simplicite.UI.Navigator`       | Navigation controller       |
+| `$root`  | `String`                        | Server root URL             |
+| `$tools` | `Simplicite.UI.View.Bootstrap5` | Bootstrap-specific methods  |
+| `$T`     | `Function`                      | Text translation shorthand  |
 
 ### Access Shortcuts
 
@@ -114,13 +114,27 @@ product.search().then(rows => {
 Displaying UI Elements
 ----------------------
 
-The following methods display UI elements in the work area:
+The following methods display UI elements (a `null` container is the work area):
 
-| Method                                 | Description                                          |
-|----------------------------------------|------------------------------------------------------|
-| `displayForm(ctn, obj, rowId, p, cbk)` | Display form for object                              |
-| `displayList(ctn, obj, p, cbk)`        | Display list for object                              |
-| `displaySearch(ctn, obj, p, cbk)`      | Display search form for object                       |
+| Method                                            | Description                          |
+|---------------------------------------------------|--------------------------------------|
+| `displayForm(ctn, obj, rowId, p, cbk)`            | Display form for object              |
+| `displayList(ctn, obj, p, cbk)`                   | Display list for object              |
+| `displaySearch(ctn, obj, p, cbk)`                 | Display search form for object       |
+| `displayHome(ctn, p, cbk)`                        | Display the home page                |
+| `displayView(ctn, view, p, cbk)`                  | Display a view by name               |
+| `displayDashboard(ctn, name, p, cbk)`             | Display the user dashboard           |
+| `displayTray(ctn, obj, field, p, cbk)`            | Display the trays of a state model   |
+| `displayCalendar(ctn, obj, agenda, p, cbk)`       | Display an agenda                    |
+| `displayCrosstab(ctn, obj, name, p, cbk)`         | Display a pivot table                |
+| `displayTreeView(ctn, obj, rowId, name, p, cbk)`  | Display a tree view of a record      |
+| `displayTimesheet(ctn, obj, rowId, name, p, cbk)` | Display a timesheet                  |
+| `displayMap(ctn, p)`                              | Display records or a point on a map  |
+| `displayWorkflow(ctn, pcs, action, p, cbk)`       | Start or resume a business process   |
+| `displaySummary(ctn, obj, rowId, p)`              | Display the summary card of a record |
+| `displayIndexSearch(ctn, req, p, cbk)`            | Display a full-text search result    |
+| `displayExport(ctn, obj, rowId)`                  | Display the export dialog            |
+| `displayPrint(ctn, name, obj, rowId, cbk)`        | Display a publication                |
 
 **Example**:
 
