@@ -46,7 +46,7 @@
     "@docusaurus/types": "3.10.2",
     "markdownlint-cli2": "0.23.3",
     "husky": "^9.1.7",
-    "npm-check-updates": "23.1.0"
+    "npm-check-updates": "23.1.1"
   },
   "browserslist": {
     "production": [
