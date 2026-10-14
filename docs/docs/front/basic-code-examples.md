@@ -613,8 +613,11 @@ $tools.dialog({
         name: "OK",
         label: $T("OK"),
         style: "primary",
-        close: false, // keep the dialog open, close it by script with $tools.dialogClose()
-        callback: () => console.log("clicked")
+        close: false, // keep the dialog open, the callback closes it
+        callback: () => {
+            console.log("clicked");
+            $tools.dialogClose(); // close the top dialog
+        }
     }, {
         name: "CANCEL",
         label: $T("CANCEL"),
