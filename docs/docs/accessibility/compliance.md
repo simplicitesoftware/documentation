@@ -10,27 +10,27 @@ Détail des critères
 
 **[English below]**
 
+Ce document porte exclusivement sur la version 7.0 de la plateforme. Il ne décrit pas la version 6.3.
+
 Afin de rester cohérent avec la langue de rédaction du RGAA, ce document est écrit en **français**. Une version **anglaise** est en cours de traduction.
 
-Ce document est en cours de rédaction. Nos travaux sur l'accessibilité numérique étant toujours en cours, les positionnements et les explications
-qu'il contient sont susceptibles d'évoluer d'ici la sortie de la version 7.
+Ce document est en cours de rédaction. Nos travaux sur l'accessibilité numérique étant toujours
+en cours, ce document est susceptible d'évoluer d'ici la sortie de la version 7.0 "finale".
 
-Ce document porte exclusivement sur la version 7 de la plateforme. Il ne décrit pas la version 6.3.
-
-Plusieurs critères relèvent en tout ou partie du travail du designer. Les règles de conception et de paramétrage correspondantes font l'objet d'un
-document dédié, en cours de rédaction, qui sera publié et référencé ici dès qu'il sera disponible.
+Une partie des critères relèvent en partie (ou entierement) du travail du designer, ces éléments
+de conception et paramétrage sont détaillés dans un document tierce (bientôt finalisé).
 
 ---
 
-To stay consistent with the language the RGAA is written in, this document is written in **French**. An **English** version is being translated.
+This document relates exclusively to version 7.0 of the platform. It does not describe version 6.3.
 
-This document is a work in progress. Our accessibility work is ongoing, so the positions and explanations it contains may still
-change before version 7 is released.
+To maintain consistency with the RGAA's language of writing, this document is written in **French**. An **English** version is currently being translated.
 
-This document covers version 7 of the platform only. It does not describe version 6.3.
+This document is a work in progress. As our work on digital accessibility is still
+ongoing, this document is subject to change before the release of the "final" version 7.0.
 
-Several criteria depend, wholly or in part, on the designer's work. The corresponding design and configuration rules are covered
-in a dedicated document, currently being written, which will be published and linked here as soon as it is available.
+Some of the criteria fall partly (or entirely) under the designer's responsibility; these design
+and configuration elements are detailed in a separate document (soon to be finalized).
 
 :::
 
@@ -40,81 +40,74 @@ Nature et périmètre de ce document
 ### Ce que ce document est
 
 Ce document expose le **positionnement de Simplicité Software** sur les 106 critères du
-[RGAA 4.1.2](https://accessibilite.numerique.gouv.fr/), appliqués au **socle de la plateforme** en version 7.
+[RGAA 4.1.2](https://accessibilite.numerique.gouv.fr/), appliqués au **socle de la plateforme** en version 7. Il ne s'agit pas d'un audit.
 
-Il ne s'agit pas d'un audit : il ne porte pas sur un échantillon de pages d'une application donnée,
-mais sur les composants, écrans et comportements fournis nativement par la plateforme, tels qu'ils sont
-générés indépendamment de toute configuration métier.
-
-L'accessibilité numérique fait l'objet d'un travail continu de notre R&D. Ce positionnement reflète
-l'état de la plateforme à la date indiquée ci-dessous et est réévalué à chaque version majeure.
-
-> **Dernière évaluation** : `08/2026` — plateforme version `7-alpha`
+> **Dernière évaluation** : `10/2026` — plateforme version `7-beta`
 
 ### Périmètre évalué
 
 Les positionnements portent sur l'ensemble des briques natives de la plateforme :
 
-- l'authentification et les écrans associés ;
-- la page d'accueil et le plan du site ;
-- les menus, barres de navigation et fil d'Ariane ;
-- les listes et tableaux d'objets, ainsi que leurs barres d'actions et de filtres ;
-- les formulaires, les champs et leurs sous-champs ;
-- les modales, boîtes de dialogue et messages système ;
-- la recherche globale et les recherches contextuelles ;
-- les paramètres et préférences utilisateur.
+- pages d'authentification (login, register, forget password)
+- les éléments de structure transverses (en-tête, pied-de-page, ainsi que leurs composants)
+- les menus, barres de navigation, plan de site
+- les composants d'interface principaux de la plateforme (listes, formulaires, processus métier)
+  - leurs "sous-composants" (barres d'actions, filtres, recherches, modales décisionnelles)
+  - les fonctionnalités natives et certaines fonctionnalités paramétrables (désactivable pour celles non-conformes)
+  - les éléments communs à une application métier (toasts, dropdowns, badges, widgets)
 
 ### Ce que ce document ne couvre pas
 
 Le **taux de conformité** au sens de la déclaration d'accessibilité ne peut être établi qu'application par
 application, sur un échantillon de pages représentatif, et relève de l'organisme qui exploite l'application.
+
 Le présent document constitue une base de travail pour cet exercice, il ne s'y substitue pas.
 
 Ne sont pas couverts non plus les contenus et développements ajoutés par les designers ou les utilisateurs
-finaux : objets externes, HTML personnalisé, thèmes sur mesure, images et documents métier.
+finaux : objets externes, composants personnalisées, thèmes sur mesure, images et documents métier.
+
 Ces cas sont identifiés critère par critère via la colonne **Périmètre**, et détaillés dans la section
 [Exceptions et composants hors-contexte](#exceptions-et-composants-hors-contexte).
 
 Comprendre le contexte Simplicité
 ---------------------------------
 
-Cette section s'adresse en particulier aux auditeurs externes. Le contexte technique de la plateforme
-diffère nettement de celui d'un site web classique, cible principale du RGAA, et cette différence
-conditionne la lecture de plusieurs critères.
+> /!\ Cette section s'adresse en particulier aux auditeurs externes. /!\
+
+Le contexte technique de la plateforme diffère nettement de celui d'un site web classique, cible principale du RGAA,
+et cette différence conditionne la lecture de plusieurs critères.
 
 ### Une plateforme de génération d'applications
 
-Simplicité est un éditeur de logiciel : la plateforme ne produit pas un site, elle produit un **socle**
-à partir duquel des **designers** (les développeurs et concepteurs d'applications, côté client ou côté
-intégrateur) construisent des applications métier. Les écrans ne sont pas écrits à la main mais **générés**
-à partir d'un modèle de données et d'un paramétrage.
+La plateforme permet la création d'applications métiers par les utilisateurs "designers", les
+interfaces ne sont donc pas créées entièrement à la main comme pour les sites webs classiques.
 
-Deux conséquences directes :
+La principale conséquence de cela est la manière dont est répartie la résponsabilité d'accessibilité.
 
-1. Un même composant natif est réutilisé dans des centaines de contextes différents. Une correction
-   d'accessibilité sur ce composant bénéficie à toutes les applications ; à l'inverse, un défaut s'y
-   propage tout aussi largement.
-2. La plateforme ne maîtrise pas le contenu injecté dans ces composants. Un libellé de champ, une image
-   métier ou un intitulé d'action sont définis par le designer, et leur pertinence lui incombe.
+Il incombe en effet aux designers de s'assurer que les éléments qu'ils paramètrent respectent tout d'abord
+les indications d'accessibilités que nous déclarons (doc bientôt disponible).
+Puis que les éléments soient correctement paramétrés (nommage, positionnement, traductions, etc).
 
-### Une application monopage
+Il y a aussi un certains nombres d'éléments qui ne dépendent que des utilisateurs finaux :
 
-Les applications Simplicité sont des **applications monopages** (SPA) : la navigation ne provoque pas de
-changement d'URL ni de rechargement du document. L'équivalent fonctionnel d'un changement de page est le
-remplacement de la majeure partie de la zone de contenu principal (la section `#work`).
+- images métiers
+- textes non traduis ou non pertinents
+
+### Survol d'une application
+
+Les applications Simplicité sont des **applications monopages** (Single Page Application) :
+la navigation ne provoque pas de changement d'URL, et dans la plupart des cas pas de rechargement du document.
+L'équivalent fonctionnel d'un changement de page est le remplacement de la majeure partie de la zone de contenu principal (la section `#work`).
 
 Ce fonctionnement est explicité pour les critères concernés, notamment ceux relatifs à la navigation
-(thématique 12) et aux éléments obligatoires (thématique 8). Les actions de navigation sont
-systématiquement portées par des liens, afin de conserver la distinction sémantique entre navigation et
-action, et de retrouver les repères habituels d'un site web.
+(thématique 12) et aux éléments obligatoires (thématique 8).
+Les actions de navigation sont portées par des liens, afin de conserver la distinction sémantique entre navigation et action.
 
-### Des applications hautement interactives
+De plus, les applications générées sont **hautement intéractives** car elles reposent sur
+des formulaires, des listes, des processus métier et des échanges entre utilisateurs.
 
-Les applications générées reposent massivement sur des formulaires, des listes, des processus métier et
-des échanges de documents entre utilisateurs. Cette densité d'interaction demande un effort de R&D
-supérieur à celui d'un site de contenu, et une attention particulière lors des audits : un composant
-peut se comporter différemment selon le contexte d'appel, l'état de l'objet ou les droits de
-l'utilisateur.
+Cette densité d'interaction demande une attention particulière lors des audits : un composant peut se comporter différemment
+selon le contexte d'appel, l'état de l'objet ou les droits de l'utilisateur.
 
 ### Répartition des responsabilités
 
@@ -122,113 +115,72 @@ La conformité d'une application livrée résulte de trois contributions distinc
 
 | Acteur | Responsabilité |
 | ------ | -------------- |
-| **La plateforme** | Rendre accessibles tous les composants natifs et fournir aux designers les mécanismes permettant de conformer leurs contenus. |
-| **Le designer** | Utiliser ces mécanismes correctement : libellés pertinents, alternatives textuelles des images métier, contrastes des thèmes personnalisés, conformité des objets externes. Les règles et bonnes pratiques sont détaillées dans l'aide aux designers. |
-| **L'utilisateur final** | Renseigner les alternatives des contenus qu'il dépose (images, documents) lorsque l'application le lui permet. |
+| **La plateforme** | Rendre accessibles un maximum de composants natifs et fournir aux designers les mécanismes permettant de rendre leurs applications conformes. |
+| **Le designer** | Utiliser ces mécanismes correctement : usage des fonctionnalités déclarées conformes (ou partiellement conformes en réspectant les règles et bonnes pratiques) libellés pertinents, contrastes des thèmes personnalisés, conformité des objets externes. |
+| **L'utilisateur final** | Renseigner les alternatives des contenus déposés (images, documents) lorsque l'application le lui permet. Et renseigner des valeurs de champs compréhensibles/cohérentes. |
 
-Certains éléments échappent structurellement à toute vérification par la plateforme : code des objets
-externes, HTML personnalisé, addons JavaScript, thèmes sur mesure. Ils sont listés dans la section
-[Exceptions et composants hors-contexte](#exceptions-et-composants-hors-contexte).
+Certains éléments échappent structurellement à toute vérification par la plateforme :
+code des objets externes, HTML personnalisé, addons JavaScript, thèmes sur mesure, langue des input d'un utilisateur final.
+Ils sont listés dans la section [Exceptions et composants hors-contexte](#exceptions-et-composants-hors-contexte).
 
 Fonctionnalités d'accessibilité de la plateforme
 -----------------------------------------------
 
-Au-delà de la mise en conformité des composants, la plateforme fournit quatre dispositifs dédiés,
-agissant à trois niveaux : l'utilisateur final, l'administrateur et le designer. Plusieurs
-positionnements du présent document en dépendent explicitement. Leur mise en œuvre est détaillée dans
-l'aide aux designers.
+Au-delà de la mise en conformité des composants, la plateforme fournit deux dispositifs dédiés,
+agissant à deux niveaux : l'utilisateur final, et le designer.
+Plusieurs positionnements du présent document en dépendent explicitement. Leur mise en œuvre est détaillée dans l'aide aux designers.
 
 ### Le mode d'accessibilité (`a11y-mode`)
 
-Ce mode est activable et désactivable à tout moment par l'utilisateur final, depuis un bouton dédié de
-l'en-tête de l'application. Il adapte ou inhibe les comportements d'interface susceptibles de gêner ou
-d'empêcher l'usage de l'application via une technologie d'assistance, sans dégrader l'expérience des
-utilisateurs qui n'en ont pas besoin.
+Ce mode est activable et désactivable à tout moment par l'utilisateur final, depuis un bouton dédié de l'en-tête de l'application.
+Il adapte ou inhibe les comportements d'interface susceptibles de gêner ou d'empêcher l'usage de l'application via une technologie d'assistance,
+sans dégrader outre-mesure l'expérience des utilisateurs qui n'en ont pas besoin.
 
 Les comportements pris en charge sont :
 
-- les en-têtes flottants des formulaires et des listes ;
 - les couleurs personnalisées des boutons d'action et des états ;
+- le menu horizontal ;
 - le découpage de la zone de travail en panneaux redimensionnables ;
 - le mode compact ;
-- le repli du menu ;
 - l'affichage des listes en mosaïque ;
-- les tiroirs et indicateurs issus des objets à statut ;
+- les tiroirs (trays/trello) et métriques des objets à statut ;
 - les recherches prédéfinies proposées depuis la boîte de dialogue de recherche ;
-- le menu horizontal.
+- les sélécteur de dates ;
+- les champs d'input html ;
+- le thème `HighContrast` forcé ;
+- l'ouverture d'un formulaire par ligne de tableau ;
+- l'affichage par défaut des objets liés.
 
 :::warning
 
-Ce mode est un filet de sécurité sur des fonctionnalités non structurantes. Il ne corrige pas les
-composants identifiés comme non conformes dans l'aide aux designers : une
-application soumise à une exigence stricte de conformité doit désactiver ces composants à la
-conception, indépendamment de l'activation du mode par l'utilisateur.
+Ce mode est un filet de sécurité. Il ne corrige pas les composants identifiés comme non conformes : une application soumise à une exigence stricte de
+conformité doit désactiver ces composants à la conception, indépendamment de l'activation du mode par l'utilisateur.
 
 :::
 
-### La surcharge par utilisateur (`A11Y_OVERRIDE`)
+La plateforme propose aussi un paramètre utilisateur `ACCESSIBILITY_OVERRIDE` permettant de préciser les choix des fonctionnalités inhibées.
 
-Ce paramètre utilisateur constitue un niveau intermédiaire : il permet de neutraliser au cas par cas,
-pour un utilisateur donné et à sa demande, des composants qui n'ont pas pu être rendus conformes en
-raison de leur complexité ou de leurs dépendances tierces.
+> Dans le cadre d'un audit, seule une utilisation de l'application avec ce mode activé est garantit conforme (pour les éléments du socle).
 
-Les composants concernés sont :
-
-- les sélecteurs de date, remplacés par une saisie textuelle accompagnée d'une indication de format ;
-- l'éditeur HTML enrichi ;
-- les éditeurs de code ;
-- les tiroirs, dont l'usage repose exclusivement sur le glisser-déposer ;
-- le menu horizontal, dont les menus surgissants enchaînés posent des difficultés de navigation au
-  clavier et de restitution vocale ;
-- les couleurs personnalisées, en filet de sécurité sur les contrastes des actions et des énumérations ;
-- les guides utilisateur, dont le déroulement par fenêtres surgissantes pose les mêmes difficultés.
-
-### Le thème `HighContrast`
-
-Ce thème, décliné en versions claire et sombre, n'utilise que des nuances de la palette Simplicité
-présentant des contrastes élevés, et augmente les espacements afin de faciliter la lecture visuelle
-des éléments. Il garantit la conformité des critères de contraste et de visibilité de la prise de focus
-sans intervention du designer.
-
-### L'aide à la conception (`A11Y_DEV`)
+### L'aide à la conception (`ACCESSIBILITY_DEV`)
 
 Ce paramètre système, destiné aux designers, affiche pendant la conception une pastille à côté de
-l'intitulé de chaque champ, indiquant par sa couleur le niveau de conformité RGAA de la fonctionnalité
-correspondante : non évaluée, non conforme, partiellement conforme, ou conforme. L'absence de pastille
-signale une fonctionnalité que les critères du référentiel ne concernent pas.
+l'intitulé de chaque champ, indiquant par sa couleur (et un libéllé) le niveau de conformité RGAA de la fonctionnalité correspondante :
+non évaluée, non conforme, partiellement conforme, ou conforme.
+
+L'absence de pastille signale une fonctionnalité que les critères du référentiel ne concernent pas.
 
 Un designer soumis à une exigence de conformité dispose ainsi, au moment où il construit ses écrans,
-de l'information nécessaire pour écarter les fonctionnalités non conformes et paramétrer correctement
-celles qui ne le sont que partiellement.
+de l'information nécessaire pour écarter les fonctionnalités non conformes et paramétrer correctement celles qui ne le sont que partiellement.
+
+Une fois l'application auditée, le designer peut renseigner le résultat dans le paramètre système `ACCESSIBILITY_LEVEL`.
 
 Méthodologie et lecture des tableaux
 ------------------------------------
 
-### Base de référence
-
-Les vérifications ont été menées avec l'environnement suivant :
-`[à compléter : navigateurs et lecteurs d'écran utilisés, ex. Firefox + NVDA, Safari + VoiceOver]`
-
-Les écarts constatés lors d'un audit mené sur une base de référence différente peuvent être discutés
-à partir de cette déclaration.
-
-### Protocoles particuliers
-
-Certains critères sont vérifiés selon un protocole explicite, rappelé ici plutôt que répété dans chaque
-justification :
-
-- **Agrandissement du texte (10.4)** : fenêtre de 1280 px de large, zoom navigateur à 200 %, vérification
-  de l'absence de troncature, de chevauchement et de perte de fonctionnalité.
-- **Redimensionnement du contenu (10.11)** : contenu présenté sans défilement bidirectionnel dans une
-  fenêtre de 320 px de large et de 256 px de haut.
-- **Espacement du texte (10.12)** : application via feuille de styles utilisateur d'un interlignage de
-  1,5, d'un espacement des lettres de 0,12 em, d'un espacement des mots de 0,16 em et d'une marge de
-  paragraphe de 2 em, puis vérification de l'absence de perte de contenu ou de fonctionnalité.
-
 ### Statuts
 
-Seuls les trois statuts du RGAA sont employés. Un statut est un verdict figé : il ne renseigne pas sur
-les travaux en cours.
+Seuls les trois statuts du RGAA sont employés. Un statut est un verdict figé : il ne renseigne pas sur les travaux en cours.
 
 | Statut | Signification |
 | ------ | ------------- |
@@ -243,8 +195,8 @@ elle précise ce que le statut recouvre.
 
 | Périmètre | Signification |
 | --------- | ------------- |
-| **Socle** | Garanti par la plateforme, sans condition. |
-| **Socle configuré** | Garanti dès lors qu'une option documentée est active (thème `HighContrast`, `a11y-mode`). La condition est rappelée en tête de justification. |
+| **Socle** | Garanti par la plateforme. |
+| **Socle configuré** | Garanti dès lors qu'une option documentée est active. La condition est rappelée en tête de justification. |
 | **Partagé** | La plateforme fournit le mécanisme, le designer ou l'utilisateur doit l'utiliser correctement. |
 | **Designer** | Hors de portée de la plateforme : le résultat dépend entièrement des développements du designer. |
 
@@ -253,10 +205,8 @@ elle précise ce que le statut recouvre.
 Sur les 106 critères du RGAA 4.1.2 : **61 conformes**, **15 non conformes**, **30 non applicables** au
 socle — soit **80,3 %** des critères applicables.
 
-Cet indicateur mesure la couverture du socle, et non la conformité d'une application livrée. Cette
-dernière dépend également des choix de conception du designer et de son respect des règles fournies
-dans l'aide aux designers : une application construite sur un socle conforme peut
-ne pas l'être, et l'écart se situe alors dans les critères de périmètre **Partagé** ou **Designer**.
+Cet indicateur mesure la couverture du socle, et non la conformité d'une application livrée. Cette dernière dépend également
+des choix de conception du designer et de son respect des règles fournies : une application construite sur un socle conforme peut ne pas l'être.
 
 Thématiques
 -----------
@@ -470,33 +420,33 @@ La plateforme permet aux designers d'implémenter des **objets externes** : des 
 personnalisés, écrits en code libre, répondant à des besoins spécifiques et utilisant l'API Simplicité
 à leur convenance.
 
-Le balisage produit par ces objets échappe totalement au socle : ni sa validité, ni sa structure, ni
+Le balisage produit par ces objets échappe totalement au socle : ni sa validité, ni sa structure, ni son contexte d'usage, ni
 ses attributs d'accessibilité ne peuvent être vérifiés. Leur conformité relève donc entièrement du
-designer qui les écrit. Cette réserve concerne au premier chef les critères des thématiques 1, 6, 7, 8,
-9 et 11, et elle est rappelée dans les justifications concernées.
+designer qui les écrit.
 
-Les composants embarqués fournis avec le socle ne relèvent pas de cette exception : ils sont évalués
-comme le reste de la plateforme.
+Les seuls composants qualifiées comme "objets externes" étant évalués avec le socle sont les widgets natifs.
 
 ### Contenus HTML et addons personnalisés
 
 Au-delà des objets externes, plusieurs points d'extension permettent d'injecter du balisage non
 contrôlé dans l'interface : contenus statiques HTML, aides de champ contenant du balisage, addons
-JavaScript, modèles de publication. Un contenu purement textuel y est sans risque ; dès lors qu'il
-contient du HTML, sa conformité incombe au designer.
+javascript, styles personnalisés, customisation du header/footer, modèles de publication.
+
+Un contenu purement textuel et respectant la langue de l'application y est sans risque ; dès lors qu'il contient du HTML, sa conformité incombe au designer.
 
 ### Thèmes personnalisés
 
-La plateforme permet de personnaliser entièrement l'apparence de l'interface par la création de
+La plateforme permet de personnaliser l'apparence de l'interface par la création de
 **thèmes**. Ces derniers déterminant directement les contrastes des éléments, un vérificateur de
-contraste est intégré à chaque point de personnalisation — y compris lors du choix de l'apparence d'un
-bouton ou d'un état — afin que le designer puisse valider ses choix au moment où il les fait.
+contraste est intégré à chaque point de personnalisation (y compris en dehors de l'outil _Editeur de thème_)
+afin que le designer puisse valider ses choix au moment où il les fait.
 
-La plateforme ne peut cependant pas empêcher la définition d'un thème insuffisamment contrasté. Elle
-fournit à cette fin le thème `HighContrast`, qui garantit la conformité des critères de contraste et
-de visibilité de la prise de focus sans intervention. Au-delà de ce thème, la conformité des couleurs
-relève du designer, dans la limite de ce qui est variabilisable — soit, en pratique, la totalité de
-l'interface.
+La plateforme ne peut cependant pas empêcher la définition d'un thème insuffisamment contrasté.
+Elle fournit par défaut une thème hautement contrasté (utilisé par défaut avec le _mode accessibilité_), qui garantit la conformité
+des critères de contraste et de visibilité de la prise de focus sans intervention.
+
+Au-delà de ce thème, soit pour tout ce qui relève des mises en pages, options d'affichages ou, la conformité des couleurs relève du designer,
+dans le perimètre de ce qui est paramétrable.
 
 ### Navigation dans une application monopage
 
