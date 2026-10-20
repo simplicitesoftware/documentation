@@ -1,6 +1,6 @@
 ---
 sidebar_position: 20
-title: Compliance
+title: Compliance (french)
 ---
 
 Détail des critères
@@ -8,7 +8,7 @@ Détail des critères
 
 :::warning
 
-**[English below]**
+**[Eenglish version](/docs/accessibility/compliance_en)**
 
 Ce document porte exclusivement sur la version 7.0 de la plateforme. Il ne décrit pas la version 6.3.
 
@@ -19,18 +19,6 @@ en cours, ce document est susceptible d'évoluer d'ici la sortie de la version 7
 
 Une partie des critères relèvent en partie (ou entierement) du travail du designer, ces éléments
 de conception et paramétrage sont détaillés dans un document tierce (bientôt finalisé).
-
----
-
-This document relates exclusively to version 7.0 of the platform. It does not describe version 6.3.
-
-To maintain consistency with the RGAA's language of writing, this document is written in **French**. An **English** version is currently being translated.
-
-This document is a work in progress. As our work on digital accessibility is still
-ongoing, this document is subject to change before the release of the "final" version 7.0.
-
-Some of the criteria fall partly (or entirely) under the designer's responsibility; these design
-and configuration elements are detailed in a separate document (soon to be finalized).
 
 :::
 
