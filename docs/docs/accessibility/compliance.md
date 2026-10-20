@@ -190,8 +190,8 @@ elle précise ce que le statut recouvre.
 
 ### Répartition des positionnements
 
-Sur les 106 critères du RGAA 4.1.2 : **71 conformes**, **6 non conformes**, **29 non applicables** au
-socle - soit **91.2 %** des critères applicables.
+Sur les 106 critères du RGAA 4.1.2 : **72 conformes**, **5 non conformes**, **29 non applicables** au
+socle - soit **93.5 %** des critères applicables.
 
 Cet indicateur mesure la couverture du socle, et non la conformité d'une application livrée. Cette dernière dépend également
 des choix de conception du designer et de son respect des règles fournies : une application construite sur un socle conforme peut ne pas l'être.

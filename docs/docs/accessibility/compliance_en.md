@@ -192,8 +192,8 @@ it specifies what the status covers.
 
 ### Breakdown of positions
 
-Out of the 106 criteria of RGAA 4.1.2: **71 compliant**, **6 non-compliant**, **29 not applicable** to the
-core - i.e. **91.2 %** of applicable criteria.
+Out of the 106 criteria of RGAA 4.1.2: **72 compliant**, **5 non-compliant**, **29 not applicable** to the
+core - i.e. **93.5 %** of applicable criteria.
 
 This indicator measures core coverage, not the compliance of a delivered application. The latter also depends
 on the designer's design choices and on their adherence to the rules provided: an application built on a compliant core may not itself be compliant.
