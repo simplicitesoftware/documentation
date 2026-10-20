@@ -1,6 +1,6 @@
 ---
 sidebar_position: 20
-title: Compliance
+title: Compliance (french)
 ---
 
 Détail des critères
@@ -8,7 +8,7 @@ Détail des critères
 
 :::warning
 
-**[English below]**
+**[Eenglish version](/docs/accessibility/compliance_en)**
 
 Ce document porte exclusivement sur la version 7.0 de la plateforme. Il ne décrit pas la version 6.3.
 
@@ -20,18 +20,6 @@ en cours, ce document est susceptible d'évoluer d'ici la sortie de la version 7
 Une partie des critères relèvent en partie (ou entierement) du travail du designer, ces éléments
 de conception et paramétrage sont détaillés dans un document tierce (bientôt finalisé).
 
----
-
-This document relates exclusively to version 7.0 of the platform. It does not describe version 6.3.
-
-To maintain consistency with the RGAA's language of writing, this document is written in **French**. An **English** version is currently being translated.
-
-This document is a work in progress. As our work on digital accessibility is still
-ongoing, this document is subject to change before the release of the "final" version 7.0.
-
-Some of the criteria fall partly (or entirely) under the designer's responsibility; these design
-and configuration elements are detailed in a separate document (soon to be finalized).
-
 :::
 
 Nature et périmètre de ce document
@@ -42,7 +30,7 @@ Nature et périmètre de ce document
 Ce document expose le **positionnement de Simplicité Software** sur les 106 critères du
 [RGAA 4.1.2](https://accessibilite.numerique.gouv.fr/), appliqués au **socle de la plateforme** en version 7. Il ne s'agit pas d'un audit.
 
-> **Dernière évaluation** : `10/2026` — plateforme version `7-beta`
+> **Dernière évaluation** : `10/2026` - plateforme version `7-beta`
 
 ### Périmètre évalué
 
@@ -202,8 +190,8 @@ elle précise ce que le statut recouvre.
 
 ### Répartition des positionnements
 
-Sur les 106 critères du RGAA 4.1.2 : **61 conformes**, **15 non conformes**, **30 non applicables** au
-socle — soit **80,3 %** des critères applicables.
+Sur les 106 critères du RGAA 4.1.2 : **72 conformes**, **5 non conformes**, **29 non applicables** au
+socle - soit **93.5 %** des critères applicables.
 
 Cet indicateur mesure la couverture du socle, et non la conformité d'une application livrée. Cette dernière dépend également
 des choix de conception du designer et de son respect des règles fournies : une application construite sur un socle conforme peut ne pas l'être.
@@ -218,17 +206,17 @@ Thématiques
 | 1.1 | Chaque image porteuse d'information a-t-elle une alternative textuelle ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Les images générées par le socle sont majoritairement décoratives ; celles qui portent une information disposent toutes d'une alternative. Les images métier, déposées par les designers ou les utilisateurs, disposent d'un sous-champ `alt` que la plateforme met à leur disposition et dont le renseignement leur incombe. |
 | 1.2 | Chaque image de décoration est-elle correctement ignorée par les technologies d'assistance ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Les images décoratives générées par le socle sont pourvues d'un `alt` vide et dépourvues de `title` ; les icônes vectorielles et le contenu généré équivalent sont neutralisés par `aria-hidden="true"`. |
 | 1.3 | Chaque image porteuse d'information ayant une alternative textuelle, cette alternative est-elle pertinente ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Les alternatives des images du socle décrivent l'information portée par l'image. Pour les images métier, la plateforme ne dispose d'aucune méta-information sur le contenu déposé : la pertinence de l'alternative relève nécessairement de celui qui dépose l'image. |
-| 1.4 | Pour chaque image utilisée comme CAPTCHA ou comme image-test, ayant une alternative textuelle, cette alternative permet-elle d'identifier la nature et la fonction de l'image ? | <rgaa-nc>**Non Conforme**</rgaa-nc> | Partagé | Un CAPTCHA peut être activé sur l'écran d'authentification, au choix du designer. Lorsqu'il l'est, l'alternative textuelle ne permet pas d'en identifier la nature et la fonction. Lorsqu'il ne l'est pas, le critère est non applicable à l'application concernée. |
-| 1.5 | Pour chaque image utilisée comme CAPTCHA, une solution d'accès alternatif au contenu ou à la fonction du CAPTCHA est-elle présente ? | <rgaa-nc>**Non Conforme**</rgaa-nc> | Partagé | Aucun mécanisme d'accès alternatif n'est proposé lorsque le CAPTCHA est activé. Même remarque que pour le critère `1.4` concernant les applications ne l'activant pas. |
-| 1.6 | Chaque image porteuse d'information a-t-elle, si nécessaire, une description détaillée ? | <rgaa-nc>**Non Conforme**</rgaa-nc> | Partagé | Aucune image du socle ne nécessite de description détaillée. En revanche, une image métier qui en nécessiterait une ne peut pas s'en voir attribuer : le mécanisme n'existe pas à ce jour. |
-| 1.7 | Chaque image porteuse d'information ayant une description détaillée, cette description est-elle pertinente ? | <rgaa-na>**Non Applicable**</rgaa-na> | Socle | Aucune description détaillée ne peut être associée à une image, la question de sa pertinence est donc sans objet. |
-| 1.8 | Chaque image texte porteuse d'information, en l'absence d'un mécanisme de remplacement, doit si possible être remplacée par du texte stylé. Cette règle est-elle respectée ? | <rgaa-nc>**Non Conforme**</rgaa-nc> | Partagé | Le socle n'utilise aucune image texte. Une image texte déposée comme image métier ne dispose d'aucun mécanisme de remplacement au-delà de son attribut `alt`. |
-| 1.9 | Chaque légende d'image est-elle, si nécessaire, correctement reliée à l'image correspondante ? | <rgaa-na>**Non Applicable**</rgaa-na> | Partagé | Le socle n'associe jamais de légende visible à une image : il n'existe donc aucune légende à relier. Le critère redevient applicable dès qu'un designer place un texte de légende à proximité d'une image dans un contenu HTML personnalisé ; le couple `<figure>` / `<figcaption>` doit alors être utilisé. |
+| 1.4 | Pour chaque image utilisée comme CAPTCHA ou comme image-test, ayant une alternative textuelle, cette alternative permet-elle d'identifier la nature et la fonction de l'image ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Les seules images CAPTCHA sont celles de la page _register_, et ces dernières ont toutes une alternative textuelle telles que `Choix N`. |
+| 1.5 | Pour chaque image utilisée comme CAPTCHA, une solution d'accès alternatif au contenu ou à la fonction du CAPTCHA est-elle présente ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Il existe une forme de CAPTCHA audio. |
+| 1.6 | Chaque image porteuse d'information a-t-elle, si nécessaire, une description détaillée ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Similairement au critère `1.1`, la plateforme propose la possibilité d'associé une description via `aria-describedby` peu importe le contexte. |
+| 1.7 | Chaque image porteuse d'information ayant une description détaillée, cette description est-elle pertinente ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | La description étant à la charge de l'utilisateur on part du principe qu'elle est pertinente, car la plateforme permet sa creation et l'association est automatique. |
+| 1.8 | Chaque image texte porteuse d'information, en l'absence d'un mécanisme de remplacement, doit si possible être remplacée par du texte stylé. Cette règle est-elle respectée ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Le socle n'utilise aucune image texte. Une image texte déposée comme image métier dispose d'une description attachée avec `aria-describedby`, affichée à côté de l'image. |
+| 1.9 | Chaque légende d'image est-elle, si nécessaire, correctement reliée à l'image correspondante ? | <rgaa-na>**Non Applicable**</rgaa-na> | Partagé | Le socle n'associe jamais de légende visible à une image : il n'existe donc aucune légende à relier. |
 
 :::info
 
 Les utilisateurs et les designers peuvent inclure dans leurs applications des images dont la plateforme
-ne connaît ni le contenu ni la finalité. Le renseignement de l'attribut `alt` leur revient donc lorsque
+ne connaît ni le contenu ni la finalité. Le renseignement des attributs `alt` et de la description leur revient donc lorsque
 l'image est porteuse d'information ; la responsabilité de la plateforme porte sur les images qu'elle
 place elle-même dans l'interface, ainsi que sur la mise à disposition du mécanisme.
 
@@ -246,7 +234,7 @@ place elle-même dans l'interface, ainsi que sur la mise à disposition du méca
 | Critère | Intitulé | Statut | Périmètre | Justification |
 | ------- | -------- | ------ | --------- | ------------- |
 | 3.1 | Dans chaque page web, l'information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | L'information portée par un élément est systématiquement disponible sous forme textuelle : intitulé visible, contenu du composant, ou nom accessible. La couleur intervient toujours en complément d'un de ces vecteurs, jamais seule. |
-| 3.2 | Dans chaque page web, le contraste entre la couleur du texte et la couleur de son arrière-plan est-il suffisamment élevé ? | <rgaa-c>**Conforme**</rgaa-c> | Socle configuré | _Sous réserve de l'application du thème `HighContrast`._ Ce thème garantit des rapports de contraste conformes sur l'ensemble des éléments du socle. Pour les éléments dont la couleur reste paramétrable — états, boutons d'action — un vérificateur de contraste est intégré à l'interface de paramétrage, permettant au designer de valider ses choix au moment où il les fait. |
+| 3.2 | Dans chaque page web, le contraste entre la couleur du texte et la couleur de son arrière-plan est-il suffisamment élevé ? | <rgaa-c>**Conforme**</rgaa-c> | Socle configuré | _Sous réserve de l'application du thème `HighContrast`._ Ce thème garantit des rapports de contraste conformes sur l'ensemble des éléments du socle. Pour les éléments dont la couleur reste paramétrable - états, boutons d'action - un vérificateur de contraste est intégré à l'interface de paramétrage, permettant au designer de valider ses choix au moment où il les fait. |
 | 3.3 | Dans chaque page web, les couleurs utilisées dans les composants d'interface ou les éléments porteurs d'informations sont-elles suffisamment contrastées ? | <rgaa-c>**Conforme**</rgaa-c> | Socle configuré | _Sous réserve de l'application du thème `HighContrast`._ Mêmes dispositions que pour le critère `3.2`. |
 
 :::info
@@ -255,9 +243,11 @@ Un thème personnalisé sort du périmètre garanti par la plateforme : les coul
 variabilisées et surchargeables, la conformité des contrastes relève alors du designer. Le vérificateur
 de contraste intégré est disponible à chaque point de personnalisation pour l'y aider.
 
+Le thème `HighContrast` est celui appliqué par défaut lorsqu'on utilise le _mode accessibilité_ sans aucune surcharge.
+
 :::
 
-### 4. Multimédia
+### 4. Multimédia <rgaa-na>**Non Applicable**</rgaa-na>
 
 | Critère | Intitulé | Statut | Périmètre | Justification |
 | ------- | -------- | ------ | --------- | ------------- |
@@ -300,16 +290,16 @@ entièrement du designer.
 
 | Critère | Intitulé | Statut | Périmètre | Justification |
 | ------- | -------- | ------ | --------- | ------------- |
-| 6.1 | Chaque lien est-il explicite ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Chaque lien généré par le socle dispose d'un nom accessible permettant d'en comprendre la fonction et la destination, porté par son intitulé visible ou, lorsque celui-ci est insuffisant, par un attribut `aria-label`. L'attribut `title` n'est plus employé à cette fin. Les libellés issus du paramétrage — noms d'objets, intitulés d'actions — sont définis par le designer, à qui incombe leur caractère explicite. |
+| 6.1 | Chaque lien est-il explicite ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Chaque lien généré par le socle dispose d'un nom accessible permettant d'en comprendre la fonction et la destination, porté par son intitulé visible ou, lorsque celui-ci est insuffisant, par un attribut `aria-label`. L'attribut `title` n'est plus employé à cette fin. Les libellés issus du paramétrage - noms d'objets, intitulés d'actions - sont définis par le designer, à qui incombe leur caractère explicite. |
 | 6.2 | Dans chaque page web, chaque lien a-t-il un intitulé ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Aucun lien généré par le socle n'est dépourvu de nom accessible, y compris les liens réduits à une icône. |
 
 ### 7. Scripts
 
 | Critère | Intitulé | Statut | Périmètre | Justification |
 | ------- | -------- | ------ | --------- | ------------- |
-| 7.1 | Chaque script est-il, si nécessaire, compatible avec les technologies d'assistance ? | <rgaa-nc>**Non Conforme**</rgaa-nc> | Socle | Ce critère est transversal à l'ensemble de l'interface : dans une application monopage, la quasi-totalité des composants est produite ou pilotée par des scripts. Les composants du socle ont fait l'objet d'un travail systématique sur les rôles, états et propriétés WAI-ARIA, et la majorité d'entre eux satisfait le critère. Certains composants complexes ou reposant sur des bibliothèques tierces — éditeurs de texte enrichi, éditeurs de code, sélecteurs de date — ne peuvent en revanche pas être déclarés compatibles en l'état. Le critère étant global, la présence de ces composants suffit à le placer en non-conformité. Les dispositifs `a11y-mode` et `A11Y_OVERRIDE` permettent de les neutraliser, et l'aide aux designers précise, composant par composant, ceux qu'une application soumise à une exigence stricte doit écarter. |
+| 7.1 | Chaque script est-il, si nécessaire, compatible avec les technologies d'assistance ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | ```TODO``` |
 | 7.2 | Pour chaque script ayant une alternative, cette alternative est-elle pertinente ? | <rgaa-na>**Non Applicable**</rgaa-na> | Socle | Aucun script du socle ne dispose d'une alternative au sens du référentiel : l'accessibilité est recherchée dans le composant lui-même plutôt que par une version de remplacement. Le critère, conditionné à l'existence d'une alternative, est donc sans objet. |
-| 7.3 | Chaque script est-il contrôlable par le clavier et par tout dispositif de pointage ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Tous les déclencheurs de script sont atteignables et actionnables au clavier comme au pointeur : accès, déclenchement, validation, annulation et sortie. Les composants de navigation — menu principal, menu secondaire, menus déroulants — suivent les modèles de conception WAI-ARIA correspondants, avec navigation aux flèches directionnelles et activation par `Entrée` ou `Espace`. L'ensemble des raccourcis clavier est documenté dans l'aide aux designers. |
+| 7.3 | Chaque script est-il contrôlable par le clavier et par tout dispositif de pointage ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Tous les déclencheurs de script sont atteignables et actionnables au clavier comme au pointeur : accès, déclenchement, validation, annulation et sortie. Les composants de navigation - menu principal, menu secondaire, menus déroulants - suivent les modèles de conception WAI-ARIA correspondants, avec navigation aux flèches directionnelles et activation par `Entrée` ou `Espace`. L'ensemble des raccourcis clavier est documenté dans l'aide aux designers. |
 | 7.4 | Pour chaque script qui initie un changement de contexte, l'utilisateur est-il averti ou en a-t-il le contrôle ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Aucun changement de contexte n'est déclenché par la prise de focus ni par la modification de la valeur d'un champ : la saisie dans un formulaire ne provoque aucune action applicative. Les ouvertures de modales, les changements de zone de travail et les navigations résultent tous d'une action explicite de l'utilisateur. |
 | 7.5 | Dans chaque page web, les messages de statut sont-ils correctement restitués par les technologies d'assistance ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Les messages de statut sont porteurs de rôles adaptés à leur nature : `alert` pour les messages d'erreur et les avertissements requérant une attention immédiate, `progressbar` pour les indicateurs de chargement, `status` et `log` pour les retours d'information non urgents et les messages successifs. |
 
@@ -321,9 +311,9 @@ entièrement du designer.
 | 8.2 | Pour chaque page web, le code source généré est-il valide selon le type de document spécifié ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Le code produit par les composants natifs est valide au regard de la spécification HTML. Les contenus HTML personnalisés et les objets externes, insérés dans le document par le designer, échappent à cette vérification. |
 | 8.3 | Dans chaque page web, le code source contient-il un attribut de langue par défaut ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | L'élément racine du document porte un attribut `lang`. |
 | 8.4 | Pour chaque page web ayant un attribut de langue par défaut, cet attribut est-il pertinent ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | L'attribut reflète la langue effectivement utilisée par l'interface, et il est mis à jour lorsque l'utilisateur change la langue de l'application. |
-| 8.5 | Chaque page web a-t-elle un titre de page ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Le titre du document est construit selon le motif « nom de l'application — contenu courant », et actualisé à chaque changement de contenu principal. Le nom de l'application est défini par le designer. |
+| 8.5 | Chaque page web a-t-elle un titre de page ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Le titre du document est construit selon le motif « nom de l'application - contenu courant », et actualisé à chaque changement de contenu principal. Le nom de l'application est défini par le designer. |
 | 8.6 | Pour chaque page web ayant un titre de page, ce titre est-il pertinent ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Le titre permet d'identifier à la fois l'application et le contenu consulté, et donc de distinguer l'onglet parmi d'autres. Sa pertinence dépend du nom d'application retenu par le designer. |
-| 8.7 | Dans chaque page web, chaque changement de langue est-il indiqué dans le code source ? | <rgaa-na>**Non Applicable**</rgaa-na> | Socle | L'interface est affichée dans une seule langue à la fois. Le sélecteur de langue lui-même ne constitue pas une exception : les langues proposées y sont désignées dans la langue courante de l'interface — un utilisateur en français lit « français » et « anglais », un utilisateur en anglais lit « french » et « english ». Aucun passage de texte n'est donc rédigé dans une langue différente de celle du document. |
+| 8.7 | Dans chaque page web, chaque changement de langue est-il indiqué dans le code source ? | <rgaa-na>**Non Applicable**</rgaa-na> | Socle | L'interface est affichée dans une seule langue à la fois. Le sélecteur de langue lui-même ne constitue pas une exception : les langues proposées y sont désignées dans la langue courante de l'interface - un utilisateur en français lit « français » et « anglais », un utilisateur en anglais lit « french » et « english ». Aucun passage de texte n'est donc rédigé dans une langue différente de celle du document. |
 | 8.8 | Dans chaque page web, le code de langue de chaque changement de langue est-il valide et pertinent ? | <rgaa-na>**Non Applicable**</rgaa-na> | Socle | Conséquence directe du critère `8.7`. |
 | 8.9 | Dans chaque page web, des balises ne sont-elles pas utilisées uniquement à des fins de présentation ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Les balises de structuration ont été retirées de tous les usages purement présentationnels du socle. Les contenus HTML personnalisés introduits par les designers ne sont pas vérifiables par la plateforme. |
 | 8.10 | Dans chaque page web, les changements du sens de lecture sont-ils signalés ? | <rgaa-na>**Non Applicable**</rgaa-na> | Socle | Le socle ne produit aucun changement de sens de lecture. |
@@ -334,7 +324,7 @@ entièrement du designer.
 | ------- | -------- | ------ | --------- | ------------- |
 | 9.1 | Dans chaque page web, l'information est-elle structurée par l'utilisation appropriée de titres ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | La hiérarchie de titres est volontairement resserrée sur trois niveaux, appliqués de façon déterministe : `h1` pour le contenu principal de la zone de travail, `h2` pour les contenus secondaires, `h3` pour les modales et boîtes de dialogue. Cette hiérarchie ne comporte aucun saut de niveau, et chaque passage de texte fonctionnant visuellement comme un titre est balisé en conséquence. |
 | 9.2 | Dans chaque page web, la structure du document est-elle cohérente ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Les zones d'en-tête, de navigation, de contenu principal et de pied de page sont respectivement portées par les éléments `header`, `nav`, `main` et `footer`. |
-| 9.3 | Dans chaque page web, chaque liste est-elle correctement structurée ? | <rgaa-nc>**Non Conforme**</rgaa-nc> | Socle | Le menu principal, le plan du site et les listes de contenu emploient les éléments de liste appropriés. Les menus déroulants, en revanche, ne sont pas tous structurés correctement à ce jour. |
+| 9.3 | Dans chaque page web, chaque liste est-elle correctement structurée ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Le menu principal, le plan du site, les menus déroulants ainsi que les listes de contenu emploient les éléments de liste appropriés. |
 | 9.4 | Dans chaque page web, chaque citation est-elle correctement indiquée ? | <rgaa-na>**Non Applicable**</rgaa-na> | Socle | Le socle ne propose aucun mécanisme d'insertion de citation. |
 
 ### 10. Présentation de l'information
@@ -342,27 +332,27 @@ entièrement du designer.
 | Critère | Intitulé | Statut | Périmètre | Justification |
 | ------- | -------- | ------ | --------- | ------------- |
 | 10.1 | Dans le site web, des feuilles de styles sont-elles utilisées pour contrôler la présentation de l'information ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Le socle n'emploie ni balise ni attribut de présentation : la totalité de la mise en forme est portée par des feuilles de styles externes, à l'exclusion de tout élément `style` en ligne. |
-| 10.2 | Dans chaque page web, le contenu visible porteur d'information reste-t-il présent lorsque les feuilles de styles sont désactivées ? | <rgaa-nc>**Non Conforme**</rgaa-nc> | Socle | Certaines icônes et certains compteurs sont portés par du contenu généré en CSS, et disparaissent donc lorsque les feuilles de styles sont désactivées. |
-| 10.3 | Dans chaque page web, l'information reste-t-elle compréhensible lorsque les feuilles de styles sont désactivées ? | <rgaa-nc>**Non Conforme**</rgaa-nc> | Socle | Conséquence du critère `10.2`. Le besoin utilisateur visé par ce critère — que l'information et les relations soient portées par le balisage plutôt que par la présentation — est couvert par ailleurs, aux critères `1.1`, `7.5`, `9.1`, `9.3` et `10.9`, et vérifié via l'arbre d'accessibilité, qui ne dépend pas des feuilles de styles. Aucune information nécessaire à la réalisation d'une tâche ne repose exclusivement sur ce mécanisme. La correction consiste à doubler le contenu généré par un équivalent textuel masqué visuellement. |
+| 10.2 | Dans chaque page web, le contenu visible porteur d'information reste-t-il présent lorsque les feuilles de styles sont désactivées ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Toute information est conservée lorsqu'on retire les CSS, les boutons icônes ont un texte en `sr-only`, et de façon générale aucune information n'est donnée par un `::before/after`. |
+| 10.3 | Dans chaque page web, l'information reste-t-elle compréhensible lorsque les feuilles de styles sont désactivées ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | L'application n'est évidemment pas efficacement utilisable sans les CSS (trop d'éléments complexes), mais ce n'est pas la vérification de ce critère. Bien que la navigation soit plus pénible, les éléments sont toujours regroupés par catégorie, portent toujours l'information, et la structure de la page reste identifiable. Ce critère reste néanmoins ambigüe sur ces choses là. |
 | 10.4 | Dans chaque page web, le texte reste-t-il lisible lorsque la taille des caractères est augmentée jusqu'à 200% au moins ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Vérifié selon le protocole décrit plus haut : aucune troncature, aucun chevauchement ni perte de fonctionnalité à 200 %. |
 | 10.5 | Dans chaque page web, les déclarations CSS de couleurs de fond d'élément et de police sont-elles correctement utilisées ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Toute déclaration de couleur d'arrière-plan est accompagnée d'une déclaration de couleur de texte, et réciproquement. |
-| 10.6 | Dans chaque page web, chaque lien dont la nature n'est pas évidente est-il visible par rapport au texte environnant ? | <rgaa-c>**Conforme**</rgaa-c> | Socle configuré | _Sous réserve de l'application du thème `HighContrast`._ Les liens dont la nature ne ressort pas du contexte — liens au sein des listes, actions de redirection — reçoivent un traitement visuel aligné sur celui des liens courants. Un thème personnalisé qui surchargerait ces styles relève du designer. |
+| 10.6 | Dans chaque page web, chaque lien dont la nature n'est pas évidente est-il visible par rapport au texte environnant ? | <rgaa-c>**Conforme**</rgaa-c> | Socle configuré | _Sous réserve de l'application du thème `HighContrast`._ Les liens dont la nature ne ressort pas du contexte - liens au sein des listes, actions de redirection - reçoivent un traitement visuel aligné sur celui des liens courants. Un thème personnalisé qui surchargerait ces styles relève du designer. |
 | 10.7 | Dans chaque page web, pour chaque élément recevant le focus, la prise de focus est-elle visible ? | <rgaa-c>**Conforme**</rgaa-c> | Socle configuré | _Sous réserve de l'application du thème `HighContrast`._ Ce thème définit un style de prise de focus pour l'ensemble des éléments focusables. |
 | 10.8 | Pour chaque page web, les contenus cachés ont-ils vocation à être ignorés par les technologies d'assistance ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Les contenus masqués sont neutralisés pour les technologies d'assistance, et les contenus destinés à ces seules technologies sont masqués visuellement sans être retirés de l'arbre d'accessibilité. |
 | 10.9 | Dans chaque page web, l'information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle respectée ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Aucune information du socle n'est portée exclusivement par la forme, la taille ou la position d'un élément. |
 | 10.10 | Dans chaque page web, l'information ne doit pas être donnée par la forme, taille ou position uniquement. Cette règle est-elle implémentée de façon pertinente ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Les indications de forme, taille ou position sont systématiquement doublées d'une information textuelle ou d'un nom accessible. |
-| 10.11 | Pour chaque page web, les contenus peuvent-ils être présentés sans perte d'information ou de fonctionnalité et sans avoir recours soit à un défilement vertical pour une fenêtre ayant une hauteur de 256 px, soit à un défilement horizontal pour une fenêtre ayant une largeur de 320 px ? | <rgaa-nc>**Non Conforme**</rgaa-nc> | Partagé | Les composants du socle adoptent un comportement adapté aux petites surfaces — empilement des éléments, réorganisation des listes, des barres d'actions et des menus — mais la couverture de tous les cas n'a pas été établie à ce jour. Ce critère relève par ailleurs pour partie du designer : une mise en page de formulaire construite sans considération pour les petites surfaces peut le mettre en défaut indépendamment du socle. |
-| 10.12 | Dans chaque page web, les propriétés d'espacement du texte peuvent-elles être redéfinies par l'utilisateur sans perte de contenu ou de fonctionnalité ? | <rgaa-nc>**Non Conforme**</rgaa-nc> | Socle | Vérifié selon le protocole décrit plus haut : l'application des valeurs d'espacement entraîne des pertes de contenu sur certains composants. |
+| 10.11 | Pour chaque page web, les contenus peuvent-ils être présentés sans perte d'information ou de fonctionnalité et sans avoir recours soit à un défilement vertical pour une fenêtre ayant une hauteur de 256 px, soit à un défilement horizontal pour une fenêtre ayant une largeur de 320 px ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Les composants du socle adoptent un comportement adapté aux petites surfaces - empilement des éléments, réorganisation des listes, des barres d'actions et des menus. Ce critère relève par ailleurs pour partie du designer : une mise en page de formulaire construite sans considération pour les petites surfaces peut le mettre en défaut indépendamment du socle. |
+| 10.12 | Dans chaque page web, les propriétés d'espacement du texte peuvent-elles être redéfinies par l'utilisateur sans perte de contenu ou de fonctionnalité ? | <rgaa-nc>**Non Conforme**</rgaa-nc> | Socle | L'application des valeurs d'espacement entraîne des pertes de contenu sur certains composants. |
 | 10.13 | Dans chaque page web, les contenus additionnels apparaissant à la prise de focus ou au survol d'un composant d'interface sont-ils contrôlables par l'utilisateur ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Les seuls contenus concernés sont les bulles d'aide des formulaires et des listes. Elles apparaissent à la prise de focus et disparaissent dès que le focus quitte l'élément déclencheur, sans masquer ce dernier. |
-| 10.14 | Dans chaque page web, les contenus additionnels apparaissant via les styles CSS uniquement peuvent-ils être rendus visibles au clavier et par tout dispositif de pointage ? | <rgaa-nc>**Non Conforme**</rgaa-nc> | Socle | Certains contenus additionnels dépendent encore d'un état CSS déclenché au seul survol, sans équivalent à la prise de focus. |
+| 10.14 | Dans chaque page web, les contenus additionnels apparaissant via les styles CSS uniquement peuvent-ils être rendus visibles au clavier et par tout dispositif de pointage ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Tous les contenus additionels (hors `title`) sont déclenchés par le survol ainsi que par navigation clavier. |
 
 ### 11. Formulaires
 
 | Critère | Intitulé | Statut | Périmètre | Justification |
 | ------- | -------- | ------ | --------- | ------------- |
-| 11.1 | Chaque champ de formulaire a-t-il une étiquette ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Tous les contextes de saisie sont couverts — formulaire d'objet, recherche, saisie en liste, modales de confirmation. L'étiquette est portée soit par un élément `label` associé au champ, soit par un nom accessible équivalent lorsque l'intitulé visible ne peut pas être associé structurellement. |
+| 11.1 | Chaque champ de formulaire a-t-il une étiquette ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Tous les contextes de saisie sont couverts - formulaire d'objet, recherche, saisie en liste, modales de confirmation. L'étiquette est portée soit par un élément `label` associé au champ, soit par un nom accessible équivalent lorsque l'intitulé visible ne peut pas être associé structurellement. |
 | 11.2 | Chaque étiquette associée à un champ de formulaire est-elle pertinente ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | L'étiquette reprend l'intitulé du champ tel que défini dans le modèle de données. Sa pertinence dépend donc de la qualité des libellés retenus par le designer. |
-| 11.3 | Dans chaque formulaire, chaque étiquette associée à un champ de formulaire ayant la même fonction et répétée plusieurs fois dans une même page ou dans un ensemble de pages est-elle cohérente ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Les champs de même fonction reproduits dans plusieurs contextes — champ de recherche d'une liste, recherche globale, sélecteur d'objet lié — reçoivent des étiquettes identiques, générées par le même mécanisme. En saisie sur liste, chaque champ reçoit un nom accessible reprenant la ligne concernée, ce qui le distingue de ses homologues sans rompre la cohérence des intitulés. |
+| 11.3 | Dans chaque formulaire, chaque étiquette associée à un champ de formulaire ayant la même fonction et répétée plusieurs fois dans une même page ou dans un ensemble de pages est-elle cohérente ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Les champs de même fonction reproduits dans plusieurs contextes - champ de recherche d'une liste, recherche globale, sélecteur d'objet lié - reçoivent des étiquettes identiques, générées par le même mécanisme. En saisie sur liste, chaque champ reçoit un nom accessible reprenant la ligne concernée, ce qui le distingue de ses homologues sans rompre la cohérence des intitulés. |
 | 11.4 | Dans chaque formulaire, chaque étiquette de champ et son champ associé sont-ils accolés ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Le rendu par défaut place l'étiquette au contact de son champ. Ce placement peut être défaits par une mise en page de formulaire qui dissocierait les deux ; l'aide aux designersproscrit cette pratique. |
 | 11.5 | Dans chaque formulaire, les champs de même nature sont-ils regroupés, si nécessaire ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Les boutons radio et les cases à cocher de même nature sont regroupés structurellement dans l'ensemble des contextes de saisie. |
 | 11.6 | Dans chaque formulaire, chaque regroupement de champs de même nature a-t-il une légende ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Le regroupement est doté d'une légende, portée soit par un élément `legend`, soit par le nom accessible du conteneur lorsque celui-ci porte un rôle de groupe. |
@@ -387,7 +377,7 @@ entièrement du designer.
 | 12.7 | Dans chaque page web, un lien d'évitement ou d'accès rapide à la zone de contenu principal est-il présent ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Des liens d'évitement sont présents en tête de document vers la zone de travail ainsi que vers l'en-tête, le menu principal et le pied de page. |
 | 12.8 | Dans chaque page web, l'ordre de tabulation est-il cohérent ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | L'ordre de tabulation suit l'ordre de lecture du document. Les composants déplacés visuellement le sont sans dissociation de leur position dans l'arbre du document, et la restitution du focus après fermeture d'une modale ramène sur l'élément déclencheur. |
 | 12.9 | Dans chaque page web, la navigation ne doit pas contenir de piège au clavier. Cette règle est-elle respectée ? | <rgaa-c>**Conforme**</rgaa-c> | Socle configuré | _Sous réserve de la neutralisation des éditeurs tiers._ Aucun composant du socle ne retient le focus. Les éditeurs de texte enrichi et de code, issus de bibliothèques tierces, constituent le cas résiduel ; ils sont neutralisés par le mode d'accessibilité et par la surcharge utilisateur, et l'aide aux designer recommande de les écarter dans une application soumise à une exigence stricte. Les objets externes ne sont pas couverts. |
-| 12.10 | Dans chaque page web, les raccourcis clavier n'utilisant qu'une seule touche (lettre minuscule ou majuscule, ponctuation, chiffre ou symbole) sont-ils contrôlables par l'utilisateur ? | <rgaa-na>**Non Applicable**</rgaa-na> | Socle | Les raccourcis de la plateforme reposent sur une combinaison de touches. Les seules touches utilisées isolément — `Échap`, `Entrée`, `Tab` et les flèches directionnelles — ne sont pas des touches imprimables et n'entrent donc pas dans le champ de ce critère. |
+| 12.10 | Dans chaque page web, les raccourcis clavier n'utilisant qu'une seule touche (lettre minuscule ou majuscule, ponctuation, chiffre ou symbole) sont-ils contrôlables par l'utilisateur ? | <rgaa-na>**Non Applicable**</rgaa-na> | Socle | Les raccourcis de la plateforme reposent sur une combinaison de touches. Les seules touches utilisées isolément - `Échap`, `Entrée`, `Tab` et les flèches directionnelles - ne sont pas des touches imprimables et n'entrent donc pas dans le champ de ce critère. |
 | 12.11 | Dans chaque page web, les contenus additionnels apparaissant au survol, à la prise de focus ou à l'activation d'un composant d'interface sont-ils si nécessaire atteignables au clavier ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Les seuls contenus concernés sont les bulles d'aide des formulaires et des listes, affichées à la prise de focus de leur élément déclencheur. |
 
 ### 13. Consultation
@@ -471,17 +461,17 @@ Ce document se fonde sur la version **4.1.2** du [RGAA](https://accessibilite.nu
 La version 5 du référentiel est en cours de rédaction, pour une publication annoncée fin 2026 ;
 certains liens ci-dessous pourront à terme pointer vers cette nouvelle version.
 
-- [Détail des critères et tests](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/) —
+- [Détail des critères et tests](https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/) -
   source des tests employés pour établir les positionnements de ce document. C'est la référence à
   utiliser pour confronter un relevé d'audit à notre positionnement : chaque divergence devrait pouvoir
   être rapportée à un test précis.
-- [Glossaire du RGAA](https://accessibilite.numerique.gouv.fr/methode/glossaire/) — définitions des
+- [Glossaire du RGAA](https://accessibilite.numerique.gouv.fr/methode/glossaire/) - définitions des
   notions employées dans les intitulés de critères (tableau de données complexe, changement de contexte,
   contenu additionnel, message de statut…). Plusieurs justifications de ce document s'appuient sur ces
   définitions plutôt que sur l'acception courante des termes.
 - [Évaluation de la conformité](https://accessibilite.numerique.gouv.fr/obligations/evaluation-conformite/)
-  et [modèle de déclaration d'accessibilité](https://accessibilite.numerique.gouv.fr/obligations/declaration-accessibilite/) —
+  et [modèle de déclaration d'accessibilité](https://accessibilite.numerique.gouv.fr/obligations/declaration-accessibilite/) -
   méthode d'audit et obligations déclaratives incombant à l'organisme qui exploite l'application.
 - [Using ARIA](https://www.w3.org/TR/using-aria/), [ARIA in HTML](https://www.w3.org/TR/html-aria/) et
-  [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/) — modèles de conception suivis
+  [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/) - modèles de conception suivis
   par les composants interactifs du socle, notamment pour les menus, les modales et les listes.
