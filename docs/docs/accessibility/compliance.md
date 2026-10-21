@@ -8,7 +8,7 @@ Détail des critères
 
 :::warning
 
-**[Eenglish version](/docs/accessibility/compliance_en)**
+**[English version](/docs/accessibility/compliance_en)**
 
 Ce document porte exclusivement sur la version 7.0 de la plateforme. Il ne décrit pas la version 6.3.
 
