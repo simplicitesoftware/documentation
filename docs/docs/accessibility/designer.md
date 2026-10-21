@@ -74,17 +74,14 @@ adaptations, or who want to keep some features anyway, can override it behavior 
   "customcolors": false, // custom colors of action buttons and states
   "menutop": false,      // horizontal menu
   "workareas": false,    // splitting the work area into resizable panels
-  "TODO": false,         // compact mode
-  "TODO": false,         // mosaic display of lists
   "trays": false,        // trays (trello) of status-based objects
   "metrics": false,      // metrics of status-based objects
-  "TODO": false,         // predefined searches offered in the search dialog
   "datepicker": false,   // date pickers
   "htmledit": false,     // HTML input fields
   "codeedit": false,     // code editors
-  "TODO": false,         // forced HighContrast theme
-  "TODO": false,         // opening a form per table row
-  "TODO": false          // default display of linked objects
+  "highcontrast": false, // forced HighContrast theme
+  "clickablerow": false, // opening a form per table row
+  "flatlinks": false     // default display of linked objects
 }
 ```
 
