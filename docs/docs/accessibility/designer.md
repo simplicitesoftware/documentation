@@ -33,7 +33,7 @@ End users toggle **Accessibility Mode** from the `.btn-a11y-mode` button in the 
 
 ![A11y-mode disabled (already using HighContrast theme)](img/a11ymode-off.png)
 
-![A11y-mode enabled (forced using HighContrast theme)](img/a11ymode-off.png)
+![A11y-mode enabled (forced using HighContrast theme)](img/a11ymode-on.png)
 
 ![HighContrast theme on module Demo](img/highcontrast.png)
 
@@ -97,7 +97,7 @@ this document.
 | **Compliant** <rgaa-c>(C)</rgaa-c> | green | `C` | Use freely. The feature meets the RGAA tests and WAI-ARIA rules. |
 | **Partially Compliant** <rgaa-pc>(PC)</rgaa-pc> | orange | `PC` | Usable, but only with the settings given in its help popup (`fld_compliancehint`). |
 | **Non-Compliant** <rgaa-nc>(NC)</rgaa-nc> | red | `NC` | Do not use under strict compliance requirements. |
-| **Not Evaluated** | grey | `TODO` | Not assessed yet. Avoid under strict requirements. |
+| **Not Evaluated** | grey | `NE` | Not assessed yet. Avoid under strict requirements. |
 | **Not Applicable** | none | `NA` | The feature has no bearing on RGAA compliance. |
 
 ### Designer `ACCESSIBILITY_DEV` sysparam
@@ -214,6 +214,8 @@ In order to enable the `a11y-mode` and its overrides, there are few things to en
 - create a **Scope theme** to link the `HighContrast` theme to your scopes.
 
 ### Settings for strict RGAA requirements
+
+For applications that have very strict RGAA requirements, or if the gap between a11y-mode and regular usage needs to be shortened.
 
 <!-- TODO: list of the system parameters / general settings to enable or disable -->
 
