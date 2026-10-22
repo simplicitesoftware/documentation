@@ -43,18 +43,18 @@ of the platform: in an audit, only use with `a11y-mode` on is guaranteed complia
 
 | Behavior | What `a11y-mode` does |
 | --- | --- |
-| Custom colors of action buttons and states | TODO |
-| Horizontal menu | TODO |
-| Splitting the work area into resizable panels | TODO |
-| Compact mode | TODO |
-| Mosaic display of lists | TODO |
-| Trays (trello) and metrics of status-based objects | TODO |
-| Predefined searches offered in the search dialog | TODO |
-| Date pickers | TODO |
-| HTML input fields | TODO |
-| Forced `HighContrast` theme | TODO |
-| Opening a form per table row | TODO |
-| Default display of linked objects | TODO |
+| Custom colors of action buttons and states | All custom colors set on action buttons with the `act_bg_color` and `act_color` fields (Action form) |
+| Horizontal menu | Forces all domains to be rendered on the left, disabling any `obd_menu` set to `T`. |
+| Splitting the work area into resizable panels | Forcing the mono-area for the `#work`, and disabling the `btn-ui-splitter` so work-areas cannot be triggered. |
+| Compact mode | Forcing the default compact setting (removing `compact` from the body), disabling the `zoom-compact` toggle. |
+| Mosaic display of lists | Disabling all `btn-minifiable` in the lists `panel-footer`. Making them non-clickable when in a11y-mode. |
+| Trays (trello) and metrics of status-based objects | Removing the statuses objects "Trays" (`status-tray`) and "Metrics" (`status-metrics`) entries from menu. |
+| Predefined searches offered in the search dialog | Disabling the `predef` button from the search modal. |
+| Date pickers | Removing all datetime pickers from fields and filters. Replacing them with a textual hint with proper formatting. |
+| HTML input fields | Rendering all "complex" html fields as plain `textarea`, removing the specific features (linting, formatting, etc), but still allowing their usage. |
+| Forced `HighContrast` theme | When in `a11y-mode`, switches the theme to be **HighContrast** (requires few settings to be effective, see [A11y-mode settings](#settings-for-a11y-mode)) |
+| Opening a form per table row | Replaces the form-opening behavior from clicking on a row to an action button in the `col-action` of every row. |
+| Default display of linked objects | Forces the `objlinks` display to be `objlinks-flow`, and disables the `btn-options` dropdown/action. |
 
 :::warning
 
@@ -206,13 +206,31 @@ Component guides
 Mandatory settings
 ------------------
 
-For applications under strict RGAA requirements, the following general settings must be applied.
+### Settings for `a11y-mode`
+
+In order to enable the `a11y-mode` and its overrides, there are few things to enable within your applications :
+
+- associate the user parameter `ACCESSIBILITY_OVERRIDE`
+- create a **Scope theme** to link the `HighContrast` theme to your scopes.
+
+### Settings for strict RGAA requirements
 
 <!-- TODO: list of the system parameters / general settings to enable or disable -->
 
 | Setting | Value | Why |
 | --- | --- | --- |
 | `TODO` | `TODO` | TODO |
+
+Good practices
+--------------
+
+<!--
+    TODO: write list with hints/helps such as :
+        - don't place more than 2 row-columns
+        - write all your translations regardless of contexts
+        - don't add elements on the X axis
+        - populate your field helps whenever there is an expected format
+-->
 
 Appendix: keyboard accessibility
 --------------------------------
