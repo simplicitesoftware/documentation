@@ -219,6 +219,11 @@ public void postLoad() {
 }
 ```
 
+### BusinessObject builder
+
+The thread-safe `BusinessObject` builder simplifies the search, creation, update, deletion and actions on business objects,
+see [BusinessObject builder](/docs/core/codexamples/businessobject-builder).
+
 Others
 ------
 
