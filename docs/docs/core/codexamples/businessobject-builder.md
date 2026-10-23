@@ -93,7 +93,9 @@ A builder can also wrap an existing instance with `new BusinessObject(obj)` or `
 
 A shared instance (main, panel, tmp... or a wrapped `this`) is used by other parts of the application:
 the builder loads records into it, so its current values are replaced.
-Use `preserveContext()` to restore its previous definition and data on close.
+
+Use `preserveContext()` to restore its previous definition and data on close:
+underlying `obj.getData()` is first serialized then restored on close.
 
 :::
 
@@ -118,7 +120,6 @@ The rights of the current user on the object can be changed for the operations o
 
 ```simplicite-java
 bo.withCRUD(true, true, true, false); // create, read, update, delete
-bo.withCRUD(new GrantObject(true, true, true, false)); // same
 bo.withAllAccess(); // same as withCRUD(true, true, true, true)
 ```
 
@@ -372,6 +373,24 @@ catch (GetException | ValidateException | SaveException e) {
 
 Several `withFunction` calls can be chained, and they are called in the declared order.
 Like `withValue`, it must be called after a `for...` context.
+
+### Notepads
+
+A field with a notepad rendering keeps the history of notes. Use `withNotepad` to prepend a new note
+with the current date and the user full name, like the UI does:
+
+```simplicite-java
+bo
+.forUpdate(rowId)
+.withNotepad("myNotepadField", "My new note")
+.validateAndSave();
+```
+
+:::warning
+
+Do not use `withValue` on a notepad field: it would replace the whole history instead of adding a note.
+
+:::
 
 ### Validate and save
 
