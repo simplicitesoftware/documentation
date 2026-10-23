@@ -5,185 +5,161 @@ unlisted: true
 slug: /unlisted/designer
 ---
 
-Create conform applications with Simplicité
+Create compliant applications with Simplicité
 ===========================================
 
 Introduction
 ------------
 
-Simplicité can be used to build business applications that fully conform to the RGAA, but this
-requires sticking to a defined set of features and settings. Some features are usable as is, some
-require specific settings, and some cannot be used at all in a strictly compliant application.
+This guide helps designers build Simplicité applications that meet the RGAA. It describes the tools the
+platform provides to reach compliance, the platform-wide points that depend on your choices, and the
+settings that a strictly compliant application requires.
 
-This document tells you which is which, and what to do about it. It is written for **designers**
-building an application under strict compliance requirements.
-
-:::warning
-
-Digital accessibility is a continuous effort in our R&D: not every feature conforms to the RGAA yet.
-Our position on each of the 106 criteria is documented in _the compliance document_.
-
-:::
-
-### How to use this document
-
-1. Read **[Cross-cutting concerns](#cross-cutting-concerns)** first. These rules apply everywhere and
-   constrain everything the component guides describe.
-2. Set the `ACCESSIBILITY_DEV` system parameter to `yes` for the whole design phase. Every field then carries a
-   compliance icon in the field form, so you get the verdict where you work rather than here.
-3. Open the relevant **[component guide](#component-guides)** when you configure a business object, a
-   list, a form or a menu. Each one lists the settings to apply and the features to avoid.
-4. Check your work with `a11y-mode` enabled - but read [what it does not do](#the-limits-of-these-features)
-   before relying on it.
+It is meant to be used alongside the platform: keep it open while you configure your application.
 
 Platform features
 -----------------
 
-Simplicité ships three accessibility features. Two act at runtime for end users, one assists you at
-design time.
+| Feature | For | Purpose |
+| --- | --- | --- |
+| [`a11y-mode`](#runtime-a11y-mode) | End users | Runtime switch to the most RGAA-compliant version of the platform |
+| [`ACCESSIBILITY_OVERRIDE`](#user-accessibility_override-parameter) | End users | Fine-tune which adaptations `a11y-mode` applies |
+| [`ACCESSIBILITY_DEV`](#designer-accessibility_dev-sysparam) | Designers | Show the compliance status of each feature while you configure it |
+| [`ACCESSIBILITY_LEVEL`](#accessibility-declarations) | Designers | Declare the accessibility level of your application |
 
 ### Runtime `a11y-mode`
 
 End users toggle **Accessibility Mode** from the `.btn-a11y-mode` button in the application header.
 
-![Toggle accessibility mode - disabled](img/toggle-off.png)
-![Toggle accessibility mode - enabled](img/toggle-on.png)
+![A11y-mode disabled (already using HighContrast theme)](img/a11ymode-off.png)
 
-It disables or adapts interface behaviors and optional features that can block or hinder users relying
-on assistive technologies. It is absolute: when on, it applies to every affected feature at once.
+![A11y-mode enabled (forced using HighContrast theme)](img/a11ymode-on.png)
 
-Handled features:
+![HighContrast theme on module Demo](img/highcontrast.png)
 
-- Form and list floating/sticky headers
-- Customized colors for action and state buttons
-- Splittable work areas
-- Compact mode
-- Masonry layout for lists
-- Menu trays and metrics from Status Objects
-- Preset search from the search dialog
-- Top menu
-- Datetime pickers, replaced by a plain input with a format hint
-- Ace editor inputs, replaced by plain textareas
-- User guides
-- Forcing linked objects to appear as expanded (or top-tabs)
-- Forcing theme-switch to HighContrast
+Some core behaviors cannot be made compliant without degrading the comfort of users who do not need
+them. `a11y-mode` adapts or disables them all at once, which makes it the most RGAA-compliant version
+of the platform: in an audit, only use with `a11y-mode` on is guaranteed compliant for core elements.
+
+| Behavior | What `a11y-mode` does |
+| --- | --- |
+| Custom colors of action buttons and states | All custom colors set on action buttons with the `act_bg_color` and `act_color` fields (Action form) |
+| Horizontal menu | Forces all domains to be rendered on the left, disabling any `obd_menu` set to `T`. |
+| Splitting the work area into resizable panels | Forcing the mono-area for the `#work`, and disabling the `btn-ui-splitter` so work-areas cannot be triggered. |
+| Compact mode | Forcing the default compact setting (removing `compact` from the body), disabling the `zoom-compact` toggle. |
+| Mosaic display of lists | Disabling all `btn-minifiable` in the lists `panel-footer`. Making them non-clickable when in a11y-mode. |
+| Trays (trello) and metrics of status-based objects | Removing the statuses objects "Trays" (`status-tray`) and "Metrics" (`status-metrics`) entries from menu. |
+| Predefined searches offered in the search dialog | Disabling the `predef` button from the search modal. |
+| Date pickers | Removing all datetime pickers from fields and filters. Replacing them with a textual hint with proper formatting. |
+| HTML input fields | Rendering all "complex" html fields as plain `textarea`, removing the specific features (linting, formatting, etc), but still allowing their usage. |
+| Forced `HighContrast` theme | When in `a11y-mode`, switches the theme to be **HighContrast** (requires few settings to be effective, see [A11y-mode settings](#settings-for-a11y-mode)) |
+| Opening a form per table row | Replaces the form-opening behavior from clicking on a row to an action button in the `col-action` of every row. |
+| Default display of linked objects | Forces the `objlinks` display to be `objlinks-flow`, and disables the `btn-options` dropdown/action. |
+
+:::warning
+
+`a11y-mode` is a safety net: it does not make Non-Compliant features compliant. Under strict
+requirements, disable them at design time, whether or not users turn the mode on.
+
+:::
 
 ### User `ACCESSIBILITY_OVERRIDE` parameter
 
-Where `a11y-mode` is all-or-nothing, `ACCESSIBILITY_OVERRIDE` is a per-user parameter: each user records their
-own preferences, component by component, according to their needs and habits.
-
-It covers components that could not be made compliant because of their complexity or their third-party
-dependencies:
-
-| Component | Why | Parameter |
-| --- | --- | --- |
-| Date pickers | **flatpickr** is not compliant | `datepicker` |
-| HTML editor | **quill** is not compliant | `htmledit` |
-| Code editors | **ace** is not compliant | `codeedit` |
-| Trays | Drag-and-drop only | `trays` |
-| Top menu | Chained popups break keyboard navigation and screen reader output | `menutop` |
-| Custom colors | Safety net for action and enum contrast | `customcolors` |
-| User guides | Popup-driven flows break keyboard navigation and screen reader output | `guides` |
-| Linked objects display | One of the suggested layouts is "tabs-horizontal", which is not compliant | `linkedlayout` |
-| Theme | Per default the only fully-compliant theme is [**HighContrast**](#highcontrast-theme), others are created for projects, thus not verified and potentially non-compliant | `contrasttheme` |
-
-![ACCESSIBILITY_OVERRIDE user parameter](img/user.png)
-
-### Designer `ACCESSIBILITY_DEV` sysparam
-
-Set the `ACCESSIBILITY_DEV` system parameter to `yes` to turn on the development helper.
-
-![ACCESSIBILITY_DEV system parameter](img/dev.png)
-
-Every field then carries a `universal-access-circle` icon next to its label in the field form, reporting
-the compliance of the underlying feature, along with the settings required to keep it compliant.
-
-![ACCESSIBILITY_DEV icons meaning](img/icons.png)
-
-Significations for each icon (examples):
-
-- **Timestamp** has text-light colored icon ; non-applicable, `fld_compliance = NA`
-- **Bulk update** has danger colored icon ; non-compliant, `fld_compliance = NC`
-- **Copy enabled** has warning-colored icon ; partially-compliant, `fld_compliance = PC`
-- **Bulk delete** has success-colored icon ; compliant, `fild_compliance = C`
-
-If _no icon is visible_ then no verdict was given, assume that the feature/component was not evaluated yet,
-thus can be Precautiously be considered as _Non-Compliant_.
-
-For the _Partially Compliant_ features, a specific help is joined (same mechanism as the regular field-help)
-with the purpose of giving all required informations about the use and necessary precautions when using the feature.
-
-![A11Y_DEV partially-compliant help](img/pc-help.png)
-
-Keep it on for the whole design phase: it gives you the verdict at the moment you make the choice,
-which is cheaper than auditing afterwards.
-
-### Compliance statuses
-
-The same vocabulary is used by the `ACCESSIBILITY_DEV` icons, by the `fld_compliance` field and by every table
-in this document.
-
-| Status | Icon color | Meaning |
-| --- | --- | --- |
-| **Compliant** <rgaa-c>(C)</rgaa-c> | success | Use freely. The feature meets the RGAA tests and WAI-ARIA rules. |
-| **Partially Compliant** <rgaa-pc>(PC)</rgaa-pc> | warning | Usable, but only with the settings listed in this document and in `fld_compliancehint`. |
-| **Non-Compliant** <rgaa-nc>(NC)</rgaa-nc> | danger | Do not use under strict compliance requirements. |
-| **Not Applicable** | none | The feature has no bearing on RGAA compliance. |
-| **Not Evaluated** | text | Not assessed yet. Avoid under strict requirements. |
-
-Features that have not been evaluated are not listed in this document. Their absence from a table is
-not a verdict.
-
-### The limits of these features
-
-`a11y-mode` and `ACCESSIBILITY_OVERRIDE` are safety nets, not fixes. They neutralize behaviors that get in the
-way; they do not make a **Non-Compliant** feature compliant.
-
-Two consequences. First, you must still disable the features listed as NC below, whether or not the
-mode is on. Second, do not rely on the mode during design: disable those features properly in your
-configuration, and use the mode only to verify the result.
-
-### Accessibility declarations
-
-Once everything is developped, you have the possibility to declare the accessibility of your application.  
-Without official audit, the law says that you cannot expose a guaranteed conformity score.
-
-Still you can declare an informative one using the `ACCESSIBILITY_LEVEL` system parameter as :
+`a11y-mode` is all-or-nothing, so that it can reach full compliance. Users who do not need some of its
+adaptations, or who want to keep some features anyway, can override it behavior by behavior with the
+`ACCESSIBILITY_OVERRIDE` user parameter. Each key takes `true` or `false`:
 
 ```json
 {
-  "audit": "true|false",
-  "score":[0;100]
+  "customcolors": false, // custom colors of action buttons and states
+  "menutop": false,      // horizontal menu
+  "workareas": false,    // splitting the work area into resizable panels
+  "trays": false,        // trays (trello) of status-based objects
+  "metrics": false,      // metrics of status-based objects
+  "datepicker": false,   // date pickers
+  "htmledit": false,     // HTML input fields
+  "codeedit": false,     // code editors
+  "highcontrast": false, // forced HighContrast theme
+  "clickablerow": false, // opening a form per table row
+  "flatlinks": false     // default display of linked objects
 }
 ```
 
-From this the information is displayed in the app's footer as **Estimated accessibility : partially compliant** (for values `audit: false`, `score:60`).
+Each overridden behavior falls back to its standard, potentially non-compliant version for that user.
 
-The following logic is :
+### Compliance statuses
 
-- `audit: false` means it's only an estimation made by the developers of the app.
-- `audit: true` means a real audit was conducted, and the `score` represents the official verdict of this audit.
-- `score = 100` is labelled "Fully Compliant"
-- `score >= 50` is labelled "Partially Compliant"
-- `score < 50` is labelled "Non Compliant"
+The same vocabulary is used by the `ACCESSIBILITY_DEV` icons, by the `fld_compliance` field and across
+this document.
 
-Cross-cutting concerns
-----------------------
+| Status | Icon | `fld_compliance` | Meaning |
+| --- | --- | --- | --- |
+| **Compliant** <rgaa-c>(C)</rgaa-c> | green | `C` | Use freely. The feature meets the RGAA tests and WAI-ARIA rules. |
+| **Partially Compliant** <rgaa-pc>(PC)</rgaa-pc> | orange | `PC` | Usable, but only with the settings given in its help popup (`fld_compliancehint`). |
+| **Non-Compliant** <rgaa-nc>(NC)</rgaa-nc> | red | `NC` | Do not use under strict compliance requirements. |
+| **Not Evaluated** | grey | `NE` | Not assessed yet. Avoid under strict requirements. |
+| **Not Applicable** | none | `NA` | The feature has no bearing on RGAA compliance. |
 
-These rules apply across the whole application, independently of any component.
+### Designer `ACCESSIBILITY_DEV` sysparam
+
+Set the `ACCESSIBILITY_DEV` system parameter to `yes` for the whole design phase. Every setting in the
+configuration forms then shows an icon next to its label, giving the
+[compliance status](#compliance-statuses) of the related feature where you make the choice.
+
+![Accessibility development icons and help example](img/a11ydev-helps.png)
+
+- **No icon**: the feature has no bearing on RGAA compliance.
+- **Grey icon**: not evaluated yet. Treat it as Non-Compliant under strict requirements.
+- **Red / orange / green icon**: Non-Compliant / Partially Compliant / Compliant.
+- On **orange** icons, a help popup lists the settings and precautions required to use the feature compliantly.
+
+### Accessibility declarations
+
+Once your application is built, declare its accessibility level with the `ACCESSIBILITY_LEVEL` system
+parameter. It is displayed in the application footer.
+
+```json
+{
+  "audit": false,
+  "score": 60
+}
+```
+
+- `audit`: `false` for an estimate by your team, the footer then reads **Estimated accessibility**.
+  `true` for the result of an official audit, the footer then reads **Accessibility**. Without an
+  audit, the law forbids claiming a guaranteed level.
+- `score` (0 to 100): `100` is labelled _Fully Compliant_, `50` and above _Partially Compliant_, below
+  `50` _Non Compliant_.
+
+The example above displays **Estimated accessibility: partially compliant**.
+
+Platform-wide considerations
+----------------------------
+
+These are not settings to apply, but things to know about the platform as a whole: where its
+compliance ends, and where it depends on your design choices or on your end users. Keep them in mind
+across the whole application.
 
 ### Themes and contrast
 
-Colors are fully variabilized, which means a custom theme can break contrast compliance everywhere at
-once. Two options:
+The **HighContrast** theme, shipped with the platform in light and dark variants, is the reference
+compliant theme. It is the theme `a11y-mode` forces, whatever theme the application uses otherwise.
 
-- Use the **HighContrast** theme, shipped with the platform in light and dark variants. It guarantees
-  contrast and focus visibility with no further work.
-- Build your own theme, and validate every color with the built-in contrast checker, available at each
-  customization point.
+Colors are fully variabilized. If you create and use a custom theme, the platform can no longer
+guarantee the criteria on colors, contrast and shapes: validate every color with the built-in contrast
+checker available at each customization point.
 
-The `USE_COMPACT` system parameter must be set to `no`: compact mode is <rgaa-nc>NC</rgaa-nc>.
+Themes do not change the layout. If your custom theme does (custom CSS on sizes, spacing, positioning,
+etc.), the platform can no longer guarantee the criteria on presentation and readability either.
+
+Criteria whose compliance relies on the `HighContrast` theme:
+
+- [Colors](/docs/accessibility/compliance.md#3-couleurs): 3.2 and 3.3, contrast of texts and of interface components;
+- [Presentation of information](/docs/accessibility/compliance.md#10-présentation-de-linformation): 10.6, visibility
+  of links, and 10.7, visibility of the focus.
+
+A custom theme that changes the layout also puts the rest of theme 10 at stake (text resizing, information
+given by shape, size or position, reflow).
 
 ### Custom HTML
 
@@ -195,241 +171,68 @@ WAI-ARIA rules to follow.
 External objects are the extreme case: their markup is written in free code and cannot be checked at
 all by the platform.
 
-### Complex images
+### Images
 
-Charts, diagrams and infographics cannot be made compliant through alternative text alone. Either make
-sure your application does not need them, or plan an accessible alternative - a data table, a textual
-summary - alongside the image.
+Each image exposes two user-editable texts:
 
-For regular images, the `alt` attribute is exposed and editable per image. Real-world compliance then
-depends on end users writing accurate alternatives, or explicitly marking images as decorative, which
-falls outside what the platform can guarantee. Say so in your application's own user documentation.
+- `alt`, its text alternative;
+- `longdesc`, a detailed description attached to the image as screen-reader-only text, and visible to
+  everyone while `a11y-mode` is on.
 
-### Internationalization
+The platform provides the mechanism, but compliance depends on end users writing accurate texts, or
+explicitly marking images as decorative. Say so in your application's own user documentation.
 
-<rgaa-pc>Partially Compliant</rgaa-pc>. Translated content is your responsibility: a label left
-untranslated produces a language change the platform cannot declare in the markup.
+Charts: the platform's default **Crosstab** component is compliant, as it always offers a table
+alternative to its charts. Other charts (ChartJS in external objects) are not: provide an accessible
+alternative yourself (data table, textual summary). The same goes for diagrams and infographics.
+
+### Languages and translations
+
+The platform provides a translation system, but not multilingual content: an application displays one
+language at a time, and changing the language switches the whole application.
+
+Use the translation system properly: criteria requiring relevant labels, titles and alternatives are
+only met if every text is translated in the active language. An untranslated text produces a change
+of language the platform cannot declare in the markup.
+
+Values entered by users (inputs, social posts, chats, etc.) cannot be detected as another language
+when they are. Their language change cannot be declared either.
 
 Component guides
 ----------------
 
-### Business Objects
+<!-- TODO: rework (component by component: settings to apply, features to avoid) -->
 
-Settings that apply to the object as a whole, whatever its views.
+Mandatory settings
+------------------
 
-| Feature | Status | Context | Setting | Notes |
-| --- | --- | --- | --- | --- |
-| Visible identifier field | - | Field | `obf_order` | Put the visible identifier field first in the order |
-| Bookmarks | <rgaa-c>C</rgaa-c> | Business Object | - | |
-| Historics | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_historic = no` | |
-| Prints | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_printable = no` | |
-| Social posts | <rgaa-pc>PC</rgaa-pc> | Business Object | - | Relying on users not to use other language than the declared and supported one. |
-| Constraints | <rgaa-c>C</rgaa-c> | Business Object | - | |
-| Contextual help | <rgaa-c>C</rgaa-c> | Business Object | - | |
-| Copy | <rgaa-c>C</rgaa-c> | Business Object | - | `obo_copy` |
-| Export | <rgaa-c>C</rgaa-c> | Business Object | - | `obo_export` |
+### Settings for `a11y-mode`
 
-#### Objects Rendering
+In order to enable the `a11y-mode` and its overrides, there are few things to enable within your applications :
 
-| Feature | Status | Context | Setting | Notes |
-| --- | --- | --- | --- | --- |
-| Searches | <rgaa-pc>PC</rgaa-pc> | User Interface | - | |
-| Publications | <rgaa-nc>NC</rgaa-nc> | User Interface | - | |
-| Pivot Tables | <rgaa-nc>NC</rgaa-nc> | User Interface | - | |
-| Agendas | <rgaa-nc>NC</rgaa-nc> | User Interface | - | |
-| Places maps | <rgaa-nc>NC</rgaa-nc> | User Interface | - | |
-| Time sheets | <rgaa-nc>NC</rgaa-nc> | User Interface | - | |
+- associate the user parameter `ACCESSIBILITY_OVERRIDE`
+- create a **Scope theme** to link the `HighContrast` theme to your scopes.
 
-#### Treeviews
+### Settings for strict RGAA requirements
 
-<rgaa-pc>Partially Compliant</rgaa-pc>.
+For applications that have very strict RGAA requirements, or if the gap between a11y-mode and regular usage needs to be shortened.
 
-Only the _docked_ version of treeviews is compliant, the one rendered in the menu is not.
+<!-- TODO: list of the system parameters / general settings to enable or disable -->
 
-### Lists
+| Setting | Value | Why |
+| --- | --- | --- |
+| `TODO` | `TODO` | TODO |
 
-Set in the **List** section of the business object settings.
+Good practices
+--------------
 
-| Feature | Status | Context | Setting | Notes |
-| --- | --- | --- | --- | --- |
-| Multi-column ordering | <rgaa-c>C</rgaa-c> | Business Object | - | |
-| Pagination | <rgaa-c>C</rgaa-c> | Business Object | - | |
-| Group-by | <rgaa-c>C</rgaa-c> | Business Object | - | |
-| List preferences | <rgaa-c>C</rgaa-c> | Business Object | - | |
-| List of values | <rgaa-c>C</rgaa-c> | Business Object | - | |
-| List filtering | <rgaa-c>C</rgaa-c> | Business Object | - | |
-| Docked search | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_search_docked = no` | |
-| Cards mosaic | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_minifiable = no` | |
-| Create on list | <rgaa-pc>PC</rgaa-pc> | Business Object | `obo_list_edit`, `obo_btn_listedit` | |
-| Update on list | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_list_edit = no` | |
-| Bulk edit | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_btn_updall = no`, `obo_list_edit = no` | |
-| Bulk delete | <rgaa-c>C</rgaa-c> | Business Object | - | |
-| Custom list actions | <rgaa-pc>PC</rgaa-pc> | Action | - | See [Actions](#actions) |
-| List search | <rgaa-pc>PC</rgaa-pc> | Business Object | - | See [Search](#search) |
-| Row reordering | <rgaa-nc>NC</rgaa-nc> | Business Object | - | |
-
-### Forms
-
-Set in the **Form** section of the business object settings. The layout itself is defined in the
-**Template Editor**, reachable from that same section.
-
-| Feature | Status | Context | Setting | Notes |
-| --- | --- | --- | --- | --- |
-| Field areas | <rgaa-c>C</rgaa-c> | Template Editor | - | |
-| Columns | <rgaa-c>C</rgaa-c> | Template Editor | - | |
-| Tabs | <rgaa-c>C</rgaa-c> | Template Editor | - | |
-| Label and input layout | <rgaa-pc>PC</rgaa-pc> | Template Editor | "label + input" display | Never split a label from its input |
-| Custom action with confirm fields | <rgaa-c>C</rgaa-c> | Action | - | |
-| Fields | <rgaa-pc>PC</rgaa-pc> | Field | `fld_rendering` | See [Fields](#fields) |
-| Child lists | <rgaa-pc>PC</rgaa-pc> | Link | - | See below |
-
-#### Child lists
-
-| Feature | Status | Context | Setting | Notes |
-| --- | --- | --- | --- | --- |
-| Panel | <rgaa-c>C</rgaa-c> | Link | - | Panels and sub-panels are compliant by design |
-| Virtual link | <rgaa-c>C</rgaa-c> | Link | - | Rendered as an embedded list - follow the [Lists](#lists) rules |
-| Inlined object | <rgaa-c>C</rgaa-c> | Link | - | Rendered as form elements - follow the Forms rules |
-| Pillbox | <rgaa-nc>NC</rgaa-nc> | Link | - | |
-
-### Fields
-
-The shared structure the platform generates around fields is compliant. Compliance depends on the
-type and, above all, on the **rendering** you pick - the `fld_rendering` field, labelled _Display_ in
-the field form.
-
-| Type | Status | Context | Setting | Notes |
-| --- | --- | --- | --- | --- |
-| Text | <rgaa-pc>PC</rgaa-pc> | Field | `fld_rendering` | QRCode and Icon picker renderings are NC |
-| Validated text | <rgaa-nc>NC</rgaa-nc> | Field | - | Validation is not announced and no suggestion is offered |
-| Boolean | <rgaa-c>C</rgaa-c> | Field | - | Every rendering is compliant |
-| Long text | <rgaa-pc>PC</rgaa-pc> | Field | `fld_rendering` | Stick to the regular rendering. Expression, Fixed font, HTML, CSS, SQL, Markdown, JSON, Text editor, Grid, Count characters and Javascript are NC |
-| Number | <rgaa-pc>PC</rgaa-pc> | Field | `fld_rendering` | Progress bars, Stars and With calculator are NC |
-| Date / Time | <rgaa-pc>PC</rgaa-pc> | Field | - | Use a plain text field with a date format instead. `a11y-mode` replaces the picker with a plain input and a format hint |
-| Enum | <rgaa-pc>PC</rgaa-pc> | Field | `fld_rendering` | Only `Horizontal` and `Vertical` (HCB, VCB) are compliant renderings. |
-| Enum Multi | <rgaa-pc>PC</rgaa-pc> | Field | `fld_rendering` | Only `Horizontal` and `Vertical` (HCB, VCB) are compliant renderings. |
-| File | <rgaa-c>C</rgaa-c> | Field | - | |
-| Image | <rgaa-pc>PC</rgaa-pc> | Field | - | `alt` is exposed per image. See [Complex images](#complex-images) |
-| Referenced object | <rgaa-c>C</rgaa-c> | Field | - | |
-| Special | <rgaa-pc>PC</rgaa-pc> | Field | - | Only URL, Email, Phone and Password are compliant. Color, Coordinates and Notepad are NC |
-
-#### Field-related features
-
-| Feature | Status | Context | Setting | Notes |
-| --- | --- | --- | --- | --- |
-| Copy to clipboard | <rgaa-c>C</rgaa-c> | Field | - | |
-| Simple help | <rgaa-pc>PC</rgaa-pc> | Field | - | Text-only content is compliant. See [Custom HTML](#custom-html) |
-| Field display | <rgaa-pc>PC</rgaa-pc> | Template Editor | - | Label and Input mustn't be dissociated visually, only `Label + Input` and `Label + Input + Help` are compliant. |
-| Field styles | <rgaa-nc>NC</rgaa-nc> | Templating > Field styles | - | |
-
-Both the "label + input + help" and "label + input" displays render help compliantly.
-
-### Search
-
-| Feature | Status | Context | Setting | Notes |
-| --- | --- | --- | --- | --- |
-| Search dialog | <rgaa-c>C</rgaa-c> | - | - | |
-| Sort order | <rgaa-c>C</rgaa-c> | - | - | |
-| Global search | <rgaa-c>C</rgaa-c> | - | - | |
-| Menu search | <rgaa-c>C</rgaa-c> | - | - | |
-| Search form | <rgaa-pc>PC</rgaa-pc> | Business Object | `obo_tpl_search_pos = top` | Only the top position is compliant, and only with `a11y-mode` |
-| Preset search | <rgaa-nc>NC</rgaa-nc> | - | - | From the search dialog |
-| Predefined search | <rgaa-pc>PC</rgaa-pc> | - | - | Rendered as a list - follow the [Lists](#lists) rules for the underlying object |
-| Form search | <rgaa-c>C</rgaa-c> | - | - | |
-| Date / Period search | <rgaa-nc>NC</rgaa-nc> | - | - | Uses datetime fields, which behave differently in search than in a form |
-| Geographical search | <rgaa-nc>NC</rgaa-nc> | - | - | |
-
-### Actions
-
-| Feature | Status | Context | Setting | Notes |
-| --- | --- | --- | --- | --- |
-| Action icon | <rgaa-pc>PC</rgaa-pc> | Action | `act_image` | Prefer no icon. If you set one, use a monochrome icon |
-| Action colors | <rgaa-pc>PC</rgaa-pc> | Action | `act_color_bg`, `act_color` | Check both against each other and against the header background |
-
-Use the built-in contrast checker rather than eyeballing it: an action placed in the header must
-contrast with the header background, not only with its own label.
-
-### Menu
-
-| Feature | Status | Context | Setting | Notes |
-| --- | --- | --- | --- | --- |
-| Left menu | <rgaa-c>C</rgaa-c> | System parameter | - | |
-| Top menu | <rgaa-nc>NC</rgaa-nc> | System parameter | `MENU_SETTINGS` - `top.active = false` | Chained popups break keyboard navigation |
-| Trays | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_tray = no` | Drag-and-drop only. Applies to every object with a status |
-| Metrics | <rgaa-nc>NC</rgaa-nc> | Business Object | `obo_dashboard = none` | Applies to every object with a status |
-
-`a11y-mode` forces the left-only menu at runtime, but disable the top menu properly in your
-configuration rather than relying on it.
-
-### Business Process
-
-<rgaa-pc>Partially Compliant</rgaa-pc>. The actions and DOM elements specific to business processes
-are compliant. A process being a particular use of the Form and List components, it is compliant as
-long as those only use compliant features.
-
-| Feature | Status | Context | Setting | Notes |
-| --- | --- | --- | --- | --- |
-| Road rendering | <rgaa-pc>PC</rgaa-pc> | Business Process | `pcs_road_render = HM` or `HC` | Only the horizontal versions - complete or minimal - are compliant |
-| Static/Dynamic | <rgaa-pc>PC</rgaa-pc> | Business Process | `pcs_road_static = true` | Only the static versions is compliant |
-
-### Links
-
-<rgaa-pc>Partially Compliant</rgaa-pc>. The feature itself is compliant, but the lists it embeds carry
-flaws that rule them out of a compliant application.
-
-| Feature | Status | Context | Setting | Notes |
-| --- | --- | --- | --- | --- |
-| Embedded list filters | <rgaa-nc>NC</rgaa-nc> | Link | - | - |
-
-### Static texts
-
-<rgaa-pc>Partially Compliant</rgaa-pc>. Plain textual content is compliant. HTML content is your
-responsibility - see [Custom HTML](#custom-html).
-
-### Domains
-
-<!-- TODO: explanation + good practices on each -->
-
-### Widgets
-
-<!-- TODO: explanation + good practices on each -->
-
-#### Counters
-
-<rgaa-c>Compliant</rgaa-c>
-
-#### Carousel
-
-<rgaa-c>Compliant</rgaa-c>
-
-#### Cards
-
-<rgaa-c>Compliant</rgaa-c>
-
-#### News
-
-<rgaa-c>Compliant</rgaa-c>
-
-#### Accordion
-
-<rgaa-c>Compliant</rgaa-c>
-
-#### Timeline
-
-<rgaa-c>Compliant</rgaa-c>
-
-### Themes
-
-<!-- TODO: explanations + good practices -->
-
-#### HighContrast theme
-
-<!-- TODO: create & explain -->
-
-Accessibility checklist
------------------------
-
-[] TODO
+<!--
+    TODO: write list with hints/helps such as :
+        - don't place more than 2 row-columns
+        - write all your translations regardless of contexts
+        - don't add elements on the X axis
+        - populate your field helps whenever there is an expected format
+-->
 
 Appendix: keyboard accessibility
 --------------------------------
