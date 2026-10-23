@@ -51,16 +51,16 @@ Each method returns the builder itself to chain the calls, except the terminal g
 
 The checked exceptions to catch depend on the final operations:
 
-| Operation                                                         | Exceptions                               |
-|-------------------------------------------------------------------|------------------------------------------|
-| `forCreateOrUpdate`, `select`, `get`, `values`                    | `GetException`                           |
-| `search`, `stream`, `count`, `getCount`                           | `SearchException`                        |
-| `validate`                                                        | `ValidateException`                      |
-| `save`                                                            | `SaveException`                          |
-| `validateAndSave`, `validateAndCreate`, `validateAndUpdate`       | `ValidateException`, `SaveException`     |
-| `delete`                                                          | `GetException`, `DeleteException`        |
-| `deleteIfExist`, `searchAndDelete`                                | `DeleteException`                        |
-| `action`                                                          | `ActionException`                        |
+| Operation                                                   | Exceptions                           |
+|-------------------------------------------------------------|--------------------------------------|
+| `forCreateOrUpdate`, `select`, `get`, `values`              | `GetException`                       |
+| `search`, `stream`, `count`, `getCount`                     | `SearchException`                    |
+| `validate`                                                  | `ValidateException`                  |
+| `save`                                                      | `SaveException`                      |
+| `validateAndSave`, `validateAndCreate`, `validateAndUpdate` | `ValidateException`, `SaveException` |
+| `delete`                                                    | `GetException`, `DeleteException`    |
+| `deleteIfExist`, `searchAndDelete`                          | `DeleteException`                    |
+| `action`                                                    | `ActionException`                    |
 
 Searches, selections, saves and deletions throw an `ACCESS_DENIED` exception when the user has no read right on the object.
 
@@ -286,17 +286,17 @@ Creating, updating and copying
 
 The record to work on is declared by a `for...` context, before giving its values:
 
-| Method                                  | Context                                                                       |
-|-----------------------------------------|-------------------------------------------------------------------------------|
-| `forCreate()` / `forCreate(keys)`       | New record (with optional user-key values)                                    |
-| `forCreateIfNotExists(keys)`            | New record, no error if the user-key already exists                           |
-| `forUpdate(rowId)` / `forUpdate(row)`   | Existing record by row ID (or by the row of a search result)                  |
-| `forUpdate(keys)` / `forUpdate(field, value)` | Existing record by user-key                                             |
-| `forUpdateIfExists(keys)` / `forUpdateIfExists(field, value)` | Existing record, no error if not found                  |
-| `forCreateOrUpdate(keys)` / `forCreateOrUpdate(field, value)` | Upsert: update the record if the user-key exists, otherwise create it |
-| `forCopy(rowId)` / `forCopy(keys)` / `forCopy(field, value)` | Copy of an existing record                              |
-| `forCopyIfNotExists(rowId)` / `forCopyIfNotExists(keys)` | Copy, no error if the copied user-key already exists       |
-| `forDelete(rowId)` / `forDelete(keys)` / `forDelete(field, value)` | Existing record to delete                        |
+| Method                                                             | Context                                                               |
+|--------------------------------------------------------------------|-----------------------------------------------------------------------|
+| `forCreate()` / `forCreate(keys)`                                  | New record (with optional user-key values)                            |
+| `forCreateIfNotExists(keys)`                                       | New record, no error if the user-key already exists                   |
+| `forUpdate(rowId)` / `forUpdate(row)`                              | Existing record by row ID (or by the row of a search result)          |
+| `forUpdate(keys)` / `forUpdate(field, value)`                      | Existing record by user-key                                           |
+| `forUpdateIfExists(keys)` / `forUpdateIfExists(field, value)`      | Existing record, no error if not found                                |
+| `forCreateOrUpdate(keys)` / `forCreateOrUpdate(field, value)`      | Upsert: update the record if the user-key exists, otherwise create it |
+| `forCopy(rowId)` / `forCopy(keys)` / `forCopy(field, value)`       | Copy of an existing record                                            |
+| `forCopyIfNotExists(rowId)` / `forCopyIfNotExists(keys)`           | Copy, no error if the copied user-key already exists                  |
+| `forDelete(rowId)` / `forDelete(keys)` / `forDelete(field, value)` | Existing record to delete                                             |
 
 Only `forCreateOrUpdate` accesses the database immediately, to search the user-key
 (it throws a `GetException` when several records match).
@@ -397,13 +397,13 @@ Do not use `withValue` on a notepad field: it would replace the whole history in
 The final operation selects the record, applies the init hook (`initCreate`, `initUpdate`, `initCopy` or `initDelete`),
 the user-key values of the context, the values, the documents and the functions, then:
 
-| Method                    | Operation                                                                 |
-|---------------------------|---------------------------------------------------------------------------|
-| `validate()`              | Validates the record without saving it                                    |
-| `save()`                  | Saves the record without validation                                       |
-| `validateAndSave()`       | Validates then saves the record                                           |
-| `validateAndCreate()`     | Same as `validateAndSave`, only in a creation or copy context (does nothing otherwise) |
-| `validateAndUpdate()`     | Same as `validateAndSave`, only in an update context (does nothing otherwise) |
+| Method                | Operation                                                                              |
+|-----------------------|----------------------------------------------------------------------------------------|
+| `validate()`          | Validates the record without saving it                                                 |
+| `save()`              | Saves the record without validation                                                    |
+| `validateAndSave()`   | Validates then saves the record                                                        |
+| `validateAndCreate()` | Same as `validateAndSave`, only in a creation or copy context (does nothing otherwise) |
+| `validateAndUpdate()` | Same as `validateAndSave`, only in an update context (does nothing otherwise)          |
 
 The validation errors are thrown in a `ValidateException`. The information and warning messages are returned to an optional function,
 or later with `returns`:
@@ -422,13 +422,13 @@ an action can be invoked on it, or a function applied with `then`.
 
 Several options change the save behavior:
 
-| Method                     | Effect                                                                     |
-|----------------------------|----------------------------------------------------------------------------|
-| `ignoreInitHook()`         | Does not call the init hook after the selection                            |
-| `ignoreRedolog()`          | Does not write the undo/redo log of the operation                          |
-| `ignoreTimestamp()`        | Forces the update without the timestamp check, and keeps the previous timestamp in DB |
-| `ignoreUnknownFields()`    | Does not log unknown fields as warnings                                    |
-| `withOrigin(origin)`       | Origin of the operation in the undo/redo log (`BO` by default)             |
+| Method                  | Effect                                                                                |
+|-------------------------|---------------------------------------------------------------------------------------|
+| `ignoreInitHook()`      | Does not call the init hook after the selection                                       |
+| `ignoreRedolog()`       | Does not write the undo/redo log of the operation                                     |
+| `ignoreTimestamp()`     | Forces the update without the timestamp check, and keeps the previous timestamp in DB |
+| `ignoreUnknownFields()` | Does not log unknown fields as warnings                                               |
+| `withOrigin(origin)`    | Origin of the operation in the undo/redo log (`BO` by default)                        |
 
 Each `ignore...` method also accepts a boolean argument.
 
@@ -483,12 +483,12 @@ catch (GetException | ValidateException | SaveException | ActionException e) {
 Other methods
 -------------
 
-| Method                   | Description                                                                          |
-|--------------------------|--------------------------------------------------------------------------------------|
-| `then(function)`         | Applies a function on the object instance, in a synchronized block with the builder rights |
-| `values(function)`       | Selects the record of the current context and applies a function on it               |
-| `isNew(function)`        | Gives `true` to the function when the context is a creation (useful after a `forCreateOrUpdate`) |
-| `returns(function)`      | Gives each information/warning message of the last validation/save to the function    |
-| `rowDiff(enabled)`       | Enables the `row_diff` calculation during search, on objects having such a field (e.g. history objects) |
+| Method              | Description                                                                                             |
+|---------------------|---------------------------------------------------------------------------------------------------------|
+| `then(function)`    | Applies a function on the object instance, in a synchronized block with the builder rights              |
+| `values(function)`  | Selects the record of the current context and applies a function on it                                  |
+| `isNew(function)`   | Gives `true` to the function when the context is a creation (useful after a `forCreateOrUpdate`)        |
+| `returns(function)` | Gives each information/warning message of the last validation/save to the function                      |
+| `rowDiff(enabled)`  | Enables the `row_diff` calculation during search, on objects having such a field (e.g. history objects) |
 
 The full list of methods is available in the [Javadoc](https://platform.simplicite.io/current/javadoc/com/simplicite/util/BusinessObject.html).
