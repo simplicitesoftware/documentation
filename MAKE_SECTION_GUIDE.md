@@ -1,60 +1,75 @@
-# Guide: Converting Make Section to Reference Documentation
+Guide: Converting Make Section to Reference Documentation
+=========================================================
 
-## Overview
+Overview
+--------
 
-The **Make** section should serve as **reference documentation** for configuration objects, not step-by-step tutorials. It should explain **what** each object is, **how it works**, and **how to configure it**, without walking through the UI step-by-step.
+The **Make** section should serve as **reference documentation** for configuration objects, not step-by-step tutorials.
+It should explain **what** each object is, **how it works**, and **how to configure it**, without walking through the UI step-by-step.
 
 ---
 
-## Current Issues
+Current Issues
+--------------
 
 Some files in the make section currently contain tutorial-style content:
+
 - Step-by-step UI navigation ("Click Create", "Fill in fields", "Click Next")
 - Screenshot-heavy walkthroughs
 - Sequential instructions that assume a specific workflow
 
 ---
 
-## Recommended Structure for Reference Documentation
+Recommended Structure for Reference Documentation
+-------------------------------------------------
 
 ### 1. **Introduction Section**
+
 - What the object is
 - When/why to use it
 - Key concepts
 
 :::tip[Quick Start]
+
 For a step-by-step walkthrough, see the [Link to tutorial](/tutorial/).
+
 :::
 
 ### 2. **Features/Capabilities Section**
+
 - What the object can do
 - Key capabilities listed clearly
 
 ### 3. **Configuration Section**
+
 - **Configuration Fields Table** - All configurable fields with descriptions
 - **Field Properties** - What each field does, valid values, constraints
 - **Configuration Options** - Available options, modes, types
 
 ### 4. **Usage/Behavior Section**
+
 - How the object behaves once configured
 - How it interacts with other objects
 - Runtime behavior
 
 ### 5. **Related Objects Section**
+
 - Links to related configuration objects
 - Dependencies
 - Objects that use or are used by this object
 
 ### 6. **Learn More Section**
+
 - Links to related documentation
 - Tutorial references (if applicable)
 - Advanced topics
 
 ---
 
-## Template for Reference Documentation
+Template for Reference Documentation
+------------------------------------
 
-```markdown
+````markdown
 ---
 sidebar_position: X
 title: [Object Name]
@@ -134,15 +149,16 @@ Learn More
 - [Related Tutorial](/tutorial/path) - Step-by-step guide
 - [Advanced Topic](/docs/path) - Deep dive
 - [API Reference](/docs/api/path) - Technical details
-```
+````
 
 ---
 
-## Conversion Examples
+Conversion Examples
+-------------------
 
 ### ❌ Tutorial Style (Current - Dashboard.md)
 
-```markdown
+````markdown
 How to create a Dashboard?
 --------------------------
 
@@ -158,11 +174,11 @@ To create a dashboard, follow the steps below:
    - Pivot : this will give you access to all the pivot tables available to you
     ![](img/dashboard/dashboard3.png)
    ...
-```
+````
 
 ### ✅ Reference Style (Recommended)
 
-```markdown
+````markdown
 Creating Dashboards
 -------------------
 
@@ -201,24 +217,28 @@ Users with ADMIN rights have access to additional options:
 - Empty items (field areas with options)
 - Preset searches
 - Advanced filter configuration
-```
+````
 
 ---
 
-## Key Principles
+Key Principles
+--------------
 
 ### 1. **Remove Step-by-Step UI Navigation**
+
 - ❌ "Click Create in Business objects > Business objects"
 - ✅ "Create a Business object via Business objects > Business objects"
 
 ### 2. **Focus on Configuration, Not Process**
+
 - ❌ "1. Fill in the Object information, 2. Click Next, 3. Fill in Translation..."
 - ✅ "Configure the Object information fields, then set Translations..."
 
 ### 3. **Use Tables for Configuration Options**
+
 Instead of listing options in paragraphs, use tables:
 
-```markdown
+````markdown
 ### Action Types
 
 | Type | Execution Location | Use Case |
@@ -226,20 +246,23 @@ Instead of listing options in paragraphs, use tables:
 | Front-end | Browser | Client-side interactions |
 | Back-end | Server | Server-side processing |
 | None | N/A | Button display only |
-```
+````
 
 ### 4. **Explain "What" and "Why", Not "How to Click"**
+
 - ❌ "Click on the Create button"
 - ✅ "Create a new [object] using the Create action"
 
 ### 5. **Reference Tutorials Instead of Including Steps**
+
 - ❌ Include full step-by-step instructions
 - ✅ Link to tutorial: "For a step-by-step guide, see [Creating a Module Tutorial](/tutorial/getting-started/module)"
 
 ### 6. **Use Configuration Tables**
+
 Always include a comprehensive configuration fields table:
 
-```markdown
+````markdown
 Configuration Fields
 --------------------
 
@@ -248,16 +271,18 @@ Configuration Fields
 | Code | String | Yes | Unique identifier | - |
 | Table | String | Yes | Database table name | - |
 | Module | Module | Yes | Parent module | - |
-```
+````
 
 ---
 
-## Specific Conversion Guidelines
+Specific Conversion Guidelines
+------------------------------
 
 ### For "How to Create" Sections
 
-**Before:**
-```markdown
+### Before
+
+````markdown
 How to create a Business object?
 --------------------------------
 
@@ -266,10 +291,11 @@ How to create a Business object?
 3. Fill in the Object information
 4. Click Next
 ...
-```
+````
 
-**After:**
-```markdown
+### After
+
+````markdown
 Creating Business Objects
 -------------------------
 
@@ -285,14 +311,17 @@ The creation assistant guides you through:
 4. Domain assignment (menu placement)
 
 :::tip[Quick Start]
+
 For a step-by-step walkthrough, see the [Creating a Business Object Tutorial](/tutorial/getting-started/object).
+
 :::
-```
+````
 
 ### For Configuration Sections
 
-**Before:**
-```markdown
+#### Before
+
+````markdown
 Configuration
 -------------
 
@@ -300,10 +329,11 @@ Configuration
 | ----- | ----------- |
 | Code | Object's unique identifier |
 | Table | Table name |
-```
+````
 
-**After:**
-```markdown
+#### After
+
+````markdown
 Configuration Fields
 --------------------
 
@@ -327,22 +357,24 @@ Configuration Fields
   - Standard: Database table name (e.g., `trn_product`)
   - `service`: For [Service objects](/docs/core/objects/service-objects)
   - `select`: For [Select objects](/docs/core/objects/select-objects)
-```
+````
 
 ### For Action/Behavior Sections
 
-**Before:**
-```markdown
+#### Before
+
+````markdown
 Module actions
 --------------
 
 | Action name | Description |
 | -----------| ----------- |
 | Import module | Import module stored in the File field |
-```
+````
 
-**After:**
-```markdown
+#### After
+
+````markdown
 Available Actions
 -----------------
 
@@ -362,11 +394,12 @@ Business objects support the following actions:
 - **Import module**: Validates and imports configuration from file or URL
 - **Documentation**: Generates comprehensive PDF with all configuration objects
 - **Export actions**: Create portable module files for deployment or backup
-```
+````
 
 ---
 
-## Checklist for Reference Documentation
+Checklist for Reference Documentation
+-------------------------------------
 
 - [ ] Introduction explains what the object is and when to use it
 - [ ] Features/capabilities are clearly listed
@@ -381,7 +414,8 @@ Business objects support the following actions:
 
 ---
 
-## Files That Need Conversion
+Files That Need Conversion
+--------------------------
 
 Based on the analysis, these files contain tutorial-style content:
 
@@ -393,10 +427,11 @@ Based on the analysis, these files contain tutorial-style content:
 
 ---
 
-## Quick Reference: Tutorial vs Reference
+Quick Reference: Tutorial vs Reference
+--------------------------------------
 
 | Aspect | Tutorial Style | Reference Style |
-|--------|---------------|-----------------|
+| ------ | -------------- | --------------- |
 | **Purpose** | Teach how to do something | Explain what something is and how to configure it |
 | **Structure** | Sequential steps | Organized by topic |
 | **Language** | "Click here, then do that" | "Configure this field to set that behavior" |
@@ -406,6 +441,7 @@ Based on the analysis, these files contain tutorial-style content:
 
 ---
 
-## Example: Complete Conversion
+Example: Complete Conversion
+----------------------------
 
 See the attached example files for complete before/after conversions of specific documentation pages.

@@ -1,12 +1,14 @@
-# Example Conversion: Dashboard.md
+Example Conversion: Dashboard.md
+=================================
 
 This file shows how to convert `dashboard.md` from tutorial-style to reference-style documentation.
 
 ---
 
-## ❌ BEFORE (Tutorial Style)
+❌ BEFORE (Tutorial Style)
+--------------------------
 
-```markdown
+````markdown
 How to create a Dashboard?
 --------------------------
 
@@ -22,13 +24,14 @@ To create a dashboard, follow the steps below:
    - Pivot : this will give you access to all the pivot tables available to you
     ![](img/dashboard/dashboard3.png)
    ...
-```
+````
 
 ---
 
-## ✅ AFTER (Reference Style)
+✅ AFTER (Reference Style)
+---------------------------
 
-```markdown
+````markdown
 ---
 sidebar_position: 50
 title: Dashboard
@@ -205,11 +208,12 @@ Learn More
 - [Widgets](/docs/misc/widgets) - Creating custom dashboard widgets
 - [Front-end Development](/docs/front) - Customizing dashboard behavior
 - [Views Documentation](/make/userinterface/views) - View configuration
-```
+````
 
 ---
 
-## Key Changes Made
+Key Changes Made
+----------------
 
 1. ✅ **Removed step-by-step instructions** ("Click here, then do that")
 2. ✅ **Added comprehensive component table** - All component types in one place
@@ -222,9 +226,11 @@ Learn More
 
 ---
 
-## Result
+Result
+------
 
 The converted version:
+
 - ✅ Explains **what** a dashboard is and **how it works**
 - ✅ Lists all **configuration options** clearly
 - ✅ Describes **behavior** and **interactions**
