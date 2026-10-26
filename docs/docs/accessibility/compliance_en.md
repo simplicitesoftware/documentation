@@ -192,8 +192,8 @@ it specifies what the status covers.
 
 ### Breakdown of positions
 
-Out of the 106 criteria of RGAA 4.1.2: **72 compliant**, **5 non-compliant**, **29 not applicable** to the
-core - i.e. **93.5 %** of applicable criteria.
+Out of the 106 criteria of RGAA 4.1.2: **74 compliant**, **4 non-compliant**, **28 not applicable** to the
+core - i.e. **94.8 %** of applicable criteria.
 
 This indicator measures core coverage, not the compliance of a delivered application. The latter also depends
 on the designer's design choices and on their adherence to the rules provided: an application built on a compliant core may not itself be compliant.
@@ -388,8 +388,8 @@ entirely with the designer.
 | --------- | ----- | ------ | ----- | ------------- |
 | 13.1 | For each web page, does the user have control over each time limit that changes content? | <rgaa-nc>**Non-Compliant**</rgaa-nc> | Core | The application session is subject to a time limit. The user is warned of its upcoming expiration, but has no way to extend, disable or adjust it from the interface. Its duration can be configured globally by the administrator and individually in user settings, which does not meet the condition of control by the user themselves. |
 | 13.2 | In each web page, opening a new window must not be triggered without user action. Is this rule followed? | <rgaa-c>**Compliant**</rgaa-c> | Core | No window or modal is opened other than through an explicit user action. |
-| 13.3 | In each web page, does each downloadable office document have, if necessary, an accessible version? | <rgaa-nc>**Non-Compliant**</rgaa-nc> | Shared | Documents offered for download in an application are either uploaded by users or produced from templates defined by the designer. The platform does not generate accessible versions of these documents and has no means of assessing their accessibility. |
-| 13.4 | For each office document with an accessible version, does that version provide the same information? | <rgaa-na>**Not Applicable**</rgaa-na> | Shared | Direct consequence of criterion `13.3`: in the absence of an accessible version, the criterion has no subject. |
+| 13.3 | In each web page, does each downloadable office document have, if necessary, an accessible version? | <rgaa-c>**Compliant**</rgaa-c> | Shared | Documents offered for download in an application are either uploaded by users or produced from templates defined by the designer. For template-based documents, the platform offers a system to make PDFs conform to PDF/UA standards (as well as assistance in verifying template conformity beforehand). For documents imported/uploaded by end users, the platform cannot offer or guarantee anything. |
+| 13.4 | For each office document with an accessible version, does that version provide the same information? | <rgaa-c>**Compliant**</rgaa-c> | Shared | If the document is a document created by the designer, respecting the conditions stated for the system to make it accessible, then the information is not degraded. |
 | 13.5 | In each web page, does each cryptic content (ASCII art, emoticon, cryptic syntax) have an alternative? | <rgaa-na>**Not Applicable**</rgaa-na> | Core | No content of this kind is produced by native components. |
 | 13.6 | In each web page, for each cryptic content (ASCII art, emoticon, cryptic syntax) with an alternative, is that alternative relevant? | <rgaa-na>**Not Applicable**</rgaa-na> | Core | Direct consequence of criterion `13.5`. |
 | 13.7 | In each web page, are sudden changes in brightness or flashing effects used correctly? | <rgaa-na>**Not Applicable**</rgaa-na> | Core | No native component produces sudden changes in brightness or flashing effects. |

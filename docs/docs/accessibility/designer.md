@@ -198,10 +198,71 @@ of language the platform cannot declare in the markup.
 Values entered by users (inputs, social posts, chats, etc.) cannot be detected as another language
 when they are. Their language change cannot be declared either.
 
+### PDF Publications
+
+PDF publications are generated from HTML templates written by the designer, so their structure is
+partly yours. Tick `prt_accessible` on the publication to have the PDF tagged to the PDF/UA-1
+standard, and follow the [accessible PDF guide](/docs/integration/publications/pdf#accessible-pdf) when
+writing the template.
+
 Component guides
 ----------------
 
 <!-- TODO: rework (component by component: settings to apply, features to avoid) -->
+
+> **Users and rights** menu
+
+### Users
+
+### Responsibilities
+
+### Groups
+
+### Grant
+
+### Functions
+
+> **Business objects** menu
+
+### Domains
+
+### Business Object
+
+### Object fields
+
+#### Field
+
+### Actions
+
+### Links
+
+### List of values
+
+### Constraints
+
+#### Impacts
+
+> **User interface** menu
+
+### Shortcuts
+
+### Views
+
+### Templating
+
+### Objects rendering
+
+> **Business process** menu
+
+### Business process
+
+### Activity
+
+#### Activity link
+
+### State
+
+#### State transition
 
 Mandatory settings
 ------------------

@@ -190,8 +190,8 @@ elle précise ce que le statut recouvre.
 
 ### Répartition des positionnements
 
-Sur les 106 critères du RGAA 4.1.2 : **72 conformes**, **5 non conformes**, **29 non applicables** au
-socle - soit **93.5 %** des critères applicables.
+Sur les 106 critères du RGAA 4.1.2 : **74 conformes**, **4 non conformes**, **28 non applicables** au
+socle - soit **94.8 %** des critères applicables.
 
 Cet indicateur mesure la couverture du socle, et non la conformité d'une application livrée. Cette dernière dépend également
 des choix de conception du designer et de son respect des règles fournies : une application construite sur un socle conforme peut ne pas l'être.
@@ -386,8 +386,8 @@ entièrement du designer.
 | ------- | -------- | ------ | --------- | ------------- |
 | 13.1 | Pour chaque page web, l'utilisateur a-t-il le contrôle de chaque limite de temps modifiant le contenu ? | <rgaa-nc>**Non Conforme**</rgaa-nc> | Socle | La session applicative fait l'objet d'une limite de temps. L'utilisateur est averti de son expiration prochaine, mais ne dispose pas d'un moyen de la prolonger, de la désactiver ou de l'ajuster depuis l'interface. Sa durée est paramétrable globalement par l'administrateur, et au cas par cas dans les paramètres utilisateur, ce qui ne satisfait pas la condition d'un contrôle par l'utilisateur lui-même. |
 | 13.2 | Dans chaque page web, l'ouverture d'une nouvelle fenêtre ne doit pas être déclenchée sans action de l'utilisateur. Cette règle est-elle respectée ? | <rgaa-c>**Conforme**</rgaa-c> | Socle | Aucune fenêtre ni modale n'est ouverte en dehors d'une action explicite de l'utilisateur. |
-| 13.3 | Dans chaque page web, chaque document bureautique en téléchargement possède-t-il, si nécessaire, une version accessible ? | <rgaa-nc>**Non Conforme**</rgaa-nc> | Partagé | Les documents proposés au téléchargement dans une application sont soit déposés par les utilisateurs, soit produits par des modèles définis par le designer. La plateforme ne génère pas de version accessible de ces documents et ne dispose d'aucun moyen d'en évaluer l'accessibilité. |
-| 13.4 | Pour chaque document bureautique ayant une version accessible, cette version offre-t-elle la même information ? | <rgaa-na>**Non Applicable**</rgaa-na> | Partagé | Conséquence directe du critère `13.3` : en l'absence de version accessible, le critère est sans objet. |
+| 13.3 | Dans chaque page web, chaque document bureautique en téléchargement possède-t-il, si nécessaire, une version accessible ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Les documents proposés au téléchargement dans une application sont soit déposés par les utilisateurs, soit produits par des modèles définis par le designer. Pour ceux créés par modèle, la plateforme propose un système pour rendre les PDF conformes selon les standards PDF/UA (ainsi qu'une aide pour s'assurer de la conformité du modèle au préalable). Pour les documents importés/déposés par les utilisateurs finaux, la plateforme ne peut rien proposer ni garantir. |
+| 13.4 | Pour chaque document bureautique ayant une version accessible, cette version offre-t-elle la même information ? | <rgaa-c>**Conforme**</rgaa-c> | Partagé | Si le document est un document créé par le designer, en respectant les conditions énoncées pour que le système le rende accessible, alors l'information n'est pas détériorée. |
 | 13.5 | Dans chaque page web, chaque contenu cryptique (art ASCII, émoticône, syntaxe cryptique) a-t-il une alternative ? | <rgaa-na>**Non Applicable**</rgaa-na> | Socle | Aucun contenu de cette nature n'est produit par les composants natifs. |
 | 13.6 | Dans chaque page web, pour chaque contenu cryptique (art ASCII, émoticône, syntaxe cryptique) ayant une alternative, cette alternative est-elle pertinente ? | <rgaa-na>**Non Applicable**</rgaa-na> | Socle | Conséquence directe du critère `13.5`. |
 | 13.7 | Dans chaque page web, les changements brusques de luminosité ou les effets de flash sont-ils correctement utilisés ? | <rgaa-na>**Non Applicable**</rgaa-na> | Socle | Aucun composant natif ne produit de changement brusque de luminosité ni d'effet de flash. |
