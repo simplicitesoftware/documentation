@@ -87,12 +87,6 @@ other output types are not affected.
 The language of the PDF is taken, in order, from the `lang` attribute of `<html>`, then from `prt_lang`,
 then from the user's language when `prt_lang` is `ANY`.
 
-**Fonts**: create four resources of type `FONT`, with these exact codes: `PDF_FONT_REGULAR`,
-`PDF_FONT_BOLD`, `PDF_FONT_ITALIC` and `PDF_FONT_BOLD_ITALIC`. Use TrueType or OpenType fonts whose
-license allows embedding. These fonts are used for the whole document, whatever `font-family` your CSS
-declares. Without them, the platform falls back to Liberation Sans Regular: the text stays readable,
-but bold and italic are not rendered.
-
 ### Template skeleton
 
 ```html
@@ -143,8 +137,6 @@ The renderer does not support `display: flex` anyway, and the reading order alwa
 - Sets the `lang` of `<html>` when missing, in the order given in [Settings](#settings), and fills the
   `<title>` and the subject (`<meta name="subject">`) from the object's display when missing.
 - Tags the PDF: headings, lists, tables with their scopes, links, and figures with their `alt`.
-- Embeds the fonts and uses them for every font family: in PDF/UA mode, text set in a non-embedded
-  font is silently dropped.
 - Adds `scope="col"` to the `th` of a `thead` that has none.
 - Removes empty image placeholders, turns decorative images (`alt=""`) into artifacts, and uses the
   visible text of links as their alternative.
@@ -166,9 +158,6 @@ renderer's default settings, which gives an untagged PDF. With it ticked:
 2. The document is rendered by [OpenHtmlToPdf](https://github.com/openhtmltopdf/openhtmltopdf) in
    PDF/UA mode. It produces a tagged PDF (structure tree), with `/Lang`, `MarkInfo`, `DisplayDocTitle`
    and an XMP metadata stream declaring `pdfuaid:part 1`.
-3. Fonts are embedded as subsets: the `FONT` resources when they exist, a built-in Liberation Sans
-   Regular otherwise. The embedded font is registered under the generic CSS names, under the
-   renderer's built-in names (`SansSerif`, `Serif`, `Monospaced`, …) and as the final fallback font.
 
 </details>
 
@@ -187,16 +176,13 @@ The platform checks that the structure exists, not that it makes sense. Only you
 ### Known limitations
 
 - A table `caption` can be placed after the table in the tag tree, and an empty table footer may appear.
-- No bookmarks are generated yet: for a document longer than a few pages, add a table of contents.
-- How well the tags are read depends on the PDF viewer.
 - PDF forms, scripts, signatures and attachments are not covered.
 
 ### Before releasing a publication
 
-- `prt_accessible` is ticked, `prt_lang` is set, and the `FONT` resources exist.
+- `prt_accessible` is ticked, and `prt_lang` is set.
 - The template has a `lang`, a `title`, one `h1` and no skipped heading level.
 - Every data table has `th` headers, every informative image has an `alt`.
-- Generating the PDF logs no `Accessible PDF` warning.
 
 Binary generation
 -----------------
