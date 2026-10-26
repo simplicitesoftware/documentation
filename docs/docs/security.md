@@ -427,6 +427,17 @@ As of version 6, the `/ui/sse` endpoint provides a service to push messages from
 - The standard SSE protocol uses HTTP GET **asynchronous** so the infrastructure must support this without breaking the socket
 - Otherwise, the parameter `USE_SSE` must be set to `no` to disabled this SSE feature: the UI will use polling to refresh some UI data
 
+#### Logging
+
+Sensitive system log events are, by default, set to "Debug" level, this is due to the potentially highly confidential data they exposes in the logs.
+It is, in particular, the case of all log events starting with `D` (e.g. `DAUTHSC001`).
+
+The level of these log event should **never** be changed to higher level such as "Information" in production,
+this might only be done, when needed and **very temporarily** for **very occasional** tests/checks.
+
+The same logic applies to the `LOG_SQL_SYSTEM` and `LOG_SQL_USER` system parameters which traces all SQL requests in the logs
+(note that apart from obvious security reasons, these SQL-level traces are highly resources consuming and thus also have a very negative impact on performances).
+
 Securing your infrastructure
 ----------------------------
 
