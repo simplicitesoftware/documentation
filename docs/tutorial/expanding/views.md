@@ -54,7 +54,7 @@ To create a home page for the TRN_SUPERADMIN Group, follow the steps below :
 2. Fill in the View area information like so :
    - Type : **Crosstable**
    - Title enabled : **Toggled**
-   - Pivot table Name : **TrnOrderPt**
+   - Pivot table Name : **TrnOrderTc**
    - Table : **Toggled**
    ![](img/views/view-area-tc.png)
 3. Click **Save**

@@ -30,7 +30,7 @@ To create a test user, follow the steps below :
    ![](img/user/process.png)
 2. Click **Next**
 3. Choose a [previously](/tutorial/getting-started/module) created Group :
-   - **TRN_SUPER_ADMIN** _if exists, this should be selected by default_
+   - **TRN_SUPERADMIN** _if exists, this should be selected by default_
    ![](img/user/group.png)
 4. Click **Next**
 5. Create a Responsibility, click **Next**
