@@ -341,7 +341,7 @@ Cluster locks
 In a cluster deployment, the same code may run at the same time on several nodes
 (e.g. a scheduled action, an action launched by users connected to different nodes...).
 Since version 7.0, a bulk operation (synchronization, import, purge...) can be locked
-to run on a single node of the cluster at a time, with the leased locks of `com.simplicite.util.engine.LockManager`.
+to run on a single node of the cluster at a time, with the leased locks of `com.simplicite.util.tools.LockTool`.
 
 A leased lock is a runtime system parameter held in the database:
 
@@ -354,10 +354,10 @@ A leased lock is a runtime system parameter held in the database:
 To run a bulk operation on a single node at a time, and release the lock at the end:
 
 ```java
-import com.simplicite.util.engine.LockManager;
+import com.simplicite.util.tools.LockTool;
 
 // Same lock code (runtime system parameter, LOCK_ prefix recommended) and same label on all the nodes
-String running = LockManager.tryLease("LOCK_MY_SYNC", "My synchronization", false);
+String running = LockTool.tryLease("LOCK_MY_SYNC", "My synchronization", false);
 if (running!=null)
 	return Message.formatSimpleWarning("Synchronization not started: " + running + " is running");
 try
@@ -366,7 +366,7 @@ try
 }
 finally
 {
-	LockManager.releaseLease("LOCK_MY_SYNC", "My synchronization");
+	LockTool.releaseLease("LOCK_MY_SYNC", "My synchronization");
 }
 ```
 
@@ -376,13 +376,13 @@ To elect a node for recurring tasks (e.g. at each run of a scheduled action), as
 
 ```java
 // Lock kept (not released): the other nodes take it over only if this node stops (no more heartbeat)
-if (LockManager.tryLease("LOCK_MY_TASKS", "My recurring tasks", false)==null)
+if (LockTool.tryLease("LOCK_MY_TASKS", "My recurring tasks", false)==null)
 {
 	// this node is the elected one
 }
 
 // Is the lock held by this node?
-boolean elected = LockManager.holdsLease("LOCK_MY_TASKS", "My recurring tasks");
+boolean elected = LockTool.holdsLease("LOCK_MY_TASKS", "My recurring tasks");
 ```
 
 ### Tips
