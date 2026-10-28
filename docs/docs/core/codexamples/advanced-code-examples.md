@@ -334,3 +334,64 @@ public String display(Parameters params) {
     return obj.getParameter(ImportExportTool.EXPORT_PROGRESS);
 }
 ```
+
+Cluster locks
+-------------
+
+In a cluster deployment, the same code may run at the same time on several nodes
+(e.g. a scheduled action, an action launched by users connected to different nodes...).
+Since version 7.0, a bulk operation (synchronization, import, purge...) can be locked
+to run on a single node of the cluster at a time, with the leased locks of `com.simplicite.util.engine.LockManager`.
+
+A leased lock is a runtime system parameter held in the database:
+
+- the lock is acquired by the first node creating its row (the unique system parameter code is the arbiter between the nodes)
+- the owner node refreshes the lock row periodically (**heartbeat**, every 30 seconds)
+- a lock without heartbeat for 2 minutes (owner node stopped or crashed) is expired and taken over by another node
+
+### Exclusive bulk operation
+
+To run a bulk operation on a single node at a time, and release the lock at the end:
+
+```java
+import com.simplicite.util.engine.LockManager;
+
+// Same lock code (runtime system parameter, LOCK_ prefix recommended) and same label on all the nodes
+String running = LockManager.tryLease("LOCK_MY_SYNC", "My synchronization", false);
+if (running!=null)
+	return Message.formatSimpleWarning("Synchronization not started: " + running + " is running");
+try
+{
+	// exclusive processing (the heartbeat keeps the lock while this node is alive)
+}
+finally
+{
+	LockManager.releaseLease("LOCK_MY_SYNC", "My synchronization");
+}
+```
+
+### Elected node
+
+To elect a node for recurring tasks (e.g. at each run of a scheduled action), as long as it is alive:
+
+```java
+// Lock kept (not released): the other nodes take it over only if this node stops (no more heartbeat)
+if (LockManager.tryLease("LOCK_MY_TASKS", "My recurring tasks", false)==null)
+{
+	// this node is the elected one
+}
+
+// Is the lock held by this node?
+boolean elected = LockManager.holdsLease("LOCK_MY_TASKS", "My recurring tasks");
+```
+
+### Tips
+
+- `tryLease(code, label, force)` does not wait: it returns `null` when the lock is held by this node (acquired or already held),
+  otherwise the running operation of the other node (`"<label> on <endpoint>"`); `force` takes the lock even if held by another node
+- `releaseLease(code, label)` releases the lock only if held by this node: always call it in a `finally` block
+- the lock code and the label must be the same on all the nodes
+- the lock is held by a **node**, not by a thread: a second call on the same node also returns `null`.
+  To prevent concurrent runs on the same node as well (e.g. the same action launched twice), add a local lock or a running flag
+- the lock is only released by `releaseLease` or by the expiry of its heartbeat: after a node crash,
+  the other nodes wait up to 2 minutes before taking it over
