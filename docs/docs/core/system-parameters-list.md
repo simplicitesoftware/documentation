@@ -364,8 +364,9 @@ Set to yes to convert OS like wildcards (`*` and `?`) into SQL wildcards (`%` an
 Internal use to identify the host running Unique cron-jobs. Value is calculated.
 
 Since 7.0, it is a leased cluster lock (value `<endpoint>@<start time>|Unique cron jobs`): the owner host refreshes it (heartbeat),
-a lock without heartbeat for 2 minutes (owner host stopped) is taken over by another host at its next unique cron-job
-(no more ping of the owner host). The same cluster locks are available to the custom code with `com.simplicite.util.tools.LockTool`.
+a lock without heartbeat for 2 minutes (owner host stopped) is taken over by another host (no more ping of the owner host).
+Each run of a unique cron-job is also claimed once in the cluster (runtime parameter `CRON_RUN_<cron name>`): by the owner host at its due date,
+or by another host 30 seconds later if the owner host is stopped. The same cluster locks are available to the custom code with `com.simplicite.util.tools.LockTool`.
 
 `CRON_LOCK_OWNER`
 -----------------
@@ -374,7 +375,8 @@ a lock without heartbeat for 2 minutes (owner host stopped) is taken over by ano
 
 - Optional parameter to force only one host to run Unique cron-jobs (i.e. get the `CRON_LOCK`),
 - The value is the endpoint URL of the node/host, when the value is updated the cluster must be restarted,
-- When this parameter exists, no failover will be done by the platform to re-affect the `CRON_LOCK` (the forced host gets it, even if held by another host),
+- When this parameter exists, no failover will be done by the platform to re-affect the `CRON_LOCK`
+  (the forced host gets it, even if held by another host),
 - The operator must ensure that this host is always available because no other host will get the `CRON_LOCK` automatically,
 - See the log at startup of each host to check that the URL is correctly defined.
 

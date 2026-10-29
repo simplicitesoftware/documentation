@@ -210,23 +210,160 @@ Component guides
 
 <!-- TODO: rework (component by component: settings to apply, features to avoid) -->
 
-> **Users and rights** menu
+<!-- AHE:  Here the idea is to introduce with smth like "we map the settings like the user can see them in the interface, so MENU > FORM > FIELD.
+With the field being named and its value being given & explained" Also if there is nothing relevant to set we skip the menu.
+In a form we only include the "direct" settings, so the fields, and the "linked objects" 's fields ONLY if they have something relevant inside.
+-->
 
-### Users
-
-### Responsibilities
-
-### Groups
-
-### Grant
-
-### Functions
+<!--
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `` | __ | __ | __ |
+| `` | __ | __ | __ |
+-->
 
 > **Business objects** menu
 
 ### Domains
 
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `obd_name` (Code) | NA | | |
+| `obd_domain_id.obd_name` (Parent domain) | PC | | The parent domain needs to be compliant. |
+| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+| `obd_icon` (Icon) | C | | |
+| `obd_nohome` (Hide the home page) | NA | | |
+| `obd_view_id.viw_name` (Home page) | PC | | The homepage has to be implemented and compliant (see the [view guide](#views)). |
+| `obd_menu` (Menu position) | PC | **Left** | The menu-top is not compliant, and should anyway be disabled through `MENU_SETTINGS` (see [settings for RGAA](#settings-for-strict-rgaa-requirements)). |
+| `obd_order` (Order) | NA | | |
+| `obd_comment` (Description) | NA | | |
+
+#### Domain translation
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `tsl_object` (Object) | NA | | |
+| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+| `tsl_lang` (Language) | C | | The language value is properly mapped to the selected session/user's interface. |
+| `tsl_value` (Translation) | PC | | The value should be written in the _tsl_lang_'s language, and be relevant for the menu entry, as much as it should be legible. |
+| `tsl_help` (User help) | NA | | |
+
 ### Business Object
+
+**DESIGN**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `obo_name` (Code) | NA | | |
+| `obo_extend_id.obo_name` (Extend of logical name) | PC | | The parent object must be compliant (mostly related to having compliant fields). |
+| `obo_dbtable` (Table) | NA | | |
+| `obo_script_id` (Source code) | PC | | The script shouldn't implement features/behaviors listed as NC in this document, and if it contains any text then they have to be relevant regarding their context and properly translated. |
+| `obo_rowid_id.fld_name` (Id field logical name) | NA | | |
+| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+| `obo_comment` (Description) | NA | | |
+| `obo_searchspec` (Filter) | C | | |
+| `obo_prefix` (Prefix) | NA | | |
+| `obo_role` (Type) | NA | | |
+| `obo_class` (Class) | NA | | |
+| `obo_exportorder` (Export order) | NA | | |
+
+**FORM**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `obo_template_id.tpl_name` (Template name) | PC | | The created/associated template must be compliant, see [templating](#templating) for further information/guidance. |
+| `obo_icon` (Icon code) | C | | |
+| `obo_title` (Additiv title) | PC | | If not empty, the selected title should follow any compliant text's rules ; be translated in all languages allowed by the application, be relevant and legible. |
+| `obo_useform` (Use form) | PC | | The asociated form (template from _obo_template_id.tpl_name_) must be compliant. |
+| `obo_dfltref` (Default panel) | NA | | |
+| `obo_viewmode` (View mode) | PC | **Expanded** | Any value is supposably compliant, but to guarantee a strong page structure and understanding for ATs, the `a11y-mode` forces the value as **Expanded**. |
+
+**LIST**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `obo_pagine` (List pagination) | C | | |
+| `obo_selrows` (Select rows) | C | | |
+| `obo_minrows` (Min rows) | NA | | |
+| `obo_maxrows` (Max rows) | NA | | |
+| `obo_listedit` (Editable list) | PC | **Create on form** / **Create on list (single)** / **Editable list** | The fully editable list _Create + Update + Delete_ is not compliant (complex combo of a table and form). And the loop creation is not compliant because of the concurrent update/reload of the list. |
+| `obo_refcount` (Reference count) | NA | | |
+| `obo_list_areas` (Show areas on list) | PC | | The name of the areas needs to be relevant in the list context. |
+| `obo_tree` (Tree list) | NC | **No** | |
+| `obo_groupby` (Allows to group by) | C | | |
+| `obo_minifiable` (List minifiable) | NC | **No** | |
+| `obo_minified` (List minified) | NC | **No** | |
+| `obo_tpl_list_id.tpl_name` (List template) | NC | **empty** | |
+| `obo_tpl_list_id.tpl_ncontext` (List template context) | NA | | |
+
+**SEARCH**  
+
+| Field | Compliance | Value/Hint | Justification |
+| - | - | - | - |
+| `obo_listsearch` (Enable search in list) | C | | |
+| `obo_sortable` (Sortable fields) | C | | |
+| `obo_search_column` (Show search in column) | PC | | Compliant as long as the search is not enabled on special/complex typed fields (HTML, notepad, etc). |
+| `obo_search_dialog` (Use the search popup) | C | | |
+| `obo_srh_predef` (Preset search) | NC | **none selected** | |
+| `obo_search_index` (Show indexed search) | NA | | |
+| `obo_search_docked` (Show docked search) | NC | **No** | |
+| `obo_search_ts` (Timestamp search) | NC | **none selected** | |
+| `obo_indexable` (Indexable) | C | | |
+| `obo_indexed_fields` (Indexed fields) | NA | | |
+| `obo_tpl_search_id.tpl_name` (Search template) | PC | | The associated template must be compliant on its own, see [templating](#templating). |
+| `obo_tpl_search_pos` (Position) | PC | **Top** | Only the top position guarantees that the responsive handling is compliant. |
+
+**OPTIONS**  
+
+| Field | Compliance | Value/Hint | Justification |
+| - | - | - | - |
+| `obo_usets` (Timestamp) | NA | | |
+| `obo_updall` (Bulk update) | NC | **No** | |
+| `obo_copy` (Copy enabled) | C | | |
+| `obo_delall` (Bulk delete) | C | | |
+| `obo_export` (Data export) | C | | |
+| `obo_historic` (Data history) | PC | **History table** / **Social post** / **Change log** | Most of the choice here are compliant as long as the users input texts that follow the rules (language and relevancy). |
+| `obo_tray` (Tray menu) | NC | **No** | |
+| `obo_print` (Printable) | C | | The created publication has to be compliant, see [publications](#publications). |
+| `obo_dashboard` (Dashboard) | NC | **none selected** | |
+| `obo_followlink` (Follow links) | C | | |
+| `obo_distinct` (Distinct) | NA | | |
+| `obo_mergeable` (Mergeable) | NC | | |
+| `obo_social` (Social post) | C | | |
+| `obo_permalink` (Permalink) | NA | | |
+
+**BUTTONS**  
+
+| Field | Compliance | Value/Hint | Justification |
+| - | - | - | - |
+| `obo_btn_save` (Save) | C | | |
+| `obo_btn_copy` (Copy) | C | | |
+| `obo_btn_reload` (Reload) | C | | |
+| `obo_btn_saveclose` (Save/Close) | C | | |
+| `obo_btn_listadd` (Create on list) | C | | |
+| `obo_btn_pref` (Preferences) | C | | |
+| `obo_btn_savenew` (Save/New) | C | | |
+| `obo_btn_listedit` (Edit list) | C | | |
+| `obo_btn_bookmark` (Bookmarks) | C | | |
+| `obo_btn_savecopy` (Save/Copy) | C | | |
+| `obo_btn_listupsert` (Update the list) | NC | **Hidden** | |
+| `obo_btn_export` (Notification) | C | | |
+| `obo_btn_close` (Close) | C | | |
+| `obo_btn_updall` (Bulk update) | NC | **Hidden** | |
+| `obo_btn_del` (Delete) | C | | |
+| `obo_btn_searchform` (Search on form) | C | | |
+| `obo_btn_merge` (Merge) | NC | **Hidden** | |
+| `obo_btn_delall` (Delete all) | C | **Hidden** | |
+
+#### Object translation
+
+#### Contextual help
+
+:::warning
+
+All the linked objects must be compliant, and if they are listed further in this document, follow the explained rules and conditions.
+
+:::
 
 ### Object fields
 
@@ -251,6 +388,8 @@ Component guides
 ### Templating
 
 ### Objects rendering
+
+#### Publications
 
 > **Business process** menu
 
