@@ -215,7 +215,7 @@ With the field being named and its value being given & explained" Also if there 
 In a form we only include the "direct" settings, so the fields, and the "linked objects" 's fields ONLY if they have something relevant inside.
 -->
 
-<!-- HERE
+<!--
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
 | `` | __ | __ | __ |
@@ -384,8 +384,6 @@ All the linked objects must be compliant, and if they are listed further in this
 
 ### Field
 
-**FIELD**  
-
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
 | `fld_name` (Logical name) | NA | | |
@@ -502,11 +500,90 @@ All the linked objects must be compliant, and if they are listed further in this
 | | Signature pad / _ inlined | NC | |
 | | Scratch pad / _ inlined | NC | |
 
-### Object fields
-
 ### Actions
 
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `act_name` (Name) | NA | __ | __ |
+| `act_order` (Order) | NA | __ | __ |
+| `act_comment` (Description) | NA | __ | __ |
+| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+
+**ACTION CONFIGURATION**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `act_type` (Type) | C | | All rendered buttons are compliant and announce the action in the same way. |
+| `act_plus` (Plus menu) | C | | The plus menu dropdown is compliant, and the action is announced the same if within it. |
+| `act_group_id.acg_name` (Group) | NA | | |
+| `act_count` (Count rows) | NC | **No** | The badges aren't proeprly announced with the action in its accessible name. |
+| `act_exec` (Execution) | NA | | |
+| `act_async` (Asynchronous?) | NA | | |
+
+**CONFIRMATION**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `act_confirm` (With confirmation) | C | | The confirmation modal is compliant on its own, but must be considered if what it contains is not compliant. |
+| `act_confirm_expr` (Condition) | NA | | |
+| `act_confirm_ui` (UI template) | PC | | Compliant only if the HTML is compliant (see [accessible html](#accessible-html)) and including only compliant fields. |
+
+**STYLE**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `act_color_bg` (Background) | PC | | You can customize the colors with help from the embedded contrast checker, but it's recommended to not customize your actions' colors. Because if you do then depending on the context of the button (list, form, etc), the container background might change and not be contrasted enough. |
+| `act_color` (Text color) | PC | | idem |
+| `act_image` (Image) | C | | The image will be displayed as "decorative" with `aria-hidden`, so you mustn't think it as sole carrier of information. |
+
+#### Action field
+
+<!-- TODO -->
+
+#### Action translation
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `tsl_object` (Object) | NA | | |
+| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+| `tsl_lang` (Language) | C | | The language value is properly mapped to the selected session/user's interface. |
+| `tsl_value` (Translation) | PC | | The value should be written in the _tsl_lang_'s language, and be relevant for the menu entry, as much as it should be legible. |
+| `tsl_simplehelp` (User help) | NA | | |
+
 ### Links
+
+**PARENT OBJECT**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `obf_ref_object_id.obo_name` (Main object) | NA | | |
+| `obf_ref_order` (Link order) | NA | | |
+| `obf_field_id.fld_name` (Reference) | NA | | |
+| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+
+**CHILD OBJECT**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `obf_object_id.obj_name` (Linked object) | C | | The generated panel is compliant as long as the object's list/form are compliant, see [templating](#templating) for the form. |
+| `obf_card` (Cardinality) | NA | | |
+| `obf_cascade` (Deletion) | C | | The triggered toasts/popups are properly announced. |
+| `obf_anon` (Anonimizable) | NA | | |
+| `obf_query` (SQL specification) | NA | | |
+| `obf_filters` (Filters) | C | | The applied filters are properly announced on the lists/searches. |
+
+**OPTIONS**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `obf_copy` (Cascade copy) | NA | | |
+| `obf_visible` (Visible panel) | C | | The generated panel is compliant as long as the object's form is compliant. |
+| `obf_ref_export` (XML export) | NA | | |
+| `obf_associate` (Associate) | C | | The association action andmodal and list are all compliants, as long at the object to associate has a compliant list. |
+| `obf_rendering` (Rendering) | PC | **empty** / **Child list** | Pillboxes aren't compliant throughout the platform. |
+| `obf_treedepth` (Tree depth) | NA | | |
+| `obf_inline` (Inline fields) | NC | | |
+| `obf_redolog` (Reassemble updates history) | C | | Same as _obo_historic_. |
 
 ### List of values
 
@@ -563,16 +640,22 @@ Good practices
 
 <!--
     TODO: write list with hints/helps such as :
+        - write ALL the required translations and helps
         - don't place more than 2 row-columns
         - write all your translations regardless of contexts
-        - don't add elements on the X axis
+        - don't add-up elements horizontally
+        - don't align the fields' input/label. keep them as a block 
         - populate your field helps whenever there is an expected format, limit, etc
+        - RGAA restrictions can/will impact certain conception choices.
+            - Ensure you grasp the restrictions spectrum.
 -->
 
 Rules to know & apply
 ---------------------
 
 ### Accessible texts
+
+### Accessible HTML
 
 ### Quill fields
 
