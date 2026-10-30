@@ -215,7 +215,7 @@ With the field being named and its value being given & explained" Also if there 
 In a form we only include the "direct" settings, so the fields, and the "linked objects" 's fields ONLY if they have something relevant inside.
 -->
 
-<!--
+<!-- HERE
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
 | `` | __ | __ | __ |
@@ -288,7 +288,7 @@ In a form we only include the "direct" settings, so the fields, and the "linked 
 | `obo_maxrows` (Max rows) | NA | | |
 | `obo_listedit` (Editable list) | PC | **Create on form** / **Create on list (single)** / **Editable list** | The fully editable list _Create + Update + Delete_ is not compliant (complex combo of a table and form). And the loop creation is not compliant because of the concurrent update/reload of the list. |
 | `obo_refcount` (Reference count) | NA | | |
-| `obo_list_areas` (Show areas on list) | PC | | The name of the areas needs to be relevant in the list context. |
+| `obo_list_areas` (Show areas on list) | PC | | The name and translations of the areas needs to be relevant in the list context, see [accessible texts](#accessible-texts). |
 | `obo_tree` (Tree list) | NC | **No** | |
 | `obo_groupby` (Allows to group by) | C | | |
 | `obo_minifiable` (List minifiable) | NC | **No** | |
@@ -328,7 +328,7 @@ In a form we only include the "direct" settings, so the fields, and the "linked 
 | `obo_dashboard` (Dashboard) | NC | **none selected** | |
 | `obo_followlink` (Follow links) | C | | |
 | `obo_distinct` (Distinct) | NA | | |
-| `obo_mergeable` (Mergeable) | NC | | |
+| `obo_mergeable` (Mergeable) | NC | **No** | |
 | `obo_social` (Social post) | C | | |
 | `obo_permalink` (Permalink) | NA | | |
 
@@ -357,7 +357,24 @@ In a form we only include the "direct" settings, so the fields, and the "linked 
 
 #### Object translation
 
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `tsl_object` (Object) | NA | | |
+| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+| `tsl_lang` (Language) | C | | The language value is properly mapped to the selected session/user's interface. |
+| `tsl_value` (Translation) | PC | | The value should be written in the _tsl_lang_'s language, and follow the necessary rules about texts within the platform, see [accessible texts](#accessible-texts) |
+| `tsl_plural_value` (Plural translation) | PC | | Same as above for _tsl_value_. |
+| `tsl_help` (User help) | PC | | This field is populated thanks to _Quill_ and thus should follow the rules for its result to be accessible, see [quill fields](#quill-fields) |
+
 #### Contextual help
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `och_object_id.obo_name` (Object code) | NA | | |
+| `och_context` (Context) | C | | All contexts can be chosen, as this message will be rendered as a casual text. |
+| `och_lang` (Language) | C | | |
+| `och_help` (Help) | PC | | The value should be written in the _och_lang_'s language, and follow the necessary rules about texts within the platform, see [accessible texts](#accessible-texts) |
+| `row_module_id.row_mdl_name` (Module Name) | NA | | |
 
 :::warning
 
@@ -365,9 +382,127 @@ All the linked objects must be compliant, and if they are listed further in this
 
 :::
 
-### Object fields
+### Field
 
-#### Field
+**FIELD**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `fld_name` (Logical name) | NA | | |
+| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+| `fld_dbname` (Physical name) | NA | | |
+| `fld_default` (Default value) | NA | | |
+| `fld_comment` (Description) | NA | | |
+| `fld_deprecated` (Deprecated) | NA | | |
+
+**TYPE**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `fld_type` (Type) | PC | All types _but_ **Validated text**, **HTML content**, **Notepad**, **Geographical coordinates**, **Color**, **Object**, **External File**, **Password** | The only non-compliant field types are those, but even within the compliant types, some renderings are not. |
+| `fld_size` (Width) | C | | For any limit that is set, it is announced with the `maxlength`attribute. |
+| `fld_type_id.flt_code` (Validation type) | PC | | This is only compliant if you populate the field's inline help explaining what format is expected. |
+| `fld_fromdate_id.fld_name` (Start date field) | NC | **empty** | Even with populating the field's help, this would require more specific linkage that isn't implemented. |
+| `fld_list_id.lov_name` (List of values) | PC | | Compliant only if the associated list of values is compliant itself, see [list of value](#list-of-values). |
+| `fld_precision` (Precision) | NC | **empty** | Whatever precision is written here won't be properly announced on the field. |
+| `fld_minsize` (Minimum size) | C | | Same as for _fld_size_. |
+| `fld_classification` (Classification) | NA | | |
+| `fld_anon` (Anonymizable) | NA | | |
+| `fld_calc` (Calculated expression) | NA | | |
+
+**OPTIONS**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `fld_fonctid` (Functional key) | NA | | |
+| `fld_required` (Required) | C | | Required set fields are properly announced whatever the context is (form, list, process, etc). |
+| `fld_updatable` (Updatable) | C | | All update contexts are compliant. |
+| `fld_copy` (Copy enabled) | C | | |
+| `fld_indexable` (Indexabe) | C | | |
+| `fld_updall` (Bulk update) | NC | **No** | As the _Business Object_'s bulk update is non-compliant. |
+| `fld_autocomp` (Auto-completion) | C | | Autocompletion is properly announced with the `autocomplete` attribute, and the helper dropdowns are compliant. |
+| `fld_listsum` (List summation) | | | |
+| `fld_groupby` (Allows to group by) | C | | Lists with groupby have the required `aria-expanded` attribute and a compliant DOM. |
+| `fld_exportable` (Exportable) | | | |
+| `fld_incrementsyntax` (Auto-increment syntax) | NA | | |
+| `fld_compliance` (RGAA compliance) | C | | Everything generated by this field (indicator, tooltip, addon) are compliant and properly announced. |
+| `fld_clipboard` (Clipboardable) | C | | Both the clipboard addon and the result toast are compliant. |
+
+**DISPLAY**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `fld_visible` (Visible) | C | | Fields' display in any context is handle compliantly, as long as the field is of a compliant _fld_type_. |
+| `fld_more` (Extended) | C | | The more/less mechanism is fully compliant with `aria-expanded` and compliant behavior for hiding/showing fields. |
+| `fld_research` (Search enabled) | C | | The search is compliant only for the compliant values of _fld_type_. |
+| `fld_listmore` (Extended on lists) | C | | Same as for _fld_more_. |
+| `fld_reqsearch` (Required search) | PC | **Non required** / **Required** / **Extended** | The _Semi-required_ cannot be properly flagged with ARIA attributes, and thus cannot be made compliant. |
+| `fld_case` (Case) | NA | | |
+| `fld_sort` (Sorting type) | C | | |
+| `fld_righttoleft` (Right to left) | NC | **No** | The switch from left-to-right to right-to-left is not properly announced in the platform. |
+| `fld_sort_nulls` (Order of nulls) | NA | | |
+| `fld_speech` (Conversation) | NC | **none selected** | Speech recognition isn't compliant within the platform. |
+| `fld_rendering` (Rendering) | PC | See [Fields rendering](#fields-rendering) | See [Fields rendering](#fields-rendering) |
+
+#### Fields rendering
+
+| Field type | Rendering | Compliance | Justification |
+| - | - | - | - |
+| **Short text** | _empty_ | C | |
+| | QRCode/barcode scanner | NC | |
+| | Icon picker | NC | |
+| **Long text** | _empty_ | C | |
+| | Expression | | |
+| | Fixed font | | |
+| | Text editor / CSS / HTML / SQL / JSON / Javascript / Markdown | PC | Ace component is not compliant, but if you really need this type of field, the _accessible mode_ turns them into plain `textarea`. |
+| | Grid | NC | |
+| | Count characters | NC | |
+| | AI | NC | |
+| **Integer** / **Decimal (double)** / **Decimal (100,32)** | _empty_ | C | |
+| | Simple number | C | |
+| | Monetary | C | |
+| | Progress bar | NC | |
+| | Percentage | C | |
+| | Stars | NC | |
+| | Slider | C | |
+| | € / K€ / M€ / $ / K$ / M$ / ¥ / K¥ / M¥ / CHF | C | the created addon is properly declared/associated to the field. |
+| **Date** / **Date and time** | _empty_ | PC | Pickers are not compliant, but _accessible mode_ removes them and replaces them with a hint and formatting logic. |
+| | To year | C | Format is well taken into account in _accessible mode_ |
+| | To month | C | idem |
+| | To day | C | idem |
+| **Time** / **Date and time** | _empty_ | PC | Pickers are not compliant, but _accessible mode_ removes them and replaces them with a hint and formatting logic. |
+| | To hour | C | Format is well taken into account in _accessible mode_ |
+| | To minute | C | idem |
+| | To seconds | C | idem |
+| **Enumeration** / **Multiple enumeration** | _empty_ | C | |
+| | Single or multiple selection list | C | |
+| | Horizontal / Vertical | C | |
+| | Select with search (pillbox) | NC | |
+| **Boolean** | _empty_ | C | |
+| | Two radio buttons | C | |
+| | Single checkbox | C | |
+| | Combobox | C | |
+| | Slide button | C | |
+| **URL** / **Email** / **Phone number** | _empty_ | C | |
+| | Icon on list | NC | |
+| | Value | C | |
+| | QRCode/barcode scanner | NC | |
+| **Document** | _empty_ | C | |
+| | Single document with icon on list | C | |
+| | Single document name | C | |
+| | Multi-documents boxes | NC | |
+| | Multi-documents list | NC | |
+| **Internal ID** | _empty_ | C | |
+| | Popup picker | C | |
+| | Select dropdown | C | |
+| | Popup and select | C | |
+| **Image** | _empty_ | C | |
+| | Take a selfie | NC | |
+| | Take a picture | NC | |
+| | Signature pad / _ inlined | NC | |
+| | Scratch pad / _ inlined | NC | |
+
+### Object fields
 
 ### Actions
 
@@ -431,8 +566,15 @@ Good practices
         - don't place more than 2 row-columns
         - write all your translations regardless of contexts
         - don't add elements on the X axis
-        - populate your field helps whenever there is an expected format
+        - populate your field helps whenever there is an expected format, limit, etc
 -->
+
+Rules to know & apply
+---------------------
+
+### Accessible texts
+
+### Quill fields
 
 Appendix: keyboard accessibility
 --------------------------------
