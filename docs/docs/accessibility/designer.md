@@ -587,13 +587,119 @@ All the linked objects must be compliant, and if they are listed further in this
 
 ### List of values
 
-### Constraints
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `lov_name` (List) | NA | | |
+| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+| `lov_selectall_op` (Display "Select All / Unselect all" option) | C | | |
+| `lov_navbar` (State model display) | C | | All four renderings for the state navbar are compliant, announcing the current state for the object and describing the displayed milestones as they should. |
+| `lov_navbar_opt` (Navbar options) | PC | **Counter**, **Next Milestone** | The history date and user are not properly announced in the component, so they shouldn't be enabled. |
+| `lov_model_id.mod_name` (Model) | PC | | The linked model-state must have compliant milestones, the issue is mostly about the naming, see [accessible texts](#accessible-texts). |
 
-#### Impacts
+#### List code
+
+**CODE**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `lov_list_id.lov_name` (List) | NA | | |
+| `lov_label` (Description) | NA | | |
+| `lov_code` (Code) | NA | | |
+| `lov_order` (Order) | NA | | |
+| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+
+**STYLE**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `lov_color` (Text color) | PC | **empty** | The value of the text must have enough contrast with the background of its container, you can help yourself with the contrast helper, but this won't guarantee the selected colors are gonna be contrasted enough with the different contexts (lists, headers, bodies, etc). |
+| `lov_color_bg` (Background color) | PC | **empty** | Same as for _lov_color_. |
+| `lov_icon` (Icon) | C | | The icon is always declared as carrying no visual information. And if necessary associated with proper WAI-ARIA attributes. |
+| `lov_display` (Display on list) | C | | Wherever the elements are displayed, their content is properly announced with relevant information and ARIA-attributes. |
+
+#### Translated list value
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `lov_code_id.lov_list_id.lov_name` (List) | NA | | |
+| `lov_code_id.lov_code` (Codee) | NA | | |
+| `lov_code_id.lov_order_by` (Order) | NA | | |
+| `lov_lang` (Language) | C | | The language value is properly mapped to the selected session/user's interface. |
+| `lov_aluev` (Value) | PC | | The value should be written in the _lov_lang_'s language, and be relevant/legible for all display contexts enabled with _lov_display_. |
+| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+
+### Constraint
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `cst_name` (Name) | NA | | |
+| `cst_desc` (Description) | NA | | |
+| `cst_order` (Order) | NA | | |
+| `cst_effects` (Effects) | NA | | |
+| `cst_object_id.obo_name` (Object Code) | NA | | |
+| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+
+**CONDITION**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `cst_type` (Type) | NA | | |
+| `cst_expr` (Expression) | NA | | |
+
+#### Impact
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `csi_const_id.cst_name` (Constraint Name) | NA | | |
+| `csi_const_id.cst_object_id.obo_name` (Object) | NA | | |
+| `csi_const_id.cst_order` (Constraint Order) | NA | | |
+| `csi_order` (Order) | NA | | |
+| `csi_apply` (Apply to) | C | | Any behavior set through a constraint/impact is applied compliantly. |
+| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+
+**IMPACT ON FIELD**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `csi_objfield_id.obf_object_id.obo_name` (Object) | NA | | |
+| `csi_objfield_id.obf_field_id.fld_name` (Field) | NA | | |
+| `csi_objfield_id.obf_order` (Field order) | NA | | |
+| `csi_field_prop` (Field property) | C | | Any behavior set through a constraint/impact is applied compliantly. |
+
+**PROPERTY VALUE**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `csi_expr` | C | | Any behavior set through a constraint/impact is applied compliantly. |
 
 > **User interface** menu
 
 ### Shortcuts
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `shc_name` (Name) | NA | | |
+| `shc_target` (Target) | PC | **Main work area** / **Dialog box** / **Top document location** / **New window** | All targets are declared compliantly, except for the _Work areas_ related ones. |
+| `shc_visible` (Visibility) | C | | |
+| `shc_order` (Order) | NA | | |
+| `shc_url` (URL) | PC | | Whatever the shortcut opens, it must be coherent with the target and the translation (displayed label). |
+| `shc_home_style` (Home page style) | C | | |
+| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+| `shc_width` (Width of the component) | NC | **empty** | The CSS rule associated to this is directly in the DOM, thus not compliant. |
+| `shc_height` (Height of the component) | NC | **empty** | Same as for the _shc_width_. |
+| `shc_icon` (Icon) | C | | The icon is always declared as carrying no visual information. And if necessary associated with proper WAI-ARIA attributes. |
+| `shc_keys` (Shorthand) | PC | | The keystroke mustn't override anything either existing for the browser or listed in the [keyboard accessibility](#keyboard-accessibility). |
+| `shc_in_sitemap` (Visible in sitemap) | C | | If **Yes** then the sitemap does contain a proper entry for this shortcut. |
+
+#### Shortcut translation
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| `tsl_object` (Object) | NA | | |
+| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+| `tsl_lang` (Language) | C | | The language value is properly mapped to the selected session/user's interface. |
+| `tsl_value` (Translation) | PC | | The value should be written in the _tsl_lang_'s language, legible and relevant to be displayed on the selected context in _shc_visibility_. |
+| `tsl_tooltip` (Tooltip) | C | | |
 
 ### Views
 
@@ -659,8 +765,8 @@ Rules to know & apply
 
 ### Quill fields
 
-Appendix: keyboard accessibility
---------------------------------
+Keyboard accessibility
+----------------------
 
 <!-- TODO: check if this part (fge) is still up to date -->
 
