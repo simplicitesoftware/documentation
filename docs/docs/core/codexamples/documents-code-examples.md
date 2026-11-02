@@ -90,7 +90,7 @@ As of version 3.0, the standard `QRCodeTool` helper class provides various metho
 Typical usage is to set an image field with a URL QR code:
 
 ```java
-obj.getField("myQRCode").setDocument(obj, "qrcode.png", QRCodeTool.qrCodeImage(Globals.getContextURL()));
+obj.getField("myQRCode").setDocument(obj, "qrcode.png", QRCodeTool.qrCodeImage(getGrant().getContextURL()));
 ```
 
 Barcodes images
