@@ -208,10 +208,24 @@ writing the template.
 Component guides
 ----------------
 
-<!-- AHE:  Here the idea is to introduce with smth like "we map the settings like the user can see them in the interface, so MENU > FORM > FIELD.
-With the field being named and its value being given & explained" Also if there is nothing relevant to set we skip the menu.
-In a form we only include the "direct" settings, so the fields, and the "linked objects" 's fields ONLY if they have something relevant inside.
--->
+These guides follow the platform's interface: for each menu, the forms it contains, and for each form,
+its fields grouped by the area of the form they appear in (**DESIGN**, **FORM**, **LIST**…). Linked
+objects are only described when they contain relevant settings, and menus with nothing to set are
+skipped.
+
+RGAA restrictions will impact some of your design choices: go through the guides of the components you
+plan to use before designing your application.
+
+Each table gives:
+
+- **Field**: the label displayed in the form, and the field's code;
+- **Compliance**: the [compliance status](#compliance-statuses) of the feature;
+- **Value**: the value(s) to set to stay compliant, nothing when any value is fine;
+- **Justification**: why, and the conditions to respect.
+
+Fields that are not listed are **Not Applicable**. A field that only depends on another component
+having its own guide is **Compliant**, with a link to that guide: follow it. Justifications starting with
+**(a11y-mode)** mark features that are only compliant when `a11y-mode` is on.
 
 <!--
 | Field | Compliance | Value | Justification |
@@ -220,227 +234,194 @@ In a form we only include the "direct" settings, so the fields, and the "linked 
 | `` | __ | __ | __ |
 -->
 
-> **Business objects** menu
+### Translations
 
-### Domains
-
-| Field | Compliance | Value | Justification |
-| - | - | - | - |
-| `obd_name` (Code) | NA | | |
-| `obd_domain_id.obd_name` (Parent domain) | PC | | The parent domain needs to be compliant. |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
-| `obd_icon` (Icon) | C | | |
-| `obd_nohome` (Hide the home page) | NA | | |
-| `obd_view_id.viw_name` (Home page) | PC | | The homepage has to be implemented and compliant (see the [view guide](#views)). |
-| `obd_menu` (Menu position) | PC | **Left** | The menu-top is not compliant, and should anyway be disabled through `MENU_SETTINGS` (see [settings for RGAA](#settings-for-strict-rgaa-requirements)). |
-| `obd_order` (Order) | NA | | |
-| `obd_comment` (Description) | NA | | |
-
-#### Domain translation
+Domains, business objects, actions, shortcuts and searches are translated through the same
+**Translation** object. These rules apply to every translation panel mentioned in the guides below.
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `tsl_object` (Object) | NA | | |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
-| `tsl_lang` (Language) | C | | The language value is properly mapped to the selected session/user's interface. |
-| `tsl_value` (Translation) | PC | | The value should be written in the _tsl_lang_'s language, and be relevant for the menu entry, as much as it should be legible. |
-| `tsl_help` (User help) | NA | | |
+| Language (`tsl_lang`) | C | | |
+| Translation (`tsl_value`) | PC | | Written in the language of `tsl_lang`, relevant and readable where it is displayed (menu entry, title, button, etc.), see [accessible texts](#accessible-texts). |
+| Plural translation (`tsl_plural_value`) | PC | | Same as `tsl_value`. |
 
-### Business Object
+The help field depends on the translated element:
+
+| Translated element | Field | Compliance | Justification |
+| - | - | - | - |
+| Business object | User help (`tsl_help`) | PC | This field is filled in with _Quill_, and must follow its rules for the result to be accessible, see [Quill fields](#quill-fields). |
+| Shortcut | Tooltip (`tsl_tooltip`) | C | |
+
+<!-- TODO: Cover other fields (tsl_short_label, tsl_placeholder, tsl_listhelp, ...) -->
+
+For domains and actions, the help field is Not Applicable (a domain's help is never displayed to the user).
+
+### Business objects menu
+
+#### Domains
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| Parent domain (`obd_domain_id.obd_name`) | C | | See [Domains](#domains). |
+| Icon (`obd_icon`) | C | | |
+| Home page (`obd_view_id.viw_name`) | C | | See [Views](#views). |
+| Menu position (`obd_menu`) | PC | **Left** | The top menu is not compliant, and should be disabled anyway through `MENU_SETTINGS` (see [settings for strict RGAA requirements](#settings-for-strict-rgaa-requirements)). |
+
+##### Domain translation
+
+See [Translations](#translations).
+
+#### Business Object
 
 **DESIGN**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `obo_name` (Code) | NA | | |
-| `obo_extend_id.obo_name` (Extend of logical name) | PC | | The parent object must be compliant (mostly related to having compliant fields). |
-| `obo_dbtable` (Table) | NA | | |
-| `obo_script_id` (Source code) | PC | | The script shouldn't implement features/behaviors listed as NC in this document, and if it contains any text then they have to be relevant regarding their context and properly translated. |
-| `obo_rowid_id.fld_name` (Id field logical name) | NA | | |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
-| `obo_comment` (Description) | NA | | |
-| `obo_searchspec` (Filter) | C | | |
-| `obo_prefix` (Prefix) | NA | | |
-| `obo_role` (Type) | NA | | |
-| `obo_class` (Class) | NA | | |
-| `obo_exportorder` (Export order) | NA | | |
+| Extend of logical name (`obo_extend_id.obo_name`) | C | | See [Business Object](#business-object). |
+| Source code (`obo_script_id`) | PC | | The script must not implement features or behaviors listed as NC in this document, and any text it contains must be relevant to its context and properly translated. |
+| Filter (`obo_searchspec`) | C | | |
 
 **FORM**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `obo_template_id.tpl_name` (Template name) | PC | | The created/associated template must be compliant, see [templating](#templating) for further information/guidance. |
-| `obo_icon` (Icon code) | C | | |
-| `obo_title` (Additiv title) | PC | | If not empty, the selected title should follow any compliant text's rules ; be translated in all languages allowed by the application, be relevant and legible. |
-| `obo_useform` (Use form) | PC | | The asociated form (template from _obo_template_id.tpl_name_) must be compliant. |
-| `obo_dfltref` (Default panel) | NA | | |
-| `obo_viewmode` (View mode) | PC | **Expanded** | Any value is supposably compliant, but to guarantee a strong page structure and understanding for ATs, the `a11y-mode` forces the value as **Expanded**. |
+| Template name (`obo_template_id.tpl_name`) | C | | See [Templating](#templating). |
+| Icon code (`obo_icon`) | C | | |
+| Additive title (`obo_title`) | PC | | If not empty, the title follows the rules of [accessible texts](#accessible-texts): translated in all the languages of the application, relevant and readable. |
+| Use form (`obo_useform`) | C | | The form uses the template of `obo_template_id`, see [Templating](#templating). |
+| View mode (`obo_viewmode`) | C | | Any value is compliant. `a11y-mode` forces **Expanded** for a stronger page structure. |
 
 **LIST**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `obo_pagine` (List pagination) | C | | |
-| `obo_selrows` (Select rows) | C | | |
-| `obo_minrows` (Min rows) | NA | | |
-| `obo_maxrows` (Max rows) | NA | | |
-| `obo_listedit` (Editable list) | PC | **Create on form** / **Create on list (single)** / **Editable list** | The fully editable list _Create + Update + Delete_ is not compliant (complex combo of a table and form). And the loop creation is not compliant because of the concurrent update/reload of the list. |
-| `obo_refcount` (Reference count) | NA | | |
-| `obo_list_areas` (Show areas on list) | PC | | The name and translations of the areas needs to be relevant in the list context, see [accessible texts](#accessible-texts). |
-| `obo_tree` (Tree list) | NC | **No** | |
-| `obo_groupby` (Allows to group by) | C | | |
-| `obo_minifiable` (List minifiable) | NC | **No** | |
-| `obo_minified` (List minified) | NC | **No** | |
-| `obo_tpl_list_id.tpl_name` (List template) | NC | **empty** | |
-| `obo_tpl_list_id.tpl_ncontext` (List template context) | NA | | |
+| List pagination (`obo_pagine`) | C | | |
+| Select rows (`obo_selrows`) | C | | |
+| Editable list (`obo_listedit`) | PC | **Create on form** / **Create on list (single)** / **Editable list** | The fully editable list (create, update and delete) is not compliant, as it combines a table and a form. Loop creation is not compliant either, because of the concurrent update and reload of the list. |
+| Show areas on list (`obo_list_areas`) | PC | | The names and translations of the areas must be relevant in the list context, see [accessible texts](#accessible-texts). |
+| Tree list (`obo_tree`) | NC | **No** | |
+| Allows to group by (`obo_groupby`) | C | | |
+| List minifiable (`obo_minifiable`) | NC | **No** | |
+| List minified (`obo_minified`) | NC | **No** | |
+| List template (`obo_tpl_list_id.tpl_name`) | NC | **empty** | |
 
 **SEARCH**  
 
-| Field | Compliance | Value/Hint | Justification |
+| Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `obo_listsearch` (Enable search in list) | C | | |
-| `obo_sortable` (Sortable fields) | C | | |
-| `obo_search_column` (Show search in column) | PC | | Compliant as long as the search is not enabled on special/complex typed fields (HTML, notepad, etc). |
-| `obo_search_dialog` (Use the search popup) | C | | |
-| `obo_srh_predef` (Preset search) | NC | **none selected** | |
-| `obo_search_index` (Show indexed search) | NA | | |
-| `obo_search_docked` (Show docked search) | NC | **No** | |
-| `obo_search_ts` (Timestamp search) | NC | **none selected** | |
-| `obo_indexable` (Indexable) | C | | |
-| `obo_indexed_fields` (Indexed fields) | NA | | |
-| `obo_tpl_search_id.tpl_name` (Search template) | PC | | The associated template must be compliant on its own, see [templating](#templating). |
-| `obo_tpl_search_pos` (Position) | PC | **Top** | Only the top position guarantees that the responsive handling is compliant. |
+| Enable search in list (`obo_listsearch`) | C | | |
+| Sortable fields (`obo_sortable`) | C | | |
+| Show search in column (`obo_search_column`) | PC | | Compliant as long as the search is not enabled on complex field types (HTML, notepad, etc.). |
+| Use the search popup (`obo_search_dialog`) | C | | |
+| Preset search (`obo_srh_predef`) | NC | **none selected** | |
+| Show docked search (`obo_search_docked`) | NC | **No** | |
+| Timestamp search (`obo_search_ts`) | NC | **none selected** | |
+| Indexable (`obo_indexable`) | C | | |
+| Search template (`obo_tpl_search_id.tpl_name`) | C | | See [Templating](#templating). |
+| Position (`obo_tpl_search_pos`) | PC | **Top** | Only the top position guarantees a compliant responsive behavior. |
 
 **OPTIONS**  
 
-| Field | Compliance | Value/Hint | Justification |
+| Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `obo_usets` (Timestamp) | NA | | |
-| `obo_updall` (Bulk update) | NC | **No** | |
-| `obo_copy` (Copy enabled) | C | | |
-| `obo_delall` (Bulk delete) | C | | |
-| `obo_export` (Data export) | C | | |
-| `obo_historic` (Data history) | PC | **History table** / **Social post** / **Change log** | Most of the choice here are compliant as long as the users input texts that follow the rules (language and relevancy). |
-| `obo_tray` (Tray menu) | NC | **No** | |
-| `obo_print` (Printable) | C | | The created publication has to be compliant, see [publications](#publications). |
-| `obo_dashboard` (Dashboard) | NC | **none selected** | |
-| `obo_followlink` (Follow links) | C | | |
-| `obo_distinct` (Distinct) | NA | | |
-| `obo_mergeable` (Mergeable) | NC | **No** | |
-| `obo_social` (Social post) | C | | |
-| `obo_permalink` (Permalink) | NA | | |
+| Bulk update (`obo_updall`) | NC | **No** | |
+| Copy enabled (`obo_copy`) | C | | |
+| Bulk delete (`obo_delall`) | C | | |
+| Data export (`obo_export`) | C | | |
+| Data history (`obo_historic`) | PC | **History table** / **Social post** / **Change log** | These values are compliant as long as users write texts that follow the rules (language and relevance). |
+| Tray menu (`obo_tray`) | NC | **No** | |
+| Printable (`obo_print`) | C | | See [Publications](#publications). |
+| Dashboard (`obo_dashboard`) | NC | **none selected** | |
+| Follow links (`obo_followlink`) | C | | |
+| Mergeable (`obo_mergeable`) | NC | **No** | |
+| Social post (`obo_social`) | C | | |
 
 **BUTTONS**  
 
-| Field | Compliance | Value/Hint | Justification |
+| Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `obo_btn_save` (Save) | C | | |
-| `obo_btn_copy` (Copy) | C | | |
-| `obo_btn_reload` (Reload) | C | | |
-| `obo_btn_saveclose` (Save/Close) | C | | |
-| `obo_btn_listadd` (Create on list) | C | | |
-| `obo_btn_pref` (Preferences) | C | | |
-| `obo_btn_savenew` (Save/New) | C | | |
-| `obo_btn_listedit` (Edit list) | C | | |
-| `obo_btn_bookmark` (Bookmarks) | C | | |
-| `obo_btn_savecopy` (Save/Copy) | C | | |
-| `obo_btn_listupsert` (Update the list) | NC | **Hidden** | |
-| `obo_btn_export` (Notification) | C | | |
-| `obo_btn_close` (Close) | C | | |
-| `obo_btn_updall` (Bulk update) | NC | **Hidden** | |
-| `obo_btn_del` (Delete) | C | | |
-| `obo_btn_searchform` (Search on form) | C | | |
-| `obo_btn_merge` (Merge) | NC | **Hidden** | |
-| `obo_btn_delall` (Delete all) | C | **Hidden** | |
+| Save (`obo_btn_save`) | C | | |
+| Copy (`obo_btn_copy`) | C | | |
+| Reload (`obo_btn_reload`) | C | | |
+| Save/Close (`obo_btn_saveclose`) | C | | |
+| Create on list (`obo_btn_listadd`) | C | | |
+| Preferences (`obo_btn_pref`) | C | | |
+| Save/New (`obo_btn_savenew`) | C | | |
+| Edit list (`obo_btn_listedit`) | C | | |
+| Bookmarks (`obo_btn_bookmark`) | C | | |
+| Save/Copy (`obo_btn_savecopy`) | C | | |
+| Update the list (`obo_btn_listupsert`) | NC | **Hidden** | |
+| Notification (`obo_btn_export`) | C | | |
+| Close (`obo_btn_close`) | C | | |
+| Bulk update (`obo_btn_updall`) | NC | **Hidden** | |
+| Delete (`obo_btn_del`) | C | | |
+| Search on form (`obo_btn_searchform`) | C | | |
+| Merge (`obo_btn_merge`) | NC | **Hidden** | |
+| Delete all (`obo_btn_delall`) | C | **Hidden** | |
 
-#### Object translation
+##### Object translation
+
+See [Translations](#translations).
+
+##### Contextual help
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `tsl_object` (Object) | NA | | |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
-| `tsl_lang` (Language) | C | | The language value is properly mapped to the selected session/user's interface. |
-| `tsl_value` (Translation) | PC | | The value should be written in the _tsl_lang_'s language, and follow the necessary rules about texts within the platform, see [accessible texts](#accessible-texts) |
-| `tsl_plural_value` (Plural translation) | PC | | Same as above for _tsl_value_. |
-| `tsl_help` (User help) | PC | | This field is populated thanks to _Quill_ and thus should follow the rules for its result to be accessible, see [quill fields](#quill-fields) |
-
-#### Contextual help
-
-| Field | Compliance | Value | Justification |
-| - | - | - | - |
-| `och_object_id.obo_name` (Object code) | NA | | |
-| `och_context` (Context) | C | | All contexts can be chosen, as this message will be rendered as a casual text. |
-| `och_lang` (Language) | C | | |
-| `och_help` (Help) | PC | | The value should be written in the _och_lang_'s language, and follow the necessary rules about texts within the platform, see [accessible texts](#accessible-texts) |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+| Context (`och_context`) | C | | |
+| Language (`och_lang`) | C | | |
+| Help (`och_help`) | PC | | Written in the language of `och_lang`, following the rules of [accessible texts](#accessible-texts). |
 
 :::warning
 
-All the linked objects must be compliant, and if they are listed further in this document, follow the explained rules and conditions.
+All linked objects must be compliant: when they have a guide in this document, follow its rules.
 
 :::
 
-### Field
-
-| Field | Compliance | Value | Justification |
-| - | - | - | - |
-| `fld_name` (Logical name) | NA | | |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
-| `fld_dbname` (Physical name) | NA | | |
-| `fld_default` (Default value) | NA | | |
-| `fld_comment` (Description) | NA | | |
-| `fld_deprecated` (Deprecated) | NA | | |
+#### Field
 
 **TYPE**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `fld_type` (Type) | PC | All types _but_ **Validated text**, **HTML content**, **Notepad**, **Geographical coordinates**, **Color**, **Object**, **External File**, **Password** | The only non-compliant field types are those, but even within the compliant types, some renderings are not. |
-| `fld_size` (Width) | C | | For any limit that is set, it is announced with the `maxlength`attribute. |
-| `fld_type_id.flt_code` (Validation type) | PC | | This is only compliant if you populate the field's inline help explaining what format is expected. |
-| `fld_fromdate_id.fld_name` (Start date field) | NC | **empty** | Even with populating the field's help, this would require more specific linkage that isn't implemented. |
-| `fld_list_id.lov_name` (List of values) | PC | | Compliant only if the associated list of values is compliant itself, see [list of value](#list-of-values). |
-| `fld_precision` (Precision) | NC | **empty** | Whatever precision is written here won't be properly announced on the field. |
-| `fld_minsize` (Minimum size) | C | | Same as for _fld_size_. |
-| `fld_classification` (Classification) | NA | | |
-| `fld_anon` (Anonymizable) | NA | | |
-| `fld_calc` (Calculated expression) | NA | | |
+| Type (`fld_type`) | PC | All types _but_ **Validated text**, **HTML content**, **Notepad**, **Geographical coordinates**, **Color**, **Object**, **External File** | These types are not compliant, and even within the compliant types, some renderings are not (see [Fields rendering](#fields-rendering)). |
+| Width (`fld_size`) | C | | Any limit set is announced with the `maxlength` attribute. |
+| Validation type (`fld_type_id.flt_code`) | PC | | Only compliant if the field's inline help explains the expected format. |
+| Start date field (`fld_fromdate_id.fld_name`) | NC | **empty** | Even with a field help, this would require a specific linkage that is not implemented. |
+| List of values (`fld_list_id.lov_name`) | C | | See [List of values](#list-of-values). |
+| Precision (`fld_precision`) | NC | **empty** | The precision is not announced on the field. |
+| Minimum size (`fld_minsize`) | C | | Same as `fld_size`. |
 
 **OPTIONS**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `fld_fonctid` (Functional key) | NA | | |
-| `fld_required` (Required) | C | | Required set fields are properly announced whatever the context is (form, list, process, etc). |
-| `fld_updatable` (Updatable) | C | | All update contexts are compliant. |
-| `fld_copy` (Copy enabled) | C | | |
-| `fld_indexable` (Indexabe) | C | | |
-| `fld_updall` (Bulk update) | NC | **No** | As the _Business Object_'s bulk update is non-compliant. |
-| `fld_autocomp` (Auto-completion) | C | | Autocompletion is properly announced with the `autocomplete` attribute, and the helper dropdowns are compliant. |
-| `fld_listsum` (List summation) | | | |
-| `fld_groupby` (Allows to group by) | C | | Lists with groupby have the required `aria-expanded` attribute and a compliant DOM. |
-| `fld_exportable` (Exportable) | | | |
-| `fld_incrementsyntax` (Auto-increment syntax) | NA | | |
-| `fld_compliance` (RGAA compliance) | C | | Everything generated by this field (indicator, tooltip, addon) are compliant and properly announced. |
-| `fld_clipboard` (Clipboardable) | C | | Both the clipboard addon and the result toast are compliant. |
+| Required (`fld_required`) | C | | |
+| Updatable (`fld_updatable`) | C | | |
+| Copy enabled (`fld_copy`) | C | | |
+| Indexable (`fld_indexable`) | C | | |
+| Bulk update (`fld_updall`) | NC | **No** | As the business object's bulk update is not compliant. |
+| Auto-completion (`fld_autocomp`) | C | | Announced with the `autocomplete` attribute, and the suggestion dropdowns are compliant. |
+| List summation (`fld_listsum`) | C | | |
+| Allows to group by (`fld_groupby`) | C | | Grouped lists carry the required `aria-expanded` attribute. |
+| Exportable (`fld_exportable`) | C | | |
+| RGAA compliance (`fld_compliance`) | C | | |
+| Clipboardable (`fld_clipboard`) | C | | |
 
 **DISPLAY**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `fld_visible` (Visible) | C | | Fields' display in any context is handle compliantly, as long as the field is of a compliant _fld_type_. |
-| `fld_more` (Extended) | C | | The more/less mechanism is fully compliant with `aria-expanded` and compliant behavior for hiding/showing fields. |
-| `fld_research` (Search enabled) | C | | The search is compliant only for the compliant values of _fld_type_. |
-| `fld_listmore` (Extended on lists) | C | | Same as for _fld_more_. |
-| `fld_reqsearch` (Required search) | PC | **Non required** / **Required** / **Extended** | The _Semi-required_ cannot be properly flagged with ARIA attributes, and thus cannot be made compliant. |
-| `fld_case` (Case) | NA | | |
-| `fld_sort` (Sorting type) | C | | |
-| `fld_righttoleft` (Right to left) | NC | **No** | The switch from left-to-right to right-to-left is not properly announced in the platform. |
-| `fld_sort_nulls` (Order of nulls) | NA | | |
-| `fld_speech` (Conversation) | NC | **none selected** | Speech recognition isn't compliant within the platform. |
-| `fld_rendering` (Rendering) | PC | See [Fields rendering](#fields-rendering) | See [Fields rendering](#fields-rendering) |
+| Visible (`fld_visible`) | C | | As long as the field has a compliant `fld_type`. |
+| Extended (`fld_more`) | C | | The more / less mechanism uses `aria-expanded`, and hides or shows fields compliantly. |
+| Search enabled (`fld_research`) | C | | Only for the compliant values of `fld_type`. |
+| Extended on lists (`fld_listmore`) | C | | Same as `fld_more`. |
+| Required search (`fld_reqsearch`) | PC | **Non required** / **Required** / **Extended** | _Semi-required_ cannot be flagged with ARIA attributes, and thus cannot be made compliant. |
+| Sorting type (`fld_sort`) | C | | |
+| Right to left (`fld_righttoleft`) | NC | **No** | The switch from left-to-right to right-to-left is not announced. |
+| Conversation (`fld_speech`) | NC | **none selected** | Speech recognition is not compliant. |
+| Rendering (`fld_rendering`) | PC | See [Fields rendering](#fields-rendering) | See [Fields rendering](#fields-rendering). |
 
-#### Fields rendering
+##### Fields rendering
 
 | Field type | Rendering | Compliance | Justification |
 | - | - | - | - |
@@ -448,9 +429,9 @@ All the linked objects must be compliant, and if they are listed further in this
 | | QRCode/barcode scanner | NC | |
 | | Icon picker | NC | |
 | **Long text** | _empty_ | C | |
-| | Expression | | |
-| | Fixed font | | |
-| | Text editor / CSS / HTML / SQL / JSON / Javascript / Markdown | PC | Ace component is not compliant, but if you really need this type of field, the _accessible mode_ turns them into plain `textarea`. |
+| | Expression | NC | |
+| | Fixed font | NC | |
+| | Text editor / CSS / HTML / SQL / JSON / Javascript / Markdown | PC | **(a11y-mode)** The Ace editor is not compliant. If you really need this kind of field, `a11y-mode` turns it into a plain `textarea`. |
 | | Grid | NC | |
 | | Count characters | NC | |
 | | AI | NC | |
@@ -461,15 +442,15 @@ All the linked objects must be compliant, and if they are listed further in this
 | | Percentage | C | |
 | | Stars | NC | |
 | | Slider | C | |
-| | € / K€ / M€ / $ / K$ / M$ / ¥ / K¥ / M¥ / CHF | C | the created addon is properly declared/associated to the field. |
-| **Date** / **Date and time** | _empty_ | PC | Pickers are not compliant, but _accessible mode_ removes them and replaces them with a hint and formatting logic. |
-| | To year | C | Format is well taken into account in _accessible mode_ |
-| | To month | C | idem |
-| | To day | C | idem |
-| **Time** / **Date and time** | _empty_ | PC | Pickers are not compliant, but _accessible mode_ removes them and replaces them with a hint and formatting logic. |
-| | To hour | C | Format is well taken into account in _accessible mode_ |
-| | To minute | C | idem |
-| | To seconds | C | idem |
+| | € / K€ / M€ / $ / K$ / M$ / ¥ / K¥ / M¥ / CHF | C | |
+| **Date** / **Date and time** | _empty_ | PC | **(a11y-mode)** Pickers are not compliant: `a11y-mode` removes them and replaces them with a format hint. |
+| | To year | C | The format is taken into account in `a11y-mode`. |
+| | To month | C | Same as above. |
+| | To day | C | Same as above. |
+| **Time** / **Date and time** | _empty_ | PC | **(a11y-mode)** Pickers are not compliant: `a11y-mode` removes them and replaces them with a format hint. |
+| | To hour | C | The format is taken into account in `a11y-mode`. |
+| | To minute | C | Same as above. |
+| | To seconds | C | Same as above. |
 | **Enumeration** / **Multiple enumeration** | _empty_ | C | |
 | | Single or multiple selection list | C | |
 | | Horizontal / Vertical | C | |
@@ -498,388 +479,289 @@ All the linked objects must be compliant, and if they are listed further in this
 | | Signature pad / _ inlined | NC | |
 | | Scratch pad / _ inlined | NC | |
 
-### Actions
-
-| Field | Compliance | Value | Justification |
-| - | - | - | - |
-| `act_name` (Name) | NA | __ | __ |
-| `act_order` (Order) | NA | __ | __ |
-| `act_comment` (Description) | NA | __ | __ |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+#### Actions
 
 **ACTION CONFIGURATION**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `act_type` (Type) | C | | All rendered buttons are compliant and announce the action in the same way. |
-| `act_plus` (Plus menu) | C | | The plus menu dropdown is compliant, and the action is announced the same if within it. |
-| `act_group_id.acg_name` (Group) | NA | | |
-| `act_count` (Count rows) | NC | **No** | The badges aren't proeprly announced with the action in its accessible name. |
-| `act_exec` (Execution) | NA | | |
-| `act_async` (Asynchronous?) | NA | | |
+| Type (`act_type`) | C | | |
+| Plus menu (`act_plus`) | C | | |
+| Count rows (`act_count`) | NC | **No** | The badge is not included in the accessible name of the action. |
 
 **CONFIRMATION**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `act_confirm` (With confirmation) | C | | The confirmation modal is compliant on its own, but must be considered if what it contains is not compliant. |
-| `act_confirm_expr` (Condition) | NA | | |
-| `act_confirm_ui` (UI template) | PC | | Compliant only if the HTML is compliant (see [accessible html](#accessible-html)) and including only compliant fields. |
+| With confirmation (`act_confirm`) | C | | The confirmation dialog is compliant, but its content must be too, see `act_confirm_ui`. |
+| UI template (`act_confirm_ui`) | PC | | Compliant only if the HTML is compliant (see [accessible HTML](#accessible-html)) and includes only compliant fields. |
 
 **STYLE**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `act_color_bg` (Background) | PC | | You can customize the colors with help from the embedded contrast checker, but it's recommended to not customize your actions' colors. Because if you do then depending on the context of the button (list, form, etc), the container background might change and not be contrasted enough. |
-| `act_color` (Text color) | PC | | idem |
-| `act_image` (Image) | C | | The image will be displayed as "decorative" with `aria-hidden`, so you mustn't think it as sole carrier of information. |
+| Background (`act_color_bg`) | PC | | You can customize the colors with the embedded contrast checker, but it is recommended not to: depending on where the button is displayed (list, form, etc.), the container background changes and may not contrast enough. |
+| Text color (`act_color`) | PC | | Same as `act_color_bg`. |
+| Image (`act_image`) | C | | The image is rendered as decorative (`aria-hidden`): it must never be the only carrier of information. |
 
-#### Action field
+##### Action field
 
 <!-- TODO -->
 
-#### Action translation
+##### Action translation
 
-| Field | Compliance | Value | Justification |
-| - | - | - | - |
-| `tsl_object` (Object) | NA | | |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
-| `tsl_lang` (Language) | C | | The language value is properly mapped to the selected session/user's interface. |
-| `tsl_value` (Translation) | PC | | The value should be written in the _tsl_lang_'s language, and be relevant for the menu entry, as much as it should be legible. |
-| `tsl_simplehelp` (User help) | NA | | |
+See [Translations](#translations).
 
-### Links
-
-**PARENT OBJECT**  
-
-| Field | Compliance | Value | Justification |
-| - | - | - | - |
-| `obf_ref_object_id.obo_name` (Main object) | NA | | |
-| `obf_ref_order` (Link order) | NA | | |
-| `obf_field_id.fld_name` (Reference) | NA | | |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+#### Links
 
 **CHILD OBJECT**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `obf_object_id.obj_name` (Linked object) | C | | The generated panel is compliant as long as the object's list/form are compliant, see [templating](#templating) for the form. |
-| `obf_card` (Cardinality) | NA | | |
-| `obf_cascade` (Deletion) | C | | The triggered toasts/popups are properly announced. |
-| `obf_anon` (Anonimizable) | NA | | |
-| `obf_query` (SQL specification) | NA | | |
-| `obf_filters` (Filters) | C | | The applied filters are properly announced on the lists/searches. |
+| Linked object (`obf_object_id.obo_name`) | C | | The generated panel follows the object's list and form, see [Templating](#templating). |
+| Deletion (`obf_cascade`) | C | | |
+| Filters (`obf_filters`) | C | | |
 
 **OPTIONS**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `obf_copy` (Cascade copy) | NA | | |
-| `obf_visible` (Visible panel) | C | | The generated panel is compliant as long as the object's form is compliant. |
-| `obf_ref_export` (XML export) | NA | | |
-| `obf_associate` (Associate) | C | | The association action andmodal and list are all compliants, as long at the object to associate has a compliant list. |
-| `obf_rendering` (Rendering) | PC | **empty** / **Child list** | Pillboxes aren't compliant throughout the platform. |
-| `obf_treedepth` (Tree depth) | NA | | |
-| `obf_inline` (Inline fields) | NC | | |
-| `obf_redolog` (Reassemble updates history) | C | | Same as _obo_historic_. |
+| Visible panel (`obf_visible`) | C | | The generated panel follows the object's form, see [Templating](#templating). |
+| Associate (`obf_associate`) | C | | The association action, dialog and list are compliant, as long as the object to associate has a compliant list. |
+| Rendering (`obf_rendering`) | PC | **empty** / **Child list** | Pillboxes are not compliant anywhere in the platform. |
+| Inline fields (`obf_inline`) | NC | | |
+| Reassemble updates history (`obf_redolog`) | PC | | Same as `obo_historic`. |
 
-### List of values
+#### List of values
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `lov_name` (List) | NA | | |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
-| `lov_selectall_op` (Display "Select All / Unselect all" option) | C | | |
-| `lov_navbar` (State model display) | C | | All four renderings for the state navbar are compliant, announcing the current state for the object and describing the displayed milestones as they should. |
-| `lov_navbar_opt` (Navbar options) | PC | **Counter**, **Next Milestone** | The history date and user are not properly announced in the component, so they shouldn't be enabled. |
-| `lov_model_id.mod_name` (Model) | PC | | The linked model-state must have compliant milestones, the issue is mostly about the naming, see [accessible texts](#accessible-texts). |
+| Display "Select All / Unselect all" option (`lov_selectall_op`) | C | | |
+| State model display (`lov_navbar`) | C | | All four renderings of the state navbar are compliant. |
+| Navbar options (`lov_navbar_opt`) | PC | **Counter**, **Next Milestone** | The history date and user are not announced in the component, so they should not be enabled. |
+| Model (`lov_model_id.mod_name`) | PC | | The milestones of the linked state model must be compliant, mostly their naming, see [accessible texts](#accessible-texts). |
 
-#### List code
-
-**CODE**  
-
-| Field | Compliance | Value | Justification |
-| - | - | - | - |
-| `lov_list_id.lov_name` (List) | NA | | |
-| `lov_label` (Description) | NA | | |
-| `lov_code` (Code) | NA | | |
-| `lov_order` (Order) | NA | | |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+##### List code
 
 **STYLE**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `lov_color` (Text color) | PC | **empty** | The value of the text must have enough contrast with the background of its container, you can help yourself with the contrast helper, but this won't guarantee the selected colors are gonna be contrasted enough with the different contexts (lists, headers, bodies, etc). |
-| `lov_color_bg` (Background color) | PC | **empty** | Same as for _lov_color_. |
-| `lov_icon` (Icon) | C | | The icon is always declared as carrying no visual information. And if necessary associated with proper WAI-ARIA attributes. |
-| `lov_display` (Display on list) | C | | Wherever the elements are displayed, their content is properly announced with relevant information and ARIA-attributes. |
+| Text color (`lov_color`) | PC | **empty** | The text must contrast enough with the background of its container. The contrast checker helps, but cannot guarantee the contrast in every context (lists, headers, bodies, etc.). |
+| Background color (`lov_color_bg`) | PC | **empty** | Same as `lov_color`. |
+| Icon (`lov_icon`) | C | | The icon is always rendered as decorative, with the proper WAI-ARIA attributes when needed. |
+| Display on list (`lov_display`) | C | | |
 
-#### Translated list value
-
-| Field | Compliance | Value | Justification |
-| - | - | - | - |
-| `lov_code_id.lov_list_id.lov_name` (List) | NA | | |
-| `lov_code_id.lov_code` (Codee) | NA | | |
-| `lov_code_id.lov_order_by` (Order) | NA | | |
-| `lov_lang` (Language) | C | | The language value is properly mapped to the selected session/user's interface. |
-| `lov_aluev` (Value) | PC | | The value should be written in the _lov_lang_'s language, and be relevant/legible for all display contexts enabled with _lov_display_. |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
-
-### Constraint
+##### Translated list value
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `cst_name` (Name) | NA | | |
-| `cst_desc` (Description) | NA | | |
-| `cst_order` (Order) | NA | | |
-| `cst_effects` (Effects) | NA | | |
-| `cst_object_id.obo_name` (Object Code) | NA | | |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+| Language (`lov_lang`) | C | | |
+| Value (`lov_value`) | PC | | Written in the language of `lov_lang`, relevant and readable in every display context enabled with `lov_display`. |
 
-**CONDITION**  
+#### Constraint
+
+##### Impact
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `cst_type` (Type) | NA | | |
-| `cst_expr` (Expression) | NA | | |
-
-#### Impact
-
-| Field | Compliance | Value | Justification |
-| - | - | - | - |
-| `csi_const_id.cst_name` (Constraint Name) | NA | | |
-| `csi_const_id.cst_object_id.obo_name` (Object) | NA | | |
-| `csi_const_id.cst_order` (Constraint Order) | NA | | |
-| `csi_order` (Order) | NA | | |
-| `csi_apply` (Apply to) | C | | Any behavior set through a constraint/impact is applied compliantly. |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+| Apply to (`csi_apply`) | C | | |
 
 **IMPACT ON FIELD**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `csi_objfield_id.obf_object_id.obo_name` (Object) | NA | | |
-| `csi_objfield_id.obf_field_id.fld_name` (Field) | NA | | |
-| `csi_objfield_id.obf_order` (Field order) | NA | | |
-| `csi_field_prop` (Field property) | C | | Any behavior set through a constraint/impact is applied compliantly. |
+| Field property (`csi_field_prop`) | C | | |
 
 **PROPERTY VALUE**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `csi_expr` | C | | Any behavior set through a constraint/impact is applied compliantly. |
+| `csi_expr` | C | | |
 
-> **User interface** menu
+### User interface menu
 
-### Shortcuts
-
-| Field | Compliance | Value | Justification |
-| - | - | - | - |
-| `shc_name` (Name) | NA | | |
-| `shc_target` (Target) | PC | **Main work area** / **Dialog box** / **Top document location** / **New window** | All targets are declared compliantly, except for the _Work areas_ related ones. |
-| `shc_visible` (Visibility) | C | | |
-| `shc_order` (Order) | NA | | |
-| `shc_url` (URL) | PC | | Whatever the shortcut opens, it must be coherent with the target and the translation (displayed label). |
-| `shc_home_style` (Home page style) | C | | |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
-| `shc_width` (Width of the component) | NC | **empty** | The CSS rule associated to this is directly in the DOM, thus not compliant. |
-| `shc_height` (Height of the component) | NC | **empty** | Same as for the _shc_width_. |
-| `shc_icon` (Icon) | C | | The icon is always declared as carrying no visual information. And if necessary associated with proper WAI-ARIA attributes. |
-| `shc_keys` (Shorthand) | PC | | The keystroke mustn't override anything either existing for the browser or listed in the [keyboard accessibility](#keyboard-accessibility). |
-| `shc_in_sitemap` (Visible in sitemap) | C | | If **Yes** then the sitemap does contain a proper entry for this shortcut. |
-
-#### Shortcut translation
+#### Shortcuts
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `tsl_object` (Object) | NA | | |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
-| `tsl_lang` (Language) | C | | The language value is properly mapped to the selected session/user's interface. |
-| `tsl_value` (Translation) | PC | | The value should be written in the _tsl_lang_'s language, legible and relevant to be displayed on the selected context in _shc_visibility_. |
-| `tsl_tooltip` (Tooltip) | C | | |
+| Target (`shc_target`) | PC | **Main work area** / **Dialog box** / **Top document location** / **New window** | All targets are compliant, except those related to work areas. |
+| Visibility (`shc_visible`) | C | | |
+| URL (`shc_url`) | PC | | Whatever the shortcut opens must be consistent with its target and its translation (displayed label). |
+| Home page style (`shc_home_style`) | C | | |
+| Width of the component (`shc_width`) | NC | **empty** | The related CSS rule is written inline in the DOM, which is not compliant. |
+| Height of the component (`shc_height`) | NC | **empty** | Same as `shc_width`. |
+| Icon (`shc_icon`) | C | | The icon is always rendered as decorative, with the proper WAI-ARIA attributes when needed. |
+| Shorthand (`shc_keys`) | PC | | The keystroke must not override any browser shortcut, nor any shortcut listed in [keyboard accessibility](#keyboard-accessibility). |
+| Visible in sitemap (`shc_in_sitemap`) | C | | When **Yes**, the sitemap contains an entry for this shortcut. |
 
-### Views
+##### Shortcut translation
+
+See [Translations](#translations).
+
+#### Views
 
 **VIEW**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `viw_name` (Name) | NA | | |
-| `viw_type` (Type) | PC | **Domain page** / **Home page** | |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
-| `viw_icon` (Icon code) | C | | The icon is always declared as carrying no visual information. |
-| `viw_order` (Order) | NA | | |
-| `viw_permalink` (Permalink) | C | | |
+| Type (`viw_type`) | PC | **Domain page** / **Home page** | |
+| Icon code (`viw_icon`) | C | | The icon is always rendered as decorative. |
+| Permalink (`viw_permalink`) | C | | |
 
 **TEMPLATE**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `viw_ui` (Front template) | PC | | Compliant only if the HTML is compliant (see [accessible html](#accessible-html)) and including only compliant components. What is generated by the platform is compliant if the associated/integrated features are declared compliant. |
+| Front template (`viw_ui`) | PC | | Compliant only if the HTML is compliant (see [accessible HTML](#accessible-html)) and includes only compliant components. What the platform generates is compliant when the integrated features are. |
 
-#### View areas
+##### View areas
 
 **ITEM**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `vwi_view_id.viw_name` (View Name) | NA | | |
-| `vwi_position` (Position) | NA | | |
-| `vwi_title` (Title enabled) | PC | **Yes** | To guarantee a compliant headings hierarchy, the titles should be displayed, and compliantly named through the translation. |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+| Title enabled (`vwi_title`) | PC | **Yes** | To guarantee a consistent heading hierarchy, titles must be displayed, and properly named through their translation. |
 
 **PROPERTIES**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `vwi_type` (Type) | PC | See [area types](#area-types) | [area types](#area-types) |
-| `vwi_show` (Object) | PC | | equires the targetted object to be compliant. |
-| `vwi_lov_code` (TEXT code) | PC | | Requires the displayed text to respect the rules of [accessible texts](#accessible-texts) (or [accessible HTML](#accessible-html) if it uses HTML code). |
-| `vwi_search_spec` (Additive SQL filter) | NA | | |
-| `vwi_url` (External page) | PC | | equires the targetted external object to be compliant, see [custom components](#custom-components). |
-| `vwi_shortcuts` (Shortcuts) | PC | | Requires the associated shortcuts to be compliant, see [shortcuts](#shortcuts). |
+| Type (`vwi_type`) | PC | See [Area types](#area-types) | See [Area types](#area-types). |
+| Object (`vwi_show`) | C | | See [Business Object](#business-object). |
+| TEXT code (`vwi_lov_code`) | PC | | The text follows the rules of [accessible texts](#accessible-texts) (or [accessible HTML](#accessible-html) if it contains HTML). |
+| External page (`vwi_url`) | PC | | The targeted external object must be compliant, see [custom components](#custom-components). |
+| Shortcuts (`vwi_shortcuts`) | C | | See [Shortcuts](#shortcuts). |
 
-##### Area types
+###### Area types
 
 | Area type | Compliance | Justification |
 | - | - | - |
-| **Preset search** | PC | Requires the targetted object to be compliant. |
-| **Text code** | PC | Requires the displayed text to respect the rules of [accessible texts](#accessible-texts) (or [accessible HTML](#accessible-html) if it uses HTML code). |
+| **Preset search** | C | See [Business Object](#business-object) for the targeted object. |
+| **Text code** | PC | The text follows the rules of [accessible texts](#accessible-texts) (or [accessible HTML](#accessible-html) if it contains HTML). |
 | **Image** | PC | |
 | **View filters** | NC | |
-| **Crosstable** | C | Whatever chart is displayed has a table alternative that contains the exact same information. |
+| **Crosstable** | C | Every chart has a table alternative containing exactly the same information. |
 | **Publication template** | NC | |
 | **Search by index** | NC | |
 | **External page** | PC | |
 | **Web news** | C | Requires the news to be compliant (monolingual). |
-| **Shortcuts** | PC | Requires the associated shortcuts to be compliant, see [shortcuts](#shortcuts). |
+| **Shortcuts** | C | See [Shortcuts](#shortcuts). |
 | **Treeview** | NC | |
 | **Sub-view** | PC | |
 
-### Templating
+#### Templating
 
-#### Templates
-
-| Field | Compliance | Value | Justification |
-| - | - | - | - |
-| `tpl_name` (Name) | NA | | |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
-| `tpl_ui` (Front template) | PC | | Compliant only if the HTML is compliant (see [accessible html](#accessible-html)) and including only compliant components. What is generated by the platform is compliant if the associated/integrated features are declared compliant. |
-| `tpl_context` (Usage context) | C | | |
-| `tpl_image` (Image) | PC | | The image is displayed with the set `alt`/`longdesc`, so they have to be relevant. |
-| `tpl_grid` (Grid) | NA | | |
-| `tpl_min` (Summary) | PC | | Compliant only if the HTML is compliant (see [accessible html](#accessible-html)), and following Simplicité's rules for templates. |
-
-#### Field styles
-
-> The whole feature shouldn't be used because the produced modifications
-> are not compliant.
+##### Templates
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `sty_object` (Object or *) | NA | | |
-| `sty_field` (Field or *) | NA | | |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
-| `sty_value` (Value or *) | NC | | |
-| `sty_vmin` (Min value) | NC | **empty** | The value isn't announced as minimum on field's attributes. |
-| `sty_vmax` (Max value) | NC | **empty** | The value isn't announced as maximum on field's attributes. |
-| `sty_style` (HTML decoration) | NC | **empty** | Produced HTML is not treated to be made compliant. |
-| `sty_image` (Icon image) | C | | Image is displayed as decorative. |
+| Front template (`tpl_ui`) | PC | | Compliant only if the HTML is compliant (see [accessible HTML](#accessible-html)) and includes only compliant components. What the platform generates is compliant when the integrated features are. |
+| Usage context (`tpl_context`) | C | | |
+| Image (`tpl_image`) | PC | | The image is displayed with its `alt` and `longdesc`, which must be relevant. |
+| Summary (`tpl_min`) | PC | | Compliant only if the HTML is compliant (see [accessible HTML](#accessible-html)) and follows Simplicité's rules for templates. |
 
-### Objects rendering
+##### Field styles
 
-#### Searches
+> Do not use this feature: the changes it produces are not compliant.
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `rch_name` (Name) | NA | | |
-| `rch_public` (Public) | NA | | |
-| `rch_object_id.obo_name` (Object Code) | NA | | |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
-| `rch_user_id.usr_login` (User login) | NA | | |
-| `rch_request` (Filters) | C | | The filters are properly announced and displayed to the end-user. |
-| `rch_permalink` (Permalink) | C | | |
+| Value or * (`sty_value`) | NC | | |
+| Min value (`sty_vmin`) | NC | **empty** | The value is not announced as a minimum in the field's attributes. |
+| Max value (`sty_vmax`) | NC | **empty** | The value is not announced as a maximum in the field's attributes. |
+| HTML decoration (`sty_style`) | NC | **empty** | The produced HTML is not made compliant. |
+| Icon image (`sty_image`) | C | | The image is rendered as decorative. |
 
-**Search translation** has to follow the same rules as the other translations (for the field `tsl_value`).
+#### Objects rendering
 
-#### Publications
+##### Searches
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| Filters (`rch_request`) | C | | |
+| Permalink (`rch_permalink`) | C | | |
+
+**Search translation**: see [Translations](#translations).
+
+##### Publications
 
 **CONFIGURATION**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `prt_object_id.obo_name` (Object Code) | NA | | |
-| `prt_name` (Code) | NA | | |
-| `prt_usage` (Usage) | C | | |
-| `prt_visible` (Visibility) | C | | |
-| `prt_accessible` (Accessible PDF) | PC | **Yes** | <!--TODO--> |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
+| Usage (`prt_usage`) | C | | |
+| Visibility (`prt_visible`) | C | | |
+| Accessible PDF (`prt_accessible`) | PC | **Yes** | <!--TODO--> |
 
 **NAME**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `prt_lang` (Language) | C | | |
-| `prt_translation` (Translation) | NA | | |
-| `prt_filename` (Output file name) | PC | | The value must be set in the language selected in _prt_lang_, be legible and relevant for the document it designates. |
-| `prt_mimetype` (Forced MIME type) | PC | **PDF** | Only the PDF is treated to be produced as compliant. |
+| Language (`prt_lang`) | C | | |
+| Output file name (`prt_filename`) | PC | | Written in the language of `prt_lang`, readable and relevant to the document it names. |
+| Forced MIME type (`prt_mimetype`) | PC | **PDF** | Only PDF output is processed to be compliant. |
 
 **TEMPLATE**  
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `prt_type` (Type) | PC | **File** | _File_ is the only value that allows you to customize your template with the proper RGAA requirements, for the platform to create a compliant document (with _prt_accessible_ set to _yes_). |
-| `prt_method` (Method) | NC | | Whatever method is defined won't get the parsing/treatment of the platform to produce a compliant document. |
-| `prt_syntax` (Syntax) | PC | **Default** | Mustache-formatted code isn't treated by the backend. |
-| `prt_file` (Template file) | PC | | The HTML file must be written respecting the [accessible PDF guide](/docs/integration/publications/pdf#accessible-pdf). |
+| Type (`prt_type`) | PC | **File** | _File_ is the only value that lets you write your template following the RGAA requirements, for the platform to produce a compliant document (with `prt_accessible` set to **Yes**). |
+| Method (`prt_method`) | NC | | A method does not go through the platform's processing, so the document is not made compliant. |
+| Syntax (`prt_syntax`) | PC | **Default** | Mustache templates are not processed by the backend. |
+| Template file (`prt_file`) | PC | | The HTML file must be written following the [accessible PDF guide](/docs/integration/publications/pdf#accessible-pdf). |
 
-#### Pivot tables
-
-| Field | Compliance | Value | Justification |
-| - | - | - | - |
-| `ctb_name` (Name) | NA | | |
-| `ctb_object_id.obo_name` (Object Code) | PC | | The associated object has to be compliant (compliant fields and options). |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
-| `ctb_function` (Default function) | C | | |
-| `ctb_precision` (Default precision) | NA | | |
-| `ctb_visible` (Visible) | C | | |
-| `ctb_subtotal` (Subtotals ?) | NC | **No** | |
-| `ctb_totalcolor` (Color of total) | NC | **empty** | |
-| `ctb_caption` (Caption) | C | | |
-| `ctb_fixedcolors` (Use fixed colors ?) | PC | **Yes** | |
-
-##### Pivot table axis
+##### Pivot tables
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
-| `cax_crosstab_id.ctb_name` (Pivot table Name) | NA | | |
-| `cax_objfield_id.obf_object_id.obo_name` (Object) | NA | | |
-| `cax_objfield_id.obf_field_id.fld_name` (Field) | NA | | |
-| `cax_objfield_id.obf_order` (Field order) | NA | | |
-| `row_module_id.row_mdl_name` (Module Name) | NA | | |
-| `cax_objfield_id.obf_field_id.fld_type` (Field type) | PC | | The associated field has to be of a compliant type, for the values to be compliant when processed and displayed. |
-| `cax_type` (Type) | C | | |
-| `cax_hidden` (Hidden) | C | | |
-| `cax_order` (Axis order) | C | | |
-| `cax_subtotal` (Subtotals ?) | NC | **No** | |
-| `cax_precision` (Precision) | NA | | |
-| `cax_function` (Function) | C | | |
+| Object Code (`ctb_object_id.obo_name`) | C | | See [Business Object](#business-object). |
+| Default function (`ctb_function`) | C | | |
+| Visible (`ctb_visible`) | C | | |
+| Subtotals ? (`ctb_subtotal`) | NC | **No** | |
+| Color of total (`ctb_totalcolor`) | NC | **empty** | |
+| Caption (`ctb_caption`) | C | | |
+| Use fixed colors ? (`ctb_fixedcolors`) | PC | **Yes** | |
+
+###### Pivot table axis
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| Field type (`cax_objfield_id.obf_field_id.fld_type`) | C | | See [Field](#field). |
+| Type (`cax_type`) | C | | |
+| Hidden (`cax_hidden`) | C | | |
+| Axis order (`cax_order`) | C | | |
+| Subtotals ? (`cax_subtotal`) | NC | **No** | |
+| Function (`cax_function`) | C | | |
 | `cax_palette` | PC | | <!--TODO--> |
 
-#### Agenda
+##### Agenda
 
-> **Business process** menu
+<!-- TODO -->
 
-### Business process
+### Business process menu
 
-### Activity
+<!-- TODO -->
 
-#### Activity link
+#### Business process
 
-### State
+<!-- TODO -->
 
-#### State transition
+#### Activity
+
+<!-- TODO -->
+
+##### Activity link
+
+<!-- TODO -->
+
+#### State
+
+<!-- TODO -->
+
+##### State transition
+
+<!-- TODO -->
 
 Mandatory settings
 ------------------
@@ -896,47 +778,44 @@ In order to enable the `a11y-mode` and its overrides, there are few things to en
 For applications that have very strict RGAA requirements, or if the gap between a11y-mode and regular usage needs to be shortened.
 
 <!-- TODO: list of the system parameters / general settings to enable or disable -->
+<!-- TODO: disable the home page animation (from the good practices draft) -->
 
 | Setting | Value | Why |
 | - | - | - |
 | `TODO` | `TODO` | TODO |
 
-Good practices
---------------
+Rules and good practices
+------------------------
 
-<!--
-    TODO: write list with hints/helps such as :
-        - write ALL the required translations and helps
-        - don't place more than 2 row-columns
-        - write all your translations regardless of contexts
-        - don't add-up elements horizontally
-        - don't align the fields' input/label. keep them as a block 
-        - populate your field helps whenever there is an expected format, limit, etc
-        - RGAA restrictions can/will impact certain conception choices.
-            - Ensure you grasp the restrictions spectrum.
-        - when creating views, ensure there is a relevant H1.
-            - if there are lists/forms in the view they'll get an H1 too, make sure it is either
-                on top of the hierarchy and global for the view OR just add a more relevant H1 for the rest
-                of the view's content.
-        - désactiver l'animation de la page d'accueil
--->
-
-Rules to know & apply
----------------------
-
-<!-- AHE:  Should this part be combined with the "good practices" one ? 
-    contents are similar ~ dictating some rules and practices to ensure the full compliance of an app.
-    would make sense to have them listed under the same section, and then subdivised somehow
-    (per component, per theme, per criteria ?? which is the best ??)
--->
+These rules apply to what you write or build in the platform: texts, HTML, layouts and custom
+components. The component guides link here whenever a setting depends on them.
 
 ### Accessible texts
 
+- Every text displayed to users (translations, helps, titles, list values, area names) is written in the
+  language it is declared for, relevant where it is displayed, and readable.
+- Write all the translations and helps your application needs, for every language and every context
+  where the text appears.
+- Fill in the field help whenever a format, a limit or a constraint is expected.
+
 ### Accessible HTML
+
+<!-- TODO -->
 
 ### Quill fields
 
+<!-- TODO -->
+
+### Layout and structure
+
+- Keep each label and its input together as one block: don't align labels and inputs in separate columns.
+- Don't use more than two columns in a form, and don't line up elements horizontally.
+- Give each view a relevant `h1`. Lists and forms displayed in a view carry their own `h1`: either make
+  it the global title of the view, or add a more relevant `h1` for the rest of the view's content.
+
 ### Custom components
+
+<!-- TODO -->
 
 Keyboard accessibility
 ----------------------
