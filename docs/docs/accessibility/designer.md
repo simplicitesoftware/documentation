@@ -249,10 +249,13 @@ The help field depends on the translated element:
 
 | Translated element | Field | Compliance | Justification |
 | - | - | - | - |
-| Business object | User help (`tsl_help`) | PC | This field is filled in with _Quill_, and must follow its rules for the result to be accessible, see [Quill fields](#quill-fields). |
-| Shortcut | Tooltip (`tsl_tooltip`) | C | |
-
-<!-- TODO: Cover other fields (tsl_short_label, tsl_placeholder, tsl_listhelp, ...) -->
+| Business object | User help (`tsl_help`) | PC | This field is filled in with _Quill_, and must follow its rules for the result to be accessible, see [Quill fields](#quill-fields). And also has to be written in the language of `tsl_lang`. |
+| Shortcut | Tooltip (`tsl_tooltip`) | PC | Filled in with _Quill_. |
+| Field | Simple help (`tsl_simplehelp`) | PC | Filled in with _Quill_. |
+| | Tooltip (`tsl_tooltip`) | PC | Filled in with _Quill_. |
+| | Placeholder (`tsl_placeholder`) | NC | |
+| | Short label on list (`tsl_short_value`) | NC | |
+| | Column help (`tsl_listhelp`) | PC | Filled in with _Quill_. |
 
 For domains and actions, the help field is Not Applicable (a domain's help is never displayed to the user).
 
@@ -263,6 +266,7 @@ For domains and actions, the help field is Not Applicable (a domain's help is ne
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
 | Parent domain (`obd_domain_id.obd_name`) | C | | See [Domains](#domains). |
+| Hide the home page (`obd_nohome`) | C | | |
 | Icon (`obd_icon`) | C | | |
 | Home page (`obd_view_id.viw_name`) | C | | See [Views](#views). |
 | Menu position (`obd_menu`) | PC | **Left** | The top menu is not compliant, and should be disabled anyway through `MENU_SETTINGS` (see [settings for strict RGAA requirements](#settings-for-strict-rgaa-requirements)). |
@@ -330,11 +334,11 @@ See [Translations](#translations).
 | Data export (`obo_export`) | C | | |
 | Data history (`obo_historic`) | PC | **History table** / **Social post** / **Change log** | These values are compliant as long as users write texts that follow the rules (language and relevance). |
 | Tray menu (`obo_tray`) | NC | **No** | |
-| Printable (`obo_print`) | C | | See [Publications](#publications). |
+| Printable (`obo_printable`) | C | | See [Publications](#publications). |
 | Dashboard (`obo_dashboard`) | NC | **none selected** | |
 | Follow links (`obo_followlink`) | C | | |
 | Mergeable (`obo_mergeable`) | NC | **No** | |
-| Social post (`obo_social`) | C | | |
+| Social post (`obo_social`) | PC | **Popup** / **Share** | |
 
 **BUTTONS**  
 
@@ -357,7 +361,7 @@ See [Translations](#translations).
 | Delete (`obo_btn_del`) | C | | |
 | Search on form (`obo_btn_searchform`) | C | | |
 | Merge (`obo_btn_merge`) | NC | **Hidden** | |
-| Delete all (`obo_btn_delall`) | C | **Hidden** | |
+| Delete all (`obo_btn_delall`) | C | | |
 
 ##### Object translation
 
@@ -396,11 +400,11 @@ All linked objects must be compliant: when they have a guide in this document, f
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
 | Required (`fld_required`) | C | | |
-| Updatable (`fld_updatable`) | C | | |
+| Updatable (`fld_updatable`) | PC | Any but **By list cell** | _By list cell_ belongs to non-compliant contexts, or is associated to non-compliant features |
 | Copy enabled (`fld_copy`) | C | | |
 | Indexable (`fld_indexable`) | C | | |
 | Bulk update (`fld_updall`) | NC | **No** | As the business object's bulk update is not compliant. |
-| Auto-completion (`fld_autocomp`) | C | | Announced with the `autocomplete` attribute, and the suggestion dropdowns are compliant. |
+| Auto-completion (`fld_autocomp`) | PC | **No** / **Yes** | Announced with the `autocomplete` attribute, and the suggestion dropdowns are compliant. But automatic selection isn't announced with compliant . |
 | List summation (`fld_listsum`) | C | | |
 | Allows to group by (`fld_groupby`) | C | | Grouped lists carry the required `aria-expanded` attribute. |
 | Exportable (`fld_exportable`) | C | | |
@@ -593,7 +597,7 @@ See [Translations](#translations).
 | Height of the component (`shc_height`) | NC | **empty** | Same as `shc_width`. |
 | Icon (`shc_icon`) | C | | The icon is always rendered as decorative, with the proper WAI-ARIA attributes when needed. |
 | Shorthand (`shc_keys`) | PC | | The keystroke must not override any browser shortcut, nor any shortcut listed in [keyboard accessibility](#keyboard-accessibility). |
-| Visible in sitemap (`shc_in_sitemap`) | C | | When **Yes**, the sitemap contains an entry for this shortcut. |
+| Visible in sitemap (`shc_in_sitemap`) | C | | When _shc_visible_ is **Home button** then it is required to set **Yes**, otherwise there is no requirement. |
 
 ##### Shortcut translation
 
