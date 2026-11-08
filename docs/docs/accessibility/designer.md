@@ -227,13 +227,6 @@ Fields that are not listed are **Not Applicable**. A field that only depends on 
 having its own guide is **Compliant**, with a link to that guide: follow it. Justifications starting with
 **(a11y-mode)** mark features that are only compliant when `a11y-mode` is on.
 
-<!--
-| Field | Compliance | Value | Justification |
-| - | - | - | - |
-| `` | __ | __ | __ |
-| `` | __ | __ | __ |
--->
-
 ### Translations
 
 Domains, business objects, actions, shortcuts and searches are translated through the same
@@ -634,7 +627,7 @@ See [Translations](#translations).
 | Type (`vwi_type`) | PC | See [Area types](#area-types) | See [Area types](#area-types). |
 | Object (`vwi_show`) | C | | See [Business Object](#business-object). |
 | TEXT code (`vwi_lov_code`) | PC | | The text follows the rules of [accessible texts](#accessible-texts) (or [accessible HTML](#accessible-html) if it contains HTML). |
-| External page (`vwi_url`) | PC | | The targeted external object must be compliant, see [custom components](#custom-components). |
+| External page (`vwi_url`) | PC | | The targeted external object must be compliant, see [external objects](#external-objects). |
 | Shortcuts (`vwi_shortcuts`) | C | | See [Shortcuts](#shortcuts). |
 
 ###### Area types
@@ -741,31 +734,85 @@ See [Translations](#translations).
 
 ##### Agenda
 
-<!-- TODO -->
+The use of agenda is tricky and is overall not recommended.
+But the underlying mechanisms and displays are compliant, as long as the labels selected
+are coherent put all together in the desired order.
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| Object Code (`agd_object_id.obo_name`) | PC | | See [Business Object](#business-object). |
+| Date field (`agd_date_id.fld_name`) | C | | See [Field](#field). |
+| End date field (`agd_enddate_id.fld_name`) | NC | **empty** | |
+| Duration field (`agd_duration_id.fld_name`) | NC | **empty** | |
+
+**PROPERTIES**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| Open days (`agd_opendays`) | C | | |
+| Min time (`agd_min_hr`) | C | | |
+| Max time (`agd_max_hr`) | C | | |
+| Floating date (`agd_flying`) | NC | **No** | |
+| Day Quantum (`agd_quantum`) | C | | |
+
+**LABELS**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| Label field (`agd_label1_id.fld_name`) | PC | | See [Field](#field). |
+| Label 2 (`agd_label2_id.fld_name`) | PC | | See [Field](#field). |
+| Label 3 (`agd_label3_id.fld_name`) | PC | | See [Field](#field). |
+| Label 4 (`agd_label4_id.fld_name`) | PC | | See [Field](#field). |
+| Label 5 (`agd_label5_id.fld_name`) | PC | | See [Field](#field). |
 
 ### Business process menu
 
-<!-- TODO -->
-
 #### Business process
 
-<!-- TODO -->
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| Type (`pcs_type`) | PC | **Screen workflow** | |
+| Source code (`pcs_script_id`) | PC | **empty** | Any implementation has to not break the announced flow and actions. And not implement any non-compliant feature. |
+| Road rendering (`pcs_road_render`) | PC | **Horizontal - Complete/Minimal informations** | |
+| Static road (`pcs_road_static`) | PC | **Yes** | |
+| Model (`pcs_model_id.mod_name`) | C | | |
+
+**LONG PROCESS**  
+
+Long processes aren't compliant because the timeout restriction doesn't alow the user to extend it.
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| Max duration (`pcs_max_duration`) | NC | **0** | |
+| Timeout alert Name (`pcs_alert_id.alt_name`) | NC | **empty** | |
 
 #### Activity
 
-<!-- TODO -->
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| _ (``) | __ | __ | __ |
+| _ (``) | __ | __ | __ |
 
 ##### Activity link
 
-<!-- TODO -->
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| _ (``) | __ | __ | __ |
+| _ (``) | __ | __ | __ |
 
 #### State
 
-<!-- TODO -->
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| _ (``) | __ | __ | __ |
+| _ (``) | __ | __ | __ |
 
 ##### State transition
 
-<!-- TODO -->
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| _ (``) | __ | __ | __ |
+| _ (``) | __ | __ | __ |
 
 Mandatory settings
 ------------------
@@ -776,17 +823,22 @@ In order to enable the `a11y-mode` and its overrides, there are few things to en
 
 - associate the user parameter `ACCESSIBILITY_OVERRIDE`
 - create a **Scope theme** to link the `HighContrast` theme to your scopes.
+  - you can also replace the logo of the HighContrast theme by yours.
 
 ### Settings for strict RGAA requirements
 
 For applications that have very strict RGAA requirements, or if the gap between a11y-mode and regular usage needs to be shortened.
 
 <!-- TODO: list of the system parameters / general settings to enable or disable -->
-<!-- TODO: disable the home page animation (from the good practices draft) -->
 
 | Setting | Value | Why |
 | - | - | - |
-| `TODO` | `TODO` | TODO |
+| `ACCESSIBILITY_DEV` | `true` | To enable all the in-app helps and tooltips. |
+| `USE_COMPACT` | `false` | |
+| `USE_ZOOM` | `false` | |
+| `USE_COMPACT` | `false` | |
+| `LOGON_OPTIONS` | `"animated": false` | |
+| _ | _ | _ |
 
 Rules and good practices
 ------------------------
@@ -817,7 +869,15 @@ components. The component guides link here whenever a setting depends on them.
 - Give each view a relevant `h1`. Lists and forms displayed in a view carry their own `h1`: either make
   it the global title of the view, or add a more relevant `h1` for the rest of the view's content.
 
-### Custom components
+### External objects
+
+<!-- TODO -->
+
+#### Basic aria rules
+
+<!-- TODO -->
+
+#### Context awareness
 
 <!-- TODO -->
 
