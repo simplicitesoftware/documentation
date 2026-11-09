@@ -435,10 +435,56 @@ public void initRefSelect(ObjectDB parent) {
         // current UI value of a parent field (available since 5.3)
         String uiValue = parent.getValue("myParentField1");
         // set a filter to search records without parent or matching with parent DB or current UI value
-        getField("objField1").setFilter("is null or ='+Tool.toSQL(uiValue)+' or ='+Tool.toSQL(dbValue)+'");
+        getField("objField1").setFilter("is null or ='" + Tool.toSQL(uiValue) + "' or ='" + Tool.toSQL(dbValue) + "'");
     }
 }
 ```
+
+The hook is also called by the reference completion (typing in a reference field or a pillbox),
+so the same restrictions apply to the suggested records.
+
+A **field filter** is visible in the picker and can be changed by the user,
+whereas a **search spec** is an SQL constraint (`t` = alias of the object main table) that the user cannot remove.
+The search spec is kept on the object instance used by the next pickers:
+reset it in the other contexts, and add your condition to the default search spec of the object to not replace it.
+
+**Example with a filter and a search spec:**
+
+```java
+@Override
+public void initRefSelect(ObjectDB parent) {
+    if (parent!=null
+    && "MyOrder".equals(parent.getName())
+    && "myOrdPrdId".equals(getParentObjectRefField()))
+    {
+        // Filter (visible): only the products of the order's supplier
+        getField("myPrdSupId").setFilter(parent.getFieldValue("myOrdSupId"));
+        // Search spec (hidden SQL): only active products in stock, added to the default search spec
+        String def = getDefaultSearchSpec();
+        setSearchSpec((Tool.isEmpty(def) ? "" : "(" + def + ") and ") + "t.my_prd_active='1' and t.my_prd_stock>0");
+    }
+    else {
+        // Other contexts: default search spec only
+        setSearchSpec(getDefaultSearchSpec());
+    }
+}
+```
+
+:::warning
+
+To change the title of the reference picker, set **both** the singular and the plural labels.
+The single selection picker (reference field) uses the singular label,
+but the multiple selection picker (ex: lookup of a N,N pillbox) uses the plural label when the object has one:
+
+```java
+@Override
+public void initRefSelect(ObjectDB parent) {
+    setDisplay("My reference");         // single selection picker
+    setPluralDisplay("My references");  // multiple selection picker
+}
+```
+
+:::
 
 The `initDataMapSelect` hook has the same behavior to get referenced data by values.
 
