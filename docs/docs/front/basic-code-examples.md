@@ -693,6 +693,101 @@ Bind functions to global UI events on the disposition `SCRIPT` resource:
 })(window.$ui, jQuery);
 ```
 
+### Server-side events
+
+The server can push messages to the connected users through `$ui.sse` (an `EventSource` on `/ui/sse`),
+for example to tell the users who display a record that it has been updated by someone else.
+The infrastructure must support it with `USE_SSE=yes`, see [Security - Server side events](/docs/security#server-side-events).
+
+#### Server side
+
+Push a custom event in a hook of the business object, here `postSave`:
+
+```java
+@Override
+public String postSave() {
+    // Values read now: the message is sent later by the SSE dispatcher thread
+    JSONObject data = new JSONObject()
+        .put("object", getName())
+        .put("rowId", getRowId())
+        .put("status", getFieldValue("myOrdStatus"))
+        .put("by", getGrant().getLogin());
+
+    new SSEMessage.Builder()
+        .event("myOrderSaved")
+        .message(data)
+        .isRecipient(g -> g.accessObject(getName())) // only the users who can read the object
+        .build()
+        .push();
+
+    return null;
+}
+```
+
+Recipients of the message:
+
+| Builder method | Recipients |
+| -------------- | ---------- |
+| _(none)_ | All the connected users |
+| `toUserId(getGrant().getUserUniqueId())` | One user (row ID of the user, not the login), in all its tabs |
+| `toSessionId(getGrant().getSessionId())` | One session |
+| `toGroup("MY_GROUP")` | The users with this responsibility |
+| `isRecipient(g -> ...)` | Specific check for each connected user (keep it fast) |
+
+A simple text can also be pushed with `ServerSideEvent.push("myOrderSaved", "text", userId)`: the data is `{ "msg": "text" }`.
+
+:::warning
+
+- Read the values in the hook, as above: a lazy builder `message(() -> ...)` runs later on another thread,
+  when the object instance may contain another record.
+- The events are only sent to the users connected to the same server node.
+
+:::
+
+#### Client side
+
+The data is received as JSON text in `e.data`, with the server `time` added.
+
+Listener of an open form, in the `CLASS` resource of the object:
+
+```javascript
+Simplicite.UI.BusinessObjects.MyOrder = class extends Simplicite.UI.BusinessObject {
+
+    onLoadForm(ctn, obj, p) {
+        this.onSaved = e => {
+            const d = JSON.parse(e.data); // { object, rowId, status, by, time }
+            // the same record saved by another user
+            if (d.rowId == obj.getRowId() && d.by != $grant.getLogin())
+                $ui.toast({ type: "warning", content: `Updated by ${d.by}: ${d.status}` });
+        };
+        $ui.sse?.addEventListener("myOrderSaved", this.onSaved);
+    }
+
+    onUnloadForm(ctn, obj, p) {
+        if (this.onSaved)
+            $ui.sse?.removeEventListener("myOrderSaved", this.onSaved);
+    }
+};
+```
+
+Listener for the whole session, in the disposition `SCRIPT` resource:
+
+```javascript
+(function(ui, $) {
+    const onOrderSaved = e => ui.toast(JSON.parse(e.data).status);
+    // ui.ready = first connection, ui.sse.bound = each new connection
+    $(document).on("ui.ready ui.sse.bound", () => ui.sse?.addEventListener("myOrderSaved", onOrderSaved));
+})(window.$ui, jQuery);
+```
+
+Good to know:
+
+- `$ui.sse` is undefined when the SSE are disabled (system parameter `USE_SSE`), outside the UI, or without `EventSource` support: use `?.`
+- The connection is rebuilt when the server sends a `reset` (and when the page is restored from the browser cache):
+  the listeners of the previous connection are lost, so a listener for the whole session is added again on `ui.sse.bound`.
+  The first connection is opened before `ui.ready`: add it on both, the same function is not added twice on a connection.
+- The event is received by all the tabs of each recipient: filter the data if needed (`rowId` above).
+
 ### Client-side custom actions
 
 A client-side action corresponds to an action with a value in the _URL_ field.
