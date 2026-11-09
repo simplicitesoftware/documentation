@@ -67,21 +67,21 @@ requirements, disable them at design time, whether or not users turn the mode on
 
 `a11y-mode` is all-or-nothing, so that it can reach full compliance. Users who do not need some of its
 adaptations, or who want to keep some features anyway, can override it behavior by behavior with the
-`ACCESSIBILITY_OVERRIDE` user parameter. Each key takes `true` or `false`:
+`ACCESSIBILITY_OVERRIDE` user parameter :
 
 ```json
 {
-  "customcolors": false, // custom colors of action buttons and states
-  "menutop": false,      // horizontal menu
-  "workareas": false,    // splitting the work area into resizable panels
-  "trays": false,        // trays (trello) of status-based objects
-  "metrics": false,      // metrics of status-based objects
-  "datepicker": false,   // date pickers
-  "htmledit": false,     // HTML input fields
-  "codeedit": false,     // code editors
-  "highcontrast": false, // forced HighContrast theme
-  "clickablerow": false, // opening a form per table row
-  "flatlinks": false     // default display of linked objects
+  "customcolors": false,  // custom colors of action buttons and states
+  "menutop": false,  // horizontal menu
+  "workareas": false,  // splitting the work area into resizable panels
+  "trays": false,  // trays (trello) of status-based objects
+  "metrics": false,  // metrics of status-based objects
+  "datepicker": false,  // date pickers
+  "htmledit": false,  // HTML input fields
+  "codeedit": false,  // code editors
+  "theme": "ThemeHighContrast",  // forced HighContrast theme
+  "clickablerow": false,  // opening a form per table row
+  "flatlinks": false  // default display of linked objects
 }
 ```
 
@@ -242,7 +242,7 @@ The help field depends on the translated element:
 
 | Translated element | Field | Compliance | Justification |
 | - | - | - | - |
-| Business object | User help (`tsl_help`) | PC | This field is filled in with _Quill_, and must follow its rules for the result to be accessible, see [Quill fields](#quill-fields). And also has to be written in the language of `tsl_lang`. |
+| Business object | User help (`tsl_help`) | PC | This field is filled in with _Quill_, and must follow its rules for the result to be accessible, see [Quill fields](#using-quill-fields). And also has to be written in the language of `tsl_lang`. |
 | Shortcut | Tooltip (`tsl_tooltip`) | PC | Filled in with _Quill_. |
 | Field | Simple help (`tsl_simplehelp`) | PC | Filled in with _Quill_. |
 | | Tooltip (`tsl_tooltip`) | PC | Filled in with _Quill_. |
@@ -738,6 +738,8 @@ The use of agenda is tricky and is overall not recommended.
 But the underlying mechanisms and displays are compliant, as long as the labels selected
 are coherent put all together in the desired order.
 
+Only the _Day_ view is disabled in `a11y-mode`.
+
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
 | Object Code (`agd_object_id.obo_name`) | PC | | See [Business Object](#business-object). |
@@ -822,8 +824,10 @@ Mandatory settings
 In order to enable the `a11y-mode` and its overrides, there are few things to enable within your applications :
 
 - associate the user parameter `ACCESSIBILITY_OVERRIDE`
-- create a **Scope theme** to link the `HighContrast` theme to your scopes.
-  - you can also replace the logo of the HighContrast theme by yours.
+- create a **Scope theme** to link the `ThemeHighContrast` theme to your scopes.
+  - your can make a child theme that carries your logo
+  - then you have to set the **code** of this theme in the `ACCESSIBILITY_OVERRIDE` user parameter
+    in the `theme` value.
 
 ### Settings for strict RGAA requirements
 
@@ -834,11 +838,10 @@ For applications that have very strict RGAA requirements, or if the gap between 
 | Setting | Value | Why |
 | - | - | - |
 | `ACCESSIBILITY_DEV` | `true` | To enable all the in-app helps and tooltips. |
-| `USE_COMPACT` | `false` | |
-| `USE_ZOOM` | `false` | |
-| `USE_COMPACT` | `false` | |
-| `LOGON_OPTIONS` | `"animated": false` | |
-| _ | _ | _ |
+| `USE_COMPACT` | `false` | Compact mode is disabled in `a11y-mode`, but disabling it for everyone is the best option. |
+| `USE_INDEX_SEARCH_SCANNER` | `no` | The QR code features are not compliant. |
+| `LOGON_OPTIONS` | `"animated": false` | Animation on the home page cannot be paused. |
+| `LIST_PAGINEBOTTOM` | `no` | Can be kept but better to keep only the top one activated. |
 
 Rules and good practices
 ------------------------
@@ -856,11 +859,21 @@ components. The component guides link here whenever a setting depends on them.
 
 ### Accessible HTML
 
-<!-- TODO -->
+<!-- TODO:
+    - any created HTML must have valid tags
+    - created HTML must respect the title hierarchy of its context (preference for no titles)
+    - any "rich" content must follow the RGAA criteria (links, images, coloring)
+        - list the most basic ones
+        - rather not using any additional coloring
+    - avoid code blocks.
+    - ul/ol lists are ok if containing only text
+    - mention the recommendation of only inputting text and basic stylings (bolc, italic)
+-->
 
-### Quill fields
+### Using Quill fields
 
-<!-- TODO -->
+Quill fields are using HTML to create rich content, thus if you populate any value using them
+you have to make sure the created HTML follows the rules above in [acessible HTML](#accessible-html).
 
 ### Layout and structure
 
@@ -871,7 +884,13 @@ components. The component guides link here whenever a setting depends on them.
 
 ### External objects
 
-<!-- TODO -->
+<!-- TODO:
+    - External objects carry their own code (front/back)
+    - HTML/JS/CSS for the frontend, thus have to follow HTML guidelines
+        - the javascript must also implement the proper alternatives and RGAA-compliant mechanisms
+    - if you implement features using the Simplicité's library, make sure you stick to compliant ones
+    - ensure the styles are respecting the color/contrast and presentation criteria, as they are not modified by "ThemeHighContrast".
+-->
 
 #### Basic aria rules
 
