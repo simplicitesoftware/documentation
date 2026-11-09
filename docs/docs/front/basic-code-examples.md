@@ -716,7 +716,8 @@ public String postSave() {
     new SSEMessage.Builder()
         .event("myOrderSaved")
         .message(data)
-        .isRecipient(g -> g.accessObject(getName())) // only the users who can read the object
+        .toObjectReaders(getName()) // only the users who can read the object
+        .cluster(true) // also the users connected to the other nodes
         .build()
         .push();
 
@@ -732,7 +733,8 @@ Recipients of the message:
 | `toUserId(getGrant().getUserUniqueId())` | One user (row ID of the user, not the login), in all its tabs |
 | `toSessionId(getGrant().getSessionId())` | One session |
 | `toGroup("MY_GROUP")` | The users with this responsibility |
-| `isRecipient(g -> ...)` | Specific check for each connected user (keep it fast) |
+| `toObjectReaders("MyOrder")` | The users who can read this object |
+| `isRecipient(g -> ...)` | Specific check for each connected user (keep it fast, not allowed with `cluster(true)`) |
 
 A simple text can also be pushed with `ServerSideEvent.push("myOrderSaved", "text", userId)`: the data is `{ "msg": "text" }`.
 
@@ -740,7 +742,9 @@ A simple text can also be pushed with `ServerSideEvent.push("myOrderSaved", "tex
 
 - Read the values in the hook, as above: a lazy builder `message(() -> ...)` runs later on another thread,
   when the object instance may contain another record.
-- The events are only sent to the users connected to the same server node.
+- In a cluster, the message is only sent to the users of the current node, unless `cluster(true)`:
+  it is then sent to the other nodes, where only the declarative recipients are applied (`toUserId`, `toSessionId`,
+  `toGroup`, `toObjectReaders`). `isRecipient` can not be applied there: `build()` throws an error when both are used.
 
 :::
 
