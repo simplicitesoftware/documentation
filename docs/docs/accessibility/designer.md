@@ -734,12 +734,6 @@ See [Translations](#translations).
 
 ##### Agenda
 
-The use of agenda is tricky and is overall not recommended.
-But the underlying mechanisms and displays are compliant, as long as the labels selected
-are coherent put all together in the desired order.
-
-Only the _Day_ view is disabled in `a11y-mode`.
-
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
 | Object Code (`agd_object_id.obo_name`) | PC | | See [Business Object](#business-object). |
@@ -754,10 +748,13 @@ Only the _Day_ view is disabled in `a11y-mode`.
 | Open days (`agd_opendays`) | C | | |
 | Min time (`agd_min_hr`) | C | | |
 | Max time (`agd_max_hr`) | C | | |
-| Floating date (`agd_flying`) | NC | **No** | |
+| Floating date (`agd_flying`) | C | | |
 | Day Quantum (`agd_quantum`) | C | | |
 
 **LABELS**  
+
+Attention needs to be paid to the order of the fields because then the _values_ are gonna be announced
+in the declared order, ensure it is understandable being announced in addition to be read.
 
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
