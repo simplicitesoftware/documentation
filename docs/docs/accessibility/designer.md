@@ -67,21 +67,21 @@ requirements, disable them at design time, whether or not users turn the mode on
 
 `a11y-mode` is all-or-nothing, so that it can reach full compliance. Users who do not need some of its
 adaptations, or who want to keep some features anyway, can override it behavior by behavior with the
-`ACCESSIBILITY_OVERRIDE` user parameter. Each key takes `true` or `false`:
+`ACCESSIBILITY_OVERRIDE` user parameter :
 
 ```json
 {
-  "customcolors": false, // custom colors of action buttons and states
-  "menutop": false,      // horizontal menu
-  "workareas": false,    // splitting the work area into resizable panels
-  "trays": false,        // trays (trello) of status-based objects
-  "metrics": false,      // metrics of status-based objects
-  "datepicker": false,   // date pickers
-  "htmledit": false,     // HTML input fields
-  "codeedit": false,     // code editors
-  "highcontrast": false, // forced HighContrast theme
-  "clickablerow": false, // opening a form per table row
-  "flatlinks": false     // default display of linked objects
+  "customcolors": false,  // custom colors of action buttons and states
+  "menutop": false,  // horizontal menu
+  "workareas": false,  // splitting the work area into resizable panels
+  "trays": false,  // trays (trello) of status-based objects
+  "metrics": false,  // metrics of status-based objects
+  "datepicker": false,  // date pickers
+  "htmledit": false,  // HTML input fields
+  "codeedit": false,  // code editors
+  "theme": "ThemeHighContrast",  // forced HighContrast theme
+  "clickablerow": false,  // opening a form per table row
+  "flatlinks": false  // default display of linked objects
 }
 ```
 
@@ -227,13 +227,6 @@ Fields that are not listed are **Not Applicable**. A field that only depends on 
 having its own guide is **Compliant**, with a link to that guide: follow it. Justifications starting with
 **(a11y-mode)** mark features that are only compliant when `a11y-mode` is on.
 
-<!--
-| Field | Compliance | Value | Justification |
-| - | - | - | - |
-| `` | __ | __ | __ |
-| `` | __ | __ | __ |
--->
-
 ### Translations
 
 Domains, business objects, actions, shortcuts and searches are translated through the same
@@ -249,10 +242,13 @@ The help field depends on the translated element:
 
 | Translated element | Field | Compliance | Justification |
 | - | - | - | - |
-| Business object | User help (`tsl_help`) | PC | This field is filled in with _Quill_, and must follow its rules for the result to be accessible, see [Quill fields](#quill-fields). |
-| Shortcut | Tooltip (`tsl_tooltip`) | C | |
-
-<!-- TODO: Cover other fields (tsl_short_label, tsl_placeholder, tsl_listhelp, ...) -->
+| Business object | User help (`tsl_help`) | PC | This field is filled in with _Quill_, and must follow its rules for the result to be accessible, see [Quill fields](#using-quill-fields). And also has to be written in the language of `tsl_lang`. |
+| Shortcut | Tooltip (`tsl_tooltip`) | PC | Filled in with _Quill_. |
+| Field | Simple help (`tsl_simplehelp`) | PC | Filled in with _Quill_. |
+| | Tooltip (`tsl_tooltip`) | PC | Filled in with _Quill_. |
+| | Placeholder (`tsl_placeholder`) | NC | |
+| | Short label on list (`tsl_short_value`) | NC | |
+| | Column help (`tsl_listhelp`) | PC | Filled in with _Quill_. |
 
 For domains and actions, the help field is Not Applicable (a domain's help is never displayed to the user).
 
@@ -263,6 +259,7 @@ For domains and actions, the help field is Not Applicable (a domain's help is ne
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
 | Parent domain (`obd_domain_id.obd_name`) | C | | See [Domains](#domains). |
+| Hide the home page (`obd_nohome`) | C | | |
 | Icon (`obd_icon`) | C | | |
 | Home page (`obd_view_id.viw_name`) | C | | See [Views](#views). |
 | Menu position (`obd_menu`) | PC | **Left** | The top menu is not compliant, and should be disabled anyway through `MENU_SETTINGS` (see [settings for strict RGAA requirements](#settings-for-strict-rgaa-requirements)). |
@@ -330,11 +327,11 @@ See [Translations](#translations).
 | Data export (`obo_export`) | C | | |
 | Data history (`obo_historic`) | PC | **History table** / **Social post** / **Change log** | These values are compliant as long as users write texts that follow the rules (language and relevance). |
 | Tray menu (`obo_tray`) | NC | **No** | |
-| Printable (`obo_print`) | C | | See [Publications](#publications). |
+| Printable (`obo_printable`) | C | | See [Publications](#publications). |
 | Dashboard (`obo_dashboard`) | NC | **none selected** | |
 | Follow links (`obo_followlink`) | C | | |
 | Mergeable (`obo_mergeable`) | NC | **No** | |
-| Social post (`obo_social`) | C | | |
+| Social post (`obo_social`) | PC | **Popup** / **Share** | |
 
 **BUTTONS**  
 
@@ -357,7 +354,7 @@ See [Translations](#translations).
 | Delete (`obo_btn_del`) | C | | |
 | Search on form (`obo_btn_searchform`) | C | | |
 | Merge (`obo_btn_merge`) | NC | **Hidden** | |
-| Delete all (`obo_btn_delall`) | C | **Hidden** | |
+| Delete all (`obo_btn_delall`) | C | | |
 
 ##### Object translation
 
@@ -396,11 +393,11 @@ All linked objects must be compliant: when they have a guide in this document, f
 | Field | Compliance | Value | Justification |
 | - | - | - | - |
 | Required (`fld_required`) | C | | |
-| Updatable (`fld_updatable`) | C | | |
+| Updatable (`fld_updatable`) | PC | Any but **By list cell** | _By list cell_ belongs to non-compliant contexts, or is associated to non-compliant features |
 | Copy enabled (`fld_copy`) | C | | |
 | Indexable (`fld_indexable`) | C | | |
 | Bulk update (`fld_updall`) | NC | **No** | As the business object's bulk update is not compliant. |
-| Auto-completion (`fld_autocomp`) | C | | Announced with the `autocomplete` attribute, and the suggestion dropdowns are compliant. |
+| Auto-completion (`fld_autocomp`) | PC | **No** / **Yes** | Announced with the `autocomplete` attribute, and the suggestion dropdowns are compliant. But automatic selection isn't announced with compliant . |
 | List summation (`fld_listsum`) | C | | |
 | Allows to group by (`fld_groupby`) | C | | Grouped lists carry the required `aria-expanded` attribute. |
 | Exportable (`fld_exportable`) | C | | |
@@ -593,7 +590,7 @@ See [Translations](#translations).
 | Height of the component (`shc_height`) | NC | **empty** | Same as `shc_width`. |
 | Icon (`shc_icon`) | C | | The icon is always rendered as decorative, with the proper WAI-ARIA attributes when needed. |
 | Shorthand (`shc_keys`) | PC | | The keystroke must not override any browser shortcut, nor any shortcut listed in [keyboard accessibility](#keyboard-accessibility). |
-| Visible in sitemap (`shc_in_sitemap`) | C | | When **Yes**, the sitemap contains an entry for this shortcut. |
+| Visible in sitemap (`shc_in_sitemap`) | C | | When _shc_visible_ is **Home button** then it is required to set **Yes**, otherwise there is no requirement. |
 
 ##### Shortcut translation
 
@@ -630,7 +627,7 @@ See [Translations](#translations).
 | Type (`vwi_type`) | PC | See [Area types](#area-types) | See [Area types](#area-types). |
 | Object (`vwi_show`) | C | | See [Business Object](#business-object). |
 | TEXT code (`vwi_lov_code`) | PC | | The text follows the rules of [accessible texts](#accessible-texts) (or [accessible HTML](#accessible-html) if it contains HTML). |
-| External page (`vwi_url`) | PC | | The targeted external object must be compliant, see [custom components](#custom-components). |
+| External page (`vwi_url`) | PC | | The targeted external object must be compliant, see [external objects](#external-objects). |
 | Shortcuts (`vwi_shortcuts`) | C | | See [Shortcuts](#shortcuts). |
 
 ###### Area types
@@ -737,31 +734,87 @@ See [Translations](#translations).
 
 ##### Agenda
 
-<!-- TODO -->
+The use of agenda is tricky and is overall not recommended.
+But the underlying mechanisms and displays are compliant, as long as the labels selected
+are coherent put all together in the desired order.
+
+Only the _Day_ view is disabled in `a11y-mode`.
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| Object Code (`agd_object_id.obo_name`) | PC | | See [Business Object](#business-object). |
+| Date field (`agd_date_id.fld_name`) | C | | See [Field](#field). |
+| End date field (`agd_enddate_id.fld_name`) | NC | **empty** | |
+| Duration field (`agd_duration_id.fld_name`) | NC | **empty** | |
+
+**PROPERTIES**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| Open days (`agd_opendays`) | C | | |
+| Min time (`agd_min_hr`) | C | | |
+| Max time (`agd_max_hr`) | C | | |
+| Floating date (`agd_flying`) | NC | **No** | |
+| Day Quantum (`agd_quantum`) | C | | |
+
+**LABELS**  
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| Label field (`agd_label1_id.fld_name`) | PC | | See [Field](#field). |
+| Label 2 (`agd_label2_id.fld_name`) | PC | | See [Field](#field). |
+| Label 3 (`agd_label3_id.fld_name`) | PC | | See [Field](#field). |
+| Label 4 (`agd_label4_id.fld_name`) | PC | | See [Field](#field). |
+| Label 5 (`agd_label5_id.fld_name`) | PC | | See [Field](#field). |
 
 ### Business process menu
 
-<!-- TODO -->
-
 #### Business process
 
-<!-- TODO -->
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| Type (`pcs_type`) | PC | **Screen workflow** | |
+| Source code (`pcs_script_id`) | PC | **empty** | Any implementation has to not break the announced flow and actions. And not implement any non-compliant feature. |
+| Road rendering (`pcs_road_render`) | PC | **Horizontal - Complete/Minimal informations** | |
+| Static road (`pcs_road_static`) | PC | **Yes** | |
+| Model (`pcs_model_id.mod_name`) | C | | |
+
+**LONG PROCESS**  
+
+Long processes aren't compliant because the timeout restriction doesn't alow the user to extend it.
+
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| Max duration (`pcs_max_duration`) | NC | **0** | |
+| Timeout alert Name (`pcs_alert_id.alt_name`) | NC | **empty** | |
 
 #### Activity
 
-<!-- TODO -->
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| _ (``) | __ | __ | __ |
+| _ (``) | __ | __ | __ |
 
 ##### Activity link
 
-<!-- TODO -->
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| _ (``) | __ | __ | __ |
+| _ (``) | __ | __ | __ |
 
 #### State
 
-<!-- TODO -->
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| _ (``) | __ | __ | __ |
+| _ (``) | __ | __ | __ |
 
 ##### State transition
 
-<!-- TODO -->
+| Field | Compliance | Value | Justification |
+| - | - | - | - |
+| _ (``) | __ | __ | __ |
+| _ (``) | __ | __ | __ |
 
 Mandatory settings
 ------------------
@@ -771,18 +824,24 @@ Mandatory settings
 In order to enable the `a11y-mode` and its overrides, there are few things to enable within your applications :
 
 - associate the user parameter `ACCESSIBILITY_OVERRIDE`
-- create a **Scope theme** to link the `HighContrast` theme to your scopes.
+- create a **Scope theme** to link the `ThemeHighContrast` theme to your scopes.
+  - your can make a child theme that carries your logo
+  - then you have to set the **code** of this theme in the `ACCESSIBILITY_OVERRIDE` user parameter
+    in the `theme` value.
 
 ### Settings for strict RGAA requirements
 
 For applications that have very strict RGAA requirements, or if the gap between a11y-mode and regular usage needs to be shortened.
 
 <!-- TODO: list of the system parameters / general settings to enable or disable -->
-<!-- TODO: disable the home page animation (from the good practices draft) -->
 
 | Setting | Value | Why |
 | - | - | - |
-| `TODO` | `TODO` | TODO |
+| `ACCESSIBILITY_DEV` | `true` | To enable all the in-app helps and tooltips. |
+| `USE_COMPACT` | `false` | Compact mode is disabled in `a11y-mode`, but disabling it for everyone is the best option. |
+| `USE_INDEX_SEARCH_SCANNER` | `no` | The QR code features are not compliant. |
+| `LOGON_OPTIONS` | `"animated": false` | Animation on the home page cannot be paused. |
+| `LIST_PAGINEBOTTOM` | `no` | Can be kept but better to keep only the top one activated. |
 
 Rules and good practices
 ------------------------
@@ -800,11 +859,21 @@ components. The component guides link here whenever a setting depends on them.
 
 ### Accessible HTML
 
-<!-- TODO -->
+<!-- TODO:
+    - any created HTML must have valid tags
+    - created HTML must respect the title hierarchy of its context (preference for no titles)
+    - any "rich" content must follow the RGAA criteria (links, images, coloring)
+        - list the most basic ones
+        - rather not using any additional coloring
+    - avoid code blocks.
+    - ul/ol lists are ok if containing only text
+    - mention the recommendation of only inputting text and basic stylings (bolc, italic)
+-->
 
-### Quill fields
+### Using Quill fields
 
-<!-- TODO -->
+Quill fields are using HTML to create rich content, thus if you populate any value using them
+you have to make sure the created HTML follows the rules above in [acessible HTML](#accessible-html).
 
 ### Layout and structure
 
@@ -813,7 +882,21 @@ components. The component guides link here whenever a setting depends on them.
 - Give each view a relevant `h1`. Lists and forms displayed in a view carry their own `h1`: either make
   it the global title of the view, or add a more relevant `h1` for the rest of the view's content.
 
-### Custom components
+### External objects
+
+<!-- TODO:
+    - External objects carry their own code (front/back)
+    - HTML/JS/CSS for the frontend, thus have to follow HTML guidelines
+        - the javascript must also implement the proper alternatives and RGAA-compliant mechanisms
+    - if you implement features using the Simplicité's library, make sure you stick to compliant ones
+    - ensure the styles are respecting the color/contrast and presentation criteria, as they are not modified by "ThemeHighContrast".
+-->
+
+#### Basic aria rules
+
+<!-- TODO -->
+
+#### Context awareness
 
 <!-- TODO -->
 
