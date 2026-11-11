@@ -715,6 +715,7 @@ Those events can be triggered by a specific code to ask a UI component to do som
 | js-searchable     | ui.list.search        | search again with the object filters (list, calendar, crosstab, tray) | object, request, groupBy |
 | js-select-row     | ui.list.select.row    | select one row, all rows or none                                      | row ID, `all` or `none`  |
 | js-search-pos     | ui.search.pos         | show the search by column                                             | `column`                 |
+| object form       | ui.form.reload        | reload the form, as the reload action (e.g. lock released)            |                          |
 | list form         | ui.list.selectall     | select all rows                                                       |                          |
 | list form         | ui.list.selectpage    | select the rows of the current page                                   |                          |
 | list form         | ui.list.selectnone    | unselect all rows                                                     |                          |
@@ -740,6 +741,8 @@ Those events can be triggered by a specific code to ask a UI component to do som
 $(".js-select-row", ctn).trigger("ui.list.select.row", ["all"]);
 // Search again the list with the updated object filters
 $(".js-searchable", ctn).trigger("ui.list.search", [obj]);
+// Reload the form displayed in the container
+$(".objform", ctn).trigger("ui.form.reload");
 ```
 
 ### Component events
