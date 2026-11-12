@@ -34,6 +34,9 @@ A skill is not preloaded. The agent discovers it by calling `get_skill("?")`, wh
 the catalog of names and descriptions, then loads the body with `get_skill("<name>")` only
 when the task looks relevant.
 
+`get_skill` only serves skills: a static prompt is never listed in the catalog and cannot be
+loaded by name either.
+
 Two consequences follow:
 
 - **Changes take effect immediately.** The body is read fresh from the database on every
@@ -54,34 +57,45 @@ Static prompts are compiled into the server's instructions once, at server start
 compiled separately for the designer and standard access profiles. Editing the content of a
 static prompt does nothing until that compilation is redone, which means a **server restart**.
 
-That one-shot compilation also changes how permissions behave for static prompts, in a way that
-is easy to get wrong — see [Permissions](#permissions).
+That one-shot compilation also changes how access rules behave for static prompts, in a way that
+is easy to get wrong — see [Visibility and permissions](#visibility-and-permissions).
 
 Because it costs context on every request, a static prompt should be short and should be
 reserved for instructions that genuinely apply to everything: a house rule, a standing
 constraint, something you cannot trust a catalog lookup to surface in time.
 
-Permissions
+Visibility and permissions
 --------
 
-A prompt's audience is controlled by the platform's standard group permissions.
+A prompt's audience is set by its **Visibility** (`mcpProVisibility`), then, for a restricted
+prompt, by the platform's standard group permissions.
 
-### Permissions restrict, they do not publish
-
-| Permissions on the prompt | Who sees it |
+| Visibility | Who can use it |
 | --- | --- |
-| None | Everyone |
-| One or more | Only the groups named, and only those with `hasRead` true |
+| **Public** | Every MCP user. Permissions are ignored. |
+| **Restricted** (default) | Only the groups granted by its permissions, with read access. A restricted prompt **without any permission is available to nobody**. |
 
 :::caution
 
-Adding the **first** permission flips a prompt from public to private. A prompt everyone could
-use becomes reserved to the single group you just named, and nobody else keeps access. That is
-intended, but it makes the first grant a far bigger change than any grant you add afterwards.
+A new prompt is **Restricted** by default. Until you grant it to at least one group, or switch it
+to Public, nobody can use it.
 
 :::
 
-If the ACL cannot be read at all, access is denied rather than granted.
+- On a **Public** prompt, the Permissions panel is hidden from the form. Existing permissions are
+  kept, not deleted: switching the prompt back to Restricted applies them again immediately.
+- Removing the last permission of a restricted prompt closes it to everyone. It never makes the
+  prompt public: only the visibility does.
+- If the permissions cannot be read at all, access to a restricted prompt is denied rather than
+  granted.
+
+:::note
+
+Prompts created before the visibility was introduced have an empty visibility and keep the
+former rule: no permission means everyone, one or more permissions restrict the prompt to those
+groups. Set an explicit visibility on them: the field is required on the next save.
+
+:::
 
 ### Where the check happens
 
@@ -93,8 +107,11 @@ Both modes are filtered, but not at the same moment.
 | Against | The calling user's own grant | The grant of whoever triggered that build |
 | Granularity | Per user | Per access profile (`designer` / `standard`) |
 
-For skills the check is exact. `get_skill("?")` hides what the caller may not read, and asking
-for a restricted skill by name is refused.
+For skills the check is exact and immediate: visibility or permission changes apply on the next
+call, without a restart. `get_skill("?")` hides what the caller may not use, and asking for such a
+skill by name is refused. The refusal is the same whether the skill does not exist, is inactive,
+is not granted to the caller, or is a static prompt: the actual reason is only written to the
+server logs.
 
 For static prompts it is not. The instructions are compiled once per access profile and reused
 for everyone on that profile, which has three consequences:
@@ -110,10 +127,11 @@ for everyone on that profile, which has three consequences:
 
 What this means in practice for a static prompt:
 
-- Meant for everyone → leave it without permissions.
-- Meant for designers → grant `DESIGNER` and `ADMIN`.
-- Meant for business users → restrict it explicitly. Left without permissions it also lands in
-  the designers' context, where business instructions usually contradict the designer prompt.
+- Meant for everyone → set it to **Public**.
+- Meant for designers → keep it **Restricted** and grant `DESIGNER` and `ADMIN`.
+- Meant for business users → keep it **Restricted** and grant their groups. A public prompt also
+  lands in the designers' context, where business instructions usually contradict the designer
+  prompt.
 
 :::
 
@@ -161,6 +179,9 @@ Do not start from a blank page. Let the agent write the first draft.
 3. **Review the draft before you consider it final.** Check that the name is findable, the
    description matches how someone would actually phrase the request, and the steps reflect
    what really worked rather than what the agent tried first.
+4. **Decide who can use it.** The new skill is Restricted with no permission, so nobody can use
+   it yet: grant the groups that need it, or set it to Public. See
+   [Visibility and permissions](#visibility-and-permissions).
 
 Writing the description
 ----------
@@ -193,8 +214,10 @@ Troubleshooting
 
 | Symptom | Likely cause |
 | --- | --- |
-| Skill does not appear in `get_skill("?")` at all | The prompt has permissions and none of them covers the user's group. A prompt with _no_ permission is visible to everyone, so absence of a grant is never the cause. |
-| A prompt reaches users who should not see it | It has no permission at all. Permissions restrict; without one it is public. |
+| Skill does not appear in `get_skill("?")` at all | It is inactive, or it is Restricted and none of its permissions covers the user's group (with read access). A Restricted skill with no permission is available to nobody. |
+| `get_skill("<name>")` answers that the skill is not available | Same causes as above, or the name is wrong, or it is a static prompt (never served by `get_skill`). The exact reason is in the server logs. |
+| A prompt reaches users who should not see it | It is Public, or it has no visibility yet and no permission. Set it to Restricted and grant the right groups. |
+| The Permissions panel is missing from the prompt form | The prompt is Public. Switch it to Restricted to see and edit its permissions. |
 | Skill appears in the catalog but the agent never loads it | The description does not overlap with how requests are actually phrased. Rewrite it with the user's vocabulary. |
 | Edits to a static prompt have no effect | Static prompts compile at server startup. Restart, or move the content to a skill while iterating. |
-| Static prompt works for designers but not standard users | Instructions compile once per access profile, against the grant of whoever triggered that build. Grant a group covering _every_ user of the standard profile, then restart. |
+| Static prompt works for designers but not standard users | Instructions compile once per access profile, against the grant of whoever triggered that build. Set it to Public, or grant a group covering _every_ user of the standard profile, then restart. |

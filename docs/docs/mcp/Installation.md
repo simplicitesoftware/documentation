@@ -82,7 +82,8 @@ Improving over time
 
 When an LLM handles a request, it either succeeds on the first try or requires several attempts.
 In the latter case, it is asked to write the skill itself for that type of request.
-The skill is then stored in McpPrompt and becomes immediately available for all similar requests going forward.
+The skill is then stored in McpPrompt and, once granted to the right groups (or made public),
+becomes immediately available for all similar requests going forward.
 The system therefore becomes more reliable the more it is used.
 
 Built-in server configuration
