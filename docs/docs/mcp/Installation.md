@@ -48,6 +48,16 @@ Finally, get_skill is the contextualization tool: it loads a targeted prompt int
 | `call_action` | CRUD | Invokes a business logic action on an object or record. Prefer over manual field updates when an action exists. |
 | `get_skill` | Contextualization | Loads a targeted business prompt into the LLM's context based on the request type. |
 
+:::warning[Designer tools]
+
+The following tools are only available to **designer/administrator** users **and** when the instance is in [development mode](../security.md#development-mode):
+`get_object_code`, `set_object_code`, `edit_object_code`, `add_fields_to_object`, `get_md_documentation`,
+`get_physical_mapping`, `commit_module` and `clear_cache`.
+
+Otherwise they are not listed by the server and any call to them is refused.
+
+:::
+
 Intended Workflow
 --------
 
