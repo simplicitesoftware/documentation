@@ -1,12 +1,17 @@
 ---
 sidebar_position: 20
-title: Kubernetes
+title: Kubernetes quickstart
 ---
 
-Simplicité on Kubernetes
-===============================
+Simplicité quickstart on Kubernetes
+===================================
 
-> **Warning**: This document is a work in progress DRAFT
+:::warning
+
+This document is a "quickstart" basic helper to start with Simplicité on Kubernetes, it is not intended to Kubernetes usual/advanced users
+nor to be a state of the art template for real life deployments.
+
+:::
 
 Prerequisites
 -------------
@@ -42,24 +47,18 @@ kubectl cluster-info dump
 Allow use of private images
 ---------------------------
 
-The Simplicité images needs appropriate credentials on DockerHub.
+The Simplicité images needs appropriate credentials on our private Docker images registry.
 
-First sign in to DockerHub with your DockerHub account:
+First sign in to our registry with your credentials:
 
 ```text
-docker login
+docker login registry.simplicite.io
 ```
 
 Then create a secret from the created `$HOME/.docker/config.json` file by:
 
 ```text
 kubectl create secret generic regcred --from-file=.dockerconfigjson=$HOME/.docker/config.json --type=kubernetes.io/dockerconfigjson
-```
-
-Alternatively you can create the secret directly (without signin in to DockerHub) by:
-
-```text
-kubectl create secret docker-registry regcred --docker-server=https://index.docker.io/v1/ --docker-username=<your username> --docker-password=<your password> --docker-email=<your email address>
 ```
 
 Basic Simplicité sandbox example using Kompose&reg;
@@ -109,9 +108,6 @@ Deploy to cluster:
 kubectl apply -f simplicite-deployment.yaml -f simplicite-service.yaml
 ```
 
-> **Note**: A simple `kompose up` does not work because of DockerHub credentials that needs to be added manually.
-> This may change in the future...
-
 Get the service information:
 
 ```text
@@ -127,7 +123,11 @@ simplicite   LoadBalancer   10.3.119.175   6fvb57vqjk.lb.c4.gra.k8s.ovh.net   80
 
 In the above case you can now point your browser to `http://6fvb57vqjk.lb.c4.gra.k8s.ovh.net`
 
-> **Warning**: in this sandbox example there is no persistence at all, no data survives when the container is shut down.
+:::warning
+
+In this sandbox example there is no persistence at all, no data survives when the container is shut down.
+
+:::
 
 Comprehensive example
 ---------------------
@@ -372,10 +372,14 @@ simplicite   LoadBalancer   10.3.77.200   6d9lguc0l0.lb.c4.gra.k8s.ovh.net   80:
 
 In the above case you can now point your browser to `http://6d9lguc0l0.lb.c4.gra.k8s.ovh.net`
 
-> **Note**: in the above example there is only one replica for the Simplicité deployment, you can set it to more that one but note that
-> the load balancing is done based on client IP address. If you need a better load balancing strategy
-> (e.g. a session cookie-based sticky session load balancing)
-> you need to configure an appropriate ingress (the configuration of such ingress is not specific to Simplicité, thus not described here)
+:::note
+
+in the above example there is only one replica for the Simplicité deployment, you can set it to more that one but note that
+the load balancing is done based on client IP address. If you need a better load balancing strategy
+(e.g. a session cookie-based sticky session load balancing)
+you need to configure an appropriate ingress (the configuration of such ingress is not specific to Simplicité, thus not described here)
+
+:::
 
 Kubernetes dashboard
 --------------------

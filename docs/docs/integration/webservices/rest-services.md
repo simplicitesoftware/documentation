@@ -244,6 +244,19 @@ By default you get the document ID of all document and image fields.
 - If you want to paginate the search results you need to append `_page=<number of page, starting with 0>`
   (the number of page  being given by the above count request)
 
+### Filtering guidelines
+
+- Each URL parameter not starting with `_` is considered to be a filter on a field of the object.
+- A filter parameter that does not correspond to a field logical name is **ignored**.
+- The **exact**, including case, field name must be used. E.g. in the above examples `row_module_is` is fine to search on the module's row ID
+  but `Row_Module_ID` is not and will be therefore ignored.
+- A **referenced** (joined) field requires its **fully qualified name** (using the Javascript naming where hierarchy
+ is noted by a double underscore `__` instead of a dot `.` in Java), in other words the filter naming must **exactly**
+ match the name of the returned fields. E.g. in the above examples `row_module_id__mdl_name` has to
+ be used to filter on the module name, a simple `mdl_name` will be ignored.
+
+### Indexed search
+
 It is also possible to do search on the object index (if the considered object is indexed):
 
 ```text

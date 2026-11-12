@@ -328,4 +328,4 @@ Activity creation is now assisted by the UI, reducing manual data configuration 
 Learn more
 ----------
 
-- [Business workflow hooks](/docs/core/businessworkflow-code-hooks)
+- [Business workflow hooks](/docs/core/hooks/businessworkflow-code-hooks)

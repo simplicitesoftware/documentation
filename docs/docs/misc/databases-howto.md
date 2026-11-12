@@ -332,7 +332,7 @@ sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/c
 Install server:
 
 ```text
-sudo yum install mssql-server
+sudo dnf install mssql-server
 ```
 
 Enable and start server:

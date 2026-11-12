@@ -59,6 +59,6 @@ How to create a shared code?
 Learn more
 ----------
 
-- [PlatformHooks](/docs/core/platform-hooks)
+- [PlatformHooks](/docs/core/hooks/platform-hooks)
 - [Unit testing](/docs/devops/unit-testing)
 - [Unit test shared code tutorial](/tutorial/enhancing/shared-code)

@@ -104,9 +104,9 @@ import TabItem from '@theme/TabItem';
 
 The following syntax will allow a link to `[text](/url#my-explicit-id)` instead of the default `[text](/url#hello-world)`
 
-```markdown
+````markdown
 ### Hello World {#my-explicit-id}
-```
+````
 
 ### Admonitions
 

@@ -34,7 +34,7 @@ Some of these generic webservices are wrapped into generic libraries/APIs in var
 to the documents referenced in the _APIs_ section of the document index.
 
 Beyond these generic integration components, Simplicité being a Java platform, any kind of integration that is possible in Java is possible with Simplicité.
-Some examples are available in [this document](/docs/core/third-party-apis-examples) but many other third part public
+Some examples are available in [this document](/docs/core/codexamples/third-party-apis-examples) but many other third part public
 or private services integration can be implemented.
 
 Compliance

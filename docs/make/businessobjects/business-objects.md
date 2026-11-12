@@ -79,7 +79,7 @@ Configuration
 Read more
 ---------
 
-- [Business objects hooks](/docs/core/objects/businessobject-code-hooks)
+- [Business objects hooks](/docs/core/hooks/businessobject-code-hooks)
 - [Select objects](/docs/core/objects/select-objects)
 - [Service objects](/docs/core/objects/service-objects)
 - [Custom service objects](/docs/integration/remote/custom)

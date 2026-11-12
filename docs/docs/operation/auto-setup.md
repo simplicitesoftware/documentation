@@ -1,5 +1,5 @@
 ---
-sidebar_position: 12
+sidebar_position: 13
 title: Auto Setup
 ---
 
@@ -94,8 +94,8 @@ The importspec defines an ordered list of modules to import on the instance.
 Here follows an example combining all possible module sourcing options:
 
 - **[default]** a zipped/tarballed module in the importspec dir
-- a zipped/tarballed module somewhere else on the filesystem
-- a zipped/tarballed module online
+- a zipped/tar-balled module somewhere else on the filesystem
+- a zipped/tar-balled module online
 - a git repository
 
 ```yaml
@@ -105,7 +105,7 @@ modules:
   - name: "MyModule1"
   # it is possible to specify a custom location for module files
   - name: "MyModule2"
-    file: "/an/absolute/path/to/mymodule.zip"
+    file: "<absolute or relative path to>/mymodule.zip" 
   # module files can be online
   - name: "MyModule3",
     url: "https://somewhere.com/path/to/mymodule.zip"
@@ -132,7 +132,7 @@ modules:
     version: "1.4.3"
 ```
 
-:::warn
+:::warning
 If no version is specified, the module will be re-imported at each startup, which is generally bad practice.
 :::
 
@@ -165,6 +165,12 @@ modules:
       - MyUnitTest1
       - MyUnitTest2
 ```
+
+### Advanced
+
+The `async` boolean flag may be used to force the module import to be asynchronous. This is only relevant in particular cases.
+
+The `asyncindexation` boolean flag may be used to force asynchronous re-indexation after module import
 
 ### Use cases
 

@@ -225,13 +225,13 @@ Crée une homepage avec les applications en développements, les sauvegardes des
 
 Once the app is built, the MCP server can answer business questions directly from the chat.
 
-```markdown
+````markdown
 Quel serveur héberge le plus d'applications en production ?
 Quelle application a connu le plus de changements de statut récents ?
  
 Parmi nos serveurs, lesquels tournent sur un OS qui arrive en fin de support ?
 Y a-t-il des CVE critiques récentes concernant les OS de nos serveurs ?
-```
+````
 
 :::tip[Expected result]
 

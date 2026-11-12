@@ -95,16 +95,12 @@ It is useful when the system parameter:
 ### Environment variables
 
 :::note
-
 This features are only available as of v6.2
-
 :::
 
 :::danger
-
 This features only apply to the **loaded value** of the system parameters (ie accessed through `getParameter`).
 If you use the **raw value** APIs (`getSystemParam` & `getUserSystemParam`), you will not get the substituted value.
-
 :::
 
 In many cases, a system parameter is better managed through environment variables:
@@ -147,6 +143,10 @@ providers in the `AUTH_PROVIDERS` system parameter:
 	(...)
 ]
 ```
+
+:::note
+Substitutions are **not** compatible with aforementionned overrides (`SIMPLICITE_SYSPARAM_*`) which can't be updated at runtime.
+:::
 
 Usage
 --------

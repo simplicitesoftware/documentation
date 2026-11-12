@@ -41,13 +41,15 @@ Securing application endpoints
 The Simplicité platform is designed to be secure, with nothing available without being explicitly granted.
 However, particular attention must be paid to the following aspects.
 
-There are 4 endpoints available on the Simplicité platform:
+There are 7 endpoints available on the Simplicité platform by default:
 
-- the UI endpoint
-- the API endpoint
-- the I/O endpoint
-- the Git endpoint
-- the Maven repository endpoint
+- the UI endpoint (/ui)
+- the API endpoint (/api)
+- the I/O endpoint (/io)
+- the Git endpoint (/git)
+- the health-check endpoint (/health)
+- the ping endpoint (/ping)
+- the Maven repository endpoint (/maven)
 
 All of them are secured either by the standard authentication mechanisms (Java server's auth modules, OAuth2/OpenIDConnect or SAML flows)
 that have been configured, except for the public features that are chosen to be exposed on the UI endpoint's public components (see below)
@@ -74,6 +76,26 @@ Alternatively, the `designer` user can be deactivated (or only some of its right
 The UI endpoint has some public (non authenticated) components that may be used for the purpose of explicitly exposing some features publicly.
 
 Particular attention **must** be paid to what is granted to the `public` user (through its default `PUBLIC` group or any other group that is granted)
+
+#### Node services (multiple-nodes deployments)
+
+As of version 7.0, the nodes of a cluster propagate the application-wide events amongst nodes (server-side events,
+clear cache, cron restart, sessions count) thru the dedicated path `/ui/node` of the UI endpoint, without the I/O endpoint
+(which should be closed for external security reasons).
+
+This path is not a public component: it is reserved to the nodes, without user session, and only accepts
+the requests signed by a registered node of the cluster with a secret shared by the nodes, never sent over the network.
+No business object, external object or module component can be exposed on this path.
+
+The cluster secret **should** be passed to all the nodes as the `cluster.secret` JVM argument
+or the `CLUSTER_SECRET` environment variable (at least 32 characters, same value on all the nodes).
+Otherwise, a random secret is generated in the `CLUSTER_SECRET` system parameter by the first node:
+this runtime parameter is private (never sent to the UI or APIs) but stored in the database and readable by the users
+granted to the system parameters, so its value **should** rather be an environment variable substitution tag `[ENV:...]` (see [secrets](#secrets)).
+
+The nodes call each other on their internal URLs (cluster endpoints), not thru the load balancer:
+the `/ui/node` path **should** be blocked on the public reverse proxy or load balancer,
+and the traffic between the nodes **must** use HTTPS in production.
 
 ### API endpoint
 
@@ -117,8 +139,10 @@ to use the user's password if it is requested to be changed.
 
 :::warning[Important]
 
-The I/O endpoint is needed for multiple-nodes deployments to allow propagating various application-wide events amongst nodes (e.g. clear cache).
-Setting appropriate network filtering and credentials is thus **required** in this particular case.
+Before version 7.0, the I/O endpoint was needed for multiple-nodes deployments to allow propagating various application-wide events amongst nodes
+(e.g. clear cache). As of version 7.0, the nodes use the node services of the UI endpoint instead (see [above](#node-services-multiple-nodes-deployments)):
+the I/O endpoint and its credentials are no more required between the nodes, and an I/O call from a node is logged as deprecated
+(e.g. a node not yet upgraded during a rolling upgrade).
 
 :::
 
@@ -202,6 +226,7 @@ using environment variable substitution tags `[ENV:...]`.
 
 It is highly recommended to use these mechanisms for all secret/sensible pieces of data and credentials such as:
 usernames, passwords, secrets, encryption keys, URLs, ...
+(e.g. the cluster secret of a multiple-nodes deployment, see [node services](#node-services-multiple-nodes-deployments)).
 
 ### Business object filtering
 
@@ -275,7 +300,7 @@ These tools are standard external objects that **should** be inhibited by removi
 
 ### Data encryption
 
-Built-in (see the Data Encryption part in [code examples](/docs/core/advanced-code-examples)) or third party data encryption should be used,
+Built-in (see the Data Encryption part in [code examples](/docs/core/codexamples/advanced-code-examples)) or third party data encryption should be used,
 especially when the database access is not limited to the application.
 
 ### Internal authentication
@@ -297,7 +322,7 @@ Consider implementing an anti-brute policy by using appropriate `PlatformHooks`.
 See [this document](/docs/authentication/internal-auth#anti-brute-force-attacks) for a comprehensive example.
 
 Ensure the "god mode" (the ability to log in as any user) is disabled or restricted to the relevant users (e.g. support team).
-The principle is to set the private system parameter `GOD_MODE` to `no` and override it by user only for the relevant users.
+The principle is to set the private system parameter `GOD_MODE_USER` to `no` and override it by user only for the relevant users.
 
 If all or some users don't always use a strictly personal browser, the ability of the browser to keep track
 of the non-expired user tokens **should** also be disabled
@@ -406,6 +431,11 @@ Don't do it if the compilation is not disabled as described above.
 
 :::
 
+### Document preview
+
+If it is not used or if it is considered as a potential security/confidentiality concern, the document preview feature of the UI
+should be disabled by setting the `USE_DOC_PREVIEW` system parameter to `no`.
+
 #### Websockets
 
 The `/ui/<events|lsp|...>` endpoints provides websocket services to provide client-side access to some server-side services: logs, LSP, etc.
@@ -419,6 +449,17 @@ As of version 6, the `/ui/sse` endpoint provides a service to push messages from
 
 - The standard SSE protocol uses HTTP GET **asynchronous** so the infrastructure must support this without breaking the socket
 - Otherwise, the parameter `USE_SSE` must be set to `no` to disabled this SSE feature: the UI will use polling to refresh some UI data
+
+#### Logging
+
+Sensitive system log events are, by default, set to "Debug" level, this is due to the potentially highly confidential data they exposes in the logs.
+It is, in particular, the case of all log events starting with `D` (e.g. `DAUTHSC001`).
+
+The level of these log event should **never** be changed to higher level such as "Information" in production,
+this might only be done, when needed and **very temporarily** for **very occasional** tests/checks.
+
+The same logic applies to the `LOG_SQL_SYSTEM` and `LOG_SQL_USER` system parameters which traces all SQL requests in the logs
+(note that apart from obvious security reasons, these SQL-level traces are highly resources consuming and thus also have a very negative impact on performances).
 
 Securing your infrastructure
 ----------------------------
