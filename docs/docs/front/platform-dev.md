@@ -29,6 +29,7 @@ The following objects are available in any JavaScript resource executed within t
 | `$grant` | `Simplicite.Ajax.Grant` | Current user rights and information |
 | `$nav` | `Simplicite.UI.Navigator` | Navigation controller |
 | `$tools` | `Simplicite.UI.View` | Bootstrap utility methods |
+| `$widget` | `Object` | Widget component classes (`ProgressBar`...), since 7.0 |
 | `$T` | `Function` | Translation shorthand |
 
 Most objects are also accessible through `$ui`:

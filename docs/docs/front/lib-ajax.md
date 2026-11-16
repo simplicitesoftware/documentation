@@ -30,16 +30,17 @@ Global Objects
 
 The following global objects are available in Simplicité:
 
-| Object   | Type                            | Description                 |
-|----------|---------------------------------|-----------------------------|
-| `$ui`    | `Simplicite.UI.Engine`          | Main UI Controller          |
-| `$app`   | `Simplicite.Application`        | Ajax Service / Main Model   |
-| `$view`  | `Simplicite.UI.View.Main`       | View Engine / Main View     |
-| `$grant` | `Simplicite.Ajax.Grant`         | User rights and information |
-| `$nav`   | `Simplicite.UI.Navigator`       | Navigation controller       |
-| `$root`  | `String`                        | Server root URL             |
-| `$tools` | `Simplicite.UI.View.Bootstrap5` | Bootstrap-specific methods  |
-| `$T`     | `Function`                      | Text translation shorthand  |
+| Object    | Type                            | Description                 |
+|-----------|---------------------------------|-----------------------------|
+| `$ui`     | `Simplicite.UI.Engine`          | Main UI Controller          |
+| `$app`    | `Simplicite.Application`        | Ajax Service / Main Model   |
+| `$view`   | `Simplicite.UI.View.Main`       | View Engine / Main View     |
+| `$grant`  | `Simplicite.Ajax.Grant`         | User rights and information |
+| `$nav`    | `Simplicite.UI.Navigator`       | Navigation controller       |
+| `$root`   | `String`                        | Server root URL             |
+| `$tools`  | `Simplicite.UI.View.Bootstrap5` | Bootstrap-specific methods  |
+| `$widget` | `Object`                        | Widget classes (since 7.0)  |
+| `$T`      | `Function`                      | Text translation shorthand  |
 
 ### Access Shortcuts
 

@@ -43,6 +43,7 @@ The following global objects are immediately available in any JavaScript resourc
 | `$app`      | Ajax service / data model (`Simplicite.Application`)           |
 | `$view`     | View engine (`Simplicite.UI.View.Main`)                        |
 | `$tools`    | Bootstrap toolkit (`Simplicite.UI.View.Bootstrap5`)            |
+| `$widget`   | Widget component classes (since 7.0)                           |
 | `$grant`    | Current user rights and information                            |
 | `$nav`      | Navigation controller                                          |
 | `$T`        | Translation shorthand (same as `$app.T(...)`)                  |
