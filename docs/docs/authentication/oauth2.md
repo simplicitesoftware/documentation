@@ -77,35 +77,15 @@ Example `AUTH_PRODIDERS` configuration (refer to the [auth providers doc](auth-p
 	{
 		"name": "microsoft",
 		"type": "oauth2",
-		"sync": false,
-		"client_id": "",
-		"client_secret": ""
-	},
-	{
-		"name": "linkedin",
-		"type": "oauth2",
-		"sync": false,
-		"client_id": "",
-		"client_secret": ""
-	},
-	{
-		"name": "franceconnect",
-		"type": "oauth2",
-		"client_id": "",
-		"client_secret": ""
-	},
-	{
-		"name": "myoidc",
-		"type": "oauth2",
-		"label": "Sign in with your private IdP",
 		"sync": true,
 		"client_id": "",
 		"client_secret": ""
-	}
+	},
+
 	{
-		"name": "oidc-with-all-params",
+		"name": "myoidcprovider",
 		"type": "oauth2",
-		"label": "Sign in with MyProvider",
+		"label": "Sign in with MyOIDCProvider",
 		"sync": true,
 		"visible": true,
 		"client_id": "<my client ID>",
@@ -133,7 +113,7 @@ Example `AUTH_PRODIDERS` configuration (refer to the [auth providers doc](auth-p
 			"title":     { "field": "usr_title", "transform": { "M.":"MR", "Mme":"MRS", "Mlle":"MS" } },
 			"unit":      { "field": "myUserUnit", "param": "APP_USER_UNIT" }
 		},
-		/* OR
+		/* or
 		"jwt_claims_mappings": {
 			"login": "username"
 			(...)
