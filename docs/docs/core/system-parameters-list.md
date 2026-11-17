@@ -135,11 +135,12 @@ Example:
 
 ```json
 [
-	{ "name": "simplicite", "type": "internal", "visible": false },
-	{ "name": "google", "type": "oauth2", "label": "Sign in with Google (OAuth2)", "sync": false, "client_id": "<client ID>", "client_secret": "<client secret>" },
-	{ "name": "googlesaml", "type": "saml", "label": "Sign in with Google (SAML)", "sync": false }, // other SAML parameters are in SAML_* system parameters
-	{ "name": "microsoft", "type": "oauth2", "sync": false, "client_id": "<client ID>", "client_secret": "<client secret>" },
-	{ "name": "ldap", "type": "ldap", "sync": false }// LDAP settings are in LDAP_AUTH_CONFIG system parameter
+	{ "name": "simplicite", "type": "internal", "visible": true|false },
+	{ "name": "google", "type": "oauth2", "label": "Sign in with Google (OAuth2)", "sync": true|false, "client_id": "<client ID>", "client_secret": "<client secret>" },
+	{ "name": "googlesaml", "type": "saml", "label": "Sign in with Google (SAML)", "sync": true|false }, // other SAML parameters can be configured in SAML_* system parameters
+	{ "name": "microsoft", "type": "oauth2", "sync": true|false, "client_id": "<client ID>", "client_secret": "<client secret>" },
+	{ "name": "franceconnect", "type": "oauth2", "sync": true|false, "client_id": "<client ID>", "client_secret": "<client secret>" },
+	{ "name": "ldap", "type": "ldap", "sync": true|false } // LDAP settings are in LDAP_AUTH_CONFIG system parameter
 ]
 ```
 

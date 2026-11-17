@@ -14,15 +14,13 @@ The following table indicates OAuth2/OpenIDConnect providers supports per Simpli
 | Provider      | v3  | v4      | v5      | v6      |
 | ------------- | --- | ------- | ------- | ------- |
 | OpenIDConnect | No  | Yes     | Yes     | Yes     |
-| Google        | Yes | Yes     | Yes     | Yes     |
-| Microsoft     | No  | Yes     | Yes     | Yes     |
-| LinkedIn      | No  | Yes     | Yes     | Yes     |
-| FranceConnect | Yes | Yes (1) | Yes (1) | Yes (2) |
-| KeyCloak      | No  | Yes (2) | Yes     | Yes     |
+| Google        | Yes | Yes     | Yes     | Yes (1) |
+| Microsoft     | No  | Yes     | Yes     | Yes (1) |
+| LinkedIn      | No  | Yes     | Yes (1) | Yes (1) |
+| FranceConnect | Yes | Yes     | Yes (1) | Yes (1) |
+| KeyCloak      | No  | Yes (1) | Yes (1) | Yes (1) |
 
-(1) FranceConnect being an OpenIDConnect-compliant provider, it should rather be configured as a generic OpenIDConnect provider instead.
-
-(2) Only as a generic OpenIDConnect provider.
+(1) As a generic OpenIDConnect provider.
 
 Configuration
 ---------------
