@@ -14,9 +14,15 @@ Simplicité offers a wide array of authentication solutions with the following o
 - **OAuth2**
 - **SAML**
 - **LDAP**
-- **Crowd** _(external Atlassian Crowd authentication)_
+- **Custom**
 
 There can be as many providers as necessary.
+
+:::note
+
+The Atlassian Crowd authentication is deprecated in v6 and removed in v7
+
+:::
 
 Configuration
 -------------
@@ -56,14 +62,14 @@ The authentication providers are to be configured with the `AUTH_PROVIDERS` syst
 
 The JSON settings include the common attributes:
 
-| Setting   | Supported values                              | Required     | Comment                                                        |
-|-----------|-----------------------------------------------|--------------|----------------------------------------------------------------|
-| `type`    | `internal`, `oauth2`, `saml`, `ldap`, `crowd` | **Required** |                                                                |
-| `name`    | String                                        | **Required** | provider name (must be unique per type)                        |
-| `visible` | `true` (default) / `false` / Array            | optional     | can be an array of base URLs for which the provider is visible |
-| `label`   | String                                        | optional     | label on the provider choice page                              |
-| `sync`    | `true` / `false`                              | optional     |                                                                |
-| `image`   | String                                        | optional     | disposition resource name                                      |
+| Setting   | Supported values                               | Required     | Comment                                                        |
+|-----------|------------------------------------------------|--------------|----------------------------------------------------------------|
+| `type`    | `internal`, `oauth2`, `saml`, `ldap`, `custom` | **Required** |                                                                |
+| `name`    | String                                         | **Required** | provider name (must be unique per type)                        |
+| `visible` | `true` (default) / `false` / Array             | optional     | can be an array of base URLs for which the provider is visible |
+| `label`   | String                                         | optional     | label on the provider choice page                              |
+| `sync`    | `true` / `false`                               | optional     |                                                                |
+| `image`   | String                                         | optional     | disposition resource name                                      |
 
 :::warning
 For historical reasons the names `google`, `microsoft`, `linkedin` and `franceconnect` are **reserved** as they correspond to dedicated connectors.
