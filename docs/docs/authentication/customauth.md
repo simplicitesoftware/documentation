@@ -11,7 +11,7 @@ This document applies to version **3.2 MAINTENANCE 05** and above.
 Webapp configuration
 --------------------
 
-As for OAuth2, SAML, LDAP or Crowd authentication, all realm-related configuration must be removed from the web application descriptors:
+As for OAuth2, SAML, LDAP or custom authentication, all realm-related configuration must be removed from the web application descriptors:
 
 - Remove all realm-related settings in `WEB-INF/web.xml` (security-constraint, login-config and security-role tags)
 - Optionally remove also the realm definition in `META-INF/context.xml`
@@ -73,10 +73,10 @@ public String customAuth(HttpServletRequest request, HttpServletResponse respons
 }
 ```
 
-Compatibility with OAuth2/SAML/LDAP/Crowd
------------------------------------------
+Compatibility with OAuth2/SAML/LDAP/custom
+------------------------------------------
 
-Custom authentication can be used in conjunction with OAuth2, SAML, LDAP, or Crowd authentication providers (each being mutually exclusive).
+Custom authentication can be used in conjunction with OAuth2, SAML, LDAP, or custom authentication providers (each being mutually exclusive).
 When implementing the `customAuth` and `parseAuth` hooks, ensure that all relevant authentication cases are properly managed.
 
 The `simplicite` OAuth2 authentication provider functions as the traditional database realm authentication mechanism.
