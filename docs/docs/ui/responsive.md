@@ -93,12 +93,28 @@ Mono/multi work-area mode
 -------------------------
 
 As of version 7, `Scopes` can be configured to use a single work area (as the legacy V6) and/or multiple work areas.
-Then the user can be allowed to open several work areas:
+
+### Opening work areas
+
+The user can be allowed to open several work areas:
 
 - thru UI contextual menu: right-click on main menu, list row, open reference...
 - the areas can be moved by dragging the title bar, resized and closed.
 
 In accessibilty mode, this feature is disabled and the user will always work in a single work area.
+
+### Locked work area
+
+The context menu of a tab can lock its work area (except the main one):
+
+- a locked area can not be split,
+- its tabs can not be moved out, and no other tab can be moved into it,
+- the lock is kept in the saved layout.
+
+Front code can create a locked area with the `fixed` option of `$view.splitter.createWorkArea`
+or toggle the lock with `$view.splitter.setFixedArea`.
+
+### Navigation per work area
 
 Each work-area has an isolated navigation tab to work on several objects at the same time:
 
@@ -111,6 +127,8 @@ Each work-area has an isolated navigation tab to work on several objects at the 
 | first / default   | undefined          | `the_ajax_Client`          |
 | 2nd area (id 1)   | `_nav1`            | `the_ajax_Client_nav1`     |
 | nth area (id n)   | `_nav<n>`          | `the_ajax_Client_nav<n>`   |
+
+### Saved layout
 
 In the user preferences dropdown, when both modes are available,
 the user can switch from single work area to multiple work areas.
@@ -134,6 +152,8 @@ because component/widget states are not fully serializable:
 - Restoration is useful to return to the same global work area disposition after a reload,
   but not to restore the previous session literally.
 - For example, a list will restore the last filters and pagination but will lose any unsaved updates.
+
+### Front code constraints
 
 Simplicité UI API always use selectors based on class name or data attributes in the work area container (`ctn` is always passed to the functions).
 
