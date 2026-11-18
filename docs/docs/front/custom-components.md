@@ -75,6 +75,68 @@ widget class and configure it via the `Settings` field. No `CLASS` resource code
 
 See [Standard Widgets](/docs/misc/widgets) for available widget classes and their expected JSON configuration.
 
+### Creating a widget
+
+Since version 7.0, the UI components of `$widget` (`Slider`, `SwitchButton`, `Toast`, `Cards`, `Counter`...)
+extend the base class `Simplicite.UI.Widget`, which can also be extended to create your own reusable widgets:
+
+- the constructor only stores the parameters: an object with the optional `name` (instance name)
+  and `ctn` (container where the element is appended), plus the parameters of the widget (`this.params`)
+- `draw()` builds and returns the root element (to be implemented)
+- `load(element)` loads an optional asynchronous content (records, library...): `replaceElement(newElement)`
+  replaces the placeholder built by `draw()`
+- `render()` builds the element, appends it to `ctn` and starts the loading; `renderAsync()` also waits for the loading
+- `element()`, `ready()` and `close()` give the element, the promise of the loading and remove the widget
+
+```javascript
+// Synchronous widget: the element is built from the parameters
+class MyBadge extends Simplicite.UI.Widget {
+    draw() {
+        return $('<span class="badge"/>')
+            .text(this.params.label)
+            .css("background-color", this.params.color || "");
+    }
+}
+
+// Asynchronous widget: a placeholder, then the records
+class MyProductList extends Simplicite.UI.Widget {
+    draw() {
+        return $('<div aria-busy="true"/>').text($T("LOADING"));
+    }
+    async load() {
+        const product = $app.getBusinessObject("DemoProduct", "widget_DemoProduct");
+        const rows = await product.search(this.params.filters || {});
+        this.replaceElement($('<ul class="my-products"/>')
+            .append(rows.map(row => $('<li/>').text(row.demoPrdName))));
+    }
+}
+
+// External Object CLASS resource to be placed in a View
+// build the widgets and append them to the container
+Simplicite.UI.ExternalObjects.MyComponent = class extends Simplicite.UI.ExternalObject {
+    async render(params, data = {}) {
+        // synchronous widget: the element is built from the parameters
+        new MyBadge({
+            label: "New",
+            color: "#28a745",
+            ctn: this.ctn
+        }).render();
+
+        // asynchronous widget: a placeholder, then the records
+        const list = new MyProductList({
+            name: "products",
+            ctn: this.ctn,
+            filters: { demoPrdName: "A%" }
+        });
+        await list.renderAsync();
+        $console.log(list.name, list.element().children().length + " products");
+    }
+};
+```
+
+The standard components are used the same way, for example
+`new $widget.Slider({ name: "myLevel", value: 50, ctn: this.ctn }).render()`.
+
 Standalone pages
 ----------------
 
