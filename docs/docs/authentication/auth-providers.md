@@ -33,14 +33,13 @@ The authentication providers are to be configured with the `AUTH_PROVIDERS` syst
 [
 	{
 		"type": "internal",
-		"name": "simplicite",
-		"visible": false
+		"name": "simplicite"
 	},
 	{
 		"type": "oauth2",
 		"name": "google",
-		"label": "Sign in with Google OAuth2 IdP",
 		"sync": true,
+		"label": "Sign in with Google OAuth2 IdP",
 		"client_id": "<my client ID>",
 		"client_secret": "<my client secret>"
 	},
@@ -48,7 +47,8 @@ The authentication providers are to be configured with the `AUTH_PROVIDERS` syst
 		"type": "saml",
 		"name": "google",
 		"label": "Sign in with Google SAML IdP",
-		"sync": true
+		"sync": true,
+		// other SAML settings
 	},
 	{
 		"type": "ldap",
