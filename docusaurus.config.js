@@ -159,7 +159,7 @@ const config = {
       v4: {
         fasterByDefault: true
       },
-      faster: true,
+      faster: false,
       "v4": {
         "removeLegacyPostBuildHeadAttribute": true
       }
