@@ -77,15 +77,15 @@ The UI endpoint has some public (non authenticated) components that may be used 
 
 Particular attention **must** be paid to what is granted to the `public` user (through its default `PUBLIC` group or any other group that is granted)
 
-#### Node services (multiple-nodes deployments)
+### Node services (multiple-nodes deployments)
 
 As of version 7.0, the nodes of a cluster propagate the application-wide events amongst nodes (server-side events,
-clear cache, cron restart, sessions count) thru the dedicated path `/ui/node` of the UI endpoint, without the I/O endpoint
+clear cache, cron restart, sessions count) thru the dedicated technical endpoint `/peer`, without the I/O endpoint
 (which should be closed for external security reasons).
 
-This path is not a public component: it is reserved to the nodes, without user session, and only accepts
-the requests signed by a registered node of the cluster with a secret shared by the nodes, never sent over the network.
-No business object, external object or module component can be exposed on this path.
+This endpoint is outside the UI endpoint and is not a public component: it is reserved to the nodes, without user session,
+and only accepts the requests signed by a registered node of the cluster with a secret shared by the nodes, never sent over the network.
+No business object, external object or module component can be exposed on this endpoint.
 
 The cluster secret **should** be passed to all the nodes as the `cluster.secret` JVM argument
 or the `CLUSTER_SECRET` environment variable (at least 32 characters, same value on all the nodes).
@@ -94,8 +94,8 @@ this runtime parameter is private (never sent to the UI or APIs) but stored in t
 granted to the system parameters, so its value **should** rather be an environment variable substitution tag `[ENV:...]` (see [secrets](#secrets)).
 
 The nodes call each other on their internal URLs (cluster endpoints), not thru the load balancer:
-the `/ui/node` path **should** be blocked on the public reverse proxy or load balancer,
-and the traffic between the nodes **must** use HTTPS in production.
+the `/peer` path **must** be open between the nodes (on their cluster endpoints) and **should** be blocked
+on the public reverse proxy or load balancer, and the traffic between the nodes **must** use HTTPS in production.
 
 ### API endpoint
 
@@ -140,7 +140,7 @@ to use the user's password if it is requested to be changed.
 :::warning[Important]
 
 Before version 7.0, the I/O endpoint was needed for multiple-nodes deployments to allow propagating various application-wide events amongst nodes
-(e.g. clear cache). As of version 7.0, the nodes use the node services of the UI endpoint instead (see [above](#node-services-multiple-nodes-deployments)):
+(e.g. clear cache). As of version 7.0, the nodes use the node services endpoint `/peer` instead (see [above](#node-services-multiple-nodes-deployments)):
 the I/O endpoint and its credentials are no more required between the nodes, and an I/O call from a node is logged as deprecated
 (e.g. a node not yet upgraded during a rolling upgrade).
 
