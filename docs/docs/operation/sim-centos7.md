@@ -17,8 +17,8 @@ Introduction
 
 ### Architecture
 
-The SIM offers a command line interface (CLI), a web services interface (API), built on top of the CLI, and a web user interface (UI),
-built on top of the API, to manage several Simplicité instances on a server:
+The SIM offers a command line interface (CLI) and, when not installed in _headless_ mode, a web services interface (API) built on top of the CLI,
+and a web user interface (UI) built on top of the API to manage several Simplicité instances on a server:
 
 ![Architecture](./img/sim-centos7.png)
 
@@ -53,7 +53,7 @@ The SIM offers the following features:
 - Process SonarQube analysis on instance's module
 - Run unit tests on a instance
 
-All above actions are triggered manually using the CLI, the API or thee UI.
+All above actions are triggered manually using the CLI, the API or the UI.
 
 The following actions are triggered by a system-level task scheduler (cron table);
 
@@ -64,318 +64,6 @@ Note that the automatic backup can be configured to export the backup files to a
 Otherwise the backup files are only stored locally on the SIM server.
 
 Implementing pre/post action hooks (see below) allow you to customize the standard features of the SIM.
-
-UI usage
---------
-
-The instances manager UI is available on `<base URL>/ui`.
-
-The UI offers uses the API documented below and thus offers equivalent - but somehow limited by a simplified user experience - services.
-
-To create a new instance, enter an instance name (or leave empty for an automatic name) then select the version from the **_Create_** button:
-
-To manage an existing instance, click on one instance in the list, then select the action from the **_Action_** button:
-
-The **_Monitor_** action opens a new tab and allow to monitor a given instance by tracking record of recurring health checks:
-
-API usage
----------
-
-The instances manager API is available on `<base URL>/api`.
-
-The API services are using HTTP `GET` methods only and URL-encoded parameters only. All API responses are JSON-encoded.
-
-For all API services, you can get a pretty printed JSON response by appending `&prettyprint=true`.
-
-By default the authentication method is HTTP basic auth (username + password), but client certificate authentication can also be used.
-The examples below are using the `curl` command HTTP client, `<credentials>` is thus either:
-
-- `-u <username>:<password>` for username & password authentication method
-- `--cert-type pem --cert <path to your PEM client certificate file> --key <path to your PEM certificate key file>`
-  or `--cert-type P12 --cert <path to your P12 client certificate file>[:'<your password>']` for client certificate authentication method
-
-### Manager API
-
-#### Get API configuration
-
-```text
-curl -k -s <credentials> <base URL>/api[?action=config]
-```
-
-The `action` parameter can be omitted in this case as `config` is the default action.
-
-#### Get available versions
-
-```text
-curl -k -s <credentials> <base URL>/api?action=versions
-```
-
-### Instances API
-
-#### List instances
-
-```text
-curl -k -s <credentials> <base URL>/api?action=list[&param=<version>]
-```
-
-The parameters are:
-
-- `param` (optional) the version for filtering. If you don't provide an explicit value no version-based filtering is done.
-
-#### Create instance
-
-```text
-curl -k -s <credentials> <base URL>/api?action=add[&name=<instance name>][&param=<version (or instance name to clone)>][&options[<option name>]=<option value>]
-```
-
-The parameters are:
-
-- `name` (optional) the name of the instance to create, **must** be strictly alphanumerical and of length 3 to 20.
-   If you don't provide an explicit name, a random name (10 alphanumerical characters) is generated and used.
-- `param` (optional) the version of the instance (e.g. ``) or the name of an existing instance to clone (e.g. `sft65drt7y`).
-   If you don't provide an explicit version, the configured default version is used.
-- `options[]` (optional) the options array for instance creation:
-  - `options[database]` overrides default database (`hsqldb`, `mysql`, `postgresql` depends on which databases engine are available on the server)
-  - `options[protected]` overrides default protected flag (`yes` or `no`)
-  - `options[auto_save]` overrides default automatic save flag (`yes`or `no`)
-  - `options[auto_update]` overrides default automatic update flag (`yes`or `no`)
-
-#### Stop instance
-
-```text
-curl -k -s <credentials> <base URL>/api?action=stop&name=<instance name>[&force=<true|false>]
-```
-
-The parameters are:
-
-- `name` (**required**) the name of the instance to stop.
-- `force` (optional) use "force" stopping strategy (`true`) or standard strategy (`false`= default)
-
-#### Start instance
-
-```text
-curl -k -s <credentials> <base URL>/api?action=start&name=<instance name>
-```
-
-The parameters are:
-
-- `name` (**required**) the name of the instance to start.
-
-#### Instance health check
-
-```text
-curl -k -s <credentials> <base URL>/api?action=health&name=<instance name>
-```
-
-The parameters are:
-
-- `name` (**required**) the name of the instance to get health check for.
-
-#### Instance I/O credentials
-
-```text
-curl -k -s <credentials> <base URL>/api?action=iocredentials&name=<instance name>
-```
-
-The parameters are:
-
-- `name` (**required**) the name of the instance to get I/O credentials from.
-
-#### Instance last logs
-
-```text
-curl -k -s <credentials> <base URL>/api?action=logs&name=<instance name>
-```
-
-The parameters are:
-
-- `name` (**required**) the name of the instance to get logs for.
-
-#### Download instance logs
-
-```text
-curl -k -s <credentials> <base URL>/api?action=download&param=logs&name=<instance name>
-```
-
-The parameters are:
-
-- `name` (**required**) the name of the instance to download logs for.
-
-#### Get access logs report
-
-```text
-curl -k -s <credentials> <base URL>/api?action=accesslogs&name=<instance name>
-```
-
-The parameters are:
-
-- `name` (**required**) the name of the instance to get access logs report for.
-
-#### Upgrade instance
-
-```text
-curl -k -s <credentials> <base URL>/api?action=upgrade&name=<instance name>
-```
-
-The parameters are:
-
-- `name` (**required**) the name of the instance to upgrade.
-
-#### Upgrade all automatic upgrade instances
-
-```text
-curl -k -s <credentials> <base URL>/api?action=upgradeall
-```
-
-#### Reset instance
-
-```text
-curl -k -s <credentials> <base URL>/api?action=reset&name=<instance name>
-```
-
-The parameters are:
-
-- `name` (**required**) the name of the instance to reset.
-
-:::warning
-A reset will erase all existing configuration and data.
-:::
-
-#### Delete instance
-
-```text
-curl -k -s <credentials> <base URL>/api?action=del&name=<instance name>[&force=<true|false>]
-```
-
-The parameters are:
-
-- `name` (**required**) the name of the instance to delete.
-- `force` (optional) use "force" deletion strategy (`true`) or standard strategy (`false`= default)
-
-#### Clone instance
-
-```text
-curl -k -s <credentials> <base URL>/api?action=clone&name=<instance name>&param=<cloned instance name>
-```
-
-The parameters are:
-
-- `name` (**required**) the name of the instance to clone.
-- `param` (**required**) the name of the cloned instance.
-
-#### Rename instance
-
-```text
-curl -k -s <credentials> <base URL>/api?action=rename&name=<instance name>&param=<new instance name>
-```
-
-The parameters are:
-
-- `name` (**required**) the name of the instance to rename.
-- `param` (**required**) the new name of the instance.
-
-#### Save instance on server
-
-```text
-curl -k -s <credentials> <base URL>/api?action=save&name=<instance name>
-```
-
-The parameters are:
-
-- `name` (**required**) the name of the instance to save.
-
-#### Save all automatic save instances on server
-
-```text
-curl -k -s <credentials> <base URL>/api?action=saveall
-```
-
-#### Download instance data
-
-```text
-curl -k -s <credentials> <base URL>/api?action=download&param=data&name=<instance name>
-```
-
-The parameters are:
-
-- `name` (**required**) the name of the instance to download data for.
-
-#### Download instance webapp
-
-```text
-curl -k -s <credentials> <base URL>/api?action=download&param=webapp&name=<instance name>
-```
-
-The parameters are:
-
-- `name` (**required**) the name of the instance to download webapp for.
-
-#### Download full instance
-
-```text
-curl -k -s <credentials> <base URL>/api?action=download&name=<instance name>
-```
-
-The parameters are:
-
-- `name` (**required**) the name of the instance to download.
-
-Once downloaded you can simply unzip the instance and launch it locally:
-
-**Windows**:
-
-```dos
-@echo off
-
-set JAVA_HOME=<path to your JDK home, e.g. %CD%\jdk-1.8.0>
-set PATH=%JAVA_HOME%\bin;%PATH%
-
-set TOMCAT_ROOT=<path to your instance, e.g. %CD%\tomcat>
-set TOMCAT_ADMIN_PORT=8005
-set TOMCAT_HTTP_PORT=8080
-set TOMCAT_HTTPS_PORT=8443
-
-set JAVA_OPTS=%JAVA_OPTS% -server -Dserver.vendor=tomcat -Dserver.version=9 -Dfile.encoding=UTF-8 -Dgit.basedir=%TOMCAT_ROOT%\webapps\ROOT\WEB-INF\git
-set JAVA_OPTS=%JAVA_OPTS%  -Dtomcat.adminport=%TOMCAT_ADMIN_PORT% -Dtomcat.httpport=%TOMCAT_HTTP_PORT% -Dtomcat.httpsport=%TOMCAT_HTTPS_PORT%
-if not exist %TOMCAT_ROOT%\work mkdir %TOMCAT_ROOT%\work
-if not exist %TOMCAT_ROOT%\temp mkdir %TOMCAT_ROOT%\temp
-if not exist %TOMCAT_ROOT%\logs mkdir %TOMCAT_ROOT%\logs
-cd %TOMCAT_ROOT%\bin
-.\startup.bat
-exit
-```
-
-**Linux**:
-
-```shell
-#!/bin/bash
-
-export JAVA_HOME=<path to your JDK home, e.g. `pwd`/jdk-1.8.0>
-export PATH=$JAVA_HOME/bin:$PATH
-
-export TOMCAT_ROOT=<path to your instance, e.g. `pwd`/tomcat>
-export TOMCAT_ADMIN_PORT=8005
-export TOMCAT_HTTP_PORT=8080
-export TOMCAT_HTTPS_PORT=8443
-
-export JAVA_OPTS="$JAVA_OPTS -server -Dserver.vendor=tomcat -Dserver.version=9 -Dfile.encoding=UTF-8 -Dgit.basedir=$TOMCAT_ROOT/webapps/<instance|'ROOT'>/WEB-INF/git"
-export JAVA_OPTS="$JAVA_OPTS -Dtomcat.adminport=$TOMCAT_ADMIN_PORT -Dtomcat.httpport=$TOMCAT_HTTP_PORT -Dtomcat.httpsport=$TOMCAT_HTTPS_PORT"
-[ ! -d $TOMCAT_ROOT/work ] && mkdir $TOMCAT_ROOT/work
-[ ! -d $TOMCAT_ROOT/temp ] && mkdir $TOMCAT_ROOT/temp
-[ ! -d $TOMCAT_ROOT/logs ] && mkdir $TOMCAT_ROOT/logs
-cd $TOMCAT_ROOT/bin
-./startup.sh
-```
-
-#### Instance actions history
-
-```text
-curl -k -s <credentials> <base URL>/api?action=history&name=<instance name>
-```
-
-The parameters are:
-
-- `name` (**required**) the name of the instance to get action history for.
 
 CLI usage
 ---------
@@ -658,7 +346,7 @@ A SonarQube server must be installed and configured.
 This example gets status of all instances of a given version:
 
 ```text
-for NAME in `sim ls 5 | awk '{print $1}'`; do sim health $NAME | grep status; done
+for NAME in `sim ls 6 | awk '{print $1}'`; do sim health $NAME | grep status; done
 ```
 
 This example stops all instances with matching names:
@@ -667,10 +355,10 @@ This example stops all instances with matching names:
 sim ls myinstances* | awk '{print $1}' | xargs -L 1 sim stop
 ```
 
-This more advanced example upgrades all started instances of version `4.0` or `5` that needs upgrade:
+This more advanced example upgrades all started instances of version `5` or `6` that needs upgrade:
 
 ```text
-sim list "SQL:i.version in ('4.0', '5') and i.status = 'started' and i.version_date < v.date" | awk '{print $1}' | xargs -L 1 sim upgrade
+sim list "SQL:i.version in ('5', '6') and i.status = 'started' and i.version_date < v.date" | awk '{print $1}' | xargs -L 1 sim upgrade
 ```
 
 Etc.
@@ -734,8 +422,322 @@ fi
 ```
 
 :::note
+
 This license key example can easily be transposed to any data import on the I/O endpoint.
+
 :::
+
+UI usage
+--------
+
+If the instances manager is not installed in _headless_ mode, the UI is available on `<base URL>/ui`.
+
+The UI offers uses the API documented below and thus offers equivalent - but somehow limited by a simplified user experience - services.
+
+To create a new instance, enter an instance name (or leave empty for an automatic name) then select the version from the **_Create_** button:
+
+To manage an existing instance, click on one instance in the list, then select the action from the **_Action_** button:
+
+The **_Monitor_** action opens a new tab and allow to monitor a given instance by tracking record of recurring health checks:
+
+API usage
+---------
+
+If the instances manager is not installed in _headless_ mode, the instances manager API is available on `<base URL>/api`.
+
+The API services are using HTTP `GET` methods only and URL-encoded parameters only. All API responses are JSON-encoded.
+
+For all API services, you can get a pretty printed JSON response by appending `&prettyprint=true`.
+
+By default the authentication method is HTTP basic auth (username + password), but client certificate authentication can also be used.
+The examples below are using the `curl` command HTTP client, `<credentials>` is thus either:
+
+- `-u <username>:<password>` for username & password authentication method
+- `--cert-type pem --cert <path to your PEM client certificate file> --key <path to your PEM certificate key file>`
+  or `--cert-type P12 --cert <path to your P12 client certificate file>[:'<your password>']` for client certificate authentication method
+
+### Manager API
+
+#### Get API configuration
+
+```text
+curl -k -s <credentials> <base URL>/api[?action=config]
+```
+
+The `action` parameter can be omitted in this case as `config` is the default action.
+
+#### Get available versions
+
+```text
+curl -k -s <credentials> <base URL>/api?action=versions
+```
+
+### Instances API
+
+#### List instances
+
+```text
+curl -k -s <credentials> <base URL>/api?action=list[&param=<version>]
+```
+
+The parameters are:
+
+- `param` (optional) the version for filtering. If you don't provide an explicit value no version-based filtering is done.
+
+#### Create instance
+
+```text
+curl -k -s <credentials> <base URL>/api?action=add[&name=<instance name>][&param=<version (or instance name to clone)>][&options[<option name>]=<option value>]
+```
+
+The parameters are:
+
+- `name` (optional) the name of the instance to create, **must** be strictly alphanumerical and of length 3 to 20.
+   If you don't provide an explicit name, a random name (10 alphanumerical characters) is generated and used.
+- `param` (optional) the version of the instance (e.g. `6`) or the name of an existing instance to clone (e.g. `sft65drt7y`).
+   If you don't provide an explicit version, the configured default version is used.
+- `options[]` (optional) the options array for instance creation:
+  - `options[database]` overrides default database (`hsqldb`, `mysql`, `postgresql` depends on which databases engine are available on the server)
+  - `options[protected]` overrides default protected flag (`yes` or `no`)
+  - `options[auto_save]` overrides default automatic save flag (`yes`or `no`)
+  - `options[auto_update]` overrides default automatic update flag (`yes`or `no`)
+
+#### Stop instance
+
+```text
+curl -k -s <credentials> <base URL>/api?action=stop&name=<instance name>[&force=<true|false>]
+```
+
+The parameters are:
+
+- `name` (**required**) the name of the instance to stop.
+- `force` (optional) use "force" stopping strategy (`true`) or standard strategy (`false`= default)
+
+#### Start instance
+
+```text
+curl -k -s <credentials> <base URL>/api?action=start&name=<instance name>
+```
+
+The parameters are:
+
+- `name` (**required**) the name of the instance to start.
+
+#### Instance health check
+
+```text
+curl -k -s <credentials> <base URL>/api?action=health&name=<instance name>
+```
+
+The parameters are:
+
+- `name` (**required**) the name of the instance to get health check for.
+
+#### Instance I/O credentials
+
+```text
+curl -k -s <credentials> <base URL>/api?action=iocredentials&name=<instance name>
+```
+
+The parameters are:
+
+- `name` (**required**) the name of the instance to get I/O credentials from.
+
+#### Instance last logs
+
+```text
+curl -k -s <credentials> <base URL>/api?action=logs&name=<instance name>
+```
+
+The parameters are:
+
+- `name` (**required**) the name of the instance to get logs for.
+
+#### Download instance logs
+
+```text
+curl -k -s <credentials> <base URL>/api?action=download&param=logs&name=<instance name>
+```
+
+The parameters are:
+
+- `name` (**required**) the name of the instance to download logs for.
+
+#### Get access logs report
+
+```text
+curl -k -s <credentials> <base URL>/api?action=accesslogs&name=<instance name>
+```
+
+The parameters are:
+
+- `name` (**required**) the name of the instance to get access logs report for.
+
+#### Upgrade instance
+
+```text
+curl -k -s <credentials> <base URL>/api?action=upgrade&name=<instance name>
+```
+
+The parameters are:
+
+- `name` (**required**) the name of the instance to upgrade.
+
+#### Upgrade all automatic upgrade instances
+
+```text
+curl -k -s <credentials> <base URL>/api?action=upgradeall
+```
+
+#### Reset instance
+
+```text
+curl -k -s <credentials> <base URL>/api?action=reset&name=<instance name>
+```
+
+The parameters are:
+
+- `name` (**required**) the name of the instance to reset.
+
+:::warning
+A reset will erase all existing configuration and data.
+:::
+
+#### Delete instance
+
+```text
+curl -k -s <credentials> <base URL>/api?action=del&name=<instance name>[&force=<true|false>]
+```
+
+The parameters are:
+
+- `name` (**required**) the name of the instance to delete.
+- `force` (optional) use "force" deletion strategy (`true`) or standard strategy (`false`= default)
+
+#### Clone instance
+
+```text
+curl -k -s <credentials> <base URL>/api?action=clone&name=<instance name>&param=<cloned instance name>
+```
+
+The parameters are:
+
+- `name` (**required**) the name of the instance to clone.
+- `param` (**required**) the name of the cloned instance.
+
+#### Rename instance
+
+```text
+curl -k -s <credentials> <base URL>/api?action=rename&name=<instance name>&param=<new instance name>
+```
+
+The parameters are:
+
+- `name` (**required**) the name of the instance to rename.
+- `param` (**required**) the new name of the instance.
+
+#### Save instance on server
+
+```text
+curl -k -s <credentials> <base URL>/api?action=save&name=<instance name>
+```
+
+The parameters are:
+
+- `name` (**required**) the name of the instance to save.
+
+#### Save all automatic save instances on server
+
+```text
+curl -k -s <credentials> <base URL>/api?action=saveall
+```
+
+#### Download instance data
+
+```text
+curl -k -s <credentials> <base URL>/api?action=download&param=data&name=<instance name>
+```
+
+The parameters are:
+
+- `name` (**required**) the name of the instance to download data for.
+
+#### Download instance webapp
+
+```text
+curl -k -s <credentials> <base URL>/api?action=download&param=webapp&name=<instance name>
+```
+
+The parameters are:
+
+- `name` (**required**) the name of the instance to download webapp for.
+
+#### Download full instance
+
+```text
+curl -k -s <credentials> <base URL>/api?action=download&name=<instance name>
+```
+
+The parameters are:
+
+- `name` (**required**) the name of the instance to download.
+
+Once downloaded you can simply unzip the instance and launch it locally:
+
+**Windows**:
+
+```dos
+@echo off
+
+set JAVA_HOME=<path to your JDK home, e.g. %CD%\jdk-1.8.0>
+set PATH=%JAVA_HOME%\bin;%PATH%
+
+set TOMCAT_ROOT=<path to your instance, e.g. %CD%\tomcat>
+set TOMCAT_ADMIN_PORT=8005
+set TOMCAT_HTTP_PORT=8080
+set TOMCAT_HTTPS_PORT=8443
+
+set JAVA_OPTS=%JAVA_OPTS% -server -Dserver.vendor=tomcat -Dserver.version=9 -Dfile.encoding=UTF-8 -Dgit.basedir=%TOMCAT_ROOT%\webapps\ROOT\WEB-INF\git
+set JAVA_OPTS=%JAVA_OPTS% -Dtomcat.adminport=%TOMCAT_ADMIN_PORT% -Dtomcat.httpport=%TOMCAT_HTTP_PORT% -Dtomcat.httpsport=%TOMCAT_HTTPS_PORT%
+if not exist %TOMCAT_ROOT%\work mkdir %TOMCAT_ROOT%\work
+if not exist %TOMCAT_ROOT%\temp mkdir %TOMCAT_ROOT%\temp
+if not exist %TOMCAT_ROOT%\logs mkdir %TOMCAT_ROOT%\logs
+cd %TOMCAT_ROOT%\bin
+.\startup.bat
+exit
+```
+
+**Linux**:
+
+```shell
+#!/bin/bash
+
+export JAVA_HOME=<path to your JDK home, e.g. `pwd`/jdk-1.8.0>
+export PATH=$JAVA_HOME/bin:$PATH
+
+export TOMCAT_ROOT=<path to your instance, e.g. `pwd`/tomcat>
+export TOMCAT_ADMIN_PORT=8005
+export TOMCAT_HTTP_PORT=8080
+export TOMCAT_HTTPS_PORT=8443
+
+export JAVA_OPTS="$JAVA_OPTS -server -Dserver.vendor=tomcat -Dserver.version=9 -Dfile.encoding=UTF-8 -Dgit.basedir=$TOMCAT_ROOT/webapps/<instance|'ROOT'>/WEB-INF/git"
+export JAVA_OPTS="$JAVA_OPTS -Dtomcat.adminport=$TOMCAT_ADMIN_PORT -Dtomcat.httpport=$TOMCAT_HTTP_PORT -Dtomcat.httpsport=$TOMCAT_HTTPS_PORT"
+[ ! -d $TOMCAT_ROOT/work ] && mkdir $TOMCAT_ROOT/work
+[ ! -d $TOMCAT_ROOT/temp ] && mkdir $TOMCAT_ROOT/temp
+[ ! -d $TOMCAT_ROOT/logs ] && mkdir $TOMCAT_ROOT/logs
+cd $TOMCAT_ROOT/bin
+./startup.sh
+```
+
+#### Instance actions history
+
+```text
+curl -k -s <credentials> <base URL>/api?action=history&name=<instance name>
+```
+
+The parameters are:
+
+- `name` (**required**) the name of the instance to get action history for.
 
 Configuration
 -------------
@@ -767,7 +769,9 @@ The global settings are set as environment variables in the `<manager home>/conf
 ##### System settings
 
 :::warning
+
 These system settings **SHOULD NOT** be changed unless you know precisely what you are doing.
+
 :::
 
 - `APPS_USER` Linux user used by the manager (defaults to `simplicite`)

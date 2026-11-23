@@ -17,8 +17,8 @@ Introduction
 
 ### Architecture
 
-The SIM offers a command line interface (CLI), a web services interface (API), built on top of the CLI,
-and a web user interface (UI), built on top of the API to manage several Simplicité instances on a server:
+The SIM offers a command line interface (CLI) and, when not installed in _headless_ mode, a web services interface (API) built on top of the CLI,
+and a web user interface (UI) built on top of the API to manage several Simplicité instances on a server:
 
 ![Architecture](img/sim-almalinux.png)
 
@@ -53,7 +53,7 @@ The SIM offers the following features:
 - Process SonarQube analysis on instance's module
 - Run unit tests on a instance
 
-All above actions are triggered manually using the CLI, the API or thee UI.
+All above actions are triggered manually using the CLI, the API or the UI.
 
 The following actions are triggered by a system-level task scheduler (cron table);
 
@@ -65,10 +65,383 @@ Otherwise the backup files are only stored locally on the SIM server.
 
 Implementing pre/post action hooks (see below) allow you to customize the standard features of the SIM.
 
+CLI usage
+---------
+
+The `sim` CLI offers the following actions:
+
+### CLI actions
+
+#### Usage
+
+```text
+sim
+```
+
+or
+
+```text
+sim --help
+```
+
+#### Actions options
+
+All actions take the `--json` option to get the output as JSON.
+
+When omitted, the output is a human-readable plain text.
+
+#### Get configuration
+
+```text
+sim config
+```
+
+#### Get available versions
+
+```text
+sim versions
+```
+
+#### Upgrade SIM and retrieve latest templates
+
+```text
+sim refresh
+```
+
+On a standard SIM deployment, this is done automatically on a regular basis using a dedicated cron task (by default every day during the night).
+
+#### List instances
+
+```text
+sim list [<options>] [<name pattern>]
+```
+
+Where options are:
+
+- `--version` or `-v` followed by the version number (e.g. `-v 6.2`)
+- `--database` or `-d` followed by the database vendor name (e.g. `-d postgresql`)
+- `--status` or `-s` followed by the status (e.g. `-s started`)
+- `--where` or `-w` followed by a SQL where clause (e.g. `-w "i.name like '%abc%' and i.created > '2025-01-01'"`,
+  `i` is the table alias for `instances` and `v` the table alias for `versions`)
+- `--order` or `-o` followed by the order strategy (e.g. `-o created`), the order default to name
+
+The name pattern can be an exact name or can use `*` wildcards (or SQL wildcards `%` or `_`)
+
+#### Get one single instance information
+
+```text
+sim get <name>
+```
+
+#### Add an instance
+
+```text
+sim add <name> [<version> [<database>]]
+```
+
+If version is omitted the default version is used
+
+If database is omitted the default database is used (note that if you want to specify a database you **must** specify the version)
+
+#### Save an instance
+
+```text
+sim save <name>
+```
+
+:::note
+During the save action the Tomcat process, if running, is suspended to ensure saved data consistency.
+:::
+
+#### Reset an instance
+
+```text
+sim reset <name> <version>
+```
+
+:::warning
+A reset action will erase all existing configuration and business data.
+:::
+
+#### Delete an instance
+
+```text
+sim delete|rm <name>
+```
+
+#### Clone an instance
+
+```text
+sim clone|cp <name to clone> <cloned name>
+```
+
+#### Rename an instance
+
+```text
+sim rename|mv <name> <new name>
+```
+
+#### Stop/start an instance
+
+```text
+sim stop <name>
+sim start <name>
+```
+
+#### Upgrade an instance
+
+```text
+sim upgrade|up <name>
+```
+
+#### View last logs of an instance
+
+```text
+sim logs <name>
+```
+
+#### Download an instance
+
+```text
+sim download <name> <type: all|webapp|data|logs>
+```
+
+#### Get access logs report for an instance
+
+```text
+sim accesslogs <name>
+```
+
+#### Control the Tomcat server of an instance (only applicable on a started instance)
+
+```text
+sim tomcat-<status|stop|start|debug> <name>
+```
+
+Using `debug` is similar to `start` except that the Tomcat server is then started in JPDA debug mode.
+The JPDA port is available in the `JPDA_ADDRESS` environment variable.
+This port is temporary allowed through the firewall.
+
+:::warning
+Starting Tomcat in debug mode must only be done when required, it slows down your instance and makes it vulnerable.
+It is only suitable for punctual debugging.
+:::
+
+#### Run ant task for an instance
+
+```text
+sim ant-<task: purgelogs|purgejobs|purgesupervisions|purgerecyclebin|purgeexports|purgetempfiles|purgeall|buildindex|...> <name> [<param>]
+```
+
+#### Protect/unprotect an instance
+
+```text
+sim protect <name>
+sim unprotect <name>
+```
+
+#### Activate/deactivate nightly upgrade on an instance
+
+```text
+sim autoupdate <name>
+sim noautoupdate <name>
+```
+
+#### Activate/deactivate auto-save on an instance
+
+```text
+sim autosave <name>
+sim noautosave <name>
+```
+
+#### Set/reset custom URL of an instance
+
+```text
+sim seturl <name> <custom URL>
+sim reseturl <name>
+```
+
+#### Set version of an instance
+
+```text
+sim setversion <name> <version>
+```
+
+:::warning
+Only a higher version than current instance version is possible. If set to lower version, the instance will not start anymore.
+:::
+
+#### Set status of an instance
+
+```text
+sim setstatus <name> <started|stopped>
+```
+
+:::warning
+The status is set by start/stop actions, use this **only** if there was an unexpected issue and the status is incorrect vs actual instance's status.
+:::
+
+#### Get health check of an instance
+
+Only to get a return code:
+
+```text
+sim health|healthcheck <name>
+```
+
+Or get full health check data:
+
+```text
+sim status <name>
+```
+
+Or simple ping status:
+
+```text
+sim ping <name>
+```
+
+#### Show process of an instance
+
+```text
+sim ps <name>
+```
+
+#### Start shell for instance
+
+```text
+sim shell|sh <name>
+```
+
+#### Connect to instance's database
+
+```text
+sim database|db <name> [<input file>]
+```
+
+The client tool used to connect to database depends on the database vendor (e.g. `mysql` client is used for MySQL/MariaDB, `psql` for PostgreSQL, ...)
+
+:::note
+With embedded HSQLDB the instance must be stopped before connecting to database.
+:::
+
+#### Instance monitoring
+
+```text
+sim monitor <name> [<interval in seconds, defaults to 60>]
+```
+
+Monitoring is done by calling instance's `/health` endpoint. Each time a monitoring error/warning is detected
+a call to the optional hook `monitoring.sh` is done with a reason argument.
+
+#### Run a unit tests shared code on an instance
+
+```text
+sim unitttests <name> <unit test shared code name>
+```
+
+#### SonarQube analysis for instance's module(s)
+
+```text
+sim sonar <name> [<module 1> [<modules 2> ...]]
+```
+
+If no module is specified all modules are analysed.
+
+:::note
+A SonarQube server must be installed and configured.
+:::
+
+#### Advanced CLI usage examples
+
+This example gets status of all instances of a given version:
+
+```text
+for NAME in `sim ls -v 6 | awk '{print $1}'`; do sim health $NAME | grep status; done
+```
+
+This example stops all instances with matching names:
+
+```text
+sim ls myinstances* | awk '{print $1}' | xargs -L 1 sim stop
+```
+
+This more advanced example upgrades all started instances of version `5` or `6` that needs upgrade:
+
+```text
+sim list -w "i.version in ('5', '6') and i.status = 'started' and i.version_date < v.date" | awk '{print $1}' | xargs -L 1 sim upgrade
+```
+
+Etc.
+
+Hooks
+-----
+
+It is possible to extend the manager behavior using the following script hooks (located in `<manager home>/hooks`):
+
+```text
+pre-add.sh
+post-add.sh
+pre-reset.sh
+post-reset.sh
+pre-upgrade.sh
+post-upgrade.sh
+pre-save.sh
+post-save.sh
+pre-start.sh
+post-start.sh
+pre-stop.sh
+post-stop.sh
+pre-del.sh
+post-del.sh
+monitoring.sh
+```
+
+All hooks receive as argument their caller script's arguments (e.g. instance name, version and options for `pre/post-add.sh`).
+
+:::note
+If your usage of the hooks is to add/alter elements to instances' Tomcat (configuration files, additional Java JARs or static web components, ...)
+you need to do it in the `pre/post-add.sh` but also in the `pre/post-upgrade.sh` (and maybe also in the `pre/post-reset.sh`) as upgrade (and reset)
+actions reinstall Tomcat.
+:::
+
+### Examples
+
+This `post-start.sh` hook looks for a license XML key named `license-<instance-name>.xml`
+in the `licensekeys` folder located in the base `$APPS_HOME` folder,
+if present this file is loaded on the instance's  I/O endpoint using the appropriate credentials
+(which are available as environment variables):
+
+```shell
+#!/bin/bash
+
+XML=$APPS_HOME/licensekeys/license-$USER.xml
+if [ -f $XML ]
+then
+	echo "Importing $XML file..."
+	RES=`curl -s -u $SERVICE_USER:$SERVICE_PASSWORD --form service=xmlimport --form file=@$XML $SERVICE_URL`
+	if [ "$RES" = "OK" ]
+	then
+		mv -f $XML $XML.`date +%Y%m%d%H%M%S`
+		echo "Done"
+	else
+		echo "Failed to import $XML: $RES"
+	fi
+else
+	echo "No $XML file"
+fi
+```
+
+:::note
+
+This license key example can easily be transposed to any data import on the I/O endpoint.
+
+:::
+
 UI usage
 --------
 
-The instances manager UI is available on `<base URL>/ui`.
+If the instances manager is not installed in _headless_ mode and if the UI usage is allowed, the UI is available on `<base URL>/ui`.
 
 The UI offers uses the API documented below and thus offers equivalent - but somehow limited by a simplified user experience - services.
 
@@ -81,7 +454,7 @@ The **_Monitor_** action opens a new tab and allow to monitor a given instance b
 API usage
 ---------
 
-The instances manager API is available on `<base URL>/api`.
+If the instances manager is not installed in _headless_ mode and if the API usage is allowed, the instances manager API is available on `<base URL>/api`.
 
 The API services are using HTTP `GET` methods only and URL-encoded parameters only. All API responses are JSON-encoded.
 
@@ -377,377 +750,6 @@ The parameters are:
 
 - `name` (**required**) the name of the instance to get action history for.
 
-CLI usage
----------
-
-The `sim` CLI offers the following actions:
-
-### CLI actions
-
-#### Usage
-
-```text
-sim
-```
-
-or
-
-```text
-sim --help
-```
-
-#### Actions options
-
-All actions take the `--json` option to get the output as JSON.
-
-When omitted, the output is a human-readable plain text.
-
-#### Get configuration
-
-```text
-sim config
-```
-
-#### Get available versions
-
-```text
-sim versions
-```
-
-#### Upgrade SIM and retrieve latest templates
-
-```text
-sim refresh
-```
-
-On a standard SIM deployment, this is done automatically on a regular basis using a dedicated cron task (by default every day during the night).
-
-#### List instances
-
-```text
-sim list [<options>] [<name pattern>]
-```
-
-Where options are:
-
-- `--version` or `-v` followed by the version number (e.g. `-v 6.2`)
-- `--database` or `-d` followed by the database vendor name (e.g. `-d postgresql`)
-- `--status` or `-s` followed by the status (e.g. `-s started`)
-- `--where` or `-w` followed by a SQL where clause (e.g. `-w "i.name like '%abc%' and i.created > '2025-01-01'"`,
-  `i` is the table alias for `instances` and `v` the table alias for `versions`)
-- `--order` or `-o` followed by the order strategy (e.g. `-o created`), the order default to name
-
-The name pattern can be an exact name or can use `*` wildcards (or SQL wildcards `%` or `_`)
-
-#### Get one single instance information
-
-```text
-sim get <name>
-```
-
-#### Add an instance
-
-```text
-sim add <name> [<version> [<database>]]
-```
-
-If version is omitted the default version is used
-
-If database is omitted the default database is used (note that if you want to specify a database you **must** specify the version)
-
-#### Save an instance
-
-```text
-sim save <name>
-```
-
-:::note
-During the save action the Tomcat process, if running, is suspended to ensure saved data consistency.
-:::
-
-#### Reset an instance
-
-```text
-sim reset <name> <version>
-```
-
-:::warning
-A reset action will erase all existing configuration and business data.
-:::
-
-#### Delete an instance
-
-```text
-sim delete|rm <name>
-```
-
-#### Clone an instance
-
-```text
-sim clone|cp <name to clone> <cloned name>
-```
-
-#### Rename an instance
-
-```text
-sim rename|mv <name> <new name>
-```
-
-#### Stop/start an instance
-
-```text
-sim stop <name>
-sim start <name>
-```
-
-#### Upgrade an instance
-
-```text
-sim upgrade|up <name>
-```
-
-#### View last logs of an instance
-
-```text
-sim logs <name>
-```
-
-#### Download an instance
-
-```text
-sim download <name> <type: all|webapp|data|logs>
-```
-
-#### Get access logs report for an instance
-
-```text
-sim accesslogs <name>
-```
-
-#### Control the Tomcat server of an instance (only applicable on a started instance)
-
-```text
-sim tomcat-<status|stop|start|debug> <name>
-```
-
-Using `debug` is similar to `start` except that the Tomcat server is then started in JPDA debug mode.
-The JPDA port is available in the `JPDA_ADDRESS` environment variable.
-This port is temporary allowed through the firewall.
-
-:::warning
-Starting Tomcat in debug mode must only be done when required, it slows down your instance and makes it vulnerable.
-It is only suitable for punctual debugging.
-:::
-
-#### Run ant task for an instance
-
-```text
-sim ant-<task: purgelogs|purgejobs|purgesupervisions|purgerecyclebin|purgeexports|purgetempfiles|purgeall|buildindex|...> <name> [<param>]
-```
-
-#### Protect/unprotect an instance
-
-```text
-sim protect <name>
-sim unprotect <name>
-```
-
-#### Activate/deactivate nightly upgrade on an instance
-
-```text
-sim autoupdate <name>
-sim noautoupdate <name>
-```
-
-#### Activate/deactivate auto-save on an instance
-
-```text
-sim autosave <name>
-sim noautosave <name>
-```
-
-#### Set/reset custom URL of an instance
-
-```text
-sim seturl <name> <custom URL>
-sim reseturl <name>
-```
-
-#### Set version of an instance
-
-```text
-sim setversion <name> <version>
-```
-
-:::warning
-Only a higher version than current instance version is possible. If set to lower version, the instance will not start anymore.
-:::
-
-#### Set status of an instance
-
-```text
-sim setstatus <name> <started|stopped>
-```
-
-:::warning
-The status is set by start/stop actions, use this **only** if there was an unexpected issue and the status is incorrect vs actual instance's status.
-:::
-
-#### Get health check of an instance
-
-Only to get a return code:
-
-```text
-sim health|healthcheck <name>
-```
-
-Or get full health check data:
-
-```text
-sim status <name>
-```
-
-Or simple ping status:
-
-```text
-sim ping <name>
-```
-
-#### Show process of an instance
-
-```text
-sim ps <name>
-```
-
-#### Start shell for instance
-
-```text
-sim shell|sh <name>
-```
-
-#### Connect to instance's database
-
-```text
-sim database|db <name> [<input file>]
-```
-
-The client tool used to connect to database depends on the database vendor (e.g. `mysql` client is used for MySQL/MariaDB, `psql` for PostgreSQL, ...)
-
-:::note
-With embedded HSQLDB the instance must be stopped before connecting to database.
-:::
-
-#### Instance monitoring
-
-```text
-sim monitor <name> [<interval in seconds, defaults to 60>]
-```
-
-Monitoring is done by calling instance's `/health` endpoint. Each time a monitoring error/warning is detected
-a call to the optional hook `monitoring.sh` is done with a reason argument.
-
-#### Run a unit tests shared code on an instance
-
-```text
-sim unitttests <name> <unit test shared code name>
-```
-
-#### SonarQube analysis for instance's module(s)
-
-```text
-sim sonar <name> [<module 1> [<modules 2> ...]]
-```
-
-If no module is specified all modules are analysed.
-
-:::note
-A SonarQube server must be installed and configured.
-:::
-
-#### Advanced CLI usage examples
-
-This example gets status of all instances of a given version:
-
-```text
-for NAME in `sim ls -v 5 | awk '{print $1}'`; do sim health $NAME | grep status; done
-```
-
-This example stops all instances with matching names:
-
-```text
-sim ls myinstances* | awk '{print $1}' | xargs -L 1 sim stop
-```
-
-This more advanced example upgrades all started instances of version `5`or `6` that needs upgrade:
-
-```text
-sim list -w "i.version in ('5', '6') and i.status = 'started' and i.version_date < v.date" | awk '{print $1}' | xargs -L 1 sim upgrade
-```
-
-Etc.
-
-Hooks
------
-
-It is possible to extend the manager behavior using the following script hooks (located in `<manager home>/hooks`):
-
-```text
-pre-add.sh
-post-add.sh
-pre-reset.sh
-post-reset.sh
-pre-upgrade.sh
-post-upgrade.sh
-pre-save.sh
-post-save.sh
-pre-start.sh
-post-start.sh
-pre-stop.sh
-post-stop.sh
-pre-del.sh
-post-del.sh
-monitoring.sh
-```
-
-All hooks receive as argument their caller script's arguments (e.g. instance name, version and options for `pre/post-add.sh`).
-
-:::note
-If your usage of the hooks is to add/alter elements to instances' Tomcat (configuration files, additional Java JARs or static web components, ...)
-you need to do it in the `pre/post-add.sh` but also in the `pre/post-upgrade.sh` (and maybe also in the `pre/post-reset.sh`) as upgrade (and reset)
-actions reinstall Tomcat.
-:::
-
-### Examples
-
-This `post-start.sh` hook looks for a license XML key named `license-<instance-name>.xml`
-in the `licensekeys` folder located in the base `$APPS_HOME` folder,
-if present this file is loaded on the instance's  I/O endpoint using the appropriate credentials
-(which are available as environment variables):
-
-```shell
-#!/bin/bash
-
-XML=$APPS_HOME/licensekeys/license-$USER.xml
-if [ -f $XML ]
-then
-	echo "Importing $XML file..."
-	RES=`curl -s -u $SERVICE_USER:$SERVICE_PASSWORD --form service=xmlimport --form file=@$XML $SERVICE_URL`
-	if [ "$RES" = "OK" ]
-	then
-		mv -f $XML $XML.`date +%Y%m%d%H%M%S`
-		echo "Done"
-	else
-		echo "Failed to import $XML: $RES"
-	fi
-else
-	echo "No $XML file"
-fi
-```
-
-:::note
-This license key example can easily be transposed to any data import on the I/O endpoint.
-:::
-
 Configuration
 -------------
 
@@ -780,7 +782,9 @@ The global settings are set as environment variables in the `<manager home>/conf
 ##### System settings
 
 :::warning
+
 These system settings **SHOULD NOT** be changed unless you know precisely what you are doing.
+
 :::
 
 - `APPS_USER` Linux user used by the manager (defaults to `simplicite`)
