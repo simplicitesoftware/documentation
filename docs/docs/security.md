@@ -94,8 +94,8 @@ this runtime parameter is private (never sent to the UI or APIs) but stored in t
 granted to the system parameters, so its value **should** rather be an environment variable substitution tag `[ENV:...]` (see [secrets](#secrets)).
 
 The nodes call each other on their internal URLs (cluster endpoints), not thru the load balancer:
-the `/peer` path **must** be open between the nodes (on their cluster endpoints) and **should** be blocked
-on the public reverse proxy or load balancer, and the traffic between the nodes **must** use HTTPS in production.
+the `/peer` path **must** be open between the nodes (on their cluster endpoints) and **must** be blocked
+on the public reverse proxy or load balancer, and the traffic between the nodes **should** ideally use HTTPS in production.
 
 ### API endpoint
 
