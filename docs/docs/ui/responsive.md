@@ -691,17 +691,49 @@ Usage samples:
    });
    ```
 
-5) to add a specific "can close before quit?" to stop a closing request:
+5) to add a specific "can close before quit?" to stop a closing request
+   (one handler per container, a new call replaces the previous one):
 
    ```javascript
-   $(myDiv).attr("data-event-close", "mycanclose").on("mycanclose", function(e, cbk) {
-     if (/* can close... */)
-       cbk(); // ok this div can close
+   $ui.setCloseEvent($(myDiv), function(cbk) {
+     if (/* can close... */) {
+       $ui.setCanClose($(myDiv)); // no more check on this div
+       cbk && cbk(); // continue the closing request
+     }
      else
        // Stay here with message
        $ui.alert("Do something before close");
    });
    ```
+
+   Then to close or leave the content without the check (e.g. after a specific save):
+
+   ```javascript
+   $ui.setCanClose($(myDiv)); // the div only
+   $ui.setCanClose($(myDiv), "deep"); // the div and its sub-contents
+   $ui.setCanClose($(myElement), "closest"); // the closest content with a check: the element or its first ancestor
+   ```
+
+   `$ui.closeForm(ctn)` runs the checks before going back in the navigation,
+   whereas `$ui.reloadForm(ctn)` reloads the content without them: the pending changes are lost.
+
+   :::note
+
+   `setCloseEvent` and `setCanClose` are available since version 7.0. In version 6.x, set the event name
+   in the `data-event-close` attribute of the container, and remove the attribute to close without check:
+
+   ```javascript
+   $(myDiv).attr("data-event-close", "mycanclose").on("mycanclose", function(e, cbk) {
+     if (/* can close... */) {
+       $(myDiv).removeAttr("data-event-close");
+       cbk && cbk();
+     }
+     else
+       $ui.alert("Do something before close");
+   });
+   ```
+
+   :::
 
 ### Document events
 
@@ -735,7 +767,7 @@ Those events can be triggered by a specific code to ask a UI component to do som
 | js-searchable     | ui.list.search        | search again with the object filters (list, calendar, crosstab, tray) | object, request, groupBy |
 | js-select-row     | ui.list.select.row    | select one row, all rows or none                                      | row ID, `all` or `none`  |
 | js-search-pos     | ui.search.pos         | show the search by column                                             | `column`                 |
-| object form       | ui.form.reload        | reload the form, as the reload action (e.g. lock released)            |                          |
+| object form       | ui.form.reload        | reload the form, the pending changes are lost (e.g. lock released)    |                          |
 | list form         | ui.list.selectall     | select all rows                                                       |                          |
 | list form         | ui.list.selectpage    | select the rows of the current page                                   |                          |
 | list form         | ui.list.selectnone    | unselect all rows                                                     |                          |
