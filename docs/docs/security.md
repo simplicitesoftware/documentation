@@ -477,8 +477,8 @@ Simplicité has no particular requirement at this level, all usual good practice
 
 ### Use SSL
 
-Application endpoints **should** always be exposed as HTTPS (SSL). This can be achieved directly in the Java application server that runs Simplicité
-or at the reverse proxy level (if one has been configured).
+Application endpoints **should** always be exposed as HTTPS (SSL). This can be achieved directly at the level of the Tomcat server
+that runs Simplicité or at the reverse proxy level (if one has been configured).
 
 ### SSH Access
 
@@ -486,8 +486,8 @@ Server infrastructure command line access **should** always use SSH (ideally key
 
 ### System updates
 
-- Server infrastructure **must** be kept up-to-date by applying **all** system updates on the fly. Many security vulnerabilities are at OS-level.
-- The JVM, database server, JDBC driver and Java application server **must** be kept up-to-date.
+- Server infrastructure **must** be kept up-to-date by applying **all** OS-level system updates on the fly.
+- The JVM, the Tomcat server, the database server and the corresponding JDBC driver **must** be kept up-to-date.
 - Simplicité updates **must** be applied as soon as they are made available
 
 :::danger[Attention]
