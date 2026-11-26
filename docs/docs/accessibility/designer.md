@@ -503,7 +503,10 @@ All linked objects must be compliant: when they have a guide in this document, f
 
 ##### Action field
 
-<!-- TODO -->
+Action fields are rendered as a form in the confirmation dialog, with the same components as the
+object's fields. Each of them is compliant on the same terms as a regular field: follow the
+[Field](#field) guide for their type, rendering and help, and the [accessible texts](#accessible-texts)
+rules for their label.
 
 ##### Action translation
 
@@ -689,7 +692,7 @@ See [Translations](#translations).
 | - | - | - | - |
 | Usage (`prt_usage`) | C | | |
 | Visibility (`prt_visible`) | C | | |
-| Accessible PDF (`prt_accessible`) | PC | **Yes** | <!--TODO--> |
+| Accessible PDF (`prt_accessible`) | PC | **Yes** | The generated PDF is tagged to the PDF/UA-1 standard, with embedded fonts. Without it, the PDF is untagged and not accessible. The platform only builds the structure from the template: its relevance (headings, alternatives, tables) depends on `prt_file`. |
 
 **NAME**  
 
@@ -730,7 +733,7 @@ See [Translations](#translations).
 | Axis order (`cax_order`) | C | | |
 | Subtotals ? (`cax_subtotal`) | NC | **No** | |
 | Function (`cax_function`) | C | | |
-| `cax_palette` | PC | | <!--TODO--> |
+| `cax_palette` | PC | | Each color of the palette must reach a 3:1 contrast ratio with the chart background and with its neighbouring colors (criterion 3.3). The table alternative carries the same data, so the information never relies on color alone. |
 
 ##### Agenda
 
@@ -828,17 +831,20 @@ In order to enable the `a11y-mode` and its overrides, there are few things to en
 
 ### Settings for strict RGAA requirements
 
-For applications that have very strict RGAA requirements, or if the gap between a11y-mode and regular usage needs to be shortened.
-
-<!-- TODO: list of the system parameters / general settings to enable or disable -->
+For applications that have very strict RGAA requirements, or if the gap between `a11y-mode` and regular
+usage needs to be shortened, set these system parameters for the whole application:
 
 | Setting | Value | Why |
 | - | - | - |
-| `ACCESSIBILITY_DEV` | `true` | To enable all the in-app helps and tooltips. |
-| `USE_COMPACT` | `false` | Compact mode is disabled in `a11y-mode`, but disabling it for everyone is the best option. |
+| `ACCESSIBILITY_DEV` | `yes` | Enables the in-app compliance icons and helps, see [`ACCESSIBILITY_DEV`](#designer-accessibility_dev-sysparam). |
+| `USE_COMPACT` | `no` | Compact mode is disabled in `a11y-mode`, but disabling it for everyone is the best option. |
+| `USE_HTMLEDITOR` | `no` | The HTML editor is not compliant (see the **HTML content** field type). |
 | `USE_INDEX_SEARCH_SCANNER` | `no` | The QR code features are not compliant. |
 | `LOGON_OPTIONS` | `"animated": false` | Animation on the home page cannot be paused. |
-| `LIST_PAGINEBOTTOM` | `no` | Can be kept but better to keep only the top one activated. |
+| `LIST_PAGINEBOTTOM` | `no` | Can be kept, but keeping only the top pagination bar (`LIST_PAGINETOP`) gives a simpler page structure. |
+
+Beyond these parameters, every feature marked **NC** in the [component guides](#component-guides) must
+be set to the value given in its row, whether or not users turn `a11y-mode` on.
 
 Rules and good practices
 ------------------------
@@ -856,21 +862,30 @@ components. The component guides link here whenever a setting depends on them.
 
 ### Accessible HTML
 
-<!-- TODO:
-    - any created HTML must have valid tags
-    - created HTML must respect the title hierarchy of its context (preference for no titles)
-    - any "rich" content must follow the RGAA criteria (links, images, coloring)
-        - list the most basic ones
-        - rather not using any additional coloring
-    - avoid code blocks.
-    - ul/ol lists are ok if containing only text
-    - mention the recommendation of only inputting text and basic stylings (bolc, italic)
--->
+The platform inserts your HTML as is: it is neither validated nor repaired. The safest content is plain
+text with basic styling (bold, italic). Every element you add beyond that brings RGAA criteria with it.
+
+- **Valid markup**: every tag is properly opened, closed and nested, and every `id` is unique in the
+  page (criterion 8.2).
+- **Headings**: your content sits inside a page that already has its hierarchy (`h1` for the main
+  content, `h2` for secondary content, `h3` for dialogs). Prefer no heading at all. If you need one,
+  start below the level of the context it is displayed in, and never skip a level (criterion 9.1).
+- **Semantics, not presentation**: don't use tags for their look (a heading to enlarge a text, a
+  `table` to lay out content, `br` to space blocks) (criteria 8.9 and 5.3).
+- **Links**: each link has an explicit text, understandable on its own; avoid "click here" and bare
+  URLs (criteria 6.1 and 6.2).
+- **Images**: each informative image has a relevant `alt`, each decorative image has `alt=""`
+  (criteria 1.1 to 1.3).
+- **Colors**: don't add colors of your own. If you do, the text must contrast enough with its
+  background, and the color must never be the only carrier of information (criteria 3.1 to 3.3).
+- **Lists**: `ul` / `ol` lists are fine as long as their items contain only text (criterion 9.3).
+- **Avoid** code blocks, inline styles (`style` attribute), tables, and any embedded content
+  (`iframe`, media).
 
 ### Using Quill fields
 
 Quill fields are using HTML to create rich content, thus if you populate any value using them
-you have to make sure the created HTML follows the rules above in [acessible HTML](#accessible-html).
+you have to make sure the created HTML follows the rules above in [accessible HTML](#accessible-html).
 
 ### Layout and structure
 
@@ -881,53 +896,85 @@ you have to make sure the created HTML follows the rules above in [acessible HTM
 
 ### External objects
 
-<!-- TODO:
-    - External objects carry their own code (front/back)
-    - HTML/JS/CSS for the frontend, thus have to follow HTML guidelines
-        - the javascript must also implement the proper alternatives and RGAA-compliant mechanisms
-    - if you implement features using the Simplicité's library, make sure you stick to compliant ones
-    - ensure the styles are respecting the color/contrast and presentation criteria, as they are not modified by "ThemeHighContrast".
--->
+External objects carry their own code, both back-end and front-end. Their front-end is plain HTML,
+JavaScript and CSS that the platform cannot check: the whole RGAA applies to it, and its compliance is
+entirely yours.
+
+- **HTML**: follow the [accessible HTML](#accessible-html) rules.
+- **JavaScript**: every interactive component you build must be usable with the keyboard and announced
+  to assistive technologies, following the [basic ARIA rules](#basic-aria-rules) below. When a
+  component cannot be made accessible (chart, map, drag and drop), provide an equivalent alternative
+  (table, text, list, buttons).
+- **Simplicité front-end library**: when you reuse platform components (lists, forms, fields, dialogs),
+  only use the features marked **C** or **PC** in the [component guides](#component-guides), with
+  their required settings.
+- **CSS**: the `HighContrast` theme does not apply to your styles. Check the contrast of every text and
+  interface component yourself (criteria 3.2 and 3.3), make the focus visible (criterion 10.7), and
+  make sure the content still works when zoomed to 200 %, reflowed at 320 px wide, and with modified
+  text spacing (criteria 10.4, 10.11 and 10.12).
 
 #### Basic aria rules
 
-<!-- TODO -->
+These are the five rules of [Using ARIA](https://www.w3.org/TR/using-aria/):
+
+1. **Prefer native HTML**: use a `button`, `a`, `input`, `select`… rather than a `div` with a `role`.
+   Native elements come with their keyboard behavior and semantics for free.
+2. **Don't change native semantics**: don't put a `role` on an element that already has one
+   (`<h2 role="tab">`); wrap it instead.
+3. **Every interactive ARIA control is keyboard operable**: if you give an element a `role="button"`,
+   it must be focusable (`tabindex="0"`) and activated by `ENTER` and `SPACE`.
+4. **Never hide a focusable element**: don't use `aria-hidden="true"` or `role="presentation"` on an
+   element that can receive focus.
+5. **Every interactive element has an accessible name**: a visible label, a `label` element, or an
+   `aria-label` / `aria-labelledby` when there is no visible text (icon buttons).
+
+For composite components (tabs, menus, comboboxes, dialogs, accordions), follow the matching pattern of
+the [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/): roles, states
+(`aria-expanded`, `aria-selected`…) and keyboard interactions.
 
 #### Context awareness
 
-<!-- TODO -->
+An external object is never a page on its own: it is displayed inside the application, in the work area,
+a view area or a dialog. It must fit into what the platform already provides:
+
+- **Landmarks**: the page already has its `header`, `nav`, `main` and `footer`. Don't add any; use a
+  `section` with an accessible name if your object needs a region.
+- **Headings**: start below the heading level of the place where the object is displayed, see
+  [accessible HTML](#accessible-html).
+- **Page title and language**: don't change `document.title` or the `lang` attribute of the document;
+  the platform maintains them. Display your texts in the user's language with the platform's
+  translation system.
+- **Focus**: don't move the focus when the object loads, and give it back to its trigger when you close
+  something you opened (criteria 7.4 and 12.8).
+- **Status messages**: announce results and errors with a `role="status"` or `role="alert"` region,
+  or with the platform's own messages (criterion 7.5).
+- **Keyboard shortcuts**: don't override the browser shortcuts or the platform ones listed in
+  [keyboard accessibility](#keyboard-accessibility), and never use a single printable key
+  (criterion 12.10).
+- **Several instances**: the object can be displayed more than once in the same page; generate unique
+  `id` values.
 
 Keyboard accessibility
 ----------------------
 
-<!-- TODO: check if this part (fge) is still up to date -->
-
 This reference is worth copying into your own application's user documentation: end users have no
 other way of discovering these shortcuts.
+
+Standard keyboard behaviors (`TAB` / `SHIFT` + `TAB` to move the focus, arrow keys and `ENTER` in menus
+and dropdowns, following the [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/)) are
+not listed: only the platform's own shortcuts are.
 
 ### Global
 
 | Keys | Action |
 | --- | --- |
-| `TAB` | Focus the next element in DOM order |
-| `SHIFT` + `TAB` | Focus the previous element in DOM order |
 | `ESC` | Close, by priority: the focused field or rich editor, then all modal dialogs, then the current form. Navigates back when nothing is focused |
-| `ALT` + `H` | Display the **Home** page |
-| `ALT` + `M` | Focus the main **Menu**, on the last selection or the first item |
-| `ALT` + `W` | **Wide** screen, toggling the menu |
-| `ALT` + `B` | Open the **Bookmarks** dialog |
-| `ALT` + `F` | Focus the **Finder**, the global search in the header |
-| `ALT` + `L` | Focus the first visible **List** |
-| `ALT` + `N` | Focus the **Next** visible area or list, on the first `.js-focusable` element |
-
-### Menu
-
-| Keys | Action |
-| --- | --- |
-| `ALT` + `M` | Focus the main menu, on the last selection or the first item |
-| `RIGHT` / `LEFT` | Open / close a domain or a sub-menu |
-| `UP` / `DOWN` | Previous / next menu item |
-| `ENTER` | Open the item, list or view, or launch a business process |
+| `ALT` / `OPT` + `H` | Display the **Home** page |
+| `ALT` / `OPT` + `W` | **Wide** screen, toggling the menu |
+| `ALT` / `OPT` + `B` | Open the **Bookmarks** dialog |
+| `ALT` / `OPT` + `F` | Open the global search in the header |
+| `ALT` / `OPT` + `L` | (dev-mode) Open the logs view |
+| `ALT` / `CTRL` + `OPT` + `N` | Focus the **Next** visible area or list, on the first `.js-focusable` element |
 
 ### Lists and forms
 
