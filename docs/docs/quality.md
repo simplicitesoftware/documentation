@@ -74,9 +74,12 @@ The whole code (Java, JavaScript and styles) is regularly checked using the [Son
 Platform testing
 ----------------
 
-The platform code is tested against low-level unit tests all along its development process.
+The platform code is tested against low-level [JUnit](https://junit.org) unit tests all along its development process.
 
-Each time a revision is due to be released a series of representative business applications scenarii are tested to
+The platform behavior is also tested also from a UI perspective using basic and comprehensive tests scenarii using
+the [Playwright](https://playwright.dev) tool.
+
+Each time a revision is due to be released a series of representative business applications scenarii are also tested to
 ensure the consistency of the end-to-end behavior of the platform.
 
 Performance tests are also done each time a revision includes changes that may impact the performances of the platform.
